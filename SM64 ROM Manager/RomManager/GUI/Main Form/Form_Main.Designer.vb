@@ -198,9 +198,9 @@ Partial Class Form_Main
         Me.ButtonItem_ModelImporter = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem58 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem17 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_TrajectoryEditor = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem32 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem14 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem_TrajectoryEditor = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem18 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem22 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
@@ -2329,6 +2329,11 @@ Partial Class Form_Main
         Me.ButtonItem17.Name = "ButtonItem17"
         resources.ApplyResources(Me.ButtonItem17, "ButtonItem17")
         '
+        'ButtonItem_TrajectoryEditor
+        '
+        Me.ButtonItem_TrajectoryEditor.Name = "ButtonItem_TrajectoryEditor"
+        resources.ApplyResources(Me.ButtonItem_TrajectoryEditor, "ButtonItem_TrajectoryEditor")
+        '
         'ButtonItem32
         '
         Me.ButtonItem32.Enabled = False
@@ -2340,11 +2345,6 @@ Partial Class Form_Main
         Me.ButtonItem14.Enabled = False
         Me.ButtonItem14.Name = "ButtonItem14"
         resources.ApplyResources(Me.ButtonItem14, "ButtonItem14")
-        '
-        'ButtonItem_TrajectoryEditor
-        '
-        Me.ButtonItem_TrajectoryEditor.Name = "ButtonItem_TrajectoryEditor"
-        resources.ApplyResources(Me.ButtonItem_TrajectoryEditor, "ButtonItem_TrajectoryEditor")
         '
         'ButtonItem18
         '
@@ -2476,7 +2476,7 @@ Partial Class Form_Main
         'ButtonItem23
         '
         Me.ButtonItem23.Name = "ButtonItem23"
-        Me.ButtonItem23.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9)
+        Me.ButtonItem23.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F10)
         resources.ApplyResources(Me.ButtonItem23, "ButtonItem23")
         '
         'DotNetBarManager1
@@ -2492,6 +2492,7 @@ Partial Class Form_Main
         Me.DotNetBarManager1.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.Ins)
         Me.DotNetBarManager1.BottomDockSite = Me.DockSite4
         Me.DotNetBarManager1.EnableFullSizeDock = False
+        Me.DotNetBarManager1.IgnoreF10Key = True
         Me.DotNetBarManager1.LeftDockSite = Me.DockSite1
         Me.DotNetBarManager1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.DotNetBarManager1.ParentForm = Me

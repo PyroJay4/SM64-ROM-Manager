@@ -6188,6 +6188,12 @@
   <data name="&gt;&gt;ButtonItem17.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
+  <data name="&gt;&gt;ButtonItem_TrajectoryEditor.Name" xml:space="preserve">
+    <value>ButtonItem_TrajectoryEditor</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_TrajectoryEditor.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
   <data name="&gt;&gt;ButtonItem32.Name" xml:space="preserve">
     <value>ButtonItem32</value>
   </data>
@@ -6198,12 +6204,6 @@
     <value>ButtonItem14</value>
   </data>
   <data name="&gt;&gt;ButtonItem14.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_TrajectoryEditor.Name" xml:space="preserve">
-    <value>ButtonItem_TrajectoryEditor</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_TrajectoryEditor.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonItem18.Name" xml:space="preserve">
