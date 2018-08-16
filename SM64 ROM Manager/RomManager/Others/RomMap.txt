@@ -1,0 +1,4 @@
+﻿0x1200000 - 0x1201FFB: Reserved Space
+0x1201FFC - 0x1201FFF: Program Version
+0x1202000 - 0x120FFFF: ASM-Codes
+0x1210000 - 0x3FFFFFF: Music + Levels

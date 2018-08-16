@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{745E6A23-6957-45F8-9305-88EC5474D077}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ModelConverterGUI</RootNamespace>
+    <AssemblyName>ModelConverterGUI</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ModelConverterGUI.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ModelConverterGUI.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CollisionEditor.designer.vb">
+      <DependentUpon>CollisionEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CollisionEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Language Resources\MainModelconverter_Resources.de.Designer.vb">
+      <DependentUpon>MainModelconverter_Resources.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Language Resources\MainModelconverter_Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainModelconverter_Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MainModelConverter.designer.vb">
+      <DependentUpon>MainModelConverter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainModelConverter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetUpFogDialog.designer.vb">
+      <DependentUpon>SetUpFogDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SetUpFogDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TextureGraphicFormatEditor.Designer.vb">
+      <DependentUpon>TextureGraphicFormatEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TextureGraphicFormatEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CollisionEditor.resx">
+      <DependentUpon>CollisionEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Resources\MainModelconverter_Resources.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainModelconverter_Resources.de.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Resources\MainModelconverter_Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainModelconverter_Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainModelConverter.de.resx">
+      <DependentUpon>MainModelConverter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainModelConverter.resx">
+      <DependentUpon>MainModelConverter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetUpFogDialog.resx">
+      <DependentUpon>SetUpFogDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextureGraphicFormatEditor.resx">
+      <DependentUpon>TextureGraphicFormatEditor.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\N64Graphics\N64Graphics.csproj">
+      <Project>{D9258483-950C-46D1-A333-31F32492CD7E}</Project>
+      <Name>N64Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenGLPreview\OpenGLPreview.vbproj">
+      <Project>{d3d19c7a-f7be-44f5-ace4-b0b5260f519f}</Project>
+      <Name>OpenGLPreview</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Publics\Publics.vbproj">
+      <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>
+      <Name>Publics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SettingsManager\SettingsManager.vbproj">
+      <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
+      <Name>SettingsManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
+      <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
+      <Name>SimpleFileParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
+      <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
+      <Name>SM64Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

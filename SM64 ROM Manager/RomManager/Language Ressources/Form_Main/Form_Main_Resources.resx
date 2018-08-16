@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_OpenRom" xml:space="preserve">
+    <value>Open ROM ...</value>
+  </data>
+  <data name="MsgBox_BankSizeChangedSuccess" xml:space="preserve">
+    <value>Size of Bank 0x19 changed successfully!</value>
+  </data>
+  <data name="MsgBox_BankSizeChangedSuccess_Title" xml:space="preserve">
+    <value>Size changed</value>
+  </data>
+  <data name="MsgBox_ErrorSavingSequence" xml:space="preserve">
+    <value>An Error happend at saving sequence.</value>
+  </data>
+  <data name="MsgBox_GameNameHasInvalidChars" xml:space="preserve">
+    <value>The Game Name probably contains invalid chars.</value>
+  </data>
+  <data name="MsgBox_InvalidBankSize" xml:space="preserve">
+    <value>This size is too small. The minimum size is {0}.</value>
+  </data>
+  <data name="MsgBox_InvalidBankSize_Title" xml:space="preserve">
+    <value>Invalid Size</value>
+  </data>
+  <data name="MsgBox_InvalidBgImageSize" xml:space="preserve">
+    <value>This Image has not a valid Size.&lt;br/&gt;The &lt;b&gt;recommed&lt;/b&gt; Size is 248x248.</value>
+  </data>
+  <data name="MsgBox_InvalidBgImageSize_Title" xml:space="preserve">
+    <value>Invalid Size</value>
+  </data>
+  <data name="MsgBox_LimitSequenceCountReached" xml:space="preserve">
+    <value>The limit of possible music sequences in the original game is 127. Do you want to add more anyway?</value>
+  </data>
+  <data name="MsgBox_LimitSequenceCountReached_Title" xml:space="preserve">
+    <value>Limit reached</value>
+  </data>
+  <data name="MsgBox_MaxCountAreasReached" xml:space="preserve">
+    <value>The maximum count of Areas per Level is 8.</value>
+  </data>
+  <data name="MsgBox_MaxCountAreasReached_Title" xml:space="preserve">
+    <value>Maximum reached</value>
+  </data>
+  <data name="MsgBox_MaxSequenceCountReached" xml:space="preserve">
+    <value>The maximum count of possible music sequences reached! It is not possible to add any more.</value>
+  </data>
+  <data name="MsgBox_MaxSequenceCountReached_Title" xml:space="preserve">
+    <value>Maximum reached</value>
+  </data>
+  <data name="MsgBox_PrepaireRom" xml:space="preserve">
+    <value>This ROM will be prepaired now to load it.</value>
+  </data>
+  <data name="MsgBox_PrepaireRom_Title" xml:space="preserve">
+    <value>Prepaire ROM</value>
+  </data>
+  <data name="MsgBox_RomCanNotBestarted" xml:space="preserve">
+    <value>The ROM can't be started. Make sure you selected the correct path to the emulator.</value>
+  </data>
+  <data name="MsgBox_RomCanNotBestarted_Title" xml:space="preserve">
+    <value>Launch Game</value>
+  </data>
+  <data name="MsgBox_UnsavedChanges" xml:space="preserve">
+    <value>If there are unsaved changes left, you will lose them all.&lt;br/&gt;Do you want to save the ROM?</value>
+  </data>
+  <data name="MsgBox_UnsavedChanges_Title" xml:space="preserve">
+    <value>Unsaved changes</value>
+  </data>
+  <data name="MsgBox_UpdatePatchesAvaiable" xml:space="preserve">
+    <value>There are update-patches avaibale for this ROM providing code improvements and new features.&lt;br/&gt;It is &lt;u&gt;heightly recommend&lt;/u&gt; to patch them.&lt;br/&gt;&lt;br/&gt;Do you want to patch them now?</value>
+  </data>
+  <data name="MsgBox_UpdatePatchesAvaiable_Title" xml:space="preserve">
+    <value>Update-Patches avaiable</value>
+  </data>
+  <data name="Notify_ShouldLoadRomFirst" xml:space="preserve">
+    <value>You should load a ROM first.</value>
+  </data>
+  <data name="Status_CalculatingTextSpace" xml:space="preserve">
+    <value>Calculating space ...</value>
+  </data>
+  <data name="Status_Checking" xml:space="preserve">
+    <value>Checking ROM ...</value>
+  </data>
+  <data name="Status_CreatingNewSequence" xml:space="preserve">
+    <value>Creating new Sequence ...</value>
+  </data>
+  <data name="Status_CreatingTextList" xml:space="preserve">
+    <value>Creating Text List ...</value>
+  </data>
+  <data name="Status_ExportingModel" xml:space="preserve">
+    <value>Exporting Model Map ...</value>
+  </data>
+  <data name="Status_ExportingSequence" xml:space="preserve">
+    <value>Exporting Sequence ...</value>
+  </data>
+  <data name="Status_ImportingSequence" xml:space="preserve">
+    <value>Importing Sequence</value>
+  </data>
+  <data name="Status_LoadingLevel" xml:space="preserve">
+    <value>Loading Level ...</value>
+  </data>
+  <data name="Status_LoadingModel" xml:space="preserve">
+    <value>Loading Model Map ...</value>
+  </data>
+  <data name="Status_LoadingMusic" xml:space="preserve">
+    <value>Loading Music ...</value>
+  </data>
+  <data name="Status_LoadingRom" xml:space="preserve">
+    <value>Loading ROM ...</value>
+  </data>
+  <data name="Status_LoadingTexts" xml:space="preserve">
+    <value>Loading Texts from ROM ...</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="Status_SavingRom" xml:space="preserve">
+    <value>Saving ROM ...</value>
+  </data>
+  <data name="Status_StartingUp" xml:space="preserve">
+    <value>Starting up ...</value>
+  </data>
+  <data name="Text_Area" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="Text_ChangeReplacingLevel" xml:space="preserve">
+    <value>Change Replacing Level</value>
+  </data>
+  <data name="Text_Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="Text_Invisible" xml:space="preserve">
+    <value>Invisible</value>
+  </data>
+  <data name="Text_LevelStar" xml:space="preserve">
+    <value>Level {0}, Star {1}</value>
+  </data>
+  <data name="Text_Mist" xml:space="preserve">
+    <value>Mist</value>
+  </data>
+  <data name="Text_NewLength" xml:space="preserve">
+    <value>New Length</value>
+  </data>
+  <data name="Text_SecretStar" xml:space="preserve">
+    <value>Secret Star</value>
+  </data>
+  <data name="Text_StartPosition" xml:space="preserve">
+    <value>Start Position</value>
+  </data>
+  <data name="Text_ToxicHaze" xml:space="preserve">
+    <value>Toxic Haze</value>
+  </data>
+  <data name="Text_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Text_UsedOfMaxLeft" xml:space="preserve">
+    <value>{0} of {1} used / {2} left</value>
+  </data>
+  <data name="Text_Water" xml:space="preserve">
+    <value>Water</value>
+  </data>
+</root>
