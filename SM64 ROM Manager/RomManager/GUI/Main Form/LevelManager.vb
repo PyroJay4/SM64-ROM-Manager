@@ -290,14 +290,15 @@ ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
 ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
 
             If frm.CheckBoxX_ConvertCollision.Checked AndAlso frm.CheckBoxX_ConvertModel.Checked Then
-                Dim OldAreaModel As AreaModel = .AreaModel
+                Dim OldAreaModel As ObjectModel = .AreaModel
                 .AreaModel = frm.ResModel
+                .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
             ElseIf frm.CheckBoxX_ConvertCollision.Checked Then
-                Dim OldAreaModel As AreaModel = .AreaModel
+                Dim OldAreaModel As ObjectModel = .AreaModel
                 .AreaModel.Collision = frm.ResModel.Collision
                 .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
             ElseIf frm.CheckBoxX_ConvertModel.Checked Then
-                Dim OldAreaModel As AreaModel = .AreaModel
+                Dim OldAreaModel As ObjectModel = .AreaModel
                 .AreaModel = frm.ResModel
                 .AreaModel.Collision = OldAreaModel.Collision
             End If

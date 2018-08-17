@@ -1876,45 +1876,9 @@ Public Class Form_AreaEditor
             Me.SuspendLayout()
 
             Dim hp As HistoryPoint = Nothing
-            Dim OldAreaModel As AreaModel = .AreaModel
+            Dim OldAreaModel As ObjectModel = .AreaModel
 
-            If frm.CheckBoxX_ConvertCollision.Checked Xor frm.CheckBoxX_ConvertModel.Checked Then
-
-                If frm.CheckBoxX_ConvertCollision.Checked Then
-
-                    hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrCollisionMap", "cCollisionMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
-                    Dim os As New ObjectState
-                    os.Object = cArea.AreaModel
-                    os.ValueToPatch = .AreaModel.Collision
-                    os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
-                    os.MemberType = ObjectValueType.Property
-                    os.MemberName = "Collision"
-                    hp.States.Add(os)
-
-                    .AreaModel.Collision = frm.ResModel.Collision
-                    .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
-                    rndrCollisionMap?.ReleaseBuffers()
-                    rndrCollisionMap = Nothing
-
-                ElseIf frm.CheckBoxX_ConvertModel.Checked Then
-
-                    hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrVisualMap", "cVisualMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
-                    Dim os As New ObjectState
-                    os.Object = cArea.AreaModel
-                    os.ValueToPatch = .AreaModel.Fast3DBuffer
-                    os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
-                    os.MemberType = ObjectValueType.Property
-                    os.MemberName = "Fast3DBuffer"
-                    hp.States.Add(os)
-
-                    .AreaModel = frm.ResModel
-                    .AreaModel.Collision = OldAreaModel.Collision
-                    rndrVisualMap?.ReleaseBuffers()
-                    rndrVisualMap = Nothing
-
-                End If
-
-            Else
+            If frm.CheckBoxX_ConvertCollision.Checked AndAlso frm.CheckBoxX_ConvertModel.Checked Then
 
                 hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrVisualMap", "cVisualMap", "rndrCollisionMap", "cCollisionMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
                 Dim os As New ObjectState
@@ -1931,7 +1895,48 @@ Public Class Form_AreaEditor
                 rndrCollisionMap?.ReleaseBuffers()
                 rndrVisualMap = Nothing
                 rndrCollisionMap = Nothing
+                cVisualMap = Nothing
+                cCollisionMap = Nothing
 
+            ElseIf frm.CheckBoxX_ConvertCollision.Checked Then
+
+                hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrCollisionMap", "cCollisionMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
+                Dim os As New ObjectState
+                os.Object = cArea.AreaModel
+                os.ValueToPatch = .AreaModel.Collision
+                os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
+                os.MemberType = ObjectValueType.Property
+                os.MemberName = "Collision"
+                hp.States.Add(os)
+
+                .AreaModel.Collision = frm.ResModel.Collision
+                .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
+                rndrCollisionMap?.ReleaseBuffers()
+                rndrCollisionMap = Nothing
+                cCollisionMap = Nothing
+
+            ElseIf frm.CheckBoxX_ConvertModel.Checked Then
+
+                hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrVisualMap", "cVisualMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
+                Dim os As New ObjectState
+                os.Object = cArea.AreaModel
+                os.ValueToPatch = .AreaModel.Fast3DBuffer
+                os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
+                os.MemberType = ObjectValueType.Property
+                os.MemberName = "Fast3DBuffer"
+                hp.States.Add(os)
+
+                .AreaModel = frm.ResModel
+                .AreaModel.Collision = OldAreaModel.Collision
+                rndrVisualMap?.ReleaseBuffers()
+                rndrVisualMap = Nothing
+                cVisualMap = Nothing
+
+            End If
+
+            If frm.CheckBoxX_ConvertModel.Checked Then
+                .ScrollingTextures.Clear()
+                .ScrollingTextures.AddRange(.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
             End If
 
             If hp IsNot Nothing AndAlso (hp.States.Count > 0 OrElse hp.Actions.Count > 0) Then

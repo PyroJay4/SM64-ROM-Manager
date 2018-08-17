@@ -117,7 +117,7 @@ Namespace Global.SM64Lib.Level.Script
             End If
         End Sub
 
-        Public Sub Write(s As Stream, LevelscriptStart As Integer, LevelscriptMaxOffset As Integer)
+        Public Sub Write(s As Stream, LevelscriptStart As Integer)
             Dim bw As New BinaryWriter(s)
 
             Dim JumpList As New List(Of Integer)

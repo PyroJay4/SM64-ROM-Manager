@@ -4,7 +4,7 @@ Imports SM64Lib.Geolayout
 
 Namespace Global.SM64Lib.Model
 
-    Public Class AreaModel
+    Public Class ObjectModel
 
         'Public DisplayLists As New DisplayListCollection
         Public Property Collision As Collision.CollisionMap = Nothing

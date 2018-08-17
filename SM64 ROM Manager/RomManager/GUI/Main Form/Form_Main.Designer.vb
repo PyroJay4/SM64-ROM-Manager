@@ -1267,7 +1267,6 @@ Partial Class Form_Main
         '
         Me.GroupBox_LM_Areas.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
         Me.GroupBox_LM_Areas.Style.BackColorGradientAngle = 90
-        Me.GroupBox_LM_Areas.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
         Me.GroupBox_LM_Areas.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
         Me.GroupBox_LM_Areas.Style.BorderBottomWidth = 1
         Me.GroupBox_LM_Areas.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder

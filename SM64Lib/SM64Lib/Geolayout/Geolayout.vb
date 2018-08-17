@@ -39,41 +39,50 @@ Namespace Global.SM64Lib.Geolayout
             Next
         End Sub
 
-        Public Sub New(CreateNewScript As Boolean)
-            If Not CreateNewScript Then Return
-            With Geolayoutscript
-                .Add(New GeolayoutCommand({&H8, &H0, &H0, &HA, &H0, &HA0, &H0, &H78, &H0, &HA0, &H0, &H78}))
-                .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&HC, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H9, &H0, &H0, &H64}))
-                .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H19, &H0, &H0, &H0, &H80, &H27, &H63, &HD4}))
-                .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&HC, &H1, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&HA, &H1, &H0, &H2D, &H0, &H64, &H75, &H30, &H80, &H29, &HAA, &H3C}))
-                .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&HF, &H0, &H0, &H1, &H0, &H0, &H7, &HD0, &H17, &H70, &HC, &H0, &H0, &H0, &HEE, &H0, &H80, &H28, &H7D, &H30}))
-                .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
-                IndexForGeopointers = 15
-                '.Add(New GeolayoutCommand({&H15, &H1, &H0, &H0, &H0, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H17, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H18, &H0, &H0, &H0, &H80, &H27, &H61, &HD0}))
-                .Add(New GeolayoutCommand({&H18, &H0, &H50, &H0, &H80, &H2D, &H10, &H4C})) 'Water
-                .Add(New GeolayoutCommand({&H18, &H0, &H50, &H1, &H80, &H2D, &H10, &H4C})) 'Toxic Haze
-                .Add(New GeolayoutCommand({&H18, &H0, &H50, &H2, &H80, &H2D, &H10, &H4C})) 'Mist
-                .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&HC, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H18, &H0, &H0, &H0, &H80, &H2C, &HD1, &HE8}))
-                .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
-                .Add(New GeolayoutCommand({&H1, &H0, &H0, &H0}))
-            End With
+        Public Sub New(mode As NewScriptCreationMode)
+            Select Case mode
+                Case NewScriptCreationMode.Level
+
+                    With Geolayoutscript
+                        .Add(New GeolayoutCommand({&H8, &H0, &H0, &HA, &H0, &HA0, &H0, &H78, &H0, &HA0, &H0, &H78}))
+                        .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&HC, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H9, &H0, &H0, &H64}))
+                        .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H19, &H0, &H0, &H0, &H80, &H27, &H63, &HD4}))
+                        .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&HC, &H1, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&HA, &H1, &H0, &H2D, &H0, &H64, &H75, &H30, &H80, &H29, &HAA, &H3C}))
+                        .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&HF, &H0, &H0, &H1, &H0, &H0, &H7, &HD0, &H17, &H70, &HC, &H0, &H0, &H0, &HEE, &H0, &H80, &H28, &H7D, &H30}))
+                        .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
+                        IndexForGeopointers = 15
+                        '.Add(New GeolayoutCommand({&H15, &H1, &H0, &H0, &H0, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H17, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H18, &H0, &H0, &H0, &H80, &H27, &H61, &HD0}))
+                        .Add(New GeolayoutCommand({&H18, &H0, &H50, &H0, &H80, &H2D, &H10, &H4C})) 'Water
+                        .Add(New GeolayoutCommand({&H18, &H0, &H50, &H1, &H80, &H2D, &H10, &H4C})) 'Toxic Haze
+                        .Add(New GeolayoutCommand({&H18, &H0, &H50, &H2, &H80, &H2D, &H10, &H4C})) 'Mist
+                        .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&HC, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H4, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H18, &H0, &H0, &H0, &H80, &H2C, &HD1, &HE8}))
+                        .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H5, &H0, &H0, &H0}))
+                        .Add(New GeolayoutCommand({&H1, &H0, &H0, &H0}))
+                    End With
+
+                Case NewScriptCreationMode.Object
+
+                    '...
+                    Throw New NotImplementedException
+
+            End Select
         End Sub
 
         Public Sub Read(rommgr As RomManager, segAddress As Integer)
@@ -203,6 +212,13 @@ Namespace Global.SM64Lib.Geolayout
             Next
             Return output
         End Function
+
+        Public Enum NewScriptCreationMode
+            None
+            Level
+            [Object]
+        End Enum
+
     End Class
 
     Public Class Geopointer

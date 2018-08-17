@@ -32,7 +32,7 @@ Public Class Form_AddSpecialItem
         WaterData = WaterBox
 
         With SpecialData
-            IntegerInput_Alpha.Value = .Alpha
+            IntegerInput_Alpha.Value = Math.Round(.Alpha / 255 * 100)
             IntegerInput_Scale.Value = .Scale
             LabelX_Height.Text = String.Format("Height: {0}", WaterData.Y)
             LabelX_Pos1.Text = String.Format("Edge 1: {0}, {1}", .X1, .Z1)
@@ -139,6 +139,6 @@ Public Class Form_AddSpecialItem
     End Sub
 
     Private Sub IntegerInput1_ValueChanged(sender As Object, e As EventArgs) Handles IntegerInput_Alpha.ValueChanged
-        SpecialData.Alpha = IntegerInput_Alpha.Value
+        SpecialData.Alpha = Math.Round(255 / 100 * IntegerInput_Alpha.Value)
     End Sub
 End Class

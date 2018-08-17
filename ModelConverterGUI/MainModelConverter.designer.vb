@@ -31,7 +31,6 @@ Partial Class MainModelConverter
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.SwitchButton_EnableFog = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.Button_ColEditor = New DevComponents.DotNetBar.ButtonX()
-        Me.Button_SetUpFog = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX16 = New DevComponents.DotNetBar.LabelX()
         Me.NUD_Scaling = New DevComponents.Editors.DoubleInput()
@@ -62,166 +61,141 @@ Partial Class MainModelConverter
         Me.ColorPickerButton_ShadingLight = New DevComponents.DotNetBar.ColorPickerButton()
         Me.ColorPickerButton_ShadingDark = New DevComponents.DotNetBar.ColorPickerButton()
         Me.ButtonX_GraphicsEditor = New DevComponents.DotNetBar.ButtonX()
+        Me.ComboBox_FogTyp = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.ColorPickerButton_FogColor = New DevComponents.DotNetBar.ColorPickerButton()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Panel9 = New System.Windows.Forms.Panel()
         CType(Me.NUD_Scaling, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        Me.Panel4.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        Me.Panel6.SuspendLayout()
+        Me.Panel7.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        Me.Panel9.SuspendLayout()
         Me.SuspendLayout()
         '
         'Line2
         '
-        resources.ApplyResources(Me.Line2, "Line2")
         Me.Line2.ForeColor = System.Drawing.Color.Gainsboro
+        resources.ApplyResources(Me.Line2, "Line2")
         Me.Line2.Name = "Line2"
-        Me.SuperTooltip1.SetSuperTooltip(Me.Line2, CType(resources.GetObject("Line2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX_Colfile
         '
-        resources.ApplyResources(Me.LabelX_Colfile, "LabelX_Colfile")
         '
         '
         '
         Me.LabelX_Colfile.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_Colfile, "LabelX_Colfile")
         Me.LabelX_Colfile.Name = "LabelX_Colfile"
         Me.LabelX_Colfile.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX_Colfile, CType(resources.GetObject("LabelX_Colfile.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX_Modelfile
         '
-        resources.ApplyResources(Me.LabelX_Modelfile, "LabelX_Modelfile")
         '
         '
         '
         Me.LabelX_Modelfile.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_Modelfile, "LabelX_Modelfile")
         Me.LabelX_Modelfile.Name = "LabelX_Modelfile"
         Me.LabelX_Modelfile.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX_Modelfile, CType(resources.GetObject("LabelX_Modelfile.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX2
         '
-        resources.ApplyResources(Me.LabelX2, "LabelX2")
         '
         '
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX2, CType(resources.GetObject("LabelX2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX1
         '
-        resources.ApplyResources(Me.LabelX1, "LabelX1")
         '
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX1, "LabelX1")
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX1, CType(resources.GetObject("LabelX1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX4
         '
-        resources.ApplyResources(Me.LabelX4, "LabelX4")
         '
         '
         '
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX4, "LabelX4")
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
         Me.SuperTooltip1.SetSuperTooltip(Me.LabelX4, New DevComponents.DotNetBar.SuperTooltipInfo(resources.GetString("LabelX4.SuperTooltip"), resources.GetString("LabelX4.SuperTooltip1"), resources.GetString("LabelX4.SuperTooltip2"), CType(resources.GetObject("LabelX4.SuperTooltip3"), System.Drawing.Image), CType(resources.GetObject("LabelX4.SuperTooltip4"), System.Drawing.Image), CType(resources.GetObject("LabelX4.SuperTooltip5"), DevComponents.DotNetBar.eTooltipColor), CType(resources.GetObject("LabelX4.SuperTooltip6"), Boolean), CType(resources.GetObject("LabelX4.SuperTooltip7"), Boolean), CType(resources.GetObject("LabelX4.SuperTooltip8"), System.Drawing.Size)))
         '
         'SwitchButton_EnableFog
         '
-        resources.ApplyResources(Me.SwitchButton_EnableFog, "SwitchButton_EnableFog")
         '
         '
         '
         Me.SwitchButton_EnableFog.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.SwitchButton_EnableFog.FocusCuesEnabled = False
+        resources.ApplyResources(Me.SwitchButton_EnableFog, "SwitchButton_EnableFog")
         Me.SwitchButton_EnableFog.Name = "SwitchButton_EnableFog"
         Me.SwitchButton_EnableFog.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
         Me.SwitchButton_EnableFog.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
         Me.SwitchButton_EnableFog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.SwitchButton_EnableFog, CType(resources.GetObject("SwitchButton_EnableFog.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.SwitchButton_EnableFog.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.SwitchButton_EnableFog.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.SwitchButton_EnableFog.SwitchWidth = 15
         '
         'Button_ColEditor
         '
-        resources.ApplyResources(Me.Button_ColEditor, "Button_ColEditor")
         Me.Button_ColEditor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_ColEditor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        resources.ApplyResources(Me.Button_ColEditor, "Button_ColEditor")
         Me.Button_ColEditor.FocusCuesEnabled = False
         Me.Button_ColEditor.Name = "Button_ColEditor"
         Me.Button_ColEditor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.Button_ColEditor, CType(resources.GetObject("Button_ColEditor.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
-        '
-        'Button_SetUpFog
-        '
-        resources.ApplyResources(Me.Button_SetUpFog, "Button_SetUpFog")
-        Me.Button_SetUpFog.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.Button_SetUpFog.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.Button_SetUpFog.Name = "Button_SetUpFog"
-        Me.Button_SetUpFog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.Button_SetUpFog, CType(resources.GetObject("Button_SetUpFog.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
-        Me.Button_SetUpFog.Symbol = ""
-        Me.Button_SetUpFog.SymbolColor = System.Drawing.Color.Gray
-        Me.Button_SetUpFog.SymbolSize = 12.0!
         '
         'LabelX20
         '
-        resources.ApplyResources(Me.LabelX20, "LabelX20")
         '
         '
         '
         Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX20, "LabelX20")
         Me.LabelX20.Name = "LabelX20"
         Me.LabelX20.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX20, CType(resources.GetObject("LabelX20.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX16
         '
-        resources.ApplyResources(Me.LabelX16, "LabelX16")
         '
         '
         '
         Me.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX16, "LabelX16")
         Me.LabelX16.Name = "LabelX16"
         Me.LabelX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX16, CType(resources.GetObject("LabelX16.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'NUD_Scaling
         '
-        resources.ApplyResources(Me.NUD_Scaling, "NUD_Scaling")
         '
         '
         '
         Me.NUD_Scaling.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.NUD_Scaling.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.NUD_Scaling.ButtonCalculator.DisplayPosition = CType(resources.GetObject("NUD_Scaling.ButtonCalculator.DisplayPosition"), Integer)
-        Me.NUD_Scaling.ButtonCalculator.Image = CType(resources.GetObject("NUD_Scaling.ButtonCalculator.Image"), System.Drawing.Image)
-        Me.NUD_Scaling.ButtonCalculator.Text = resources.GetString("NUD_Scaling.ButtonCalculator.Text")
-        Me.NUD_Scaling.ButtonCalculator.Tooltip = resources.GetString("NUD_Scaling.ButtonCalculator.Tooltip")
-        Me.NUD_Scaling.ButtonClear.DisplayPosition = CType(resources.GetObject("NUD_Scaling.ButtonClear.DisplayPosition"), Integer)
-        Me.NUD_Scaling.ButtonClear.Image = CType(resources.GetObject("NUD_Scaling.ButtonClear.Image"), System.Drawing.Image)
-        Me.NUD_Scaling.ButtonClear.Text = resources.GetString("NUD_Scaling.ButtonClear.Text")
-        Me.NUD_Scaling.ButtonClear.Tooltip = resources.GetString("NUD_Scaling.ButtonClear.Tooltip")
-        Me.NUD_Scaling.ButtonCustom.DisplayPosition = CType(resources.GetObject("NUD_Scaling.ButtonCustom.DisplayPosition"), Integer)
-        Me.NUD_Scaling.ButtonCustom.Image = CType(resources.GetObject("NUD_Scaling.ButtonCustom.Image"), System.Drawing.Image)
-        Me.NUD_Scaling.ButtonCustom.Text = resources.GetString("NUD_Scaling.ButtonCustom.Text")
-        Me.NUD_Scaling.ButtonCustom.Tooltip = resources.GetString("NUD_Scaling.ButtonCustom.Tooltip")
-        Me.NUD_Scaling.ButtonCustom2.DisplayPosition = CType(resources.GetObject("NUD_Scaling.ButtonCustom2.DisplayPosition"), Integer)
-        Me.NUD_Scaling.ButtonCustom2.Image = CType(resources.GetObject("NUD_Scaling.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.NUD_Scaling.ButtonCustom2.Text = resources.GetString("NUD_Scaling.ButtonCustom2.Text")
-        Me.NUD_Scaling.ButtonCustom2.Tooltip = resources.GetString("NUD_Scaling.ButtonCustom2.Tooltip")
-        Me.NUD_Scaling.ButtonDropDown.DisplayPosition = CType(resources.GetObject("NUD_Scaling.ButtonDropDown.DisplayPosition"), Integer)
-        Me.NUD_Scaling.ButtonDropDown.Image = CType(resources.GetObject("NUD_Scaling.ButtonDropDown.Image"), System.Drawing.Image)
-        Me.NUD_Scaling.ButtonDropDown.Text = resources.GetString("NUD_Scaling.ButtonDropDown.Text")
-        Me.NUD_Scaling.ButtonDropDown.Tooltip = resources.GetString("NUD_Scaling.ButtonDropDown.Tooltip")
-        Me.NUD_Scaling.ButtonFreeText.DisplayPosition = CType(resources.GetObject("NUD_Scaling.ButtonFreeText.DisplayPosition"), Integer)
-        Me.NUD_Scaling.ButtonFreeText.Image = CType(resources.GetObject("NUD_Scaling.ButtonFreeText.Image"), System.Drawing.Image)
-        Me.NUD_Scaling.ButtonFreeText.Text = resources.GetString("NUD_Scaling.ButtonFreeText.Text")
-        Me.NUD_Scaling.ButtonFreeText.Tooltip = resources.GetString("NUD_Scaling.ButtonFreeText.Tooltip")
         Me.NUD_Scaling.Increment = 1.0R
         Me.NUD_Scaling.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center
+        resources.ApplyResources(Me.NUD_Scaling, "NUD_Scaling")
         Me.NUD_Scaling.MaxValue = 1.0E+15R
         Me.NUD_Scaling.MinValue = 1.0E-32R
         Me.NUD_Scaling.Name = "NUD_Scaling"
@@ -231,10 +205,10 @@ Partial Class MainModelConverter
         '
         'Button_LoadCol
         '
-        resources.ApplyResources(Me.Button_LoadCol, "Button_LoadCol")
         Me.Button_LoadCol.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LoadCol.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_LoadCol.FocusCuesEnabled = False
+        resources.ApplyResources(Me.Button_LoadCol, "Button_LoadCol")
         Me.Button_LoadCol.Name = "Button_LoadCol"
         Me.Button_LoadCol.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.SuperTooltip1.SetSuperTooltip(Me.Button_LoadCol, New DevComponents.DotNetBar.SuperTooltipInfo(resources.GetString("Button_LoadCol.SuperTooltip"), resources.GetString("Button_LoadCol.SuperTooltip1"), resources.GetString("Button_LoadCol.SuperTooltip2"), CType(resources.GetObject("Button_LoadCol.SuperTooltip3"), System.Drawing.Image), CType(resources.GetObject("Button_LoadCol.SuperTooltip4"), System.Drawing.Image), CType(resources.GetObject("Button_LoadCol.SuperTooltip5"), DevComponents.DotNetBar.eTooltipColor), CType(resources.GetObject("Button_LoadCol.SuperTooltip6"), Boolean), CType(resources.GetObject("Button_LoadCol.SuperTooltip7"), Boolean), CType(resources.GetObject("Button_LoadCol.SuperTooltip8"), System.Drawing.Size)))
@@ -245,10 +219,10 @@ Partial Class MainModelConverter
         '
         'Button_LoadModel
         '
-        resources.ApplyResources(Me.Button_LoadModel, "Button_LoadModel")
         Me.Button_LoadModel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LoadModel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_LoadModel.FocusCuesEnabled = False
+        resources.ApplyResources(Me.Button_LoadModel, "Button_LoadModel")
         Me.Button_LoadModel.Name = "Button_LoadModel"
         Me.Button_LoadModel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.SuperTooltip1.SetSuperTooltip(Me.Button_LoadModel, New DevComponents.DotNetBar.SuperTooltipInfo(resources.GetString("Button_LoadModel.SuperTooltip"), resources.GetString("Button_LoadModel.SuperTooltip1"), resources.GetString("Button_LoadModel.SuperTooltip2"), CType(resources.GetObject("Button_LoadModel.SuperTooltip3"), System.Drawing.Image), CType(resources.GetObject("Button_LoadModel.SuperTooltip4"), System.Drawing.Image), CType(resources.GetObject("Button_LoadModel.SuperTooltip5"), DevComponents.DotNetBar.eTooltipColor), CType(resources.GetObject("Button_LoadModel.SuperTooltip6"), Boolean), CType(resources.GetObject("Button_LoadModel.SuperTooltip7"), Boolean), CType(resources.GetObject("Button_LoadModel.SuperTooltip8"), System.Drawing.Size)))
@@ -259,26 +233,23 @@ Partial Class MainModelConverter
         '
         'Line3
         '
-        resources.ApplyResources(Me.Line3, "Line3")
         Me.Line3.BackColor = System.Drawing.Color.Transparent
         Me.Line3.ForeColor = System.Drawing.Color.Gainsboro
+        resources.ApplyResources(Me.Line3, "Line3")
         Me.Line3.Name = "Line3"
-        Me.SuperTooltip1.SetSuperTooltip(Me.Line3, CType(resources.GetObject("Line3.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.Line3.VerticalLine = True
         '
         'Button_ConvertModel
         '
-        resources.ApplyResources(Me.Button_ConvertModel, "Button_ConvertModel")
         Me.Button_ConvertModel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_ConvertModel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        resources.ApplyResources(Me.Button_ConvertModel, "Button_ConvertModel")
         Me.Button_ConvertModel.FocusCuesEnabled = False
         Me.Button_ConvertModel.Name = "Button_ConvertModel"
         Me.Button_ConvertModel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.Button_ConvertModel, CType(resources.GetObject("Button_ConvertModel.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'CircularProgress1
         '
-        resources.ApplyResources(Me.CircularProgress1, "CircularProgress1")
         Me.CircularProgress1.AnimationSpeed = 50
         Me.CircularProgress1.BackColor = System.Drawing.Color.Transparent
         '
@@ -286,11 +257,11 @@ Partial Class MainModelConverter
         '
         Me.CircularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CircularProgress1.FocusCuesEnabled = False
+        resources.ApplyResources(Me.CircularProgress1, "CircularProgress1")
         Me.CircularProgress1.Name = "CircularProgress1"
         Me.CircularProgress1.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Donut
         Me.CircularProgress1.ProgressColor = System.Drawing.Color.SeaGreen
         Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
-        Me.SuperTooltip1.SetSuperTooltip(Me.CircularProgress1, CType(resources.GetObject("CircularProgress1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'SuperTooltip1
         '
@@ -300,12 +271,12 @@ Partial Class MainModelConverter
         '
         'ComboBoxEx_UpAxis
         '
-        resources.ApplyResources(Me.ComboBoxEx_UpAxis, "ComboBoxEx_UpAxis")
         Me.ComboBoxEx_UpAxis.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_UpAxis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEx_UpAxis.DropDownWidth = 107
         Me.ComboBoxEx_UpAxis.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx_UpAxis.FormattingEnabled = True
+        resources.ApplyResources(Me.ComboBoxEx_UpAxis, "ComboBoxEx_UpAxis")
         Me.ComboBoxEx_UpAxis.Items.AddRange(New Object() {Me.ComboItem1, Me.ComboItem2})
         Me.ComboBoxEx_UpAxis.Name = "ComboBoxEx_UpAxis"
         Me.ComboBoxEx_UpAxis.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -321,18 +292,16 @@ Partial Class MainModelConverter
         '
         'LabelX9
         '
-        resources.ApplyResources(Me.LabelX9, "LabelX9")
         '
         '
         '
         Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX9, "LabelX9")
         Me.LabelX9.Name = "LabelX9"
         Me.LabelX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX9, CType(resources.GetObject("LabelX9.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'CheckBoxX_ConvertModel
         '
-        resources.ApplyResources(Me.CheckBoxX_ConvertModel, "CheckBoxX_ConvertModel")
         '
         '
         '
@@ -341,13 +310,12 @@ Partial Class MainModelConverter
         Me.CheckBoxX_ConvertModel.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBoxX_ConvertModel.CheckValue = "Y"
         Me.CheckBoxX_ConvertModel.FocusCuesEnabled = False
+        resources.ApplyResources(Me.CheckBoxX_ConvertModel, "CheckBoxX_ConvertModel")
         Me.CheckBoxX_ConvertModel.Name = "CheckBoxX_ConvertModel"
         Me.CheckBoxX_ConvertModel.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.CheckBoxX_ConvertModel, CType(resources.GetObject("CheckBoxX_ConvertModel.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'CheckBoxX_ConvertCollision
         '
-        resources.ApplyResources(Me.CheckBoxX_ConvertCollision, "CheckBoxX_ConvertCollision")
         '
         '
         '
@@ -356,34 +324,32 @@ Partial Class MainModelConverter
         Me.CheckBoxX_ConvertCollision.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBoxX_ConvertCollision.CheckValue = "Y"
         Me.CheckBoxX_ConvertCollision.FocusCuesEnabled = False
+        resources.ApplyResources(Me.CheckBoxX_ConvertCollision, "CheckBoxX_ConvertCollision")
         Me.CheckBoxX_ConvertCollision.Name = "CheckBoxX_ConvertCollision"
         Me.CheckBoxX_ConvertCollision.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.CheckBoxX_ConvertCollision, CType(resources.GetObject("CheckBoxX_ConvertCollision.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX3
         '
-        resources.ApplyResources(Me.LabelX3, "LabelX3")
         '
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX3, CType(resources.GetObject("LabelX3.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'SwitchButton_ResizeTextures
         '
-        resources.ApplyResources(Me.SwitchButton_ResizeTextures, "SwitchButton_ResizeTextures")
         '
         '
         '
         Me.SwitchButton_ResizeTextures.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.SwitchButton_ResizeTextures.FocusCuesEnabled = False
+        resources.ApplyResources(Me.SwitchButton_ResizeTextures, "SwitchButton_ResizeTextures")
         Me.SwitchButton_ResizeTextures.Name = "SwitchButton_ResizeTextures"
         Me.SwitchButton_ResizeTextures.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
         Me.SwitchButton_ResizeTextures.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
         Me.SwitchButton_ResizeTextures.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.SwitchButton_ResizeTextures, CType(resources.GetObject("SwitchButton_ResizeTextures.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.SwitchButton_ResizeTextures.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.SwitchButton_ResizeTextures.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.SwitchButton_ResizeTextures.SwitchWidth = 15
@@ -392,115 +358,106 @@ Partial Class MainModelConverter
         '
         'LabelX5
         '
-        resources.ApplyResources(Me.LabelX5, "LabelX5")
         '
         '
         '
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX5, "LabelX5")
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX5, CType(resources.GetObject("LabelX5.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX6
         '
-        resources.ApplyResources(Me.LabelX6, "LabelX6")
         '
         '
         '
         Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX6, "LabelX6")
         Me.LabelX6.Name = "LabelX6"
         Me.LabelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX6, CType(resources.GetObject("LabelX6.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX7
         '
-        resources.ApplyResources(Me.LabelX7, "LabelX7")
         '
         '
         '
         Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX7, "LabelX7")
         Me.LabelX7.Name = "LabelX7"
         Me.LabelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX7, CType(resources.GetObject("LabelX7.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'SwitchButton_TextureFlip
         '
-        resources.ApplyResources(Me.SwitchButton_TextureFlip, "SwitchButton_TextureFlip")
         '
         '
         '
         Me.SwitchButton_TextureFlip.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.SwitchButton_TextureFlip.FocusCuesEnabled = False
+        resources.ApplyResources(Me.SwitchButton_TextureFlip, "SwitchButton_TextureFlip")
         Me.SwitchButton_TextureFlip.Name = "SwitchButton_TextureFlip"
         Me.SwitchButton_TextureFlip.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
         Me.SwitchButton_TextureFlip.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
         Me.SwitchButton_TextureFlip.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.SwitchButton_TextureFlip, CType(resources.GetObject("SwitchButton_TextureFlip.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.SwitchButton_TextureFlip.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.SwitchButton_TextureFlip.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.SwitchButton_TextureFlip.SwitchWidth = 15
         '
         'LabelX8
         '
-        resources.ApplyResources(Me.LabelX8, "LabelX8")
         '
         '
         '
         Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX8, "LabelX8")
         Me.LabelX8.Name = "LabelX8"
         Me.LabelX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX8, CType(resources.GetObject("LabelX8.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'SwitchButton_CenterModel
         '
-        resources.ApplyResources(Me.SwitchButton_CenterModel, "SwitchButton_CenterModel")
         '
         '
         '
         Me.SwitchButton_CenterModel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.SwitchButton_CenterModel.FocusCuesEnabled = False
+        resources.ApplyResources(Me.SwitchButton_CenterModel, "SwitchButton_CenterModel")
         Me.SwitchButton_CenterModel.Name = "SwitchButton_CenterModel"
         Me.SwitchButton_CenterModel.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
         Me.SwitchButton_CenterModel.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
         Me.SwitchButton_CenterModel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.SwitchButton_CenterModel, CType(resources.GetObject("SwitchButton_CenterModel.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.SwitchButton_CenterModel.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.SwitchButton_CenterModel.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.SwitchButton_CenterModel.SwitchWidth = 15
         '
         'ButtonX_VisualMapPreview
         '
-        resources.ApplyResources(Me.ButtonX_VisualMapPreview, "ButtonX_VisualMapPreview")
         Me.ButtonX_VisualMapPreview.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_VisualMapPreview.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        resources.ApplyResources(Me.ButtonX_VisualMapPreview, "ButtonX_VisualMapPreview")
         Me.ButtonX_VisualMapPreview.FocusCuesEnabled = False
         Me.ButtonX_VisualMapPreview.Name = "ButtonX_VisualMapPreview"
         Me.ButtonX_VisualMapPreview.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX_VisualMapPreview, CType(resources.GetObject("ButtonX_VisualMapPreview.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ButtonX_CollisionMapPreview
         '
-        resources.ApplyResources(Me.ButtonX_CollisionMapPreview, "ButtonX_CollisionMapPreview")
         Me.ButtonX_CollisionMapPreview.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_CollisionMapPreview.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        resources.ApplyResources(Me.ButtonX_CollisionMapPreview, "ButtonX_CollisionMapPreview")
         Me.ButtonX_CollisionMapPreview.FocusCuesEnabled = False
         Me.ButtonX_CollisionMapPreview.Name = "ButtonX_CollisionMapPreview"
         Me.ButtonX_CollisionMapPreview.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX_CollisionMapPreview, CType(resources.GetObject("ButtonX_CollisionMapPreview.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'SwitchButton_EnableReduceVertices
         '
-        resources.ApplyResources(Me.SwitchButton_EnableReduceVertices, "SwitchButton_EnableReduceVertices")
         '
         '
         '
         Me.SwitchButton_EnableReduceVertices.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.SwitchButton_EnableReduceVertices.FocusCuesEnabled = False
+        resources.ApplyResources(Me.SwitchButton_EnableReduceVertices, "SwitchButton_EnableReduceVertices")
         Me.SwitchButton_EnableReduceVertices.Name = "SwitchButton_EnableReduceVertices"
         Me.SwitchButton_EnableReduceVertices.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
         Me.SwitchButton_EnableReduceVertices.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
         Me.SwitchButton_EnableReduceVertices.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.SwitchButton_EnableReduceVertices, CType(resources.GetObject("SwitchButton_EnableReduceVertices.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.SwitchButton_EnableReduceVertices.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.SwitchButton_EnableReduceVertices.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.SwitchButton_EnableReduceVertices.SwitchWidth = 15
@@ -509,84 +466,157 @@ Partial Class MainModelConverter
         '
         'LabelX10
         '
-        resources.ApplyResources(Me.LabelX10, "LabelX10")
         '
         '
         '
         Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX10, "LabelX10")
         Me.LabelX10.Name = "LabelX10"
         Me.LabelX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX10, CType(resources.GetObject("LabelX10.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ColorPickerButton_ShadingLight
         '
-        resources.ApplyResources(Me.ColorPickerButton_ShadingLight, "ColorPickerButton_ShadingLight")
         Me.ColorPickerButton_ShadingLight.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ColorPickerButton_ShadingLight.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ColorPickerButton_ShadingLight.FocusCuesEnabled = False
         Me.ColorPickerButton_ShadingLight.Image = CType(resources.GetObject("ColorPickerButton_ShadingLight.Image"), System.Drawing.Image)
+        resources.ApplyResources(Me.ColorPickerButton_ShadingLight, "ColorPickerButton_ShadingLight")
         Me.ColorPickerButton_ShadingLight.Name = "ColorPickerButton_ShadingLight"
         Me.ColorPickerButton_ShadingLight.SelectedColorImageRectangle = New System.Drawing.Rectangle(2, 2, 12, 12)
         Me.ColorPickerButton_ShadingLight.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ColorPickerButton_ShadingLight, CType(resources.GetObject("ColorPickerButton_ShadingLight.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ColorPickerButton_ShadingDark
         '
-        resources.ApplyResources(Me.ColorPickerButton_ShadingDark, "ColorPickerButton_ShadingDark")
         Me.ColorPickerButton_ShadingDark.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ColorPickerButton_ShadingDark.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ColorPickerButton_ShadingDark.FocusCuesEnabled = False
         Me.ColorPickerButton_ShadingDark.Image = CType(resources.GetObject("ColorPickerButton_ShadingDark.Image"), System.Drawing.Image)
+        resources.ApplyResources(Me.ColorPickerButton_ShadingDark, "ColorPickerButton_ShadingDark")
         Me.ColorPickerButton_ShadingDark.Name = "ColorPickerButton_ShadingDark"
         Me.ColorPickerButton_ShadingDark.SelectedColorImageRectangle = New System.Drawing.Rectangle(2, 2, 12, 12)
         Me.ColorPickerButton_ShadingDark.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ColorPickerButton_ShadingDark, CType(resources.GetObject("ColorPickerButton_ShadingDark.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ButtonX_GraphicsEditor
         '
-        resources.ApplyResources(Me.ButtonX_GraphicsEditor, "ButtonX_GraphicsEditor")
         Me.ButtonX_GraphicsEditor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_GraphicsEditor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        resources.ApplyResources(Me.ButtonX_GraphicsEditor, "ButtonX_GraphicsEditor")
         Me.ButtonX_GraphicsEditor.FocusCuesEnabled = False
         Me.ButtonX_GraphicsEditor.Name = "ButtonX_GraphicsEditor"
         Me.ButtonX_GraphicsEditor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX_GraphicsEditor, CType(resources.GetObject("ButtonX_GraphicsEditor.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
+        '
+        'ComboBox_FogTyp
+        '
+        Me.ComboBox_FogTyp.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ComboBox_FogTyp.DropDownHeight = 150
+        Me.ComboBox_FogTyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.ComboBox_FogTyp, "ComboBox_FogTyp")
+        Me.ComboBox_FogTyp.ForeColor = System.Drawing.Color.Black
+        Me.ComboBox_FogTyp.FormattingEnabled = True
+        Me.ComboBox_FogTyp.Items.AddRange(New Object() {resources.GetString("ComboBox_FogTyp.Items"), resources.GetString("ComboBox_FogTyp.Items1"), resources.GetString("ComboBox_FogTyp.Items2"), resources.GetString("ComboBox_FogTyp.Items3"), resources.GetString("ComboBox_FogTyp.Items4"), resources.GetString("ComboBox_FogTyp.Items5"), resources.GetString("ComboBox_FogTyp.Items6"), resources.GetString("ComboBox_FogTyp.Items7"), resources.GetString("ComboBox_FogTyp.Items8")})
+        Me.ComboBox_FogTyp.Name = "ComboBox_FogTyp"
+        Me.ComboBox_FogTyp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'ColorPickerButton_FogColor
+        '
+        Me.ColorPickerButton_FogColor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ColorPickerButton_FogColor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        resources.ApplyResources(Me.ColorPickerButton_FogColor, "ColorPickerButton_FogColor")
+        Me.ColorPickerButton_FogColor.Image = CType(resources.GetObject("ColorPickerButton_FogColor.Image"), System.Drawing.Image)
+        Me.ColorPickerButton_FogColor.Name = "ColorPickerButton_FogColor"
+        Me.ColorPickerButton_FogColor.SelectedColorImageRectangle = New System.Drawing.Rectangle(2, 2, 12, 12)
+        Me.ColorPickerButton_FogColor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'Panel1
+        '
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.Controls.Add(Me.ComboBox_FogTyp)
+        Me.Panel1.Controls.Add(Me.LabelX20)
+        Me.Panel1.Controls.Add(Me.SwitchButton_EnableFog)
+        Me.Panel1.Controls.Add(Me.ColorPickerButton_FogColor)
+        Me.Panel1.Name = "Panel1"
+        '
+        'Panel2
+        '
+        resources.ApplyResources(Me.Panel2, "Panel2")
+        Me.Panel2.Controls.Add(Me.LabelX9)
+        Me.Panel2.Controls.Add(Me.SwitchButton_CenterModel)
+        Me.Panel2.Name = "Panel2"
+        '
+        'Panel3
+        '
+        resources.ApplyResources(Me.Panel3, "Panel3")
+        Me.Panel3.Controls.Add(Me.LabelX4)
+        Me.Panel3.Controls.Add(Me.SwitchButton_EnableReduceVertices)
+        Me.Panel3.Name = "Panel3"
+        '
+        'Panel4
+        '
+        resources.ApplyResources(Me.Panel4, "Panel4")
+        Me.Panel4.Controls.Add(Me.LabelX3)
+        Me.Panel4.Controls.Add(Me.SwitchButton_ResizeTextures)
+        Me.Panel4.Controls.Add(Me.LabelX8)
+        Me.Panel4.Controls.Add(Me.SwitchButton_TextureFlip)
+        Me.Panel4.Name = "Panel4"
+        '
+        'Panel5
+        '
+        resources.ApplyResources(Me.Panel5, "Panel5")
+        Me.Panel5.Controls.Add(Me.LabelX5)
+        Me.Panel5.Controls.Add(Me.ColorPickerButton_ShadingDark)
+        Me.Panel5.Controls.Add(Me.LabelX6)
+        Me.Panel5.Controls.Add(Me.ColorPickerButton_ShadingLight)
+        Me.Panel5.Controls.Add(Me.LabelX7)
+        Me.Panel5.Name = "Panel5"
+        '
+        'Panel6
+        '
+        resources.ApplyResources(Me.Panel6, "Panel6")
+        Me.Panel6.Controls.Add(Me.LabelX16)
+        Me.Panel6.Controls.Add(Me.NUD_Scaling)
+        Me.Panel6.Name = "Panel6"
+        '
+        'Panel7
+        '
+        resources.ApplyResources(Me.Panel7, "Panel7")
+        Me.Panel7.Controls.Add(Me.LabelX10)
+        Me.Panel7.Controls.Add(Me.ComboBoxEx_UpAxis)
+        Me.Panel7.Name = "Panel7"
+        '
+        'Panel8
+        '
+        resources.ApplyResources(Me.Panel8, "Panel8")
+        Me.Panel8.Controls.Add(Me.ButtonX_VisualMapPreview)
+        Me.Panel8.Controls.Add(Me.ButtonX_GraphicsEditor)
+        Me.Panel8.Name = "Panel8"
+        '
+        'Panel9
+        '
+        resources.ApplyResources(Me.Panel9, "Panel9")
+        Me.Panel9.Controls.Add(Me.ButtonX_CollisionMapPreview)
+        Me.Panel9.Controls.Add(Me.Button_ColEditor)
+        Me.Panel9.Name = "Panel9"
         '
         'MainModelConverter
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.ButtonX_GraphicsEditor)
-        Me.Controls.Add(Me.ColorPickerButton_ShadingDark)
-        Me.Controls.Add(Me.ColorPickerButton_ShadingLight)
-        Me.Controls.Add(Me.ComboBoxEx_UpAxis)
-        Me.Controls.Add(Me.LabelX10)
-        Me.Controls.Add(Me.SwitchButton_EnableReduceVertices)
-        Me.Controls.Add(Me.ButtonX_CollisionMapPreview)
-        Me.Controls.Add(Me.ButtonX_VisualMapPreview)
-        Me.Controls.Add(Me.SwitchButton_CenterModel)
-        Me.Controls.Add(Me.LabelX9)
-        Me.Controls.Add(Me.SwitchButton_TextureFlip)
-        Me.Controls.Add(Me.LabelX8)
-        Me.Controls.Add(Me.LabelX7)
-        Me.Controls.Add(Me.LabelX6)
-        Me.Controls.Add(Me.LabelX5)
-        Me.Controls.Add(Me.SwitchButton_ResizeTextures)
-        Me.Controls.Add(Me.LabelX3)
+        Me.Controls.Add(Me.Panel9)
+        Me.Controls.Add(Me.Panel8)
+        Me.Controls.Add(Me.Panel7)
+        Me.Controls.Add(Me.Panel6)
+        Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.CheckBoxX_ConvertCollision)
         Me.Controls.Add(Me.CheckBoxX_ConvertModel)
-        Me.Controls.Add(Me.LabelX4)
-        Me.Controls.Add(Me.SwitchButton_EnableFog)
         Me.Controls.Add(Me.CircularProgress1)
         Me.Controls.Add(Me.Line3)
-        Me.Controls.Add(Me.Button_ColEditor)
-        Me.Controls.Add(Me.Button_SetUpFog)
-        Me.Controls.Add(Me.LabelX20)
         Me.Controls.Add(Me.Line2)
-        Me.Controls.Add(Me.LabelX16)
         Me.Controls.Add(Me.LabelX_Colfile)
         Me.Controls.Add(Me.LabelX_Modelfile)
-        Me.Controls.Add(Me.NUD_Scaling)
         Me.Controls.Add(Me.LabelX2)
         Me.Controls.Add(Me.LabelX1)
         Me.Controls.Add(Me.Button_LoadCol)
@@ -599,11 +629,20 @@ Partial Class MainModelConverter
         Me.MinimizeBox = False
         Me.Name = "MainModelConverter"
         Me.ShowIcon = False
-        Me.SuperTooltip1.SetSuperTooltip(Me, CType(resources.GetObject("$this.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         CType(Me.NUD_Scaling, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel9.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Line2 As DevComponents.DotNetBar.Controls.Line
@@ -613,7 +652,6 @@ Partial Class MainModelConverter
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents SwitchButton_EnableFog As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents Button_ColEditor As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents Button_SetUpFog As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX16 As DevComponents.DotNetBar.LabelX
     Friend WithEvents NUD_Scaling As DevComponents.Editors.DoubleInput
@@ -645,4 +683,15 @@ Partial Class MainModelConverter
     Friend WithEvents ColorPickerButton_ShadingLight As DevComponents.DotNetBar.ColorPickerButton
     Friend WithEvents ColorPickerButton_ShadingDark As DevComponents.DotNetBar.ColorPickerButton
     Friend WithEvents ButtonX_GraphicsEditor As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents ComboBox_FogTyp As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents ColorPickerButton_FogColor As DevComponents.DotNetBar.ColorPickerButton
+    Friend WithEvents Panel1 As Windows.Forms.Panel
+    Friend WithEvents Panel2 As Windows.Forms.Panel
+    Friend WithEvents Panel3 As Windows.Forms.Panel
+    Friend WithEvents Panel4 As Windows.Forms.Panel
+    Friend WithEvents Panel5 As Windows.Forms.Panel
+    Friend WithEvents Panel6 As Windows.Forms.Panel
+    Friend WithEvents Panel7 As Windows.Forms.Panel
+    Friend WithEvents Panel8 As Windows.Forms.Panel
+    Friend WithEvents Panel9 As Windows.Forms.Panel
 End Class

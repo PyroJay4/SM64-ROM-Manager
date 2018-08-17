@@ -17,7 +17,7 @@ Imports System.Deployment.Application
 Public Class MainModelConverter
 
     Private DResult As DialogResult = DialogResult.None
-    Public Property ResModel As AreaModel = Nothing
+    Public Property ResModel As ObjectModel = Nothing
     Public Property ForceDisplaylist As Geolayout.Geolayer = -1
     Private objSettings As New ObjInputSettings
 
@@ -34,15 +34,12 @@ Public Class MainModelConverter
     Private isSliderMouseDown As Boolean = False
 
     Public Sub New()
-
-        ' Dieser Aufruf ist für den Designer erforderlich.
         InitializeComponent()
-
-        ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
         UpdateAmbientColors()
+
         ColorPickerButton_ShadingLight.SelectedColor = Color.FromArgb(&HFFFFFFFF)
         ColorPickerButton_ShadingDark.SelectedColor = Color.FromArgb(&HFF7F7F7F)
-
+        ColorPickerButton_FogColor.SelectedColor = Color.White
     End Sub
 
     Private Function GetColorFromShadingByte(value As Byte) As Color
@@ -62,6 +59,7 @@ Public Class MainModelConverter
         End With
 
         ComboBoxEx_UpAxis.SelectedIndex = Settings.ModelConverter.UpAxis
+        ComboBox_FogTyp.SelectedIndex = 0
 
         LoadRecentFiles()
 
@@ -77,6 +75,7 @@ Public Class MainModelConverter
             .FlipTextures = SwitchButton_TextureFlip.Value
             .CenterModel = SwitchButton_CenterModel.Value
             .ForceDisplaylist = ForceDisplaylist
+            .Fog = New Fog With {.Color = ColorPickerButton_FogColor.SelectedColor, .Type = ComboBox_FogTyp.SelectedIndex}
         End With
 
         'Get Model
@@ -141,7 +140,7 @@ Public Class MainModelConverter
         End If
 
         'Convert Model
-        ResModel = New AreaModel
+        ResModel = New ObjectModel
 
         If vmap Is Nothing Xor colmap Is Nothing Then
             If colmap IsNot Nothing Then
@@ -344,15 +343,9 @@ Public Class MainModelConverter
         curTexFormatSettings.Save(curModelFile & ".gf")
     End Sub
 
-    Private Sub Button_SetUpFog_Click(sender As Object, e As EventArgs) Handles Button_SetUpFog.Click
-        Dim frm As New SetUpFogDialog(objSettings.Fog)
-        If frm.ShowDialog <> DialogResult.OK Then Return
-        objSettings.Fog = frm.FogData
-        SwitchButton_EnableFog.Value = True
-    End Sub
-
     Private Sub SwitchButton_EnableFog_ValueChanged(sender As Object, e As EventArgs) Handles SwitchButton_EnableFog.ValueChanged
-        Button_SetUpFog.Enabled = SwitchButton_EnableFog.Value
+        ComboBox_FogTyp.Enabled = SwitchButton_EnableFog.Value
+        ColorPickerButton_FogColor.Enabled = SwitchButton_EnableFog.Value
 
         Select Case SwitchButton_EnableFog.Value
             Case True

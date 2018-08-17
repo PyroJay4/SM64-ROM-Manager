@@ -42,6 +42,7 @@ Partial Class Form_AddSpecialItem
         Me.LabelX_Pos2 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX_Pos1 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX59 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox_Type.SuspendLayout()
         Me.GroupBox_Box.SuspendLayout()
         CType(Me.IntegerInput_Alpha, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,6 +134,7 @@ Partial Class Form_AddSpecialItem
         '
         'GroupBox_Box
         '
+        Me.GroupBox_Box.Controls.Add(Me.LabelX3)
         Me.GroupBox_Box.Controls.Add(Me.IntegerInput_Alpha)
         Me.GroupBox_Box.Controls.Add(Me.LabelX2)
         Me.GroupBox_Box.Controls.Add(Me.ComboBox_WaterType)
@@ -162,13 +164,12 @@ Partial Class Form_AddSpecialItem
         Me.IntegerInput_Alpha.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.IntegerInput_Alpha.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.IntegerInput_Alpha.Location = New System.Drawing.Point(87, 123)
-        Me.IntegerInput_Alpha.MaxValue = 255
+        Me.IntegerInput_Alpha.MaxValue = 100
         Me.IntegerInput_Alpha.MinValue = 0
         Me.IntegerInput_Alpha.Name = "IntegerInput_Alpha"
-        Me.IntegerInput_Alpha.ShowUpDown = True
-        Me.IntegerInput_Alpha.Size = New System.Drawing.Size(53, 20)
+        Me.IntegerInput_Alpha.Size = New System.Drawing.Size(30, 20)
         Me.IntegerInput_Alpha.TabIndex = 115
-        Me.IntegerInput_Alpha.Value = 120
+        Me.IntegerInput_Alpha.Value = 30
         '
         'LabelX2
         '
@@ -314,6 +315,18 @@ Partial Class Form_AddSpecialItem
         Me.LabelX59.TabIndex = 95
         Me.LabelX59.Text = "Scale:"
         '
+        'LabelX3
+        '
+        '
+        '
+        '
+        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX3.Location = New System.Drawing.Point(123, 121)
+        Me.LabelX3.Name = "LabelX3"
+        Me.LabelX3.Size = New System.Drawing.Size(15, 23)
+        Me.LabelX3.TabIndex = 116
+        Me.LabelX3.Text = "%"
+        '
         'Form_AddSpecialItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -362,4 +375,5 @@ Partial Class Form_AddSpecialItem
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents IntegerInput_Alpha As DevComponents.Editors.IntegerInput
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
 End Class

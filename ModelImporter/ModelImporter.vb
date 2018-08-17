@@ -11,7 +11,7 @@ Imports SM64Lib.Geolayout
 Public Class ModelImporter
 
     Public _RomFile As String = ""
-    Private mdl As AreaModel = Nothing
+    Private mdl As ObjectModel = Nothing
 
     Public Property StyleManager As StyleManager = Nothing
 
@@ -90,7 +90,7 @@ Public Class ModelImporter
         Dim col As Integer = -1
         Dim geo() As Geopointer = {}
         Dim len As Integer = 0
-        Dim sr As AreaModel.SaveResult = Nothing
+        Dim sr As ObjectModel.SaveResult = Nothing
         Dim iscollisionempty As Boolean = mdl.Collision Is Nothing
         Dim isf3disempty As Boolean = mdl.Fast3DBuffer Is Nothing
 

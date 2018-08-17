@@ -113,13 +113,14 @@
     <Compile Include="SM64Lib\Model\CollisionSettings.vb" />
     <Compile Include="SM64Lib\Model\DisplayLists.vb" />
     <Compile Include="SM64Lib\Model\Fast3DBuffer.vb" />
-    <Compile Include="SM64Lib\Model\AreaModel.vb" />
+    <Compile Include="SM64Lib\Model\ObjectModel.vb" />
     <Compile Include="SM64Lib\Model\Fast3D_To_Object3D.vb" />
     <Compile Include="SM64Lib\Model\Object3D_To_Fast3D.vb" />
     <Compile Include="SM64Lib\Model\TextureManager.vb" />
     <Compile Include="SM64Lib\Musik\MusicList.vb" />
     <Compile Include="SM64Lib\Musik\MusicSequence.vb" />
     <Compile Include="SM64Lib\Musik\InstrumentSetList.vb" />
+    <Compile Include="SM64Lib\Object Banks\CustomObjBank.vb" />
     <Compile Include="SM64Lib\RomManager.vb" />
     <Compile Include="SM64Lib\Script\BaseCommand.vb" />
     <Compile Include="SM64Lib\Script\BaseCommandCollection.vb" />

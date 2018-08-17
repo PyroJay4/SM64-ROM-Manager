@@ -1,7 +1,6 @@
 Imports DevComponents.AdvTree
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Rendering
-Imports DevComponents.Tree
 Imports PaintingControls
 Imports SM64Lib.Level.Script
 Imports SM64Lib.Script

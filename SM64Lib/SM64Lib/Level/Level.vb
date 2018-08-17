@@ -306,7 +306,7 @@ Namespace Global.SM64Lib.Level
                 Dim modelOffset As Integer
 
                 'Write Area Model
-                Dim res As AreaModel.SaveResult = a.AreaModel.ToStream(s, CurrentRomOffset, CurrentRomOffset, &HE000000)
+                Dim res As ObjectModel.SaveResult = a.AreaModel.ToStream(s, CurrentRomOffset, CurrentRomOffset, &HE000000)
 
                 'Calculate Model Offset & Update Scrolling Texture Vertex Pointers
                 newModelStart = a.AreaModel.Fast3DBuffer.Fast3DBankStart
@@ -430,7 +430,7 @@ Namespace Global.SM64Lib.Level
             Next
 
             firstBank0xE.Length = curFirstBank0xEOffset
-            lvlScript0E.Write(s, firstBank0xE.RomStart, firstBank0xE.RomEnd)
+            lvlScript0E.Write(s, firstBank0xE.RomStart)
 
             fullLength = firstBank0xE.RomEnd - bank0x19.RomStart
 
@@ -546,7 +546,7 @@ Namespace Global.SM64Lib.Level
             End If
 
             'Write Levelscript
-            Levelscript.Write(bank0x19.Data, scriptOffset, &H50000)
+            Levelscript.Write(bank0x19.Data, scriptOffset)
 
             'Parse Levelscript again!
             Dim AreaOnFly As Boolean = False

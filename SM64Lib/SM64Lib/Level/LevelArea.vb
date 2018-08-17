@@ -13,14 +13,14 @@ Namespace Global.SM64Lib.Level
 
         Public Shared ReadOnly DefaultNormal3DObject() As Byte = {&H24, &H18, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H13, &H0, &H0, &H0}
         Public Property Levelscript As New LevelscriptCommandCollection
-        Public Property Geolayout As New Geolayout.Geolayout(False)
+        Public Property Geolayout As New Geolayout.Geolayout(SM64Lib.Geolayout.Geolayout.NewScriptCreationMode.None)
         Public Property TerrainType As Geolayout.TerrainTypes = SM64Lib.Geolayout.TerrainTypes.NoramlA
         Public Property BGMusic As Byte = 0
         Public Property AreaID As Byte = 0
         Public Property GeolayoutOffset As UInteger = 0
         Public Property ImportModel As Boolean = False
         Public Property ShouldImportModel As Boolean = False
-        Public Property AreaModel As New AreaModel
+        Public Property AreaModel As New ObjectModel
         Public ReadOnly Property SpecialBoxes As New SpecialBoxList
         Public ReadOnly Property ScrollingTextures As New List(Of ManagedScrollingTexture)
         Public ReadOnly Property Objects As New List(Of LevelscriptCommand)
@@ -86,7 +86,7 @@ Namespace Global.SM64Lib.Level
         End Sub
 
         Public Sub New(AreaID As Byte, Optional LevelID As Byte = &H9)
-            Geolayout = New Geolayout.Geolayout(True)
+            Geolayout = New Geolayout.Geolayout(SM64Lib.Geolayout.Geolayout.NewScriptCreationMode.Level)
             Me.AreaID = AreaID
             ShouldImportModel = True
             With Levelscript
@@ -109,7 +109,7 @@ Namespace Global.SM64Lib.Level
         End Sub
 
         Public Sub New()
-            Geolayout = New Geolayout.Geolayout(True)
+            Geolayout = New Geolayout.Geolayout(SM64Lib.Geolayout.Geolayout.NewScriptCreationMode.Level)
         End Sub
 
         Public Sub Close()

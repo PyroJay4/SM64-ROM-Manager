@@ -9,6 +9,7 @@ Imports SM64Lib.Music
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports SM64Lib.Level.Script
+Imports SM64Lib.ObjectBanks
 
 Namespace Global.SM64Lib
 
@@ -21,6 +22,7 @@ Namespace Global.SM64Lib
         Public ReadOnly Property Settings As New ManagerSettings
         Public ReadOnly Property TextTables As Text.TextTable() = {Nothing, Nothing, Nothing}
         Public ReadOnly Property MusicList As New MusicList
+        Public Property GlobalObjectBank As CustomObjectBank = Nothing
 
         Private ReadOnly segBankList As New Dictionary(Of Byte, SegmentedBank)
         Private ReadOnly areaSegBankList As New Dictionary(Of Byte, Dictionary(Of Byte, SegmentedBank))
@@ -45,6 +47,12 @@ Namespace Global.SM64Lib
                 Return MusicList.NeedToSave OrElse
                     TextTables.Where(Function(n) n IsNot Nothing AndAlso n.NeedToSave).Count > 0 OrElse
                     Levels.NeedToSave
+            End Get
+        End Property
+
+        Public ReadOnly Property HasGlobalObjectBank As Boolean
+            Get
+                Return GlobalObjectBank IsNot Nothing
             End Get
         End Property
 
@@ -113,9 +121,14 @@ Namespace Global.SM64Lib
             'Music
             Dim lastpos As Integer
             MusicList.Write(RomFile, lastpos)
+            HexRoundUp2(lastpos)
+
+            'Global Object Bank
+            SaveGlobalObjectBank(lastpos)
+            HexRoundUp2(lastpos)
 
             'Levels
-            SaveLevels(HexRoundUp1(lastpos)) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then
+            SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then
 
             If needUpdateChecksum Then PatchClass.UpdateChecksum(RomFile)
         End Sub
@@ -244,7 +257,6 @@ Namespace Global.SM64Lib
 
         Public Sub SaveLevel(lvl As Level.Level, s As Stream, ByRef curOff As UInteger)
             Dim bw As New BinaryWriter(s)
-
             Dim lid = LevelInfoData.FirstOrDefault(Function(n) n.ID = lvl.LevelID)
             Dim newBank0x19 As UInteger = curOff
             Dim segBank As SegmentedBank = Nothing
@@ -274,6 +286,52 @@ Namespace Global.SM64Lib
             bw.Write(SwapInts.SwapUInt32(GetSegBank(&H19).RomEnd + Settings.AddRangeAddToLevelscript))
             bw.Write(SwapInts.SwapUInt32(&H1900001C))
             bw.Write(SwapInts.SwapUInt32(&H7040000))
+        End Sub
+
+        Public Sub LoadGlobalObjectBank()
+            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Read)
+            Dim br As New BinaryReader(fs)
+
+            'Read Bank Addres & Length from Rom
+            fs.Position = &H120FFF0
+            Dim seg As New SegmentedBank(&H7)
+            seg.RomStart = SwapInts.SwapInt32(br.ReadInt32)
+            seg.RomEnd = SwapInts.SwapInt32(br.ReadInt32)
+
+            If seg.RomStart <> &H1010101 AndAlso seg.RomStart > -1 Then
+                'Set Segmented Bank
+                SetSegBank(seg)
+
+                'Load Object Bank
+                GlobalObjectBank = New CustomObjectBank
+                GlobalObjectBank.ReadFromSeg(Me, seg)
+            Else
+                'Set Object Bank to Null
+                GlobalObjectBank = Nothing
+            End If
+
+            fs.Close()
+        End Sub
+
+        Private Sub SaveGlobalObjectBank(ByRef offset As Integer)
+            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
+            Dim bw As New BinaryWriter(fs)
+            Dim seg As SegmentedBank = GlobalObjectBank.WriteToSeg(&H7)
+
+            'Set Segmented Bank
+            seg.RomStart = offset
+            SetSegBank(seg)
+
+            'Write Segmented Bank
+            seg.WriteData(fs)
+            offset = fs.Position
+
+            'Write Bank Address & Length to Rom
+            fs.Position = &H120FFF0
+            bw.Write(SwapInts.SwapInt32(seg.RomStart))
+            bw.Write(SwapInts.SwapInt32(seg.RomEnd))
+
+            fs.Close()
         End Sub
 
         Public Sub AddLevel(LevelID As Byte)
@@ -537,6 +595,23 @@ Namespace Global.SM64Lib
                 End If
             End Set
         End Property
+
+        Public Sub New()
+        End Sub
+        Public Sub New(bankID As Byte)
+            Me.BankID = bankID
+        End Sub
+        Public Sub New(bankID As Byte, length As UInteger)
+            Me.BankID = bankID
+            Me.Length = length
+        End Sub
+        Public Sub New(bankID As Byte, data As MemoryStream)
+            Me.BankID = bankID
+            Me.Data = data
+        End Sub
+        Public Sub New(data As MemoryStream)
+            Me.Data = data
+        End Sub
 
         Public Sub MakeAsMIO0()
             _IsMIO0 = True
