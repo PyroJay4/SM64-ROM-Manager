@@ -249,6 +249,9 @@ Public Class Form_Main
         LoadingROM = True
         StatusText = Form_Main_Resources.Status_LoadingRom
 
+        'Load Global Object Banks
+        rommgr.LoadGlobalObjectBank()
+
         'Load Levels
         rommgr.LoadLevels()
 

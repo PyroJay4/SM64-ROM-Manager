@@ -79,12 +79,12 @@ Namespace Global.SM64Lib.SM64Convert
         End Enum
 
         Private Enum MaterialType
-            NOT_DEFINED
-            TEXTURE_SOLID
-            TEXTURE_ALPHA
-            TEXTURE_TRANSPARENT
-            COLOR_SOLID
-            COLOR_TRANSPARENT
+            None
+            TextureSolid
+            TextureAlpha
+            TextureTransparent
+            ColorSolid
+            ColorTransparent
         End Enum
 
         Private Class Vertex
@@ -128,7 +128,7 @@ Namespace Global.SM64Lib.SM64Convert
             Public paletteSize As UInteger = 0
             Public texWidth As UInteger = 0
             Public texHeight As UInteger = 0
-            Public type As MaterialType = MaterialType.NOT_DEFINED
+            Public type As MaterialType = MaterialType.None
             Public texType As N64Codec = N64Codec.RGBA16
             Public collision As UShort = 0
             Public collisionp1 As Byte = 0
@@ -262,7 +262,7 @@ Namespace Global.SM64Lib.SM64Convert
         Private createAlphaDL As Boolean = False
         Private createTransDL As Boolean = False
         Private definedSegPtr As Boolean = False
-        Private lastN64Codec As MaterialType = MaterialType.NOT_DEFINED
+        Private lastN64Codec As MaterialType = MaterialType.None
         Private geoModeData As String = ""
         Private colorTexData As String = ""
         Private texTypeData As String = ""
@@ -303,26 +303,17 @@ Namespace Global.SM64Lib.SM64Convert
             End Get
         End Property
 
-        Private Function MAX(a, b) As Object
-            Return If(a > b, a, b)
-        End Function
-        Private Function G_TX_DXT_FRAC() As Object
-            Return 11
-        End Function
         Private Function TXL2WORDS(txls, b_txl) As Object
-            Return MAX(1, ((txls) * (b_txl) / 8))
+            Return Math.Max(1, ((txls) * (b_txl) / 8))
         End Function
         Private Function CALC_DXT(width, b_txl) As Object
-            Return ((1 << G_TX_DXT_FRAC()) / TXL2WORDS(width, b_txl)) '(((1 << G_TX_DXT_FRAC()) + TXL2WORDS(width, b_txl) - 1) / TXL2WORDS(width, b_txl))
+            Return ((1 << 11) / TXL2WORDS(width, b_txl))
         End Function
         Private Function TXL2WORDS_4b(txls) As Object
-            Return MAX(1, ((txls) / 16))
+            Return Math.Max(1, ((txls) / 16))
         End Function
         Private Function CALC_DXT_4b(width) As Object
-            Return ((1 << G_TX_DXT_FRAC()) / TXL2WORDS_4b(width)) '(((1 << G_TX_DXT_FRAC()) + TXL2WORDS_4b(width) - 1) / TXL2WORDS_4b(width))
-        End Function
-        Private Function SCALE_8_5(Val As Byte) As Byte
-            Return ((((Val) + 4) * &H1F) / &HFF)
+            Return ((1 << 11) / TXL2WORDS_4b(width))
         End Function
 
         Private Sub SetLightAndDarkValues(s As S3DFileParser.Shading)
@@ -353,7 +344,7 @@ Namespace Global.SM64Lib.SM64Convert
             finalVertData.Clear()
             currentFace = 0
             lastPos = 0
-            lastN64Codec = MaterialType.NOT_DEFINED
+            lastN64Codec = MaterialType.None
         End Sub
 
         Private Sub CheckGeoModeInfo(m As Material)
@@ -403,7 +394,7 @@ Namespace Global.SM64Lib.SM64Convert
         Private Sub processMaterialColorAlpha(alpha As Single, mat As Material)
             mat.color = mat.color And &HFFFFFF00UI
             mat.color = mat.color Or CByte((&HFF * alpha) And &HFF)
-            mat.type = MaterialType.COLOR_TRANSPARENT
+            mat.type = MaterialType.ColorTransparent
             If alpha < 1.0F Then
                 mat.hasTransparency = True
             End If
@@ -510,7 +501,7 @@ Namespace Global.SM64Lib.SM64Convert
             mat.texWidth = bmp.Width
             mat.texHeight = bmp.Height
 
-            mat.type = MaterialType.TEXTURE_SOLID
+            mat.type = MaterialType.TextureSolid
 
             For y As Integer = 0 To bmp.Height - 1
                 For x As Integer = 0 To bmp.Width - 1
@@ -521,14 +512,14 @@ Namespace Global.SM64Lib.SM64Convert
 
                             If pix.A = 0 Then
                                 mat.hasTextureAlpha = True
-                                mat.type = MaterialType.TEXTURE_ALPHA
+                                mat.type = MaterialType.TextureAlpha
                                 mat.hasTransparency = False
                             ElseIf pix.A < &HFF OrElse mat.opacity < &HFF Then
-                                If mat.type <> MaterialType.TEXTURE_ALPHA Then
+                                If mat.type <> MaterialType.TextureAlpha Then
                                     If mat.opacity = &HFF Then
                                         mat.opacity = (CInt(mat.opacity) * pix.A) And &HFF
                                     End If
-                                    mat.type = MaterialType.TEXTURE_TRANSPARENT
+                                    mat.type = MaterialType.TextureTransparent
                                     mat.hasTransparency = True
                                 End If
                             End If
@@ -537,7 +528,7 @@ Namespace Global.SM64Lib.SM64Convert
 
                             If pix.A < &HFF OrElse mat.opacity < &HFF OrElse mat.enableAlphaMask Then
                                 If mat.opacity = &HFF Then mat.opacity *= (CInt(mat.opacity) * pix.A) And &HFF
-                                mat.type = MaterialType.TEXTURE_TRANSPARENT
+                                mat.type = MaterialType.TextureTransparent
                                 mat.hasTransparency = True
                             End If
 
@@ -619,7 +610,7 @@ Namespace Global.SM64Lib.SM64Convert
             For Each kvp In obj.Materials
                 Dim curEntry As TextureFormatSettings.Entry = texFormatSettings.GetEntry(kvp.Key)
                 Dim m As New Material With {
-                    .type = MaterialType.COLOR_SOLID,
+                    .type = MaterialType.ColorSolid,
                     .color = 0,
                     .hasTexture = False,
                     .hasTextureAlpha = False,
@@ -1144,74 +1135,41 @@ Namespace Global.SM64Lib.SM64Convert
         End Function
         Private Function getTypeFromTexType(texType As N64Codec, Optional advanced As Boolean = False) As Byte
             Select Case texType
-                Case N64Codec.CI4
-                    Return &H40
-                Case N64Codec.CI8
-                    Return &H48
-                Case N64Codec.I4
-                    If advanced Then
-                        Return &H90
-                    Else
-                        Return &H80
-                    End If
-                Case N64Codec.I8
-                    If advanced Then
-                        Return &H90
-                    Else
-                        Return &H88
-                    End If
-                Case N64Codec.IA4
-                    If advanced Then
-                        Return &H70
-                    Else
-                        Return &H60
-                    End If
-                Case N64Codec.IA8
-                    If advanced Then
-                        Return &H70
-                    Else
-                        Return &H68
-                    End If
-                Case N64Codec.IA16
-                    Return &H70
-                Case N64Codec.RGBA32
-                    Return &H18
-                Case Else 'N64Codec.RGBA16
-                    Return &H10
+                Case N64Codec.CI4 : Return &H40
+                Case N64Codec.CI8 : Return &H48
+                Case N64Codec.I4 : Return If(advanced, &H90, &H80)
+                Case N64Codec.I8 : Return If(advanced, &H90, &H88)
+                Case N64Codec.IA4 : Return If(advanced, &H70, &H60)
+                Case N64Codec.IA8 : Return If(advanced, &H70, &H68)
+                Case N64Codec.IA16 : Return &H70
+                Case N64Codec.RGBA16 : Return &H10
+                Case N64Codec.RGBA32 : Return &H18
+                Case Else : Return Nothing
             End Select
         End Function
 
         Private Function bytesPerType(type As N64Codec) As Byte
             Select Case type
-                Case N64Codec.RGBA32
-                    Return 4
-                Case N64Codec.I4, N64Codec.IA4, N64Codec.CI4
-                    Return 0 ' Special case
-                Case N64Codec.IA8, N64Codec.I8, N64Codec.CI8
-                    Return 1
-                Case Else 'N64Codec.RGBA16
-                    Return 2
+                Case N64Codec.RGBA16 : Return 2
+                Case N64Codec.RGBA32 : Return 4
+                Case N64Codec.I4, N64Codec.IA4, N64Codec.CI4 : Return 0 ' Special case
+                Case N64Codec.IA8, N64Codec.I8, N64Codec.CI8 : Return 1
+                Case Else : Return 2
             End Select
         End Function
 
         Private Function getTexelIncrement(type As N64Codec) As Byte
             Select Case type
-                Case N64Codec.I4, N64Codec.IA4
-                    Return 3
-                Case N64Codec.IA8, N64Codec.I8
-                    Return 1
-                Case Else
-                    Return 0
+                Case N64Codec.I4, N64Codec.IA4 : Return 3
+                Case N64Codec.IA8, N64Codec.I8 : Return 1
+                Case Else : Return 0
             End Select
         End Function
         Private Function getTexelShift(type As N64Codec) As Byte
             Select Case type
-                Case N64Codec.I4, N64Codec.IA4
-                    Return 2
-                Case N64Codec.IA8, N64Codec.I8
-                    Return 1
-                Case Else
-                    Return 0
+                Case N64Codec.I4, N64Codec.IA4 : Return 2
+                Case N64Codec.IA8, N64Codec.I8 : Return 1
+                Case Else : Return 0
             End Select
         End Function
 
@@ -1300,7 +1258,7 @@ Namespace Global.SM64Lib.SM64Convert
                     End If
                 End If
             Else
-                If mat.type = MaterialType.COLOR_TRANSPARENT Then
+                If mat.type = MaterialType.ColorTransparent Then
                     ImpF3D("FC FF FF FF FF FE FB FD")
                 Else
                     ImpF3D("FC FF FF FF FF FE 7B 3D")
@@ -1309,7 +1267,7 @@ Namespace Global.SM64Lib.SM64Convert
         End Sub
 
         Private Sub ImpCmd03(mat As Material, addOffset As UInteger)
-            If mat.type = MaterialType.COLOR_SOLID Then
+            If mat.type = MaterialType.ColorSolid Then
                 Dim off As UInteger = startSegOffset + mat.texColOffset
                 ImpF3D($"03 86 00 10 {Hex(curSeg)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
                 off = startSegOffset + mat.texColOffset + &H8
@@ -1543,7 +1501,7 @@ Namespace Global.SM64Lib.SM64Convert
                                     ImpCmd03(mp.Material, importStart)
                                 End If
                             End If
-                            If lastN64Codec = MaterialType.COLOR_SOLID AndAlso mp.Material.type = MaterialType.COLOR_SOLID Then
+                            If lastN64Codec = MaterialType.ColorSolid AndAlso mp.Material.type = MaterialType.ColorSolid Then
                                 ImpCmd03(mp.Material, importStart)
                             End If
                         End If
@@ -1644,7 +1602,7 @@ Namespace Global.SM64Lib.SM64Convert
                         lastMaterial = mp.Material
 
                         If lastN64Codec <> mp.Material.type Then
-                            If mp.Material.type = MaterialType.TEXTURE_TRANSPARENT Then
+                            If mp.Material.type = MaterialType.TextureTransparent Then
                                 If mp.Material.opacityOrg < &HFF Then
                                     ImpF3D($"FB 00 00 00 FF FF FF {Hex(mp.Material.opacityOrg)}")
                                     resetBF = True
@@ -1652,7 +1610,7 @@ Namespace Global.SM64Lib.SM64Convert
                             End If
                             addCmdFC(mp.Material)
                             ImpCmd03(mp.Material, importStart)
-                            If mp.Material.type = MaterialType.COLOR_TRANSPARENT Then
+                            If mp.Material.type = MaterialType.ColorTransparent Then
                                 ImpColorCmdFB(mp.Material)
                                 resetBF = True
                             End If
@@ -1665,7 +1623,7 @@ Namespace Global.SM64Lib.SM64Convert
                                     ImpCmd03(mp.Material, importStart)
                                 End If
                             End If
-                            If lastN64Codec = MaterialType.COLOR_TRANSPARENT AndAlso mp.Material.type = MaterialType.COLOR_TRANSPARENT Then
+                            If lastN64Codec = MaterialType.ColorTransparent AndAlso mp.Material.type = MaterialType.ColorTransparent Then
                                 If mp.Material IsNot lastMat Then
                                     ImpColorCmdFB(mp.Material)
                                     resetBF = True

@@ -15,18 +15,7 @@ Namespace PatchScripts
                 <m64tweak name=<%= patch.Name %> description=<%= patch.Description %> version=<%= patch.Version.ToString %>></m64tweak>
 
             For Each script As PatchScript In patch.Scripts
-                Dim references As String = ""
-                For Each ref As String In script.References
-                    If references <> "" Then
-                        references &= ";"
-                    End If
-                    references &= ref
-                Next
-
-                xml.Add(<patch name=<%= script.Name %> description=<%= script.Description %> type=<%= CInt(script.Type) %> references=<%= references %>>
-                            <%= script.Script %>
-                        </patch>)
-
+                xml.Add(ScriptToXElement(script))
             Next
 
             If patch.FileName = "" Then
@@ -35,6 +24,21 @@ Namespace PatchScripts
 
             xml.Save(patch.FileName)
         End Sub
+
+        Public Function ScriptToXElement(script As PatchScript)
+            Dim references As String = ""
+
+            For Each ref As String In script.References
+                If references <> "" Then
+                    references &= ";"
+                End If
+                references &= ref
+            Next
+
+            Return <patch name=<%= script.Name %> description=<%= script.Description %> type=<%= CInt(script.Type) %> references=<%= references %>>
+                       <%= script.Script %>
+                   </patch>
+        End Function
 
         Public Function Read(fileName As String) As PatchProfile
             Dim patch As New PatchProfile
@@ -45,7 +49,11 @@ Namespace PatchScripts
             Dim mainNode As XElement = xml.Elements.FirstOrDefault(Function(n) n.Name = "m64tweak")
 
             For Each attr As XAttribute In mainNode.Attributes
-                Select Case ""
+                Select Case attr.Name
+                    Case "name"
+                        patch.Name = attr.Value
+                    Case "description"
+                        patch.Name = attr.Value
                     Case "version"
                         patch.Version = New Version(attr.Value)
                 End Select
@@ -60,25 +68,7 @@ Namespace PatchScripts
                         patch.Description = element.Value
 
                     Case "patch"
-                        Dim script As New PatchScript
-                        script.Script = element.Value
-
-                        For Each attr As XAttribute In element.Attributes
-                            Select Case attr.Name
-                                Case "name"
-                                    script.Name = attr.Value
-                                Case "description"
-                                    script.Description = attr.Value
-                                Case "type"
-                                    script.Type = attr.Value
-                                Case "references"
-                                    If Not String.IsNullOrEmpty(attr.Value) Then
-                                        script.References.AddRange(attr.Value.Split(";"))
-                                    End If
-                            End Select
-                        Next
-
-                        patch.Scripts.Add(script)
+                        patch.Scripts.Add(XElementToScript(element))
 
                 End Select
             Next
@@ -88,6 +78,28 @@ Namespace PatchScripts
             End If
 
             Return patch
+        End Function
+
+        Public Function XElementToScript(element As XElement) As PatchScript
+            Dim script As New PatchScript
+            script.Script = element.Value
+
+            For Each attr As XAttribute In element.Attributes
+                Select Case attr.Name
+                    Case "name"
+                        script.Name = attr.Value
+                    Case "description"
+                        script.Description = attr.Value
+                    Case "type"
+                        script.Type = attr.Value
+                    Case "references"
+                        If Not String.IsNullOrEmpty(attr.Value) Then
+                            script.References.AddRange(attr.Value.Split(";"))
+                        End If
+                End Select
+            Next
+
+            Return script
         End Function
 
         Public Sub Patch(script As PatchScript, rommgr As RomManager, assemblyPath As String, owner As IWin32Window)

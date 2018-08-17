@@ -320,6 +320,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Modules\Extensions.vb" />
+    <Compile Include="RomManager\Modules\ImporterPresets\ImporterPreset.vb" />
+    <Compile Include="RomManager\Modules\ImporterPresets\ImporterPresetManager.vb" />
     <Compile Include="RomManager\Modules\OutputMidi.vb" />
     <Compile Include="RomManager\Modules\PatchScript\InputDialog.Designer.vb">
       <DependentUpon>InputDialog.vb</DependentUpon>
