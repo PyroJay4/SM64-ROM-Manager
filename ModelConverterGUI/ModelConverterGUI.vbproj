@@ -92,12 +92,6 @@
     <Compile Include="MainModelConverter.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetUpFogDialog.designer.vb">
-      <DependentUpon>SetUpFogDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SetUpFogDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -139,9 +133,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainModelConverter.resx">
       <DependentUpon>MainModelConverter.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SetUpFogDialog.resx">
-      <DependentUpon>SetUpFogDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
