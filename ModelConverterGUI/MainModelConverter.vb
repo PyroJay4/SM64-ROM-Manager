@@ -79,7 +79,7 @@ Public Class MainModelConverter
             .Shading.Light = ColorPickerButton_ShadingLight.SelectedColor
             .Shading.Dark = ColorPickerButton_ShadingDarkNeu.SelectedColor
 
-            If SwitchButton_EnableFog.Enabled Then
+            If SwitchButton_EnableFog.Value Then
                 .Fog = New Fog With {.Color = ColorPickerButton_FogColor.SelectedColor, .Type = ComboBox_FogTyp.SelectedIndex}
             End If
         End With

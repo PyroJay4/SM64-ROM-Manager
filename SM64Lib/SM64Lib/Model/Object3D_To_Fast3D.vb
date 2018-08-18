@@ -1380,6 +1380,10 @@ Namespace Global.SM64Lib.SM64Convert
             ImpF3D($"FB 00 00 00 {Hex(r)} {Hex(g)} {Hex(b)} {Hex(mat.opacity)}")
         End Sub
 
+        Private Sub AlignPosition()
+            HexRoundUp2(impstream.Position)
+        End Sub
+
         Private Sub importOBJ(model As S3DFileParser.Object3D, texFormatSettings As TextureFormatSettings)
             Dim enabledVertexColors As Boolean
             Dim enableForcing As Boolean = settings.ForceDisplaylist <> -1
@@ -1404,23 +1408,27 @@ Namespace Global.SM64Lib.SM64Convert
                 If mt.hasTexture Then
                     mt.offset = impstream.Position
                     impstream.Write(mt.texture.data, 0, mt.texture.data.Length)
+                    AlignPosition()
                     If mt.hasPalette Then
                         mt.paletteOffset = impstream.Position
                         impstream.Write(mt.texture.palette, 0, mt.texture.palette.Length)
+                        AlignPosition()
                     End If
                     If mt.enableTextureColor Then
                         mt.texColOffset = impstream.Position
                         Dim colorData As Byte() = GetColorData(mt, mt.texColDark)
                         impstream.Write(colorData, 0, colorData.Length)
+                        AlignPosition()
                     End If
                 Else
                     mt.texColOffset = impstream.Position
                     Dim colorData As Byte() = GetColorData(mt, 0.8!)
                     impstream.Write(colorData, 0, colorData.Length)
+                    AlignPosition()
                 End If
             Next
 
-            'Prepaire Vertices
+            'Prepaire vertices
             BuildVertexGroups()
             removeDuplicateVertices(reduceVertLevel)
 
