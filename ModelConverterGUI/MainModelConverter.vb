@@ -38,7 +38,7 @@ Public Class MainModelConverter
         UpdateAmbientColors()
 
         ColorPickerButton_ShadingLight.SelectedColor = Color.FromArgb(&HFFFFFFFF)
-        ColorPickerButton_ShadingDark.SelectedColor = Color.FromArgb(&HFF7F7F7F)
+        ColorPickerButton_ShadingDarkNeu.SelectedColor = Color.FromArgb(&HFF7F7F7F)
         ColorPickerButton_FogColor.SelectedColor = Color.White
     End Sub
 
@@ -75,7 +75,13 @@ Public Class MainModelConverter
             .FlipTextures = SwitchButton_TextureFlip.Value
             .CenterModel = SwitchButton_CenterModel.Value
             .ForceDisplaylist = ForceDisplaylist
-            .Fog = New Fog With {.Color = ColorPickerButton_FogColor.SelectedColor, .Type = ComboBox_FogTyp.SelectedIndex}
+
+            .Shading.Light = ColorPickerButton_ShadingLight.SelectedColor
+            .Shading.Dark = ColorPickerButton_ShadingDarkNeu.SelectedColor
+
+            If SwitchButton_EnableFog.Enabled Then
+                .Fog = New Fog With {.Color = ColorPickerButton_FogColor.SelectedColor, .Type = ComboBox_FogTyp.SelectedIndex}
+            End If
         End With
 
         'Get Model
@@ -392,18 +398,6 @@ Public Class MainModelConverter
 
     Private Sub Slider1_MouseUp(sender As Object, e As MouseEventArgs)
         isSliderMouseDown = False
-    End Sub
-
-    Private Sub ColorPickerButton_ShadingLight_SelectedColorChanged(sender As Object, e As EventArgs) Handles ColorPickerButton_ShadingLight.SelectedColorChanged
-        If objVisualMap IsNot Nothing Then
-            objVisualMap.Shading.Light = ColorPickerButton_ShadingLight.SelectedColor
-        End If
-    End Sub
-
-    Private Sub ColorPickerButton_ShadingDark_SelectedColorChanged(sender As Object, e As EventArgs) Handles ColorPickerButton_ShadingDark.SelectedColorChanged
-        If objVisualMap IsNot Nothing Then
-            objVisualMap.Shading.Dark = ColorPickerButton_ShadingDark.SelectedColor
-        End If
     End Sub
 
 End Class

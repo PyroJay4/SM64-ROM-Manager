@@ -124,7 +124,7 @@ Namespace Global.SM64Lib
             HexRoundUp2(lastpos)
 
             'Global Object Bank
-            SaveGlobalObjectBank(lastpos)
+            'SaveGlobalObjectBank(lastpos)
             HexRoundUp2(lastpos)
 
             'Levels

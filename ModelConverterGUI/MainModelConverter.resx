@@ -117,16 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Line2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Line2.Location" type="System.Drawing.Point, System.Drawing">
     <value>-2, 67</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Line2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="Line2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 23</value>
+    <value>547, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Line2.TabIndex" type="System.Int32, mscorlib">
@@ -253,7 +256,7 @@
     <value>3, 3</value>
   </data>
   <data name="LabelX4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 23</value>
+    <value>116, 23</value>
   </data>
   <metadata name="SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -308,7 +311,7 @@
     <value>0</value>
   </data>
   <data name="SwitchButton_EnableFog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 5</value>
+    <value>51, 5</value>
   </data>
   <data name="SwitchButton_EnableFog.OffText" xml:space="preserve">
     <value>No</value>
@@ -365,7 +368,7 @@
     <value>3, 3</value>
   </data>
   <data name="LabelX20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 23</value>
+    <value>42, 23</value>
   </data>
   <data name="LabelX20.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
@@ -462,8 +465,11 @@ Scaling = 500 --&gt; Modelsize * 500</value>
   <data name="&gt;&gt;NUD_Scaling.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="Button_LoadCol.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="Button_LoadCol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 41</value>
+    <value>348, 41</value>
   </data>
   <data name="Button_LoadCol.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -519,8 +525,11 @@ It is inviisble.</value>
   <data name="&gt;&gt;Button_LoadCol.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
+  <data name="Button_LoadModel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="Button_LoadModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 12</value>
+    <value>348, 12</value>
   </data>
   <data name="Button_LoadModel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 23</value>
@@ -572,8 +581,11 @@ The Model is all what you can see.</value>
   <data name="&gt;&gt;Button_LoadModel.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
+  <data name="Line3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="Line3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>400, 0</value>
+    <value>431, 0</value>
   </data>
   <data name="Line3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -599,6 +611,9 @@ The Model is all what you can see.</value>
   <data name="&gt;&gt;Line3.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="Button_ConvertModel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="Button_ConvertModel.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -606,7 +621,7 @@ The Model is all what you can see.</value>
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="Button_ConvertModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 20</value>
+    <value>457, 20</value>
   </data>
   <data name="Button_ConvertModel.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 40</value>
@@ -629,8 +644,11 @@ The Model is all what you can see.</value>
   <data name="&gt;&gt;Button_ConvertModel.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
+  <data name="CircularProgress1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="CircularProgress1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 20</value>
+    <value>457, 20</value>
   </data>
   <data name="CircularProgress1.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 40</value>
@@ -666,7 +684,7 @@ The Model is all what you can see.</value>
     <value>3, 32</value>
   </data>
   <data name="ComboBoxEx_UpAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 21</value>
+    <value>84, 21</value>
   </data>
   <data name="ComboBoxEx_UpAxis.SuperTooltip" xml:space="preserve">
     <value />
@@ -715,7 +733,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>3, 3</value>
   </data>
   <data name="LabelX9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 23</value>
+    <value>113, 23</value>
   </data>
   <data name="LabelX9.TabIndex" type="System.Int32, mscorlib">
     <value>118</value>
@@ -781,7 +799,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>3, 3</value>
   </data>
   <data name="LabelX3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 23</value>
+    <value>142, 23</value>
   </data>
   <data name="LabelX3.TabIndex" type="System.Int32, mscorlib">
     <value>106</value>
@@ -802,7 +820,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>0</value>
   </data>
   <data name="SwitchButton_ResizeTextures.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 5</value>
+    <value>151, 5</value>
   </data>
   <data name="SwitchButton_ResizeTextures.OffText" xml:space="preserve">
     <value>No</value>
@@ -832,7 +850,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>3, 3</value>
   </data>
   <data name="LabelX5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 23</value>
+    <value>146, 23</value>
   </data>
   <data name="LabelX5.TabIndex" type="System.Int32, mscorlib">
     <value>108</value>
@@ -850,13 +868,13 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>Panel5</value>
   </data>
   <data name="&gt;&gt;LabelX5.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="LabelX6.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 32</value>
   </data>
   <data name="LabelX6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 20</value>
+    <value>39, 20</value>
   </data>
   <data name="LabelX6.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
@@ -877,10 +895,10 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>2</value>
   </data>
   <data name="LabelX7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 32</value>
+    <value>91, 32</value>
   </data>
   <data name="LabelX7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 20</value>
+    <value>39, 20</value>
   </data>
   <data name="LabelX7.TabIndex" type="System.Int32, mscorlib">
     <value>113</value>
@@ -901,7 +919,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>4</value>
   </data>
   <data name="SwitchButton_TextureFlip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 34</value>
+    <value>151, 34</value>
   </data>
   <data name="SwitchButton_TextureFlip.OffText" xml:space="preserve">
     <value>No</value>
@@ -931,7 +949,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>3, 32</value>
   </data>
   <data name="LabelX8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 23</value>
+    <value>142, 23</value>
   </data>
   <data name="LabelX8.TabIndex" type="System.Int32, mscorlib">
     <value>116</value>
@@ -1063,7 +1081,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>3, 3</value>
   </data>
   <data name="LabelX10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>84, 23</value>
   </data>
   <data name="LabelX10.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
@@ -1091,7 +1109,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
 </value>
   </data>
   <data name="ColorPickerButton_ShadingLight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 31</value>
+    <value>48, 31</value>
   </data>
   <data name="ColorPickerButton_ShadingLight.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 23</value>
@@ -1110,34 +1128,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="&gt;&gt;ColorPickerButton_ShadingLight.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="ColorPickerButton_ShadingDark.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
-        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ColorPickerButton_ShadingDark.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 31</value>
-  </data>
-  <data name="ColorPickerButton_ShadingDark.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 23</value>
-  </data>
-  <data name="ColorPickerButton_ShadingDark.TabIndex" type="System.Int32, mscorlib">
-    <value>132</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDark.Name" xml:space="preserve">
-    <value>ColorPickerButton_ShadingDark</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDark.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDark.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDark.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="ButtonX_GraphicsEditor.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1206,7 +1196,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>3, 32</value>
   </data>
   <data name="ComboBox_FogTyp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 21</value>
+    <value>141, 21</value>
   </data>
   <data name="ComboBox_FogTyp.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
@@ -1234,7 +1224,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
 </value>
   </data>
   <data name="ColorPickerButton_FogColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 3</value>
+    <value>107, 3</value>
   </data>
   <data name="ColorPickerButton_FogColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 23</value>
@@ -1258,10 +1248,10 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>True</value>
   </data>
   <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 218</value>
+    <value>194, 218</value>
   </data>
   <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 56</value>
+    <value>147, 56</value>
   </data>
   <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
@@ -1276,7 +1266,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>0</value>
   </data>
   <data name="Panel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1285,7 +1275,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>124, 93</value>
   </data>
   <data name="Panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 55</value>
+    <value>119, 55</value>
   </data>
   <data name="Panel2.TabIndex" type="System.Int32, mscorlib">
     <value>137</value>
@@ -1300,16 +1290,16 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel2.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="Panel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 93</value>
+    <value>249, 93</value>
   </data>
   <data name="Panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 55</value>
+    <value>122, 55</value>
   </data>
   <data name="Panel3.TabIndex" type="System.Int32, mscorlib">
     <value>138</value>
@@ -1324,7 +1314,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel3.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="Panel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1333,7 +1323,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>12, 154</value>
   </data>
   <data name="Panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 58</value>
+    <value>204, 58</value>
   </data>
   <data name="Panel4.TabIndex" type="System.Int32, mscorlib">
     <value>139</value>
@@ -1348,16 +1338,44 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel4.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="Panel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="ColorPickerButton_ShadingDarkNeu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
+        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ColorPickerButton_ShadingDarkNeu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 31</value>
+  </data>
+  <data name="ColorPickerButton_ShadingDarkNeu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 23</value>
+  </data>
+  <data name="ColorPickerButton_ShadingDarkNeu.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.Name" xml:space="preserve">
+    <value>ColorPickerButton_ShadingDarkNeu</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.Parent" xml:space="preserve">
+    <value>Panel5</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="Panel5.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 218</value>
   </data>
   <data name="Panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 57</value>
+    <value>176, 57</value>
   </data>
   <data name="Panel5.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
@@ -1372,7 +1390,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel5.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="Panel6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1396,16 +1414,19 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel6.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
+  </data>
+  <data name="Panel7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="Panel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Panel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>420, 218</value>
+    <value>431, 218</value>
   </data>
   <data name="Panel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 56</value>
+    <value>90, 56</value>
   </data>
   <data name="Panel7.TabIndex" type="System.Int32, mscorlib">
     <value>142</value>
@@ -1420,13 +1441,16 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel7.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="Panel8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="Panel8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Panel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>347, 93</value>
+    <value>378, 93</value>
   </data>
   <data name="Panel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 92</value>
@@ -1444,13 +1468,16 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel8.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="Panel9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="Panel9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="Panel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>420, 93</value>
+    <value>451, 93</value>
   </data>
   <data name="Panel9.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 92</value>
@@ -1468,7 +1495,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel9.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1477,7 +1504,7 @@ As higher the level and as bigger the model, as more space will be saved!</value
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>508, 287</value>
+    <value>539, 287</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

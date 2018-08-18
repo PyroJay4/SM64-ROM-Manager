@@ -1092,7 +1092,7 @@ Namespace Global.SM64Lib.SM64Convert
             ImpF3D("BA 00 14 02 00 10 00 00")
 
             Dim cmdF8 As String = ""
-            cmdF8 = $"F8 00 00 00 {fogRed} {fogGreen} {fogBlue} FF"
+            cmdF8 = $"F8 00 00 00 {Hex(fogRed)} {Hex(fogGreen)} {Hex(fogBlue)} FF"
             ImpF3D(cmdF8)
 
             If alpha Then ' If texture has any alpha bits
