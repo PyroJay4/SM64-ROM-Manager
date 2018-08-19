@@ -117,6 +117,7 @@ Namespace Global.SM64Lib.Trajectorys
             If addr > &H80400000 AndAlso addr < &H80410000 Then
                 addr = addr - &H80400000 + &H1200000
                 Dim trajectory As New Trajectory
+                trajectory.Name = name
                 trajectory.Read(rom, addr)
                 Me.Add(trajectory)
             End If

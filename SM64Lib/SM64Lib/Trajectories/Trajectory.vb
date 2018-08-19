@@ -16,13 +16,16 @@ Namespace Global.SM64Lib.Trajectorys
             rom.Position = startPos
 
             'Write xyz
-            For i As Int16 = 0 To Points.Count
+            For i As Int16 = 0 To Points.Count - 1
                 Dim point As Vector3 = Points(i)
                 bw.Write(SwapInts.SwapInt16(i))
                 bw.Write(SwapInts.SwapInt16(point.X))
                 bw.Write(SwapInts.SwapInt16(point.Y))
                 bw.Write(SwapInts.SwapInt16(point.Z))
             Next
+
+            bw.Write(SwapInts.SwapInt32(&HFFFFFFFF))
+            bw.Write(SwapInts.SwapInt32(&HFFFFFFFF))
         End Sub
 
         Public Sub Read(rom As Stream, startPos As UInteger)

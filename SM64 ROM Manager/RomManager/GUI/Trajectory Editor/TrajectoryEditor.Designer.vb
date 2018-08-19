@@ -27,6 +27,7 @@ Partial Class TrajectoryEditor
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ComboBoxEx1 = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.IntegerInput1 = New DevComponents.Editors.IntegerInput()
         Me.IntegerInput2 = New DevComponents.Editors.IntegerInput()
@@ -46,7 +47,6 @@ Partial Class TrajectoryEditor
         Me.ButtonX6 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX8 = New DevComponents.DotNetBar.ButtonX()
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.IntegerInput1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IntegerInput2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IntegerInput3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,12 +94,19 @@ Partial Class TrajectoryEditor
         Me.ColumnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ColumnHeader3.Width = 80
         '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Z"
+        Me.ColumnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ColumnHeader4.Width = 80
+        '
         'ComboBoxEx1
         '
         Me.ComboBoxEx1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ComboBoxEx1.DisplayMember = "Text"
         Me.ComboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEx1.DropDownWidth = 250
         Me.ComboBoxEx1.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx1.FormattingEnabled = True
         Me.ComboBoxEx1.ItemHeight = 15
@@ -383,12 +390,6 @@ Partial Class TrajectoryEditor
         Me.ButtonX8.SymbolSize = 12.0!
         Me.ButtonX8.TabIndex = 22
         Me.ButtonX8.Text = "<span padding=""1,1,1,1""><expand/></span>"
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Z"
-        Me.ColumnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ColumnHeader4.Width = 80
         '
         'TrajectoryEditor
         '
