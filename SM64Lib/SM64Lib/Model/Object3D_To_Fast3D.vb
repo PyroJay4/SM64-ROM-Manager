@@ -137,6 +137,7 @@ Namespace Global.SM64Lib.SM64Convert
             Public geoMode As UInteger = 0
             Public texture As TextureEntry = Nothing
             Public enableScrolling As Boolean = False
+            Public selectDisplaylist As TextureFormatSettings.SelectDisplaylistMode = TextureFormatSettings.SelectDisplaylistMode.Automatic
         End Class
         Private Class FinalVertexData
             Public Property Data As Byte() = New Byte(15) {}
@@ -623,7 +624,8 @@ Namespace Global.SM64Lib.SM64Convert
                     .enableTextureColor = False,
                     .enableAlphaMask = False,
                     .cameFromBMP = False,
-                    .enableScrolling = curEntry.IsScrollingTexture
+                    .enableScrolling = curEntry.IsScrollingTexture,
+                    .selectDisplaylist = curEntry.SelectDisplaylistMode
                     }
 
                 'Set default size
@@ -934,8 +936,8 @@ Namespace Global.SM64Lib.SM64Convert
                         Do While j < fvg.VertexDataCount
                             If CompareTwoByteArrays(fvg.FinalVertexData(i).Data, fvg.FinalVertexData(j).Data, 16) Then
                                 moveElementsInGroupUpward(fvg, 1, j)
-                                updateIndexList(fvg, j, i)
-                                updatePositions(mp.StartIndex)
+                                UpdateIndexList(fvg, j, i)
+                                UpdatePositions(mp.StartIndex)
                                 dupCnt += 1
                             End If
                             j += 1
@@ -943,7 +945,7 @@ Namespace Global.SM64Lib.SM64Convert
                     Next
 
                     If g < mp.GroupsCount - 1 AndAlso level > 1 Then
-                        If moveVertsBack(mp.FinalVertexGroups(g), mp.FinalVertexGroups(g + 1)) Then
+                        If MoveVertsBack(mp.FinalVertexGroups(g), mp.FinalVertexGroups(g + 1)) Then
                             g -= 1
                         End If
                     End If
@@ -951,7 +953,7 @@ Namespace Global.SM64Lib.SM64Convert
 
             Next
         End Sub
-        Private Sub updateIndexList(grp As FvGroup, removed As Byte, replaceWith As Byte)
+        Private Sub UpdateIndexList(grp As FvGroup, removed As Byte, replaceWith As Byte)
             For i As Integer = 0 To grp.NumTri * 3 - 1
                 If grp.indexList(i) < removed Then Continue For
                 If grp.indexList(i) = removed Then
@@ -961,14 +963,14 @@ Namespace Global.SM64Lib.SM64Convert
                 End If
             Next
         End Sub
-        Private Sub updatePositions(vs As Integer)
+        Private Sub UpdatePositions(vs As Integer)
             For Each mp As VertexGroupList In vertexGroups
                 If mp.StartIndex <= vs Then Continue For
                 If mp.StartIndex < &H10 Then Continue For
                 mp.StartIndex -= &H10
             Next
         End Sub
-        Private Function moveVertsBack([to] As FvGroup, from As FvGroup) As Boolean
+        Private Function MoveVertsBack([to] As FvGroup, from As FvGroup) As Boolean
             If from.VertexDataCount < 3 Then Return False
             If [to].VertexDataCount < 14 Then
                 [to].FinalVertexData.Add(from.FinalVertexData(0))
@@ -1485,7 +1487,12 @@ Namespace Global.SM64Lib.SM64Convert
 
                 For i As Integer = 0 To vertexGroups.Count - 1
                     Dim mp As VertexGroupList = vertexGroups(i)
-                    If (mp.Material.hasTextureAlpha OrElse mp.Material.hasTransparency) AndAlso Not enableForcing Then Continue For
+
+                    If mp.Material.selectDisplaylist = TextureFormatSettings.SelectDisplaylistMode.Automatic Then
+                        If (mp.Material.hasTextureAlpha OrElse mp.Material.hasTransparency) AndAlso Not enableForcing Then Continue For
+                    ElseIf mp.Material.selectDisplaylist <> TextureFormatSettings.SelectDisplaylistMode.Solid Then
+                        If Not enableForcing Then Continue For
+                    End If
 
                     If mp.Material.enableGeoMode Then
                         ImpF3D("B6 00 00 00 FF FF FF FF")
@@ -1551,7 +1558,13 @@ Namespace Global.SM64Lib.SM64Convert
 
                 For i As Integer = 0 To vertexGroups.Count - 1
                     Dim mp As VertexGroupList = vertexGroups(i)
-                    If (Not mp.Material.hasTextureAlpha OrElse mp.Material.hasTransparency OrElse mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
+
+                    If mp.Material.selectDisplaylist = TextureFormatSettings.SelectDisplaylistMode.Automatic Then
+                        If (Not mp.Material.hasTextureAlpha OrElse mp.Material.hasTransparency OrElse mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
+                    ElseIf mp.Material.selectDisplaylist <> TextureFormatSettings.SelectDisplaylistMode.Alpha Then
+                        If Not enableForcing Then Continue For
+                    End If
+
                     If mp.Material.enableGeoMode Then
                         ImpF3D("B6 00 00 00 FF FF FF FF")
                         ImpF3D($"B7 00 00 00 {Hex((mp.Material.geoMode >> 24) And &HFF)} {Hex((mp.Material.geoMode >> 16) And &HFF)} {Hex((mp.Material.geoMode >> 8) And &HFF)} {Hex(mp.Material.geoMode And &HFF)}")
@@ -1604,7 +1617,12 @@ Namespace Global.SM64Lib.SM64Convert
 
                 For i As Integer = 0 To vertexGroups.Count - 1
                     Dim mp As VertexGroupList = vertexGroups(i)
-                    If Not mp.Material.hasTransparency OrElse (mp.EnableVertexColors AndAlso Not mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
+
+                    If mp.Material.selectDisplaylist = TextureFormatSettings.SelectDisplaylistMode.Automatic Then
+                        If Not mp.Material.hasTransparency OrElse (mp.EnableVertexColors AndAlso Not mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
+                    ElseIf mp.Material.selectDisplaylist <> TextureFormatSettings.SelectDisplaylistMode.Transparent Then
+                        If Not enableForcing Then Continue For
+                    End If
 
                     If lastMaterial IsNot mp.Material Then
                         lastMaterial = mp.Material

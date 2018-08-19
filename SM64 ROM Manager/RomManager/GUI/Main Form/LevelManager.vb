@@ -718,26 +718,28 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
         Clipboard.SetText(CurrentLevel.LastRomOffset.ToString("X8"))
     End Sub
 
-    Private Sub ButtonItem_ExportVisualMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportVisualMap.Click
+    Private Async Sub ButtonItem_ExportVisualMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportVisualMap.Click
         If AllowSavingAreaSettings Then
-            LM_ExportModel(CurrentArea.AreaModel.Fast3DBuffer)
+            StatusText = Form_Main_Resources.Status_LoadingModel
+            Dim mdl As Object3D = Await LoadAreaVisualMapAsObject3D(rommgr, CurrentArea)
+
+            StatusText = Form_Main_Resources.Status_ExportingModel
+            Publics.Publics.ExportModel(mdl, LoaderModule.SimpleFileParser)
+
+            StatusText = ""
         End If
     End Sub
 
-    Private Sub ButtonItem_ExportCollisionMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportCollisionMap.Click
+    Private Async Sub ButtonItem_ExportCollisionMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportCollisionMap.Click
         If AllowSavingAreaSettings Then
-            LM_ExportModel(CurrentArea.AreaModel.Collision)
+            StatusText = Form_Main_Resources.Status_LoadingModel
+            Dim mdl As Object3D = Await CurrentArea.AreaModel.Collision.ToObject3DAsync
+
+            StatusText = Form_Main_Resources.Status_ExportingModel
+            Publics.Publics.ExportModel(mdl, LoaderModule.SimpleFileParser)
+
+            StatusText = ""
         End If
-    End Sub
-
-    Private Async Sub LM_ExportModel(obj As IToObject3D)
-        StatusText = Form_Main_Resources.Status_LoadingModel
-        Dim mdl As Object3D = Await obj.ToObject3DAsync
-
-        StatusText = Form_Main_Resources.Status_ExportingModel
-        Publics.Publics.ExportModel(mdl, Settings.FileParser.LoaderModule)
-
-        StatusText = ""
     End Sub
 
     Private Sub SwitchButton_LM_ShowMsgEnabled_ValueChanged(sender As Object, e As EventArgs) Handles SwitchButton_LM_ShowMsgEnabled.ValueChanged

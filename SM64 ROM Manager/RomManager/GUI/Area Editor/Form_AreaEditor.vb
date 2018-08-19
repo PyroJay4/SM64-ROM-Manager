@@ -1069,15 +1069,7 @@ Public Class Form_AreaEditor
     End Function
 
     Private Async Function LoadAreaVisualMapAsObject3D() As Task
-        Dim obj As New Object3D
-
-        For Each geop As Geopointer In cArea.AreaModel.Fast3DBuffer.DLPointers
-            Dim dl As New DisplayList
-            Await dl.FromStreamAsync(geop, rommgr, cArea.AreaID)
-            Await dl.ToObject3DAsync(obj, rommgr, cArea.AreaID)
-        Next
-
-        cVisualMap = obj
+        cVisualMap = Await General.LoadAreaVisualMapAsObject3D(rommgr, cArea)
     End Function
 
     Public Sub LoadCollisionLists()

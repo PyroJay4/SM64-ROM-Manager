@@ -55,9 +55,10 @@ Namespace Global.SM64Lib.Model.Fast3D
             Public Property MaterialName As String = ""
             Public Property TextureFormat As String = ""
             Public Property IsScrollingTexture As Boolean = False
+            Public Property SelectDisplaylistMode As SelectDisplaylistMode = SelectDisplaylistMode.Automatic
 
             Public Overloads Function ToString() As String
-                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString}"
+                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{CByte(SelectDisplaylistMode)}"
             End Function
 
             Public Sub FromString(str As String)
@@ -65,9 +66,17 @@ Namespace Global.SM64Lib.Model.Fast3D
                 MaterialName = parts(0)
                 TextureFormat = parts(1)
                 If parts.Length > 2 Then IsScrollingTexture = Convert.ToBoolean(parts(2))
+                If parts.Length > 3 Then SelectDisplaylistMode = Convert.ToByte(parts(3))
             End Sub
 
         End Class
+
+        Public Enum SelectDisplaylistMode As Byte
+            Automatic
+            Solid
+            Alpha
+            Transparent
+        End Enum
 
     End Class
 

@@ -19,6 +19,8 @@ Namespace AssimpLoader
                 Dim texSlot As TextureSlot? = Nothing
                 Dim col4d As Color4D? = Nothing
 
+                newMat.Opacity = mat.Opacity
+
                 Select Case True
                     Case mat.HasTextureNormal
                         texSlot = mat.TextureNormal

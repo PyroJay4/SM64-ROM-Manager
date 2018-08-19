@@ -12,6 +12,7 @@ Public Class TextureGraphicFormatEditor
     Private obj3d As Object3D = Nothing
     Public Property TextureFormatSettings As SM64Lib.Model.Fast3D.TextureFormatSettings = Nothing
     Private loadingtexItemSettings As Boolean = False
+    Private hasInit As Boolean = False
 
     Public Sub New(obj As Object3D)
         Me.SuspendLayout()
@@ -21,7 +22,14 @@ Public Class TextureGraphicFormatEditor
         obj3d = obj
         AcceptButton = Button_SaveColsettings
 
+        For Each name As String In [Enum].GetNames(GetType(SM64Lib.Model.Fast3D.TextureFormatSettings.SelectDisplaylistMode))
+            ComboBoxEx_SelectDisplaylist.Items.Add(name)
+        Next
+        ComboBoxEx_SelectDisplaylist.SelectedIndex = 0
+
         UpdateAmbientColors()
+
+        hasInit = True
 
         Me.ResumeLayout()
     End Sub
@@ -106,6 +114,8 @@ Public Class TextureGraphicFormatEditor
 
             CheckBoxX_EnableTextureAnimation.Checked = curEntry.IsScrollingTexture
 
+            ComboBoxEx_SelectDisplaylist.SelectedIndex = CByte(curEntry.SelectDisplaylistMode)
+
             loadingtexItemSettings = False
 
             If Not found Then
@@ -133,13 +143,14 @@ Public Class TextureGraphicFormatEditor
                 Dim curEntry As SM64Lib.Model.Fast3D.TextureFormatSettings.Entry = TextureFormatSettings.GetEntry(mat.Key)
                 curEntry.IsScrollingTexture = CheckBoxX_EnableTextureAnimation.Checked
                 curEntry.TextureFormat = id
+                curEntry.SelectDisplaylistMode = ComboBoxEx_SelectDisplaylist.SelectedIndex
             Next
 
         End If
     End Sub
 
-    Private Sub ButtonItem_IsScollTex_Click() Handles CheckBoxX_EnableTextureAnimation.CheckedChanged
-        If Not loadingtexItemSettings Then
+    Private Sub ButtonItem_IsScollTex_Click() Handles CheckBoxX_EnableTextureAnimation.CheckedChanged, ComboBoxEx_SelectDisplaylist.SelectedIndexChanged
+        If hasInit AndAlso Not loadingtexItemSettings Then
             Dim selItem As ComboItem = ComboBox_ColType.SelectedItem
             Dim id As String = selItem.Tag
             UpdateTextureListItemSettings(id)

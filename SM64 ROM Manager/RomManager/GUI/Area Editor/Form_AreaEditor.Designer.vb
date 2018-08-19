@@ -1938,9 +1938,9 @@ Partial Class Form_AreaEditor
         Me.RibbonControl1.CanCustomize = False
         Me.RibbonControl1.CaptionVisible = True
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel1)
+        Me.RibbonControl1.Controls.Add(Me.RibbonPanel5)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel2)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel4)
-        Me.RibbonControl1.Controls.Add(Me.RibbonPanel5)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel3)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel6)
         Me.RibbonControl1.Dock = System.Windows.Forms.DockStyle.Top
@@ -2016,7 +2016,7 @@ Partial Class Form_AreaEditor
         Me.RibbonBar9.DragDropSupport = True
         Me.RibbonBar9.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer11})
         Me.RibbonBar9.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar9.Location = New System.Drawing.Point(553, 0)
+        Me.RibbonBar9.Location = New System.Drawing.Point(555, 0)
         Me.RibbonBar9.Name = "RibbonBar9"
         Me.RibbonBar9.Size = New System.Drawing.Size(182, 91)
         Me.RibbonBar9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -2085,7 +2085,7 @@ Partial Class Form_AreaEditor
         Me.RibbonBar18.DragDropSupport = True
         Me.RibbonBar18.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer14, Me.ItemContainer15})
         Me.RibbonBar18.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar18.Location = New System.Drawing.Point(431, 0)
+        Me.RibbonBar18.Location = New System.Drawing.Point(433, 0)
         Me.RibbonBar18.Name = "RibbonBar18"
         Me.RibbonBar18.Size = New System.Drawing.Size(122, 91)
         Me.RibbonBar18.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -2199,7 +2199,7 @@ Partial Class Form_AreaEditor
         Me.RibbonBar7.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar7.Location = New System.Drawing.Point(353, 0)
         Me.RibbonBar7.Name = "RibbonBar7"
-        Me.RibbonBar7.Size = New System.Drawing.Size(78, 91)
+        Me.RibbonBar7.Size = New System.Drawing.Size(80, 91)
         Me.RibbonBar7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar7.TabIndex = 4
         Me.RibbonBar7.Text = "Model"
@@ -2221,7 +2221,7 @@ Partial Class Form_AreaEditor
         Me.ButtonItem_ExportObjectModel.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonItem_ExportObjectModel.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_ExportObjectModel.SymbolSize = 26.0!
-        Me.ButtonItem_ExportObjectModel.Text = "Export Visual Map"
+        Me.ButtonItem_ExportObjectModel.Text = "Export Object Model"
         '
         'RibbonBar8
         '

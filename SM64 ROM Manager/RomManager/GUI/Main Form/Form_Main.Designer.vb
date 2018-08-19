@@ -911,6 +911,7 @@ Partial Class Form_Main
         '
         'Line_TM_Green
         '
+        Me.Line_TM_Green.BackColor = System.Drawing.Color.Transparent
         Me.Line_TM_Green.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.Line_TM_Green.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash
         Me.Line_TM_Green.ForeColor = System.Drawing.Color.YellowGreen
@@ -920,6 +921,7 @@ Partial Class Form_Main
         '
         'Line_TM_Warning1
         '
+        Me.Line_TM_Warning1.BackColor = System.Drawing.Color.Transparent
         Me.Line_TM_Warning1.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.Line_TM_Warning1.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash
         Me.Line_TM_Warning1.ForeColor = System.Drawing.Color.Orange
@@ -929,6 +931,7 @@ Partial Class Form_Main
         '
         'Line_TM_Warning2
         '
+        Me.Line_TM_Warning2.BackColor = System.Drawing.Color.Transparent
         Me.Line_TM_Warning2.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.Line_TM_Warning2.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash
         Me.Line_TM_Warning2.ForeColor = System.Drawing.Color.Red
@@ -1101,10 +1104,10 @@ Partial Class Form_Main
         Me.SuperTabControl_Main.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.SuperTabControl_Main.CanReorderTabs = False
         Me.SuperTabControl_Main.CloseButtonPosition = DevComponents.DotNetBar.eTabCloseButtonPosition.Right
+        Me.SuperTabControl_Main.Controls.Add(Me.SuperTabControlPanel_TM)
         Me.SuperTabControl_Main.Controls.Add(Me.SuperTabControlPanel_General)
         Me.SuperTabControl_Main.Controls.Add(Me.SuperTabControlPanel_LM)
         Me.SuperTabControl_Main.Controls.Add(Me.SuperTabControlPanel_MS)
-        Me.SuperTabControl_Main.Controls.Add(Me.SuperTabControlPanel_TM)
         resources.ApplyResources(Me.SuperTabControl_Main, "SuperTabControl_Main")
         Me.SuperTabControl_Main.ForeColor = System.Drawing.Color.Black
         Me.SuperTabControl_Main.Name = "SuperTabControl_Main"

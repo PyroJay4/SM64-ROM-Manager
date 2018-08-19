@@ -142,6 +142,11 @@ Public Class Form_Main
         StyleManager1.MetroColorParameters = Settings.StyleManager.MetroColorParams
         UpdateAmbientColors()
 
+        'Change Colors for Text Bounds Lines
+        Line_TM_Green.ForeColor = Color.Green
+        Line_TM_Warning1.ForeColor = Color.Orange
+        Line_TM_Warning2.ForeColor = Color.Red
+
         ResumeLayout()
     End Sub
 
