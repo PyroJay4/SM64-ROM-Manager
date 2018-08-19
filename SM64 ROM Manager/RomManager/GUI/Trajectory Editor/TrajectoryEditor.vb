@@ -122,6 +122,8 @@ Public Class TrajectoryEditor
     End Function
 
     Private Sub ButtonItem_AddNewTrajectory_Click(sender As Object, e As EventArgs)
+        MessageBoxEx.Show("Because not all trajectories were tested enought.<br/>Please be carfully and make a backup of your ROM in case that you will get an error when loading or saving the trajectories.<br/>If you get an error, please tell the developer.", "Not well tested Beta-Feature", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
         Dim name As String = sender.Tag
         Dim trac As New Trajectory
 
