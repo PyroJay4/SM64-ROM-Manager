@@ -232,6 +232,12 @@
     <Compile Include="RomManager\GUI\Area Editor\Managed3DObject.vb" />
     <Compile Include="RomManager\GUI\Area Editor\ManagedInstantWarp.vb" />
     <Compile Include="RomManager\GUI\Area Editor\ManagedWarp.vb" />
+    <Compile Include="RomManager\GUI\Main Form\ImportLevelDialog.Designer.vb">
+      <DependentUpon>ImportLevelDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\ImportLevelDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexEditor.Designer.vb">
       <DependentUpon>ScrollTexEditor.vb</DependentUpon>
     </Compile>
@@ -243,24 +249,6 @@
       <DependentUpon>TrajectoryEditor.vb</DependentUpon>
     </Compile>
     <Compile Include="RomManager\GUI\Trajectory Editor\TrajectoryEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\GUI\Tweaks\TweakScriptEditor.Designer.vb">
-      <DependentUpon>TweakScriptEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Tweaks\TweakScriptEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\GUI\Tweaks\TweakProfileEditor.Designer.vb">
-      <DependentUpon>TweakProfileEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Tweaks\TweakProfileEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\GUI\Tweaks\TweakViewer.Designer.vb">
-      <DependentUpon>TweakViewer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Tweaks\TweakViewer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Language Ressources\Form_Main\Form_Main_Resources.de.Designer.vb">
@@ -320,17 +308,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Modules\Extensions.vb" />
-    <Compile Include="RomManager\Modules\ImporterPresets\ImporterPreset.vb" />
-    <Compile Include="RomManager\Modules\ImporterPresets\ImporterPresetManager.vb" />
     <Compile Include="RomManager\Modules\OutputMidi.vb" />
-    <Compile Include="RomManager\Modules\PatchScript\InputDialog.Designer.vb">
-      <DependentUpon>InputDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\Modules\PatchScript\InputDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\Modules\PatchScript\PatchScript.vb" />
-    <Compile Include="RomManager\Modules\PatchScript\PatchScriptManager.vb" />
     <Compile Include="RomManager\GUI\Settings\LevelEditorInputManager.Designer.vb">
       <DependentUpon>LevelEditorInputManager.vb</DependentUpon>
     </Compile>
@@ -465,20 +443,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\ImportLevelDialog.resx">
+      <DependentUpon>ImportLevelDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexEditor.resx">
       <DependentUpon>ScrollTexEditor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Trajectory Editor\TrajectoryEditor.resx">
       <DependentUpon>TrajectoryEditor.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Tweaks\TweakProfileEditor.resx">
-      <DependentUpon>TweakProfileEditor.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Tweaks\TweakScriptEditor.resx">
-      <DependentUpon>TweakScriptEditor.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Tweaks\TweakViewer.resx">
-      <DependentUpon>TweakViewer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\Language Ressources\Global\Global_Ressources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -515,9 +487,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Script\ScriptDumper.resx">
       <DependentUpon>ScriptDumper.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Modules\PatchScript\InputDialog.resx">
-      <DependentUpon>InputDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Settings\LevelEditorInputManager.resx">
       <DependentUpon>LevelEditorInputManager.vb</DependentUpon>
@@ -638,6 +607,10 @@
     <ProjectReference Include="..\OpenGLRenderer\OpenGLRenderer.vbproj">
       <Project>{5e9f0b0a-f7b8-49a9-80fc-6dfe0d44cc84}</Project>
       <Name>OpenGLRenderer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatchScripts\PatchScripts.vbproj">
+      <Project>{c5de39f9-c9aa-48df-bd74-68a057012953}</Project>
+      <Name>PatchScripts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Publics\Publics.vbproj">
       <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>

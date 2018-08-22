@@ -75,6 +75,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImporterPresets\ImporterPreset.vb" />
+    <Compile Include="ImporterPresets\ImporterPresetManager.vb" />
     <Compile Include="ModelImporter.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +99,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TweakProfileEditor.Designer.vb">
+      <DependentUpon>TweakProfileEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TweakProfileEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ModelImporter.resx">
@@ -107,6 +115,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TweakProfileEditor.resx">
+      <DependentUpon>TweakProfileEditor.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +138,10 @@
     <ProjectReference Include="..\ModelConverterGUI\ModelConverterGUI.vbproj">
       <Project>{745e6a23-6957-45f8-9305-88ec5474d077}</Project>
       <Name>ModelConverterGUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatchScripts\PatchScripts.vbproj">
+      <Project>{c5de39f9-c9aa-48df-bd74-68a057012953}</Project>
+      <Name>PatchScripts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Publics\Publics.vbproj">
       <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>

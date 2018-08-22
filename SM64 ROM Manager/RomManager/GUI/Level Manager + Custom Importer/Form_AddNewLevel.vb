@@ -2,20 +2,16 @@
 Imports DevComponents.DotNetBar.Controls
 Imports SM64Lib
 
-Public Class Form_AddNewLevel
+Public Class LevelSelectorDialog
 
     Public rommgr As RomManager = Nothing
     Private FinishedLoading As Boolean = False
     Private lidtable As New LevelInfoDataTabelList
 
-    Public Sub New()
-
-        ' Dieser Aufruf ist für den Designer erforderlich.
+    Public Sub New(rommgr As RomManager)
         InitializeComponent()
-
-        ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
         UpdateAmbientColors()
-
+        Me.rommgr = rommgr
     End Sub
 
     Public ReadOnly Property SelectedLevel As LevelInfoDataTabelList.Level

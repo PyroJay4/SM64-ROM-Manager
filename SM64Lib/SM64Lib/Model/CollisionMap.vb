@@ -474,7 +474,7 @@ Namespace Global.SM64Lib.Model.Collision
             Y = 0
         End Sub
 
-        Public Sub New(SpecialBox As Level.SpecialBox, Y As Int16)
+        Public Sub New(SpecialBox As Levels.SpecialBox, Y As Int16)
             X1 = SpecialBox.X1
             X2 = SpecialBox.X2
             Z1 = SpecialBox.Z1

@@ -8,7 +8,7 @@ Imports DevComponents.DotNetBar
 Imports IniParser, IniParser.Model, IniParser.Parser
 Imports nUpdate.Updating
 Imports SettingsManager
-Imports SM64Lib.Level.Script.Commands
+Imports SM64Lib.Levels.Script.Commands
 Imports Publics
 Imports TextValueConverter
 Imports ModelConverterGUI
@@ -17,6 +17,7 @@ Imports S3DFileParser
 Imports AutoUpdaterDotNET
 Imports System.Resources
 Imports SM64_ROM_Manager.My.Resources
+Imports PatchScripts
 
 Public Class Form_Main
 
@@ -217,9 +218,11 @@ Public Class Form_Main
                     End If
                 End If
 
-                If Not newrommgr.CheckROM(Romfile) Then
+                If Not newrommgr.CheckROM() Then
                     StatusText = ""
                     Return
+                ElseIf newrommgr.IsSM64EditorMode Then
+                    Throw New SM64Lib.Exceptions.RomCompatiblityException("This ROM was used by the SM64 Editor and isn't compatible with the SM64 ROM Manager.")
                 End If
 
                 loadRecentROM = True
@@ -246,7 +249,6 @@ Public Class Form_Main
 
             loadRecentROM = False
             StatusText = ""
-
         End If
     End Sub
 

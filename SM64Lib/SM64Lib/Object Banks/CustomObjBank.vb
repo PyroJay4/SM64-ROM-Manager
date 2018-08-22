@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports SM64Lib.Geolayout
-Imports SM64Lib.Level.Script
-Imports SM64Lib.Level.Script.Commands
+Imports SM64Lib.Levels.Script
+Imports SM64Lib.Levels.Script.Commands
 
 Namespace Global.SM64Lib.ObjectBanks
 

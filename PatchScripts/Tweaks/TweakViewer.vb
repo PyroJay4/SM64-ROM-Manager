@@ -1,9 +1,11 @@
+Imports System.Drawing
 Imports System.IO
+Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Schedule
 Imports DevComponents.Editors
+Imports PatchScripts
 Imports Publics
-Imports SM64_ROM_Manager.PatchScripts
 
 Public Class TweakViewer
 

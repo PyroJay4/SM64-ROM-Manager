@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports DevComponents.DotNetBar
 Imports SM64Lib.Model
-Imports SM64Lib.Level
+Imports SM64Lib.Levels
 Imports SM64Lib
 Imports System.Numerics
 Imports S3DFileParser

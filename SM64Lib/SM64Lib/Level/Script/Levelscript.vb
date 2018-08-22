@@ -1,8 +1,8 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms
-Imports SM64Lib.Level.Script.Commands
+Imports SM64Lib.Levels.Script.Commands
 
-Namespace Global.SM64Lib.Level.Script
+Namespace Global.SM64Lib.Levels.Script
 
     Public Class Levelscript
         Inherits LevelscriptCommandCollection

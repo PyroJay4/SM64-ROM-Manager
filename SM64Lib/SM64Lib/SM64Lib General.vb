@@ -92,7 +92,7 @@ Namespace Global.SM64Lib
             ObjFile = uvaObjFile
         End Sub
 
-        Public Function FindWaterBoxFromSpecialBox(WaterBoxes() As Collision.BoxData, SpecialBoxes As Level.SpecialBox) As Collision.BoxData
+        Public Function FindWaterBoxFromSpecialBox(WaterBoxes() As Collision.BoxData, SpecialBoxes As Levels.SpecialBox) As Collision.BoxData
             For Each b In WaterBoxes
                 If b.X1 = SpecialBoxes.X1 And b.X2 = SpecialBoxes.X2 And b.Z1 = SpecialBoxes.Z1 And b.Z2 = SpecialBoxes.Z2 Then Return b
             Next
@@ -431,11 +431,11 @@ Namespace Global.SM64Lib
         Public Function GetCameraPresetIndexOfType(Type As Geolayout.CameraPresets) As Integer
             Return CInt(Type) - 1
         End Function
-        Public Function GetAreaBGIndexOfID(ID As Level.AreaBGs) As Integer
+        Public Function GetAreaBGIndexOfID(ID As Levels.AreaBGs) As Integer
             Return CInt(ID)
         End Function
-        Public Function GetAreaBGIDOfIndex(Index As Integer) As Level.AreaBGs
-            Return CType(Index, Level.AreaBGs)
+        Public Function GetAreaBGIDOfIndex(Index As Integer) As Levels.AreaBGs
+            Return CType(Index, Levels.AreaBGs)
         End Function
 
         Public Class Bits

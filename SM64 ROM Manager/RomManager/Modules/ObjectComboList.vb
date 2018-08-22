@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports Newtonsoft.Json.Linq
 Imports OpenGLCamera
-Imports SM64Lib.Level.Script, SM64Lib.Level.Script.Commands
+Imports SM64Lib.Levels.Script, SM64Lib.Levels.Script.Commands
 Imports TextValueConverter
 
 Public Class ObjectComboList

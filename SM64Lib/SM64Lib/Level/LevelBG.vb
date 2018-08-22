@@ -2,13 +2,14 @@
 Imports System.IO
 Imports N64Graphics
 
-Namespace Global.SM64Lib.Level
+Namespace Global.SM64Lib.Levels
 
     Public Class LevelBG
 
         Public Property ID As Geolayout.BackgroundIDs = Geolayout.BackgroundIDs.Ocean
         Private _ImageByts As Byte() = Nothing
         Public Property Enabled As Boolean = True
+        Public Property IsCustom As Boolean = False
 
         Private _Image As Bitmap = Nothing
         Public ReadOnly Property Image As Bitmap

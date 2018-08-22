@@ -1,4 +1,4 @@
-﻿Namespace Global.SM64Lib.Level
+﻿Namespace Global.SM64Lib.Levels
 
     Public Enum ObjectBank0x0C
         Disabled = 0

@@ -2,7 +2,7 @@
 Imports System.Numerics
 Imports SM64Lib.Script
 
-Namespace Global.SM64Lib.Level.Script
+Namespace Global.SM64Lib.Levels.Script
 
     Public Class ObjBParams
         Public Property BParam1 As Byte = 0

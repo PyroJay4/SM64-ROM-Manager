@@ -118,6 +118,10 @@ Public Class Settings
 
             files.Add(fileName)
 
+            If files.Count > 20 Then
+                files.RemoveAt(0)
+            End If
+
             IniSettings(section).RemoveAllKeys()
             For Each f As String In files
                 IniSettings(section).AddKey(f.GetHashCode, f)

@@ -2,7 +2,7 @@
 Imports System.Resources
 Imports DevComponents.DotNetBar
 Imports SM64_ROM_Manager.My.Resources
-Imports SM64Lib.Level
+Imports SM64Lib.Levels
 Imports SM64Lib.Music
 Imports TextValueConverter
 

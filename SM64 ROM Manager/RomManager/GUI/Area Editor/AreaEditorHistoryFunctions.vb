@@ -1,7 +1,7 @@
 ﻿Imports System.Reflection
 Imports OpenGLRenderer
-Imports SM64Lib.Level
-Imports SM64Lib.Level.Script
+Imports SM64Lib.Levels
+Imports SM64Lib.Levels.Script
 Imports SM64Lib.Model
 Imports SM64Lib.Model.Collision
 Imports SM64Lib.Model.Fast3D

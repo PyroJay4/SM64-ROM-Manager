@@ -3,7 +3,7 @@ Imports System.IO
 Imports System.Numerics
 Imports System.Windows.Forms
 Imports N64Graphics
-Imports SM64Lib.Level.ScrolTex
+Imports SM64Lib.Levels.ScrolTex
 Imports SM64Lib.Model.Fast3D
 
 Namespace Global.SM64Lib.SM64Convert
@@ -16,9 +16,7 @@ Namespace Global.SM64Lib.SM64Convert
 
             Public Property PtrStart As UInteger = 0
             Public Property PtrVertex As UInteger = 0
-            Public Property PtrSolid As UInteger = 0
-            Public Property PtrAlpha As UInteger = 0
-            Public Property PtrTrans As UInteger = 0
+            Public ReadOnly Property PtrGeometry As New List(Of Geolayout.Geopointer)
 
             Public ReadOnly Property ScrollingCommands As New List(Of ManagedScrollingTexture)
 
@@ -1475,7 +1473,7 @@ Namespace Global.SM64Lib.SM64Convert
 
             'Create Solid DL
             If createSolidDL Then
-                conRes.PtrSolid = CurSegAddress Or impstream.Position
+                conRes.PtrGeometry.Add(New Geolayout.Geopointer(Geolayout.Geolayer.Solid, CurSegAddress Or impstream.Position))
                 enabledVertexColors = False
 
                 ImpF3D("E7 00 00 00 00 00 00 00")
@@ -1545,7 +1543,7 @@ Namespace Global.SM64Lib.SM64Convert
 
             'Create Alpha DL
             If createAlphaDL Then
-                conRes.PtrAlpha = CurSegAddress Or impstream.Position
+                conRes.PtrGeometry.Add(New Geolayout.Geopointer(Geolayout.Geolayer.Alpha, CurSegAddress Or impstream.Position))
                 enabledVertexColors = False
 
                 ImpF3D("E7 00 00 00 00 00 00 00")
@@ -1604,7 +1602,7 @@ Namespace Global.SM64Lib.SM64Convert
 
             'Create Trans DL
             If createTransDL Then
-                conRes.PtrTrans = CurSegAddress Or impstream.Position
+                conRes.PtrGeometry.Add(New Geolayout.Geopointer(Geolayout.Geolayer.Transparent, CurSegAddress Or impstream.Position))
                 Dim resetBF As Boolean = False
                 Dim lastMat As Material = Nothing
                 enabledVertexColors = False

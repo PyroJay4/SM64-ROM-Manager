@@ -8,7 +8,7 @@ Imports SM64Lib.Geolayout
 Imports SM64Lib.Music
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
-Imports SM64Lib.Level.Script
+Imports SM64Lib.Levels.Script
 Imports SM64Lib.ObjectBanks
 
 Namespace Global.SM64Lib
@@ -16,7 +16,7 @@ Namespace Global.SM64Lib
     Public Class RomManager
 
         Public ReadOnly Property LevelInfoData As New LevelInfoDataTabelList
-        Public ReadOnly Property Levels As New Level.LevelList
+        Public ReadOnly Property Levels As New Levels.LevelList
         Public ReadOnly Property RomFile As String = ""
         Public ReadOnly Property IsSM64EditorMode As Boolean = False
         Public ReadOnly Property Settings As New ManagerSettings
@@ -234,8 +234,16 @@ Namespace Global.SM64Lib
                 Dim seg0x19 As SegmentedBank = SetSegBank(&H19, SwapInts.SwapUInt32(br.ReadUInt32), SwapInts.SwapUInt32(br.ReadUInt32))
                 Dim offset As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
 
-                Dim curLevel As New Level.Level
-                curLevel.Load(Me, ldi.ID, ldi.Index, offset)
+                Dim curLevel As Levels.Level
+
+                If IsSM64EditorMode Then
+                    curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64Editor)
+                    SM64Lib.Levels.LevelManager.LoadSM64EditorLevel(curLevel, Me, ldi.ID, ldi.Index, offset)
+                Else
+                    curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64RomManager)
+                    SM64Lib.Levels.LevelManager.LoadRomManagerLevel(curLevel, Me, ldi.ID, ldi.Index, offset)
+                End If
+
                 curLevel.LastRomOffset = seg0x19.RomStart
                 Levels.Add(curLevel)
             Next
@@ -247,45 +255,13 @@ Namespace Global.SM64Lib
             Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
             fs.Position = curOff
 
-            For Each lvl As Level.Level In Levels
+            For Each lvl As Levels.Level In Levels
                 lvl.LastRomOffset = fs.Position
-                SaveLevel(lvl, fs, curOff)
+                SM64Lib.Levels.LevelManager.SaveRomManagerLevel(lvl, Me, fs, &H1C, curOff)
+                HexRoundUp2(curOff)
             Next
 
             fs.Close()
-        End Sub
-
-        Public Sub SaveLevel(lvl As Level.Level, s As Stream, ByRef curOff As UInteger)
-            Dim bw As New BinaryWriter(s)
-            Dim lid = LevelInfoData.FirstOrDefault(Function(n) n.ID = lvl.LevelID)
-            Dim newBank0x19 As UInteger = curOff
-            Dim segBank As SegmentedBank = Nothing
-
-            If lvl.bank0x19 Is Nothing Then
-                segBank = SetSegBank(&H19, newBank0x19, ManagerSettings.defaultLevelscriptSize)
-                segBank.Data = New MemoryStream
-                segBank.Length = ManagerSettings.defaultLevelscriptSize
-            Else
-                segBank = SetSegBank(&H19, newBank0x19, newBank0x19 + lvl.bank0x19.Length)
-                segBank.Data = lvl.bank0x19.Data
-            End If
-
-            Dim firstBank0xE As UInteger = newBank0x19 + segBank.Length
-            SetSegBank(&HE, firstBank0xE, 0)
-
-            Dim fullLength As UInteger = 0
-            lvl.Save(Me, s, LevelInfoData.IndexOf(lid), &H1C, fullLength)
-
-            curOff += fullLength
-            HexRoundUp2(curOff)
-
-            'Write Pointer to Levelscript
-            s.Position = lid.Pointer
-            bw.Write(SwapInts.SwapInt32(&H100019))
-            bw.Write(SwapInts.SwapUInt32(GetSegBank(&H19).RomStart))
-            bw.Write(SwapInts.SwapUInt32(GetSegBank(&H19).RomEnd + Settings.AddRangeAddToLevelscript))
-            bw.Write(SwapInts.SwapUInt32(&H1900001C))
-            bw.Write(SwapInts.SwapUInt32(&H7040000))
         End Sub
 
         Public Sub LoadGlobalObjectBank()
@@ -335,15 +311,15 @@ Namespace Global.SM64Lib
         End Sub
 
         Public Sub AddLevel(LevelID As Byte)
-            Dim newLevel As New Level.Level(LevelID, LevelInfoData.GetByLevelID(LevelID).Index) 'GetLevelIndexFromID(LevelID)
+            Dim newLevel As New Levels.Level(LevelID, LevelInfoData.GetByLevelID(LevelID).Index) 'GetLevelIndexFromID(LevelID)
             Levels.Add(newLevel)
         End Sub
 
-        Public Sub RemoveLevel(level As Level.Level)
+        Public Sub RemoveLevel(level As Levels.Level)
             Levels.Remove(level)
             ResetLevelPointer(level.LevelID)
         End Sub
-        Public Sub ChangeLevelID(level As Level.Level, newLevelID As UShort, Optional EnableActSelector As Boolean? = Nothing)
+        Public Sub ChangeLevelID(level As Levels.Level, newLevelID As UShort, Optional EnableActSelector As Boolean? = Nothing)
             ResetLevelPointer(level.LevelID)
             level.LevelID = newLevelID
             If EnableActSelector IsNot Nothing Then level.ActSelector = EnableActSelector
@@ -367,8 +343,8 @@ Namespace Global.SM64Lib
             fs.Close()
         End Sub
 
-        Public Function CheckROM(FileName As String) As Boolean
-            Dim fi = New FileInfo(FileName)
+        Public Function CheckROM() As Boolean
+            Dim fi = New FileInfo(RomFile)
             Dim filelength As Long = fi.Length
 
             If fi.IsReadOnly Then
@@ -376,36 +352,33 @@ Namespace Global.SM64Lib
             End If
 
             If filelength = 8 * 1024 * 1024 Then
-                CreateROM(FileName)
-                PrepairROM(FileName)
+                CreateROM()
+                PrepairROM()
             End If
 
-            Dim br As New BinaryReader(New FileStream(FileName, FileMode.Open, FileAccess.Read))
+            Dim br As New BinaryReader(New FileStream(RomFile, FileMode.Open, FileAccess.Read))
             br.BaseStream.Position = &H1200000
             Dim tCheckData = SwapInts.SwapInt64(br.ReadInt64)
             br.BaseStream.Close()
 
-            _IsSM64EditorMode = False
-            If tCheckData = &H800800000E0000C4 Then
-                Throw New Exceptions.RomCompatiblityException("This ROM was used by the SM64 Editor and isn't compatible with the SM64 ROM Manager.")
-            End If
+            _IsSM64EditorMode = tCheckData = &H800800000E0000C4
 
             Return True
         End Function
 
-        Private Sub PrepairROM(Romfile As String)
+        Private Sub PrepairROM()
             'Patch things
             Dim proc As New Process
             With proc.StartInfo
                 .FileName = MyDataPath & "\Tools\ApplyPPF3.exe"
                 .UseShellExecute = False
-                .Arguments = String.Format("a ""{0}"" ""{1}""", Romfile, MyDataPath & "\Patchs\SM64_ROM_Manager.ppf")
+                .Arguments = String.Format("a ""{0}"" ""{1}""", RomFile, MyDataPath & "\Patchs\SM64_ROM_Manager.ppf")
                 .CreateNoWindow = True
             End With
             proc.Start()
             proc.WaitForExit()
 
-            Dim fs As New FileStream(Romfile, FileMode.Open, FileAccess.ReadWrite)
+            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
 
             'Write Custom Background Pointer
             fs.Position = &H1202500
@@ -428,37 +401,37 @@ Namespace Global.SM64Lib
 
             'Repaire patched music
             MusicList.NeedToSaveSequences = True
-            MusicList.Read(Romfile)
+            MusicList.Read(RomFile)
             MusicList.NeedToSaveSequenceNames = True
             MusicList.NeedToSaveNInsts = True
             MusicList.NeedToSaveMusicHackSettings = True
-            MusicList.Write(Romfile, 0)
+            MusicList.Write(RomFile, 0)
 
             'Update Checksum
-            PatchClass.UpdateChecksum(Romfile)
+            PatchClass.UpdateChecksum(RomFile)
         End Sub
 
-        Public Sub CreateROM(Romfile As String, Optional IsSecondTry As Boolean = False)
+        Public Sub CreateROM(Optional IsSecondTry As Boolean = False)
             'Extend to 64MB
             Dim proc As New Process
             With proc.StartInfo
                 .FileName = MyDataPath & "\Tools\sm64extend.exe"
                 .UseShellExecute = False
-                .Arguments = String.Format("-a 16 -f ""{0}"" ""{0}""", Romfile)
+                .Arguments = String.Format("-a 16 -f ""{0}"" ""{0}""", RomFile)
                 .CreateNoWindow = True
             End With
             proc.Start()
             proc.WaitForExit()
 
-            If New FileInfo(Romfile).Length = 8 * 1024 * 1024 Then
+            If New FileInfo(RomFile).Length = 8 * 1024 * 1024 Then
                 If IsSecondTry Then
                     Throw New Exception("Your ROM is invalid, it isn't possible to extend it.")
                 Else
-                    Dim fs As New FileStream(Romfile, FileMode.Open, FileAccess.Write)
+                    Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Write)
                     fs.Position = &H10
                     For Each b As String In ("63 5A 2B FF 8B 02 23 26").Split(" ") : fs.WriteByte(CByte("&H" & b)) : Next
                     fs.Close()
-                    CreateROM(Romfile, True)
+                    CreateROM(True)
                 End If
             End If
         End Sub

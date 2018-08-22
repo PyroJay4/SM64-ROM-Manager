@@ -1,8 +1,8 @@
 ﻿Imports System.Windows.Forms
 Imports OpenTK
 Imports S3DFileParser
-Imports SM64Lib.Level.Script
-Imports SM64Lib.Level.Script.Commands
+Imports SM64Lib.Levels.Script
+Imports SM64Lib.Levels.Script.Commands
 
 Public Enum CameraMode
     FLY = 0

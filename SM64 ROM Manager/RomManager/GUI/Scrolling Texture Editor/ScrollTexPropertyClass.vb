@@ -1,6 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports DevComponents.DotNetBar
-Imports SM64Lib.Level.ScrolTex
+Imports SM64Lib.Levels.ScrolTex
 
 Public Class ScrollTexPropertyClass
 

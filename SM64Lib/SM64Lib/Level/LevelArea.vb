@@ -1,13 +1,13 @@
 ﻿Imports System.IO
 Imports SM64Lib.Model
-Imports SM64Lib.Level.Script, SM64Lib.Level.Script.Commands
+Imports SM64Lib.Levels.Script, SM64Lib.Levels.Script.Commands
 Imports N64Graphics
 Imports System.Drawing.Imaging
 Imports System.Drawing
 Imports System.Windows.Forms
-Imports SM64Lib.Level.ScrolTex
+Imports SM64Lib.Levels.ScrolTex
 
-Namespace Global.SM64Lib.Level
+Namespace Global.SM64Lib.Levels
 
     Public Class LevelArea
 
@@ -29,6 +29,7 @@ Namespace Global.SM64Lib.Level
         Public ReadOnly Property WarpsForGame As New List(Of LevelscriptCommand)
         Public ReadOnly Property ShowMessage As New ShowMessage
         Public ReadOnly Property Background As New AreaBG
+        Public Property IsCustom As Boolean = False
         Public Property Enable2DCamera As Boolean = False
         Private _GettingAreaCollision As Boolean = False
         Public ReadOnly Property Fast3DBankRomStart As Integer

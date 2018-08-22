@@ -2,7 +2,7 @@ Imports DevComponents.AdvTree
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Rendering
 Imports PaintingControls
-Imports SM64Lib.Level.Script
+Imports SM64Lib.Levels.Script
 Imports SM64Lib.Script
 
 Public Class ScriptDumper(Of TCmd, eTypes)

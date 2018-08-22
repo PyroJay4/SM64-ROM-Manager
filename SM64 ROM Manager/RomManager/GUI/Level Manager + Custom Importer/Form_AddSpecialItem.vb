@@ -1,5 +1,5 @@
 ﻿Imports DevComponents.DotNetBar
-Imports SM64Lib.Level
+Imports SM64Lib.Levels
 Imports SM64Lib.Model
 
 Public Class Form_AddSpecialItem

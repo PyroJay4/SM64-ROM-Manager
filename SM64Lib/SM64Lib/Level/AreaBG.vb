@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing
 
-Namespace Global.SM64Lib.Level
+Namespace Global.SM64Lib.Levels
 
     Public Class AreaBG
 

@@ -20,11 +20,7 @@ Namespace Global.SM64Lib.Model.Fast3D
         ''' Creates a Fast3D Model from a Obj File
         ''' </summary>
         Public Sub FromModel(ObjSettings As ObjInputSettings, model As Object3D, Optional texFormatSettings As TextureFormatSettings = Nothing)
-            Dim tBankRomOffset As Integer = 0
-            Dim ilenght As Integer = 0
-            Dim pointerList As New List(Of Geopointer)
-
-            'Convert Model
+            'Setup Settings
             Dim conSettings As New SM64Convert.Fast3DWriter.ConvertSettings With {
                 .CenterModel = ObjSettings.CenterModel,
                 .Scale = ObjSettings.Scaling,
@@ -35,30 +31,16 @@ Namespace Global.SM64Lib.Model.Fast3D
                 .ForceDisplaylist = ObjSettings.ForceDisplaylist,
                 .Fog = ObjSettings.Fog}
 
+            'Convert Model
             Dim con As New SM64Convert.Fast3DWriter
-            Dim ms As New MemoryStream
+            ConvertResult = con.ConvertModel(Me, conSettings, model, texFormatSettings)
 
-            ConvertResult = con.ConvertModel(ms, conSettings, model, texFormatSettings)
+            'Fit to align
+            SetLength(HexRoundUp1(Length))
 
-            For i As Integer = ms.Position To HexRoundUp1(ms.Position)
-                ms.WriteByte(1)
-            Next
-
-            'Collect Pointers
-            If ConvertResult.PtrSolid <> 0 Then
-                pointerList.Add(New Geopointer(Geolayer.Solid, ConvertResult.PtrSolid))
-            End If
-            If ConvertResult.PtrAlpha <> 0 Then
-                pointerList.Add(New Geopointer(Geolayer.Alpha, ConvertResult.PtrAlpha))
-            End If
-            If ConvertResult.PtrTrans <> 0 Then
-                pointerList.Add(New Geopointer(Geolayer.Transparent, ConvertResult.PtrTrans))
-            End If
-            ilenght = ms.Length
-
-            'Read Fast3D
-            FromStream(ms, 0, &HE000000, 0, ilenght, pointerList.ToArray)
-            ms.Close()
+            'Copy Geopointer etc.
+            DLPointers = ConvertResult.PtrGeometry.ToArray
+            Fast3DBankStart = &HE000000
         End Sub
         Public Sub FromStream(s As Stream, BankRomStart As Integer, BankRamStart As Integer, Fast3DStart As Integer, Fast3DLength As Integer, DisplayListpointer() As Geopointer)
             DLPointers = DisplayListpointer

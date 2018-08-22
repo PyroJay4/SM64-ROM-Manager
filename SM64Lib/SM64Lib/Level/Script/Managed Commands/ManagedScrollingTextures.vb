@@ -1,8 +1,8 @@
 ﻿Imports System.ComponentModel
-Imports SM64Lib.Level.Script
-Imports SM64Lib.Level.Script.Commands
+Imports SM64Lib.Levels.Script
+Imports SM64Lib.Levels.Script.Commands
 
-Namespace Global.SM64Lib.Level.ScrolTex
+Namespace Global.SM64Lib.Levels.ScrolTex
 
     Public Class ManagedScrollingTexture
         Implements IManagedLevelscriptCommand

@@ -100,6 +100,7 @@
     <Compile Include="SM64Lib\Level\Enums.vb" />
     <Compile Include="SM64Lib\Level\Level.vb" />
     <Compile Include="SM64Lib\Level\LevelBG.vb" />
+    <Compile Include="SM64Lib\Level\LevelManager.vb" />
     <Compile Include="SM64Lib\Level\LevelNumberTable.vb" />
     <Compile Include="SM64Lib\Level\Script\Levelscript.vb" />
     <Compile Include="SM64Lib\Level\Script\LevelscriptCommandFunctions.vb" />

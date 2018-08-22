@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Globalization
 Imports System.Numerics
-Imports SM64Lib.Level
+Imports SM64Lib.Levels
 
 Namespace TypeConverters
 

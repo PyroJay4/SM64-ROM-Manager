@@ -1,8 +1,9 @@
 Imports System.CodeDom.Compiler
+Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 Imports FastColoredTextBoxNS
-Imports SM64_ROM_Manager.PatchScripts
+Imports PatchScripts
 
 Public Class TweakScriptEditor
 

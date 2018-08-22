@@ -7,8 +7,8 @@ Imports S3DFileParser
 Imports SettingsManager
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib
-Imports SM64Lib.Level.Script.Commands
-Imports SM64Lib.Level.ScrolTex
+Imports SM64Lib.Levels.Script.Commands
+Imports SM64Lib.Levels.ScrolTex
 Imports SM64Lib.Model
 Imports SM64Lib.Model.Collision
 
@@ -20,7 +20,7 @@ Partial Class Form_Main
     Private LM_LoadingArea As Boolean = False
     Private LM_LoadingLevel As Boolean = False
 
-    Private ReadOnly Property CurrentLevel As Level.Level
+    Private ReadOnly Property CurrentLevel As Levels.Level
         Get
             If ListBoxAdv_LM_Levels.SelectedIndex < 0 Then Return Nothing
             Return rommgr.Levels(ListBoxAdv_LM_Levels.SelectedIndex)
@@ -38,9 +38,9 @@ Partial Class Form_Main
             Return GetLevelIndexFromID(CurrentLevelID)
         End Get
     End Property
-    Private ReadOnly Property CurrentArea As Level.LevelArea
+    Private ReadOnly Property CurrentArea As Levels.LevelArea
         Get
-            Dim cl As Level.Level = CurrentLevel
+            Dim cl As Levels.Level = CurrentLevel
             Dim si As Integer = ListBoxAdv_LM_Areas.SelectedIndex
             If cl IsNot Nothing AndAlso si > -1 Then
                 Return cl.Areas(si)
@@ -63,7 +63,7 @@ Partial Class Form_Main
 
     Private Sub LM_ReloadLevelListBox()
         ListBoxAdv_LM_Levels.Items.Clear()
-        For Each e As Level.Level In rommgr.Levels
+        For Each e As Levels.Level In rommgr.Levels
             ListBoxAdv_LM_Levels.Items.Add(New ButtonItem With {.Text = rommgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = e.LevelID).Name})
         Next
         ListBoxAdv_LM_Levels.Refresh()
@@ -72,7 +72,7 @@ Partial Class Form_Main
         LM_LoadingAreaList = True
         With ListBoxAdv_LM_Areas
             .Items.Clear()
-            For Each a As Level.LevelArea In CurrentLevel.Areas
+            For Each a As Levels.LevelArea In CurrentLevel.Areas
                 .Items.Add(New ButtonItem With {.Text = Form_Main_Resources.Text_Area & " " & a.AreaID})
             Next
             If .Items.Count > 0 Then .SelectedItem = .Items(0)
@@ -82,7 +82,7 @@ Partial Class Form_Main
     End Sub
 
     Private Sub LM_AddNewLevel() Handles Button_LM_AddNewLevel.Click
-        Dim frm As New Form_AddNewLevel
+        Dim frm As New LevelSelectorDialog(rommgr)
         frm.rommgr = rommgr
 
         If frm.ShowDialog <> DialogResult.OK Then Return
@@ -96,7 +96,7 @@ Partial Class Form_Main
     End Sub
     Private Sub LM_AddNewArea() Handles Button_LM_AddArea.Click
         Dim ReamingIDs As New List(Of Byte)({&H1, &H2, &H3, &H4, &H5, &H6, &H7, &H0})
-        For Each a As Level.LevelArea In CurrentLevel.Areas
+        For Each a As Levels.LevelArea In CurrentLevel.Areas
             ReamingIDs.Remove(a.AreaID)
         Next
         If ReamingIDs.Count = 0 Then
@@ -105,7 +105,7 @@ Partial Class Form_Main
             Return
         End If
 
-        Dim tArea As New Level.LevelArea(ReamingIDs(0))
+        Dim tArea As New Levels.LevelArea(ReamingIDs(0))
         Dim frm As New MainModelConverter
         frm.CheckBoxX_ConvertCollision.Enabled = False
         frm.CheckBoxX_ConvertModel.Enabled = False
@@ -137,7 +137,7 @@ ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
     Private Function LM_GetLengthOfAreas(Optional ExcaptIndex As Integer = -1) As Long
         LM_GetLengthOfAreas = 0
         Dim tIndex As Integer = 0
-        For Each a As Level.LevelArea In CurrentLevel.Areas
+        For Each a As Levels.LevelArea In CurrentLevel.Areas
             If tIndex = ExcaptIndex Then Continue For
             LM_GetLengthOfAreas += a.AreaModel.Length
             tIndex += 1
@@ -146,13 +146,13 @@ ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
     End Function
 
     Private Sub LM_SaveObjectBank0D() Handles ComboBox_LM_OB0x0D.SelectedIndexChanged
-        If AllowSavingLevelSettings Then CurrentLevel?.ChangeObjectBank(CType(ComboBox_LM_OB0x0D.SelectedIndex, Level.ObjectBank0x0D))
+        If AllowSavingLevelSettings Then CurrentLevel?.ChangeObjectBank(CType(ComboBox_LM_OB0x0D.SelectedIndex, Levels.ObjectBank0x0D))
     End Sub
     Private Sub LM_SaveObjectBank0C() Handles ComboBox_LM_OB0x0C.SelectedIndexChanged
-        If AllowSavingLevelSettings Then CurrentLevel?.ChangeObjectBank(CType(ComboBox_LM_OB0x0C.SelectedIndex, Level.ObjectBank0x0C))
+        If AllowSavingLevelSettings Then CurrentLevel?.ChangeObjectBank(CType(ComboBox_LM_OB0x0C.SelectedIndex, Levels.ObjectBank0x0C))
     End Sub
     Private Sub LM_SaveObjectBank09() Handles ComboBox_LM_OB0x09.SelectedIndexChanged
-        If AllowSavingLevelSettings Then CurrentLevel?.ChangeObjectBank(CType(ComboBox_LM_OB0x09.SelectedIndex, Level.ObjectBank0x0E))
+        If AllowSavingLevelSettings Then CurrentLevel?.ChangeObjectBank(CType(ComboBox_LM_OB0x09.SelectedIndex, Levels.ObjectBank0x0E))
     End Sub
 
     Private Sub LM_SaveDefaultStartPosition() Handles NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged
@@ -178,6 +178,7 @@ ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
             With CurrentLevel.Background
                 .ID = GetBackgroundIDOfIndex(ComboBox_LM_LevelBG.SelectedIndex)
                 .Enabled = True
+                .IsCustom = ComboBox_LM_LevelBG.SelectedIndex = 1
             End With
         End If
     End Sub
@@ -191,18 +192,21 @@ ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
         Select Case ComboBoxEx_LM_BGMode.SelectedIndex
             Case 0 ' Game Image
                 ComboBox_LM_LevelBG.Visible = True
-                If Not CurrentLevel.Background.ID = Geolayout.BackgroundIDs.Custom Then
+                If CurrentLevel.Background.ID <> Geolayout.BackgroundIDs.Custom Then
                     ComboBox_LM_LevelBG.SelectedIndex = GetBackgroundIndexOfID(CurrentLevel.Background.ID)
                 Else
                     ComboBox_LM_LevelBG.SelectedIndex = GetBackgroundIndexOfID(Geolayout.BackgroundIDs.Ocean)
                 End If
                 CurrentLevel.Background.Enabled = True
+                CurrentLevel.Background.IsCustom = False
             Case 1 'Custom Image
                 Button_LM_LoadLevelBG.Visible = True
                 PictureBox_BGImage.Image = CurrentLevel.Background.GetImage
                 CurrentLevel.Background.Enabled = True
+                CurrentLevel.Background.IsCustom = True
             Case 2 'Disable
                 CurrentLevel.Background.Enabled = False
+                CurrentLevel.Background.IsCustom = False
         End Select
 
         Me.ResumeLayout()
@@ -214,9 +218,9 @@ ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
 
         Select Case ComboBoxEx_LM_AreaBG.SelectedIndex
             Case 0 'Levelbackground
-                CurrentArea.Background.Type = Level.AreaBGs.Levelbackground
+                CurrentArea.Background.Type = Levels.AreaBGs.Levelbackground
             Case 1 'Color
-                CurrentArea.Background.Type = Level.AreaBGs.Color
+                CurrentArea.Background.Type = Levels.AreaBGs.Color
                 ColorPickerButton_LM_BackgroundColor.Visible = True
                 ColorPickerButton_LM_BackgroundColor.SelectedColor = CurrentArea.Background.Color
         End Select
@@ -239,7 +243,8 @@ ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
             With CurrentLevel.Background
                 .SetImage(tBGImage)
                 PictureBox_BGImage.Image = .GetImage()
-                .ID = Geolayout.BackgroundIDs.Custom
+                .ID = Geolayout.BackgroundIDs.Desert
+                .IsCustom = True
                 .Enabled = True
             End With
 
@@ -249,7 +254,7 @@ ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
     Private Sub LM_SaveAreaBackgorund() Handles ColorPickerButton_LM_BackgroundColor.SelectedColorChanged
         If AllowSavingAreaSettings Then
             With CurrentArea.Background
-                .Type = Level.AreaBGs.Color
+                .Type = Levels.AreaBGs.Color
                 .Color = ColorPickerButton_LM_BackgroundColor.SelectedColor
             End With
         End If
@@ -312,9 +317,9 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
         End With
     End Sub
 
-    Private Sub LM_RemoveAllWaterBoxes(boxList As List(Of Level.SpecialBox))
-        Dim toremove() As Level.SpecialBox = boxList.Where(Function(n) n.Type = Level.SpecialBoxType.Water)
-        For Each box As Level.SpecialBox In toremove
+    Private Sub LM_RemoveAllWaterBoxes(boxList As List(Of Levels.SpecialBox))
+        Dim toremove() As Levels.SpecialBox = boxList.Where(Function(n) n.Type = Levels.SpecialBoxType.Water)
+        For Each box As Levels.SpecialBox In toremove
             boxList.Remove(box)
         Next
     End Sub
@@ -369,12 +374,12 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
         End With
         Return lvi
     End Function
-    Private Function LM_GetNewSpecialBoxListViewItem(bd As BoxData, sd As Level.SpecialBox, ItemNumber As Integer) As ListViewItem
+    Private Function LM_GetNewSpecialBoxListViewItem(bd As BoxData, sd As Levels.SpecialBox, ItemNumber As Integer) As ListViewItem
         Dim lvi As ListViewItem = Me.LM_GetNewSpecialBoxListViewItem
         LM_UpdateSpecialBoxListViewItem(lvi, bd, sd, ItemNumber)
         Return lvi
     End Function
-    Private Sub LM_UpdateSpecialBoxListViewItem(lvi As ListViewItem, bd As BoxData, sd As Level.SpecialBox, ItemNumber As Integer)
+    Private Sub LM_UpdateSpecialBoxListViewItem(lvi As ListViewItem, bd As BoxData, sd As Levels.SpecialBox, ItemNumber As Integer)
         With lvi
             .Tag = bd
             .Text = ItemNumber
@@ -384,7 +389,7 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
             .SubItems(4).Text = bd.X2
             .SubItems(5).Text = bd.Z2
             .SubItems(6).Text = bd.Y
-            .SubItems(7).Text = If(sd.Type = Level.SpecialBoxType.Water, If(sd.InvisibleWater, Form_Main_Resources.Text_Invisible, sd.WaterType.ToString), "-")
+            .SubItems(7).Text = If(sd.Type = Levels.SpecialBoxType.Water, If(sd.InvisibleWater, Form_Main_Resources.Text_Invisible, sd.WaterType.ToString), "-")
         End With
     End Sub
 
@@ -394,18 +399,18 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
         With CurrentLevel.Areas(ListBoxAdv_LM_Areas.SelectedIndex)
             For i As Integer = 0 To .AreaModel.Collision.SpecialBoxes.Count - 1
                 Dim bd As BoxData = .AreaModel.Collision.SpecialBoxes(i)
-                Dim typeToSelect As Level.SpecialBoxType = Level.SpecialBoxType.Water
+                Dim typeToSelect As Levels.SpecialBoxType = Levels.SpecialBoxType.Water
                 Dim lvgToSelect As ListViewGroup = Nothing
 
                 Select Case bd.Type
                     Case BoxDataType.Water
-                        typeToSelect = Level.SpecialBoxType.Water
+                        typeToSelect = Levels.SpecialBoxType.Water
                         lvgToSelect = lvg_SpecialBox_Water
                     Case BoxDataType.ToxicHaze
-                        typeToSelect = Level.SpecialBoxType.ToxicHaze
+                        typeToSelect = Levels.SpecialBoxType.ToxicHaze
                         lvgToSelect = lvg_SpecialBox_ToxicHaze
                     Case BoxDataType.Mist
-                        typeToSelect = Level.SpecialBoxType.Mist
+                        typeToSelect = Levels.SpecialBoxType.Mist
                         lvgToSelect = lvg_SpecialBox_Mist
                 End Select
 
@@ -422,7 +427,7 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
     Private Sub Button_LM_AddEditSpecial_Click(sender As Object, e As EventArgs) Handles Button_LM_EditSpecial.Click, Button_LM_AddSpecial.Click
         If LM_LoadingLevel Then Return
         Dim bd As BoxData = Nothing
-        Dim sb As Level.SpecialBox = Nothing
+        Dim sb As Levels.SpecialBox = Nothing
         Dim lvi As ListViewItem = Nothing
 
         With CurrentLevel.Areas(ListBoxAdv_LM_Areas.SelectedIndex)
@@ -432,31 +437,31 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
                 lvi = ListViewEx_LM_Specials.SelectedItems(0)
                 bd = lvi.Tag
                 If lvi.Group Is lvg_SpecialBox_Water Then
-                    sb = .SpecialBoxes.GetSpecialBox(bd, Level.SpecialBoxType.Water)
+                    sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.Water)
                 ElseIf lvi.Group Is lvg_SpecialBox_Mist Then
-                    sb = .SpecialBoxes.GetSpecialBox(bd, Level.SpecialBoxType.Mist)
+                    sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.Mist)
                 ElseIf lvi.Group Is lvg_SpecialBox_ToxicHaze Then
-                    sb = .SpecialBoxes.GetSpecialBox(bd, Level.SpecialBoxType.ToxicHaze)
+                    sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.ToxicHaze)
                 End If
             Else
                 bd = New BoxData
-                sb = New Level.SpecialBox
+                sb = New Levels.SpecialBox
                 lvi = LM_GetNewSpecialBoxListViewItem()
             End If
 
             frm = New Form_AddSpecialItem(sb, bd)
             If frm.ShowDialog <> DialogResult.OK Then Return
 
-            Dim newType As Level.SpecialBoxType
+            Dim newType As Levels.SpecialBoxType
             Select Case True
                 Case frm.CheckBoxX_Water.Checked
-                    newType = Level.SpecialBoxType.Water
+                    newType = Levels.SpecialBoxType.Water
                     lvi.Group = lvg_SpecialBox_Water
                 Case frm.CheckBoxX_Mist.Checked
-                    newType = Level.SpecialBoxType.Mist
+                    newType = Levels.SpecialBoxType.Mist
                     lvi.Group = lvg_SpecialBox_Mist
                 Case frm.CheckBoxX_ToxicHaze.Checked
-                    newType = Level.SpecialBoxType.ToxicHaze
+                    newType = Levels.SpecialBoxType.ToxicHaze
                     lvi.Group = lvg_SpecialBox_ToxicHaze
             End Select
 
@@ -510,18 +515,18 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
         With CurrentLevel.Areas(ListBoxAdv_LM_Areas.SelectedIndex)
             For Each lvi As ListViewItem In ListViewEx_LM_Specials.SelectedItems
                 Dim bd As BoxData = Nothing
-                Dim sb As Level.SpecialBox = Nothing
+                Dim sb As Levels.SpecialBox = Nothing
 
                 bd = lvi.Tag
                 .AreaModel.Collision.SpecialBoxes.Remove(bd)
 
                 Select Case True
                     Case lvi.Group.Equals(lvg_SpecialBox_Water)
-                        sb = .SpecialBoxes.GetSpecialBox(bd, Level.SpecialBoxType.Water)
+                        sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.Water)
                     Case lvi.Group.Equals(lvg_SpecialBox_Mist)
-                        sb = .SpecialBoxes.GetSpecialBox(bd, Level.SpecialBoxType.Mist)
+                        sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.Mist)
                     Case lvi.Group.Equals(lvg_SpecialBox_ToxicHaze)
-                        sb = .SpecialBoxes.GetSpecialBox(bd, Level.SpecialBoxType.ToxicHaze)
+                        sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.ToxicHaze)
                 End Select
 
                 .SpecialBoxes.Remove(sb)
@@ -619,9 +624,9 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
 
             'Area Background
             Select Case .Background.Type
-                Case Level.AreaBGs.Levelbackground
+                Case Levels.AreaBGs.Levelbackground
                     ComboBoxEx_LM_AreaBG.SelectedIndex = 0
-                Case Level.AreaBGs.Color
+                Case Levels.AreaBGs.Color
                     ComboBoxEx_LM_AreaBG.SelectedIndex = 1
                     ColorPickerButton_LM_BackgroundColor.SelectedColor = .Background.Color
             End Select
@@ -676,7 +681,7 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
         With CurrentLevel.Background
             If Not .Enabled Then
                 ComboBoxEx_LM_BGMode.SelectedIndex = 2
-            ElseIf .ID = Geolayout.BackgroundIDs.Custom Then
+            ElseIf .HasImage Then
                 ComboBoxEx_LM_BGMode.SelectedIndex = 1
             Else
                 ComboBoxEx_LM_BGMode.SelectedIndex = 0
@@ -701,7 +706,7 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
     End Sub
 
     Private Sub ButtonItem20_Click(sender As Object, e As EventArgs) Handles ButtonItem20.Click
-        Dim frm As New Form_AddNewLevel
+        Dim frm As New LevelSelectorDialog(rommgr)
         frm.rommgr = rommgr
         frm.Button_Add.Text = Global_Ressources.Button_Okay
         frm.Text = Form_Main_Resources.Text_ChangeReplacingLevel
@@ -759,7 +764,7 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
 
     Private Sub ButtonItem15_Click(sender As Object, e As EventArgs) Handles ButtonItem15.Click
         If CurrentLevel IsNot Nothing Then
-            Dim sd As New ScriptDumper(Of Level.Script.LevelscriptCommand, Level.Script.LevelscriptCommandTypes)
+            Dim sd As New ScriptDumper(Of Levels.Script.LevelscriptCommand, Levels.Script.LevelscriptCommandTypes)
             sd.Script = CurrentLevel.Levelscript
             sd.ShowDialog()
         End If
@@ -767,7 +772,7 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
 
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
         If CurrentArea IsNot Nothing Then
-            Dim frm As New ScriptDumper(Of Level.Script.LevelscriptCommand, Level.Script.LevelscriptCommandTypes)
+            Dim frm As New ScriptDumper(Of Levels.Script.LevelscriptCommand, Levels.Script.LevelscriptCommandTypes)
             frm.Script = CurrentArea.Levelscript
             frm.ShowDialog()
         End If

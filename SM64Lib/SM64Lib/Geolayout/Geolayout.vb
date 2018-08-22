@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Imports SM64Lib.Geolayout.Script, SM64Lib.Geolayout.Script.Commands
-Imports SM64Lib.Level
+Imports SM64Lib.Levels
 
 Namespace Global.SM64Lib.Geolayout
     Public Class Geolayout

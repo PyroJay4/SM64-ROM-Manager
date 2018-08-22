@@ -2,7 +2,7 @@
 
 Namespace ImporterPresets
 
-    Public Class PresetManager
+    Public Class ImporterProfileManager
 
         Public Sub Save(profile As ImporterProfile, dir As String)
             Dim psmgr As New PatchScripts.PatchingManager
@@ -14,14 +14,16 @@ Namespace ImporterPresets
                 Dim xpreset As XElement = <preset name=<%= preset.Name %>>
                                               <description><%= preset.Description %></description>
                                               <script></script>
-                                              <max_length><%= preset.MaxLength %></max_length>
-                                              <rom_address><%= preset.RomAddress %></rom_address>
-                                              <ram_address><%= preset.RamAddress %></ram_address>
+                                              <max_length><%= preset.MaxLength.ToString("X") %></max_length>
+                                              <rom_address><%= preset.RomAddress.ToString("X") %></rom_address>
+                                              <ram_address><%= preset.RamAddress.ToString("X") %></ram_address>
                                           </preset>
 
-                Dim xscript As XElement = psmgr.ScriptToXElement(preset.Script)
-                xscript.Name = "script"
-                xpreset.Add(xscript)
+                If preset.Script IsNot Nothing Then
+                    Dim xscript As XElement = psmgr.ScriptToXElement(preset.Script)
+                    xscript.Name = "script"
+                    xpreset.Add(xscript)
+                End If
 
                 Dim xcolpointer As XElement = <collision_pointers></collision_pointers>
                 For Each colpointer As Integer In preset.CollisionPointers
@@ -48,7 +50,7 @@ Namespace ImporterPresets
         Public Function Read(fileName As String) As ImporterProfile
             Dim profile As New ImporterProfile
             Dim xml As XDocument = XDocument.Load(fileName)
-            Dim mainNode As XElement = xml.Elements.FirstOrDefault(Function(n) n.Name = "m64tweak")
+            Dim mainNode As XElement = xml.Elements.FirstOrDefault(Function(n) n.Name = "m64custom")
 
             profile.FileName = fileName
 
@@ -75,7 +77,7 @@ Namespace ImporterPresets
                         mainPreset.RomAddress = Convert.ToInt32(element.Value, 16)
 
                     Case "limit"
-                        mainPreset.MaxLength = Convert.ToInt32(element.Value, 16)
+                        mainPreset.MaxLength = Convert.ToInt32(element.Value, 16) - mainPreset.RomAddress
 
                     Case "colpointer"
                         mainPreset.CollisionPointers.Add(Convert.ToInt32(element.Value, 16))
@@ -91,6 +93,7 @@ Namespace ImporterPresets
                         script.Name = "Extra Data"
                         script.Type = PatchScripts.ScriptType.TweakScript
                         script.Script = element.Value
+                        mainPreset.Script = script
 
                     Case "preset"
                         mainPreset = Nothing
@@ -107,6 +110,10 @@ Namespace ImporterPresets
                     mainPreset.CollisionPointers.Clear()
                 End If
                 profile.Presets.Add(mainPreset)
+            End If
+
+            If profile.Name = "" Then
+                profile.Name = Path.GetFileNameWithoutExtension(fileName)
             End If
 
             Return profile

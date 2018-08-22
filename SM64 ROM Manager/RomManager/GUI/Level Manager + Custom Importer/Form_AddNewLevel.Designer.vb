@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form_AddNewLevel
+Partial Class LevelSelectorDialog
     Inherits DevComponents.DotNetBar.OfficeForm
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
@@ -22,7 +22,7 @@ Partial Class Form_AddNewLevel
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_AddNewLevel))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LevelSelectorDialog))
         Me.Button_Cancel = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
         Me.Button_Add = New DevComponents.DotNetBar.ButtonX()

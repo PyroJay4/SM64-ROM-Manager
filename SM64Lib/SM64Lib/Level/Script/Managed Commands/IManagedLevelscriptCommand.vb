@@ -1,6 +1,6 @@
-﻿Imports SM64Lib.Level.Script
+﻿Imports SM64Lib.Levels.Script
 
-Namespace Global.SM64Lib.Level.Script
+Namespace Global.SM64Lib.Levels.Script
 
     Public Interface IManagedLevelscriptCommand
 

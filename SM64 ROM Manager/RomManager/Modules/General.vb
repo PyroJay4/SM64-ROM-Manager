@@ -5,7 +5,7 @@ Imports SettingsManager
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib
 Imports SM64Lib.Geolayout
-Imports SM64Lib.Level
+Imports SM64Lib.Levels
 Imports SM64Lib.Model.Fast3D.DisplayLists
 Imports SM64Lib.Patching
 Imports SM64Lib.Text

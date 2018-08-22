@@ -2,8 +2,8 @@
 Imports System.Numerics
 Imports OpenGLRenderer
 Imports SM64Lib.General
-Imports SM64Lib.Level.Script
-Imports SM64Lib.Level.Script.Commands
+Imports SM64Lib.Levels.Script
+Imports SM64Lib.Levels.Script.Commands
 Imports System.ComponentModel
 Imports System.Globalization
 Imports SM64_ROM_Manager.TypeConverters

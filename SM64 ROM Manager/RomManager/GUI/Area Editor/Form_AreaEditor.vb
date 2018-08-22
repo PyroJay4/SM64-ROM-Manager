@@ -3,8 +3,8 @@ Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 Imports OpenTK
 Imports TextValueConverter
-Imports SM64Lib.Level
-Imports SM64Lib.Level.Script, SM64Lib.Level.Script.Commands
+Imports SM64Lib.Levels
+Imports SM64Lib.Levels.Script, SM64Lib.Levels.Script.Commands
 Imports OpenTK.Graphics.OpenGL
 Imports OpenGLRenderer
 Imports SM64Lib.Geolayout.Script.Commands

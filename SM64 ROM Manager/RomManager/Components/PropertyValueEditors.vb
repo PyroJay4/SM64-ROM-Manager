@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
-Imports SM64Lib.Level
+Imports SM64Lib.Levels
 
 Namespace PropertyValueEditors
 

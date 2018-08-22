@@ -1,21 +1,21 @@
 ﻿Public Class ListViewItemSpecial
     Inherits ListViewItem
 
-    Private _Box As SM64Lib.Level.SpecialBox
-    Public ReadOnly Property Box As SM64Lib.Level.SpecialBox
+    Private _Box As SM64Lib.Levels.SpecialBox
+    Public ReadOnly Property Box As SM64Lib.Levels.SpecialBox
         Get
             Return _Box
         End Get
     End Property
 
-    Public Sub New(BoxData As SM64Lib.Level.SpecialBox, WaterData As SM64Lib.Model.Collision.BoxData, ItemNumber As Integer)
+    Public Sub New(BoxData As SM64Lib.Levels.SpecialBox, WaterData As SM64Lib.Model.Collision.BoxData, ItemNumber As Integer)
         For i As Integer = 0 To 7
             Me.SubItems.Add(New ListViewSubItem)
         Next
         AktuallisiereDaten(BoxData, WaterData, ItemNumber)
     End Sub
 
-    Public Sub AktuallisiereDaten(SpecialData As SM64Lib.Level.SpecialBox, BoxData As SM64Lib.Model.Collision.BoxData, Optional ItemNumber As Integer = 0)
+    Public Sub AktuallisiereDaten(SpecialData As SM64Lib.Levels.SpecialBox, BoxData As SM64Lib.Model.Collision.BoxData, Optional ItemNumber As Integer = 0)
         _Box = SpecialData
 
         If ItemNumber > 0 Then Me.Text = ItemNumber
@@ -25,6 +25,6 @@
         SubItems(4).Text = BoxData.X2
         SubItems(5).Text = BoxData.Z2
         SubItems(6).Text = BoxData.Y
-        SubItems(7).Text = If(_Box.Type = SM64Lib.Level.SpecialBoxType.Water, If(_Box.InvisibleWater, "Invisible", _Box.WaterType.ToString), "-")
+        SubItems(7).Text = If(_Box.Type = SM64Lib.Levels.SpecialBoxType.Water, If(_Box.InvisibleWater, "Invisible", _Box.WaterType.ToString), "-")
     End Sub
 End Class
