@@ -12,6 +12,7 @@ Imports SM64Lib.Text
 
 Friend Module General
 
+    Public BehaviorInfos As New BehaviorInfoList
     Public ObjectCombos As New ObjectComboList
     Public PatchClass As New SM64PatchClass
     Public HasToolkitInit As Boolean = False

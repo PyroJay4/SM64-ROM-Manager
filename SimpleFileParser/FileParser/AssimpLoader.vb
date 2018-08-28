@@ -14,6 +14,18 @@ Namespace AssimpLoader
 
             daeMdl = ac.ImportFile(fileName, PostProcessPreset.TargetRealTimeMaximumQuality Or PostProcessSteps.Triangulate)
 
+            For Each et As EmbeddedTexture In daeMdl.Textures
+                If et.HasCompressedData Then
+                    Dim newMat As New Material
+
+                    Dim ms As New MemoryStream(et.CompressedData)
+                    newMat.Image = Image.FromStream(ms)
+                    ms.Close()
+
+                    newObj.Materials.Add("tex_" & daeMdl.Textures.IndexOf(et), newMat)
+                End If
+            Next
+
             For Each mat As Assimp.Material In daeMdl.Materials
                 Dim newMat As New Material
                 Dim texSlot As TextureSlot? = Nothing
@@ -81,7 +93,12 @@ Namespace AssimpLoader
             Dim dicVertexColors As New Dictionary(Of Color4D, VertexColor)
 
             For Each m As Assimp.Mesh In daeMdl.Meshes
-                Dim curMat As Material = newObj.Materials.ElementAt(m.MaterialIndex).Value
+                Dim curMat As Material
+                If m.MaterialIndex > -1 AndAlso newObj.Materials.Count > m.MaterialIndex Then
+                    curMat = newObj.Materials.ElementAt(m.MaterialIndex).Value
+                Else
+                    curMat = Nothing
+                End If
 
                 For Each n As Vector3D In m.Normals
                     If Not dicNormals.ContainsKey(n) Then
@@ -169,7 +186,7 @@ Namespace AssimpLoader
                                     newPoint.Normal = dicNormals(m.Normals(index))
                                 End If
 
-                                If channelIndicies.ContainsKey(curMat) Then
+                                If curMat IsNot Nothing AndAlso channelIndicies.ContainsKey(curMat) Then
                                     Dim tkey As Integer = channelIndicies(curMat)
 
                                     If m.HasTextureCoords(tkey) Then

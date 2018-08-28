@@ -73,7 +73,10 @@ Partial Class Form_Main
         With ListBoxAdv_LM_Areas
             .Items.Clear()
             For Each a As Levels.LevelArea In CurrentLevel.Areas
-                .Items.Add(New ButtonItem With {.Text = Form_Main_Resources.Text_Area & " " & a.AreaID})
+                Dim btn As New ButtonItem
+                btn.Text = Form_Main_Resources.Text_Area & " " & a.AreaID
+                AddHandler btn.MouseUp, Sub() Button_LM_AreaEditor.Popup(Cursor.Position)
+                .Items.Add(btn)
             Next
             If .Items.Count > 0 Then .SelectedItem = .Items(0)
         End With
@@ -790,6 +793,18 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
         If CurrentArea IsNot Nothing Then
             Dim editor As New ScrollTexEditor(CurrentArea)
             editor.ShowDialog()
+        End If
+    End Sub
+
+    Private Sub ButtonItem26_Click(sender As Object, e As EventArgs) Handles ButtonItem26.Click
+        Dim ofd As New OpenFileDialog With {.Filter = "SM64 ROMs (*.z64)|*.z64"}
+        If ofd.ShowDialog = DialogResult.OK Then
+            Dim frm As New ImportLevelDialog(rommgr)
+            If frm.LoadROM(ofd.FileName) Then
+                If frm.ShowDialog = DialogResult.OK Then
+                    LM_ReloadLevelListBox()
+                End If
+            End If
         End If
     End Sub
 

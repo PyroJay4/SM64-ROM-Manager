@@ -21,6 +21,7 @@ Imports System.Reflection
 Imports DevComponents.Editors
 Imports SM64_ROM_Manager.PropertyValueEditors
 Imports Publics
+Imports DevComponents.AdvTree
 
 Public Class Form_AreaEditor
 
@@ -78,8 +79,13 @@ Public Class Form_AreaEditor
     Private backupCurrentAreaIndex As Integer = -1
     Private lastChangedPropertyName As String = ""
 
+    'Components
+    Private WithEvents PropertyTree As AdvTree
+    Private WithEvents CbEditorBParam1 As ContentSelectorEditor.ComboBoxEditor = Nothing
+    Private WithEvents CbEditorBParam2 As ContentSelectorEditor.ComboBoxEditor = Nothing
+
     'Constants
-    Private ReadOnly warpBehavIDs() = {&H13000720, &H13000AFC, &H13001C34, &H1300075C, &H13002F8C, &H13002F88, &H13002F90, &H13002F70, &H13002F74, &H13002F64, &H13002F6C, &H130056A4, &H13002F78, &H13002F94, &H13000780, &H13002F80, &H13002F7C, &H130007A0}
+    'Private ReadOnly warpBehavIDs() = {&H13000720, &H13000AFC, &H13001C34, &H1300075C, &H13002F8C, &H13002F88, &H13002F90, &H13002F70, &H13002F74, &H13002F64, &H13002F6C, &H130056A4, &H13002F78, &H13002F94, &H13000780, &H13002F80, &H13002F7C, &H130007A0}
 
     Private ReadOnly Property cArea As LevelArea
         Get
@@ -240,6 +246,19 @@ Public Class Form_AreaEditor
         areaIdToLoad = AreaID
         Me.levelID = LevelID
 
+        'Add B. Param Editors to Property Grid
+        Dim bpeditor As New ContentSelectorEditor
+        AddHandler bpeditor.EditorCreated, AddressOf BParamEditorCreated
+        Dim bp1PropSet As New PropertySettings("BParam1")
+        Dim bp2PropSet As New PropertySettings("BParam2")
+        bp1PropSet.ValueEditor = bpeditor
+        bp2PropSet.ValueEditor = bpeditor
+        AdvPropertyGrid1.PropertySettings.Add(bp1PropSet)
+        AdvPropertyGrid1.PropertySettings.Add(bp2PropSet)
+
+        'Get the PropertyTree of AdvPropertyGrid1
+        PropertyTree = AdvPropertyGrid1.PropertyTree
+
         'Update Ambient Colors
         UpdateAmbientColors()
 
@@ -268,7 +287,8 @@ Public Class Form_AreaEditor
     Private Async Sub Form_AreaEditor_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         glControl1.Enabled = True
 
-        If ObjectCombos.Count = 0 Then ObjectCombos.ReadFromFile(Publics.MyDataPath & "\Area Editor\Object Combos.json")
+        If Not BehaviorInfos.Any Then BehaviorInfos.ReadFromFile(MyDataPath & "\Area Editor\Behavior IDs.json")
+        If Not ObjectCombos.Any Then ObjectCombos.ReadFromFile(MyDataPath & "\Area Editor\Object Combos.json")
         Await LoadObjectModels()
         LoadOtherObjectCombos()
 
@@ -282,8 +302,9 @@ Public Class Form_AreaEditor
     End Sub
 
     Private Sub LoadOtherObjectCombos()
+        Dim modelIDsToLoad As Byte() = {0, &H96, &H95, &HA8, &HA5, &HA6, &HA7, &HA3, &H74, &H7A, &H79, &H7C, &HA4, &H90, &H91, &H94, &HA2, &HAA, &HB9, &HBA, &H8F, &H9F, &HBB, &H9C, &HA1, &H8E, &HE0, &H9E, &HA0, &H75, &H76, &H77, &H85, &H86, &H87, &H88, &HC8, &HCC, &HCB, &HD4, &HD7, &HD8, &HDB, &HCD, &H8A, &H8B, &H8C, &HC2, &HCF, &HCA, &H81, &H82, &H83, &H89, &HC0, &H84, &HBE, &HD9, &HDA, &HBC, &HC3, &HC9, &HB4, &H7F, &H80, &H78, &HDC, &HDF, &HE1}
         For Each obj As ObjectComboList.ObjectCombo In ObjectCombos
-            If (obj.ModelID = 0 OrElse obj.Name.Contains("[MOP")) AndAlso Not myObjectCombos.Contains(obj) Then
+            If (modelIDsToLoad.Contains(obj.ModelID) OrElse obj.Name.Contains("[MOP")) AndAlso Not myObjectCombos.Contains(obj) Then
                 myObjectCombos.Add(obj)
             End If
         Next
@@ -2666,6 +2687,7 @@ Public Class Form_AreaEditor
             Case "ObjectCombo", "ModelID", "BehaviorID"
 
                 CheckObjCombo()
+                AdvPropertyGrid1.RefreshPropertyValues()
                 UpdateOrbitCamera()
                 glControl1.Invalidate()
 
@@ -2747,22 +2769,18 @@ Public Class Form_AreaEditor
                 End If
                 e.IsConverted = True
 
-            Case GetType(System.Byte), GetType(System.SByte), GetType(Int16), GetType(UInt16), GetType(Int32), GetType(UInt32)
-                If e.PropertyName = "BehaviorID" Then
-                    e.StringValue = TextFromValue(e.TypedValue, If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1))
-                    e.IsConverted = True
-                Else
-                    e.StringValue = TextFromValue(e.TypedValue)
-                    e.IsConverted = True
+            Case GetType(System.Byte), GetType(SByte), GetType(Int16), GetType(UInt16), GetType(Int32), GetType(UInt32)
+                If Not ({"BParam1", "BParam2"}).Contains(e.PropertyName) Then
+                    If e.PropertyName = "BehaviorID" Then
+                        e.StringValue = TextFromValue(e.TypedValue, If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1))
+                        e.IsConverted = True
+                    Else
+                        e.StringValue = TextFromValue(e.TypedValue)
+                        e.IsConverted = True
+                    End If
                 End If
 
         End Select
-    End Sub
-
-    Private Sub SavePropertyValue(value As Object, propertyName As String)
-        For Each obj As Object In AdvPropertyGrid1.SelectedObjects
-            obj.GetType.GetProperty(propertyName).SetValue(obj, value)
-        Next
     End Sub
 
     Private Sub ButtonItem_CopyObjCmdAsHex_Click(sender As Object, e As EventArgs) Handles ButtonItem_CopyObjCmdAsHex.Click, ButtonItem_CopyWarpCmdAsHex.Click
@@ -2781,6 +2799,61 @@ Public Class Form_AreaEditor
         Next
 
         Clipboard.SetText(txt.TrimStart(" "))
+    End Sub
+
+    Private Sub BParamEditorCreated(propertyDescriptor As PropertyDescriptor, editor As ContentSelectorEditor.ComboBoxEditor)
+        Select Case propertyDescriptor.Name
+            Case "BParam1"
+                CbEditorBParam1 = editor
+            Case "BParam2"
+                CbEditorBParam2 = editor
+        End Select
+    End Sub
+
+    Private Sub ProvideBParamContentList(sender As Object, values As Dictionary(Of String, Byte)) Handles CbEditorBParam1.NeedValues, CbEditorBParam2.NeedValues
+        Dim obj As Managed3DObject = SelectedObject
+        Dim i As Byte
+
+        If sender Is CbEditorBParam1 Then
+            i = 1
+        ElseIf sender Is CbEditorBParam2 Then
+            i = 2
+        Else
+            i = 0
+        End If
+
+        If i > 0 Then
+            Dim info As BehaviorInfoList.BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehaviorID)
+            If info IsNot Nothing Then
+                Dim param As BehaviorInfoList.BParam = info.GetValue($"BParam{i}")
+
+                values.Clear()
+
+                For Each kvp As KeyValuePair(Of String, Byte) In param.Values
+                    values.Add(kvp.Key, kvp.Value)
+                Next
+            End If
+        End If
+    End Sub
+
+    Private Sub AdvPropertyGrid1_PropertyTree_Paint(sender As Object, e As PaintEventArgs) Handles PropertyTree.Paint
+        Dim obj As Managed3DObject = SelectedObject
+
+        For i As Byte = 1 To 4
+            Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
+            If n IsNot Nothing Then
+                If n.TagString = "" Then
+                    Dim info As BehaviorInfoList.BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehaviorID)
+                    Dim param As BehaviorInfoList.BParam = info.GetValue($"BParam{i}")
+                    If param.Name <> "" Then
+                        n.Text = param.Name
+                        n.TagString = param.Name
+                    End If
+                ElseIf n.Tag <> n.Text Then
+                    n.Text = n.Tag
+                End If
+            End If
+        Next
     End Sub
 
 #End Region

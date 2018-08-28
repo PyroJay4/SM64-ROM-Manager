@@ -41,6 +41,7 @@ Namespace Global.SM64Lib.Music
             Dim tNames() As String = ReadSequenceNames(s, &H7F1000, musicCount)
 
             'Read Sequences
+            Me.Clear()
             Me.AddRange(ReadSequences(s, addrMusicStart, musicCount, tNInstList, tNames))
 
             'Check for Music Hack

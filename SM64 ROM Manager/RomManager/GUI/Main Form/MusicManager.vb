@@ -18,7 +18,7 @@ Partial Class Form_Main
         'Dim IsIndex23 = (cIndex < &H23)
         GroupBox_MS_SelectedSequence.Enabled = Not IsIndex0 'AndAlso Not IsIndex10
         GroupBox_MS_SeqProperties.Enabled = Not IsIndex0 'AndAlso Not IsIndex10
-        'ButtonX_MS_RemoveSequence.Enabled = Not IsIndex23
+        ButtonX_MS_RemoveSequence.Enabled = Not IsIndex0 'Not IsIndex23
 
         If Not IsNoIndex Then
             'Load Sequence Informations

@@ -1,7 +1,7 @@
 ﻿Namespace Global.SM64Lib.Levels
 
     Public Enum ObjectBank0x0C
-        Disabled = 0
+        Disabled
         HauntedObjects
         SnowObjects
         AssortedEnemies1
@@ -15,7 +15,7 @@
         LavaObjects
     End Enum
     Public Enum ObjectBank0x0D
-        Disabled = 0
+        Disabled
         AssortedEnemies4
         Moneybags
         CastleObjects
@@ -24,7 +24,7 @@
         Bowser
     End Enum
     Public Enum ObjectBank0x0E
-        Disabled = 0
+        Disabled
         HaundetHouse
         CoolCoolMountain
         InsideCastle
@@ -53,7 +53,7 @@
     End Enum
 
     Public Enum ObjectBanks
-        Bank0x0C = 0
+        Bank0x0C
         Bank0x0D
         Bank0x0E
     End Enum
@@ -92,11 +92,11 @@
         TallTallMountain = &H24
     End Enum
     Public Enum ScrollingTextureAxis
-        X = 0
+        X
         Y
     End Enum
     Public Enum SpecialBoxType
-        Water = 0
+        Water
         ToxicHaze
         Mist
     End Enum

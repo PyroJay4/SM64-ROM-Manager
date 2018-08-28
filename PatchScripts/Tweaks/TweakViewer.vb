@@ -164,13 +164,50 @@ Public Class TweakViewer
         Flyout1.Close()
 
         If editor.ShowDialog(Me) = DialogResult.OK Then
+            Dim oldName As String = patch.Name
+            Dim oldDescription As String = patch.Description
+
             patch.Name = editor.Titel.Trim
             patch.Description = editor.Description.Trim
+
+            If oldName <> patch.Name Then
+                'Rename File
+                Dim newFileName As String = Path.Combine(Path.GetDirectoryName(patch.FileName), editor.Titel & Path.GetExtension(patch.FileName))
+                newFileName = EnsureFileNameIsNotUsed(newFileName)
+                File.Move(patch.FileName, newFileName)
+                patch.FileName = newFileName
+
+                'Update Title in ListBox
+                ItemListBox1.SelectedItem.Text = patch.Name
+                ItemListBox1.Refresh()
+            End If
+
+            'Save Patch
+            SaveSinglePatch(patch)
+
+            'Update Tweak Infos
+            ItemListBox1_SelectedItemChanged()
+        End If
+    End Sub
+
+    Private Function EnsureFileNameIsNotUsed(fileName As String) As String
+        Dim newFileName As String = fileName
+
+        If File.Exists(fileName) Then
+            Dim ende As Boolean = False
+            Dim count As Integer = 0
+            Dim dir As String = Path.GetDirectoryName(fileName)
+            Dim name As String = Path.GetFileNameWithoutExtension(fileName)
+            Dim ext As String = Path.GetExtension(fileName)
+
+            Do Until ende
+                newFileName = Path.Combine(dir, name & count & ext)
+                If Not File.Exists(newFileName) Then ende = True
+            Loop
         End If
 
-        SaveSinglePatch(patch)
-        ItemListBox1_SelectedItemChanged()
-    End Sub
+        Return newFileName
+    End Function
 
     Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click
         Flyout1.Close()
@@ -205,6 +242,7 @@ Public Class TweakViewer
 
         SaveSinglePatch(patch)
         ItemListBox1.SelectedItem = btnItem
+        ItemListBox1.EnsureVisible(btnItem)
         ItemListBox1.Refresh()
     End Sub
 

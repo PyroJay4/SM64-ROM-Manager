@@ -12,9 +12,10 @@ Imports DevComponents.Editors
 
 Public Class ModelImporter
 
-    Public _RomFile As String = ""
+    Private _RomFile As String = ""
     Private mdl As ObjectModel = Nothing
     Private presets As New List(Of ImporterProfile)
+    Private rommgr As SM64Lib.RomManager = Nothing
     Public Property StyleManager As StyleManager = Nothing
 
     Public Property RomFile As String
@@ -38,7 +39,14 @@ Public Class ModelImporter
         ComboBoxEx1.Items.Add("Don't force")
         ComboBoxEx1.Items.AddRange(layers)
         ComboBoxEx1.SelectedIndex = Array.IndexOf(layers, [Enum].GetName(GetType(Geolayer), &H4)) + 1
+    End Sub
 
+    Public Sub New(rommgr As SM64Lib.RomManager)
+        Me.New
+        Me.rommgr = rommgr
+    End Sub
+
+    Private Sub ModelImporter_Load(sender As Object, e As EventArgs) Handles Me.Load
         If StyleManager Is Nothing Then
             Settings.LoadSettings()
             StyleManager = New StyleManager
@@ -147,6 +155,13 @@ Public Class ModelImporter
         For Each g As Geopointer In geo
             WriteOutput($"DL-Pointer:{vbTab}{g.SegPointer.ToString("X")} ({g.Layer.ToString})")
         Next
+
+        If preset.Script IsNot Nothing Then
+            WriteOutput("Executing Script ...")
+            Dim pm As New PatchScripts.PatchingManager
+            pm.Patch(preset.Script, rommgr, "", Me)
+        End If
+
         WriteOutput()
         WriteOutput(DateTime.Now.ToShortTimeString & " - Done")
 

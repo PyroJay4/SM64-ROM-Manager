@@ -156,14 +156,14 @@ Namespace Global.SM64Lib
             Dim build As Byte = fs.ReadByte
             Dim revision As Byte = fs.ReadByte
 
+            fs.Close()
+
             If major = 1 AndAlso minor = 0 AndAlso build = 0 AndAlso revision = 0 Then
                 major = 0
                 minor = 3
             End If
 
             Me.ProgramVersion = New Version(major, minor, build, revision)
-
-            fs.Close()
 
             Return Me.ProgramVersion
         End Function
@@ -241,6 +241,7 @@ Namespace Global.SM64Lib
                     SM64Lib.Levels.LevelManager.LoadSM64EditorLevel(curLevel, Me, ldi.ID, ldi.Index, offset)
                 Else
                     curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64RomManager)
+                    'curLevel.Load(Me, ldi.ID, ldi.Index, offset)
                     SM64Lib.Levels.LevelManager.LoadRomManagerLevel(curLevel, Me, ldi.ID, ldi.Index, offset)
                 End If
 
@@ -361,7 +362,7 @@ Namespace Global.SM64Lib
             Dim tCheckData = SwapInts.SwapInt64(br.ReadInt64)
             br.BaseStream.Close()
 
-            _IsSM64EditorMode = tCheckData = &H800800000E0000C4
+            _IsSM64EditorMode = ({&H800800001900001C, &H800800000E0000C4}).Contains(tCheckData)
 
             Return True
         End Function
@@ -514,9 +515,11 @@ Namespace Global.SM64Lib
             Public Property RangeForLevelsStart As UInteger = defaultRangeForLevelsStart
             Public Property RangeForLevelsEnd As UInteger = defaultRangeForLevelsEnd
         End Class
+
     End Class
 
     Public Class SegmentedBank
+
         Public Property RomStart As Integer = 0
         Public Property BankID As Byte = 0
         Private _RomEnd As Integer = 0
@@ -675,6 +678,7 @@ Namespace Global.SM64Lib
                 Next
             End If
         End Sub
+
     End Class
 
 End Namespace

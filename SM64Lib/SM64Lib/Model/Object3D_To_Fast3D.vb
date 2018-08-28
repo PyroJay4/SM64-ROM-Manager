@@ -44,6 +44,12 @@ Namespace Global.SM64Lib.SM64Convert
             Public Property Fog As Model.Fog = Nothing
             Public Property CollisionData As String = ""
             Public Property ForceDisplaylist As Geolayout.Geolayer = -1
+
+            Public ReadOnly Property EnableFog As Boolean
+                Get
+                    Return Fog IsNot Nothing
+                End Get
+            End Property
         End Class
 
         Public Class SettingsException
@@ -240,8 +246,6 @@ Namespace Global.SM64Lib.SM64Convert
 
         End Structure
 
-        Private setNextLimit As UInteger = 0
-
         Private verts As New List(Of Vertex)
         Private norms As New List(Of Normal)
         Private vertexColors As New List(Of VertexColor)
@@ -262,35 +266,14 @@ Namespace Global.SM64Lib.SM64Convert
         Private createTransDL As Boolean = False
         Private definedSegPtr As Boolean = False
         Private lastN64Codec As MaterialType = MaterialType.None
-        Private geoModeData As String = ""
-        Private colorTexData As String = ""
-        Private texTypeData As String = ""
-        Private col_data As String = ""
         Private currentPreName As String = Nothing
 
         ' Tool Variables 
-        Private collisionString As String
         Private curSeg As Byte = 0
         Private startSegOffset As UInteger = 0
-        Private verbose As Boolean = False
-        Private flipTexturesVertically As Boolean = False
-        Private centerVerts As Boolean = False
-        Private resizeTextures As Boolean = False
         Private importDataSize As UInteger = 0
-        Private reduceVertLevel As ReduceVericesLevel = ReduceVericesLevel.Level1
-        Private modelScale As Single = 1.0F
-        Private xOff As Int16 = 0
-        Private yOff As Int16 = 0
-        Private zOff As Int16 = 0
-        Private enableFog As Boolean = False
-        Private fogTyp As Model.FogPreset = Model.FogPreset.SubtleFog1
-        Private fogRed As Byte = &HFF
-        Private fogGreen As Byte = &HFF
-        Private fogBlue As Byte = &HFF
         Private defaultColor() As Byte = {&HFF, &HFF, &HFF, &HFF, &HFF, &HFF, &HFF, &HFF, &H7F, &H7F, &H7F, &HFF, &H7F, &H7F, &H7F, &HFF}
         Private settings As ConvertSettings = Nothing
-        Private br As BinaryReader = Nothing
-        Private bw As BinaryWriter = Nothing
         Private impstream As Stream = Nothing
         Private collisionPointer As UInteger = 0
         Private conRes As New ConvertResult
@@ -348,7 +331,7 @@ Namespace Global.SM64Lib.SM64Convert
 
         Private Sub CheckGeoModeInfo(m As Material)
             m.geoMode = 0
-            Dim gma() As String = geoModeData.Split(",")
+            Dim gma() As String = settings.GeoModeData.Split(",")
 
             For Each gme As String In gma
                 Dim gmd() As String = gme.Split(":")
@@ -365,7 +348,7 @@ Namespace Global.SM64Lib.SM64Convert
             m.texColOffset = 0
             m.texColDark = 0.8F
 
-            Dim gma() As String = colorTexData.Split(",")
+            Dim gma() As String = settings.ColorTexData.Split(",")
 
             For Each gme As String In gma
 
@@ -399,7 +382,7 @@ Namespace Global.SM64Lib.SM64Convert
             End If
         End Sub
         Private Sub checkN64CodecInfo(m As Material)
-            Dim gma() As String = texTypeData.Split(",")
+            Dim gma() As String = settings.TexTypeData.Split(",")
 
             For Each gme As String In gma
                 Dim gmd() As String = gme.Split(":")
@@ -678,9 +661,9 @@ Namespace Global.SM64Lib.SM64Convert
                 'Process Vertices
                 For Each vert In mesh.Vertices
                     Dim v As New Vertex With {
-                        .X = LongToInt16(Round((vert.X * modelScale) + xOff)),
-                        .Y = LongToInt16(Round((vert.Y * modelScale) + yOff)),
-                        .Z = LongToInt16(Round((vert.Z * modelScale) + zOff))
+                        .X = LongToInt16(Round((vert.X * settings.Scale) + settings.OffsetPosition.X)),
+                        .Y = LongToInt16(Round((vert.Y * settings.Scale) + settings.OffsetPosition.Y)),
+                        .Z = LongToInt16(Round((vert.Z * settings.Scale) + settings.OffsetPosition.Z))
                     }
                     verts.Add(v)
                 Next
@@ -948,7 +931,6 @@ Namespace Global.SM64Lib.SM64Convert
                         End If
                     End If
                 Next
-
             Next
         End Sub
         Private Sub UpdateIndexList(grp As FvGroup, removed As Byte, replaceWith As Byte)
@@ -1092,7 +1074,7 @@ Namespace Global.SM64Lib.SM64Convert
             ImpF3D("BA 00 14 02 00 10 00 00")
 
             Dim cmdF8 As String = ""
-            cmdF8 = $"F8 00 00 00 {Hex(fogRed)} {Hex(fogGreen)} {Hex(fogBlue)} FF"
+            cmdF8 = $"F8 00 00 00 {Hex(settings.Fog.Color.R)} {Hex(settings.Fog.Color.G)} {Hex(settings.Fog.Color.B)} FF"
             ImpF3D(cmdF8)
 
             If alpha Then ' If texture has any alpha bits
@@ -1101,7 +1083,7 @@ Namespace Global.SM64Lib.SM64Convert
                 ImpF3D("B9 00 03 1D C8 11 20 78")
             End If
 
-            Select Case fogTyp
+            Select Case settings.Fog.Type
                 Case Model.FogPreset.SubtleFog1
                     ImpF3D("BC 00 00 08 19 00 E8 00")
                 Case Model.FogPreset.SubtleFog2
@@ -1245,13 +1227,13 @@ Namespace Global.SM64Lib.SM64Convert
                 ElseIf mat.hasTransparency Then 'mat.type = MaterialType.TEXTURE_TRANSPARENT
                     ImpF3D("FC 12 2E 24 FF FF FB FD")
                 ElseIf mat.hasTextureAlpha Then
-                    If enableFog Then
+                    If settings.EnableFog Then
                         ImpF3D("FC FF FF FF FF FC F2 38")
                     Else
                         ImpF3D("FC 12 18 24 FF 33 FF FF")
                     End If
                 Else
-                    If enableFog Then
+                    If settings.EnableFog Then
                         ImpF3D("FC 12 7F FF FF FF F8 38")
                     Else
                         ImpF3D("FC 12 7E 24 FF FF F9 FC")
@@ -1430,7 +1412,7 @@ Namespace Global.SM64Lib.SM64Convert
 
             'Prepaire vertices
             BuildVertexGroups()
-            removeDuplicateVertices(reduceVertLevel)
+            removeDuplicateVertices(settings.ReduceVertLevel)
 
             'Write vertices
             conRes.PtrVertex = CurSegAddress Or impstream.Position
@@ -1481,7 +1463,7 @@ Namespace Global.SM64Lib.SM64Convert
                 ImpF3D("BB 00 00 01 FF FF FF FF")
                 ImpF3D("E8 00 00 00 00 00 00 00")
                 ImpF3D("E6 00 00 00 00 00 00 00")
-                If enableFog Then ImpFogStart(False)
+                If settings.EnableFog Then ImpFogStart(False)
 
                 For i As Integer = 0 To vertexGroups.Count - 1
                     Dim mp As VertexGroupList = vertexGroups(i)
@@ -1534,7 +1516,7 @@ Namespace Global.SM64Lib.SM64Convert
                 Next
 
                 If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
-                If enableFog Then ImpFogEnd()
+                If settings.EnableFog Then ImpFogEnd()
                 ImpF3D("BB 00 00 00 FF FF FF FF")
                 ImpF3D("B8 00 00 00 00 00 00 00")
 
@@ -1547,12 +1529,12 @@ Namespace Global.SM64Lib.SM64Convert
                 enabledVertexColors = False
 
                 ImpF3D("E7 00 00 00 00 00 00 00")
-                If enableFog Then ImpF3D("B9 00 02 01 00 00 00 00")
+                If settings.EnableFog Then ImpF3D("B9 00 02 01 00 00 00 00")
                 ImpF3D("B7 00 00 00 00 00 00 00")
                 ImpF3D("BB 00 00 01 FF FF FF FF")
                 ImpF3D("E8 00 00 00 00 00 00 00")
                 ImpF3D("E6 00 00 00 00 00 00 00")
-                If enableFog Then ImpFogStart(True)
+                If settings.EnableFog Then ImpFogStart(True)
 
                 For i As Integer = 0 To vertexGroups.Count - 1
                     Dim mp As VertexGroupList = vertexGroups(i)
@@ -1591,7 +1573,7 @@ Namespace Global.SM64Lib.SM64Convert
                     End If
                 Next
 
-                If enableFog Then ImpFogEnd()
+                If settings.EnableFog Then ImpFogEnd()
                 If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
                 ImpF3D("FC FF FF FF FF FE 79 3C")
                 ImpF3D("BB 00 00 00 FF FF FF FF")
@@ -1683,14 +1665,8 @@ Namespace Global.SM64Lib.SM64Convert
         Public Function ConvertModel(s As Stream, settings As ConvertSettings, input As S3DFileParser.Object3D, texFormatSettings As TextureFormatSettings) As ConvertResult
             Me.settings = settings
             impstream = s
-            br = New BinaryReader(s)
-            bw = New BinaryWriter(s)
-
-            Dim preName As String = ""
 
             With settings
-                'Limit
-                setNextLimit = .SizeLimit
 
                 'Rom Address
                 definedSegPtr = False
@@ -1702,57 +1678,8 @@ Namespace Global.SM64Lib.SM64Convert
                     definedSegPtr = True
                 End If
 
-                'Scale
-                modelScale = .Scale
-
-                'Offset Position
-                xOff = .OffsetPosition.X
-                yOff = .OffsetPosition.Y
-                zOff = .OffsetPosition.Z
-
-                'Reduce Vertices Level
-                reduceVertLevel = .ReduceVertLevel
-
                 'Shading
                 SetLightAndDarkValues(input.Shading)
-
-                'ColorTexData
-                If .ColorTexData <> "" Then
-                    colorTexData = .ColorTexData
-                End If
-
-                'GeoModeData
-                If .GeoModeData <> "" Then
-                    geoModeData = .GeoModeData
-                End If
-
-                'TexTypeData
-                If .TexTypeData <> "" Then
-                    texTypeData = .TexTypeData
-                End If
-
-                'Flip Textures
-                flipTexturesVertically = .FlipTexturesVerticaly
-
-                'Resize Textures
-                resizeTextures = .ResizeTextures
-
-                'Center Model
-                centerVerts = .CenterModel
-
-                'Collision Data
-                col_data = .CollisionData
-
-                'Fog
-                If .Fog IsNot Nothing Then
-                    enableFog = True
-                    fogTyp = .Fog.Type
-                    fogRed = .Fog.Color.R
-                    fogGreen = .Fog.Color.G
-                    fogBlue = .Fog.Color.B
-                Else
-                    enableFog = False
-                End If
 
                 'Convert
                 importOBJ(input, texFormatSettings)

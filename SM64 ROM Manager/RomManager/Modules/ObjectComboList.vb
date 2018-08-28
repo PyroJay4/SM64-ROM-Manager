@@ -1,7 +1,5 @@
 ﻿Imports System.IO
 Imports Newtonsoft.Json.Linq
-Imports OpenGLCamera
-Imports SM64Lib.Levels.Script, SM64Lib.Levels.Script.Commands
 Imports TextValueConverter
 
 Public Class ObjectComboList
@@ -14,7 +12,7 @@ Public Class ObjectComboList
 
         Dim jobj As JObject = JObject.Parse(File.ReadAllText(FileName))
 
-        If jobj("ObjectCombos") IsNot Nothing Then
+        If jobj?("ObjectCombos") IsNot Nothing Then
             For Each entry As JObject In CType(jobj("ObjectCombos"), JArray)
                 Me.Add(New ObjectCombo With {
                        .Name = entry?("Name"),

@@ -43,6 +43,7 @@ Public Class TrajectoryEditor
         Dim fs As New FileStream(rommgr.RomFile, FileMode.Open, FileAccess.ReadWrite)
         trajectories.WriteTrajectories(fs)
         fs.Close()
+        PatchClass.UpdateChecksum(rommgr.RomFile)
     End Sub
 
     Private Sub LoadTrajectoriesList()
@@ -116,6 +117,8 @@ Public Class TrajectoryEditor
                 Return "Mini Metal Ball Generator (B. Param 03)"
             Case TrajectoryName.MiniMetalBallGenerator_BParam2_04
                 Return "Mini Metal Ball Generator (B. Param 04)"
+            Case TrajectoryName.MipsTheRabbit
+                Return "Mips The Rabbit"
             Case Else
                 Return ""
         End Select

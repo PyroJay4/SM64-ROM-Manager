@@ -52,7 +52,7 @@ Public Class PatchingManager
                 Case "name"
                     patch.Name = attr.Value
                 Case "description"
-                    patch.Name = attr.Value
+                    patch.Description = attr.Value
                 Case "version"
                     patch.Version = New Version(attr.Value)
             End Select

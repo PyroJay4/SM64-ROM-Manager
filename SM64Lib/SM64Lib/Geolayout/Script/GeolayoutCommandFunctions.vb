@@ -44,14 +44,12 @@ Namespace Global.SM64Lib.Geolayout.Script
             End Function
 
             Shared Sub SetRgbaColor(command As GeolayoutCommand, color As Drawing.Color)
-                Dim r As Integer = color.R / 8
-                Dim g As Integer = color.G / 8
-                Dim b As Integer = color.B / 8
-                Dim a As Integer = If(color.A = &HFF, 1, 0)
+                Dim b1, b2 As Byte
+                N64Graphics.N64Graphics.ColorRGBA16(color, b1, b2)
 
-                Dim bw As New BinaryWriter(command)
                 command.Position = &H2
-                bw.Write(SwapInts.SwapUInt16((r << 11) Or (g << 6) Or (b << 1) Or a))
+                command.WriteByte(b1)
+                command.WriteByte(b2)
                 command.Position = 0
             End Sub
         End Class

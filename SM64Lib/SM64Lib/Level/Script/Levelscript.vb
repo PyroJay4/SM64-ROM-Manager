@@ -15,7 +15,6 @@ Namespace Global.SM64Lib.Levels.Script
         End Sub
 
         Public Sub New()
-            Me.Clear()
         End Sub
 
         Public Sub Read(rommgr As RomManager, scriptStartInBank As Integer, Optional EndAtCommand As LevelscriptCommandTypes = LevelscriptCommandTypes.EndOfLevel)
@@ -90,7 +89,8 @@ Namespace Global.SM64Lib.Levels.Script
                 End Try
             Loop
 
-            If s Is fs Then s?.Close()
+            'If s Is fs Then s?.Close()
+            fs?.Close()            
         End Sub
 
         Private Sub Read_GetStream(ByRef curSegBank As SegmentedBank, ByRef s As Stream, ByRef br As BinaryReader, ByRef fs As FileStream, ByRef brfs As BinaryReader, rommgr As RomManager, scriptStartInBank As Integer, dicBankBinaryReaders As Dictionary(Of Byte, BinaryReader))

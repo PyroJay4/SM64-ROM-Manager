@@ -13,23 +13,19 @@ Public Class ImportLevelDialog
         Me.rommgr = rommgr
     End Sub
 
-    Private Sub ButtonX1_Click(sender As Object, e As EventArgs)
-        Dim ofd As New OpenFileDialog With {.Filter = "SM64 ROMs (*.z64)|*.z64"}
-        If ofd.ShowDialog = DialogResult.OK Then
-            LoadROM(ofd.FileName)
-        End If
-    End Sub
-
-    Public Sub LoadROM(fileName As String)
+    Public Function LoadROM(fileName As String) As Boolean
         Dim mgr As New RomManager(fileName)
         If mgr.CheckROM() Then
             openrom = mgr
+            LabelX_Romfile.Text = IO.Path.GetFileName(mgr.RomFile)
             mgr.LoadLevels()
             LoadLevels()
+            Return True
         Else
             MessageBoxEx.Show("This ROM can't be used.", "Invalid ROM file", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
         End If
-    End Sub
+    End Function
 
     Private Sub LoadLevels()
         ItemListBox1.Items.Clear()
@@ -67,8 +63,13 @@ Public Class ImportLevelDialog
                 'Add Level
                 rommgr.Levels.Add(lvl)
 
+                DialogResult = DialogResult.OK
+
             End If
         End If
     End Sub
 
+    Private Sub ItemListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ItemListBox1.SelectedIndexChanged
+        ButtonX_Import.Enabled = ItemListBox1.SelectedIndex > -1
+    End Sub
 End Class

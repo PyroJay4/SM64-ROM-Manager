@@ -30,9 +30,9 @@ Public Class Settings
     Shared Sub NewSettingsFile()
         IniSettings = New IniData
 
-        IniSettings.Global.AddKey("Auto-Updates", (True).ToString)
+        IniSettings.Global.AddKey("Auto-Updates", True.ToString)
         IniSettings.Global.AddKey("Integer Value Mode", "0")
-        IniSettings.Global.AddKey("Auto Update Checksum", (False).ToString)
+        IniSettings.Global.AddKey("Auto Update Checksum", False.ToString)
         IniSettings.Global.AddKey("Emulator Path", "")
         IniSettings.Global.AddKey("Action if Update-Patches", CInt(DialogResult.None))
 
@@ -44,7 +44,7 @@ Public Class Settings
         IniSettings("Area Editor").AddKey("Default Camera Mode", CameraMode.ORBIT)
         IniSettings("Area Editor").AddKey("Default Window Mode", FormWindowState.Normal)
         IniSettings("Area Editor").AddKey("Enable History", True.ToString)
-        IniSettings("Area Editor").AddKey("RibbonControl.Expanded", False.ToString)
+        IniSettings("Area Editor").AddKey("RibbonControl.Expanded", True.ToString)
 
         IniSettings.Sections.AddSection("Style Manager")
         IniSettings("Style Manager").AddKey("Metro Color Params BaseColor", DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters.Office2016Purple.BaseColor.ToArgb)

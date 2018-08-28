@@ -43,7 +43,7 @@ Public Class Form_Main
         Set(value As String)
             If value = "" Then value = Form_Main_Resources.Status_Ready
             LabelItem_Status.Text = value
-            MetroStatusBar1.Refresh()
+            Bar1.Refresh()
         End Set
     End Property
 
@@ -58,18 +58,11 @@ Public Class Form_Main
     Private Sub MenuItem20_Click(sender As Object, e As EventArgs) Handles ButtonItem8.Click
         SuperTabControl_Main.SelectedTab = SuperTabItem_LM
     End Sub
-    Private Sub MenuItem15_Click(sender As Object, e As EventArgs) Handles ButtonItem58.Click
-        Dim frm As New Form_CustomImporter
-        frm.Show()
-    End Sub
     Private Sub MenuItem16_Click(sender As Object, e As EventArgs) Handles ButtonItem11.Click
         SuperTabControl_Main.SelectedTab = SuperTabItem_TM
     End Sub
     Private Sub MenuItem17_Click(sender As Object, e As EventArgs) Handles ButtonItem10.Click
         SuperTabControl_Main.SelectedTab = SuperTabItem_MS
-    End Sub
-    Private Sub MenuItem18_Click(sender As Object, e As EventArgs) Handles ButtonItem32.Click
-
     End Sub
 
     Private Sub SuperTabControl_Main_ControlAdded(sender As Object, e As ControlEventArgs) Handles SuperTabControl_Main.ControlAdded
@@ -257,7 +250,7 @@ Public Class Form_Main
         StatusText = Form_Main_Resources.Status_LoadingRom
 
         'Load Global Object Banks
-        rommgr.LoadGlobalObjectBank()
+        'rommgr.LoadGlobalObjectBank()
 
         'Load Levels
         rommgr.LoadLevels()
@@ -355,7 +348,7 @@ Public Class Form_Main
         If rommgr?.NeedToSave Then
             Select Case MessageBoxEx.Show(Form_Main_Resources.MsgBox_UnsavedChanges, Form_Main_Resources.MsgBox_UnsavedChanges_Title, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning)
                 Case DialogResult.Yes
-                    rommgr.SaveLevels()
+                    SaveRom(rommgr)
 
                 Case DialogResult.No
 

@@ -75,6 +75,7 @@ Partial Class ImportLevelDialog
         Me.ItemListBox1.Name = "ItemListBox1"
         Me.ItemListBox1.ReserveLeftSpace = False
         Me.ItemListBox1.Size = New System.Drawing.Size(360, 208)
+        Me.ItemListBox1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ItemListBox1.TabIndex = 1
         Me.ItemListBox1.Text = "ItemListBox1"
         '
@@ -87,6 +88,8 @@ Partial Class ImportLevelDialog
         Me.Controls.Add(Me.ButtonX_Import)
         Me.Controls.Add(Me.ItemListBox1)
         Me.DoubleBuffered = True
+        Me.EnableGlass = False
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "ImportLevelDialog"

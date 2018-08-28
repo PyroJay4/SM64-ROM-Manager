@@ -19,6 +19,7 @@
         MetalBallsGenerators_BParam2_02
         MiniMetalBallGenerator_BParam2_03
         MiniMetalBallGenerator_BParam2_04
+        MipsTheRabbit
     End Enum
 
 End Namespace

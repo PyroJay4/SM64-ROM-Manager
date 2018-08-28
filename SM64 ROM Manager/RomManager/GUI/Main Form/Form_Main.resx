@@ -852,38 +852,17 @@
   <data name="&gt;&gt;ListViewEx_LM_Specials.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="Button_LM_RemoveArea.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="Button_LM_RemoveArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 3</value>
-  </data>
-  <data name="Button_LM_RemoveArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 23</value>
-  </data>
-  <data name="Button_LM_RemoveArea.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_RemoveArea.Name" xml:space="preserve">
-    <value>Button_LM_RemoveArea</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_RemoveArea.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_RemoveArea.Parent" xml:space="preserve">
-    <value>GroupBox_LM_Areas</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_RemoveArea.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="Button_LM_AreaEditor.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="Button_LM_AreaEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 3</value>
+    <value>101, 3</value>
   </data>
   <data name="Button_LM_AreaEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 23</value>
+    <value>74, 23</value>
+  </data>
+  <data name="Button_LM_RemoveArea.Text" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="Button_LM_AreaEditor.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -901,13 +880,22 @@
     <value>GroupBox_LM_Areas</value>
   </data>
   <data name="&gt;&gt;Button_LM_AreaEditor.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="Button_LM_AddArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
   <data name="Button_LM_AddArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 23</value>
+    <value>92, 23</value>
+  </data>
+  <data name="ButtonItem33.Text" xml:space="preserve">
+    <value>This ROM ...</value>
+  </data>
+  <data name="ButtonItem34.Text" xml:space="preserve">
+    <value>Other ROM ...</value>
+  </data>
+  <data name="ButtonItem16.Text" xml:space="preserve">
+    <value>Import Areas</value>
   </data>
   <data name="Button_LM_AddArea.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -925,13 +913,16 @@
     <value>GroupBox_LM_Areas</value>
   </data>
   <data name="&gt;&gt;Button_LM_AddArea.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="Button_LM_AddNewLevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 6</value>
   </data>
   <data name="Button_LM_AddNewLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 23</value>
+    <value>92, 23</value>
+  </data>
+  <data name="ButtonItem26.Text" xml:space="preserve">
+    <value>Import Level ...</value>
   </data>
   <data name="Button_LM_AddNewLevel.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -2033,7 +2024,7 @@
     <value>61, 29</value>
   </data>
   <data name="ComboBox_MS_NInst.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 21</value>
+    <value>192, 21</value>
   </data>
   <data name="ComboBox_MS_NInst.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
@@ -2075,10 +2066,10 @@
     <value>2</value>
   </data>
   <data name="Button_MS_ExtractSequence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 78</value>
+    <value>131, 78</value>
   </data>
   <data name="Button_MS_ExtractSequence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 23</value>
+    <value>122, 23</value>
   </data>
   <data name="Button_MS_ExtractSequence.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -2129,7 +2120,7 @@
     <value>3, 78</value>
   </data>
   <data name="Button_MS_ReplaceSequence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 23</value>
+    <value>122, 23</value>
   </data>
   <data name="Button_MS_ReplaceSequence.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
@@ -2177,7 +2168,7 @@
     <value>61, 3</value>
   </data>
   <data name="TextBoxX_MS_Sequencename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 20</value>
+    <value>192, 20</value>
   </data>
   <data name="TextBoxX_MS_Sequencename.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2194,423 +2185,6 @@
   <data name="&gt;&gt;TextBoxX_MS_Sequencename.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="LabelX22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 32</value>
-  </data>
-  <data name="LabelX22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 23</value>
-  </data>
-  <data name="LabelX22.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="LabelX22.Text" xml:space="preserve">
-    <value>Lines</value>
-  </data>
-  <data name="&gt;&gt;LabelX22.Name" xml:space="preserve">
-    <value>LabelX22</value>
-  </data>
-  <data name="&gt;&gt;LabelX22.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX22.Parent" xml:space="preserve">
-    <value>GroupPanel_TM_DialogProps</value>
-  </data>
-  <data name="&gt;&gt;LabelX22.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="LabelX21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
-  </data>
-  <data name="LabelX21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 23</value>
-  </data>
-  <data name="LabelX21.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="LabelX21.Text" xml:space="preserve">
-    <value>Dialog Size:</value>
-  </data>
-  <data name="&gt;&gt;LabelX21.Name" xml:space="preserve">
-    <value>LabelX21</value>
-  </data>
-  <data name="&gt;&gt;LabelX21.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX21.Parent" xml:space="preserve">
-    <value>GroupPanel_TM_DialogProps</value>
-  </data>
-  <data name="&gt;&gt;LabelX21.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ComboBoxEx_TM_DialogPosY.ItemHeight" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="ComboItem10.Text" xml:space="preserve">
-    <value>Middle</value>
-  </data>
-  <data name="ComboItem8.Text" xml:space="preserve">
-    <value>Top</value>
-  </data>
-  <data name="ComboBoxEx_TM_DialogPosY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 4</value>
-  </data>
-  <data name="ComboBoxEx_TM_DialogPosY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 21</value>
-  </data>
-  <data name="ComboBoxEx_TM_DialogPosY.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.Name" xml:space="preserve">
-    <value>ComboBoxEx_TM_DialogPosY</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.Parent" xml:space="preserve">
-    <value>GroupPanel_TM_DialogProps</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="IntegerInput_TM_DialogSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 33</value>
-  </data>
-  <data name="IntegerInput_TM_DialogSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
-  </data>
-  <data name="IntegerInput_TM_DialogSize.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;IntegerInput_TM_DialogSize.Name" xml:space="preserve">
-    <value>IntegerInput_TM_DialogSize</value>
-  </data>
-  <data name="&gt;&gt;IntegerInput_TM_DialogSize.Type" xml:space="preserve">
-    <value>DevComponents.Editors.IntegerInput, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;IntegerInput_TM_DialogSize.Parent" xml:space="preserve">
-    <value>GroupPanel_TM_DialogProps</value>
-  </data>
-  <data name="&gt;&gt;IntegerInput_TM_DialogSize.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ComboBoxEx_TM_DialogPosX.ItemHeight" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="ComboItem5.Text" xml:space="preserve">
-    <value>Left</value>
-  </data>
-  <data name="ComboItem6.Text" xml:space="preserve">
-    <value>Centred</value>
-  </data>
-  <data name="ComboItem7.Text" xml:space="preserve">
-    <value>Right</value>
-  </data>
-  <data name="ComboBoxEx_TM_DialogPosX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 4</value>
-  </data>
-  <data name="ComboBoxEx_TM_DialogPosX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 21</value>
-  </data>
-  <data name="ComboBoxEx_TM_DialogPosX.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.Name" xml:space="preserve">
-    <value>ComboBoxEx_TM_DialogPosX</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.Parent" xml:space="preserve">
-    <value>GroupPanel_TM_DialogProps</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="LabelX18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="LabelX18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 23</value>
-  </data>
-  <data name="LabelX18.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="LabelX18.Text" xml:space="preserve">
-    <value>Dialog-Position:</value>
-  </data>
-  <data name="&gt;&gt;LabelX18.Name" xml:space="preserve">
-    <value>LabelX18</value>
-  </data>
-  <data name="&gt;&gt;LabelX18.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX18.Parent" xml:space="preserve">
-    <value>GroupPanel_TM_DialogProps</value>
-  </data>
-  <data name="&gt;&gt;LabelX18.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="GroupPanel_TM_DialogProps.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 463</value>
-  </data>
-  <data name="GroupPanel_TM_DialogProps.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 78</value>
-  </data>
-  <data name="GroupPanel_TM_DialogProps.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="GroupPanel_TM_DialogProps.Text" xml:space="preserve">
-    <value>Dialog Properties</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel_TM_DialogProps.Name" xml:space="preserve">
-    <value>GroupPanel_TM_DialogProps</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel_TM_DialogProps.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel_TM_DialogProps.Parent" xml:space="preserve">
-    <value>SuperTabControlPanel_TM</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel_TM_DialogProps.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="LabelX_TM_BytesLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 0</value>
-  </data>
-  <data name="LabelX_TM_BytesLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 23</value>
-  </data>
-  <data name="LabelX_TM_BytesLeft.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;LabelX_TM_BytesLeft.Name" xml:space="preserve">
-    <value>LabelX_TM_BytesLeft</value>
-  </data>
-  <data name="&gt;&gt;LabelX_TM_BytesLeft.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX_TM_BytesLeft.Parent" xml:space="preserve">
-    <value>TabStrip_TM_TableSelection</value>
-  </data>
-  <data name="&gt;&gt;LabelX_TM_BytesLeft.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TabStrip_TM_TableSelection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 3</value>
-  </data>
-  <data name="TabStrip_TM_TableSelection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 0</value>
-  </data>
-  <data name="TabItem_TM_Dialogs.Text" xml:space="preserve">
-    <value>Dialogs</value>
-  </data>
-  <data name="TabStrip_TM_TableSelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 23</value>
-  </data>
-  <data name="TabStrip_TM_TableSelection.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="TabItem_TM_LevelNames.Text" xml:space="preserve">
-    <value>Level Names</value>
-  </data>
-  <data name="TabItem_TM_ActNames.Text" xml:space="preserve">
-    <value>Act Names</value>
-  </data>
-  <data name="TabStrip_TM_TableSelection.Text" xml:space="preserve">
-    <value>TabStrip1</value>
-  </data>
-  <data name="&gt;&gt;TabStrip_TM_TableSelection.Name" xml:space="preserve">
-    <value>TabStrip_TM_TableSelection</value>
-  </data>
-  <data name="&gt;&gt;TabStrip_TM_TableSelection.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabStrip, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabStrip_TM_TableSelection.Parent" xml:space="preserve">
-    <value>SuperTabControlPanel_TM</value>
-  </data>
-  <data name="&gt;&gt;TabStrip_TM_TableSelection.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ColumnHeader1.Text" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="ColumnHeader1.Width" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="ColumnHeader13.Text" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="ColumnHeader13.Width" type="System.Int32, mscorlib">
-    <value>150</value>
-  </data>
-  <data name="ColumnHeader14.Text" xml:space="preserve">
-    <value>Message/Text</value>
-  </data>
-  <data name="ColumnHeader14.Width" type="System.Int32, mscorlib">
-    <value>200</value>
-  </data>
-  <data name="ListViewEx_TM_TableEntries.LabelWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ListViewEx_TM_TableEntries.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="ListViewEx_TM_TableEntries.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="ListViewEx_TM_TableEntries.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 515</value>
-  </data>
-  <data name="ListViewEx_TM_TableEntries.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;ListViewEx_TM_TableEntries.Name" xml:space="preserve">
-    <value>ListViewEx_TM_TableEntries</value>
-  </data>
-  <data name="&gt;&gt;ListViewEx_TM_TableEntries.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ListViewEx, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ListViewEx_TM_TableEntries.Parent" xml:space="preserve">
-    <value>SuperTabControlPanel_TM</value>
-  </data>
-  <data name="&gt;&gt;ListViewEx_TM_TableEntries.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="SuperTabControlPanel_TM.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="SuperTabControlPanel_TM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="SuperTabControlPanel_TM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="SuperTabControlPanel_TM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 544</value>
-  </data>
-  <data name="SuperTabControlPanel_TM.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="SuperTabItem_TM.Text" xml:space="preserve">
-    <value>Text Manager</value>
-  </data>
-  <data name="&gt;&gt;SuperTabControlPanel_TM.Name" xml:space="preserve">
-    <value>SuperTabControlPanel_TM</value>
-  </data>
-  <data name="&gt;&gt;SuperTabControlPanel_TM.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;SuperTabControlPanel_TM.Parent" xml:space="preserve">
-    <value>SuperTabControl_Main</value>
-  </data>
-  <data name="&gt;&gt;SuperTabControlPanel_TM.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ItemPanel_RecentFiles.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="ItemPanel_RecentFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="ItemPanel_RecentFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 504</value>
-  </data>
-  <data name="ItemPanel_RecentFiles.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="ItemPanel_RecentFiles.Text" xml:space="preserve">
-    <value>ItemPanel1</value>
-  </data>
-  <data name="&gt;&gt;ItemPanel_RecentFiles.Name" xml:space="preserve">
-    <value>ItemPanel_RecentFiles</value>
-  </data>
-  <data name="&gt;&gt;ItemPanel_RecentFiles.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ItemPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ItemPanel_RecentFiles.Parent" xml:space="preserve">
-    <value>GroupPanel2</value>
-  </data>
-  <data name="&gt;&gt;ItemPanel_RecentFiles.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="GroupPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 4</value>
-  </data>
-  <data name="GroupPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 531</value>
-  </data>
-  <data name="GroupPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="GroupPanel2.Text" xml:space="preserve">
-    <value>Recently used</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel2.Name" xml:space="preserve">
-    <value>GroupPanel2</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel2.Parent" xml:space="preserve">
-    <value>SuperTabControlPanel_General</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="GroupPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 67</value>
-  </data>
-  <data name="GroupPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 100</value>
-  </data>
-  <data name="GroupPanel6.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="GroupPanel6.Text" xml:space="preserve">
-    <value>Rom Info</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel6.Name" xml:space="preserve">
-    <value>GroupPanel6</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel6.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel6.Parent" xml:space="preserve">
-    <value>SuperTabControlPanel_General</value>
-  </data>
-  <data name="&gt;&gt;GroupPanel6.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="SuperTabControlPanel_General.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="SuperTabControlPanel_General.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="SuperTabControlPanel_General.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="SuperTabControlPanel_General.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 544</value>
-  </data>
-  <data name="SuperTabControlPanel_General.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="SuperTabItem_General.Text" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="&gt;&gt;SuperTabControlPanel_General.Name" xml:space="preserve">
-    <value>SuperTabControlPanel_General</value>
-  </data>
-  <data name="&gt;&gt;SuperTabControlPanel_General.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;SuperTabControlPanel_General.Parent" xml:space="preserve">
-    <value>SuperTabControl_Main</value>
-  </data>
-  <data name="&gt;&gt;SuperTabControlPanel_General.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="ListBoxAdv_LM_Areas.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2618,7 +2192,7 @@
     <value>3, 32</value>
   </data>
   <data name="ListBoxAdv_LM_Areas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 178</value>
+    <value>172, 180</value>
   </data>
   <data name="ListBoxAdv_LM_Areas.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -2633,10 +2207,7 @@
     <value>GroupBox_LM_Areas</value>
   </data>
   <data name="&gt;&gt;ListBoxAdv_LM_Areas.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="GroupBox_LM_Areas.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>2</value>
   </data>
   <data name="GroupBox_LM_Areas.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 309</value>
@@ -2666,10 +2237,10 @@
     <value>False</value>
   </data>
   <data name="ButtonX_LM_LevelsMore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 6</value>
+    <value>101, 6</value>
   </data>
   <data name="ButtonX_LM_LevelsMore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 23</value>
+    <value>74, 23</value>
   </data>
   <data name="ButtonItem20.Text" xml:space="preserve">
     <value>Change Level ID</value>
@@ -2714,7 +2285,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="ListBoxAdv_LM_Levels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 240</value>
+    <value>172, 244</value>
   </data>
   <data name="ListBoxAdv_LM_Levels.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -2972,6 +2543,36 @@
   <data name="&gt;&gt;TabControlPanel4.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="TabControlPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TabControlPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="TabControlPanel6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="TabControlPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 205</value>
+  </data>
+  <data name="TabControlPanel6.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="TabItem6.Text" xml:space="preserve">
+    <value>Special Boxes</value>
+  </data>
+  <data name="&gt;&gt;TabControlPanel6.Name" xml:space="preserve">
+    <value>TabControlPanel6</value>
+  </data>
+  <data name="&gt;&gt;TabControlPanel6.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;TabControlPanel6.Parent" xml:space="preserve">
+    <value>TabControl_LM_Area</value>
+  </data>
+  <data name="&gt;&gt;TabControlPanel6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="ButtonX_LM_ScrollTexEditor.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 52</value>
   </data>
@@ -3105,37 +2706,7 @@
     <value>TabControl_LM_Area</value>
   </data>
   <data name="&gt;&gt;TabControlPanel5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="TabControlPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="TabControlPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="TabControlPanel6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="TabControlPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 205</value>
-  </data>
-  <data name="TabControlPanel6.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="TabItem6.Text" xml:space="preserve">
-    <value>Special Boxes</value>
-  </data>
-  <data name="&gt;&gt;TabControlPanel6.Name" xml:space="preserve">
-    <value>TabControlPanel6</value>
-  </data>
-  <data name="&gt;&gt;TabControlPanel6.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabControlPanel6.Parent" xml:space="preserve">
-    <value>TabControl_LM_Area</value>
-  </data>
-  <data name="&gt;&gt;TabControlPanel6.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="TabControl_LM_Area.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3282,7 +2853,7 @@
     <value>TabControl_LM_Level</value>
   </data>
   <data name="&gt;&gt;TabControlPanel2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="TabControl_LM_Level.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3321,7 +2892,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="SuperTabControlPanel_LM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 544</value>
+    <value>694, 546</value>
   </data>
   <data name="SuperTabControlPanel_LM.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3339,13 +2910,430 @@
     <value>SuperTabControl_Main</value>
   </data>
   <data name="&gt;&gt;SuperTabControlPanel_LM.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ItemPanel_RecentFiles.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="ItemPanel_RecentFiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="ItemPanel_RecentFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 515</value>
+  </data>
+  <data name="ItemPanel_RecentFiles.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="ItemPanel_RecentFiles.Text" xml:space="preserve">
+    <value>ItemPanel1</value>
+  </data>
+  <data name="&gt;&gt;ItemPanel_RecentFiles.Name" xml:space="preserve">
+    <value>ItemPanel_RecentFiles</value>
+  </data>
+  <data name="&gt;&gt;ItemPanel_RecentFiles.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ItemPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ItemPanel_RecentFiles.Parent" xml:space="preserve">
+    <value>GroupPanel2</value>
+  </data>
+  <data name="&gt;&gt;ItemPanel_RecentFiles.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GroupPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 4</value>
+  </data>
+  <data name="GroupPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 538</value>
+  </data>
+  <data name="GroupPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="GroupPanel2.Text" xml:space="preserve">
+    <value>Recently used</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel2.Name" xml:space="preserve">
+    <value>GroupPanel2</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel2.Parent" xml:space="preserve">
+    <value>SuperTabControlPanel_General</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GroupPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 67</value>
+  </data>
+  <data name="GroupPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 100</value>
+  </data>
+  <data name="GroupPanel6.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="GroupPanel6.Text" xml:space="preserve">
+    <value>Rom Info</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel6.Name" xml:space="preserve">
+    <value>GroupPanel6</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel6.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel6.Parent" xml:space="preserve">
+    <value>SuperTabControlPanel_General</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="SuperTabControlPanel_General.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="SuperTabControlPanel_General.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="SuperTabControlPanel_General.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="SuperTabControlPanel_General.Size" type="System.Drawing.Size, System.Drawing">
+    <value>694, 546</value>
+  </data>
+  <data name="SuperTabControlPanel_General.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="SuperTabItem_General.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="&gt;&gt;SuperTabControlPanel_General.Name" xml:space="preserve">
+    <value>SuperTabControlPanel_General</value>
+  </data>
+  <data name="&gt;&gt;SuperTabControlPanel_General.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;SuperTabControlPanel_General.Parent" xml:space="preserve">
+    <value>SuperTabControl_Main</value>
+  </data>
+  <data name="&gt;&gt;SuperTabControlPanel_General.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LabelX22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 32</value>
+  </data>
+  <data name="LabelX22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 23</value>
+  </data>
+  <data name="LabelX22.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="LabelX22.Text" xml:space="preserve">
+    <value>Lines</value>
+  </data>
+  <data name="&gt;&gt;LabelX22.Name" xml:space="preserve">
+    <value>LabelX22</value>
+  </data>
+  <data name="&gt;&gt;LabelX22.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX22.Parent" xml:space="preserve">
+    <value>GroupPanel_TM_DialogProps</value>
+  </data>
+  <data name="&gt;&gt;LabelX22.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LabelX21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="LabelX21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 23</value>
+  </data>
+  <data name="LabelX21.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="LabelX21.Text" xml:space="preserve">
+    <value>Dialog Size:</value>
+  </data>
+  <data name="&gt;&gt;LabelX21.Name" xml:space="preserve">
+    <value>LabelX21</value>
+  </data>
+  <data name="&gt;&gt;LabelX21.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX21.Parent" xml:space="preserve">
+    <value>GroupPanel_TM_DialogProps</value>
+  </data>
+  <data name="&gt;&gt;LabelX21.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ComboBoxEx_TM_DialogPosY.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="ComboItem10.Text" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="ComboItem8.Text" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="ComboBoxEx_TM_DialogPosY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 4</value>
+  </data>
+  <data name="ComboBoxEx_TM_DialogPosY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 21</value>
+  </data>
+  <data name="ComboBoxEx_TM_DialogPosY.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.Name" xml:space="preserve">
+    <value>ComboBoxEx_TM_DialogPosY</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.Parent" xml:space="preserve">
+    <value>GroupPanel_TM_DialogProps</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="IntegerInput_TM_DialogSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 33</value>
+  </data>
+  <data name="IntegerInput_TM_DialogSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 20</value>
+  </data>
+  <data name="IntegerInput_TM_DialogSize.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;IntegerInput_TM_DialogSize.Name" xml:space="preserve">
+    <value>IntegerInput_TM_DialogSize</value>
+  </data>
+  <data name="&gt;&gt;IntegerInput_TM_DialogSize.Type" xml:space="preserve">
+    <value>DevComponents.Editors.IntegerInput, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;IntegerInput_TM_DialogSize.Parent" xml:space="preserve">
+    <value>GroupPanel_TM_DialogProps</value>
+  </data>
+  <data name="&gt;&gt;IntegerInput_TM_DialogSize.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ComboBoxEx_TM_DialogPosX.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="ComboItem5.Text" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="ComboItem6.Text" xml:space="preserve">
+    <value>Centred</value>
+  </data>
+  <data name="ComboItem7.Text" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="ComboBoxEx_TM_DialogPosX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 4</value>
+  </data>
+  <data name="ComboBoxEx_TM_DialogPosX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 21</value>
+  </data>
+  <data name="ComboBoxEx_TM_DialogPosX.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.Name" xml:space="preserve">
+    <value>ComboBoxEx_TM_DialogPosX</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.Parent" xml:space="preserve">
+    <value>GroupPanel_TM_DialogProps</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="LabelX18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="LabelX18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 23</value>
+  </data>
+  <data name="LabelX18.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="LabelX18.Text" xml:space="preserve">
+    <value>Dialog-Position:</value>
+  </data>
+  <data name="&gt;&gt;LabelX18.Name" xml:space="preserve">
+    <value>LabelX18</value>
+  </data>
+  <data name="&gt;&gt;LabelX18.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX18.Parent" xml:space="preserve">
+    <value>GroupPanel_TM_DialogProps</value>
+  </data>
+  <data name="&gt;&gt;LabelX18.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="GroupPanel_TM_DialogProps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 463</value>
+  </data>
+  <data name="GroupPanel_TM_DialogProps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 78</value>
+  </data>
+  <data name="GroupPanel_TM_DialogProps.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="GroupPanel_TM_DialogProps.Text" xml:space="preserve">
+    <value>Dialog Properties</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel_TM_DialogProps.Name" xml:space="preserve">
+    <value>GroupPanel_TM_DialogProps</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel_TM_DialogProps.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel_TM_DialogProps.Parent" xml:space="preserve">
+    <value>SuperTabControlPanel_TM</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel_TM_DialogProps.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LabelX_TM_BytesLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>206, 0</value>
+  </data>
+  <data name="LabelX_TM_BytesLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 23</value>
+  </data>
+  <data name="LabelX_TM_BytesLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;LabelX_TM_BytesLeft.Name" xml:space="preserve">
+    <value>LabelX_TM_BytesLeft</value>
+  </data>
+  <data name="&gt;&gt;LabelX_TM_BytesLeft.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX_TM_BytesLeft.Parent" xml:space="preserve">
+    <value>TabStrip_TM_TableSelection</value>
+  </data>
+  <data name="&gt;&gt;LabelX_TM_BytesLeft.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TabStrip_TM_TableSelection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 3</value>
+  </data>
+  <data name="TabStrip_TM_TableSelection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
+  </data>
+  <data name="TabItem_TM_Dialogs.Text" xml:space="preserve">
+    <value>Dialogs</value>
+  </data>
+  <data name="TabStrip_TM_TableSelection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>416, 23</value>
+  </data>
+  <data name="TabStrip_TM_TableSelection.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="TabItem_TM_LevelNames.Text" xml:space="preserve">
+    <value>Level Names</value>
+  </data>
+  <data name="TabItem_TM_ActNames.Text" xml:space="preserve">
+    <value>Act Names</value>
+  </data>
+  <data name="TabStrip_TM_TableSelection.Text" xml:space="preserve">
+    <value>TabStrip1</value>
+  </data>
+  <data name="&gt;&gt;TabStrip_TM_TableSelection.Name" xml:space="preserve">
+    <value>TabStrip_TM_TableSelection</value>
+  </data>
+  <data name="&gt;&gt;TabStrip_TM_TableSelection.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabStrip, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;TabStrip_TM_TableSelection.Parent" xml:space="preserve">
+    <value>SuperTabControlPanel_TM</value>
+  </data>
+  <data name="&gt;&gt;TabStrip_TM_TableSelection.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ColumnHeader1.Text" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="ColumnHeader1.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="ColumnHeader13.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ColumnHeader13.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="ColumnHeader14.Text" xml:space="preserve">
+    <value>Message/Text</value>
+  </data>
+  <data name="ColumnHeader14.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="ListViewEx_TM_TableEntries.LabelWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ListViewEx_TM_TableEntries.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="ListViewEx_TM_TableEntries.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="ListViewEx_TM_TableEntries.Size" type="System.Drawing.Size, System.Drawing">
+    <value>416, 515</value>
+  </data>
+  <data name="ListViewEx_TM_TableEntries.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;ListViewEx_TM_TableEntries.Name" xml:space="preserve">
+    <value>ListViewEx_TM_TableEntries</value>
+  </data>
+  <data name="&gt;&gt;ListViewEx_TM_TableEntries.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ListViewEx, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ListViewEx_TM_TableEntries.Parent" xml:space="preserve">
+    <value>SuperTabControlPanel_TM</value>
+  </data>
+  <data name="&gt;&gt;ListViewEx_TM_TableEntries.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="SuperTabControlPanel_TM.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="SuperTabControlPanel_TM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="SuperTabControlPanel_TM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="SuperTabControlPanel_TM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>694, 546</value>
+  </data>
+  <data name="SuperTabControlPanel_TM.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="SuperTabItem_TM.Text" xml:space="preserve">
+    <value>Text Manager</value>
+  </data>
+  <data name="&gt;&gt;SuperTabControlPanel_TM.Name" xml:space="preserve">
+    <value>SuperTabControlPanel_TM</value>
+  </data>
+  <data name="&gt;&gt;SuperTabControlPanel_TM.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;SuperTabControlPanel_TM.Parent" xml:space="preserve">
+    <value>SuperTabControl_Main</value>
+  </data>
+  <data name="&gt;&gt;SuperTabControlPanel_TM.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="GroupPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 133</value>
+    <value>259, 132</value>
   </data>
   <data name="GroupPanel12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 47</value>
+    <value>137, 46</value>
   </data>
   <data name="GroupPanel12.TabIndex" type="System.Int32, mscorlib">
     <value>106</value>
@@ -3369,7 +3357,7 @@
     <value>523, 4</value>
   </data>
   <data name="GroupBox_MS_SeqProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 78</value>
+    <value>168, 74</value>
   </data>
   <data name="GroupBox_MS_SeqProperties.TabIndex" type="System.Int32, mscorlib">
     <value>106</value>
@@ -3393,7 +3381,7 @@
     <value>259, 4</value>
   </data>
   <data name="GroupBox_MS_SelectedSequence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 125</value>
+    <value>258, 122</value>
   </data>
   <data name="GroupBox_MS_SelectedSequence.TabIndex" type="System.Int32, mscorlib">
     <value>105</value>
@@ -3525,7 +3513,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="SuperTabControlPanel_MS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 544</value>
+    <value>694, 546</value>
   </data>
   <data name="SuperTabControlPanel_MS.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3543,7 +3531,7 @@
     <value>SuperTabControl_Main</value>
   </data>
   <data name="&gt;&gt;SuperTabControlPanel_MS.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>3</value>
   </data>
   <data name="SuperTabControl_Main.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3555,7 +3543,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="SuperTabControl_Main.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 571</value>
+    <value>694, 573</value>
   </data>
   <data name="SuperTabControl_Main.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3634,9 +3622,6 @@
   </data>
   <data name="ButtonItem_ModelImporter.Text" xml:space="preserve">
     <value>Model Importer</value>
-  </data>
-  <data name="ButtonItem58.Text" xml:space="preserve">
-    <value>Custom Importer</value>
   </data>
   <data name="ButtonItem17.Text" xml:space="preserve">
     <value>Tweaks</value>
@@ -3735,7 +3720,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Bar1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <metadata name="DotNetBarManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>149, 17</value>
@@ -3744,7 +3729,7 @@
     <value>Bottom</value>
   </data>
   <data name="DockSite4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 617</value>
+    <value>0, 597</value>
   </data>
   <data name="DockSite4.Size" type="System.Drawing.Size, System.Drawing">
     <value>694, 0</value>
@@ -3762,7 +3747,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DockSite4.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="DockSite1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -3771,7 +3756,7 @@
     <value>0, 24</value>
   </data>
   <data name="DockSite1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 593</value>
+    <value>0, 573</value>
   </data>
   <data name="DockSite1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3786,7 +3771,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DockSite1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3800,39 +3785,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>694, 617</value>
   </data>
-  <data name="MetroStatusBar1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="MetroStatusBar1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.25pt, style=Bold</value>
-  </data>
-  <data name="LabelItem_Status.Text" xml:space="preserve">
-    <value>Ready</value>
-  </data>
-  <data name="MetroStatusBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 595</value>
-  </data>
-  <data name="MetroStatusBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 22</value>
-  </data>
-  <data name="MetroStatusBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="MetroStatusBar1.Text" xml:space="preserve">
-    <value>MetroStatusBar1</value>
-  </data>
-  <data name="&gt;&gt;MetroStatusBar1.Name" xml:space="preserve">
-    <value>MetroStatusBar1</value>
-  </data>
-  <data name="&gt;&gt;MetroStatusBar1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Metro.MetroStatusBar, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;MetroStatusBar1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MetroStatusBar1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="DockSite2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
@@ -3840,7 +3792,7 @@
     <value>694, 24</value>
   </data>
   <data name="DockSite2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 593</value>
+    <value>0, 573</value>
   </data>
   <data name="DockSite2.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -3855,7 +3807,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DockSite2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="DockSite3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -3879,7 +3831,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DockSite3.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="DockSite5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -3888,7 +3840,7 @@
     <value>0, 0</value>
   </data>
   <data name="DockSite5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 617</value>
+    <value>0, 597</value>
   </data>
   <data name="DockSite5.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3903,7 +3855,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DockSite5.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="DockSite6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -3912,7 +3864,7 @@
     <value>694, 0</value>
   </data>
   <data name="DockSite6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 617</value>
+    <value>0, 597</value>
   </data>
   <data name="DockSite6.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -3927,7 +3879,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DockSite6.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="DockSite7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -3951,13 +3903,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DockSite7.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="DockSite8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="DockSite8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 617</value>
+    <value>0, 597</value>
   </data>
   <data name="DockSite8.Size" type="System.Drawing.Size, System.Drawing">
     <value>694, 0</value>
@@ -3975,6 +3927,39 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DockSite8.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="Bar2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="Bar2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="LabelItem_Status.Text" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="Bar2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 597</value>
+  </data>
+  <data name="Bar2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>694, 20</value>
+  </data>
+  <data name="Bar2.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="Bar2.Text" xml:space="preserve">
+    <value>Bar2</value>
+  </data>
+  <data name="&gt;&gt;Bar2.Name" xml:space="preserve">
+    <value>Bar2</value>
+  </data>
+  <data name="&gt;&gt;Bar2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Bar, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;Bar2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Bar2.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -5912,11 +5897,35 @@
   <data name="&gt;&gt;ColumnHeaderA.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SuperTabItem_General.Name" xml:space="preserve">
-    <value>SuperTabItem_General</value>
+  <data name="&gt;&gt;Button_LM_RemoveArea.Name" xml:space="preserve">
+    <value>Button_LM_RemoveArea</value>
   </data>
-  <data name="&gt;&gt;SuperTabItem_General.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  <data name="&gt;&gt;Button_LM_RemoveArea.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem16.Name" xml:space="preserve">
+    <value>ButtonItem16</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem16.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem33.Name" xml:space="preserve">
+    <value>ButtonItem33</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem33.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem34.Name" xml:space="preserve">
+    <value>ButtonItem34</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem34.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem26.Name" xml:space="preserve">
+    <value>ButtonItem26</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem26.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonItem20.Name" xml:space="preserve">
     <value>ButtonItem20</value>
@@ -5966,16 +5975,16 @@
   <data name="&gt;&gt;TabItem4.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <data name="&gt;&gt;TabItem5.Name" xml:space="preserve">
-    <value>TabItem5</value>
-  </data>
-  <data name="&gt;&gt;TabItem5.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
   <data name="&gt;&gt;TabItem6.Name" xml:space="preserve">
     <value>TabItem6</value>
   </data>
   <data name="&gt;&gt;TabItem6.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;TabItem5.Name" xml:space="preserve">
+    <value>TabItem5</value>
+  </data>
+  <data name="&gt;&gt;TabItem5.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboItem1.Name" xml:space="preserve">
@@ -6014,10 +6023,10 @@
   <data name="&gt;&gt;SuperTabItem_LM.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <data name="&gt;&gt;SuperTabItem_MS.Name" xml:space="preserve">
-    <value>SuperTabItem_MS</value>
+  <data name="&gt;&gt;SuperTabItem_General.Name" xml:space="preserve">
+    <value>SuperTabItem_General</value>
   </data>
-  <data name="&gt;&gt;SuperTabItem_MS.Type" xml:space="preserve">
+  <data name="&gt;&gt;SuperTabItem_General.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboItem10.Name" xml:space="preserve">
@@ -6090,6 +6099,12 @@
     <value>SuperTabItem_TM</value>
   </data>
   <data name="&gt;&gt;SuperTabItem_TM.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;SuperTabItem_MS.Name" xml:space="preserve">
+    <value>SuperTabItem_MS</value>
+  </data>
+  <data name="&gt;&gt;SuperTabItem_MS.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;SuperTabItem2.Name" xml:space="preserve">
@@ -6174,12 +6189,6 @@
     <value>ButtonItem_ModelImporter</value>
   </data>
   <data name="&gt;&gt;ButtonItem_ModelImporter.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem58.Name" xml:space="preserve">
-    <value>ButtonItem58</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem58.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonItem17.Name" xml:space="preserve">

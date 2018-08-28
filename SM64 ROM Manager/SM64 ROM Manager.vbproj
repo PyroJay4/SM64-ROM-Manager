@@ -232,10 +232,10 @@
     <Compile Include="RomManager\GUI\Area Editor\Managed3DObject.vb" />
     <Compile Include="RomManager\GUI\Area Editor\ManagedInstantWarp.vb" />
     <Compile Include="RomManager\GUI\Area Editor\ManagedWarp.vb" />
-    <Compile Include="RomManager\GUI\Main Form\ImportLevelDialog.Designer.vb">
+    <Compile Include="RomManager\GUI\Level Manager\ImportLevelDialog.Designer.vb">
       <DependentUpon>ImportLevelDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Main Form\ImportLevelDialog.vb">
+    <Compile Include="RomManager\GUI\Level Manager\ImportLevelDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexEditor.Designer.vb">
@@ -288,17 +288,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Components\PropertyValueEditors.vb" />
-    <Compile Include="RomManager\GUI\Custom Importer\Form_CustomImporter.Designer.vb">
-      <DependentUpon>Form_CustomImporter.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Custom Importer\Form_CustomImporter.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="RomManager\Components\TypeConverters.vb" />
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\ValueInputDialog.Designer.vb">
+    <Compile Include="RomManager\GUI\Level Manager\ValueInputDialog.Designer.vb">
       <DependentUpon>ValueInputDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\ValueInputDialog.vb">
+    <Compile Include="RomManager\GUI\Level Manager\ValueInputDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Script\ScriptDumper.Designer.vb">
@@ -307,6 +301,7 @@
     <Compile Include="RomManager\GUI\Script\ScriptDumper.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RomManager\Modules\BehaviorInfos.vb" />
     <Compile Include="RomManager\Modules\Extensions.vb" />
     <Compile Include="RomManager\Modules\OutputMidi.vb" />
     <Compile Include="RomManager\GUI\Settings\LevelEditorInputManager.Designer.vb">
@@ -367,16 +362,16 @@
     <Compile Include="RomManager\GUI\Sonstiges\Form_ProgressDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\Form_AddSpecialItem.Designer.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_AddSpecialItem.Designer.vb">
       <DependentUpon>Form_AddSpecialItem.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\Form_AddSpecialItem.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_AddSpecialItem.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\Form_AddNewLevel.Designer.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_AddNewLevel.Designer.vb">
       <DependentUpon>Form_AddNewLevel.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\Form_AddNewLevel.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_AddNewLevel.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Main Form\Form_Main.vb">
@@ -386,10 +381,10 @@
       <DependentUpon>Form_Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\Form_SetUpRGBA.Designer.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_SetUpRGBA.Designer.vb">
       <DependentUpon>Form_SetUpRGBA.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\Form_SetUpRGBA.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_SetUpRGBA.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Components\ListBoxCustomModelItem.Designer.vb">
@@ -413,10 +408,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\Form_SetUpPoint.Designer.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_SetUpPoint.Designer.vb">
       <DependentUpon>Form_SetUpPoint.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager + Custom Importer\Form_SetUpPoint.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_SetUpPoint.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.Designer.vb">
@@ -443,7 +438,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="RomManager\GUI\Main Form\ImportLevelDialog.resx">
+    <EmbeddedResource Include="RomManager\GUI\Level Manager\ImportLevelDialog.resx">
       <DependentUpon>ImportLevelDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexEditor.resx">
@@ -479,10 +474,7 @@
       <DependentUpon>Form_AreaEditor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Custom Importer\Form_CustomImporter.resx">
-      <DependentUpon>Form_CustomImporter.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager + Custom Importer\ValueInputDialog.resx">
+    <EmbeddedResource Include="RomManager\GUI\Level Manager\ValueInputDialog.resx">
       <DependentUpon>ValueInputDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Script\ScriptDumper.resx">
@@ -510,17 +502,17 @@
       <DependentUpon>Form_About.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager + Custom Importer\Form_AddNewLevel.resx">
+    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_AddNewLevel.resx">
       <DependentUpon>Form_AddNewLevel.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager + Custom Importer\Form_AddSpecialItem.resx">
+    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_AddSpecialItem.resx">
       <DependentUpon>Form_AddSpecialItem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\Form_Main.resx">
       <DependentUpon>Form_Main.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager + Custom Importer\Form_SetUpRGBA.resx">
+    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_SetUpRGBA.resx">
       <DependentUpon>Form_SetUpRGBA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -529,7 +521,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager + Custom Importer\Form_SetUpPoint.resx">
+    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_SetUpPoint.resx">
       <DependentUpon>Form_SetUpPoint.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Settings\Form_Settings.resx">

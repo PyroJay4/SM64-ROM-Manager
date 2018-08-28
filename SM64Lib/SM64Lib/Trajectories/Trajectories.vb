@@ -33,13 +33,13 @@ Namespace Global.SM64Lib.Trajectorys
                         rom.Position = &HCCA6E
                         bw.Write(SwapInts.SwapUInt16(ramAddr >> 16))
                         rom.Position = &HCCA76
-                        bw.Write(SwapInts.SwapUInt16(ramAddr Or &HFFFF))
+                        bw.Write(SwapInts.SwapUInt16(ramAddr And &HFFFF))
 
                     Case TrajectoryName.SnowmansBottom
                         rom.Position = &HABC9E
                         bw.Write(SwapInts.SwapUInt16(ramAddr >> 16))
                         rom.Position = &HABCA6
-                        bw.Write(SwapInts.SwapUInt16(ramAddr Or &HFFFF))
+                        bw.Write(SwapInts.SwapUInt16(ramAddr And &HFFFF))
 
                     Case TrajectoryName.PlatformOnTracksBehavior_BParam2_00
                         rom.Position = &HED9DC + (0 * 4)
@@ -78,48 +78,73 @@ Namespace Global.SM64Lib.Trajectorys
                         bw.Write(SwapInts.SwapInt32(&H3C048040)) 'LUI A0, 0x8040
                         rom.Position = &HA9ABC
                         bw.Write(SwapInts.SwapUInt16(&H3484)) 'ORI A0, A0, 0x8040xxxx
-                        bw.Write(SwapInts.SwapUInt16(ramAddr))
+                        bw.Write(SwapInts.SwapUInt16(ramAddr And &HFFFF))
 
                     Case TrajectoryName.MetalBallsGenerators_BParam2_01
                         rom.Position = &HA9AD4
                         bw.Write(SwapInts.SwapInt32(&H3C048040)) 'LUI A0, 0x8040
                         rom.Position = &HA9ADC
                         bw.Write(SwapInts.SwapUInt16(&H3484)) 'ORI A0, A0, 0x8040xxxx
-                        bw.Write(SwapInts.SwapUInt16(ramAddr))
+                        bw.Write(SwapInts.SwapUInt16(ramAddr And &HFFFF))
 
                     Case TrajectoryName.MetalBallsGenerators_BParam2_02
                         rom.Position = &HA9AF4
                         bw.Write(SwapInts.SwapInt32(&H3C048040)) 'LUI A0, 0x8040
                         rom.Position = &HA9AFC
                         bw.Write(SwapInts.SwapUInt16(&H3484)) 'ORI A0, A0, 0x8040xxxx
-                        bw.Write(SwapInts.SwapUInt16(ramAddr))
+                        bw.Write(SwapInts.SwapUInt16(ramAddr And &HFFFF))
 
                     Case TrajectoryName.MiniMetalBallGenerator_BParam2_03
                         rom.Position = &HA9B1C
                         bw.Write(SwapInts.SwapInt32(&H3C098040)) 'LU3 T3, 0x8040
                         bw.Write(SwapInts.SwapUInt16(&H356B)) 'ORI T3, T3, 0x8040xxxx
-                        bw.Write(SwapInts.SwapUInt16(ramAddr))
+                        bw.Write(SwapInts.SwapUInt16(ramAddr And &HFFFF))
 
                     Case TrajectoryName.MiniMetalBallGenerator_BParam2_04
                         rom.Position = &HA9B38
                         bw.Write(SwapInts.SwapInt32(&H3C098040)) 'LU3 T3, 0x8040
                         bw.Write(SwapInts.SwapUInt16(&H356B)) 'ORI T3, T3, 0x8040xxxx
-                        bw.Write(SwapInts.SwapUInt16(ramAddr))
+                        bw.Write(SwapInts.SwapUInt16(ramAddr And &HFFFF))
+
+                    Case TrajectoryName.MipsTheRabbit
+                        Continue For
 
                 End Select
 
                 traj.Write(rom, curPos)
                 curPos = rom.Position
             Next
+
+            'Mips the Rabbit
+            Dim mipsTrajects As Trajectory() = Where(Function(n) n.Name = TrajectoryName.MipsTheRabbit).ToArray
+            If mipsTrajects.Length > 0 Then
+                rom.Position = &HB3816
+                bw.Write(SwapInts.SwapUInt16(&H8040))
+                rom.Position += 6
+                bw.Write(SwapInts.SwapUInt16((curPos - romstartAddr + ramStartAddr) And &HFFFF))
+
+                For Each traj As Trajectory In mipsTrajects
+                    traj.Write(rom, curPos)
+                    curPos = rom.Position
+                Next
+
+                rom.Position = &HB371E
+                bw.Write(SwapInts.SwapUInt16(mipsTrajects.Length))
+            End If
         End Sub
 
         Private Sub AddTrajectory(rom As Stream, addr As Integer, name As TrajectoryName)
+            AddTrajectory(rom, addr, name, 1)
+        End Sub
+        Private Sub AddTrajectory(rom As Stream, addr As Integer, name As TrajectoryName, count As UInt16)
             If addr > &H80400000 AndAlso addr < &H80410000 Then
-                addr = addr - &H80400000 + &H1200000
-                Dim trajectory As New Trajectory
-                trajectory.Name = name
-                trajectory.Read(rom, addr)
-                Me.Add(trajectory)
+                rom.Position = addr - &H80400000 + &H1200000
+                For i As Integer = 1 To count
+                    Dim trajectory As New Trajectory
+                    trajectory.Name = name
+                    trajectory.Read(rom, rom.Position)
+                    Me.Add(trajectory)
+                Next
             End If
         End Sub
 
@@ -195,6 +220,16 @@ Namespace Global.SM64Lib.Trajectorys
             rom.Position += 2
             addr = addr Or SwapInts.SwapUInt16(br.ReadUInt16)
             AddTrajectory(rom, addr, TrajectoryName.MiniMetalBallGenerator_BParam2_04)
+
+            'Mips the Rabbit
+            rom.Position = &HB3816
+            addr = CInt(SwapInts.SwapUInt16(br.ReadUInt16)) << 16
+            rom.Position += 6
+            addr = addr Or SwapInts.SwapUInt16(br.ReadUInt16)
+            rom.Position = &HB371E
+            Dim numOfPaths As UInt16 = SwapInts.SwapUInt16(br.ReadUInt16)
+            AddTrajectory(rom, addr, TrajectoryName.MipsTheRabbit, numOfPaths)
+
         End Sub
 
     End Class

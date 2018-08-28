@@ -45,22 +45,37 @@ Namespace Global.SM64Lib.Levels
 
         Public Sub New(LevelID As UShort, LevelIndex As Integer)
             Me.LevelID = LevelID
-            Me.LevelType = LevelType.SM64RomManager
+            CreateNewLevelscript()
+            HardcodedCameraSettings = False
+            ActSelector = ActSelectorDefaultValues(LevelIndex)
+        End Sub
+        Public Sub New(type As LevelType)
+            LevelType = type
+        End Sub
+
+        Public Sub CreateNewLevelscript()
+            _LevelType = LevelType.SM64RomManager
 
             With Levelscript
                 .Close()
                 .Clear()
 
+                'Start Loading Commands
                 .Add(New LevelscriptCommand({&H1B, &H4, &H0, &H0}))
 
+                'Loading Commands
                 .Add(New LevelscriptCommand({&H17, &HC, &H1, &HE, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0}))
 
+                'Start Model Commands
                 .Add(New LevelscriptCommand({&H1D, &H4, &H0, &H0}))
 
+                'Load Marios Model
                 .Add(New LevelscriptCommand({&H25, &HC, &H0, &H1, &H0, &H0, &H0, &H1, &H13, &H0, &H2E, &HC0}))
 
+                'Start End-Of-Level Commands
                 .Add(New LevelscriptCommand({&H1E, &H4, &H0, &H0}))
 
+                'End-Of-Level Commands
                 .Add(New LevelscriptCommand({&H2B, &HC, &H1, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0}))
                 .Add(New LevelscriptCommand({&H11, &H8, &H0, &H0, &H80, &H24, &HBC, &HD8}))
                 .Add(New LevelscriptCommand({&H12, &H8, &H0, &H1, &H80, &H24, &HBC, &HD8}))
@@ -68,6 +83,7 @@ Namespace Global.SM64Lib.Levels
                 .Add(New LevelscriptCommand({&H4, &H4, &H0, &H1}))
                 .Add(New LevelscriptCommand({&H2, &H4, &H0, &H0}))
 
+                'Add the general object bank
                 ChangeObjectBank(0, 0, -1)
             End With
 
@@ -76,12 +92,6 @@ Namespace Global.SM64Lib.Levels
                 If c.CommandType <> LevelscriptCommandTypes.LoadRomToRam Then Continue For
                 If clLoadRomToRam.GetSegmentedID(c) <> &HE Then Continue For
             Next
-
-            HardcodedCameraSettings = False
-            ActSelector = ActSelectorDefaultValues(LevelIndex)
-        End Sub
-        Public Sub New(type As LevelType)
-            LevelType = type
         End Sub
 
         Public Sub SetSegmentedBanks(rommgr As RomManager)

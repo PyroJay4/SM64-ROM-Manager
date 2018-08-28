@@ -9,8 +9,7 @@ Namespace Global.SM64Lib.Model.Collision
     Public Class CollisionMap
         Implements IToObject3D
 
-        Public Property Vertices As New VertexList
-        Public Property Triangles As New TriangleList
+        Public Property Mesh As New ColMesh
         Public Property SpecialBoxes As New List(Of BoxData)
         Private ReadOnly ColtypesWithParams() As Byte = {14, 44, 36, 37, 39, 45}
         Private _Length As Integer = 0
@@ -27,8 +26,7 @@ Namespace Global.SM64Lib.Model.Collision
         End Function
 
         Public Sub FromStream(s As Stream, RomOffset As Integer)
-            Vertices.Clear()
-            Triangles.Clear()
+            Mesh = New ColMesh
             SpecialBoxes.Clear()
 
             Dim br As New BinaryReader(s)
@@ -44,11 +42,11 @@ Namespace Global.SM64Lib.Model.Collision
                             .X = SwapInts.SwapInt16(br.ReadInt16),
                             .Y = SwapInts.SwapInt16(br.ReadInt16),
                             .Z = SwapInts.SwapInt16(br.ReadInt16)}
-                            Vertices.Add(nVert)
+                            Mesh.Vertices.Add(nVert)
                         Next
 
                         'Lese und erstelle Polygone / Read and build polygones
-                        If Vertices.Count > 0 Then
+                        If Mesh.Vertices.Count > 0 Then
                             Dim ende As Boolean = False
                             Do Until ende
                                 Dim Coltype As Int16 = SwapInts.SwapInt16(br.ReadInt16)
@@ -57,7 +55,7 @@ Namespace Global.SM64Lib.Model.Collision
                                         Dim pol As New Triangle With {.CollisionType = Coltype}
 
                                         For iv As Integer = 0 To pol.Vertices.Count - 1
-                                            pol.Vertices(iv) = Vertices(SwapInts.SwapInt16(br.ReadInt16))
+                                            pol.Vertices(iv) = Mesh.Vertices(SwapInts.SwapInt16(br.ReadInt16))
                                         Next
 
                                         If ColtypesWithParams.Contains(Coltype) Then
@@ -66,7 +64,7 @@ Namespace Global.SM64Lib.Model.Collision
                                             Next
                                         End If
 
-                                        Triangles.Add(pol)
+                                        Mesh.Triangles.Add(pol)
                                     Next
                                 Else
                                     ende = True
@@ -117,8 +115,8 @@ Namespace Global.SM64Lib.Model.Collision
             Dim dicMatNames As New Dictionary(Of Material, String)
 
             'Clear Lists
-            Vertices.Clear()
-            Triangles.Clear()
+            Mesh.Vertices.Clear()
+            Mesh.Triangles.Clear()
 
             'Create MatNames
             For Each kvp As KeyValuePair(Of String, Material) In model.Materials
@@ -150,14 +148,14 @@ Namespace Global.SM64Lib.Model.Collision
                                 v.X = LongToInt16(Round(curVert.X * ObjSettings.Scaling))
                                 v.Y = LongToInt16(Round(curVert.Y * ObjSettings.Scaling))
                                 v.Z = LongToInt16(Round(curVert.Z * ObjSettings.Scaling))
-                                Vertices.Add(v)
+                                Mesh.Vertices.Add(v)
                                 dicVertices.Add(curVert, v)
                             End If
 
                             t.Vertices(i) = v
                         Next
 
-                        Triangles.Add(t)
+                        Mesh.Triangles.Add(t)
                     End If
                 Next
             Next
@@ -172,81 +170,60 @@ Namespace Global.SM64Lib.Model.Collision
             Dim bw As New BinaryWriter(s)
             s.Position = RomOffset
 
-            'V E R T I C E S
+            For Each mesh As ColMesh In Me.Mesh.SplitMesh
 
-            If Vertices.Count > 0 Then
-                'Start vertices
-                bw.Write(SwapInts.SwapInt16(&H40))
-                bw.Write(SwapInts.SwapUInt16(Vertices.Count))
+                'V E R T I C E S
 
-                'Write vertices data
-                For Each vert In Vertices
-                    bw.Write(SwapInts.SwapInt16(vert.X))
-                    bw.Write(SwapInts.SwapInt16(vert.Y))
-                    bw.Write(SwapInts.SwapInt16(vert.Z))
-                Next
-            End If
+                If mesh.Vertices.Count > 0 Then
+                    'Start vertices
+                    bw.Write(SwapInts.SwapInt16(&H40))
+                    bw.Write(SwapInts.SwapUInt16(mesh.Vertices.Count))
 
-            'P O L Y G O N E S
-
-            For Each curType As Byte In UsedPolytypes()
-                'Search for all triangles with current collision type
-                Dim tries As Triangle() = Triangles.Where(Function(n) n.CollisionType = curType).ToArray
-
-                If tries.Length > 0 Then
-                    'Write new collision type
-                    bw.Write(SwapInts.SwapInt16(curType))
-
-                    'Write count of triangles
-                    bw.Write(SwapInts.SwapUInt16(tries.Length))
-
-                    'Check if collisiontype has params
-                    Dim hasParams As Boolean = ColtypesWithParams.Contains(curType)
-
-                    For Each tri As Triangle In tries
-                        'Write Vertex Indicies
-                        For Each vert As Vertex In tri.Vertices
-                            bw.Write(SwapInts.SwapUInt16(vert.Index))
-                        Next
-
-                        'Write Collision Params, if avaiable
-                        If hasParams Then
-                            For ip As Integer = 0 To tri.ColParams.Count - 1
-                                bw.Write(tri.ColParams(ip))
-                            Next
-                        End If
+                    'Write vertices data
+                    For Each vert In mesh.Vertices
+                        bw.Write(SwapInts.SwapInt16(vert.X))
+                        bw.Write(SwapInts.SwapInt16(vert.Y))
+                        bw.Write(SwapInts.SwapInt16(vert.Z))
                     Next
                 End If
+
+                'P O L Y G O N E S
+
+                For Each curType As Byte In UsedPolytypes(mesh)
+                    'Search for all triangles with current collision type
+                    Dim tries As Triangle() = mesh.Triangles.Where(Function(n) n.CollisionType = curType).ToArray
+
+                    If tries.Length > 0 Then
+                        'Write new collision type
+                        bw.Write(SwapInts.SwapInt16(curType))
+
+                        'Write count of triangles
+                        bw.Write(SwapInts.SwapUInt16(tries.Length))
+
+                        'Check if collisiontype has params
+                        Dim hasParams As Boolean = ColtypesWithParams.Contains(curType)
+
+                        For Each tri As Triangle In tries
+                            'Write Vertex Indicies
+                            For Each vert As Vertex In tri.Vertices
+                                bw.Write(SwapInts.SwapUInt16(vert.Index))
+                            Next
+
+                            'Write Collision Params, if avaiable
+                            If hasParams Then
+                                For ip As Integer = 0 To tri.ColParams.Count - 1
+                                    bw.Write(tri.ColParams(ip))
+                                Next
+                            End If
+                        Next
+                    End If
+                Next
+
+                'E N D   0 x 4 0   C O M M A N D
+
+                bw.Write(SwapInts.SwapInt16(&H41))
+
             Next
-
-            'For Each t In UsedPolytypes()
-            '    Dim tries As Triangle() = Triangles.Where(Function(n) n.CollisionType = t).ToArray
-            '    If tries.Count = 0 Then Continue For
-
-            '    'Write collision type
-            '    bw.Write(SwapInts.SwapInt16(t))
-
-            '    'Write count of triangles
-            '    bw.Write(SwapInts.SwapUInt16(tries.Length))
-
-            '    For Each tri As Triangle In tries
-            '        'Write Vertex Indicies
-            '        For Each v As Vertex In tri.Vertices
-            '            bw.Write(SwapInts.SwapInt16(v.Index))
-            '        Next
-
-            '        'Write Collision Params, if avaiable.
-            '        If ColtypesWithParams.Contains(tri.CollisionType) Then
-            '            For ip As Integer = 0 To tri.ColParams.Count - 1
-            '                bw.Write(CByte(tri.ColParams(ip)))
-            '            Next
-            '        End If
-            '    Next
-            'Next
-
-            'E N D   0 x 4 0   C O M M A N D
-
-            bw.Write(SwapInts.SwapInt16(&H41))
 
             'S P E C I A L   O B J E C T S
 
@@ -291,10 +268,10 @@ Namespace Global.SM64Lib.Model.Collision
             End Set
         End Property
 
-        Public Function UsedPolytypes() As Byte()
+        Public Shared Function UsedPolytypes(mesh As ColMesh) As Byte()
             Dim types As New List(Of Byte)
 
-            For Each tri As Triangle In Triangles
+            For Each tri As Triangle In mesh.Triangles
                 If Not types.Contains(tri.CollisionType) Then
                     types.Add(tri.CollisionType)
                 End If
@@ -306,7 +283,7 @@ Namespace Global.SM64Lib.Model.Collision
         Private Function DropToGroud_GetFoundList(pos As Vector3) As Single()
             Dim found As New List(Of Single)
 
-            For Each tri As Triangle In Triangles
+            For Each tri As Triangle In Mesh.Triangles
                 Dim a As New Vector3(tri.Vertices(0).X, tri.Vertices(0).Y, tri.Vertices(0).Z)
                 Dim b As New Vector3(tri.Vertices(1).X, tri.Vertices(1).Y, tri.Vertices(1).Z)
                 Dim c As New Vector3(tri.Vertices(2).X, tri.Vertices(2).Y, tri.Vertices(2).Z)
@@ -377,7 +354,7 @@ Namespace Global.SM64Lib.Model.Collision
             Dim m As New Mesh
 
             'Vertices
-            For Each vert In Vertices
+            For Each vert In Mesh.Vertices
                 m.Vertices.Add(New S3DFileParser.Vertex With {
                                .X = vert.X,
                                .Y = vert.Y,
@@ -386,7 +363,7 @@ Namespace Global.SM64Lib.Model.Collision
             Next
 
             'Triangles
-            For Each tri In Triangles
+            For Each tri In Mesh.Triangles
                 Dim newTri As New Face
                 For i As Integer = 0 To 2
                     Dim p As New Point With {.Vertex = m.Vertices(tri.Vertices(i).Index)}
@@ -405,6 +382,64 @@ Namespace Global.SM64Lib.Model.Collision
             t.Start()
             Return t
         End Function
+    End Class
+
+    Public Class ColMesh
+
+        Public Property Vertices As New VertexList
+        Public Property Triangles As New TriangleList
+
+        Public Function SplitMesh() As ColMesh()
+            Return SplitMesh(Me)
+        End Function
+
+        Public Shared Function SplitMesh(mesh As ColMesh) As ColMesh()
+            Dim meshes As New List(Of ColMesh)
+
+            If mesh.Vertices.Count > Int16.MaxValue OrElse mesh.Triangles.Count > Int16.MaxValue Then
+                Dim curMesh As New ColMesh
+                Dim curVertCopies As New Dictionary(Of Vertex, Vertex)
+
+                For Each t As Triangle In mesh.Triangles
+                    Dim newTri As New Triangle
+
+                    newTri.CollisionType = t.CollisionType
+                    For i As Integer = 0 To t.ColParams.Length - 1
+                        newTri.ColParams(i) = t.ColParams(i)
+                    Next
+
+                    For i As Integer = 0 To t.Vertices.Length - 1
+                        Dim v As Vertex = t.Vertices(i)
+                        If curVertCopies.ContainsKey(v) Then
+                            newTri.Vertices(i) = curVertCopies(v)
+                        Else
+                            Dim newVert As New Vertex
+                            newVert.X = v.X
+                            newVert.Y = v.Y
+                            newVert.Z = v.Z
+                            curMesh.Vertices.Add(newVert)
+                            curVertCopies.Add(v, newVert)
+                            newTri.Vertices(i) = newVert
+                        End If
+                    Next
+
+                    If curMesh.Vertices.Count > Int16.MaxValue - 3 OrElse curMesh.Triangles.Count >= Int16.MaxValue Then
+                        meshes.Add(curMesh)
+                        curMesh = New ColMesh
+                        curVertCopies.Clear()
+                    End If
+                Next
+
+                If Not meshes.Contains(curMesh) AndAlso curMesh.Triangles.Count > 0 AndAlso curMesh.Vertices.Count > 0 Then
+                    meshes.Add(curMesh)
+                End If
+            Else
+                meshes.Add(mesh)
+            End If
+
+            Return meshes.ToArray
+        End Function
+
     End Class
 
     Public Class Vertex

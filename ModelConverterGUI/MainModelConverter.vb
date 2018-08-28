@@ -104,6 +104,20 @@ Public Class MainModelConverter
             End If
         End If
 
+        If vmap IsNot Nothing Then
+            If vmap.Meshes.Where(Function(n) n.Vertices.Where(Function(v) CheckIfInBounds(v)).Count > 0).Count > 0 Then
+                Dim msg As String = If(vmap Is colmap, "You model is too big or your scaling is too large.", "You visual map is too big or your scaling is too large.")
+                MessageBoxEx.Show(msg, "Out of bounds", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+        End If
+        If colmap IsNot Nothing AndAlso vmap IsNot colmap Then
+            If colmap.Meshes.Where(Function(n) n.Vertices.Where(Function(v) CheckIfInBounds(v)).Count > 0).Count > 0 Then
+                MessageBoxEx.Show("You collision map is too big or your scaling is too large.", "Out of bounds", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+        End If
+
         EnableCirProgress()
 
         'Prepaire Textures
@@ -165,6 +179,27 @@ Public Class MainModelConverter
         Me.DialogResult = DialogResult.OK
     End Sub
 
+    Private Function CheckIfInBounds(v As Vertex)
+        Dim var As Single
+
+        var = Math.Round(v.X * NUD_Scaling.Value)
+        If var > Int16.MaxValue OrElse var < Int16.MinValue Then
+            Return True
+        End If
+
+        var = Math.Round(v.Y * NUD_Scaling.Value)
+        If var > Int16.MaxValue OrElse var < Int16.MinValue Then
+            Return True
+        End If
+
+        var = Math.Round(v.Z * NUD_Scaling.Value)
+        If var > Int16.MaxValue OrElse var < Int16.MinValue Then
+            Return True
+        End If
+
+        Return False
+    End Function
+
     Private Sub PrepaireTexture(model As Object3D, texSettings As TextureFormatSettings)
         For Each mat In model.Materials
             If mat.Value.Image IsNot Nothing Then
@@ -178,6 +213,7 @@ Public Class MainModelConverter
         CircularProgress1.IsRunning = Not Disable
         Button_LoadModel.Enabled = Disable
         Button_LoadCol.Enabled = Disable
+        CloseEnabled = Disable
     End Sub
 
     Private Sub Form_ModelConverter_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
