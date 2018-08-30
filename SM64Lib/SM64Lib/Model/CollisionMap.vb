@@ -233,7 +233,7 @@ Namespace Global.SM64Lib.Model.Collision
 
             If SpecialBoxes.Count > 0 Then
                 bw.Write(SwapInts.SwapInt16(&H44))
-                WriteBoxData(s, SpecialBoxes)
+                WriteBoxData(s, SpecialBoxes.OrderBy(Function(n) n.Type))
             End If
 
             'E N D   C O L L I S I O N   D A T A

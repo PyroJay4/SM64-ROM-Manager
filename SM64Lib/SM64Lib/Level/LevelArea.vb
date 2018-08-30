@@ -18,8 +18,6 @@ Namespace Global.SM64Lib.Levels
         Public Property BGMusic As Byte = 0
         Public Property AreaID As Byte = 0
         Public Property GeolayoutOffset As UInteger = 0
-        Public Property ImportModel As Boolean = False
-        Public Property ShouldImportModel As Boolean = False
         Public Property AreaModel As New ObjectModel
         Public ReadOnly Property SpecialBoxes As New SpecialBoxList
         Public ReadOnly Property ScrollingTextures As New List(Of ManagedScrollingTexture)
@@ -29,7 +27,6 @@ Namespace Global.SM64Lib.Levels
         Public ReadOnly Property WarpsForGame As New List(Of LevelscriptCommand)
         Public ReadOnly Property ShowMessage As New ShowMessage
         Public ReadOnly Property Background As New AreaBG
-        Public Property IsCustom As Boolean = False
         Public Property Enable2DCamera As Boolean = False
         Private _GettingAreaCollision As Boolean = False
         Public ReadOnly Property Fast3DBankRomStart As Integer
@@ -86,27 +83,39 @@ Namespace Global.SM64Lib.Levels
             Next
         End Sub
 
-        Public Sub New(AreaID As Byte, Optional LevelID As Byte = &H9)
+        Public Sub New(AreaID As Byte)
+            Me.New(AreaID, 9)
+        End Sub
+
+        Public Sub New(AreaID As Byte, LevelID As Byte)
+            Me.New(AreaID, LevelID, True, True)
+        End Sub
+
+        Public Sub New(AreaID As Byte, LevelID As Byte, AddWarps As Boolean, AddObjects As Boolean)
             Geolayout = New Geolayout.Geolayout(SM64Lib.Geolayout.Geolayout.NewScriptCreationMode.Level)
             Me.AreaID = AreaID
-            ShouldImportModel = True
+
             With Levelscript
                 .Add(New LevelscriptCommand({&H1F, &H8, AreaID, &H0, &H0, &H0, &H0, &H0}))
                 .Add(New LevelscriptCommand({&H2E, &H8, &H0, &H0, &H0, &H0, &H0, &H0}))
-                '.Add(New LevelscriptCommand({&H30, &H4, &H0, &H0}))
                 .Add(New LevelscriptCommand({&H36, &H8, &H0, &H0, &H0, &H0, &H0, &H0}))
                 .Add(New LevelscriptCommand({&H31, &H4, &H0, &H2}))
                 .Add(New LevelscriptCommand({&H20, &H4, &H0, &H0}))
             End With
-            Objects.Add(New LevelscriptCommand({&H24, &H18, &H1F, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &HA, &H0, &H0, &H13, &H0, &H2F, &H74}))
-            Warps.Add(New LevelscriptCommand({&H26, &H8, &HA, LevelID, AreaID, &H0, &H0, &H0}))
-            WarpsForGame.Add(New LevelscriptCommand({&H26, &H8, &HF0, &H6, &H1, &H32, &H0, &H0}))
-            WarpsForGame.Add(New LevelscriptCommand({&H26, &H8, &HF1, &H6, &H1, &H64, &H0, &H0}))
 
-            For i As Integer = 1 To 15
-                Dim newObj As New LevelscriptCommand(DefaultNormal3DObject)
-                Objects.Add(newObj)
-            Next
+            If AddWarps Then
+                Objects.Add(New LevelscriptCommand({&H24, &H18, &H1F, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &HA, &H0, &H0, &H13, &H0, &H2F, &H74}))
+                Warps.Add(New LevelscriptCommand({&H26, &H8, &HA, LevelID, AreaID, &H0, &H0, &H0}))
+                WarpsForGame.Add(New LevelscriptCommand({&H26, &H8, &HF0, &H6, &H1, &H32, &H0, &H0}))
+                WarpsForGame.Add(New LevelscriptCommand({&H26, &H8, &HF1, &H6, &H1, &H64, &H0, &H0}))
+            End If
+
+            If AddObjects Then
+                For i As Integer = 1 To 15
+                    Dim newObj As New LevelscriptCommand(DefaultNormal3DObject)
+                    Objects.Add(newObj)
+                Next
+            End If
         End Sub
 
         Public Sub New()

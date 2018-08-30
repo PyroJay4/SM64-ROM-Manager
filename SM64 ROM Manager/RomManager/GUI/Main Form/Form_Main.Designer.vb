@@ -61,9 +61,6 @@ Partial Class Form_Main
         Me.Button_LM_AreaEditor = New DevComponents.DotNetBar.ButtonX()
         Me.Button_LM_RemoveArea = New DevComponents.DotNetBar.ButtonItem()
         Me.Button_LM_AddArea = New DevComponents.DotNetBar.ButtonX()
-        Me.ButtonItem16 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem33 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem34 = New DevComponents.DotNetBar.ButtonItem()
         Me.Button_LM_AddNewLevel = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonItem26 = New DevComponents.DotNetBar.ButtonItem()
         Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
@@ -108,6 +105,7 @@ Partial Class Form_Main
         Me.SuperTabControl_Main = New DevComponents.DotNetBar.TabControl()
         Me.SuperTabControlPanel_LM = New DevComponents.DotNetBar.TabControlPanel()
         Me.GroupBox_LM_Areas = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.ListBoxAdv_LM_Areas = New Publics.Controls.ItemListBox()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.ButtonX_LM_LevelsMore = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonItem20 = New DevComponents.DotNetBar.ButtonItem()
@@ -115,6 +113,7 @@ Partial Class Form_Main
         Me.ButtonItem21 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem24 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem15 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ListBoxAdv_LM_Levels = New Publics.Controls.ItemListBox()
         Me.TabControl_LM_Area = New DevComponents.DotNetBar.TabControl()
         Me.TabControlPanel4 = New DevComponents.DotNetBar.TabControlPanel()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
@@ -181,6 +180,7 @@ Partial Class Form_Main
         Me.GroupPanel9 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.ButtonX_MS_RemoveSequence = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX_MS_AddSequence = New DevComponents.DotNetBar.ButtonX()
+        Me.ListBoxAdv_MS_MusicSequences = New Publics.Controls.ItemListBox()
         Me.SuperTabItem_MS = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.SuperTabItem2 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
@@ -229,9 +229,6 @@ Partial Class Form_Main
         Me.DockSite3 = New DevComponents.DotNetBar.DockSite()
         Me.Bar2 = New DevComponents.DotNetBar.Bar()
         Me.LabelItem_Status = New DevComponents.DotNetBar.LabelItem()
-        Me.ListBoxAdv_LM_Areas = New Publics.Controls.ItemListBox()
-        Me.ListBoxAdv_LM_Levels = New Publics.Controls.ItemListBox()
-        Me.ListBoxAdv_MS_MusicSequences = New Publics.Controls.ItemListBox()
         CType(Me.NUD_LM_DefaultPositionYRotation, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUD_LM_DefaultPositionAreaID, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SuperTabControl_Main, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -624,29 +621,10 @@ Partial Class Form_Main
         resources.ApplyResources(Me.Button_LM_AddArea, "Button_LM_AddArea")
         Me.Button_LM_AddArea.Name = "Button_LM_AddArea"
         Me.Button_LM_AddArea.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Button_LM_AddArea.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem16})
         Me.Button_LM_AddArea.Symbol = "57669"
         Me.Button_LM_AddArea.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Button_LM_AddArea.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.Button_LM_AddArea.SymbolSize = 12.0!
-        '
-        'ButtonItem16
-        '
-        Me.ButtonItem16.Enabled = False
-        Me.ButtonItem16.GlobalItem = False
-        Me.ButtonItem16.Name = "ButtonItem16"
-        Me.ButtonItem16.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem33, Me.ButtonItem34})
-        resources.ApplyResources(Me.ButtonItem16, "ButtonItem16")
-        '
-        'ButtonItem33
-        '
-        Me.ButtonItem33.Name = "ButtonItem33"
-        resources.ApplyResources(Me.ButtonItem33, "ButtonItem33")
-        '
-        'ButtonItem34
-        '
-        Me.ButtonItem34.Name = "ButtonItem34"
-        resources.ApplyResources(Me.ButtonItem34, "ButtonItem34")
         '
         'Button_LM_AddNewLevel
         '
@@ -664,7 +642,6 @@ Partial Class Form_Main
         '
         'ButtonItem26
         '
-        Me.ButtonItem26.Enabled = False
         Me.ButtonItem26.GlobalItem = False
         Me.ButtonItem26.Name = "ButtonItem26"
         resources.ApplyResources(Me.ButtonItem26, "ButtonItem26")
@@ -1204,6 +1181,23 @@ Partial Class Form_Main
         '
         Me.GroupBox_LM_Areas.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
+        'ListBoxAdv_LM_Areas
+        '
+        resources.ApplyResources(Me.ListBoxAdv_LM_Areas, "ListBoxAdv_LM_Areas")
+        Me.ListBoxAdv_LM_Areas.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.ListBoxAdv_LM_Areas.BackgroundStyle.Class = "ListBoxAdv"
+        Me.ListBoxAdv_LM_Areas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ListBoxAdv_LM_Areas.ContainerControlProcessDialogKey = True
+        Me.ListBoxAdv_LM_Areas.DragDropSupport = True
+        Me.ListBoxAdv_LM_Areas.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+        Me.ListBoxAdv_LM_Areas.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+        Me.ListBoxAdv_LM_Areas.Name = "ListBoxAdv_LM_Areas"
+        Me.ListBoxAdv_LM_Areas.ReserveLeftSpace = False
+        Me.ListBoxAdv_LM_Areas.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
         'GroupPanel1
         '
         Me.GroupPanel1.BackColor = System.Drawing.Color.White
@@ -1292,6 +1286,23 @@ Partial Class Form_Main
         Me.ButtonItem15.GlobalItem = False
         Me.ButtonItem15.Name = "ButtonItem15"
         resources.ApplyResources(Me.ButtonItem15, "ButtonItem15")
+        '
+        'ListBoxAdv_LM_Levels
+        '
+        resources.ApplyResources(Me.ListBoxAdv_LM_Levels, "ListBoxAdv_LM_Levels")
+        Me.ListBoxAdv_LM_Levels.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.ListBoxAdv_LM_Levels.BackgroundStyle.Class = "ListBoxAdv"
+        Me.ListBoxAdv_LM_Levels.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ListBoxAdv_LM_Levels.ContainerControlProcessDialogKey = True
+        Me.ListBoxAdv_LM_Levels.DragDropSupport = True
+        Me.ListBoxAdv_LM_Levels.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+        Me.ListBoxAdv_LM_Levels.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+        Me.ListBoxAdv_LM_Levels.Name = "ListBoxAdv_LM_Levels"
+        Me.ListBoxAdv_LM_Levels.ReserveLeftSpace = False
+        Me.ListBoxAdv_LM_Levels.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'TabControl_LM_Area
         '
@@ -1416,6 +1427,7 @@ Partial Class Form_Main
         'ColorPickerButton_LM_BackgroundColor
         '
         Me.ColorPickerButton_LM_BackgroundColor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ColorPickerButton_LM_BackgroundColor.AutoExpandOnClick = True
         Me.ColorPickerButton_LM_BackgroundColor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ColorPickerButton_LM_BackgroundColor.FocusCuesEnabled = False
         Me.ColorPickerButton_LM_BackgroundColor.Image = CType(resources.GetObject("ColorPickerButton_LM_BackgroundColor.Image"), System.Drawing.Image)
@@ -2179,6 +2191,22 @@ Partial Class Form_Main
         Me.ButtonX_MS_AddSequence.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX_MS_AddSequence.SymbolSize = 12.0!
         '
+        'ListBoxAdv_MS_MusicSequences
+        '
+        resources.ApplyResources(Me.ListBoxAdv_MS_MusicSequences, "ListBoxAdv_MS_MusicSequences")
+        '
+        '
+        '
+        Me.ListBoxAdv_MS_MusicSequences.BackgroundStyle.Class = "ListBoxAdv"
+        Me.ListBoxAdv_MS_MusicSequences.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ListBoxAdv_MS_MusicSequences.ContainerControlProcessDialogKey = True
+        Me.ListBoxAdv_MS_MusicSequences.DragDropSupport = True
+        Me.ListBoxAdv_MS_MusicSequences.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+        Me.ListBoxAdv_MS_MusicSequences.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+        Me.ListBoxAdv_MS_MusicSequences.Name = "ListBoxAdv_MS_MusicSequences"
+        Me.ListBoxAdv_MS_MusicSequences.ReserveLeftSpace = False
+        Me.ListBoxAdv_MS_MusicSequences.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
         'SuperTabItem_MS
         '
         Me.SuperTabItem_MS.AttachedControl = Me.SuperTabControlPanel_MS
@@ -2450,7 +2478,7 @@ Partial Class Form_Main
         'ButtonItem23
         '
         Me.ButtonItem23.Name = "ButtonItem23"
-        Me.ButtonItem23.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F10)
+        Me.ButtonItem23.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9)
         resources.ApplyResources(Me.ButtonItem23, "ButtonItem23")
         '
         'DotNetBarManager1
@@ -2555,56 +2583,6 @@ Partial Class Form_Main
         Me.LabelItem_Status.Name = "LabelItem_Status"
         Me.LabelItem_Status.PaddingLeft = 3
         resources.ApplyResources(Me.LabelItem_Status, "LabelItem_Status")
-        '
-        'ListBoxAdv_LM_Areas
-        '
-        resources.ApplyResources(Me.ListBoxAdv_LM_Areas, "ListBoxAdv_LM_Areas")
-        Me.ListBoxAdv_LM_Areas.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.ListBoxAdv_LM_Areas.BackgroundStyle.Class = "ListBoxAdv"
-        Me.ListBoxAdv_LM_Areas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ListBoxAdv_LM_Areas.ContainerControlProcessDialogKey = True
-        Me.ListBoxAdv_LM_Areas.DragDropSupport = True
-        Me.ListBoxAdv_LM_Areas.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-        Me.ListBoxAdv_LM_Areas.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.ListBoxAdv_LM_Areas.Name = "ListBoxAdv_LM_Areas"
-        Me.ListBoxAdv_LM_Areas.ReserveLeftSpace = False
-        Me.ListBoxAdv_LM_Areas.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        '
-        'ListBoxAdv_LM_Levels
-        '
-        resources.ApplyResources(Me.ListBoxAdv_LM_Levels, "ListBoxAdv_LM_Levels")
-        Me.ListBoxAdv_LM_Levels.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.ListBoxAdv_LM_Levels.BackgroundStyle.Class = "ListBoxAdv"
-        Me.ListBoxAdv_LM_Levels.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ListBoxAdv_LM_Levels.ContainerControlProcessDialogKey = True
-        Me.ListBoxAdv_LM_Levels.DragDropSupport = True
-        Me.ListBoxAdv_LM_Levels.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-        Me.ListBoxAdv_LM_Levels.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.ListBoxAdv_LM_Levels.Name = "ListBoxAdv_LM_Levels"
-        Me.ListBoxAdv_LM_Levels.ReserveLeftSpace = False
-        Me.ListBoxAdv_LM_Levels.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        '
-        'ListBoxAdv_MS_MusicSequences
-        '
-        resources.ApplyResources(Me.ListBoxAdv_MS_MusicSequences, "ListBoxAdv_MS_MusicSequences")
-        '
-        '
-        '
-        Me.ListBoxAdv_MS_MusicSequences.BackgroundStyle.Class = "ListBoxAdv"
-        Me.ListBoxAdv_MS_MusicSequences.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ListBoxAdv_MS_MusicSequences.ContainerControlProcessDialogKey = True
-        Me.ListBoxAdv_MS_MusicSequences.DragDropSupport = True
-        Me.ListBoxAdv_MS_MusicSequences.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-        Me.ListBoxAdv_MS_MusicSequences.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.ListBoxAdv_MS_MusicSequences.Name = "ListBoxAdv_MS_MusicSequences"
-        Me.ListBoxAdv_MS_MusicSequences.ReserveLeftSpace = False
-        Me.ListBoxAdv_MS_MusicSequences.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'Form_Main
         '
@@ -2865,9 +2843,6 @@ Partial Class Form_Main
     Friend WithEvents ButtonX_LM_ScrollTexEditor As DevComponents.DotNetBar.ButtonX
     Friend WithEvents Bar2 As DevComponents.DotNetBar.Bar
     Friend WithEvents LabelItem_Status As DevComponents.DotNetBar.LabelItem
-    Friend WithEvents ButtonItem16 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem26 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem33 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem34 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents Button_LM_RemoveArea As DevComponents.DotNetBar.ButtonItem
 End Class

@@ -7,7 +7,7 @@ Namespace Global.SM64Lib.Levels
     Public Class LevelBG
 
         Public Property ID As Geolayout.BackgroundIDs = Geolayout.BackgroundIDs.Ocean
-        Private _ImageByts As Byte() = Nothing
+        Private _ImageBytes As Byte() = Nothing
         Public Property Enabled As Boolean = True
         Public Property IsCustom As Boolean = False
 
@@ -24,15 +24,24 @@ Namespace Global.SM64Lib.Levels
             End Get
         End Property
 
+        Public Property ImageData As Byte()
+            Get
+                Return _ImageBytes
+            End Get
+            Set(value As Byte())
+                _ImageBytes = value
+            End Set
+        End Property
+
         Public ReadOnly Property ImageLength As Integer
             Get
-                Return _ImageByts.Length
+                Return _ImageBytes.Length
             End Get
         End Property
 
         Public ReadOnly Property HasImage As Boolean
             Get
-                Return _ImageByts IsNot Nothing
+                Return _ImageBytes IsNot Nothing
             End Get
         End Property
 
@@ -49,14 +58,14 @@ Namespace Global.SM64Lib.Levels
         Public Sub WriteImage(s As Stream, offset As Integer)
             'Write Image Data
             s.Position = offset
-            s.Write(_ImageByts, 0, _ImageByts.Length)
+            s.Write(_ImageBytes, 0, _ImageBytes.Length)
         End Sub
 
         Public Sub ReadImage(s As Stream, offset As Integer)
             'Read Image Data
-            ReDim _ImageByts(&H20000 - 1)
+            ReDim _ImageBytes(&H20000 - 1)
             s.Position = offset
-            s.Read(_ImageByts, 0, _ImageByts.Length)
+            s.Read(_ImageBytes, 0, _ImageBytes.Length)
             _Image = Nothing
         End Sub
 
@@ -68,14 +77,14 @@ Namespace Global.SM64Lib.Levels
             If bmp.Size <> s Then
                 bmp = ResizeImage(bmp, s, False)
             End If
-            _ImageByts = BackgroundImageConverter.GetBytes(bmp)
+            _ImageBytes = BackgroundImageConverter.GetBytes(bmp)
             _Image = Nothing
         End Sub
 
         Public Function GetImage() As Image
-            If _ImageByts IsNot Nothing Then
+            If _ImageBytes IsNot Nothing Then
                 Dim s As New Size(248, 248) '((_ImageByts.Length - &H140) / 256 / 2 / 32) * 31)
-                Dim img As Bitmap = BackgroundImageConverter.GetImage(_ImageByts, s)
+                Dim img As Bitmap = BackgroundImageConverter.GetImage(_ImageBytes, s)
                 _Image = img
                 Return img
             Else

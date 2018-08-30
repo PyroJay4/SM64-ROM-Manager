@@ -4,10 +4,10 @@ Imports IniParser
 Imports IniParser.Model
 Imports OpenGLCamera
 
-Public Class Settings
+Public Class SettingsOld
 
     Shared IniSettings As New IniData
-    Shared ReadOnly SettingsFile As String = Application.StartupPath & "\Data\Settings.ini"
+    Public Shared ReadOnly SettingsFile As String = Application.StartupPath & "\Data\Settings.ini"
 
     Shared Sub SaveSettings()
         With (New FileIniDataParser)
@@ -37,8 +37,6 @@ Public Class Settings
         IniSettings.Global.AddKey("Action if Update-Patches", CInt(DialogResult.None))
 
         IniSettings.Sections.AddSection("Level Manager")
-        'IniSettings("Level Manager").AddKey("Add Range to end of Levelscript", 0)
-        'IniSettings("Level Manager").AddKey("Add Range to end of Bank 0xE", 0)
 
         IniSettings.Sections.AddSection("Area Editor")
         IniSettings("Area Editor").AddKey("Default Camera Mode", CameraMode.ORBIT)

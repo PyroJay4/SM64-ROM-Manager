@@ -281,7 +281,7 @@ Namespace Global.SM64Lib.SM64Convert
                     knownTextures.Add(curTexSegAddr, mat)
                     If Not obj.Materials.ContainsKey(curTexSegAddr) Then obj.Materials.Add(curTexSegAddr, mat)
                 Catch ex As Exception
-                    MsgBox(ex.Message)
+                    'MsgBox(ex.Message)
                 End Try
             End If
         End Sub
@@ -310,7 +310,6 @@ Namespace Global.SM64Lib.SM64Convert
 
             Catch ex As Exception
             End Try
-
         End Sub
 
         Private Shared Function GetVertexFromStream(s As Stream, vtStart As Integer, modelOffset As Numerics.Vector3, modelScale As Numerics.Vector3) As Vertex

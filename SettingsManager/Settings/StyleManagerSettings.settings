@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="StyleManagerSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AlwaysKeepBlueColors" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MetroColorParams" Type="DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters" Scope="User">
+      <Value Profile="(Default)">White, #80397B</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

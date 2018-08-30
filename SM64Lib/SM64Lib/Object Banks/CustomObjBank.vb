@@ -68,7 +68,7 @@ Namespace Global.SM64Lib.ObjectBanks
             'Read Levelscript
             lvlscript.Read(Nothing, 0, LevelscriptCommandTypes.JumpBack)
 
-            s = seg.Data
+            s = seg.ReadDataIfNull(rommgr)
             br = New BinaryReader(s)
 
             'Parse Levelscript & Load Models

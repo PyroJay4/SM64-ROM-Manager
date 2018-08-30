@@ -20,9 +20,7 @@ Public Class Form_Settings
     Private Sub Form_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TextBoxX_EmulatorPatch.Text = Settings.General.EmulatorPath
         SwitchButton_SearchUpdates.Value = Settings.General.AutoUpdates
-        SwitchButton_UpdateChecksum.Value = Settings.General.AutoUpdateChecksum
         ComboBox_DefaultValueType.SelectedIndex = Settings.General.IntegerValueMode
-        SwitchButton_AreaEditor_HistoryFeature.Value = Settings.AreaEditor.EnableHistory
         ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex = Settings.AreaEditor.DefaultCameraMode
         ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = If(Settings.AreaEditor.DefaultWindowMode = FormWindowState.Maximized, 1, 0)
         ComboBoxEx_LoaderModule.SelectedIndex = Settings.FileParser.LoaderModule
@@ -39,10 +37,8 @@ Public Class Form_Settings
 
     Private Sub Form_Settings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Settings.General.EmulatorPath = TextBoxX_EmulatorPatch.Text.Trim
-        Settings.General.AutoUpdateChecksum = SwitchButton_UpdateChecksum.Value
         Settings.General.IntegerValueMode = ComboBox_DefaultValueType.SelectedIndex
         Settings.General.AutoUpdates = SwitchButton_SearchUpdates.Value
-        Settings.AreaEditor.EnableHistory = SwitchButton_AreaEditor_HistoryFeature.Value
         Settings.AreaEditor.DefaultCameraMode = ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex
         Settings.AreaEditor.DefaultWindowMode = If(ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = 1, FormWindowState.Maximized, FormWindowState.Normal)
         Settings.FileParser.LoaderModule = ComboBoxEx_LoaderModule.SelectedIndex
@@ -72,4 +68,13 @@ Public Class Form_Settings
             TextBoxX_EmulatorPatch.Text = ofd.FileName
         End If
     End Sub
+
+    Private Sub ButtonX4_Click(sender As Object, e As EventArgs) Handles ButtonX4.Click
+        Settings.ResetSettings()
+    End Sub
+
+    Private Sub Form_Settings_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        Settings.SaveSettings()
+    End Sub
+
 End Class

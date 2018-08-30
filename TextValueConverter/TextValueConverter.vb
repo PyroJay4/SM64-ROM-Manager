@@ -4,7 +4,7 @@ Public Module TextValueConverter
 
     Public Function ValueFromText(Text As String, Optional DefaultValue As Integer = 0) As Integer
         Try
-            Return CInt(Text.Replace("$", "&H").Replace("0x", "&H").Trim)
+            Return Text.Replace("$", "&H").Replace("0x", "&H").Trim
         Catch ex As Exception
             Return DefaultValue
         End Try

@@ -48,7 +48,6 @@ Public Class ModelImporter
 
     Private Sub ModelImporter_Load(sender As Object, e As EventArgs) Handles Me.Load
         If StyleManager Is Nothing Then
-            Settings.LoadSettings()
             StyleManager = New StyleManager
             StyleManager.ManagerStyle = eStyle.Metro
             StyleManager.MetroColorParameters = Settings.StyleManager.MetroColorParams
@@ -156,10 +155,14 @@ Public Class ModelImporter
             WriteOutput($"DL-Pointer:{vbTab}{g.SegPointer.ToString("X")} ({g.Layer.ToString})")
         Next
 
-        If preset.Script IsNot Nothing Then
-            WriteOutput("Executing Script ...")
-            Dim pm As New PatchScripts.PatchingManager
-            pm.Patch(preset.Script, rommgr, "", Me)
+        If preset.Script IsNot Nothing AndAlso Not String.IsNullOrEmpty(preset.Script.Script) Then
+            If rommgr IsNot Nothing Then
+                WriteOutput("Executing Script ...")
+                Dim pm As New PatchScripts.PatchingManager
+                pm.Patch(preset.Script, rommgr, "", Me)
+            Else
+                WriteOutput("Warning: The Script hasn't been patched, while Tweaks aren't enabled whe started as stand-alone!")
+            End If
         End If
 
         WriteOutput()

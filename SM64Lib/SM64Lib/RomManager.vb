@@ -238,11 +238,11 @@ Namespace Global.SM64Lib
 
                 If IsSM64EditorMode Then
                     curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64Editor)
-                    SM64Lib.Levels.LevelManager.LoadSM64EditorLevel(curLevel, Me, ldi.ID, ldi.Index, offset)
+                    SM64Lib.Levels.LevelManager.LoadSM64EditorLevel(curLevel, Me, ldi.ID, offset)
                 Else
                     curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64RomManager)
                     'curLevel.Load(Me, ldi.ID, ldi.Index, offset)
-                    SM64Lib.Levels.LevelManager.LoadRomManagerLevel(curLevel, Me, ldi.ID, ldi.Index, offset)
+                    SM64Lib.Levels.LevelManager.LoadRomManagerLevel(curLevel, Me, ldi.ID, offset)
                 End If
 
                 curLevel.LastRomOffset = seg0x19.RomStart
@@ -629,6 +629,9 @@ Namespace Global.SM64Lib
                 fs.Close()
             End If
             Return _Data
+        End Function
+        Public Function ReadDataIfNull(rommgr As RomManager) As MemoryStream
+            Return ReadDataIfNull(rommgr.RomFile)
         End Function
         Public Function ReadData(s As Stream) As MemoryStream
             Dim ms As New MemoryStream

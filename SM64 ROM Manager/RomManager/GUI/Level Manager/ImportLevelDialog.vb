@@ -57,13 +57,56 @@ Public Class ImportLevelDialog
             If selector.ShowDialog = DialogResult.OK Then
                 levelinfo = selector.SelectedLevel
 
-                'Set Level ID
-                lvl.LevelID = levelinfo.ID
+                Dim newLvl As Level
 
-                'Add Level
-                rommgr.Levels.Add(lvl)
+                Select Case lvl.LevelType
+                    Case LevelType.SM64Editor
 
-                DialogResult = DialogResult.OK
+                        'Create mew Level
+                        newLvl = New Level(levelinfo.ID, levelinfo.Index)
+
+                        'Create new Areas & Copy Area Data
+                        For Each a As LevelArea In lvl.Areas
+                            Dim newArea As New LevelArea(a.AreaID, newLvl.LevelID, False, False)
+                            newArea.Background.Type = a.Background.Type
+                            newArea.Background.Color = a.Background.Color
+                            newArea.BGMusic = a.BGMusic
+                            newArea.TerrainType = a.TerrainType
+                            newArea.Objects.AddRange(a.Objects.ToArray)
+                            newArea.Warps.AddRange(a.Warps.ToArray)
+                            newArea.WarpsForGame.AddRange(a.WarpsForGame.ToArray)
+                            newArea.AreaModel = a.AreaModel
+                            newLvl.Areas.Add(newArea)
+                        Next
+
+                        'Copy Level Data
+                        newLvl.Background.Enabled = lvl.Background.Enabled
+                        newLvl.Background.ID = lvl.Background.ID
+                        newLvl.Background.ImageData = lvl.Background.ImageData
+                        newLvl.Background.IsCustom = lvl.Background.IsCustom
+                        newLvl.HardcodedCameraSettings = lvl.HardcodedCameraSettings
+                        newLvl.ActSelector = lvl.ActSelector
+
+                    Case LevelType.SM64RomManager
+
+                        newLvl = lvl
+                        newLvl.LevelID = levelinfo.ID
+
+                    Case Else
+
+                        newLvl = Nothing
+
+                End Select
+
+                If newLvl IsNot Nothing Then
+                    'Add Level
+                    rommgr.Levels.Add(newLvl)
+
+                    'Close Window
+                    DialogResult = DialogResult.OK
+                Else
+                    MessageBoxEx.Show("The level can't be added.", "Add Level", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
 
             End If
         End If
@@ -72,4 +115,5 @@ Public Class ImportLevelDialog
     Private Sub ItemListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ItemListBox1.SelectedIndexChanged
         ButtonX_Import.Enabled = ItemListBox1.SelectedIndex > -1
     End Sub
+
 End Class

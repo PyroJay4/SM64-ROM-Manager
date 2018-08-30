@@ -1,10 +1,11 @@
-﻿Imports System.Windows.Forms
+﻿Imports System.Collections.Specialized
+Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
 Imports S3DFileParser
 
-Public Class Publics
+Public Module Publics
 
-    Public Shared Async Sub ExportModel(model As Object3D, modul As LoaderModule)
+    Public Async Sub ExportModel(model As Object3D, modul As LoaderModule)
         Dim sfd As New SaveFileDialog
         Dim strFilter As String = GetExtensionFilter(modul)
         sfd.Filter = strFilter.Substring(strFilter.IndexOf("|", strFilter.IndexOf("|") + 1) + 1)
@@ -18,4 +19,26 @@ Public Class Publics
         End If
     End Sub
 
-End Class
+    Public Sub AddRecentFile(ByRef collection As StringCollection, fileName As String)
+        If collection.Contains(fileName) Then
+            collection.Remove(fileName)
+        End If
+
+        collection.Insert(0, fileName)
+    End Sub
+
+    Public Sub MergeRecentFiles(ByRef collection As StringCollection)
+        Dim toRemove As New List(Of String)
+
+        For Each f As String In collection
+            If Not IO.File.Exists(f) Then
+                toRemove.Add(f)
+            End If
+        Next
+
+        For Each f As String In toRemove
+            collection.Remove(f)
+        Next
+    End Sub
+
+End Module

@@ -13,6 +13,7 @@ Imports Publics
 Imports SM64Lib.Model.Fast3D
 Imports ModelConverterGUI.My.Resources
 Imports System.Deployment.Application
+Imports System.Collections.Specialized
 
 Public Class MainModelConverter
 
@@ -58,7 +59,7 @@ Public Class MainModelConverter
             NUD_Scaling.Value = .Scaling
         End With
 
-        ComboBoxEx_UpAxis.SelectedIndex = Settings.ModelConverter.UpAxis
+        ComboBoxEx_UpAxis.SelectedIndex = Settings.FileParser.UpAxis
         ComboBox_FogTyp.SelectedIndex = 0
 
         LoadRecentFiles()
@@ -224,8 +225,8 @@ Public Class MainModelConverter
         Dim ofd As New OpenFileDialog
         ofd.Filter = GetExtensionFilter(Settings.FileParser.LoaderModule) '"All supported files|*.obj;*.dae|OBJ Files (*.obj)|*.obj|Collada Files (*.dae)|*.dae"
 
-        Dim p As String = Settings.RecentFiles.GetRecentFiles(Settings.RecentFiles.RecentModelFilesSection).FirstOrDefault
-        If p <> "" Then ofd.InitialDirectory = Path.GetDirectoryName(p)
+        Dim p As StringCollection = Settings.RecentFiles.RecentModelFiles
+        If p.Count > 0 Then ofd.InitialDirectory = Path.GetDirectoryName(p(0))
 
         If ofd.ShowDialog <> DialogResult.OK Then Return
         Await LoadModel(ofd.FileName)
@@ -234,8 +235,8 @@ Public Class MainModelConverter
         Dim ofd As New OpenFileDialog
         ofd.Filter = GetExtensionFilter(Settings.FileParser.LoaderModule) '"All supported files|*.obj;*.dae|OBJ Files (*.obj)|*.obj|Collada Files (*.dae)|*.dae"
 
-        Dim p As String = Settings.RecentFiles.GetRecentFiles(Settings.RecentFiles.RecentModelFilesSection).FirstOrDefault
-        If p <> "" Then ofd.InitialDirectory = Path.GetDirectoryName(p)
+        Dim p As StringCollection = Settings.RecentFiles.RecentModelFiles
+        If p.Count > 0 Then ofd.InitialDirectory = Path.GetDirectoryName(p(0))
 
         If ofd.ShowDialog <> DialogResult.OK Then Return
         Await LoadCollision(ofd.FileName)
@@ -253,7 +254,7 @@ Public Class MainModelConverter
 
             objVisualMap.RemoveUnusedMaterials()
 
-            Settings.RecentFiles.StoreRecentFile(Settings.RecentFiles.RecentModelFilesSection, fileName)
+            Publics.Publics.AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
             LoadRecentFiles()
             LabelX_Modelfile.Text = Path.GetFileName(fileName)
             curModelFile = fileName
@@ -287,7 +288,7 @@ Public Class MainModelConverter
 
             objCollisionMap.RemoveUnusedMaterials()
 
-            Settings.RecentFiles.StoreRecentFile(Settings.RecentFiles.RecentModelFilesSection, fileName)
+            Publics.Publics.AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
             LoadRecentFiles()
             LabelX_Colfile.Text = Path.GetFileName(fileName)
             curCollisionFile = fileName
@@ -333,7 +334,8 @@ Public Class MainModelConverter
         Button_LoadModel.SubItems.Clear()
         Button_LoadCol.SubItems.Clear()
 
-        For Each f As String In Settings.RecentFiles.GetRecentFiles(Settings.RecentFiles.RecentModelFilesSection)
+        Publics.Publics.MergeRecentFiles(Settings.RecentFiles.RecentModelFiles)
+        For Each f As String In Settings.RecentFiles.RecentModelFiles
             Dim sf As String = Path.GetFileName(f)
             Dim ico As Image = IconExtractor.ExtractIcon(f, True).ToBitmap
 
@@ -357,7 +359,7 @@ Public Class MainModelConverter
     End Sub
 
     Private Async Sub ButtonItem_RecentModelFile_Click(sender As ButtonItem, e As EventArgs)
-        Dim f As String = Settings.RecentFiles.GetRecentFiles(Settings.RecentFiles.RecentModelFilesSection)(sender.Parent.SubItems.IndexOf(sender))
+        Dim f As String = Settings.RecentFiles.RecentModelFiles(sender.Parent.SubItems.IndexOf(sender))
         If f <> "" Then
             If Button_LoadModel.SubItems.Contains(sender) Then
                 Await LoadModel(f)
@@ -425,7 +427,7 @@ Public Class MainModelConverter
     End Sub
 
     Private Sub ComboBoxEx1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_UpAxis.SelectedIndexChanged
-        Settings.ModelConverter.UpAxis = ComboBoxEx_UpAxis.SelectedIndex
+        Settings.FileParser.UpAxis = ComboBoxEx_UpAxis.SelectedIndex
     End Sub
 
     Private Sub Slider1_MouseDown(sender As Object, e As MouseEventArgs)

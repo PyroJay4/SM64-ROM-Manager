@@ -19,7 +19,7 @@ Namespace Levels
 
     Public Class LevelManager
 
-        Public Shared Sub LoadSM64EditorLevel(lvl As Level, rommgr As RomManager, LevelID As UShort, Levelindex As Byte, segAddress As UInteger)
+        Public Shared Sub LoadSM64EditorLevel(lvl As Level, rommgr As RomManager, LevelID As UShort, segAddress As UInteger)
             Dim customBGStart As Integer = 0
             Dim customBGEnd As Integer = 0
 
@@ -181,20 +181,21 @@ Namespace Levels
                 curMdlStartOffset = newEndOffset
             Next
 
-            ''Create new Geolayouts
-            'For Each area As LevelArea In lvl.Areas
-            '    Dim oldGeo As Geolayout.Geolayout = area.Geolayout
-            '    area.Geolayout = New Geolayout.Geolayout(Geolayout.Geolayout.NewScriptCreationMode.Level)
-            '    area.Geolayout.Geopointers.AddRange(oldGeo.Geopointers.ToArray)
-            '    area.Geolayout.CameraPreset = oldGeo.CameraPreset
-            '    area.Geolayout.EnvironmentEffect = oldGeo.EnvironmentEffect
-            'Next
+            'Lese alle Box-Daten
+            firstArea.SpecialBoxes.Clear()
+            firstArea.SpecialBoxes.AddRange(SpecialBoxList.ReadTable(brToUse.BaseStream, SpecialBoxType.Water, bank0x19RomStart, bank0x19RomStart + &H1810))
+            firstArea.SpecialBoxes.AddRange(SpecialBoxList.ReadTable(brToUse.BaseStream, SpecialBoxType.ToxicHaze, bank0x19RomStart, bank0x19RomStart + &H1850))
+            firstArea.SpecialBoxes.AddRange(SpecialBoxList.ReadTable(brToUse.BaseStream, SpecialBoxType.Mist, bank0x19RomStart, bank0x19RomStart + &H18A0))
 
-            ''Lese alle Box-Daten
-            'firstArea.SpecialBoxes.Clear()
-            'firstArea.SpecialBoxes.AddRange(SpecialBoxList.ReadTable(brToUse.BaseStream, SpecialBoxType.Water, bank0x19RomStart, bank0x19RomStart + &H1810))
-            'firstArea.SpecialBoxes.AddRange(SpecialBoxList.ReadTable(brToUse.BaseStream, SpecialBoxType.ToxicHaze, bank0x19RomStart, bank0x19RomStart + &H1850))
-            'firstArea.SpecialBoxes.AddRange(SpecialBoxList.ReadTable(brToUse.BaseStream, SpecialBoxType.Mist, bank0x19RomStart, bank0x19RomStart + &H18A0))
+            Dim areaWithBoxData As LevelArea = lvl.Areas.FirstOrDefault(Function(n) n.AreaModel.Collision.SpecialBoxes.Any)
+            If areaWithBoxData IsNot Nothing Then
+                For i As Integer = 0 To firstArea.SpecialBoxes.Count - 1
+                    Dim boxdata As Collision.BoxData = firstArea.AreaModel.Collision.SpecialBoxes.ElementAtOrDefault(i)
+                    If boxdata IsNot Nothing Then
+                        firstArea.SpecialBoxes(i).Y = boxdata.Y
+                    End If
+                Next
+            End If
 
             'One-Bank-0xE-System
             lvl.OneBank0xESystemEnabled = True
@@ -239,7 +240,7 @@ Namespace Levels
             Return s.Position
         End Function
 
-        Public Shared Sub LoadLevelInMinimalMode(lvl As Level, rommgr As RomManager, LevelID As UShort, Levelindex As Byte, segAddress As UInteger)
+        Public Shared Sub LoadLevelInMinimalMode(lvl As Level, rommgr As RomManager, LevelID As UShort, segAddress As UInteger)
             Dim customBGStart As Integer = 0
             Dim customBGEnd As Integer = 0
 
@@ -429,7 +430,7 @@ Namespace Levels
             lvl.ObjectBank0x0E = lvl.GetObjectBank0x0E()
         End Sub
 
-        Public Shared Sub LoadRomManagerLevel(lvl As Level, rommgr As RomManager, LevelID As UShort, Levelindex As Byte, segAddress As UInteger)
+        Public Shared Sub LoadRomManagerLevel(lvl As Level, rommgr As RomManager, LevelID As UShort, segAddress As UInteger)
             Dim customBGStart As Integer = 0
             Dim customBGEnd As Integer = 0
 
@@ -439,6 +440,7 @@ Namespace Levels
             lvl.bank0x19 = rommgr.GetSegBank(&H19)
             lvl.bank0x19.ReadDataIfNull(rommgr.RomFile)
 
+            'Close if not closed & re-open
             If Not lvl.Closed Then lvl.Close()
             lvl.Closed = False
 
@@ -595,10 +597,21 @@ Namespace Levels
             'Lese alle Box-Daten
             Dim CurrentBoxOffset As Integer = bank0x19RomStart + &H6A00
             For Each a As LevelArea In lvl.Areas
+                'Clear special boxes
                 a.SpecialBoxes.Clear()
+
+                'Load special boxes
                 a.SpecialBoxes.AddRange(SpecialBoxList.ReadTable(brToUse.BaseStream, SpecialBoxType.Water, bank0x19RomStart, bank0x19RomStart + &H6000 + (&H50 * a.AreaID)))
                 a.SpecialBoxes.AddRange(SpecialBoxList.ReadTable(brToUse.BaseStream, SpecialBoxType.ToxicHaze, bank0x19RomStart, bank0x19RomStart + &H6280 + (&H50 * a.AreaID)))
                 a.SpecialBoxes.AddRange(SpecialBoxList.ReadTable(brToUse.BaseStream, SpecialBoxType.Mist, bank0x19RomStart, bank0x19RomStart + &H6500 + (&H50 * a.AreaID)))
+
+                'Load boxdata from collision
+                For i As Integer = 0 To a.SpecialBoxes.Count - 1
+                    Dim boxdata As Collision.BoxData = a.AreaModel.Collision.SpecialBoxes.ElementAtOrDefault(i)
+                    If boxdata IsNot Nothing Then
+                        a.SpecialBoxes(i).Y = boxdata.Y
+                    End If
+                Next
             Next
 
             'One-Bank-0xE-System
@@ -619,8 +632,8 @@ Namespace Levels
             lvl.ObjectBank0x0E = lvl.GetObjectBank0x0E()
         End Sub
 
-        Public Shared Sub SaveRomManagerLevel(lvl As Level, rommgr As RomManager, s As Stream, scriptOffset As Integer, ByRef curOff As UInteger)
-            Dim bw As New BinaryWriter(s)
+        Public Shared Sub SaveRomManagerLevel(lvl As Level, rommgr As RomManager, output As Stream, scriptOffset As Integer, ByRef curOff As UInteger)
+            Dim bw As New BinaryWriter(output)
             Dim bw0x19 As BinaryWriter = Nothing
             Dim lid = rommgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = lvl.LevelID)
             Dim offNewBank0x19 As UInteger = curOff
@@ -644,8 +657,32 @@ Namespace Levels
                 Dim newModelStart As Integer
                 Dim modelOffset As Integer
 
+                'Add the new water boxes
+                a.AreaModel.Collision.SpecialBoxes.Clear()
+                For Each sp As SpecialBox In a.SpecialBoxes
+                    Dim boxdata As New Collision.BoxData
+
+                    boxdata.X1 = sp.X1
+                    boxdata.X2 = sp.X2
+                    boxdata.Z1 = sp.Z1
+                    boxdata.Z2 = sp.Z2
+                    boxdata.Y = sp.Y
+
+                    Select Case sp.Type
+                        Case SpecialBoxType.Water
+                            boxdata.Type = Collision.BoxDataType.Water
+                        Case SpecialBoxType.Mist
+                            boxdata.Type = Collision.BoxDataType.Mist
+                        Case SpecialBoxType.ToxicHaze
+                            boxdata.Type = Collision.BoxDataType.ToxicHaze
+                    End Select
+
+                    a.AreaModel.Collision.SpecialBoxes.Add(boxdata)
+                Next
+
                 'Write Area Model
-                Dim res As ObjectModel.SaveResult = a.AreaModel.ToStream(s, CurrentRomOffset, CurrentRomOffset, &HE000000)
+                Dim res As ObjectModel.SaveResult
+                res = a.AreaModel.ToStream(output, CurrentRomOffset, CurrentRomOffset, &HE000000)
 
                 'Calculate Model Offset & Update Scrolling Texture Vertex Pointers
                 newModelStart = a.AreaModel.Fast3DBuffer.Fast3DBankStart
@@ -664,16 +701,16 @@ Namespace Levels
             Next
 
             'Write Background Image
-            HexRoundUp2(s.Position)
+            HexRoundUp2(output.Position)
             Dim customBGStart As Integer = CurrentRomOffset
             Dim customBGEnd As Integer = 0
             If lvl.Background.IsCustom Then '.ID = Geolayout.BackgroundIDs.Custom Then
                 'Write Custom Background
-                lvl.Background.WriteImage(s, customBGStart)
+                lvl.Background.WriteImage(output, customBGStart)
 
                 'Write Pointer Table
                 Dim bgPtrTable As Byte() = LevelBG.GetBackgroundPointerTable()
-                s.Write(bgPtrTable, 0, bgPtrTable.Length)
+                output.Write(bgPtrTable, 0, bgPtrTable.Length)
 
                 customBGEnd = customBGStart + lvl.Background.ImageLength + bgPtrTable.Length
                 CurrentRomOffset += lvl.Background.ImageLength + bgPtrTable.Length
@@ -769,7 +806,7 @@ Namespace Levels
             Next
 
             firstBank0xE.Length = curFirstBank0xEOffset
-            lvlScript0E.Write(s, firstBank0xE.RomStart)
+            lvlScript0E.Write(output, firstBank0xE.RomStart)
 
             curOff += (firstBank0xE.RomEnd - lvl.bank0x19.RomStart)
 
@@ -954,15 +991,15 @@ Namespace Levels
             Next
 
             'Write Bank0x19
-            lvl.bank0x19.WriteData(s)
+            lvl.bank0x19.WriteData(output)
 
             'Hardcoded Camera Settings & Act Selector
-            PatchClass.Openfs(s)
+            PatchClass.Openfs(output)
             PatchClass.HardcodedCamera_Enabled(lvl.LevelID) = lvl.HardcodedCameraSettings
             PatchClass.ActSelector_Enabled(lvl.LevelID) = lvl.ActSelector
 
             'Write Pointer to Levelscript
-            s.Position = lid.Pointer
+            output.Position = lid.Pointer
             bw.Write(SwapInts.SwapInt32(&H100019))
             bw.Write(SwapInts.SwapUInt32(lvl.bank0x19.RomStart))
             bw.Write(SwapInts.SwapUInt32(lvl.bank0x19.RomEnd))

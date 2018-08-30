@@ -15,12 +15,12 @@ Option Explicit On
 
 <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
  Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")>  _
-Partial Public NotInheritable Class AreaEditor
+Partial Public NotInheritable Class StyleManagerSettings
     Inherits Global.System.Configuration.ApplicationSettingsBase
     
-    Private Shared defaultInstance As AreaEditor = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New AreaEditor()),AreaEditor)
+    Private Shared defaultInstance As StyleManagerSettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New StyleManagerSettings()),StyleManagerSettings)
     
-    Public Shared ReadOnly Property [Default]() As AreaEditor
+    Public Shared ReadOnly Property [Default]() As StyleManagerSettings
         Get
             Return defaultInstance
         End Get
@@ -28,37 +28,25 @@ Partial Public NotInheritable Class AreaEditor
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-    Public Property DefaultCameraMode() As String
-        Get
-            Return CType(Me("DefaultCameraMode"),String)
-        End Get
-        Set
-            Me("DefaultCameraMode") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-    Public Property DefaultWindowMode() As String
-        Get
-            Return CType(Me("DefaultWindowMode"),String)
-        End Get
-        Set
-            Me("DefaultWindowMode") = value
-        End Set
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-    Public Property RibbonControlExpanded() As Boolean
+    Public Property AlwaysKeepBlueColors() As Boolean
         Get
-            Return CType(Me("RibbonControlExpanded"),Boolean)
+            Return CType(Me("AlwaysKeepBlueColors"),Boolean)
         End Get
         Set
-            Me("RibbonControlExpanded") = value
+            Me("AlwaysKeepBlueColors") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("White, #80397B")>  _
+    Public Property MetroColorParams() As Global.DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters
+        Get
+            Return CType(Me("MetroColorParams"),Global.DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters)
+        End Get
+        Set
+            Me("MetroColorParams") = value
         End Set
     End Property
 End Class

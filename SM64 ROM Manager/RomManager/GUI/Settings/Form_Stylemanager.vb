@@ -1,10 +1,11 @@
 Imports DevComponents.DotNetBar
+Imports DevComponents.DotNetBar.Metro.ColorTables
+Imports DevComponents.Editors
 Imports SettingsManager
 
 Public Class Form_Stylemanager
 
     Private isLoading As Boolean = True
-    Private themes As Metro.ColorTables.MetroColorGeneratorParameters()
 
     Public Property StyleManager As StyleManager = Nothing
 
@@ -20,18 +21,39 @@ Public Class Form_Stylemanager
 
     Private Sub Form_Stylemanager_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComboBoxEx1.Items.Clear()
-        themes = Metro.ColorTables.MetroColorGeneratorParameters.GetAllPredefinedThemes
+
+        Dim themes As MetroColorGeneratorParameters() = MetroColorGeneratorParameters.GetAllPredefinedThemes
+        Dim myTheme As MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
+        Dim ciToSelect As ComboItem = Nothing
+
         For Each s In themes
-            ComboBoxEx1.Items.Add(s.ThemeName)
+            Dim item As New ComboItem
+
+            item.Text = s.ThemeName
+            item.Tag = s
+
+            If myTheme.CanvasColor.ToArgb = s.CanvasColor.ToArgb AndAlso myTheme.BaseColor.ToArgb = s.BaseColor.ToArgb Then
+                ciToSelect = item
+            End If
+
+            ComboBoxEx1.Items.Add(item)
         Next
-        ComboBoxEx1.SelectedIndex = Array.IndexOf(themes, Settings.StyleManager.MetroColorParams)
+
+        If ciToSelect IsNot Nothing Then
+            ComboBoxEx1.SelectedItem = ciToSelect
+        ElseIf ComboBoxEx1.Items.Count > 0 Then
+            ComboBoxEx1.SelectedIndex = 0
+        End If
+
         CheckBoxX_KeepEditorControlBarBlue.Checked = Settings.StyleManager.AlwaysKeepBlueColors
+
         isLoading = False
     End Sub
 
     Private Sub ComboBoxEx1_SelectedIndexChanged(sender As Controls.ComboBoxEx, e As EventArgs) Handles ComboBoxEx1.SelectedIndexChanged
         If isLoading Then Return
-        Dim newTheme = themes(sender.SelectedIndex)
+
+        Dim newTheme As MetroColorGeneratorParameters = CType(sender.SelectedItem, ComboItem).Tag
         StyleManager.MetroColorParameters = newTheme
         Settings.StyleManager.MetroColorParams = newTheme
 
@@ -44,4 +66,9 @@ Public Class Form_Stylemanager
         If isLoading Then Return
         Settings.StyleManager.AlwaysKeepBlueColors = sender.Checked
     End Sub
+
+    Private Sub Form_Stylemanager_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        Settings.SaveSettings()
+    End Sub
+
 End Class

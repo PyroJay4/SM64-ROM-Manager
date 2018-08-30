@@ -94,19 +94,6 @@ Friend Module General
         ObjFile = uvaObjFile
     End Sub
 
-    Public Sub ReorderBoxDataPositions(BoxData As SM64Lib.Model.Collision.BoxData)
-        Dim x1, x2, z1, z2 As Int16
-
-        x1 = Math.Min(BoxData.X1, BoxData.X2)
-        x2 = Math.Max(BoxData.X1, BoxData.X2)
-        z1 = Math.Min(BoxData.Z1, BoxData.Z2)
-        z2 = Math.Max(BoxData.Z1, BoxData.Z2)
-
-        BoxData.X1 = x1
-        BoxData.X2 = x2
-        BoxData.Z1 = z1
-        BoxData.Z2 = z2
-    End Sub
     Public Sub ReorderBoxDataPositions(SpecialBox As SpecialBox)
         Dim x1, x2, z1, z2 As Int16
 
@@ -261,26 +248,3 @@ Friend Module General
 #End Region
 
 End Module
-
-Public Class ListBoxItemSM64Text
-    Inherits ListBoxItem
-    Private _TableType As TextTable.TableType = TextTable.TableType.Dialogs
-    Public ReadOnly Property TableType As TextTable.TableType
-        Get
-            Return _TableType
-        End Get
-    End Property
-    Public RefItem As Object = Nothing
-    Public Property TextItem As TextItem
-        Get
-            Return RefItem
-        End Get
-        Set(value As TextItem)
-            RefItem = value
-        End Set
-    End Property
-
-    Public Sub New(TableType As TextTable.TableType)
-        Me._TableType = TableType
-    End Sub
-End Class

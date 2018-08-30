@@ -18,6 +18,7 @@ Imports AutoUpdaterDotNET
 Imports System.Resources
 Imports SM64_ROM_Manager.My.Resources
 Imports PatchScripts
+Imports System.Collections.Specialized
 
 Public Class Form_Main
 
@@ -32,9 +33,9 @@ Public Class Form_Main
     Private updateManager As UpdateManager = Nothing
     Private rommgr As SM64Lib.RomManager = Nothing
 
-    Private lvg_SpecialBox_Water As New ListViewGroup(Form_Main_Resources.Text_Water)
-    Private lvg_SpecialBox_Mist As New ListViewGroup(Form_Main_Resources.Text_Mist)
-    Private lvg_SpecialBox_ToxicHaze As New ListViewGroup(Form_Main_Resources.Text_ToxicHaze)
+    'Private lvg_SpecialBox_Water As New ListViewGroup(Form_Main_Resources.Text_Water)
+    'Private lvg_SpecialBox_Mist As New ListViewGroup(Form_Main_Resources.Text_Mist)
+    'Private lvg_SpecialBox_ToxicHaze As New ListViewGroup(Form_Main_Resources.Text_ToxicHaze)
 
     Private Property StatusText As String
         Get
@@ -108,16 +109,12 @@ Public Class Form_Main
         End With
     End Sub
 
-    Private Sub InitIniparser()
-
-    End Sub
-
     Public Sub New()
         Me.SuspendLayout()
 
         InitializeComponent()
 
-        ListViewEx_LM_Specials.Groups.AddRange({lvg_SpecialBox_Water, lvg_SpecialBox_ToxicHaze, lvg_SpecialBox_Mist})
+        'ListViewEx_LM_Specials.Groups.AddRange({lvg_SpecialBox_Water, lvg_SpecialBox_ToxicHaze, lvg_SpecialBox_Mist})
         ListViewEx_LM_Specials.Scrollable = True
 
         'WebRequest.DefaultWebProxy.Credentials = New NetworkCredential("username", "password")
@@ -129,8 +126,11 @@ Public Class Form_Main
         'AutoUpdater.AppCastURL = ""
         'AutoUpdater.Start()
 
-        'Load Settings
-        Settings.LoadSettings()
+        'Enable Auto-Save-Settings on ApplicationExit
+        AddHandler Application.ApplicationExit, Sub() Settings.SaveSettings()
+
+        'Takeover the settings from old settings file
+        TakeoverOldSettings()
 
         'Set Style
         StyleManager1.MetroColorParameters = Settings.StyleManager.MetroColorParams
@@ -144,8 +144,35 @@ Public Class Form_Main
         ResumeLayout()
     End Sub
 
+    Private Sub TakeoverOldSettings()
+        If File.Exists(SettingsOld.SettingsFile) Then
+            'Load old Settings
+            SettingsOld.LoadSettings()
+
+            'Takeover the old settings
+            Settings.General.ActionIfUpdatePatches = SettingsOld.General.ActionIfUpdatePatches
+            Settings.General.AutoUpdates = SettingsOld.General.AutoUpdates
+            Settings.General.EmulatorPath = SettingsOld.General.EmulatorPath
+            Settings.General.IntegerValueMode = SettingsOld.General.IntegerValueMode
+            Settings.AreaEditor.RibbonControlExpanded = SettingsOld.AreaEditor.RibbonControlExpanded
+            Settings.AreaEditor.DefaultCameraMode = SettingsOld.AreaEditor.DefaultCameraMode
+            Settings.AreaEditor.DefaultWindowMode = SettingsOld.AreaEditor.DefaultWindowMode
+            Settings.FileParser.LoaderModule = SettingsOld.FileParser.LoaderModule
+            Settings.FileParser.UpAxis = SettingsOld.ModelConverter.UpAxis
+            Settings.StyleManager.AlwaysKeepBlueColors = SettingsOld.StyleManager.AlwaysKeepBlueColors
+            Settings.StyleManager.MetroColorParams = SettingsOld.StyleManager.MetroColorParams
+            Settings.RecentFiles.RecentROMs.AddRange(SettingsOld.RecentFiles.GetRecentFiles(SettingsOld.RecentFiles.RecentRomsSection))
+            Settings.RecentFiles.RecentModelFiles.AddRange(SettingsOld.RecentFiles.GetRecentFiles(SettingsOld.RecentFiles.RecentModelFilesSection))
+
+            'Save the new settings
+            Settings.SaveSettings()
+
+            'Delete old Settings file
+            File.Delete(SettingsOld.SettingsFile)
+        End If
+    End Sub
+
     Private Sub Form_Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        InitIniparser()
         RefreshAppTitel()
     End Sub
     Private Sub Form_Main_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -179,15 +206,16 @@ Public Class Form_Main
         With ofd_SM64RM_LM_LoadROM
             .Filter = "SM64 ROMs (*.z64)|*.z64"
 
-            Dim lastFile As String = Settings.RecentFiles.GetRecentFiles(Settings.RecentFiles.RecentRomsSection).FirstOrDefault
-            If lastFile <> "" Then .InitialDirectory = Path.GetDirectoryName(lastFile)
+            MergeRecentFiles(Settings.RecentFiles.RecentROMs)
+            Dim lastFiles As StringCollection = Settings.RecentFiles.RecentROMs
+            If lastFiles.Count > 0 Then .InitialDirectory = Path.GetDirectoryName(lastFiles(0))
 
             If .ShowDialog <> DialogResult.OK Then Return
             OpenROMFile(.FileName)
         End With
     End Sub
     Private Sub MenuItem_RecentROMs_Click(sender As Object, e As EventArgs)
-        OpenROMFile(Settings.RecentFiles.GetRecentFiles("Recent ROMs")(ItemPanel_RecentFiles.Items.IndexOf(sender) - 1))
+        OpenROMFile(Settings.RecentFiles.RecentROMs(ItemPanel_RecentFiles.Items.IndexOf(sender) - 1))
         Application.DoEvents()
         ItemPanel_RecentFiles.Refresh()
     End Sub
@@ -220,7 +248,7 @@ Public Class Form_Main
 
                 loadRecentROM = True
 
-                Settings.RecentFiles.StoreRecentFile("Recent ROMs", Romfile)
+                AddRecentFile(Settings.RecentFiles.RecentROMs, Romfile)
                 LoadRecentROMs()
 
                 rommgr = newrommgr
@@ -271,7 +299,7 @@ Public Class Form_Main
             ListBoxAdv_LM_Levels.Items.Clear()
             If ListBoxAdv_LM_Levels.Items.Count > 0 Then ListBoxAdv_LM_Levels.SelectedIndex = 0
 
-            LM_ReloadLevelListBox()
+            LM_LoadLevelList()
             ListBoxAdv_LM_Areas.Items.Clear()
         End If
 
@@ -370,7 +398,8 @@ Public Class Form_Main
         ItemPanel_RecentFiles.Items.Add(di_Open)
 
         Dim cindex As Integer = 1
-        For Each r As String In Settings.RecentFiles.GetRecentFiles("Recent ROMs")
+        MergeRecentFiles(Settings.RecentFiles.RecentROMs)
+        For Each r As String In Settings.RecentFiles.RecentROMs
             Dim bi As New ButtonItem With {.Text = Path.GetFileName(r), .Image = IconExtractor.ExtractIcon(r, True).ToBitmap, .ButtonStyle = eButtonStyle.ImageAndText}
             AddHandler bi.Click, AddressOf MenuItem_RecentROMs_Click
             ItemPanel_RecentFiles.Items.Add(bi)
@@ -505,4 +534,5 @@ Public Class Form_Main
         Dim editor As New TrajectoryEditor(rommgr)
         editor.ShowDialog(Me)
     End Sub
+
 End Class

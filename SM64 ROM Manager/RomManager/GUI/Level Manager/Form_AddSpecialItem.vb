@@ -4,11 +4,8 @@ Imports SM64Lib.Model
 
 Public Class Form_AddSpecialItem
 
-    Public Modelfile As String = ""
-    Public TextureName As String = ""
-    Public WType As WindowType = Nothing
-    Public SpecialData As New SpecialBox
-    Public WaterData As Collision.BoxData = Nothing
+    Public ReadOnly wType As WindowType = Nothing
+    Public ReadOnly specialData As SpecialBox
 
     Public Enum WindowType
         SpecialBox = 0
@@ -19,22 +16,21 @@ Public Class Form_AddSpecialItem
         InitializeComponent()
         UpdateAmbientColors()
 
-        WType = Type
+        wType = Type
         CheckBoxX_Water.Checked = True
     End Sub
-    Public Sub New(ByRef SpecialBox As SpecialBox, ByRef WaterBox As Collision.BoxData)
+    Public Sub New(ByRef SpecialBox As SpecialBox)
         InitializeComponent()
         StyleManager.UpdateAmbientColors(Me)
 
-        WType = WindowType.SpecialBox
+        wType = WindowType.SpecialBox
 
-        SpecialData = SpecialBox
-        WaterData = WaterBox
+        specialData = SpecialBox
 
-        With SpecialData
+        With specialData
             IntegerInput_Alpha.Value = Math.Round(.Alpha / 255 * 100)
             IntegerInput_Scale.Value = .Scale
-            LabelX_Height.Text = String.Format("Height: {0}", WaterData.Y)
+            LabelX_Height.Text = String.Format("Height: {0}", SpecialBox.Y)
             LabelX_Pos1.Text = String.Format("Edge 1: {0}, {1}", .X1, .Z1)
             LabelX_Pos2.Text = String.Format("Edge 2: {0}, {1}", .X2, .Z2)
         End With
@@ -62,9 +58,9 @@ Public Class Form_AddSpecialItem
         If Not sender.Checked Then Return
 
         Select Case True
-            Case CheckBoxX_Water.Checked : SpecialData.Type = SpecialBoxType.Water
-            Case CheckBoxX_Mist.Checked : SpecialData.Type = SpecialBoxType.Mist
-            Case CheckBoxX_ToxicHaze.Checked : SpecialData.Type = SpecialBoxType.ToxicHaze
+            Case CheckBoxX_Water.Checked : specialData.Type = SpecialBoxType.Water
+            Case CheckBoxX_Mist.Checked : specialData.Type = SpecialBoxType.Mist
+            Case CheckBoxX_ToxicHaze.Checked : specialData.Type = SpecialBoxType.ToxicHaze
         End Select
 
         GroupBox_Box.Visible = (CheckBoxX_Water.Checked OrElse CheckBoxX_Mist.Checked OrElse CheckBoxX_ToxicHaze.Checked)
@@ -85,10 +81,10 @@ Public Class Form_AddSpecialItem
 
         Select Case sender.GetHashCode
             Case Button_SetUpPos1.GetHashCode
-                xpos = SpecialData.X1 : zpos = SpecialData.Z1
+                xpos = specialData.X1 : zpos = specialData.Z1
                 pointnumber = 1
             Case Button_SetUpPos2.GetHashCode
-                xpos = SpecialData.X2 : zpos = SpecialData.Z2
+                xpos = specialData.X2 : zpos = specialData.Z2
                 pointnumber = 2
         End Select
 
@@ -97,39 +93,36 @@ Public Class Form_AddSpecialItem
 
         Select Case sender.GetHashCode
             Case Button_SetUpPos1.GetHashCode
-                SpecialData.X1 = frm.IntegerInput_X.Value
-                WaterData.X1 = frm.IntegerInput_X.Value
-                SpecialData.Z1 = frm.IntegerInput_Z.Value
-                WaterData.Z1 = frm.IntegerInput_Z.Value
-                LabelX_Pos1.Text = String.Format("Edge 1: {0}, {1}", SpecialData.X1, SpecialData.Z1)
+                specialData.X1 = frm.IntegerInput_X.Value
+                specialData.Z1 = frm.IntegerInput_Z.Value
+                LabelX_Pos1.Text = String.Format("Edge 1: {0}, {1}", specialData.X1, specialData.Z1)
             Case Button_SetUpPos2.GetHashCode
-                SpecialData.X2 = frm.IntegerInput_X.Value
-                WaterData.X2 = frm.IntegerInput_X.Value
-                SpecialData.Z2 = frm.IntegerInput_Z.Value
-                WaterData.Z2 = frm.IntegerInput_Z.Value
-                LabelX_Pos2.Text = String.Format("Edge 2: {0}, {1}", SpecialData.X2, SpecialData.Z2)
+                specialData.X2 = frm.IntegerInput_X.Value
+                specialData.Z2 = frm.IntegerInput_Z.Value
+                LabelX_Pos2.Text = String.Format("Edge 2: {0}, {1}", specialData.X2, specialData.Z2)
         End Select
     End Sub
 
     Private Sub Button_SetUpHeight_Click(sender As Object, e As EventArgs) Handles Button_SetUpHeight.Click
-        Dim frm As New Form_SetUpPoint("Box Height", False, True, False, 0, WaterData.Y, 0)
-        If frm.ShowDialog <> DialogResult.OK Then Return
-        WaterData.Y = frm.IntegerInput_Y.Value
-        LabelX_Height.Text = String.Format("Height: {0}", WaterData.Y)
+        Dim frm As New Form_SetUpPoint("Box Height", False, True, False, 0, specialData.Y, 0)
+        If frm.ShowDialog = DialogResult.OK Then
+            specialData.Y = frm.IntegerInput_Y.Value
+            LabelX_Height.Text = String.Format("Height: {0}", specialData.Y)
+        End If
     End Sub
 
     Private Sub IntegerInput_Scale_ValueChanged(sender As Object, e As EventArgs) Handles IntegerInput_Scale.ValueChanged
-        SpecialData.Scale = IntegerInput_Scale.Value
+        specialData.Scale = IntegerInput_Scale.Value
     End Sub
 
     Private Sub ComboBox_WaterType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_WaterType.SelectedIndexChanged
-        If SpecialData Is Nothing Then Return
-        SpecialData.InvisibleWater = (ComboBox_WaterType.SelectedIndex = 1)
+        If specialData Is Nothing Then Return
+        specialData.InvisibleWater = (ComboBox_WaterType.SelectedIndex = 1)
         Select Case ComboBox_WaterType.SelectedIndex
-            Case 0, 1 : SpecialData.WaterType = WaterType.Default
-            Case 2 : SpecialData.WaterType = WaterType.JRBWater : SpecialData.InvisibleWater = False
-            Case 3 : SpecialData.WaterType = WaterType.GreenWater : SpecialData.InvisibleWater = False
-            Case 4 : SpecialData.WaterType = WaterType.LavaWater : SpecialData.InvisibleWater = False
+            Case 0, 1 : specialData.WaterType = WaterType.Default
+            Case 2 : specialData.WaterType = WaterType.JRBWater : specialData.InvisibleWater = False
+            Case 3 : specialData.WaterType = WaterType.GreenWater : specialData.InvisibleWater = False
+            Case 4 : specialData.WaterType = WaterType.LavaWater : specialData.InvisibleWater = False
         End Select
     End Sub
 
@@ -139,6 +132,6 @@ Public Class Form_AddSpecialItem
     End Sub
 
     Private Sub IntegerInput1_ValueChanged(sender As Object, e As EventArgs) Handles IntegerInput_Alpha.ValueChanged
-        SpecialData.Alpha = Math.Round(255 / 100 * IntegerInput_Alpha.Value)
+        specialData.Alpha = Math.Round(255 / 100 * IntegerInput_Alpha.Value)
     End Sub
 End Class

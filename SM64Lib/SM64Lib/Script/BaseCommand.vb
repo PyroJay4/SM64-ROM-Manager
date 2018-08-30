@@ -43,6 +43,27 @@ Namespace Global.SM64Lib.Script
             Next
         End Function
 
+        Public Shared Operator =(cmd1 As BaseCommand(Of eTypes), cmd2 As BaseCommand(Of eTypes)) As Boolean
+            If cmd1.Length <> cmd2.Length Then
+                Return False
+            End If
+
+            Dim buf1 As Byte() = cmd1.GetBuffer
+            Dim buf2 As Byte() = cmd1.GetBuffer
+
+            For i As Integer = 0 To cmd1.Length - 1
+                If buf1(i) <> buf2(i) Then
+                    Return False
+                End If
+            Next
+
+            Return True
+        End Operator
+
+        Public Shared Operator <>(cmd1 As BaseCommand(Of eTypes), cmd2 As BaseCommand(Of eTypes)) As Boolean
+            Return Not (cmd1 = cmd2)
+        End Operator
+
     End Class
 
 End Namespace

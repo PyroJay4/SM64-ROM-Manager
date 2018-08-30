@@ -61,10 +61,13 @@ Partial Class Form_Main
         End Get
     End Property
 
-    Private Sub LM_ReloadLevelListBox()
+    Private Sub LM_LoadLevelList()
         ListBoxAdv_LM_Levels.Items.Clear()
-        For Each e As Levels.Level In rommgr.Levels
-            ListBoxAdv_LM_Levels.Items.Add(New ButtonItem With {.Text = rommgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = e.LevelID).Name})
+        For Each lvl As Levels.Level In rommgr.Levels
+            Dim btn As New ButtonItem
+            btn.Text = rommgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = lvl.LevelID).Name
+            AddHandler btn.MouseUp, Sub(sender As Object, e As MouseEventArgs) If e.Button = MouseButtons.Right Then ButtonX_LM_LevelsMore.Popup(Cursor.Position)
+            ListBoxAdv_LM_Levels.Items.Add(btn)
         Next
         ListBoxAdv_LM_Levels.Refresh()
     End Sub
@@ -75,7 +78,7 @@ Partial Class Form_Main
             For Each a As Levels.LevelArea In CurrentLevel.Areas
                 Dim btn As New ButtonItem
                 btn.Text = Form_Main_Resources.Text_Area & " " & a.AreaID
-                AddHandler btn.MouseUp, Sub() Button_LM_AreaEditor.Popup(Cursor.Position)
+                AddHandler btn.MouseUp, Sub(sender As Object, e As MouseEventArgs) If e.Button = MouseButtons.Right Then Button_LM_AreaEditor.Popup(Cursor.Position)
                 .Items.Add(btn)
             Next
             If .Items.Count > 0 Then .SelectedItem = .Items(0)
@@ -98,6 +101,7 @@ Partial Class Form_Main
         ListBoxAdv_LM_Levels.SelectedItem = ListBoxAdv_LM_Levels.Items(ListBoxAdv_LM_Levels.Items.Count - 1)
     End Sub
     Private Sub LM_AddNewArea() Handles Button_LM_AddArea.Click
+        'Check for left area IDs
         Dim ReamingIDs As New List(Of Byte)({&H1, &H2, &H3, &H4, &H5, &H6, &H7, &H0})
         For Each a As Levels.LevelArea In CurrentLevel.Areas
             ReamingIDs.Remove(a.AreaID)
@@ -108,18 +112,23 @@ Partial Class Form_Main
             Return
         End If
 
-        Dim tArea As New Levels.LevelArea(ReamingIDs(0))
+        'Convert a model
         Dim frm As New MainModelConverter
         frm.CheckBoxX_ConvertCollision.Enabled = False
         frm.CheckBoxX_ConvertModel.Enabled = False
-ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
 
-        tArea.AreaModel = frm.ResModel
+        If frm.ShowDialog = DialogResult.OK Then
+            'Create new area
+            Dim tArea As New Levels.LevelArea(ReamingIDs(0))
+            tArea.AreaModel = frm.ResModel
 
-        If ReamingIDs.Count = 1 Then Button_LM_AddArea.Enabled = False
-        CurrentLevel.Areas.Add(tArea)
-        LM_LoadAreaList()
-        ListBoxAdv_LM_Areas.SelectedItem = ListBoxAdv_LM_Areas.Items(ListBoxAdv_LM_Areas.Items.Count - 1)
+            'Add area to level
+            CurrentLevel.Areas.Add(tArea)
+            LM_LoadAreaList()
+            ListBoxAdv_LM_Areas.SelectedItem = ListBoxAdv_LM_Areas.Items(ListBoxAdv_LM_Areas.Items.Count - 1)
+
+            If ReamingIDs.Count = 1 Then Button_LM_AddArea.Enabled = False
+        End If
     End Sub
     Private Sub LM_RemoveArea() Handles Button_LM_RemoveArea.Click
         If LM_LoadingArea Then Return
@@ -129,12 +138,14 @@ ShowForm: If frm.ShowDialog <> DialogResult.OK Then Return
         Dim index = ListBoxAdv_LM_Areas.SelectedIndex
         If index < 0 Then Return
 
-        CurrentLevel.Areas.RemoveAt(index)
+        If MessageBoxEx.Show("You are going to remove the selected area. Continue?", "Remove Area", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+            CurrentLevel.Areas.RemoveAt(index)
 
-        Button_LM_AddArea.Enabled = True
-        If CurrentLevel.Areas.Count = 0 Then TabControl_LM_Area.Enabled = False
+            Button_LM_AddArea.Enabled = True
+            If CurrentLevel.Areas.Count = 0 Then TabControl_LM_Area.Enabled = False
 
-        LM_LoadAreaList()
+            LM_LoadAreaList()
+        End If
     End Sub
 
     Private Function LM_GetLengthOfAreas(Optional ExcaptIndex As Integer = -1) As Long
@@ -300,11 +311,9 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
             If frm.CheckBoxX_ConvertCollision.Checked AndAlso frm.CheckBoxX_ConvertModel.Checked Then
                 Dim OldAreaModel As ObjectModel = .AreaModel
                 .AreaModel = frm.ResModel
-                .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
             ElseIf frm.CheckBoxX_ConvertCollision.Checked Then
                 Dim OldAreaModel As ObjectModel = .AreaModel
                 .AreaModel.Collision = frm.ResModel.Collision
-                .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
             ElseIf frm.CheckBoxX_ConvertModel.Checked Then
                 Dim OldAreaModel As ObjectModel = .AreaModel
                 .AreaModel = frm.ResModel
@@ -377,139 +386,116 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
         End With
         Return lvi
     End Function
-    Private Function LM_GetNewSpecialBoxListViewItem(bd As BoxData, sd As Levels.SpecialBox, ItemNumber As Integer) As ListViewItem
+    Private Function LM_GetNewSpecialBoxListViewItem(sd As Levels.SpecialBox, ItemNumber As Integer) As ListViewItem
         Dim lvi As ListViewItem = Me.LM_GetNewSpecialBoxListViewItem
-        LM_UpdateSpecialBoxListViewItem(lvi, bd, sd, ItemNumber)
+        LM_UpdateSpecialBoxListViewItem(lvi, sd, ItemNumber)
         Return lvi
     End Function
-    Private Sub LM_UpdateSpecialBoxListViewItem(lvi As ListViewItem, bd As BoxData, sd As Levels.SpecialBox, ItemNumber As Integer)
+    Private Sub LM_UpdateSpecialBoxListViewItem(lvi As ListViewItem, sd As Levels.SpecialBox, ItemNumber As Integer)
         With lvi
-            .Tag = bd
+            .Tag = sd
             .Text = ItemNumber
             .SubItems(1).Text = sd.Type.ToString
-            .SubItems(2).Text = bd.X1
-            .SubItems(3).Text = bd.Z1
-            .SubItems(4).Text = bd.X2
-            .SubItems(5).Text = bd.Z2
-            .SubItems(6).Text = bd.Y
+            .SubItems(2).Text = sd.X1
+            .SubItems(3).Text = sd.Z1
+            .SubItems(4).Text = sd.X2
+            .SubItems(5).Text = sd.Z2
+            .SubItems(6).Text = sd.Y
             .SubItems(7).Text = If(sd.Type = Levels.SpecialBoxType.Water, If(sd.InvisibleWater, Form_Main_Resources.Text_Invisible, sd.WaterType.ToString), "-")
         End With
     End Sub
 
     Private Sub LM_ListViewSpecialsAktuallisieren()
+        'Clear everything
         ListViewEx_LM_Specials.Items.Clear()
+        'lvg_SpecialBox_Water.Items.Clear()
+        'lvg_SpecialBox_ToxicHaze.Items.Clear()
+        'lvg_SpecialBox_Mist.Items.Clear()
 
-        With CurrentLevel.Areas(ListBoxAdv_LM_Areas.SelectedIndex)
-            For i As Integer = 0 To .AreaModel.Collision.SpecialBoxes.Count - 1
-                Dim bd As BoxData = .AreaModel.Collision.SpecialBoxes(i)
-                Dim typeToSelect As Levels.SpecialBoxType = Levels.SpecialBoxType.Water
-                Dim lvgToSelect As ListViewGroup = Nothing
+        'List all special boxes
+        For Each sb As Levels.SpecialBox In CurrentArea.SpecialBoxes
+            Dim typeToSelect As Levels.SpecialBoxType = Levels.SpecialBoxType.Water
+            'Dim lvgToSelect As ListViewGroup = Nothing
 
-                Select Case bd.Type
-                    Case BoxDataType.Water
-                        typeToSelect = Levels.SpecialBoxType.Water
-                        lvgToSelect = lvg_SpecialBox_Water
-                    Case BoxDataType.ToxicHaze
-                        typeToSelect = Levels.SpecialBoxType.ToxicHaze
-                        lvgToSelect = lvg_SpecialBox_ToxicHaze
-                    Case BoxDataType.Mist
-                        typeToSelect = Levels.SpecialBoxType.Mist
-                        lvgToSelect = lvg_SpecialBox_Mist
-                End Select
+            Select Case sb.Type
+                Case Levels.SpecialBoxType.Water
+                    typeToSelect = Levels.SpecialBoxType.Water
+                    'lvgToSelect = lvg_SpecialBox_Water
+                Case Levels.SpecialBoxType.ToxicHaze
+                    typeToSelect = Levels.SpecialBoxType.ToxicHaze
+                    'lvgToSelect = lvg_SpecialBox_ToxicHaze
+                Case Levels.SpecialBoxType.Mist
+                    typeToSelect = Levels.SpecialBoxType.Mist
+                    'lvgToSelect = lvg_SpecialBox_Mist
+            End Select
 
-                Dim lvi As ListViewItem = LM_GetNewSpecialBoxListViewItem(bd, .SpecialBoxes.GetSpecialBox(bd, typeToSelect), lvgToSelect.Items.Count + 1)
-                lvi.Group = lvgToSelect
+            Dim lvi As ListViewItem = LM_GetNewSpecialBoxListViewItem(sb, ListViewEx_LM_Specials.Items.Count + 1)
+            'lvi.Group = lvgToSelect
 
-                ListViewEx_LM_Specials.Items.Add(lvi)
-            Next
-        End With
+            ListViewEx_LM_Specials.Items.Add(lvi)
+        Next
 
         ListViewEx_LM_Specials.Refresh()
     End Sub
 
     Private Sub Button_LM_AddEditSpecial_Click(sender As Object, e As EventArgs) Handles Button_LM_EditSpecial.Click, Button_LM_AddSpecial.Click
         If LM_LoadingLevel Then Return
-        Dim bd As BoxData = Nothing
-        Dim sb As Levels.SpecialBox = Nothing
-        Dim lvi As ListViewItem = Nothing
 
-        With CurrentLevel.Areas(ListBoxAdv_LM_Areas.SelectedIndex)
-            Dim frm As Form_AddSpecialItem = Nothing
+        Dim curArea As Levels.LevelArea = CurrentArea
+        Dim sb As Levels.SpecialBox
+        Dim lvi As ListViewItem
+        Dim frm As Form_AddSpecialItem
 
-            If sender Is Button_LM_EditSpecial Then
-                lvi = ListViewEx_LM_Specials.SelectedItems(0)
-                bd = lvi.Tag
-                If lvi.Group Is lvg_SpecialBox_Water Then
-                    sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.Water)
-                ElseIf lvi.Group Is lvg_SpecialBox_Mist Then
-                    sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.Mist)
-                ElseIf lvi.Group Is lvg_SpecialBox_ToxicHaze Then
-                    sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.ToxicHaze)
-                End If
-            Else
-                bd = New BoxData
-                sb = New Levels.SpecialBox
-                lvi = LM_GetNewSpecialBoxListViewItem()
-            End If
+        If sender Is Button_LM_EditSpecial Then
+            lvi = ListViewEx_LM_Specials.SelectedItems(0)
+            sb = lvi.Tag
+        Else
+            sb = New Levels.SpecialBox
+            lvi = LM_GetNewSpecialBoxListViewItem()
+        End If
 
-            frm = New Form_AddSpecialItem(sb, bd)
-            If frm.ShowDialog <> DialogResult.OK Then Return
+        frm = New Form_AddSpecialItem(sb)
+        If frm.ShowDialog <> DialogResult.OK Then Return
 
-            Dim newType As Levels.SpecialBoxType
-            Select Case True
-                Case frm.CheckBoxX_Water.Checked
-                    newType = Levels.SpecialBoxType.Water
-                    lvi.Group = lvg_SpecialBox_Water
-                Case frm.CheckBoxX_Mist.Checked
-                    newType = Levels.SpecialBoxType.Mist
-                    lvi.Group = lvg_SpecialBox_Mist
-                Case frm.CheckBoxX_ToxicHaze.Checked
-                    newType = Levels.SpecialBoxType.ToxicHaze
-                    lvi.Group = lvg_SpecialBox_ToxicHaze
-            End Select
+        Dim newType As Levels.SpecialBoxType
+        Select Case True
+            Case frm.CheckBoxX_Water.Checked
+                newType = Levels.SpecialBoxType.Water
+                'lvi.Group = lvg_SpecialBox_Water
+            Case frm.CheckBoxX_Mist.Checked
+                newType = Levels.SpecialBoxType.Mist
+                'lvi.Group = lvg_SpecialBox_Mist
+            Case frm.CheckBoxX_ToxicHaze.Checked
+                newType = Levels.SpecialBoxType.ToxicHaze
+                'lvi.group = lvg_specialbox_toxichaze
+        End Select
 
-            'Define new Type for BoxData
-            Select Case True
-                Case frm.CheckBoxX_Water.Checked
-                    bd.Type = BoxDataType.Water
-                Case frm.CheckBoxX_Mist.Checked
-                    bd.Type = BoxDataType.Mist
-                Case frm.CheckBoxX_ToxicHaze.Checked
-                    bd.Type = BoxDataType.ToxicHaze
-            End Select
+        'Reorder Positions in BoxData
+        ReorderBoxDataPositions(sb)
 
-            'Reorder Positions in BoxData
-            ReorderBoxDataPositions(sb)
-            ReorderBoxDataPositions(bd)
+        If sender Is Button_LM_AddSpecial Then
+            'Get new Itemnumber
+            Dim newItemNumber As Integer = curArea.SpecialBoxes.Where(Function(n) n.Type = newType).Count + 1
 
-            If sender Is Button_LM_AddSpecial Then
-                'Get new Itemnumber
-                Dim newItemNumber As Integer = .SpecialBoxes.Where(Function(n) n.Type = newType).Count + 1
+            'Define new Type for SpecialBox
+            sb.Type = newType
 
-                'Define new Type for SpecialBox
-                sb.Type = newType
+            'Add new SpecialBox
+            curArea.SpecialBoxes.Add(sb)
 
-                'Add new SpecialBox
-                .SpecialBoxes.Add(sb)
+            'Update ListViewItem
+            LM_UpdateSpecialBoxListViewItem(lvi, sb, newItemNumber)
 
-                'Add new BoxData
-                .AreaModel.Collision.SpecialBoxes.Add(bd)
+            'Add ListViewItem
+            ListViewEx_LM_Specials.Items.Add(lvi)
+            ListViewEx_LM_Specials.Refresh()
+        Else
+            'Define new Type for SpecialBox
+            sb.Type = newType
 
-                'Update ListViewItem
-                LM_UpdateSpecialBoxListViewItem(lvi, bd, sb, newItemNumber)
-
-                'Add ListViewItem
-                ListViewEx_LM_Specials.Items.Add(lvi)
-                ListViewEx_LM_Specials.Refresh()
-            Else
-                'Define new Type for SpecialBox
-                sb.Type = newType
-
-                'Update ListViewItem
-                LM_UpdateSpecialBoxListViewItem(lvi, bd, sb, lvi.Index + 1)
-            End If
-        End With
-
+            'Update ListViewItem
+            LM_UpdateSpecialBoxListViewItem(lvi, sb, lvi.Index + 1)
+        End If
     End Sub
 
     Private Sub Button_LM_RemoveSpecial_Click(sender As Object, e As EventArgs) Handles Button_LM_RemoveSpecial.Click
@@ -517,21 +503,7 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
 
         With CurrentLevel.Areas(ListBoxAdv_LM_Areas.SelectedIndex)
             For Each lvi As ListViewItem In ListViewEx_LM_Specials.SelectedItems
-                Dim bd As BoxData = Nothing
-                Dim sb As Levels.SpecialBox = Nothing
-
-                bd = lvi.Tag
-                .AreaModel.Collision.SpecialBoxes.Remove(bd)
-
-                Select Case True
-                    Case lvi.Group.Equals(lvg_SpecialBox_Water)
-                        sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.Water)
-                    Case lvi.Group.Equals(lvg_SpecialBox_Mist)
-                        sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.Mist)
-                    Case lvi.Group.Equals(lvg_SpecialBox_ToxicHaze)
-                        sb = .SpecialBoxes.GetSpecialBox(bd, Levels.SpecialBoxType.ToxicHaze)
-                End Select
-
+                Dim sb As Levels.SpecialBox = lvi.Tag
                 .SpecialBoxes.Remove(sb)
                 ListViewEx_LM_Specials.Items.Remove(lvi)
             Next
@@ -703,9 +675,11 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
     End Sub
 
     Private Sub ButtonItem19_Click(sender As Object, e As EventArgs) Handles ButtonItem19.Click
-        rommgr.RemoveLevel(CurrentLevel)
-        ListBoxAdv_LM_Levels.Items.Remove(ListBoxAdv_LM_Levels.SelectedItem)
-        ListBoxAdv_LM_Levels.Refresh()
+        If MessageBoxEx.Show("You are going to remove the selected area. Continue?", "Remove Area", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+            rommgr.RemoveLevel(CurrentLevel)
+            ListBoxAdv_LM_Levels.Items.Remove(ListBoxAdv_LM_Levels.SelectedItem)
+            ListBoxAdv_LM_Levels.Refresh()
+        End If
     End Sub
 
     Private Sub ButtonItem20_Click(sender As Object, e As EventArgs) Handles ButtonItem20.Click
@@ -802,7 +776,7 @@ ShowForm:   If frm.ShowDialog() <> DialogResult.OK Then Return
             Dim frm As New ImportLevelDialog(rommgr)
             If frm.LoadROM(ofd.FileName) Then
                 If frm.ShowDialog = DialogResult.OK Then
-                    LM_ReloadLevelListBox()
+                    LM_LoadLevelList()
                 End If
             End If
         End If

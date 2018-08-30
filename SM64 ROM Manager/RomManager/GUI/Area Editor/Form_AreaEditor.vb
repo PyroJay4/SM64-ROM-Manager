@@ -249,6 +249,7 @@ Public Class Form_AreaEditor
         'Add B. Param Editors to Property Grid
         Dim bpeditor As New ContentSelectorEditor
         AddHandler bpeditor.EditorCreated, AddressOf BParamEditorCreated
+        AddHandler bpeditor.EditorCreating, AddressOf BParamEditorCreating
         Dim bp1PropSet As New PropertySettings("BParam1")
         Dim bp2PropSet As New PropertySettings("BParam2")
         bp1PropSet.ValueEditor = bpeditor
@@ -2760,6 +2761,10 @@ Public Class Form_AreaEditor
     End Sub
 
     Private Sub AdvPropertyGrid1_ConvertPropertyValueToString(sender As Object, e As ConvertValueEventArgs) Handles AdvPropertyGrid1.ConvertPropertyValueToString
+        If e.PropertyName.StartsWith("BParam") Then
+            Return
+        End If
+
         Select Case e.PropertyDescriptor.PropertyType
             Case GetType(System.Boolean)
                 If e.TypedValue = True Then
@@ -2770,14 +2775,12 @@ Public Class Form_AreaEditor
                 e.IsConverted = True
 
             Case GetType(System.Byte), GetType(SByte), GetType(Int16), GetType(UInt16), GetType(Int32), GetType(UInt32)
-                If Not ({"BParam1", "BParam2"}).Contains(e.PropertyName) Then
-                    If e.PropertyName = "BehaviorID" Then
-                        e.StringValue = TextFromValue(e.TypedValue, If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1))
-                        e.IsConverted = True
-                    Else
-                        e.StringValue = TextFromValue(e.TypedValue)
-                        e.IsConverted = True
-                    End If
+                If e.PropertyName = "BehaviorID" Then
+                    e.StringValue = TextFromValue(e.TypedValue, If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1))
+                    e.IsConverted = True
+                Else
+                    e.StringValue = TextFromValue(e.TypedValue)
+                    e.IsConverted = True
                 End If
 
         End Select
@@ -2801,53 +2804,77 @@ Public Class Form_AreaEditor
         Clipboard.SetText(txt.TrimStart(" "))
     End Sub
 
-    Private Sub BParamEditorCreated(propertyDescriptor As PropertyDescriptor, editor As ContentSelectorEditor.ComboBoxEditor)
-        Select Case propertyDescriptor.Name
+    Private Sub BParamEditorCreated(sender As Object, e As ContentSelectorEditor.EditorCreateEventArgs)
+        Select Case e.PropertyDescriptor.Name
             Case "BParam1"
-                CbEditorBParam1 = editor
+                CbEditorBParam1 = e.Editor
             Case "BParam2"
-                CbEditorBParam2 = editor
+                CbEditorBParam2 = e.Editor
         End Select
     End Sub
 
-    Private Sub ProvideBParamContentList(sender As Object, values As Dictionary(Of String, Byte)) Handles CbEditorBParam1.NeedValues, CbEditorBParam2.NeedValues
+    Private Sub BParamEditorCreating(sender As Object, e As ContentSelectorEditor.EditorCreateEventArgs)
+        Select Case e.PropertyDescriptor.Name
+            Case "BParam1"
+                If CbEditorBParam1 IsNot Nothing Then
+                    e.Editor = CbEditorBParam1
+                End If
+            Case "BParam2"
+                If CbEditorBParam2 IsNot Nothing Then
+                    e.Editor = CbEditorBParam2
+                End If
+        End Select
+    End Sub
+
+    Private Sub ProvideBParamContentList(sender As ContentSelectorEditor.ComboBoxEditor, e As EventArgs) Handles CbEditorBParam1.NeedValues, CbEditorBParam2.NeedValues
         Dim obj As Managed3DObject = SelectedObject
         Dim i As Byte
 
-        If sender Is CbEditorBParam1 Then
-            i = 1
-        ElseIf sender Is CbEditorBParam2 Then
-            i = 2
-        Else
-            i = 0
-        End If
-
-        If i > 0 Then
-            Dim info As BehaviorInfoList.BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehaviorID)
-            If info IsNot Nothing Then
-                Dim param As BehaviorInfoList.BParam = info.GetValue($"BParam{i}")
-
-                values.Clear()
-
-                For Each kvp As KeyValuePair(Of String, Byte) In param.Values
-                    values.Add(kvp.Key, kvp.Value)
-                Next
+        If sender.Tag IsNot obj Then
+            If sender Is CbEditorBParam1 Then
+                i = 1
+            ElseIf sender Is CbEditorBParam2 Then
+                i = 2
+            Else
+                i = 0
             End If
+
+            If i > 0 Then
+                Dim info As BehaviorInfoList.BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehaviorID)
+                If info IsNot Nothing Then
+                    Dim param As BehaviorInfoList.BParam = info.GetValue($"BParam{i}")
+
+                    sender.Items.Clear()
+
+                    If param IsNot Nothing Then
+                        For Each kvp As KeyValuePair(Of String, Byte) In param.Values
+                            Dim ci As New ComboItem
+                            ci.Text = kvp.Key
+                            ci.Tag = kvp.Value
+                            sender.Items.Add(ci)
+                        Next
+                    End If
+                End If
+            End If
+
+            sender.Tag = obj
         End If
     End Sub
 
     Private Sub AdvPropertyGrid1_PropertyTree_Paint(sender As Object, e As PaintEventArgs) Handles PropertyTree.Paint
         Dim obj As Managed3DObject = SelectedObject
 
-        For i As Byte = 1 To 4
+        For i As Byte = 1 To 2
             Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
             If n IsNot Nothing Then
                 If n.TagString = "" Then
                     Dim info As BehaviorInfoList.BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehaviorID)
-                    Dim param As BehaviorInfoList.BParam = info.GetValue($"BParam{i}")
-                    If param.Name <> "" Then
-                        n.Text = param.Name
-                        n.TagString = param.Name
+                    Dim param As BehaviorInfoList.BParam = info?.GetValue($"BParam{i}")
+                    If param IsNot Nothing Then
+                        If param.Name <> "" Then
+                            n.Text = param.Name
+                            n.TagString = param.Name
+                        End If
                     End If
                 ElseIf n.Tag <> n.Text Then
                     n.Text = n.Tag

@@ -10,6 +10,7 @@ Namespace Global.SM64Lib.Levels
         Public Property Z1 As Int16 = 8192
         Public Property X2 As Int16 = -8192
         Public Property Z2 As Int16 = -8192
+        Public Property Y As Int16 = 0
         Public Property Scale As Int16 = 16
         Public Property InvisibleWater As Boolean = False
         Public Property WaterType As WaterType = WaterType.Default
@@ -49,19 +50,6 @@ Namespace Global.SM64Lib.Levels
     End Class
     Public Class SpecialBoxList
         Inherits List(Of SpecialBox)
-
-        Public Function GetSpecialBox(bd As Collision.BoxData, type As SpecialBoxType) As SpecialBox
-            For Each sp As SpecialBox In Me
-                If sp.Type = type Then
-                    If sp.X1 <> bd.X1 Then Continue For
-                    If sp.X2 <> bd.X2 Then Continue For
-                    If sp.Z1 <> bd.Z1 Then Continue For
-                    If sp.Z2 <> bd.Z2 Then Continue For
-                    Return sp
-                End If
-            Next
-            Return Nothing
-        End Function
 
         Public Shared Function ReadTable(Romfile As String, Type As SpecialBoxType, Levelscriptstart As Integer, TabelStart As Integer) As SpecialBox()
             Dim fs As New FileStream(Romfile, FileMode.Open, FileAccess.Read)

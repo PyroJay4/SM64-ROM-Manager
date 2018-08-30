@@ -72,10 +72,20 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AreaEditor.Designer.vb">
+    <Compile Include="Settings\AreaEditorSettings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>AreaEditor.settings</DependentUpon>
+      <DependentUpon>AreaEditorSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\FileParserSettings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>FileParserSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\GeneralSettings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>GeneralSettings.settings</DependentUpon>
     </Compile>
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -93,7 +103,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Settings.vb" />
+    <Compile Include="SettingsManager.vb" />
+    <Compile Include="Settings\RecentFilesSettings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>RecentFilesSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\StyleManagerSettings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>StyleManagerSettings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -105,9 +125,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="AreaEditor.settings">
+    <None Include="Settings\AreaEditorSettings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>AreaEditor.Designer.vb</LastGenOutput>
+      <LastGenOutput>AreaEditorSettings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Settings\FileParserSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FileParserSettings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Settings\GeneralSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>GeneralSettings.Designer.vb</LastGenOutput>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -119,6 +147,14 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="Settings\RecentFilesSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>RecentFilesSettings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Settings\StyleManagerSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>StyleManagerSettings.Designer.vb</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenGLCamera\OpenGLCamera.vbproj">
