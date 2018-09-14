@@ -173,18 +173,6 @@ Namespace Global.SM64Lib.Geolayout
             Next
         End Sub
 
-        Public Sub EnableWater(BoxType As SpecialBoxType)
-            'Dim tcommand As New GeolayoutCommand({&H18, &H0, &H50, CByte(BoxType), &H80, &H2D, &H10, &H4C})
-            'If Not Geolayoutscript.Contains(tcommand) Then Geolayoutscript.Insert(Geolayoutscript.Count - 10, tcommand) '9 Commands from the end (+ 1 because Count - 1 = Index)
-        End Sub
-        Public Sub DisableWater(BoxType As SpecialBoxType)
-            'Dim tcommand As New GeolayoutCommand({&H18, &H0, &H50, CByte(BoxType), &H80, &H2D, &H10, &H4C})
-            'If Geolayoutscript.Contains(tcommand) Then
-            '    Geolayoutscript.Remove(tcommand)
-            'End If
-            'tcommand.Close()
-        End Sub
-
         Public Overrides Function ToString() As String
             Dim output As String = ""
             For Each cmd In Geolayoutscript

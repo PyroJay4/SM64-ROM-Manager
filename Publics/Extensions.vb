@@ -25,8 +25,8 @@ Namespace Global.System.Windows.Forms
         <Extension> Public Sub UpdateAmbientColors(c As Control)
             'If ambientColorControlTypes.Contains(c.GetType) Then
             StyleManager.UpdateAmbientColors(c)
-                'End If
-                For Each cc As Control In c.Controls
+            'End If
+            For Each cc As Control In c.Controls
                 UpdateAmbientColors(cc)
             Next
         End Sub

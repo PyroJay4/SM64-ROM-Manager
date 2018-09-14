@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports DevComponents.DotNetBar
 Imports S3DFileParser
-Imports SettingsManager
+Imports SM64_ROM_Manager.SettingsManager
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib
 Imports SM64Lib.Geolayout

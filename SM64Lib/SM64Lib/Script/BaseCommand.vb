@@ -8,6 +8,8 @@ Namespace Global.SM64Lib.Script
         Inherits MemoryStream
         Implements ICommand
 
+        Private dirtyHash As Integer = 0
+
         Public Property RomAddress As Integer = 0 Implements ICommand.RomAddress
         Public Property BankAddress As Integer = 0 Implements ICommand.BankAddress
         Public MustOverride Property CommandType As eTypes
@@ -15,7 +17,7 @@ Namespace Global.SM64Lib.Script
         Public Sub New(bytes As String, Optional enabledHex As Boolean = True)
             Dim bts As New List(Of Byte)
             For Each b As String In bytes.Split(" ")
-                If enabledHex Then b = CInt("&H" & b)
+                If enabledHex Then b = Convert.ToInt32(b, 16)
                 bts.Add(b)
             Next
             NewBytes(bts.ToArray)
@@ -38,7 +40,7 @@ Namespace Global.SM64Lib.Script
 
         Public Overrides Function ToString() As String
             ToString = $"{RomAddress.ToString("X")} ({BankAddress.ToString("X")}):"
-            For Each b As Byte In Me.ToArray
+            For Each b As Byte In ToArray()
                 ToString &= " " & b.ToString("X2")
             Next
         End Function
@@ -63,6 +65,16 @@ Namespace Global.SM64Lib.Script
         Public Shared Operator <>(cmd1 As BaseCommand(Of eTypes), cmd2 As BaseCommand(Of eTypes)) As Boolean
             Return Not (cmd1 = cmd2)
         End Operator
+
+        Public Sub RefreshkDirty()
+            dirtyHash = GetBuffer.GetHashCode()
+        End Sub
+
+        Public ReadOnly Property IsDirty As Boolean Implements ICommand.IsDirty
+            Get
+                Return GetBuffer.GetHashCode() <> dirtyHash
+            End Get
+        End Property
 
     End Class
 

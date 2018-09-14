@@ -81,7 +81,13 @@ Namespace Global.SM64Lib.Model.Collision
                             'Dont know what this is.
 
                     Case &H44 'W A T E R   B O X E S
-                        SpecialBoxes.AddRange(ReadBoxData(s))
+                        SpecialBoxes.AddRange(ReadBoxData(s, BoxDataType.Water))
+
+                    Case &H33 'M I S T
+                        SpecialBoxes.AddRange(ReadBoxData(s, BoxDataType.Mist))
+
+                    Case &H32 'T O X I C   H A Z E
+                        SpecialBoxes.AddRange(ReadBoxData(s, BoxDataType.ToxicHaze))
 
                 End Select
             Loop
@@ -94,19 +100,19 @@ Namespace Global.SM64Lib.Model.Collision
             Return t
         End Function
 
-        Private Shared Function ReadBoxData(s As Stream) As BoxData()
+        Private Shared Function ReadBoxData(s As Stream, type As BoxDataType) As BoxData()
             Dim br As New BinaryReader(s)
             Dim spBoxes As New List(Of BoxData)
             For i As Integer = 1 To SwapInts.SwapInt16(br.ReadInt16)
                 Dim wb As New BoxData
-                wb.Type = SwapInts.SwapInt16(br.ReadInt16)
+                Dim index As Int16 = SwapInts.SwapInt16(br.ReadInt16)
+                wb.Type = type
                 wb.X1 = SwapInts.SwapInt16(br.ReadInt16)
                 wb.Z1 = SwapInts.SwapInt16(br.ReadInt16)
                 wb.X2 = SwapInts.SwapInt16(br.ReadInt16)
                 wb.Z2 = SwapInts.SwapInt16(br.ReadInt16)
                 wb.Y = SwapInts.SwapInt16(br.ReadInt16)
                 spBoxes.Add(wb)
-                Application.DoEvents()
             Next
             Return spBoxes.ToArray
         End Function
@@ -232,7 +238,6 @@ Namespace Global.SM64Lib.Model.Collision
             'S P E C I A L   B O X E S
 
             If SpecialBoxes.Count > 0 Then
-                bw.Write(SwapInts.SwapInt16(&H44))
                 WriteBoxData(s, SpecialBoxes.OrderBy(Function(n) n.Type))
             End If
 
@@ -243,18 +248,41 @@ Namespace Global.SM64Lib.Model.Collision
         Private Shared Sub WriteBoxData(s As Stream, bodex As IEnumerable(Of BoxData))
             Dim bw As New BinaryWriter(s)
 
-            bw.Write(SwapInts.SwapInt16(bodex.Count))
+            If bodex.Any Then
+                bw.Write(SwapInts.SwapInt16(&H44))
+                bw.Write(SwapInts.SwapInt16(bodex.Count))
 
-            Dim cWBID As Integer = 0
-            For Each wb In bodex
-                bw.Write(SwapInts.SwapInt16(wb.Type))
-                bw.Write(SwapInts.SwapInt16(wb.X1))
-                bw.Write(SwapInts.SwapInt16(wb.Z1))
-                bw.Write(SwapInts.SwapInt16(wb.X2))
-                bw.Write(SwapInts.SwapInt16(wb.Z2))
-                bw.Write(SwapInts.SwapInt16(wb.Y))
-                cWBID += 1
-            Next
+                For Each t As BoxDataType In [Enum].GetValues(GetType(BoxDataType))
+                    For Each wb In bodex.Where(Function(n) n.Type = t)
+                        bw.Write(SwapInts.SwapInt16(wb.Index))
+                        bw.Write(SwapInts.SwapInt16(wb.X1))
+                        bw.Write(SwapInts.SwapInt16(wb.Z1))
+                        bw.Write(SwapInts.SwapInt16(wb.X2))
+                        bw.Write(SwapInts.SwapInt16(wb.Z2))
+                        bw.Write(SwapInts.SwapInt16(wb.Y))
+                    Next
+                Next
+            End If
+
+            'For Each t As BoxDataType In [Enum].GetValues(GetType(BoxDataType))
+            '    Dim t_boxes As IEnumerable(Of BoxData) = bodex.Where(Function(n) n.Type = t)
+
+            '    If t_boxes.Any Then
+            '        bw.Write(SwapInts.SwapInt16(t))
+            '        bw.Write(SwapInts.SwapInt16(t_boxes.Count))
+
+            '        Dim cWBID As Integer = 0
+            '        For Each wb In t_boxes
+            '            bw.Write(SwapInts.SwapInt16(cWBID))
+            '            bw.Write(SwapInts.SwapInt16(wb.X1))
+            '            bw.Write(SwapInts.SwapInt16(wb.Z1))
+            '            bw.Write(SwapInts.SwapInt16(wb.X2))
+            '            bw.Write(SwapInts.SwapInt16(wb.Z2))
+            '            bw.Write(SwapInts.SwapInt16(wb.Y))
+            '            cWBID += 1
+            '        Next
+            '    End If
+            'Next
         End Sub
 
         Public Property Length As Long
@@ -495,11 +523,12 @@ Namespace Global.SM64Lib.Model.Collision
     Public Class BoxData
 
         Public Property Type As BoxDataType = BoxDataType.Water
-        Public Property X1 As Int16 = 0
-        Public Property X2 As Int16 = 0
-        Public Property Z1 As Int16 = 0
-        Public Property Z2 As Int16 = 0
-        Public Property Y As Int16 = 0
+        Public Property X1 As Int16
+        Public Property X2 As Int16
+        Public Property Z1 As Int16
+        Public Property Z2 As Int16
+        Public Property Y As Int16
+        Public Property Index As Int16
 
         Public Sub New()
             X1 = 8192
@@ -507,6 +536,7 @@ Namespace Global.SM64Lib.Model.Collision
             Z1 = 8192
             Z2 = -8192
             Y = 0
+            Index = 0
         End Sub
 
         Public Sub New(SpecialBox As Levels.SpecialBox, Y As Int16)
@@ -526,7 +556,7 @@ Namespace Global.SM64Lib.Model.Collision
         End Sub
     End Class
     Public Enum BoxDataType As Int16
-        Water = &H0
+        Water = &H44
         ToxicHaze = &H32
         Mist = &H33
     End Enum

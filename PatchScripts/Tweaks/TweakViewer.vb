@@ -19,7 +19,8 @@ Public Class TweakViewer
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
         UpdateAmbientColors()
-        Flyout1.BackColor = Me.BackColor
+        Panel1.UpdateAmbientColors
+        Flyout1.BackColor = BackColor
         Me.rommgr = rommgr
 
     End Sub
@@ -323,5 +324,13 @@ Public Class TweakViewer
         If e.KeyCode = Keys.Enter Then
             ButtonX7.PerformClick()
         End If
+    End Sub
+
+    Private Sub LabelX_Description_MouseEnter(sender As Object, e As EventArgs) Handles LabelX_Description.TextChanged
+        SuperTooltip1.SetSuperTooltip(sender, New SuperTooltipInfo("", "", sender.Text, Nothing, Nothing, eTooltipColor.System, False, False, Nothing))
+    End Sub
+
+    Private Sub Flyout1_FlyoutShown(sender As Object, e As EventArgs) Handles Flyout1.FlyoutShown
+        Flyout1.Content?.Focus()
     End Sub
 End Class

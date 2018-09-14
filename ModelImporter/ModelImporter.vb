@@ -1,7 +1,7 @@
 ﻿Imports DevComponents.DotNetBar
 Imports SM64Lib.Model
 Imports Publics
-Imports SettingsManager
+Imports SM64_ROM_Manager.SettingsManager
 Imports TextValueConverter
 Imports ModelConverterGUI
 Imports System.IO
@@ -16,7 +16,6 @@ Public Class ModelImporter
     Private mdl As ObjectModel = Nothing
     Private presets As New List(Of ImporterProfile)
     Private rommgr As SM64Lib.RomManager = Nothing
-    Public Property StyleManager As StyleManager = Nothing
 
     Public Property RomFile As String
         Get
@@ -47,11 +46,8 @@ Public Class ModelImporter
     End Sub
 
     Private Sub ModelImporter_Load(sender As Object, e As EventArgs) Handles Me.Load
-        If StyleManager Is Nothing Then
-            StyleManager = New StyleManager
-            StyleManager.ManagerStyle = eStyle.Metro
-            StyleManager.MetroColorParameters = Settings.StyleManager.MetroColorParams
-        End If
+        StyleManager.Style = eStyle.Metro
+        StyleManager.MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
 
         UpdateAmbientColors()
     End Sub
@@ -71,6 +67,7 @@ Public Class ModelImporter
 
         If ofd.ShowDialog = DialogResult.OK Then
             RomFile = ofd.FileName
+            rommgr = New SM64Lib.RomManager(RomFile)
         End If
     End Sub
 
@@ -129,11 +126,11 @@ Public Class ModelImporter
 
                 fs.Position = gp - 4
                 If fs.ReadByte = &H15 Then
-                    fs.WriteByte(CByte(geo(0).Layer))
+                    fs.WriteByte(geo(0).Layer)
                 Else
                     fs.Position = gp - 8
                     If fs.ReadByte = &H13 Then
-                        fs.WriteByte(CByte(geo(0).Layer))
+                        fs.WriteByte(geo(0).Layer)
                     End If
                 End If
             Next

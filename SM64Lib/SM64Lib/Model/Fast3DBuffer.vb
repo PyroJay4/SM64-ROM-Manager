@@ -29,7 +29,8 @@ Namespace Global.SM64Lib.Model.Fast3D
                 .ReduceVertLevel = ObjSettings.ReduceDupVertLevel,
                 .SegmentedAddress = &HE000000,
                 .ForceDisplaylist = ObjSettings.ForceDisplaylist,
-                .Fog = ObjSettings.Fog}
+                .Fog = ObjSettings.Fog
+            }
 
             'Convert Model
             Dim con As New SM64Convert.Fast3DWriter

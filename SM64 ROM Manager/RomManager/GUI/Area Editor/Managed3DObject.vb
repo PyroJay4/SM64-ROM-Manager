@@ -39,7 +39,7 @@ Public Class Managed3DObject
 
     <DisplayName("Object Combo")>
     <Category("Object Combo")>
-    <Description("Indicated the Combo of Model ID and Behvior ID.")> '<ComboBoxPropertyEditor>
+    <Description("Indicated the Combo of Model ID and Behvior ID.")>
     Public Property ObjectCombo As String
         Get
             Return myObjectCombos.GetObjectComboOfObject(Me).Name

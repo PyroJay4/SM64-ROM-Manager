@@ -45,6 +45,7 @@ Namespace Global.SM64Lib.Levels.Script
             Next
             Return -1
         End Function
+
     End Class
 
     <Serializable>

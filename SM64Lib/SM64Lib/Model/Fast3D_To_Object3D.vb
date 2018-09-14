@@ -366,6 +366,17 @@ Namespace Global.SM64Lib.SM64Convert
             Return normal
         End Function
 
+        Private Shared Function GetCullingMode(geometryMode) As FaceCullingMode
+            Return (geometryMode And &H3000) >> 12
+        End Function
+
     End Class
+
+    Public Enum FaceCullingMode
+        NoCulling
+        Front
+        Back
+        FrontAndBack = Front Or Back
+    End Enum
 
 End Namespace

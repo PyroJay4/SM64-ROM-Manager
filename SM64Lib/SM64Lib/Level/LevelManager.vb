@@ -271,9 +271,6 @@ Namespace Levels
                         tArea.AreaID = clStartArea.GetAreaID(c)
                         tArea.GeolayoutOffset = clStartArea.GetSegGeolayoutAddr(c) '- bank0x19.BankAddress + bank0x19.RomStart
                         tArea.Geolayout.Read(rommgr, tArea.GeolayoutOffset)
-                        For i = 0 To 2
-                            tArea.Geolayout.DisableWater(CType(i, SpecialBoxType))
-                        Next
 
                     Case LevelscriptCommandTypes.EndOfArea
                         tArea.Levelscript.Add(c)
@@ -462,9 +459,6 @@ Namespace Levels
                         tArea.AreaID = clStartArea.GetAreaID(c)
                         tArea.GeolayoutOffset = clStartArea.GetSegGeolayoutAddr(c) '- bank0x19.BankAddress + bank0x19.RomStart
                         tArea.Geolayout.Read(rommgr, tArea.GeolayoutOffset)
-                        For i = 0 To 2
-                            tArea.Geolayout.DisableWater(CType(i, SpecialBoxType))
-                        Next
 
                     Case LevelscriptCommandTypes.EndOfArea
                         tArea.Levelscript.Add(c)
@@ -632,33 +626,27 @@ Namespace Levels
             lvl.ObjectBank0x0E = lvl.GetObjectBank0x0E()
         End Sub
 
-        Public Shared Sub SaveRomManagerLevel(lvl As Level, rommgr As RomManager, output As Stream, scriptOffset As Integer, ByRef curOff As UInteger)
+        Public Class LevelSaveResult
+            Public Property Bank0x19 As SegmentedBank = Nothing
+        End Class
+
+        Public Shared Function SaveRomManagerLevel(lvl As Level, rommgr As RomManager, output As Stream, ByRef curOff As UInteger) As LevelSaveResult
+            Dim saveres As New LevelSaveResult
             Dim bw As New BinaryWriter(output)
-            Dim bw0x19 As BinaryWriter = Nothing
-            Dim lid = rommgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = lvl.LevelID)
-            Dim offNewBank0x19 As UInteger = curOff
+            Dim bw0x19 As BinaryWriter
+            Dim lid = rommgr.LevelInfoData.GetByLevelID(lvl.LevelID)
 
-            'Get Bank 0x19
-            If lvl.bank0x19 Is Nothing Then
-                lvl.bank0x19 = rommgr.SetSegBank(&H19, offNewBank0x19, RomManager.ManagerSettings.defaultLevelscriptSize)
-                lvl.bank0x19.Data = New MemoryStream
-                lvl.bank0x19.Length = RomManager.ManagerSettings.defaultLevelscriptSize
-            Else
-                Dim oldData As Stream = lvl.bank0x19.Data
-                lvl.bank0x19 = rommgr.SetSegBank(&H19, offNewBank0x19, offNewBank0x19 + lvl.bank0x19.Length)
-                lvl.bank0x19.Data = oldData
-            End If
-            bw0x19 = New BinaryWriter(lvl.bank0x19.Data)
-
-            'Write Area Model & Update Scrolling Texture Vertex Pointers
-            Dim CurrentRomOffset As UInteger = lvl.bank0x19.RomEnd
+            'Write Area Model & Update Scrolling Texture Vertex Pointers & Write Custom Object Bank
             For Each a As LevelArea In lvl.Areas
+                a.Bank0x0EOffset = curOff
+
                 Dim oldModelStart As Integer = a.AreaModel.Fast3DBuffer.Fast3DBankStart
                 Dim newModelStart As Integer
                 Dim modelOffset As Integer
 
                 'Add the new water boxes
                 a.AreaModel.Collision.SpecialBoxes.Clear()
+                Dim TableIndex() As Integer = {0, &H32, &H33}
                 For Each sp As SpecialBox In a.SpecialBoxes
                     Dim boxdata As New Collision.BoxData
 
@@ -667,6 +655,7 @@ Namespace Levels
                     boxdata.Z1 = sp.Z1
                     boxdata.Z2 = sp.Z2
                     boxdata.Y = sp.Y
+                    boxdata.Index = TableIndex(sp.Type)
 
                     Select Case sp.Type
                         Case SpecialBoxType.Water
@@ -678,11 +667,12 @@ Namespace Levels
                     End Select
 
                     a.AreaModel.Collision.SpecialBoxes.Add(boxdata)
+                    TableIndex(sp.Type) += 1
                 Next
 
                 'Write Area Model
                 Dim res As ObjectModel.SaveResult
-                res = a.AreaModel.ToStream(output, CurrentRomOffset, CurrentRomOffset, &HE000000)
+                res = a.AreaModel.ToStream(output, curOff, curOff, &HE000000)
 
                 'Calculate Model Offset & Update Scrolling Texture Vertex Pointers
                 newModelStart = a.AreaModel.Fast3DBuffer.Fast3DBankStart
@@ -694,15 +684,19 @@ Namespace Levels
                 a.CollisionPointer = res.CollisionPointer
                 a.Geolayout.Geopointers.Clear() : a.Geolayout.Geopointers.AddRange(res.GeoPointers.ToArray)
 
-                a.Bank0x0EOffset = CurrentRomOffset
+                curOff += res.Length + &H20
+                HexRoundUp2(curOff)
 
-                CurrentRomOffset += res.Length + &H20
-                HexRoundUp2(CurrentRomOffset)
+                'Write Object Bank
+                a.CustomObjectsStartOffset = curOff - a.Bank0x0EOffset
+                '...
+
+                a.Bank0xELength = curOff - a.Bank0x0EOffset
             Next
 
             'Write Background Image
             HexRoundUp2(output.Position)
-            Dim customBGStart As Integer = CurrentRomOffset
+            Dim customBGStart As Integer = curOff
             Dim customBGEnd As Integer = 0
             If lvl.Background.IsCustom Then '.ID = Geolayout.BackgroundIDs.Custom Then
                 'Write Custom Background
@@ -713,9 +707,24 @@ Namespace Levels
                 output.Write(bgPtrTable, 0, bgPtrTable.Length)
 
                 customBGEnd = customBGStart + lvl.Background.ImageLength + bgPtrTable.Length
-                CurrentRomOffset += lvl.Background.ImageLength + bgPtrTable.Length
-                HexRoundUp2(CurrentRomOffset)
+                curOff += lvl.Background.ImageLength + bgPtrTable.Length
+                HexRoundUp2(curOff)
             End If
+
+            'Get Bank 0x19
+            If lvl.bank0x19 Is Nothing Then
+                lvl.bank0x19 = rommgr.SetSegBank(&H19, curOff, RomManager.ManagerSettings.defaultLevelscriptSize)
+                lvl.bank0x19.Data = New MemoryStream
+                lvl.bank0x19.Length = RomManager.ManagerSettings.defaultLevelscriptSize
+            Else
+                Dim oldData As MemoryStream = lvl.bank0x19.Data
+                lvl.bank0x19 = rommgr.SetSegBank(&H19, curOff, curOff + lvl.bank0x19.Length)
+                lvl.bank0x19.Data = oldData
+            End If
+            bw0x19 = New BinaryWriter(lvl.bank0x19.Data)
+            saveres.Bank0x19 = lvl.bank0x19
+            curOff += lvl.bank0x19.Data.Length
+            HexRoundUp2(curOff)
 
             'Update Geolayouts
             For Each a As LevelArea In lvl.Areas
@@ -779,7 +788,7 @@ Namespace Levels
 
             'Add Objects and Warps to new Levelscript
             lvlScript0E = New Levelscript
-            firstBank0xE = rommgr.SetSegBank(&HE, CurrentRomOffset, 0)
+            firstBank0xE = rommgr.SetSegBank(&HE, curOff, 0)
             areaobjwarpoffsetdic = New Dictionary(Of Byte, UInteger)
 
             For Each a As LevelArea In lvl.Areas
@@ -805,10 +814,9 @@ Namespace Levels
                 curFirstBank0xEOffset += 4
             Next
 
-            firstBank0xE.Length = curFirstBank0xEOffset
+            firstBank0xE.Length = HexRoundUp1(curFirstBank0xEOffset)
             lvlScript0E.Write(output, firstBank0xE.RomStart)
-
-            curOff += (firstBank0xE.RomEnd - lvl.bank0x19.RomStart)
+            curOff += firstBank0xE.Length
 
             'Füge Area dem Levelscript hinzu
             Dim cIndex2 = lvl.Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1E)
@@ -916,8 +924,14 @@ Namespace Levels
                 lvl.Levelscript.Remove(cmdBgSegLoad)
             End If
 
+            'Write Level Start (Start of Bank 0x19)
+            lvl.bank0x19.Data.Position = 0
+            For Each b As Byte In lvl.LevelscriptStart
+                bw0x19.Write(b)
+            Next
+
             'Write Levelscript
-            lvl.Levelscript.Write(lvl.bank0x19.Data, scriptOffset)
+            lvl.Levelscript.Write(lvl.bank0x19.Data, bw0x19.BaseStream.Position)
 
             'Parse Levelscript again!
             Dim AreaOnFly As Boolean = False
@@ -930,12 +944,6 @@ Namespace Levels
                         lvl.Levelscript.Remove(c)
                 End Select
                 If AreaOnFly Then lvl.Levelscript.Remove(c)
-            Next
-
-            'Write Level Start (Start of Bank 0x19)
-            lvl.bank0x19.Data.Position = 0
-            For Each b As Byte In lvl.LevelscriptStart
-                bw0x19.Write(b)
             Next
 
             Dim bwToUse As BinaryWriter = If(bw0x19, bw)
@@ -958,21 +966,21 @@ Namespace Levels
             Next
 
             'Write SpecialBoxes
-            Dim bank0x19RomStart As UInteger = 0
-            Dim CurrentBoxOffset As Integer = bank0x19RomStart + &H6A00
+            Dim CurrentBoxOffset As Integer = &H6A00
             For Each a As LevelArea In lvl.Areas
                 Dim TableIndex() As Integer = {0, &H32, &H33}
-                Dim TableOffset() As Integer = {bank0x19RomStart + &H6000 + (&H50 * a.AreaID),
-                    bank0x19RomStart + &H6280 + (&H50 * a.AreaID),
-                    bank0x19RomStart + &H6500 + (&H50 * a.AreaID)}
+                Dim TableOffset() As Integer = {
+                    &H6000 + (&H50 * a.AreaID),
+                    &H6280 + (&H50 * a.AreaID),
+                    &H6500 + (&H50 * a.AreaID)}
 
                 For Each w As SpecialBox In a.SpecialBoxes
                     'Write Table Entry
-                    bwToUse.BaseStream.Position = TableOffset(CInt(w.Type))
-                    bwToUse.Write(SwapInts.SwapInt16(TableIndex(CInt(w.Type))))
+                    bwToUse.BaseStream.Position = TableOffset(w.Type)
+                    bwToUse.Write(SwapInts.SwapInt16(TableIndex(w.Type)))
                     bwToUse.Write(SwapInts.SwapInt16(&H0))
-                    bwToUse.Write(SwapInts.SwapInt32(CurrentBoxOffset - bank0x19RomStart + lvl.bank0x19.BankAddress))
-                    TableOffset(CInt(w.Type)) = bwToUse.BaseStream.Position
+                    bwToUse.Write(SwapInts.SwapInt32(CurrentBoxOffset + lvl.bank0x19.BankAddress))
+                    TableOffset(w.Type) = bwToUse.BaseStream.Position
 
                     'Write Box Data
                     bwToUse.BaseStream.Position = CurrentBoxOffset
@@ -980,7 +988,7 @@ Namespace Levels
                         bwToUse.Write(b)
                     Next
 
-                    TableIndex(CInt(w.Type)) += 1
+                    TableIndex(w.Type) += 1
                     CurrentBoxOffset += &H20
                 Next
 
@@ -1005,7 +1013,9 @@ Namespace Levels
             bw.Write(SwapInts.SwapUInt32(lvl.bank0x19.RomEnd))
             bw.Write(SwapInts.SwapUInt32(&H1900001C))
             bw.Write(SwapInts.SwapUInt32(&H7040000))
-        End Sub
+
+            Return saveres
+        End Function
 
     End Class
 

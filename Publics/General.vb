@@ -5,7 +5,6 @@ Imports DevComponents.DotNetBar
 Imports Newtonsoft.Json.Linq
 Imports DevComponents.DotNetBar.Controls
 Imports DevComponents.Editors
-Imports SettingsManager
 Imports System.Windows.Forms
 Imports S3DFileParser
 Imports System.Runtime.CompilerServices

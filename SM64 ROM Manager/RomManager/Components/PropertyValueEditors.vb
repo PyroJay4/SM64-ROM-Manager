@@ -211,7 +211,7 @@ Namespace PropertyValueEditors
             Dim args As New EditorCreateEventArgs(propertyDescriptor)
             Dim editor As ComboBoxEditor
 
-            RaiseEvent EditorCreated(Me, args)
+            RaiseEvent EditorCreating(Me, args)
 
             If args.Editor Is Nothing Then
                 editor = New ComboBoxEditor
@@ -252,33 +252,59 @@ Namespace PropertyValueEditors
 
             Private settingValue As Boolean = False
 
+            Public Property IntegerValueMode As Integer = -1
+            Public Property ValueType As TypeCode = TypeCode.Int32
+
             Public Property EditorFont As Font Implements IPropertyValueEditor.EditorFont
                 Get
-                    Return Me.Font
+                    Return Font
                 End Get
                 Set(value As Font)
-                    Me.Font = value
+                    Font = value
                 End Set
             End Property
 
             Public ReadOnly Property IsEditorFocused As Boolean Implements IPropertyValueEditor.IsEditorFocused
                 Get
-                    Return Me.Focused
+                    Return Focused
                 End Get
             End Property
 
             Public Property EditValue As Object Implements IPropertyValueEditor.EditValue
                 Get
+                    Dim val As Object
+
                     If Text <> "" Then
                         Dim index As Integer = SelectedIndex
                         If index > -1 Then
-                            Return CType(Items(index), ComboItem).Tag
+                            val = CType(Items(index), ComboItem).Tag
                         Else
-                            Return CByte(ValueFromText(Text))
+                            val = ValueFromText(Text)
                         End If
                     Else
-                        Return 0
+                        val = 0
                     End If
+
+                    Select Case ValueType
+                        Case TypeCode.Int32
+                            Return CInt(val)
+                        Case TypeCode.UInt32
+                            Return CUInt(val)
+                        Case TypeCode.Byte
+                            Return CByte(val)
+                        Case TypeCode.SByte
+                            Return CSByte(val)
+                        Case TypeCode.Int16
+                            Return CShort(val)
+                        Case TypeCode.UInt16
+                            Return CUShort(val)
+                        Case TypeCode.Int64
+                            Return CLng(val)
+                        Case TypeCode.UInt64
+                            Return CULng(val)
+                    End Select
+
+                    Return 0
                 End Get
                 Set(value As Object)
                     Dim found As Boolean = False
@@ -297,30 +323,15 @@ Namespace PropertyValueEditors
                     Next
 
                     If Not found Then _
-                        Me.Text = TextFromValue(value)
+                        Text = TextFromValue(value, IntegerValueMode)
 
                     settingValue = False
                 End Set
             End Property
 
             Public Sub FocusEditor() Implements IPropertyValueEditor.FocusEditor
-                Me.Focus()
+                Focus()
             End Sub
-
-            'Protected Overrides Sub OnSelectedIndexChanged(e As EventArgs)
-            '    OnEditSelectedValueChanged(e)
-            '    MyBase.OnSelectedIndexChanged(e)
-            'End Sub
-
-            'Protected Overrides Sub OnSelectedItemChanged(e As EventArgs)
-            '    OnEditSelectedValueChanged(e)
-            '    MyBase.OnSelectedItemChanged(e)
-            'End Sub
-
-            'Protected Overrides Sub OnTextChanged(e As EventArgs)
-            '    MyBase.OnTextChanged(e)
-            '    OnEditSelectedValueChanged(e)
-            'End Sub
 
             Protected Overrides Sub OnSelectedIndexChanged(e As EventArgs)
                 MyBase.OnSelectedIndexChanged(e)
@@ -347,6 +358,10 @@ Namespace PropertyValueEditors
 
             Private Sub OnNeedValues()
                 RaiseEvent NeedValues(Me, New EventArgs)
+            End Sub
+
+            Protected Overrides Sub Dispose(disposing As Boolean)
+                'MyBase.Dispose(disposing)
             End Sub
 
         End Class

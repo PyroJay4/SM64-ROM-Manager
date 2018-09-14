@@ -1,4 +1,4 @@
-﻿Imports SettingsManager
+﻿Imports SM64_ROM_Manager.SettingsManager
 
 Public Module TextValueConverter
 

@@ -1,7 +1,6 @@
 Imports DevComponents.DotNetBar
 Imports SM64Lib.Levels
 Imports TextValueConverter
-Imports SettingsManager
 Imports System.ComponentModel
 Imports SM64Lib.Levels.ScrolTex
 Imports SM64_ROM_Manager.PropertyValueEditors

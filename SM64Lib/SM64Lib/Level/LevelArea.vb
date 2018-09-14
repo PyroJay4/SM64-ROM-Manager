@@ -6,6 +6,7 @@ Imports System.Drawing.Imaging
 Imports System.Drawing
 Imports System.Windows.Forms
 Imports SM64Lib.Levels.ScrolTex
+Imports SM64Lib.ObjectBanks
 
 Namespace Global.SM64Lib.Levels
 
@@ -29,6 +30,15 @@ Namespace Global.SM64Lib.Levels
         Public ReadOnly Property Background As New AreaBG
         Public Property Enable2DCamera As Boolean = False
         Private _GettingAreaCollision As Boolean = False
+
+        Public ReadOnly Property CustomObjects As New CustomObjectBank
+        Public Property CustomObjectsStartOffset As Integer = 0
+        Public ReadOnly Property HasCustomObjects As Boolean
+            Get
+                Return CustomObjects.Objects.Any
+            End Get
+        End Property
+
         Public ReadOnly Property Fast3DBankRomStart As Integer
             Get
                 Return Bank0x0EOffset
@@ -40,11 +50,8 @@ Namespace Global.SM64Lib.Levels
             End Get
         End Property
         Public Property Bank0x0EOffset As UInteger = 0
-        Public ReadOnly Property Bank0xELength As UInteger
-            Get
-                Return HexRoundUp1(AreaModel.Fast3DBuffer.Length + AreaModel.Collision.Length)
-            End Get
-        End Property
+        Public Property Bank0xELength As Integer
+
         Public ReadOnly Property IsCamera2D As Boolean
             Get
                 Return Enable2DCamera AndAlso Geolayout.CameraPreset = SM64Lib.Geolayout.CameraPresets.PlattfromLevels

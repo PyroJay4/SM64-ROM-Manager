@@ -5,7 +5,7 @@ Imports SM64Lib.Levels
 Imports SM64Lib
 Imports System.Numerics
 Imports S3DFileParser
-Imports SettingsManager
+Imports SM64_ROM_Manager.SettingsManager
 Imports OpenGLPreview
 Imports System.Windows.Forms
 Imports System.Drawing

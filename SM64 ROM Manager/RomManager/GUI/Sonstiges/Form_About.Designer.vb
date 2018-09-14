@@ -28,26 +28,19 @@ Partial Class Form_About
         '
         'LabelX1
         '
-        Me.LabelX1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.LabelX1, "LabelX1")
         '
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Location = New System.Drawing.Point(12, 12)
         Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(260, 434)
         Me.LabelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.LabelX1.TabIndex = 0
-        Me.LabelX1.Text = resources.GetString("LabelX1.Text")
         Me.LabelX1.TextLineAlignment = System.Drawing.StringAlignment.Near
         '
         'Form_About
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 458)
         Me.Controls.Add(Me.LabelX1)
         Me.DoubleBuffered = True
         Me.EnableGlass = False
@@ -56,8 +49,6 @@ Partial Class Form_About
         Me.MinimizeBox = False
         Me.Name = "Form_About"
         Me.ShowIcon = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "About"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         Me.ResumeLayout(False)

@@ -7,7 +7,7 @@ Imports OpenGLRenderer
 Imports OpenTK
 Imports OpenTK.Graphics.OpenGL
 Imports S3DFileParser
-Imports SettingsManager
+Imports SM64_ROM_Manager.SettingsManager
 
 Public Class ModelPreview
 

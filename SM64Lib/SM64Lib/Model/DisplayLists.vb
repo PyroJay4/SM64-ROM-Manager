@@ -47,12 +47,36 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
             Me._GeoPointer = gp
         End Sub
 
+        Public Sub TryFromStream(gp As Geopointer, rommgr As RomManager, AreaID As Byte?)
+            Try
+                FromStream(gp, rommgr, AreaID)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Public Function TryFromStreamAsync(gp As Geopointer, rommgr As RomManager, AreaID As Byte?) As Task
+            Dim t As New Task(Sub() TryFromStream(gp, rommgr, AreaID))
+            t.Start()
+            Return t
+        End Function
+
         Public Sub FromStream(gp As Geopointer, rommgr As RomManager, AreaID As Byte?)
             _GeoPointer = gp
             Script.FromStream(rommgr, gp.SegPointer, AreaID)
         End Sub
         Public Function FromStreamAsync(gp As Geopointer, rommgr As RomManager, AreaID As Byte?) As Task
             Dim t As New Task(Sub() FromStream(gp, rommgr, AreaID))
+            t.Start()
+            Return t
+        End Function
+
+        Public Sub TryToObject3D(obj As Object3D, rommgr As RomManager, AreaID As Byte?)
+            Try
+                ToObject3D(obj, rommgr, AreaID)
+            Catch ex As Exception
+            End Try
+        End Sub
+        Public Function TryToObject3DAsync(obj As Object3D, rommgr As RomManager, AreaID As Byte?) As Task
+            Dim t As New Task(Sub() TryToObject3D(obj, rommgr, AreaID))
             t.Start()
             Return t
         End Function

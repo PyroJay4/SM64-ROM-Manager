@@ -1,13 +1,11 @@
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Metro.ColorTables
 Imports DevComponents.Editors
-Imports SettingsManager
+Imports SM64_ROM_Manager.SettingsManager
 
 Public Class Form_Stylemanager
 
     Private isLoading As Boolean = True
-
-    Public Property StyleManager As StyleManager = Nothing
 
     Public Sub New()
 
@@ -54,11 +52,12 @@ Public Class Form_Stylemanager
         If isLoading Then Return
 
         Dim newTheme As MetroColorGeneratorParameters = CType(sender.SelectedItem, ComboItem).Tag
-        StyleManager.MetroColorParameters = newTheme
+        StyleManager.MetroColorGeneratorParameters = newTheme
         Settings.StyleManager.MetroColorParams = newTheme
 
         For Each frm As Form In Application.OpenForms
             frm.UpdateAmbientColors()
+            frm.Refresh()
         Next
     End Sub
 

@@ -244,6 +244,42 @@
     <Compile Include="RomManager\GUI\Level Manager\ImportLevelDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RomManager\GUI\Main Form\ApplyStyleMgrStyle.Designer.vb">
+      <DependentUpon>ApplyStyleMgrStyle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\ApplyStyleMgrStyle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Tab_General.Designer.vb">
+      <DependentUpon>Tab_General.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Tab_General.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Tab_LevelManager.Designer.vb">
+      <DependentUpon>Tab_LevelManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Tab_LevelManager.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Tab_MusicManager.Designer.vb">
+      <DependentUpon>Tab_MusicManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Tab_MusicManager.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Tab_TextManager.Designer.vb">
+      <DependentUpon>Tab_TextManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Tab_TextManager.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexEditor.Designer.vb">
       <DependentUpon>ScrollTexEditor.vb</DependentUpon>
     </Compile>
@@ -251,18 +287,21 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexPropertyClass.vb" />
+    <Compile Include="RomManager\GUI\Settings\LevelEditorInputSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RomManager\GUI\Trajectory Editor\TrajectoryEditor.Designer.vb">
       <DependentUpon>TrajectoryEditor.vb</DependentUpon>
     </Compile>
     <Compile Include="RomManager\GUI\Trajectory Editor\TrajectoryEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\Form_Main\Form_Main_Resources.de.Designer.vb">
+    <Compile Include="RomManager\Language Ressources\MainForm\Form_Main_Resources.de.Designer.vb">
       <DependentUpon>Form_Main_Resources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\Form_Main\Form_Main_Resources.Designer.vb">
+    <Compile Include="RomManager\Language Ressources\MainForm\Form_Main_Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Form_Main_Resources.resx</DependentUpon>
@@ -276,15 +315,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Global_Ressources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Main Form\LevelManager.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\GUI\Main Form\MusicManager.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\GUI\Main Form\TextManager.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Area Editor\AreaEditorHistoryFunctions.vb" />
     <Compile Include="RomManager\GUI\Area Editor\Form_AreaEditor.Designer.vb">
@@ -322,31 +352,16 @@
     <Compile Include="RomManager\GUI\Settings\Form_Stylemanager.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Settings\LevelEditorInputSettings.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.designer.vb">
       <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
     </Compile>
     <Compile Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_ImagePreview.Designer.vb">
-      <DependentUpon>Form_ImagePreview.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_ImagePreview.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\GUI\Main Form\Form_SelectImportModelFormat.Designer.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_SelectImportModelFormat.Designer.vb">
       <DependentUpon>Form_SelectImportModelFormat.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Main Form\Form_SelectImportModelFormat.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_ProgressDisplay.Designer.vb">
-      <DependentUpon>Form_ProgressDisplay.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_ProgressDisplay.vb">
+    <Compile Include="RomManager\GUI\Level Manager\Form_SelectImportModelFormat.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Components\LM Custom ListViewItems.vb" />
@@ -362,12 +377,6 @@
     <Compile Include="RomManager\GUI\Settings\Form_Settings.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_ProgressDialog.Designer.vb">
-      <DependentUpon>Form_ProgressDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_ProgressDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="RomManager\GUI\Level Manager\Form_AddSpecialItem.Designer.vb">
       <DependentUpon>Form_AddSpecialItem.vb</DependentUpon>
     </Compile>
@@ -378,13 +387,6 @@
       <DependentUpon>Form_AddNewLevel.vb</DependentUpon>
     </Compile>
     <Compile Include="RomManager\GUI\Level Manager\Form_AddNewLevel.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\GUI\Main Form\Form_Main.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RomManager\GUI\Main Form\Form_Main.Designer.vb">
-      <DependentUpon>Form_Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Level Manager\Form_SetUpRGBA.Designer.vb">
@@ -426,12 +428,6 @@
     <Compile Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\XmlToM64Converter\Form_XmlToM64Converter.Designer.vb">
-      <DependentUpon>Form_XmlToM64Converter.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\XmlToM64Converter\Form_XmlToM64Converter.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="RomManager\Modules\General.vb" />
     <Compile Include="RomManager\Modules\ObjectComboList.vb" />
     <Compile Include="RomManager\GUI\Update\UpdateDialog.Designer.vb">
@@ -448,8 +444,56 @@
     <EmbeddedResource Include="RomManager\GUI\Level Manager\ImportLevelDialog.resx">
       <DependentUpon>ImportLevelDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\ApplyStyleMgrStyle.resx">
+      <DependentUpon>ApplyStyleMgrStyle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Tab_General.de.resx">
+      <DependentUpon>Tab_General.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Tab_General.resx">
+      <DependentUpon>Tab_General.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Tab_LevelManager.de.resx">
+      <DependentUpon>Tab_LevelManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Tab_LevelManager.resx">
+      <DependentUpon>Tab_LevelManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Tab_MusicManager.de.resx">
+      <DependentUpon>Tab_MusicManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Tab_MusicManager.resx">
+      <DependentUpon>Tab_MusicManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Tab_TextManager.de.resx">
+      <DependentUpon>Tab_TextManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Tab_TextManager.resx">
+      <DependentUpon>Tab_TextManager.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexEditor.resx">
       <DependentUpon>ScrollTexEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Settings\Form_Settings.de.resx">
+      <DependentUpon>Form_Settings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Settings\Form_Stylemanager.de.resx">
+      <DependentUpon>Form_Stylemanager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_About.de.resx">
+      <DependentUpon>Form_About.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.de.resx">
+      <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.de.resx">
+      <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Trajectory Editor\TrajectoryEditor.de.resx">
+      <DependentUpon>TrajectoryEditor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Trajectory Editor\TrajectoryEditor.resx">
       <DependentUpon>TrajectoryEditor.vb</DependentUpon>
@@ -464,15 +508,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Global_Ressources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Main Form\Form_Main.de.resx">
-      <DependentUpon>Form_Main.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\Form_Main\Form_Main_Resources.de.resx">
+    <EmbeddedResource Include="RomManager\Language Ressources\MainForm\Form_Main_Resources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Form_Main_Resources.de.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\Form_Main\Form_Main_Resources.resx">
+    <EmbeddedResource Include="RomManager\Language Ressources\MainForm\Form_Main_Resources.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Form_Main_Resources.Designer.vb</LastGenOutput>
@@ -496,14 +537,8 @@
     <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.resx">
       <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_ImagePreview.resx">
-      <DependentUpon>Form_ImagePreview.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Main Form\Form_SelectImportModelFormat.resx">
+    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_SelectImportModelFormat.resx">
       <DependentUpon>Form_SelectImportModelFormat.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_ProgressDisplay.resx">
-      <DependentUpon>Form_ProgressDisplay.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_About.resx">
       <DependentUpon>Form_About.vb</DependentUpon>
@@ -514,10 +549,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_AddSpecialItem.resx">
       <DependentUpon>Form_AddSpecialItem.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Main Form\Form_Main.resx">
-      <DependentUpon>Form_Main.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_SetUpRGBA.resx">
       <DependentUpon>Form_SetUpRGBA.vb</DependentUpon>
@@ -534,14 +565,8 @@
     <EmbeddedResource Include="RomManager\GUI\Settings\Form_Settings.resx">
       <DependentUpon>Form_Settings.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_ProgressDialog.resx">
-      <DependentUpon>Form_ProgressDialog.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.resx">
       <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\XmlToM64Converter\Form_XmlToM64Converter.resx">
-      <DependentUpon>Form_XmlToM64Converter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Update\UpdateDialog.resx">
       <DependentUpon>UpdateDialog.vb</DependentUpon>

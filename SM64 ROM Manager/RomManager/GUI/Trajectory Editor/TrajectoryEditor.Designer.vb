@@ -54,8 +54,7 @@ Partial Class TrajectoryEditor
         '
         'ListViewEx1
         '
-        Me.ListViewEx1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.ListViewEx1, "ListViewEx1")
         Me.ListViewEx1.BackColor = System.Drawing.Color.White
         '
         '
@@ -69,333 +68,321 @@ Partial Class TrajectoryEditor
         Me.ListViewEx1.FullRowSelect = True
         Me.ListViewEx1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.ListViewEx1.HideSelection = False
-        Me.ListViewEx1.Location = New System.Drawing.Point(12, 13)
         Me.ListViewEx1.MultiSelect = False
         Me.ListViewEx1.Name = "ListViewEx1"
-        Me.ListViewEx1.Size = New System.Drawing.Size(280, 409)
-        Me.ListViewEx1.TabIndex = 0
         Me.ListViewEx1.UseCompatibleStateImageBehavior = False
         Me.ListViewEx1.View = System.Windows.Forms.View.Details
         '
         'ColumnHeader1
         '
-        Me.ColumnHeader1.Text = ""
-        Me.ColumnHeader1.Width = 0
+        resources.ApplyResources(Me.ColumnHeader1, "ColumnHeader1")
         '
         'ColumnHeader2
         '
-        Me.ColumnHeader2.Text = "X"
-        Me.ColumnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ColumnHeader2.Width = 80
+        resources.ApplyResources(Me.ColumnHeader2, "ColumnHeader2")
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "Y"
-        Me.ColumnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ColumnHeader3.Width = 80
+        resources.ApplyResources(Me.ColumnHeader3, "ColumnHeader3")
         '
         'ColumnHeader4
         '
-        Me.ColumnHeader4.Text = "Z"
-        Me.ColumnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ColumnHeader4.Width = 80
+        resources.ApplyResources(Me.ColumnHeader4, "ColumnHeader4")
         '
         'ComboBoxEx1
         '
-        Me.ComboBoxEx1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.ComboBoxEx1, "ComboBoxEx1")
         Me.ComboBoxEx1.DisplayMember = "Text"
         Me.ComboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEx1.DropDownWidth = 250
         Me.ComboBoxEx1.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx1.FormattingEnabled = True
-        Me.ComboBoxEx1.ItemHeight = 15
-        Me.ComboBoxEx1.Location = New System.Drawing.Point(298, 41)
         Me.ComboBoxEx1.Name = "ComboBoxEx1"
-        Me.ComboBoxEx1.Size = New System.Drawing.Size(194, 21)
         Me.ComboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ComboBoxEx1.TabIndex = 1
         '
         'IntegerInput1
         '
-        Me.IntegerInput1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.IntegerInput1, "IntegerInput1")
         '
         '
         '
         Me.IntegerInput1.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.IntegerInput1.ButtonCalculator.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonCalculator.DisplayPosition"), Integer)
+        Me.IntegerInput1.ButtonCalculator.Image = CType(resources.GetObject("IntegerInput1.ButtonCalculator.Image"), System.Drawing.Image)
+        Me.IntegerInput1.ButtonCalculator.Text = resources.GetString("IntegerInput1.ButtonCalculator.Text")
+        Me.IntegerInput1.ButtonCalculator.Tooltip = resources.GetString("IntegerInput1.ButtonCalculator.Tooltip")
+        Me.IntegerInput1.ButtonClear.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonClear.DisplayPosition"), Integer)
+        Me.IntegerInput1.ButtonClear.Image = CType(resources.GetObject("IntegerInput1.ButtonClear.Image"), System.Drawing.Image)
+        Me.IntegerInput1.ButtonClear.Text = resources.GetString("IntegerInput1.ButtonClear.Text")
+        Me.IntegerInput1.ButtonClear.Tooltip = resources.GetString("IntegerInput1.ButtonClear.Tooltip")
+        Me.IntegerInput1.ButtonCustom.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonCustom.DisplayPosition"), Integer)
+        Me.IntegerInput1.ButtonCustom.Image = CType(resources.GetObject("IntegerInput1.ButtonCustom.Image"), System.Drawing.Image)
+        Me.IntegerInput1.ButtonCustom.Text = resources.GetString("IntegerInput1.ButtonCustom.Text")
+        Me.IntegerInput1.ButtonCustom.Tooltip = resources.GetString("IntegerInput1.ButtonCustom.Tooltip")
+        Me.IntegerInput1.ButtonCustom2.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonCustom2.DisplayPosition"), Integer)
+        Me.IntegerInput1.ButtonCustom2.Image = CType(resources.GetObject("IntegerInput1.ButtonCustom2.Image"), System.Drawing.Image)
+        Me.IntegerInput1.ButtonCustom2.Text = resources.GetString("IntegerInput1.ButtonCustom2.Text")
+        Me.IntegerInput1.ButtonCustom2.Tooltip = resources.GetString("IntegerInput1.ButtonCustom2.Tooltip")
+        Me.IntegerInput1.ButtonDropDown.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonDropDown.DisplayPosition"), Integer)
+        Me.IntegerInput1.ButtonDropDown.Image = CType(resources.GetObject("IntegerInput1.ButtonDropDown.Image"), System.Drawing.Image)
+        Me.IntegerInput1.ButtonDropDown.Text = resources.GetString("IntegerInput1.ButtonDropDown.Text")
+        Me.IntegerInput1.ButtonDropDown.Tooltip = resources.GetString("IntegerInput1.ButtonDropDown.Tooltip")
+        Me.IntegerInput1.ButtonFreeText.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonFreeText.DisplayPosition"), Integer)
+        Me.IntegerInput1.ButtonFreeText.Image = CType(resources.GetObject("IntegerInput1.ButtonFreeText.Image"), System.Drawing.Image)
         Me.IntegerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput1.Location = New System.Drawing.Point(320, 280)
+        Me.IntegerInput1.ButtonFreeText.Text = resources.GetString("IntegerInput1.ButtonFreeText.Text")
+        Me.IntegerInput1.ButtonFreeText.Tooltip = resources.GetString("IntegerInput1.ButtonFreeText.Tooltip")
         Me.IntegerInput1.MaxValue = 65535
         Me.IntegerInput1.MinValue = -65535
         Me.IntegerInput1.Name = "IntegerInput1"
         Me.IntegerInput1.ShowUpDown = True
-        Me.IntegerInput1.Size = New System.Drawing.Size(120, 20)
-        Me.IntegerInput1.TabIndex = 2
         '
         'IntegerInput2
         '
-        Me.IntegerInput2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.IntegerInput2, "IntegerInput2")
         '
         '
         '
         Me.IntegerInput2.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.IntegerInput2.ButtonCalculator.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonCalculator.DisplayPosition"), Integer)
+        Me.IntegerInput2.ButtonCalculator.Image = CType(resources.GetObject("IntegerInput2.ButtonCalculator.Image"), System.Drawing.Image)
+        Me.IntegerInput2.ButtonCalculator.Text = resources.GetString("IntegerInput2.ButtonCalculator.Text")
+        Me.IntegerInput2.ButtonCalculator.Tooltip = resources.GetString("IntegerInput2.ButtonCalculator.Tooltip")
+        Me.IntegerInput2.ButtonClear.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonClear.DisplayPosition"), Integer)
+        Me.IntegerInput2.ButtonClear.Image = CType(resources.GetObject("IntegerInput2.ButtonClear.Image"), System.Drawing.Image)
+        Me.IntegerInput2.ButtonClear.Text = resources.GetString("IntegerInput2.ButtonClear.Text")
+        Me.IntegerInput2.ButtonClear.Tooltip = resources.GetString("IntegerInput2.ButtonClear.Tooltip")
+        Me.IntegerInput2.ButtonCustom.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonCustom.DisplayPosition"), Integer)
+        Me.IntegerInput2.ButtonCustom.Image = CType(resources.GetObject("IntegerInput2.ButtonCustom.Image"), System.Drawing.Image)
+        Me.IntegerInput2.ButtonCustom.Text = resources.GetString("IntegerInput2.ButtonCustom.Text")
+        Me.IntegerInput2.ButtonCustom.Tooltip = resources.GetString("IntegerInput2.ButtonCustom.Tooltip")
+        Me.IntegerInput2.ButtonCustom2.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonCustom2.DisplayPosition"), Integer)
+        Me.IntegerInput2.ButtonCustom2.Image = CType(resources.GetObject("IntegerInput2.ButtonCustom2.Image"), System.Drawing.Image)
+        Me.IntegerInput2.ButtonCustom2.Text = resources.GetString("IntegerInput2.ButtonCustom2.Text")
+        Me.IntegerInput2.ButtonCustom2.Tooltip = resources.GetString("IntegerInput2.ButtonCustom2.Tooltip")
+        Me.IntegerInput2.ButtonDropDown.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonDropDown.DisplayPosition"), Integer)
+        Me.IntegerInput2.ButtonDropDown.Image = CType(resources.GetObject("IntegerInput2.ButtonDropDown.Image"), System.Drawing.Image)
+        Me.IntegerInput2.ButtonDropDown.Text = resources.GetString("IntegerInput2.ButtonDropDown.Text")
+        Me.IntegerInput2.ButtonDropDown.Tooltip = resources.GetString("IntegerInput2.ButtonDropDown.Tooltip")
+        Me.IntegerInput2.ButtonFreeText.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonFreeText.DisplayPosition"), Integer)
+        Me.IntegerInput2.ButtonFreeText.Image = CType(resources.GetObject("IntegerInput2.ButtonFreeText.Image"), System.Drawing.Image)
         Me.IntegerInput2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput2.Location = New System.Drawing.Point(320, 309)
+        Me.IntegerInput2.ButtonFreeText.Text = resources.GetString("IntegerInput2.ButtonFreeText.Text")
+        Me.IntegerInput2.ButtonFreeText.Tooltip = resources.GetString("IntegerInput2.ButtonFreeText.Tooltip")
         Me.IntegerInput2.MaxValue = 65535
         Me.IntegerInput2.MinValue = -65535
         Me.IntegerInput2.Name = "IntegerInput2"
         Me.IntegerInput2.ShowUpDown = True
-        Me.IntegerInput2.Size = New System.Drawing.Size(120, 20)
-        Me.IntegerInput2.TabIndex = 3
         '
         'IntegerInput3
         '
-        Me.IntegerInput3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.IntegerInput3, "IntegerInput3")
         '
         '
         '
         Me.IntegerInput3.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.IntegerInput3.ButtonCalculator.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonCalculator.DisplayPosition"), Integer)
+        Me.IntegerInput3.ButtonCalculator.Image = CType(resources.GetObject("IntegerInput3.ButtonCalculator.Image"), System.Drawing.Image)
+        Me.IntegerInput3.ButtonCalculator.Text = resources.GetString("IntegerInput3.ButtonCalculator.Text")
+        Me.IntegerInput3.ButtonCalculator.Tooltip = resources.GetString("IntegerInput3.ButtonCalculator.Tooltip")
+        Me.IntegerInput3.ButtonClear.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonClear.DisplayPosition"), Integer)
+        Me.IntegerInput3.ButtonClear.Image = CType(resources.GetObject("IntegerInput3.ButtonClear.Image"), System.Drawing.Image)
+        Me.IntegerInput3.ButtonClear.Text = resources.GetString("IntegerInput3.ButtonClear.Text")
+        Me.IntegerInput3.ButtonClear.Tooltip = resources.GetString("IntegerInput3.ButtonClear.Tooltip")
+        Me.IntegerInput3.ButtonCustom.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonCustom.DisplayPosition"), Integer)
+        Me.IntegerInput3.ButtonCustom.Image = CType(resources.GetObject("IntegerInput3.ButtonCustom.Image"), System.Drawing.Image)
+        Me.IntegerInput3.ButtonCustom.Text = resources.GetString("IntegerInput3.ButtonCustom.Text")
+        Me.IntegerInput3.ButtonCustom.Tooltip = resources.GetString("IntegerInput3.ButtonCustom.Tooltip")
+        Me.IntegerInput3.ButtonCustom2.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonCustom2.DisplayPosition"), Integer)
+        Me.IntegerInput3.ButtonCustom2.Image = CType(resources.GetObject("IntegerInput3.ButtonCustom2.Image"), System.Drawing.Image)
+        Me.IntegerInput3.ButtonCustom2.Text = resources.GetString("IntegerInput3.ButtonCustom2.Text")
+        Me.IntegerInput3.ButtonCustom2.Tooltip = resources.GetString("IntegerInput3.ButtonCustom2.Tooltip")
+        Me.IntegerInput3.ButtonDropDown.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonDropDown.DisplayPosition"), Integer)
+        Me.IntegerInput3.ButtonDropDown.Image = CType(resources.GetObject("IntegerInput3.ButtonDropDown.Image"), System.Drawing.Image)
+        Me.IntegerInput3.ButtonDropDown.Text = resources.GetString("IntegerInput3.ButtonDropDown.Text")
+        Me.IntegerInput3.ButtonDropDown.Tooltip = resources.GetString("IntegerInput3.ButtonDropDown.Tooltip")
+        Me.IntegerInput3.ButtonFreeText.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonFreeText.DisplayPosition"), Integer)
+        Me.IntegerInput3.ButtonFreeText.Image = CType(resources.GetObject("IntegerInput3.ButtonFreeText.Image"), System.Drawing.Image)
         Me.IntegerInput3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput3.Location = New System.Drawing.Point(320, 338)
+        Me.IntegerInput3.ButtonFreeText.Text = resources.GetString("IntegerInput3.ButtonFreeText.Text")
+        Me.IntegerInput3.ButtonFreeText.Tooltip = resources.GetString("IntegerInput3.ButtonFreeText.Tooltip")
         Me.IntegerInput3.MaxValue = 65535
         Me.IntegerInput3.MinValue = -65535
         Me.IntegerInput3.Name = "IntegerInput3"
         Me.IntegerInput3.ShowUpDown = True
-        Me.IntegerInput3.Size = New System.Drawing.Size(120, 20)
-        Me.IntegerInput3.TabIndex = 4
         '
         'LabelX1
         '
-        Me.LabelX1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.LabelX1, "LabelX1")
         Me.LabelX1.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Location = New System.Drawing.Point(298, 279)
         Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(16, 23)
         Me.LabelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.LabelX1.TabIndex = 5
-        Me.LabelX1.Text = "X:"
         '
         'LabelX2
         '
-        Me.LabelX2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Location = New System.Drawing.Point(298, 308)
         Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(16, 23)
         Me.LabelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.LabelX2.TabIndex = 6
-        Me.LabelX2.Text = "Y:"
         '
         'LabelX3
         '
-        Me.LabelX3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Location = New System.Drawing.Point(298, 337)
         Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.Size = New System.Drawing.Size(16, 23)
         Me.LabelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.LabelX3.TabIndex = 7
-        Me.LabelX3.Text = "Z:"
         '
         'ButtonX1
         '
+        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX1.FocusCuesEnabled = False
-        Me.ButtonX1.Location = New System.Drawing.Point(298, 97)
         Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Size = New System.Drawing.Size(83, 23)
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX1.Symbol = "57669"
         Me.ButtonX1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX1.SymbolSize = 12.0!
-        Me.ButtonX1.TabIndex = 9
-        Me.ButtonX1.Text = "Add Node"
         '
         'ButtonX2
         '
+        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
-        Me.ButtonX2.Location = New System.Drawing.Point(387, 97)
         Me.ButtonX2.Name = "ButtonX2"
-        Me.ButtonX2.Size = New System.Drawing.Size(105, 23)
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX2.Symbol = "57676"
         Me.ButtonX2.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonX2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX2.SymbolSize = 12.0!
-        Me.ButtonX2.TabIndex = 10
-        Me.ButtonX2.Text = "Remove Node"
         '
         'ButtonX3
         '
+        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX3.FocusCuesEnabled = False
-        Me.ButtonX3.Location = New System.Drawing.Point(298, 192)
         Me.ButtonX3.Name = "ButtonX3"
-        Me.ButtonX3.Size = New System.Drawing.Size(194, 23)
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX3.TabIndex = 12
-        Me.ButtonX3.Text = "Export trajectory to file"
         '
         'ButtonX4
         '
+        resources.ApplyResources(Me.ButtonX4, "ButtonX4")
         Me.ButtonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX4.FocusCuesEnabled = False
-        Me.ButtonX4.Location = New System.Drawing.Point(298, 221)
         Me.ButtonX4.Name = "ButtonX4"
-        Me.ButtonX4.Size = New System.Drawing.Size(194, 23)
         Me.ButtonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX4.TabIndex = 13
-        Me.ButtonX4.Text = "Import trajectory from file"
         '
         'LabelX4
         '
-        Me.LabelX4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.LabelX4, "LabelX4")
         Me.LabelX4.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX4.Location = New System.Drawing.Point(298, 12)
         Me.LabelX4.Name = "LabelX4"
-        Me.LabelX4.Size = New System.Drawing.Size(108, 23)
-        Me.LabelX4.TabIndex = 15
-        Me.LabelX4.Text = "Current Trajectory:"
         '
         'LabelX5
         '
-        Me.LabelX5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.LabelX5, "LabelX5")
         Me.LabelX5.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX5.Location = New System.Drawing.Point(298, 68)
         Me.LabelX5.Name = "LabelX5"
-        Me.LabelX5.Size = New System.Drawing.Size(108, 23)
-        Me.LabelX5.TabIndex = 16
-        Me.LabelX5.Text = "Tools:"
         '
         'LabelX6
         '
-        Me.LabelX6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.LabelX6, "LabelX6")
         Me.LabelX6.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX6.Location = New System.Drawing.Point(298, 163)
         Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.Size = New System.Drawing.Size(108, 23)
-        Me.LabelX6.TabIndex = 17
-        Me.LabelX6.Text = "Import/Export:"
         '
         'LabelX7
         '
-        Me.LabelX7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.LabelX7, "LabelX7")
         Me.LabelX7.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX7.Location = New System.Drawing.Point(298, 250)
         Me.LabelX7.Name = "LabelX7"
-        Me.LabelX7.Size = New System.Drawing.Size(108, 23)
-        Me.LabelX7.TabIndex = 18
-        Me.LabelX7.Text = "Edit Selected Node:"
         '
         'ButtonX5
         '
+        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX5.FocusCuesEnabled = False
-        Me.ButtonX5.Location = New System.Drawing.Point(426, 399)
         Me.ButtonX5.Name = "ButtonX5"
-        Me.ButtonX5.Size = New System.Drawing.Size(66, 23)
         Me.ButtonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX5.TabIndex = 19
-        Me.ButtonX5.Text = "Save"
         '
         'ButtonX6
         '
+        resources.ApplyResources(Me.ButtonX6, "ButtonX6")
         Me.ButtonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX6.FocusCuesEnabled = False
-        Me.ButtonX6.Location = New System.Drawing.Point(298, 126)
         Me.ButtonX6.Name = "ButtonX6"
-        Me.ButtonX6.Size = New System.Drawing.Size(83, 23)
         Me.ButtonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX6.Symbol = "58134"
         Me.ButtonX6.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX6.SymbolSize = 12.0!
-        Me.ButtonX6.TabIndex = 20
-        Me.ButtonX6.Text = "Move up"
         '
         'ButtonX7
         '
+        resources.ApplyResources(Me.ButtonX7, "ButtonX7")
         Me.ButtonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX7.FocusCuesEnabled = False
-        Me.ButtonX7.Location = New System.Drawing.Point(387, 126)
         Me.ButtonX7.Name = "ButtonX7"
-        Me.ButtonX7.Size = New System.Drawing.Size(105, 23)
         Me.ButtonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX7.Symbol = "58131"
         Me.ButtonX7.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX7.SymbolSize = 12.0!
-        Me.ButtonX7.TabIndex = 21
-        Me.ButtonX7.Text = "Move down"
         '
         'ButtonX8
         '
+        resources.ApplyResources(Me.ButtonX8, "ButtonX8")
         Me.ButtonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonX8.AutoExpandOnClick = True
         Me.ButtonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX8.Enabled = False
         Me.ButtonX8.FocusCuesEnabled = False
-        Me.ButtonX8.Location = New System.Drawing.Point(457, 12)
         Me.ButtonX8.Name = "ButtonX8"
-        Me.ButtonX8.Size = New System.Drawing.Size(35, 23)
         Me.ButtonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX8.Symbol = "57669"
         Me.ButtonX8.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX8.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX8.SymbolSize = 12.0!
-        Me.ButtonX8.TabIndex = 22
-        Me.ButtonX8.Text = "<span padding=""1,1,1,1""><expand/></span>"
         '
         'TrajectoryEditor
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(502, 432)
         Me.Controls.Add(Me.ButtonX8)
         Me.Controls.Add(Me.ButtonX6)
         Me.Controls.Add(Me.ButtonX7)
@@ -419,11 +406,8 @@ Partial Class TrajectoryEditor
         Me.DoubleBuffered = True
         Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "TrajectoryEditor"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Trajectory Editor"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         CType(Me.IntegerInput1, System.ComponentModel.ISupportInitialize).EndInit()

@@ -110,10 +110,10 @@ Namespace Global.SM64Lib
                     PatchClass.ApplyPPF(RomFile, MyDataPath & "\Patchs\Update-Patches\" & kvp.Value)
                     needUpdateChecksum = True
                 Next
-
-                'Write Version
-                WriteVersion(Assembly.GetEntryAssembly.GetName.Version)
             End If
+
+            'Write Version
+            WriteVersion(Assembly.GetEntryAssembly.GetName.Version)
 
             'Texts
             SaveAllTextTables()
@@ -163,7 +163,7 @@ Namespace Global.SM64Lib
                 minor = 3
             End If
 
-            Me.ProgramVersion = New Version(major, minor, build, revision)
+            ProgramVersion = New Version(major, minor, build, revision)
 
             Return Me.ProgramVersion
         End Function
@@ -175,11 +175,13 @@ Namespace Global.SM64Lib
             If CheckIfAlreadyLoaded AndAlso TextTables(index) IsNot Nothing Then Return
 
             Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Read)
-
             Dim ini As IniData = GetTextProfileIni(index)
 
-            TextTables(index) = New Text.TextTable(index, ValueFromText(ini("Data")("Data Max Size")), ValueFromText(ini("Data")("Table Max Items")))
-            TextTables(index).FromStream(fs, &H2000000, SegmentedBanks.Bank0x2RomStart, ValueFromText(ini("Data")("Table Rom Offset")))
+            Try
+                TextTables(index) = New Text.TextTable(index, ValueFromText(ini("Data")("Data Max Size")), ValueFromText(ini("Data")("Table Max Items")))
+                TextTables(index).FromStream(fs, &H2000000, SegmentedBanks.Bank0x2RomStart, ValueFromText(ini("Data")("Table Rom Offset")))
+            Catch ex As Exception
+            End Try
 
             fs.Close()
         End Sub
@@ -231,22 +233,24 @@ Namespace Global.SM64Lib
                 seg0x15.Data.Position = seg0x15.BankOffsetFromRomAddr(ldi.Pointer + 3)
                 If br.ReadByte <> &H19 Then Continue For
 
-                Dim seg0x19 As SegmentedBank = SetSegBank(&H19, SwapInts.SwapUInt32(br.ReadUInt32), SwapInts.SwapUInt32(br.ReadUInt32))
-                Dim offset As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                Try
+                    Dim seg0x19 As SegmentedBank = SetSegBank(&H19, SwapInts.SwapUInt32(br.ReadUInt32), SwapInts.SwapUInt32(br.ReadUInt32))
+                    Dim offset As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                    Dim curLevel As Levels.Level
 
-                Dim curLevel As Levels.Level
+                    If IsSM64EditorMode Then
+                        curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64Editor)
+                        SM64Lib.Levels.LevelManager.LoadSM64EditorLevel(curLevel, Me, ldi.ID, offset)
+                    Else
+                        curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64RomManager)
+                        SM64Lib.Levels.LevelManager.LoadRomManagerLevel(curLevel, Me, ldi.ID, offset)
+                    End If
 
-                If IsSM64EditorMode Then
-                    curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64Editor)
-                    SM64Lib.Levels.LevelManager.LoadSM64EditorLevel(curLevel, Me, ldi.ID, offset)
-                Else
-                    curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64RomManager)
-                    'curLevel.Load(Me, ldi.ID, ldi.Index, offset)
-                    SM64Lib.Levels.LevelManager.LoadRomManagerLevel(curLevel, Me, ldi.ID, offset)
-                End If
-
-                curLevel.LastRomOffset = seg0x19.RomStart
-                Levels.Add(curLevel)
+                    curLevel.LastRomOffset = seg0x19.RomStart
+                    Levels.Add(curLevel)
+                Catch ex As Exception
+                    'Skip the Level
+                End Try
             Next
         End Sub
 
@@ -257,8 +261,9 @@ Namespace Global.SM64Lib
             fs.Position = curOff
 
             For Each lvl As Levels.Level In Levels
-                lvl.LastRomOffset = fs.Position
-                SM64Lib.Levels.LevelManager.SaveRomManagerLevel(lvl, Me, fs, &H1C, curOff)
+                Dim res As Levels.LevelManager.LevelSaveResult
+                res = SM64Lib.Levels.LevelManager.SaveRomManagerLevel(lvl, Me, fs, curOff)
+                lvl.LastRomOffset = res.Bank0x19.RomStart
                 HexRoundUp2(curOff)
             Next
 
@@ -293,7 +298,7 @@ Namespace Global.SM64Lib
         Private Sub SaveGlobalObjectBank(ByRef offset As Integer)
             Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
             Dim bw As New BinaryWriter(fs)
-            Dim seg As SegmentedBank = GlobalObjectBank.WriteToSeg(&H7)
+            Dim seg As SegmentedBank = GlobalObjectBank.WriteToSeg(&H7, 0)
 
             'Set Segmented Bank
             seg.RomStart = offset
@@ -531,14 +536,14 @@ Namespace Global.SM64Lib
                 If _Data Is Nothing Then
                     Return _RomEnd
                 Else
-                    Return _RomStart + _Data.Length + 1
+                    Return _RomStart + _Data.Length
                 End If
             End Get
             Set(value As Integer)
                 If _Data Is Nothing Then
                     _RomEnd = value
                 Else
-                    Dim newLength As Long = value - _RomStart - 1
+                    Dim newLength As Long = value - _RomStart
                     If _Data.Length <> newLength Then
                         _Data.SetLength(newLength)
                     End If
@@ -560,14 +565,14 @@ Namespace Global.SM64Lib
                 If _Data Is Nothing Then
                     Return RomEnd - RomStart
                 Else
-                    Return _Data.Length + 1
+                    Return _Data.Length
                 End If
             End Get
             Set(value As Integer)
                 If _Data Is Nothing Then
                     RomEnd = RomStart + value
                 Else
-                    _Data.SetLength(value - 1)
+                    _Data.SetLength(value)
                 End If
             End Set
         End Property
@@ -637,7 +642,7 @@ Namespace Global.SM64Lib
             Dim ms As New MemoryStream
 
             If RomStart > 0 AndAlso Length > 0 AndAlso s.Length >= RomEnd Then
-                Dim data As Byte() = New Byte(Length - 2) {}
+                Dim data As Byte() = New Byte(Length - 1) {}
                 s.Position = RomStart
                 s.Read(data, 0, data.Length)
 

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9672AFEC-766D-4308-9184-74E1E770011B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SettingsManager</RootNamespace>
-    <AssemblyName>SettingsManager</AssemblyName>
+    <RootNamespace>SM64_ROM_Manager.SettingsManager</RootNamespace>
+    <AssemblyName>SM64 Rom Manager Settings</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -18,7 +18,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SettingsManager.xml</DocumentationFile>
+    <DocumentationFile>SM64 Rom Manager Settings.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -27,7 +27,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SettingsManager.xml</DocumentationFile>
+    <DocumentationFile>SM64 Rom Manager Settings.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -49,6 +49,9 @@
     </Reference>
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
+    <Reference Include="SettingsMgr">
+      <HintPath>..\..\SettingsMgr\SettingsMgr\bin\Release\SettingsMgr.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -72,22 +75,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Settings\AreaEditorSettings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>AreaEditorSettings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Settings\FileParserSettings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>FileParserSettings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Settings\GeneralSettings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>GeneralSettings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Main.vb" />
+    <Compile Include="Settings.vb" />
+    <Compile Include="Settings\SubStruc\AreaEditorSettingsStruc.vb" />
+    <Compile Include="Settings\SubStruc\FileParserSettingsStruc.vb" />
+    <Compile Include="SettingsOld.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -103,17 +94,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SettingsManager.vb" />
-    <Compile Include="Settings\RecentFilesSettings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>RecentFilesSettings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Settings\StyleManagerSettings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>StyleManagerSettings.settings</DependentUpon>
-    </Compile>
+    <Compile Include="Settings\SettingsStruc.vb" />
+    <Compile Include="Settings\SubStruc\GeneralSettingsStruc.vb" />
+    <Compile Include="Settings\SubStruc\RecentFilesSettingsStruc.vb" />
+    <Compile Include="Settings\SubStruc\StyleManagerSettingsStruc.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -125,18 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Settings\AreaEditorSettings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>AreaEditorSettings.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="Settings\FileParserSettings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>FileParserSettings.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="Settings\GeneralSettings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>GeneralSettings.Designer.vb</LastGenOutput>
-    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -147,14 +119,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="Settings\RecentFilesSettings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>RecentFilesSettings.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="Settings\StyleManagerSettings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>StyleManagerSettings.Designer.vb</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenGLCamera\OpenGLCamera.vbproj">

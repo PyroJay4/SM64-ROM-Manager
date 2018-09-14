@@ -82,20 +82,9 @@ Namespace Global.SM64Lib.Model
             Return tresult
         End Function
 
-        Public ReadOnly Property Length
+        Public ReadOnly Property Length As Integer
             Get
-                Length = &H10 'Shading
-
-                Length += Collision.Length
-                'For Each dl In DisplayLists
-                '    Length += dl.Length
-                'Next
-                'For Each t In DisplayLists.Textures
-                '    Length += t.ImageBuffer.Count
-                'Next
-                Length += Fast3DBuffer.Length
-
-                Return Length
+                Return HexRoundUp1(Fast3DBuffer.Length) + HexRoundUp1(Collision.Length)
             End Get
         End Property
 

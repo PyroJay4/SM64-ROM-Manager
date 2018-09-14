@@ -12,7 +12,7 @@ Imports System.ComponentModel
 Imports S3DFileParser
 Imports SM64Lib.Model.Fast3D.DisplayLists
 Imports OpenGLCamera
-Imports SettingsManager
+Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Model
 Imports ModelConverterGUI
@@ -43,6 +43,7 @@ Public Class Form_AreaEditor
     Private managedWarps As New List(Of IManagedLevelscriptCommand)
     Private objectModels As New Dictionary(Of Byte, Renderer)
     Private myObjectCombos As New ObjectComboList
+    Private objectModelsToParse As New Dictionary(Of Byte, Object)
     Private myLevelsList As New List(Of String)
     Private knownModelIDs As New List(Of Byte)
 
@@ -83,9 +84,17 @@ Public Class Form_AreaEditor
     Private WithEvents PropertyTree As AdvTree
     Private WithEvents CbEditorBParam1 As ContentSelectorEditor.ComboBoxEditor = Nothing
     Private WithEvents CbEditorBParam2 As ContentSelectorEditor.ComboBoxEditor = Nothing
+    Private WithEvents CbEditorBehavAddr As ContentSelectorEditor.ComboBoxEditor = Nothing 'With {.ValueType = TypeCode.UInt32, .IntegerValueMode = If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1)}
+
+    'Delegates
+    Private Delegate Function RemoveAllObjectsWhereExpression(mobj As Managed3DObject) As Boolean
 
     'Constants
     'Private ReadOnly warpBehavIDs() = {&H13000720, &H13000AFC, &H13001C34, &H1300075C, &H13002F8C, &H13002F88, &H13002F90, &H13002F70, &H13002F74, &H13002F64, &H13002F6C, &H130056A4, &H13002F78, &H13002F94, &H13000780, &H13002F80, &H13002F7C, &H130007A0}
+
+#End Region
+
+#Region "Properties"
 
     Private ReadOnly Property cArea As LevelArea
         Get
@@ -186,10 +195,12 @@ Public Class Form_AreaEditor
 #End Region
 
 #Region "Enums"
+
     Public Enum ModelDrawMod
         VisualMap
         Collision
     End Enum
+
 #End Region
 
 #Region "Initalize"
@@ -248,14 +259,22 @@ Public Class Form_AreaEditor
 
         'Add B. Param Editors to Property Grid
         Dim bpeditor As New ContentSelectorEditor
-        AddHandler bpeditor.EditorCreated, AddressOf BParamEditorCreated
-        AddHandler bpeditor.EditorCreating, AddressOf BParamEditorCreating
+        AddHandler bpeditor.EditorCreated, AddressOf ContentSelectorEditor_EditorCreated
+        AddHandler bpeditor.EditorCreating, AddressOf ContentSelectorEditor_EditorCreating
         Dim bp1PropSet As New PropertySettings("BParam1")
         Dim bp2PropSet As New PropertySettings("BParam2")
         bp1PropSet.ValueEditor = bpeditor
         bp2PropSet.ValueEditor = bpeditor
         AdvPropertyGrid1.PropertySettings.Add(bp1PropSet)
         AdvPropertyGrid1.PropertySettings.Add(bp2PropSet)
+
+        'Add Behavior Address Editor to Property Grid
+        Dim behavaddreditor As New ContentSelectorEditor
+        AddHandler behavaddreditor.EditorCreating, AddressOf ContentSelectorEditor_EditorCreating
+        AddHandler behavaddreditor.EditorCreated, AddressOf ContentSelectorEditor_EditorCreated
+        Dim behavaddrPropSet As New PropertySettings("BehaviorID")
+        behavaddrPropSet.ValueEditor = behavaddreditor
+        AdvPropertyGrid1.PropertySettings.Add(behavaddrPropSet)
 
         'Get the PropertyTree of AdvPropertyGrid1
         PropertyTree = AdvPropertyGrid1.PropertyTree
@@ -300,6 +319,11 @@ Public Class Form_AreaEditor
         selectedList = ListViewEx_Objects
 
         glControl1.Invalidate()
+    End Sub
+
+    Private Sub LoadBehaviorAddressesList()
+        CbEditorBehavAddr.Items.Clear()
+        BehaviorInfos.ForEach(Sub(item) CbEditorBehavAddr.Items.Add(New ComboItem With {.Tag = item.BehaviorAddress, .Text = $"{TextFromValue(item.BehaviorAddress, CbEditorBehavAddr.IntegerValueMode)} - {item.Name}"}))
     End Sub
 
     Private Sub LoadOtherObjectCombos()
@@ -903,14 +927,14 @@ Public Class Form_AreaEditor
 
         Dim lvlScriptMain As New Levelscript
         lvlScriptMain.Read(rommgr, rommgr.GetSegBank(&H15).BankAddress, LevelscriptCommandTypes.x1E)
-        Await parseLevelscriptAndLoadModels(lvlScriptMain)
+        Await ParseLevelscriptAndLoadModels(lvlScriptMain)
 
-        Await parseLevelscriptAndLoadModels(cLevel.Levelscript)
+        Await ParseLevelscriptAndLoadModels(cLevel.Levelscript)
     End Function
-    Private Async Function parseLevelscriptAndLoadModels(lvlscript As Levelscript) As Task
+    Private Async Function ParseLevelscriptAndLoadModels(lvlscript As Levelscript) As Task
 
         For Each cmd As LevelscriptCommand In lvlscript
-            Console.WriteLine(cmd.ToString)
+            'Console.WriteLine(cmd.ToString)
 
             Select Case cmd.CommandType
                 Case LevelscriptCommandTypes.LoadPolygonWithGeo
@@ -940,10 +964,10 @@ Public Class Form_AreaEditor
 
                                     If segAddr > 0 Then
                                         Dim dl As New DisplayList
-                                        'dl.FromStream(s, New Geopointer(geolayer, segAddr), rommgr)
-                                        'dl.ToObject3D(mdl, rommgr, Numerics.Vector3.Zero)
-                                        Await dl.FromStreamAsync(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), rommgr, Nothing)
-                                        Await dl.ToObject3DAsync(mdl, rommgr, Nothing)
+                                        'dl.FromStream(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), rommgr, Nothing)
+                                        'dl.ToObject3D(mdl, rommgr, Nothing)
+                                        Await dl.TryFromStreamAsync(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), rommgr, Nothing)
+                                        Await dl.TryToObject3DAsync(mdl, rommgr, Nothing)
                                     End If
 
                                 Case Script.GeolayoutCommandTypes.LoadDisplaylistWithOffset
@@ -953,10 +977,10 @@ Public Class Form_AreaEditor
                                     If segAddr > 0 Then
                                         Dim dl As New DisplayList
                                         Dim geop As New Geopointer(geolayer, segAddr, mdlScale, cgLoadDisplayListWithOffset.GetOffset(gmd))
-                                        'dl.FromStream(s, New Geopointer(geolayer, segAddr), rommgr)
-                                        'dl.ToObject3D(mdl, rommgr, cgLoadDisplayListWithOffset.GetOffset(gmd))
-                                        Await dl.FromStreamAsync(geop, rommgr, Nothing)
-                                        Await dl.ToObject3DAsync(mdl, rommgr, Nothing)
+                                        'dl.FromStream(geop, rommgr, Nothing)
+                                        'dl.ToObject3D(mdl, rommgr, Nothing)
+                                        Await dl.TryFromStreamAsync(geop, rommgr, Nothing)
+                                        Await dl.TryToObject3DAsync(mdl, rommgr, Nothing)
                                     End If
 
                                 Case Script.GeolayoutCommandTypes.Scale2
@@ -983,7 +1007,6 @@ Public Class Form_AreaEditor
                         glscript.Close()
                         If mdl.Meshes.Count > 0 Then
                             Dim rndr As New Renderer(mdl)
-                            rndr.RenderModel()
                             objectModels.Add(modelID, rndr)
                         End If
 
@@ -1003,13 +1026,12 @@ Public Class Form_AreaEditor
                         Dim mdl = New Object3D
 
                         Dim dl As New DisplayList
-                        'dl.FromStream(s, New Geopointer(layer, segPointer), rommgr)
-                        'dl.ToObject3D(mdl, rommgr, Numerics.Vector3.Zero)
-                        Await dl.FromStreamAsync(New Geopointer(layer, segPointer), rommgr, Nothing)
-                        Await dl.ToObject3DAsync(mdl, rommgr, Nothing)
+                        'dl.FromStream(New Geopointer(layer, segPointer), rommgr, Nothing)
+                        'dl.ToObject3D(mdl, rommgr, Nothing)
+                        Await dl.TryFromStreamAsync(New Geopointer(layer, segPointer), rommgr, Nothing)
+                        Await dl.TryToObject3DAsync(mdl, rommgr, Nothing)
 
                         Dim rndr As New Renderer(mdl)
-                        rndr.RenderModel()
                         objectModels.Add(modelID, rndr)
                     End If
 
@@ -1024,8 +1046,7 @@ Public Class Form_AreaEditor
                     If segID <> 0 AndAlso seg IsNot Nothing Then
                         Dim scrpt As New Levelscript
                         scrpt.Read(rommgr, bankAddr, LevelscriptCommandTypes.JumpBack)
-                        'parseLevelscriptAndLoadModels(scrpt, segData, s)
-                        Await parseLevelscriptAndLoadModels(scrpt)
+                        Await ParseLevelscriptAndLoadModels(scrpt)
                     Else
                         Console.WriteLine("Doesn't know Seg-ID: " & segID.ToString)
                     End If
@@ -2056,8 +2077,25 @@ Public Class Form_AreaEditor
     Private Sub DrawAllObjects(Optional drawPicking As Boolean = False, Optional DrawBoundingBox As Boolean = True)
         Dim index As Integer = 0
         For Each n As Managed3DObject In managedObjects
-            n.Draw(FaceDrawMode, If(DrawObjectModels AndAlso objectModels.ContainsKey(n.ModelID), objectModels(n.ModelID), Nothing),
-                       If(drawPicking, Color.FromArgb(&H10000000 Or index), CType(Nothing, Color?)), drawPicking, DrawBoundingBox)
+            Dim objModel As Renderer
+            Dim col As Color?
+
+            If DrawObjectModels AndAlso objectModels.ContainsKey(n.ModelID) Then
+                objModel = objectModels(n.ModelID)
+            Else objModel = Nothing
+            End If
+            If objModel IsNot Nothing AndAlso Not objModel.HasRendered Then
+                objModel.RenderModel()
+            End If
+
+            If drawPicking Then
+                col = Color.FromArgb(&H10000000 Or index)
+            Else
+                col = Nothing
+            End If
+
+            n.Draw(FaceDrawMode, objModel, col, drawPicking, DrawBoundingBox)
+
             index += 1
         Next
     End Sub
@@ -2281,42 +2319,8 @@ Public Class Form_AreaEditor
 
         'Store History Point
         StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes("RemoveObjects"),
-                              AreaEditorHistoryFunctions.Methodes("AddObjects"),
-                              {cArea, managedObjects, newobjects, ListViewEx_Objects.Items, newlvis})
-
-        glControl1.Invalidate()
-    End Sub
-
-    Private Sub RemoveObjects(sender As Object, e As EventArgs) Handles ButtonItem_ObjectsRemove.Click, ButtonItem65.Click
-        If SelectedObject IsNot Nothing Then
-
-            Dim removedObjs As New Dictionary(Of Integer, Managed3DObject)
-            Dim removedlvis As New Dictionary(Of Integer, ListViewItem)
-            Dim removedCmds As New Dictionary(Of Integer, LevelscriptCommand)
-
-            Dim indices(ListViewEx_Objects.SelectedIndices.Count - 1) As Integer
-            ListViewEx_Objects.SelectedIndices.CopyTo(indices, 0)
-
-            For Each index As Integer In indices.OrderByDescending(Function(n) n)
-                Dim mobj As Managed3DObject = managedObjects(index)
-                Dim lvi As ListViewItem = ListViewEx_Objects.Items(index)
-
-                managedObjects.Remove(mobj)
-                ListViewEx_Objects.Items.Remove(lvi)
-                cArea.Objects.RemoveAt(index)
-
-                removedObjs.Add(index, mobj)
-                removedCmds.Add(index, mobj.Command)
-                removedlvis.Add(index, lvi)
-            Next
-
-            'Store History Point
-            StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes("InsertObjects"),
-                              AreaEditorHistoryFunctions.Methodes("RemoveAtObjects"),
-                              {cArea, managedObjects, ListViewEx_Objects.Items, removedObjs, removedlvis, removedCmds})
-
-            UpdateObjectListViewItems()
-        End If
+                          AreaEditorHistoryFunctions.Methodes("AddObjects"),
+                          {cArea, managedObjects, newobjects, ListViewEx_Objects.Items, newlvis})
 
         glControl1.Invalidate()
     End Sub
@@ -2350,6 +2354,65 @@ Public Class Form_AreaEditor
         ShowObjectProperties()
     End Sub
 
+    Private Sub RemoveSelectedObjects(sender As Object, e As EventArgs) Handles ButtonItem_ObjectsRemove.Click, ButtonItem65.Click
+        If SelectedObject IsNot Nothing Then
+            Dim indices(ListViewEx_Objects.SelectedIndices.Count - 1) As Integer
+            ListViewEx_Objects.SelectedIndices.CopyTo(indices, 0)
+
+            RemoveObjects(indices)
+        End If
+    End Sub
+
+    Private Sub RemoveAllEmptyObjects(sender As Object, e As EventArgs) Handles ButtonItem27.Click
+        RemoveAllObjectsWhere(Function(mobj) mobj.BehaviorID = &H13000000 AndAlso mobj.ModelID = 0)
+    End Sub
+
+    Private Sub RemoveAllUnusedObjects(sender As Object, e As EventArgs) Handles ButtonItem28.Click
+        RemoveAllObjectsWhere(Function(mobj) Not (mobj.Act1 Or mobj.Act2 Or mobj.Act3 Or mobj.Act4 Or mobj.Act5 Or mobj.Act6))
+    End Sub
+
+    Private Sub RemoveAllObjectsWhere(func As RemoveAllObjectsWhereExpression)
+        Dim indices As New List(Of Integer)
+
+        For i As Integer = 0 To cArea.Objects.Count - 1
+            Dim mobj As Managed3DObject = managedObjects(i)
+            If func.Invoke(mobj) Then
+                indices.Add(i)
+            End If
+        Next
+
+        If indices.Any Then
+            RemoveObjects(indices.ToArray)
+        End If
+    End Sub
+
+    Private Sub RemoveObjects(indices As Integer())
+        Dim removedObjs As New Dictionary(Of Integer, Managed3DObject)
+        Dim removedlvis As New Dictionary(Of Integer, ListViewItem)
+        Dim removedCmds As New Dictionary(Of Integer, LevelscriptCommand)
+
+        For Each index As Integer In indices.OrderByDescending(Function(n) n)
+            Dim mobj As Managed3DObject = managedObjects(index)
+            Dim lvi As ListViewItem = ListViewEx_Objects.Items(index)
+
+            managedObjects.Remove(mobj)
+            cArea.Objects.RemoveAt(index)
+            ListViewEx_Objects.Items.Remove(lvi)
+
+            removedObjs.Add(index, mobj)
+            removedCmds.Add(index, mobj.Command)
+            removedlvis.Add(index, lvi)
+        Next
+
+        'Store History Point
+        StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes("InsertObjects"),
+                          AreaEditorHistoryFunctions.Methodes("RemoveAtObjects"),
+                          {cArea, managedObjects, ListViewEx_Objects.Items, removedObjs, removedlvis, removedCmds})
+
+        UpdateObjectListViewItems()
+        glControl1.Invalidate()
+    End Sub
+
 #End Region
 
 #Region "Object Model"
@@ -2357,7 +2420,7 @@ Public Class Form_AreaEditor
     Private Sub ButtonItem23_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportObjectModel.Click, ButtonItem68.Click
         Dim modelID As Byte = SelectedObject.ModelID
         If objectModels.ContainsKey(modelID) Then
-            Publics.Publics.ExportModel(objectModels(modelID).Model, LoaderModule.SimpleFileParser)
+            ExportModel(objectModels(modelID).Model, LoaderModule.SimpleFileParser)
         Else
             MessageBoxEx.Show("The Model wasn't found.", "Export Object Model", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -2776,8 +2839,8 @@ Public Class Form_AreaEditor
 
             Case GetType(System.Byte), GetType(SByte), GetType(Int16), GetType(UInt16), GetType(Int32), GetType(UInt32)
                 If e.PropertyName = "BehaviorID" Then
-                    e.StringValue = TextFromValue(e.TypedValue, If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1))
-                    e.IsConverted = True
+                    'e.StringValue = TextFromValue(e.TypedValue, If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1))
+                    'e.IsConverted = True
                 Else
                     e.StringValue = TextFromValue(e.TypedValue)
                     e.IsConverted = True
@@ -2804,16 +2867,25 @@ Public Class Form_AreaEditor
         Clipboard.SetText(txt.TrimStart(" "))
     End Sub
 
-    Private Sub BParamEditorCreated(sender As Object, e As ContentSelectorEditor.EditorCreateEventArgs)
+    Private Sub ContentSelectorEditor_EditorCreated(sender As Object, e As ContentSelectorEditor.EditorCreateEventArgs)
         Select Case e.PropertyDescriptor.Name
             Case "BParam1"
                 CbEditorBParam1 = e.Editor
+                CbEditorBParam1.ValueType = TypeCode.Byte
             Case "BParam2"
                 CbEditorBParam2 = e.Editor
+                CbEditorBParam2.ValueType = TypeCode.Byte
+            Case "BehaviorID"
+                If CbEditorBehavAddr IsNot e.Editor Then
+                    CbEditorBehavAddr = e.Editor
+                    CbEditorBehavAddr.ValueType = TypeCode.UInt32
+                    CbEditorBehavAddr.IntegerValueMode = Math.Max(Settings.General.IntegerValueMode, 1)
+                    LoadBehaviorAddressesList()
+                End If
         End Select
     End Sub
 
-    Private Sub BParamEditorCreating(sender As Object, e As ContentSelectorEditor.EditorCreateEventArgs)
+    Private Sub ContentSelectorEditor_EditorCreating(sender As Object, e As ContentSelectorEditor.EditorCreateEventArgs)
         Select Case e.PropertyDescriptor.Name
             Case "BParam1"
                 If CbEditorBParam1 IsNot Nothing Then
@@ -2822,6 +2894,10 @@ Public Class Form_AreaEditor
             Case "BParam2"
                 If CbEditorBParam2 IsNot Nothing Then
                     e.Editor = CbEditorBParam2
+                End If
+            Case "BehaviorID"
+                If CbEditorBehavAddr IsNot Nothing Then
+                    e.Editor = CbEditorBehavAddr
                 End If
         End Select
     End Sub
@@ -2863,24 +2939,25 @@ Public Class Form_AreaEditor
 
     Private Sub AdvPropertyGrid1_PropertyTree_Paint(sender As Object, e As PaintEventArgs) Handles PropertyTree.Paint
         Dim obj As Managed3DObject = SelectedObject
-
-        For i As Byte = 1 To 2
-            Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
-            If n IsNot Nothing Then
-                If n.TagString = "" Then
-                    Dim info As BehaviorInfoList.BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehaviorID)
-                    Dim param As BehaviorInfoList.BParam = info?.GetValue($"BParam{i}")
-                    If param IsNot Nothing Then
-                        If param.Name <> "" Then
-                            n.Text = param.Name
-                            n.TagString = param.Name
+        If obj IsNot Nothing Then
+            For i As Byte = 1 To 2
+                Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
+                If n IsNot Nothing Then
+                    If n.TagString = "" Then
+                        Dim info As BehaviorInfoList.BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehaviorID)
+                        Dim param As BehaviorInfoList.BParam = info?.GetValue($"BParam{i}")
+                        If param IsNot Nothing Then
+                            If param.Name <> "" Then
+                                n.Text = param.Name
+                                n.TagString = param.Name
+                            End If
                         End If
+                    ElseIf n.Tag <> n.Text Then
+                        n.Text = n.Tag
                     End If
-                ElseIf n.Tag <> n.Text Then
-                    n.Text = n.Tag
                 End If
-            End If
-        Next
+            Next
+        End If
     End Sub
 
 #End Region
