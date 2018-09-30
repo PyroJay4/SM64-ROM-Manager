@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Windows.Forms
 Imports N64Graphics
 Imports S3DFileParser
+Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Model.Collision
 Imports SM64Lib.Model.Fast3D.DisplayLists
@@ -31,6 +32,7 @@ Namespace Global.SM64Lib.Model.Fast3D
                 .ForceDisplaylist = ObjSettings.ForceDisplaylist,
                 .Fog = ObjSettings.Fog
             }
+            model.Shading = ObjSettings.Shading
 
             'Convert Model
             Dim con As New SM64Convert.Fast3DWriter
@@ -44,15 +46,18 @@ Namespace Global.SM64Lib.Model.Fast3D
             Fast3DBankStart = &HE000000
         End Sub
         Public Sub FromStream(s As Stream, BankRomStart As Integer, BankRamStart As Integer, Fast3DStart As Integer, Fast3DLength As Integer, DisplayListpointer() As Geopointer)
+            FromBinaryData(New BinaryStreamData(s), BankRomStart, BankRamStart, Fast3DStart, Fast3DLength, DisplayListpointer)
+        End Sub
+        Public Sub FromBinaryData(data As BinaryData, BankRomStart As Integer, BankRamStart As Integer, Fast3DStart As Integer, Fast3DLength As Integer, DisplayListpointer() As Geopointer)
             DLPointers = DisplayListpointer
             Fast3DBankStart = Fast3DStart - BankRomStart + BankRamStart
 
-            s.Position = Fast3DStart
-            Me.SetLength(Fast3DLength)
-            Me.Position = 0
+            data.Position = Fast3DStart
+            SetLength(Fast3DLength)
+            Position = 0
 
             For i As Integer = 1 To Fast3DLength
-                Me.WriteByte(s.ReadByte)
+                WriteByte(data.ReadByte)
             Next
         End Sub
 
@@ -68,11 +73,14 @@ Namespace Global.SM64Lib.Model.Fast3D
         End Function
 
         Public Sub ToStream(s As Stream, RomPos As Integer, BankRomStart As Integer, BankRamStart As Integer)
-            Dim bw As New BinaryWriter(s)
-            s.Position = RomPos
+            ToBinaryData(New BinaryStreamData(s), RomPos, BankRomStart, BankRamStart)
+        End Sub
+
+        Public Sub ToBinaryData(data As BinaryData, dataPos As Integer, BankRomStart As Integer, BankRamStart As Integer)
+            data.Position = dataPos
 
             'Update all Pointers
-            Dim newBankStart As Integer = (RomPos - BankRomStart + BankRamStart)
+            Dim newBankStart As Integer = (dataPos - BankRomStart + BankRamStart)
             Dim tdif As Integer = newBankStart - Fast3DBankStart
 
             For Each geop As Geopointer In DLPointers
@@ -85,31 +93,31 @@ Namespace Global.SM64Lib.Model.Fast3D
                                 Exit Do
 
                             Case &H3, &H4, &H6, &HFD
-                                Me.Position += 3
+                                Position += 3
 
                                 Dim brBuffer As New BinaryReader(Me)
                                 Dim bwBuffer As New BinaryWriter(Me)
 
-                                Dim p As Integer = SwapInts.SwapInt32(brBuffer.ReadInt32)
+                                Dim p As Integer = brBuffer.ReadInt32
                                 p += tdif
 
-                                Me.Position -= 4
+                                Position -= 4
 
-                                bwBuffer.Write(SwapInts.SwapInt32(p))
+                                bwBuffer.Write(p)
 
                             Case Else
-                                Me.Position += 7
+                                Position += 7
 
                         End Select
-                    Loop While Me.Position < Me.Length
+                    Loop While Position < Length
 
                     geop.SegPointer += tdif
                 End If
             Next
 
             'Write Fast3D
-            For Each b As Byte In Me.ToArray
-                bw.Write(b)
+            For Each b As Byte In ToArray()
+                data.Write(b)
             Next
 
             Fast3DBankStart = newBankStart 'RomPos - BankRomStart + BankRamStart

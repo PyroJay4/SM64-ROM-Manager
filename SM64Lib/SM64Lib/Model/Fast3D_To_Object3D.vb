@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.IO
 Imports S3DFileParser
+Imports SM64Lib.Data
 Imports SM64Lib.Model.Fast3D.DisplayLists
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
@@ -58,7 +59,7 @@ Namespace Global.SM64Lib.SM64Convert
             Do While cmdIndex < dl.Script.Count AndAlso dl.Script(cmdIndex).CommandType <> CommandTypes.F3D_EndDisplaylist
                 cmd = dl.Script(cmdIndex)
                 cmdarr = cmd.ToArray
-                Dim br As New BinaryReader(cmd)
+                Dim bdata As New BinaryStreamData(cmd)
 
                 Select Case cmd.CommandType '&H20000
                     Case CommandTypes.F3D_ClearGeometryMode
@@ -100,7 +101,7 @@ Namespace Global.SM64Lib.SM64Convert
                         Dim numColorsToLoadInPalette As UShort
 
                         cmd.Position = 5
-                        numColorsToLoadInPalette = (SwapInts.SwapUInt16(br.ReadUInt16) >> 6) '+ 1
+                        numColorsToLoadInPalette = bdata.ReadUInt16 >> 6 '+ 1
 
                         Dim seg As SegmentedBank = rommgr.GetSegBank(curTexSegAddr >> 24, AreaID)
                         curTexPalette = New Byte(numColorsToLoadInPalette) {}
@@ -216,7 +217,7 @@ Namespace Global.SM64Lib.SM64Convert
 
                     Case CommandTypes.G_SetTile
                         cmd.Position = 4
-                        Dim checkVal As Integer = SwapInts.SwapInt32(br.ReadInt32)
+                        Dim checkVal As Integer = bdata.ReadInt32
                         cmd.Position = 0
 
                         If checkVal <> &H7000000 Then
@@ -314,12 +315,12 @@ Namespace Global.SM64Lib.SM64Convert
 
         Private Shared Function GetVertexFromStream(s As Stream, vtStart As Integer, modelOffset As Numerics.Vector3, modelScale As Numerics.Vector3) As Vertex
             Dim vert As New Vertex
-            Dim br As New BinaryReader(s)
+            Dim br As New BinaryStreamData(s)
 
             s.Position = vtStart
-            vert.X = SwapInts.SwapInt16(br.ReadInt16) + modelOffset.X
-            vert.Y = SwapInts.SwapInt16(br.ReadInt16) + modelOffset.Y
-            vert.Z = SwapInts.SwapInt16(br.ReadInt16) + modelOffset.Y
+            vert.X = br.ReadInt16 + modelOffset.X
+            vert.Y = br.ReadInt16 + modelOffset.Y
+            vert.Z = br.ReadInt16 + modelOffset.Y
 
             vert.X *= modelScale.X
             vert.Y *= modelScale.Y
@@ -330,11 +331,11 @@ Namespace Global.SM64Lib.SM64Convert
 
         Private Shared Function GetUVFromStream(s As Stream, vtStart As Integer, curTexScale As Numerics.Vector2, curTexSize As Size) As UV
             Dim uv As New UV
-            Dim br As New BinaryReader(s)
+            Dim br As New BinaryStreamData(s)
 
             s.Position = vtStart + 8
-            uv.U = SwapInts.SwapInt16(br.ReadInt16) * curTexScale.X
-            uv.V = SwapInts.SwapInt16(br.ReadInt16) * curTexScale.Y
+            uv.U = br.ReadInt16 * curTexScale.X
+            uv.V = br.ReadInt16 * curTexScale.Y
 
             uv.U /= curTexSize.Width * 32.0F
             uv.V /= curTexSize.Height * 32.0F

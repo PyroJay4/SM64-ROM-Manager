@@ -43,7 +43,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -68,6 +68,7 @@
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
+    <Import Include="TextValueConverter" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollisionEditor.designer.vb">
@@ -180,6 +181,10 @@
     <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
       <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
       <Name>SM64Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextValueConverter\TextValueConverter.vbproj">
+      <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>
+      <Name>TextValueConverter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

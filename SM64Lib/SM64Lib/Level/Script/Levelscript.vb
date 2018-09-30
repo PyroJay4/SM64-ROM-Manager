@@ -1,5 +1,5 @@
 ﻿Imports System.IO
-Imports System.Windows.Forms
+Imports SM64Lib.Data
 Imports SM64Lib.Levels.Script.Commands
 
 Namespace Global.SM64Lib.Levels.Script
@@ -11,7 +11,7 @@ Namespace Global.SM64Lib.Levels.Script
             For i As Integer = 0 To Me.Count - 1
                 Me(i).Close()
             Next
-            Me.Clear()
+            Clear()
         End Sub
 
         Public Sub New()
@@ -32,7 +32,7 @@ Namespace Global.SM64Lib.Levels.Script
             Dim jumpStack As New Stack(Of Integer)
             Dim segStack As New Stack(Of SegmentedBank)
 
-            Me.Close()
+            Close()
 
             Read_GetStream(curSegBank, s, br, fs, brfs, rommgr, scriptStartInBank, dicBankBinaryReaders)
 
@@ -90,7 +90,7 @@ Namespace Global.SM64Lib.Levels.Script
             Loop
 
             'If s Is fs Then s?.Close()
-            fs?.Close()            
+            fs?.Close()
         End Sub
 
         Private Sub Read_GetStream(ByRef curSegBank As SegmentedBank, ByRef s As Stream, ByRef br As BinaryReader, ByRef fs As FileStream, ByRef brfs As BinaryReader, rommgr As RomManager, scriptStartInBank As Integer, dicBankBinaryReaders As Dictionary(Of Byte, BinaryReader))
@@ -118,18 +118,21 @@ Namespace Global.SM64Lib.Levels.Script
         End Sub
 
         Public Sub Write(s As Stream, LevelscriptStart As Integer)
-            Dim bw As New BinaryWriter(s)
+            Write(New BinaryStreamData(s), LevelscriptStart)
+        End Sub
 
+        Public Sub Write(data As BinaryData, LevelscriptStart As Integer)
             Dim JumpList As New List(Of Integer)
 
             'Write new Levelscript
-            s.Position = LevelscriptStart
+            data.Position = LevelscriptStart
             For Each c As LevelscriptCommand In Me
                 For Each b As Byte In c.ToArray
-                    bw.Write(b)
+                    data.Write(b)
                 Next
             Next
         End Sub
+
     End Class
 
 End Namespace

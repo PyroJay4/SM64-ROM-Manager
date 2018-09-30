@@ -51,6 +51,12 @@ Namespace Global.SM64Lib.Levels
     Public Class SpecialBoxList
         Inherits List(Of SpecialBox)
 
+        Public Sub SortByHeight()
+            Dim boxes As SpecialBox() = OrderByDescending(Function(n) n.Y).ToArray
+            Clear()
+            AddRange(boxes)
+        End Sub
+
         Public Shared Function ReadTable(Romfile As String, Type As SpecialBoxType, Levelscriptstart As Integer, TabelStart As Integer) As SpecialBox()
             Dim fs As New FileStream(Romfile, FileMode.Open, FileAccess.Read)
             Dim temp = ReadTable(fs, Type, Levelscriptstart, TabelStart)

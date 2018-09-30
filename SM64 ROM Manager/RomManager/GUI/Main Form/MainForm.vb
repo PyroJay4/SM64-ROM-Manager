@@ -178,20 +178,35 @@ Public Class MainForm
     End Sub
 
     Private Sub ButtonItem12_Click(sender As Object, e As EventArgs) Handles ButtonItem_SaveRom.Click
-        StatusText = Form_Main_Resources.Status_SavingRom
-        savingRom = True
+        If AllowSavingRom() Then
+            StatusText = Form_Main_Resources.Status_SavingRom
+            savingRom = True
 
-        SaveRom(rommgr)
+            SaveRom(rommgr)
 
-        savingRom = False
-        StatusText = ""
+            savingRom = False
+            StatusText = ""
+        End If
     End Sub
+
+    Private Function AllowSavingRom() As Boolean
+        If tabTextManager.OverLimit Then
+            MessageBoxEx.Show(Form_Main_Resources.MsgBox_TextsOverLimit, Form_Main_Resources.MsgBox_TextsOverLimit_Title, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return False
+        End If
+
+        Return True
+    End Function
 
     Private Sub Form_Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If rommgr?.NeedToSave Then
             Select Case MessageBoxEx.Show(Form_Main_Resources.MsgBox_UnsavedChanges, Form_Main_Resources.MsgBox_UnsavedChanges_Title, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning)
                 Case DialogResult.Yes
-                    SaveRom(rommgr)
+                    If AllowSavingRom() Then
+                        SaveRom(rommgr)
+                    Else
+                        e.Cancel = True
+                    End If
 
                 Case DialogResult.No
 
@@ -460,6 +475,31 @@ Public Class MainForm
 
             MusicSettings_CreateList()
         End If
+    End Sub
+
+    Private Sub ButtonItem9_Click(sender As Object, e As EventArgs) Handles ButtonItem9.Click
+        Dim patcher As New ApplyPPF.ApplyPPFDialog(rommgr?.RomFile, "")
+        patcher.ShowDialog(Me)
+    End Sub
+
+    Private Sub ButtonItem14_Click(sender As Object, e As EventArgs) Handles ButtonItem14.Click
+        Dim ibce As ItemBoxContentEditor = GetFirstOpenForm(Of ItemBoxContentEditor)()
+
+        If ibce Is Nothing Then
+            ibce = New ItemBoxContentEditor(rommgr)
+        End If
+
+        ibce.Show()
+    End Sub
+
+    Private Sub ButtonItem13_Click(sender As Object, e As EventArgs) Handles ButtonItem13.Click
+        Dim spo As StarPositionEditor = GetFirstOpenForm(Of StarPositionEditor)()
+
+        If spo Is Nothing Then
+            spo = New StarPositionEditor(rommgr)
+        End If
+
+        spo.Show()
     End Sub
 
 #End Region

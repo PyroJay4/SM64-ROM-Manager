@@ -72,6 +72,7 @@
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
+    <Import Include="TextValueConverter" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -89,6 +90,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SM64Lib\Data\BinaryData.vb" />
+    <Compile Include="SM64Lib\Data\BinaryArrayData.vb" />
+    <Compile Include="SM64Lib\Data\BinaryStreamData.vb" />
+    <Compile Include="SM64Lib\Data\BinarySegBank.vb" />
+    <Compile Include="SM64Lib\Data\BinaryRom.vb" />
     <Compile Include="SM64Lib\EEPRom\EEPRom.vb" />
     <Compile Include="SM64Lib\Geolayout\Geolayout.vb" />
     <Compile Include="SM64Lib\Geolayout\Script\GeolayoutCommandFunctions.vb" />
@@ -122,6 +128,9 @@
     <Compile Include="SM64Lib\Musik\MusicSequence.vb" />
     <Compile Include="SM64Lib\Musik\InstrumentSetList.vb" />
     <Compile Include="SM64Lib\Object Banks\CustomObjBank.vb" />
+    <Compile Include="SM64Lib\Objects\ItemBoxContents\ItemBoxContentEntry.vb" />
+    <Compile Include="SM64Lib\Objects\ItemBoxContents\ItemBoxContentManager.vb" />
+    <Compile Include="SM64Lib\Objects\ItemBoxContents\ItemBoxContentTable.vb" />
     <Compile Include="SM64Lib\RomManager.vb" />
     <Compile Include="SM64Lib\Script\BaseCommand.vb" />
     <Compile Include="SM64Lib\Script\BaseCommandCollection.vb" />
@@ -131,9 +140,12 @@
     <Compile Include="SM64Lib\SM64Lib General.vb" />
     <Compile Include="SM64Lib\SM64LibException.vb" />
     <Compile Include="SM64Lib\SM64PatchClass.vb" />
+    <Compile Include="SM64Lib\Objects\StarManager.vb" />
     <Compile Include="SM64Lib\SwapInts.vb" />
-    <Compile Include="SM64Lib\TextValueConverter.vb" />
-    <Compile Include="SM64Lib\Text\SM64Texts.vb" />
+    <Compile Include="SM64Lib\Text\Encoding.vb" />
+    <Compile Include="SM64Lib\Text\ProfileStruc.vb" />
+    <Compile Include="SM64Lib\Text\TextItem.vb" />
+    <Compile Include="SM64Lib\Text\TextTable.vb" />
     <Compile Include="SM64Lib\Trajectories\Trajectories.vb" />
     <Compile Include="SM64Lib\Trajectories\Trajectory.vb" />
     <Compile Include="SM64Lib\Trajectories\TrajectoryName.vb" />
@@ -174,6 +186,10 @@
     <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
       <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
       <Name>SimpleFileParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextValueConverter\TextValueConverter.vbproj">
+      <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>
+      <Name>TextValueConverter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

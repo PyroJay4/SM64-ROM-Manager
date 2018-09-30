@@ -185,6 +185,9 @@ Partial Class Form_AreaEditor
         Me.ButtonItem_ExportObjectModel = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar8 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem_ObjectsRemove = New DevComponents.DotNetBar.ButtonItem()
+        Me.ItemContainer21 = New DevComponents.DotNetBar.ItemContainer()
+        Me.ButtonItem27 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem28 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonX_ObjectsAdd = New DevComponents.DotNetBar.ButtonItem()
         Me.ItemContainer5 = New DevComponents.DotNetBar.ItemContainer()
@@ -290,9 +293,6 @@ Partial Class Form_AreaEditor
         Me.ButtonItem_Undo = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_Redo = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ItemContainer21 = New DevComponents.DotNetBar.ItemContainer()
-        Me.ButtonItem27 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem28 = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel_GLControl.SuspendLayout()
         Me.DockSite4.SuspendLayout()
         CType(Me.Bar_Controls, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2273,6 +2273,41 @@ Partial Class Form_AreaEditor
         Me.ButtonItem_ObjectsRemove.SymbolSize = 26.0!
         Me.ButtonItem_ObjectsRemove.Text = "Remove Object"
         '
+        'ItemContainer21
+        '
+        '
+        '
+        '
+        Me.ItemContainer21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ItemContainer21.BeginGroup = True
+        Me.ItemContainer21.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+        Me.ItemContainer21.Name = "ItemContainer21"
+        Me.ItemContainer21.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem27, Me.ButtonItem28})
+        '
+        '
+        '
+        Me.ItemContainer21.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.ItemContainer21.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonItem27
+        '
+        Me.ButtonItem27.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem27.Name = "ButtonItem27"
+        Me.ButtonItem27.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonItem27.SymbolSize = 12.0!
+        Me.ButtonItem27.Text = "Remove all empty objects"
+        '
+        'ButtonItem28
+        '
+        Me.ButtonItem28.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem28.Name = "ButtonItem28"
+        Me.ButtonItem28.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonItem28.SymbolSize = 12.0!
+        Me.ButtonItem28.Text = "Remove all unused objects"
+        '
         'RibbonBar1
         '
         Me.RibbonBar1.AutoOverflowEnabled = True
@@ -3876,41 +3911,6 @@ Partial Class Form_AreaEditor
         Me.ButtonItem13.SymbolSize = 32.0!
         Me.ButtonItem13.Text = " 1 Vertex"
         '
-        'ItemContainer21
-        '
-        '
-        '
-        '
-        Me.ItemContainer21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ItemContainer21.BeginGroup = True
-        Me.ItemContainer21.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-        Me.ItemContainer21.Name = "ItemContainer21"
-        Me.ItemContainer21.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem27, Me.ButtonItem28})
-        '
-        '
-        '
-        Me.ItemContainer21.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.ItemContainer21.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        'ButtonItem27
-        '
-        Me.ButtonItem27.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem27.Name = "ButtonItem27"
-        Me.ButtonItem27.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem27.SymbolSize = 12.0!
-        Me.ButtonItem27.Text = "Remove all empty objects"
-        '
-        'ButtonItem28
-        '
-        Me.ButtonItem28.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem28.Name = "ButtonItem28"
-        Me.ButtonItem28.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem28.SymbolSize = 12.0!
-        Me.ButtonItem28.Text = "Remove all unused objects"
-        '
         'Form_AreaEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -3933,7 +3933,7 @@ Partial Class Form_AreaEditor
         Me.KeyPreview = True
         Me.MinimumSize = New System.Drawing.Size(1251, 970)
         Me.Name = "Form_AreaEditor"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Level Editor"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0

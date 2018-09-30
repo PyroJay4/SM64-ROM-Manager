@@ -354,6 +354,7 @@ Public Class Material
             Return 1
         End If
     End Function
+
 End Class
 
 Public Class VertexColor

@@ -10,10 +10,13 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports SM64Lib.Levels.Script
 Imports SM64Lib.ObjectBanks
+Imports SM64Lib.Data
 
 Namespace Global.SM64Lib
 
     Public Class RomManager
+
+        Private textsProfile As Text.Profiles.Profile
 
         Public ReadOnly Property LevelInfoData As New LevelInfoDataTabelList
         Public ReadOnly Property Levels As New Levels.LevelList
@@ -101,6 +104,13 @@ Namespace Global.SM64Lib
             End Set
         End Property
 
+        Friend Function GetStream(access As FileAccess) As Stream
+            Return New FileStream(RomFile, FileMode.Open, access)
+        End Function
+        Public Function GetBinaryRom(access As FileAccess)
+            Return New BinaryRom(Me, access)
+        End Function
+
         Public Sub SaveRom(Optional IgnoreNeedToSave As Boolean = False, Optional DontPatchUpdates As Boolean = False)
             Dim needUpdateChecksum As Boolean = MusicList.NeedToSaveMusicHackSettings
 
@@ -171,15 +181,34 @@ Namespace Global.SM64Lib
         ''' <summary>
         ''' </summary>
         ''' <param name="index">0 = Dialogs, 1 = Level Names, 2 = Act Names</param>
+        Private Function GetTextProfile(index As Integer) As Text.Profiles.Section
+            If textsProfile Is Nothing Then
+                textsProfile = JObject.Parse(File.ReadAllText(Path.Combine(MyDataPath, "Text Manager\Profiles.json"))).ToObject(Of Text.Profiles.Profile)
+            End If
+
+            Select Case index
+                Case 0
+                    Return textsProfile.Dialogs
+                Case 1
+                    Return textsProfile.Levels
+                Case 2
+                    Return textsProfile.Acts
+            End Select
+
+            Return Nothing
+        End Function
+        ''' <summary>
+        ''' </summary>
+        ''' <param name="index">0 = Dialogs, 1 = Level Names, 2 = Act Names</param>
         Public Sub LoadTextTable(index As Integer, Optional CheckIfAlreadyLoaded As Boolean = True)
             If CheckIfAlreadyLoaded AndAlso TextTables(index) IsNot Nothing Then Return
 
             Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Read)
-            Dim ini As IniData = GetTextProfileIni(index)
+            Dim prof As Text.Profiles.Section = GetTextProfile(index)
 
             Try
-                TextTables(index) = New Text.TextTable(index, ValueFromText(ini("Data")("Data Max Size")), ValueFromText(ini("Data")("Table Max Items")))
-                TextTables(index).FromStream(fs, &H2000000, SegmentedBanks.Bank0x2RomStart, ValueFromText(ini("Data")("Table Rom Offset")))
+                TextTables(index) = New Text.TextTable(index, prof.Data.DataMaxSize, prof.Data.TableMaxItems)
+                TextTables(index).FromStream(fs, &H2000000, SegmentedBanks.Bank0x2RomStart, prof.Data.TableRomOffset)
             Catch ex As Exception
             End Try
 
@@ -192,29 +221,12 @@ Namespace Global.SM64Lib
             If TextTables(index) Is Nothing Then Return
 
             Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
+            Dim prof As Text.Profiles.Section = GetTextProfile(index)
 
-            Dim ini As IniData = GetTextProfileIni(index)
-            TextTables(index).ToStream(fs, SegmentedBanks.Bank0x2RomStart, &H2000000, ValueFromText(ini("Data")("Table Rom Offset")), ValueFromText(ini("Data")("Data Rom Offset")), ValueFromText(ini("Data")("Table Rom Offset 2")))
+            TextTables(index).ToStream(fs, SegmentedBanks.Bank0x2RomStart, &H2000000, ValueFromText(prof.Data.TableRomOffset), ValueFromText(prof.Data.DataRomOffset), ValueFromText(prof.Data.TableRomOffset2))
 
             fs.Close()
         End Sub
-        ''' <summary>
-        ''' </summary>
-        ''' <param name="index">0 = Dialogs, 1 = Level Names, 2 = Act Names</param>
-        Private Function GetTextProfileIni(index As Integer) As IniData
-            Dim ini As IniData = Nothing
-            Dim inipath As String = Path.Combine(MyDataPath, "Text Manager\Profiles")
-            Dim iniparser As New FileIniDataParser
-            Select Case index
-                Case 0
-                    ini = iniparser.ReadFile(Path.Combine(inipath, "Dialogs\Default.txt"))
-                Case 1
-                    ini = iniparser.ReadFile(Path.Combine(inipath, "Levels\Default.txt"))
-                Case 2
-                    ini = iniparser.ReadFile(Path.Combine(inipath, "Acts\Default.txt"))
-            End Select
-            Return ini
-        End Function
 
         Public Sub SaveAllTextTables(Optional IgnoreNeedToSave As Boolean = False)
             For i As Integer = 0 To TextTables.Length - 1

@@ -17,6 +17,13 @@ Friend Module General
     Public PatchClass As New SM64PatchClass
     Public HasToolkitInit As Boolean = False
 
+    Public Sub LoadBehaviorInfosIfEmpty()
+        If Not BehaviorInfos.Any Then BehaviorInfos.ReadFromFile(MyDataPath & "\Area Editor\Behavior IDs.json")
+    End Sub
+    Public Sub LoadObjectCombosIfEmpty()
+        If Not ObjectCombos.Any Then ObjectCombos.ReadFromFile(MyDataPath & "\Area Editor\Object Combos.json")
+    End Sub
+
     Friend Sub SaveRom(rommgr As RomManager)
         If rommgr IsNot Nothing Then
             Dim dontpatchupdates As Boolean
@@ -82,18 +89,6 @@ Friend Module General
         Return obj
     End Function
 
-    Public Sub RunSM64TextureFix(ByRef ObjFile As String)
-        Dim uvaObjFile As String = Path.GetDirectoryName(ObjFile) & "\" & Path.GetFileNameWithoutExtension(ObjFile) & "_uva" & Path.GetExtension(ObjFile)
-        If Not File.Exists(uvaObjFile) OrElse File.GetLastWriteTime(uvaObjFile) < File.GetLastWriteTime(ObjFile) Then
-            Application.DoEvents()
-            If File.Exists(uvaObjFile) Then File.Delete(uvaObjFile)
-            Application.DoEvents()
-            Dim pExe As String = MyDataPath & "\Tools\SM64 Texture Fix for Obj-Files.exe"
-            RunExeProcess(pExe, {ObjFile}, Path.GetDirectoryName(ObjFile), True)
-        End If
-        ObjFile = uvaObjFile
-    End Sub
-
     Public Sub ReorderBoxDataPositions(SpecialBox As SpecialBox)
         Dim x1, x2, z1, z2 As Int16
 
@@ -108,9 +103,19 @@ Friend Module General
         SpecialBox.Z2 = z2
     End Sub
 
-    Public Function GetSpecialBoxFromListItem(Item As Object, Boxes() As SpecialBox) As SpecialBox
-        For Each b In Boxes
-            If b.X1 = Item.Box.X1 And b.X2 = Item.Box.X2 And b.Z1 = Item.Box.Z1 And b.Z2 = Item.Box.Z2 Then Return b
+    Public Function IsFormOpen(Of FormType)() As Boolean
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is FormType Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+    Public Function GetFirstOpenForm(Of FormType)() As Form
+        For Each frm As Form In Application.OpenForms
+            If TypeOf frm Is FormType Then
+                Return frm
+            End If
         Next
         Return Nothing
     End Function

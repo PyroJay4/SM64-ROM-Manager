@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Levels.Script
 Imports SM64Lib.Levels.Script.Commands
@@ -10,9 +11,9 @@ Namespace Global.SM64Lib.ObjectBanks
         Public ReadOnly Property Objects As New List(Of CustomObject)
 
         Public Function WriteToSeg(bankID As Byte, offset As Integer)
-            Dim s As New MemoryStream
-            Dim bw As New BinaryWriter(s)
-            Dim seg As New SegmentedBank(bankID, s)
+            Dim segStream As New MemoryStream
+            Dim seg As New SegmentedBank(bankID, segStream)
+            Dim data As New BinaryStreamData(segStream)
             Dim lvlScriptLength As UInteger
             Dim lvlScript As New Levelscript
 
@@ -20,39 +21,39 @@ Namespace Global.SM64Lib.ObjectBanks
             lvlScriptLength = HexRoundUp1(Objects.Count * 8 + 4)
 
             'Start Custom Objects
-            s.Position = lvlScriptLength
+            data.Position = lvlScriptLength
             For Each obj As CustomObject In Objects
                 'Write Object Model
-                obj.modelOffset = s.Position
+                obj.modelOffset = data.Position
                 Dim sr As Model.ObjectModel.SaveResult =
-                    obj.Model.ToStream(s, s.Position, 0, seg.BankAddress)
-                HexRoundUp2(s.Position)
+                    obj.Model.ToBinaryData(data, data.Position, 0, seg.BankAddress)
+                HexRoundUp2(data.Position)
 
                 'Write Model Offset & Length & Collision Offset
-                bw.Write(SwapInts.SwapInt32(obj.modelOffset))
-                bw.Write(SwapInts.SwapInt32(obj.Model.Length))
-                bw.Write(SwapInts.SwapInt32(sr.CollisionPointer And &HFFFFFF))
+                data.Write(obj.modelOffset)
+                data.Write(obj.Model.Length)
+                data.Write(sr.CollisionPointer And &HFFFFFF)
 
                 'Copy new Geopointer(s)
                 obj.Geolayout.Geopointers.Clear()
                 obj.Geolayout.Geopointers.AddRange(sr.GeoPointers.ToArray)
 
                 'Write Geolayout
-                obj.geolayoutOffset = s.Position
-                obj.Geolayout.Write(s, s.Position)
-                s.Position = HexRoundUp1(s.Position + &H30)
+                obj.geolayoutOffset = data.Position
+                obj.Geolayout.Write(data.BaseStream, data.Position)
+                data.Position = HexRoundUp1(data.Position + &H30)
             Next
 
             'Create Levelscript
-            s.Position = 0
+            data.Position = 0
             For Each obj As CustomObject In Objects
                 lvlScript.Add(New LevelscriptCommand($"22 08 00 {obj.ModelID} {bankID.ToString("X")} {Hex((obj.geolayoutOffset >> 16) And &HFF)} {Hex((obj.geolayoutOffset >> 8) And &HFF)} {Hex(obj.geolayoutOffset And &HFF)}"))
             Next
             lvlScript.Add(New LevelscriptCommand("07 04 00 00"))
-            lvlScript.Write(s, 0)
+            lvlScript.Write(data, 0)
 
-            HexRoundUp2(s.Position)
-            seg.Length = s.Position
+            HexRoundUp2(data.Position)
+            seg.Length = data.Position
 
             Return seg
         End Function
@@ -62,14 +63,14 @@ Namespace Global.SM64Lib.ObjectBanks
         End Sub
         Public Sub ReadFromSeg(rommgr As RomManager, seg As SegmentedBank)
             Dim s As Stream
-            Dim br As BinaryReader
+            Dim data As BinaryData
             Dim lvlscript As New Levelscript
 
             'Read Levelscript
             lvlscript.Read(Nothing, 0, LevelscriptCommandTypes.JumpBack)
 
             s = seg.ReadDataIfNull(rommgr)
-            br = New BinaryReader(s)
+            data = New BinaryStreamData(s)
 
             'Parse Levelscript & Load Models
             For Each cmd As LevelscriptCommand In lvlscript
@@ -88,14 +89,14 @@ Namespace Global.SM64Lib.ObjectBanks
                             obj.Geolayout.Read(rommgr, geoAddr)
 
                             'Load Model Offset & Length
-                            s.Position = obj.geolayoutOffset - &H10
-                            obj.modelOffset = SwapInts.SwapInt32(br.ReadInt32)
-                            Dim f3d_length As Integer = SwapInts.SwapInt32(br.ReadInt32)
-                            Dim colOffset As Integer = SwapInts.SwapInt32(br.ReadInt32)
+                            data.Position = obj.geolayoutOffset - &H10
+                            obj.modelOffset = data.ReadInt32
+                            Dim f3d_length As Integer = data.ReadInt32
+                            Dim colOffset As Integer = data.ReadInt32
 
                             'Load Model
                             obj.Model = New Model.ObjectModel
-                            obj.Model.FromStream(s, 0, seg.BankAddress, obj.modelOffset, f3d_length, obj.Geolayout.Geopointers.ToArray, colOffset Or seg.BankAddress)
+                            obj.Model.FromBinaryData(data, 0, seg.BankAddress, obj.modelOffset, f3d_length, obj.Geolayout.Geopointers.ToArray, colOffset Or seg.BankAddress)
 
                             'Add Object to list
                             Objects.Add(obj)

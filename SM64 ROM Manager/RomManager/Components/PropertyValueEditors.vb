@@ -251,6 +251,7 @@ Namespace PropertyValueEditors
             Public Event NeedValues As EventHandler '(sender As Object, values As Dictionary(Of String, Byte))
 
             Private settingValue As Boolean = False
+            Private firstFocused As Boolean = False
 
             Public Property IntegerValueMode As Integer = -1
             Public Property ValueType As TypeCode = TypeCode.Int32
@@ -274,15 +275,17 @@ Namespace PropertyValueEditors
                 Get
                     Dim val As Object
 
-                    If Text <> "" Then
-                        Dim index As Integer = SelectedIndex
-                        If index > -1 Then
-                            val = CType(Items(index), ComboItem).Tag
+                    val = SelectedValue
+                    If val Is Nothing Then
+                        If Text <> "" Then
+                            If DataSource Is Nothing AndAlso SelectedIndex > -1 Then
+                                val = CType(Items(SelectedIndex), ComboItem).Tag
+                            Else
+                                val = ValueFromText(Text)
+                            End If
                         Else
-                            val = ValueFromText(Text)
+                            val = 0
                         End If
-                    Else
-                        val = 0
                     End If
 
                     Select Case ValueType
@@ -305,6 +308,7 @@ Namespace PropertyValueEditors
                     End Select
 
                     Return 0
+
                 End Get
                 Set(value As Object)
                     Dim found As Boolean = False
@@ -313,17 +317,36 @@ Namespace PropertyValueEditors
 
                     OnNeedValues()
 
-                    For Each ci As ComboItem In Items
-                        If Not found Then
-                            If ci.Tag = value Then
-                                found = True
-                                SelectedItem = ci
+                    If DataSource Is Nothing Then
+                        For i As Integer = 0 To Items.Count - 1
+                            Dim ci As ComboItem = DirectCast(Items(i), ComboItem)
+                            If Not found Then
+                                If ci.Tag = value Then
+                                    found = True
+                                    SelectedItem = ci
+                                End If
                             End If
-                        End If
-                    Next
+                        Next
+                    Else
+                        Try
+                            If value = 0 Then
+                                Text = TextFromValue(value, IntegerValueMode)
+                                found = True
+                            Else
+                                SelectedValue = value
+                                SelectedValue = value
+                                If SelectedValue Is Nothing Then
+                                    Text = TextFromValue(value, IntegerValueMode)
+                                End If
+                                found = Not String.IsNullOrEmpty(Text)
+                            End If
+                        Catch ex As Exception
+                        End Try
+                    End If
 
-                    If Not found Then _
+                    If Not found Then
                         Text = TextFromValue(value, IntegerValueMode)
+                    End If
 
                     settingValue = False
                 End Set
@@ -358,6 +381,7 @@ Namespace PropertyValueEditors
 
             Private Sub OnNeedValues()
                 RaiseEvent NeedValues(Me, New EventArgs)
+                Application.DoEvents()
             End Sub
 
             Protected Overrides Sub Dispose(disposing As Boolean)

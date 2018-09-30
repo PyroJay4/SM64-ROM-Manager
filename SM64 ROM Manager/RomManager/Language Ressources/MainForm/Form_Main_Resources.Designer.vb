@@ -236,6 +236,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Your texts needs more space then allowed! Please reduce them before saving ROM. ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_TextsOverLimit() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_TextsOverLimit", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Over Limit ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_TextsOverLimit_Title() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_TextsOverLimit_Title", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die If there are unsaved changes left, you will lose them all.&lt;br/&gt;Do you want to save the ROM? ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_UnsavedChanges() As String

@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Numerics
 Imports S3DFileParser
+Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
@@ -102,7 +103,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
             Inherits List(Of DisplayListCommand)
 
             Public Sub FromStream(rommgr As RomManager, segAddress As Integer, AreaID As Byte?)
-                Me.Close()
+                Close()
 
                 Dim lastPositions As New Stack(Of Integer)
                 Dim curSeg As SegmentedBank = FromStream_GetSegBank(rommgr, segAddress, AreaID)
@@ -121,16 +122,16 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
 
                     Select Case cmd.CommandType
                         Case CommandTypes.F3D_NOOP
-                            Dim br As New BinaryReader(cmd)
+                            Dim br As New BinaryStreamData(cmd)
                             cmd.Position = 0
-                            Dim checkVal As Integer = SwapInts.SwapInt32(br.ReadInt32)
+                            Dim checkVal As Integer = br.ReadInt32
                             cmd.Position = 0
                             If checkVal <> 0 Then Exit Do
 
                         Case CommandTypes.F3D_DisplayList
-                            Dim br As New BinaryReader(cmd)
+                            Dim br As New BinaryStreamData(cmd)
                             cmd.Position = 4
-                            Dim segAddr As Integer = SwapInts.SwapInt32(br.ReadInt32)
+                            Dim segAddr As Integer = br.ReadInt32
                             cmd.Position = 0
 
                             curSeg = FromStream_GetSegBank(rommgr, segAddr, AreaID)
@@ -185,6 +186,12 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
             Public Property RomAddress As Integer = 0 Implements ICommand.RomAddress
             Public Property BankAddress As Integer = 0 Implements ICommand.BankAddress
 
+            Public ReadOnly Property IsDirty As Boolean Implements ICommand.IsDirty
+                Get
+                    Throw New NotImplementedException()
+                End Get
+            End Property
+
             Public Sub New(CommandType As Byte)
                 Me.CommandType = Command()
                 SetLength(&H8)
@@ -194,7 +201,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
             End Sub
 
             Public Sub New(CommandType As String)
-                Me.New(CByte("&H" & CommandType))
+                Me.New(Convert.ToByte(CommandType, 16))
             End Sub
 
             Public Sub New(bytes() As Byte)
@@ -233,24 +240,24 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
                 End Function
 
                 Shared Function GetLengthOfVertexData(cmd As DisplayListCommand) As Int16
-                    Dim br As New BinaryReader(cmd)
+                    Dim br As New BinaryStreamData(cmd)
                     cmd.Position = 2
-                    Dim value = SwapInts.SwapInt16(br.ReadInt16)
+                    Dim value = br.ReadInt16
                     cmd.Position = 0
                     Return value
                 End Function
 
                 Shared Function GetSegmentedAddress(cmd As DisplayListCommand) As Int32
-                    Dim br As New BinaryReader(cmd)
+                    Dim br As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    Dim value = SwapInts.SwapInt32(br.ReadInt32)
+                    Dim value = br.ReadInt32
                     cmd.Position = 0
                     Return value
                 End Function
                 Shared Sub SetSegmentedAddress(cmd As DisplayListCommand, value As Int32)
-                    Dim bw As New BinaryWriter(cmd)
+                    Dim bw As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    bw.Write(SwapInts.SwapInt32(value))
+                    bw.Write(value)
                     cmd.Position = 0
                 End Sub
             End Class
@@ -312,10 +319,10 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
 
             Public Class G_TEXTURE
                 Shared Function GetTextureSize(cmd As DisplayListCommand) As Size
-                    Dim br As New BinaryReader(cmd)
+                    Dim br As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    Dim tsX As UInt16 = SwapInts.SwapUInt16(br.ReadUInt16)
-                    Dim tsY As UInt16 = SwapInts.SwapUInt16(br.ReadUInt16)
+                    Dim tsX As UInt16 = br.ReadUInt16
+                    Dim tsY As UInt16 = br.ReadUInt16
                     cmd.Position = 0
 
                     tsX = tsX >> 6
@@ -336,10 +343,10 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
                 End Function
 
                 Shared Function GetTextureScaling(cmd As DisplayListCommand) As Vector2
-                    Dim br As New BinaryReader(cmd)
+                    Dim br As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    Dim tsX As UInt16 = SwapInts.SwapUInt16(br.ReadUInt16)
-                    Dim tsY As UInt16 = SwapInts.SwapUInt16(br.ReadUInt16)
+                    Dim tsX As UInt16 = br.ReadUInt16
+                    Dim tsY As UInt16 = br.ReadUInt16
                     cmd.Position = 0
 
                     Dim vec As New Vector2
@@ -362,17 +369,17 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
 
             Public Class G_SETIMG
                 Shared Function GetSegmentedAddress(cmd As DisplayListCommand) As Int32
-                    Dim br As New BinaryReader(cmd)
+                    Dim br As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    Dim value = SwapInts.SwapInt32(br.ReadInt32)
+                    Dim value = br.ReadInt32
                     cmd.Position = 0
                     Return value
                 End Function
 
                 Shared Sub SetSegmentedAddress(cmd As DisplayListCommand, value As Int32)
-                    Dim bw As New BinaryWriter(cmd)
+                    Dim bw As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    bw.Write(SwapInts.SwapInt32(value))
+                    bw.Write(value)
                     cmd.Position = 0
                 End Sub
 
@@ -422,9 +429,9 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
 
             Public Class G_SETTILESIZE
                 Shared Function GetSize(cmd As DisplayListCommand) As Size
-                    Dim br As New BinaryReader(cmd)
+                    Dim br As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    Dim var As Integer = SwapInts.SwapInt32(br.ReadInt32)
+                    Dim var As Integer = br.ReadInt32
                     cmd.Position = 0
 
                     Dim w As Int16 = (var >> 12) And &HFFF
@@ -445,30 +452,30 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
 
                     Dim var As Int32 = (w << 12) Or h
 
-                    Dim bw As New BinaryWriter(cmd)
+                    Dim bw As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    bw.Write(SwapInts.SwapInt32(var))
+                    bw.Write(var)
                     cmd.Position = 0
                 End Sub
             End Class
 
             Public Class F3D_MOVEMEM
                 Shared Function GetSegmentedOffset(cmd As DisplayListCommand) As Int32
-                    Dim br As New BinaryReader(cmd)
+                    Dim br As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    Dim value = SwapInts.SwapInt32(br.ReadInt32)
+                    Dim value = br.ReadInt32
                     cmd.Position = 0
                     Return value
                 End Function
                 Shared Sub SetSegmentedOffset(cmd As DisplayListCommand, value As Integer)
-                    Dim bw As New BinaryWriter(cmd)
+                    Dim bw As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    bw.Write(SwapInts.SwapInt32(value))
+                    bw.Write(value)
                     cmd.Position = 0
                 End Sub
 
                 Shared Function GetLightValueMode(cmd As DisplayListCommand) As Byte
-                    Dim br As New BinaryReader(cmd)
+                    Dim br As New BinaryStreamData(cmd)
                     cmd.Position = 1
                     Dim value = br.ReadByte
                     cmd.Position = 0
@@ -478,9 +485,9 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
 
             Public Class F3D_CLEARGEOMETRYMODE
                 Shared Function GetGeometryMode(cmd As DisplayListCommand) As UInteger
-                    Dim br As New BinaryReader(cmd)
+                    Dim br As New BinaryStreamData(cmd)
                     cmd.Position = 4
-                    Dim flag As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                    Dim flag As UInteger = br.ReadUInt32
                     cmd.Position = 0
                     Return flag
                 End Function

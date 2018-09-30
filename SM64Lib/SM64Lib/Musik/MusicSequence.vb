@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports SM64Lib.Data
 
 Namespace Global.SM64Lib.Music
 
@@ -14,13 +15,13 @@ Namespace Global.SM64Lib.Music
             End Get
         End Property
 
-        Public Sub ReadData(s As Stream, RomAddress As Integer, Length As Integer)
+        Public Sub ReadData(s As BinaryData, RomAddress As Integer, Length As Integer)
             ReDim BinaryData(Length - 1)
             s.Position = RomAddress
             s.Read(BinaryData, 0, Length)
         End Sub
 
-        Public Sub WriteData(s As Stream, RomAddress As Integer)
+        Public Sub WriteData(s As BinaryData, RomAddress As Integer)
             s.Position = RomAddress
             s.Write(BinaryData, 0, BinaryData.Length)
 

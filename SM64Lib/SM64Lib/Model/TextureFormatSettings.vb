@@ -56,9 +56,10 @@ Namespace Global.SM64Lib.Model.Fast3D
             Public Property TextureFormat As String = ""
             Public Property IsScrollingTexture As Boolean = False
             Public Property SelectDisplaylistMode As SelectDisplaylistMode = SelectDisplaylistMode.Automatic
+            Public Property FaceCullingMode As FaceCullingMode = FaceCullingMode.Back
 
             Public Overloads Function ToString() As String
-                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{CByte(SelectDisplaylistMode)}"
+                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{CByte(SelectDisplaylistMode)};{CByte(FaceCullingMode)}"
             End Function
 
             Public Sub FromString(str As String)
@@ -67,6 +68,7 @@ Namespace Global.SM64Lib.Model.Fast3D
                 TextureFormat = parts(1)
                 If parts.Length > 2 Then IsScrollingTexture = Convert.ToBoolean(parts(2))
                 If parts.Length > 3 Then SelectDisplaylistMode = Convert.ToByte(parts(3))
+                If parts.Length > 4 Then FaceCullingMode = Convert.ToByte(parts(4))
             End Sub
 
         End Class
@@ -76,6 +78,13 @@ Namespace Global.SM64Lib.Model.Fast3D
             Solid
             Alpha
             Transparent
+        End Enum
+
+        Public Enum FaceCullingMode
+            None
+            Front
+            Back
+            FrontAndBack = Front Or Back
         End Enum
 
     End Class

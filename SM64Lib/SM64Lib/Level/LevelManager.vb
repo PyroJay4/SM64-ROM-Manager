@@ -974,6 +974,8 @@ Namespace Levels
                     &H6280 + (&H50 * a.AreaID),
                     &H6500 + (&H50 * a.AreaID)}
 
+                a.SpecialBoxes.SortByHeight()
+
                 For Each w As SpecialBox In a.SpecialBoxes
                     'Write Table Entry
                     bwToUse.BaseStream.Position = TableOffset(w.Type)

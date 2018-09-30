@@ -164,9 +164,6 @@
   <data name="LabelX1.Text" xml:space="preserve">
     <value>Visuelles Modell:</value>
   </data>
-  <data name="LabelX4.SuperTooltip" xml:space="preserve">
-    <value />
-  </data>
   <data name="LabelX4.Text" xml:space="preserve">
     <value>Vertices reduzieren:</value>
   </data>
@@ -207,22 +204,10 @@
   <data name="NUD_Scaling.ButtonCalculator.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="NUD_Scaling.ButtonCalculator.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonCalculator.Tooltip" xml:space="preserve">
-    <value />
-  </data>
   <data name="NUD_Scaling.ButtonClear.DisplayPosition" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="NUD_Scaling.ButtonClear.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonClear.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonClear.Tooltip" xml:space="preserve">
     <value />
   </data>
   <data name="NUD_Scaling.ButtonCustom.DisplayPosition" type="System.Int32, mscorlib">
@@ -231,22 +216,10 @@
   <data name="NUD_Scaling.ButtonCustom.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="NUD_Scaling.ButtonCustom.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonCustom.Tooltip" xml:space="preserve">
-    <value />
-  </data>
   <data name="NUD_Scaling.ButtonCustom2.DisplayPosition" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="NUD_Scaling.ButtonCustom2.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonCustom2.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonCustom2.Tooltip" xml:space="preserve">
     <value />
   </data>
   <data name="NUD_Scaling.ButtonDropDown.DisplayPosition" type="System.Int32, mscorlib">
@@ -255,22 +228,10 @@
   <data name="NUD_Scaling.ButtonDropDown.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="NUD_Scaling.ButtonDropDown.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonDropDown.Tooltip" xml:space="preserve">
-    <value />
-  </data>
   <data name="NUD_Scaling.ButtonFreeText.DisplayPosition" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="NUD_Scaling.ButtonFreeText.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonFreeText.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonFreeText.Tooltip" xml:space="preserve">
     <value />
   </data>
   <data name="Button_LoadCol.Text" xml:space="preserve">

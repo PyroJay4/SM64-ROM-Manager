@@ -139,7 +139,7 @@ Partial Class InfoEditor
         Me.ButtonX1.TabIndex = 0
         Me.ButtonX1.Text = "Cancel"
         '
-        'TweakProfileEditor
+        'InfoEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -154,7 +154,7 @@ Partial Class InfoEditor
         Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "TweakProfileEditor"
+        Me.Name = "InfoEditor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Tweak Editor"
         Me.TopLeftCornerSize = 0

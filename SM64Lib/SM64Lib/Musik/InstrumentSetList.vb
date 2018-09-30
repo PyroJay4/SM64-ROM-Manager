@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports SM64Lib.Data
 
 Namespace Global.SM64Lib.Music
 
@@ -18,7 +19,7 @@ Namespace Global.SM64Lib.Music
             End Get
         End Property
 
-        Public Sub ReadNInst(s As Stream, RomAddress As Integer)
+        Public Sub ReadNInst(s As BinaryData, RomAddress As Integer)
             s.Position = RomAddress
             Sets.Clear()
             For i As Integer = 0 To s.ReadByte - 1
@@ -26,7 +27,7 @@ Namespace Global.SM64Lib.Music
             Next
         End Sub
 
-        Public Sub WriteNInst(s As Stream, RomAddress As Integer)
+        Public Sub WriteNInst(s As BinaryData, RomAddress As Integer)
             s.Position = RomAddress
             s.WriteByte(Sets.Count)
             For Each b As Byte In Sets

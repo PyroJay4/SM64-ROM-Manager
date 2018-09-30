@@ -138,18 +138,6 @@
   <data name="Line2.Text" xml:space="preserve">
     <value>Line2</value>
   </data>
-  <data name="&gt;&gt;Line2.Name" xml:space="preserve">
-    <value>Line2</value>
-  </data>
-  <data name="&gt;&gt;Line2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Line2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Line2.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
   <data name="LabelX_Colfile.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
@@ -164,18 +152,6 @@
   </data>
   <data name="LabelX_Colfile.Text" xml:space="preserve">
     <value>&lt;i&gt;No file loaded!&lt;/i&gt;</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Colfile.Name" xml:space="preserve">
-    <value>LabelX_Colfile</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Colfile.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Colfile.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Colfile.ZOrder" xml:space="preserve">
-    <value>14</value>
   </data>
   <data name="LabelX_Modelfile.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -192,18 +168,6 @@
   <data name="LabelX_Modelfile.Text" xml:space="preserve">
     <value>&lt;i&gt;No file loaded!&lt;/i&gt;</value>
   </data>
-  <data name="&gt;&gt;LabelX_Modelfile.Name" xml:space="preserve">
-    <value>LabelX_Modelfile</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Modelfile.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Modelfile.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Modelfile.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
   <data name="LabelX2.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 41</value>
   </data>
@@ -215,18 +179,6 @@
   </data>
   <data name="LabelX2.Text" xml:space="preserve">
     <value>Collision:</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.Name" xml:space="preserve">
-    <value>LabelX2</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.ZOrder" xml:space="preserve">
-    <value>16</value>
   </data>
   <data name="LabelX1.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 12</value>
@@ -240,34 +192,16 @@
   <data name="LabelX1.Text" xml:space="preserve">
     <value>Visual Map:</value>
   </data>
-  <data name="&gt;&gt;LabelX1.Name" xml:space="preserve">
-    <value>LabelX1</value>
-  </data>
-  <data name="&gt;&gt;LabelX1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX1.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
   <data name="LabelX4.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
   <data name="LabelX4.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 23</value>
   </data>
-  <metadata name="SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
-  <data name="SuperTooltip1.DefaultTooltipSettings" xml:space="preserve">
-    <value />
   </data>
   <data name="LabelX4.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX4.SuperTooltip1" xml:space="preserve">
     <value />
   </data>
   <data name="LabelX4.SuperTooltip2" xml:space="preserve">
@@ -279,7 +213,7 @@
   <data name="LabelX4.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <assembly alias="DevComponents.DotNetBar2" name="DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04" />
+  <assembly alias="DevComponents.DotNetBar2" name="DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04" />
   <data name="LabelX4.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
     <value>Gray</value>
   </data>
@@ -298,18 +232,6 @@
   <data name="LabelX4.Text" xml:space="preserve">
     <value>Reduce vertices:</value>
   </data>
-  <data name="&gt;&gt;LabelX4.Name" xml:space="preserve">
-    <value>LabelX4</value>
-  </data>
-  <data name="&gt;&gt;LabelX4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX4.Parent" xml:space="preserve">
-    <value>Panel3</value>
-  </data>
-  <data name="&gt;&gt;LabelX4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="SwitchButton_EnableFog.Location" type="System.Drawing.Point, System.Drawing">
     <value>51, 5</value>
   </data>
@@ -324,18 +246,6 @@
   </data>
   <data name="SwitchButton_EnableFog.TabIndex" type="System.Int32, mscorlib">
     <value>97</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableFog.Name" xml:space="preserve">
-    <value>SwitchButton_EnableFog</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableFog.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableFog.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableFog.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="Button_ColEditor.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -352,18 +262,6 @@
   <data name="Button_ColEditor.Text" xml:space="preserve">
     <value>Collision Editor</value>
   </data>
-  <data name="&gt;&gt;Button_ColEditor.Name" xml:space="preserve">
-    <value>Button_ColEditor</value>
-  </data>
-  <data name="&gt;&gt;Button_ColEditor.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Button_ColEditor.Parent" xml:space="preserve">
-    <value>Panel9</value>
-  </data>
-  <data name="&gt;&gt;Button_ColEditor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="LabelX20.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -375,18 +273,6 @@
   </data>
   <data name="LabelX20.Text" xml:space="preserve">
     <value>Fog:</value>
-  </data>
-  <data name="&gt;&gt;LabelX20.Name" xml:space="preserve">
-    <value>LabelX20</value>
-  </data>
-  <data name="&gt;&gt;LabelX20.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX20.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;LabelX20.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="LabelX16.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -400,29 +286,11 @@
   <data name="LabelX16.Text" xml:space="preserve">
     <value>Scaling:</value>
   </data>
-  <data name="&gt;&gt;LabelX16.Name" xml:space="preserve">
-    <value>LabelX16</value>
-  </data>
-  <data name="&gt;&gt;LabelX16.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX16.Parent" xml:space="preserve">
-    <value>Panel6</value>
-  </data>
-  <data name="&gt;&gt;LabelX16.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="NUD_Scaling.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 32</value>
   </data>
   <data name="NUD_Scaling.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 20</value>
-  </data>
-  <data name="NUD_Scaling.SuperTooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NUD_Scaling.SuperTooltip1" xml:space="preserve">
-    <value />
   </data>
   <data name="NUD_Scaling.SuperTooltip2" xml:space="preserve">
     <value>Set how big your model will be saved.
@@ -453,18 +321,6 @@ Scaling = 500 --&gt; Modelsize * 500</value>
   <data name="NUD_Scaling.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
   </data>
-  <data name="&gt;&gt;NUD_Scaling.Name" xml:space="preserve">
-    <value>NUD_Scaling</value>
-  </data>
-  <data name="&gt;&gt;NUD_Scaling.Type" xml:space="preserve">
-    <value>DevComponents.Editors.DoubleInput, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;NUD_Scaling.Parent" xml:space="preserve">
-    <value>Panel6</value>
-  </data>
-  <data name="&gt;&gt;NUD_Scaling.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="Button_LoadCol.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -476,12 +332,6 @@ Scaling = 500 --&gt; Modelsize * 500</value>
   </data>
   <data name="Button_LoadCol.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 23</value>
-  </data>
-  <data name="Button_LoadCol.SuperTooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Button_LoadCol.SuperTooltip1" xml:space="preserve">
-    <value />
   </data>
   <data name="Button_LoadCol.SuperTooltip2" xml:space="preserve">
     <value>Load a collision file.
@@ -513,18 +363,6 @@ It is inviisble.</value>
   <data name="Button_LoadCol.Text" xml:space="preserve">
     <value>Load ...</value>
   </data>
-  <data name="&gt;&gt;Button_LoadCol.Name" xml:space="preserve">
-    <value>Button_LoadCol</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadCol.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadCol.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadCol.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
   <data name="Button_LoadModel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -533,12 +371,6 @@ It is inviisble.</value>
   </data>
   <data name="Button_LoadModel.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 23</value>
-  </data>
-  <data name="Button_LoadModel.SuperTooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Button_LoadModel.SuperTooltip1" xml:space="preserve">
-    <value />
   </data>
   <data name="Button_LoadModel.SuperTooltip2" xml:space="preserve">
     <value>Load a model file.
@@ -569,18 +401,6 @@ The Model is all what you can see.</value>
   <data name="Button_LoadModel.Text" xml:space="preserve">
     <value>Load ...</value>
   </data>
-  <data name="&gt;&gt;Button_LoadModel.Name" xml:space="preserve">
-    <value>Button_LoadModel</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadModel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadModel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadModel.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
   <data name="Line3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -598,18 +418,6 @@ The Model is all what you can see.</value>
   </data>
   <data name="Line3.Text" xml:space="preserve">
     <value>Line3</value>
-  </data>
-  <data name="&gt;&gt;Line3.Name" xml:space="preserve">
-    <value>Line3</value>
-  </data>
-  <data name="&gt;&gt;Line3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Line3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Line3.ZOrder" xml:space="preserve">
-    <value>12</value>
   </data>
   <data name="Button_ConvertModel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -632,18 +440,6 @@ The Model is all what you can see.</value>
   <data name="Button_ConvertModel.Text" xml:space="preserve">
     <value>Convert Model</value>
   </data>
-  <data name="&gt;&gt;Button_ConvertModel.Name" xml:space="preserve">
-    <value>Button_ConvertModel</value>
-  </data>
-  <data name="&gt;&gt;Button_ConvertModel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Button_ConvertModel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Button_ConvertModel.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
   <data name="CircularProgress1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -659,18 +455,6 @@ The Model is all what you can see.</value>
   <data name="CircularProgress1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;CircularProgress1.Name" xml:space="preserve">
-    <value>CircularProgress1</value>
-  </data>
-  <data name="&gt;&gt;CircularProgress1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CircularProgress, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;CircularProgress1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;CircularProgress1.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
   <data name="ComboBoxEx_UpAxis.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
@@ -685,12 +469,6 @@ The Model is all what you can see.</value>
   </data>
   <data name="ComboBoxEx_UpAxis.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 21</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip1" xml:space="preserve">
-    <value />
   </data>
   <data name="ComboBoxEx_UpAxis.SuperTooltip2" xml:space="preserve">
     <value>This option is to reduce dublicate vertices.
@@ -717,18 +495,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="ComboBoxEx_UpAxis.TabIndex" type="System.Int32, mscorlib">
     <value>123</value>
   </data>
-  <data name="&gt;&gt;ComboBoxEx_UpAxis.Name" xml:space="preserve">
-    <value>ComboBoxEx_UpAxis</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_UpAxis.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_UpAxis.Parent" xml:space="preserve">
-    <value>Panel7</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_UpAxis.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="LabelX9.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -741,18 +507,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="LabelX9.Text" xml:space="preserve">
     <value>Center Model:</value>
   </data>
-  <data name="&gt;&gt;LabelX9.Name" xml:space="preserve">
-    <value>LabelX9</value>
-  </data>
-  <data name="&gt;&gt;LabelX9.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX9.Parent" xml:space="preserve">
-    <value>Panel2</value>
-  </data>
-  <data name="&gt;&gt;LabelX9.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="CheckBoxX_ConvertModel.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
@@ -762,18 +516,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="CheckBoxX_ConvertModel.TabIndex" type="System.Int32, mscorlib">
     <value>104</value>
   </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertModel.Name" xml:space="preserve">
-    <value>CheckBoxX_ConvertModel</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertModel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertModel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertModel.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <data name="CheckBoxX_ConvertCollision.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 41</value>
   </data>
@@ -782,18 +524,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="CheckBoxX_ConvertCollision.TabIndex" type="System.Int32, mscorlib">
     <value>105</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertCollision.Name" xml:space="preserve">
-    <value>CheckBoxX_ConvertCollision</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertCollision.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertCollision.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertCollision.ZOrder" xml:space="preserve">
-    <value>9</value>
   </data>
   <data name="LabelX3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -806,18 +536,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="LabelX3.Text" xml:space="preserve">
     <value>Resize Textures:</value>
-  </data>
-  <data name="&gt;&gt;LabelX3.Name" xml:space="preserve">
-    <value>LabelX3</value>
-  </data>
-  <data name="&gt;&gt;LabelX3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX3.Parent" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="&gt;&gt;LabelX3.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="SwitchButton_ResizeTextures.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 5</value>
@@ -834,18 +552,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="SwitchButton_ResizeTextures.TabIndex" type="System.Int32, mscorlib">
     <value>107</value>
   </data>
-  <data name="&gt;&gt;SwitchButton_ResizeTextures.Name" xml:space="preserve">
-    <value>SwitchButton_ResizeTextures</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_ResizeTextures.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_ResizeTextures.Parent" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_ResizeTextures.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="LabelX5.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -857,18 +563,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="LabelX5.Text" xml:space="preserve">
     <value>Shading:</value>
-  </data>
-  <data name="&gt;&gt;LabelX5.Name" xml:space="preserve">
-    <value>LabelX5</value>
-  </data>
-  <data name="&gt;&gt;LabelX5.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX5.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="&gt;&gt;LabelX5.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="LabelX6.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 32</value>
@@ -882,18 +576,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="LabelX6.Text" xml:space="preserve">
     <value>Light</value>
   </data>
-  <data name="&gt;&gt;LabelX6.Name" xml:space="preserve">
-    <value>LabelX6</value>
-  </data>
-  <data name="&gt;&gt;LabelX6.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX6.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="&gt;&gt;LabelX6.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="LabelX7.Location" type="System.Drawing.Point, System.Drawing">
     <value>91, 32</value>
   </data>
@@ -905,18 +587,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="LabelX7.Text" xml:space="preserve">
     <value>Dark</value>
-  </data>
-  <data name="&gt;&gt;LabelX7.Name" xml:space="preserve">
-    <value>LabelX7</value>
-  </data>
-  <data name="&gt;&gt;LabelX7.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX7.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="&gt;&gt;LabelX7.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="SwitchButton_TextureFlip.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 34</value>
@@ -933,18 +603,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="SwitchButton_TextureFlip.TabIndex" type="System.Int32, mscorlib">
     <value>117</value>
   </data>
-  <data name="&gt;&gt;SwitchButton_TextureFlip.Name" xml:space="preserve">
-    <value>SwitchButton_TextureFlip</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_TextureFlip.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_TextureFlip.Parent" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_TextureFlip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="LabelX8.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 32</value>
   </data>
@@ -956,18 +614,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="LabelX8.Text" xml:space="preserve">
     <value>Flip Textures:</value>
-  </data>
-  <data name="&gt;&gt;LabelX8.Name" xml:space="preserve">
-    <value>LabelX8</value>
-  </data>
-  <data name="&gt;&gt;LabelX8.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX8.Parent" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="&gt;&gt;LabelX8.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="SwitchButton_CenterModel.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 32</value>
@@ -984,18 +630,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="SwitchButton_CenterModel.TabIndex" type="System.Int32, mscorlib">
     <value>119</value>
   </data>
-  <data name="&gt;&gt;SwitchButton_CenterModel.Name" xml:space="preserve">
-    <value>SwitchButton_CenterModel</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_CenterModel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_CenterModel.Parent" xml:space="preserve">
-    <value>Panel2</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_CenterModel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="ButtonX_VisualMapPreview.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1010,18 +644,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="ButtonX_VisualMapPreview.Text" xml:space="preserve">
     <value>Model Preview</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_VisualMapPreview.Name" xml:space="preserve">
-    <value>ButtonX_VisualMapPreview</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_VisualMapPreview.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_VisualMapPreview.Parent" xml:space="preserve">
-    <value>Panel8</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_VisualMapPreview.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="ButtonX_CollisionMapPreview.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1038,18 +660,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="ButtonX_CollisionMapPreview.Text" xml:space="preserve">
     <value>Collision Preview</value>
   </data>
-  <data name="&gt;&gt;ButtonX_CollisionMapPreview.Name" xml:space="preserve">
-    <value>ButtonX_CollisionMapPreview</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_CollisionMapPreview.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_CollisionMapPreview.Parent" xml:space="preserve">
-    <value>Panel9</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_CollisionMapPreview.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="SwitchButton_EnableReduceVertices.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 32</value>
   </data>
@@ -1065,18 +675,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="SwitchButton_EnableReduceVertices.TabIndex" type="System.Int32, mscorlib">
     <value>122</value>
   </data>
-  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.Name" xml:space="preserve">
-    <value>SwitchButton_EnableReduceVertices</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.Parent" xml:space="preserve">
-    <value>Panel3</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="LabelX10.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -1088,18 +686,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="LabelX10.Text" xml:space="preserve">
     <value>Up-Axis:</value>
-  </data>
-  <data name="&gt;&gt;LabelX10.Name" xml:space="preserve">
-    <value>LabelX10</value>
-  </data>
-  <data name="&gt;&gt;LabelX10.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX10.Parent" xml:space="preserve">
-    <value>Panel7</value>
-  </data>
-  <data name="&gt;&gt;LabelX10.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="ColorPickerButton_ShadingLight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1117,18 +703,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="ColorPickerButton_ShadingLight.TabIndex" type="System.Int32, mscorlib">
     <value>131</value>
   </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingLight.Name" xml:space="preserve">
-    <value>ColorPickerButton_ShadingLight</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingLight.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingLight.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingLight.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="ButtonX_GraphicsEditor.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1143,18 +717,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="ButtonX_GraphicsEditor.Text" xml:space="preserve">
     <value>Graphics Editor</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_GraphicsEditor.Name" xml:space="preserve">
-    <value>ButtonX_GraphicsEditor</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_GraphicsEditor.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_GraphicsEditor.Parent" xml:space="preserve">
-    <value>Panel8</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_GraphicsEditor.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="ComboBox_FogTyp.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1201,18 +763,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="ComboBox_FogTyp.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
   </data>
-  <data name="&gt;&gt;ComboBox_FogTyp.Name" xml:space="preserve">
-    <value>ComboBox_FogTyp</value>
-  </data>
-  <data name="&gt;&gt;ComboBox_FogTyp.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboBox_FogTyp.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;ComboBox_FogTyp.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="ColorPickerButton_FogColor.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1232,18 +782,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="ColorPickerButton_FogColor.TabIndex" type="System.Int32, mscorlib">
     <value>135</value>
   </data>
-  <data name="&gt;&gt;ColorPickerButton_FogColor.Name" xml:space="preserve">
-    <value>ColorPickerButton_FogColor</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_FogColor.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_FogColor.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_FogColor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="Panel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1255,18 +793,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="Panel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1280,18 +806,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="Panel2.TabIndex" type="System.Int32, mscorlib">
     <value>137</value>
   </data>
-  <data name="&gt;&gt;Panel2.Name" xml:space="preserve">
-    <value>Panel2</value>
-  </data>
-  <data name="&gt;&gt;Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel2.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="Panel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1304,18 +818,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="Panel3.TabIndex" type="System.Int32, mscorlib">
     <value>138</value>
   </data>
-  <data name="&gt;&gt;Panel3.Name" xml:space="preserve">
-    <value>Panel3</value>
-  </data>
-  <data name="&gt;&gt;Panel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel3.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="Panel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1327,18 +829,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="Panel4.TabIndex" type="System.Int32, mscorlib">
     <value>139</value>
-  </data>
-  <data name="&gt;&gt;Panel4.Name" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="&gt;&gt;Panel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel4.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="Panel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1359,18 +849,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="ColorPickerButton_ShadingDarkNeu.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
   </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.Name" xml:space="preserve">
-    <value>ColorPickerButton_ShadingDarkNeu</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="Panel5.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 218</value>
   </data>
@@ -1379,18 +857,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="Panel5.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
-  </data>
-  <data name="&gt;&gt;Panel5.Name" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="&gt;&gt;Panel5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel5.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel5.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="Panel6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1403,18 +869,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="Panel6.TabIndex" type="System.Int32, mscorlib">
     <value>141</value>
-  </data>
-  <data name="&gt;&gt;Panel6.Name" xml:space="preserve">
-    <value>Panel6</value>
-  </data>
-  <data name="&gt;&gt;Panel6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel6.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel6.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="Panel7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1431,18 +885,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="Panel7.TabIndex" type="System.Int32, mscorlib">
     <value>142</value>
   </data>
-  <data name="&gt;&gt;Panel7.Name" xml:space="preserve">
-    <value>Panel7</value>
-  </data>
-  <data name="&gt;&gt;Panel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel7.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel7.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="Panel8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -1457,18 +899,6 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="Panel8.TabIndex" type="System.Int32, mscorlib">
     <value>143</value>
-  </data>
-  <data name="&gt;&gt;Panel8.Name" xml:space="preserve">
-    <value>Panel8</value>
-  </data>
-  <data name="&gt;&gt;Panel8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel8.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel8.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="Panel9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1485,21 +915,9 @@ As higher the level and as bigger the model, as more space will be saved!</value
   <data name="Panel9.TabIndex" type="System.Int32, mscorlib">
     <value>144</value>
   </data>
-  <data name="&gt;&gt;Panel9.Name" xml:space="preserve">
-    <value>Panel9</value>
-  </data>
-  <data name="&gt;&gt;Panel9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel9.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel9.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -3368,29 +2786,5 @@ As higher the level and as bigger the model, as more space will be saved!</value
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Model Converter</value>
-  </data>
-  <data name="&gt;&gt;SuperTooltip1.Name" xml:space="preserve">
-    <value>SuperTooltip1</value>
-  </data>
-  <data name="&gt;&gt;SuperTooltip1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.SuperTooltip, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboItem1.Name" xml:space="preserve">
-    <value>ComboItem1</value>
-  </data>
-  <data name="&gt;&gt;ComboItem1.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboItem2.Name" xml:space="preserve">
-    <value>ComboItem2</value>
-  </data>
-  <data name="&gt;&gt;ComboItem2.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainModelConverter</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
 </root>

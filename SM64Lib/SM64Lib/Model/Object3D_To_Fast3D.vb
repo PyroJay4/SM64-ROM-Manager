@@ -142,6 +142,7 @@ Namespace Global.SM64Lib.SM64Convert
             Public texture As TextureEntry = Nothing
             Public enableScrolling As Boolean = False
             Public selectDisplaylist As TextureFormatSettings.SelectDisplaylistMode = TextureFormatSettings.SelectDisplaylistMode.Automatic
+            Public faceCullingMode As FaceCullingMode = FaceCullingMode.Back
         End Class
         Private Class FinalVertexData
             Public Property Data As Byte() = New Byte(15) {}
@@ -376,9 +377,11 @@ Namespace Global.SM64Lib.SM64Convert
         Private Sub processMaterialColorAlpha(alpha As Single, mat As Material)
             mat.color = mat.color And &HFFFFFF00UI
             mat.color = mat.color Or CByte((&HFF * alpha) And &HFF)
-            mat.type = MaterialType.ColorTransparent
             If alpha < 1.0F Then
+                mat.type = MaterialType.ColorTransparent
                 mat.hasTransparency = True
+            Else
+                mat.type = MaterialType.ColorSolid
             End If
         End Sub
         Private Sub checkN64CodecInfo(m As Material)
@@ -624,7 +627,13 @@ Namespace Global.SM64Lib.SM64Convert
                     Dim r As UInteger = kvp.Value.Color.Value.R
                     Dim g As UInteger = kvp.Value.Color.Value.G
                     Dim b As UInteger = kvp.Value.Color.Value.B
-                    m.color = r << 24 Or g << 16 Or b << 8 Or &HFF
+                    Dim a As UInteger = kvp.Value.Color.Value.A
+                    m.color = r << 24 Or g << 16 Or b << 8 Or a
+                    If a = &HFF Then
+                        m.type = MaterialType.ColorSolid
+                    Else
+                        m.type = MaterialType.ColorTransparent
+                    End If
                 End If
 
                 'Process Material Color Alpha
@@ -1249,7 +1258,7 @@ Namespace Global.SM64Lib.SM64Convert
         End Sub
 
         Private Sub ImpCmd03(mat As Material, addOffset As UInteger)
-            If mat.type = MaterialType.ColorSolid Then
+            If mat.type = MaterialType.ColorSolid OrElse mat.type = MaterialType.ColorTransparent Then
                 Dim off As UInteger = startSegOffset + mat.texColOffset
                 ImpF3D($"03 86 00 10 {Hex(curSeg)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
                 off = startSegOffset + mat.texColOffset + &H8

@@ -20,13 +20,31 @@ Public Class Tab_LevelManager
     Private LM_LoadingArea As Boolean = False
     Private LM_LoadingLevel As Boolean = False
 
+    Private ReadOnly Property OpenAreaEditors As IEnumerable(Of Form_AreaEditor)
+        Get
+            Dim list As New List(Of Form_AreaEditor)
+
+            For Each frm As Form In Application.OpenForms
+                If TypeOf frm Is Form_AreaEditor Then
+                    list.Add(frm)
+                End If
+            Next
+
+            Return list
+        End Get
+    End Property
+
+    Private Function GetAreaEditor(level As Levels.Level)
+        Return OpenAreaEditors.FirstOrDefault(Function(n) n.cLevel Is level)
+    End Function
+
     Public Sub New()
         InitializeComponent()
     End Sub
 
     Private ReadOnly Property CurrentLevel As Levels.Level
         Get
-            If ListBoxAdv_LM_Levels.SelectedIndex < 0 Then Return Nothing
+            If ListBoxAdv_LM_Levels.SelectedItem Is Nothing Then Return Nothing
             Return RomMgr.Levels(ListBoxAdv_LM_Levels.SelectedIndex)
         End Get
     End Property
@@ -129,7 +147,9 @@ Public Class Tab_LevelManager
         RomMgr.AddLevel(frm.SelectedLevel.ID)
         RomMgr.Levels.Last.ActSelector = (frm.SelectedLevel.Type = LevelInfoDataTabelList.LevelTypes.Level)
 
-        ListBoxAdv_LM_Levels.Items.Add(New ButtonItem With {.Checked = False, .Text = RomMgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = frm.SelectedLevel.ID).Name})
+        Dim btn As New ButtonItem With {.Checked = False, .Text = RomMgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = frm.SelectedLevel.ID).Name}
+        ListBoxAdv_LM_Levels.Items.Add(btn)
+        ListBoxAdv_LM_Areas.EnsureVisible(btn)
         ListBoxAdv_LM_Levels.Refresh()
         ListBoxAdv_LM_Levels.SelectedItem = ListBoxAdv_LM_Levels.Items(ListBoxAdv_LM_Levels.Items.Count - 1)
     End Sub
@@ -154,6 +174,7 @@ Public Class Tab_LevelManager
             'Create new area
             Dim tArea As New Levels.LevelArea(ReamingIDs(0))
             tArea.AreaModel = frm.ResModel
+            tArea.ScrollingTextures.AddRange(frm.ResModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
 
             'Add area to level
             CurrentLevel.Areas.Add(tArea)
@@ -556,12 +577,15 @@ Public Class Tab_LevelManager
     End Sub
 
     Private Sub LM_OpenAreaEditor() Handles Button_LM_AreaEditor.Click
-        If Not LM_SavingRom Then
+        Dim openAreaEditor As Form_AreaEditor = GetAreaEditor(CurrentLevel)
+        If Not LM_SavingRom AndAlso openAreaEditor Is Nothing Then
             Dim frm As New Form_AreaEditor(RomMgr,
                                            CurrentLevel,
                                            CurrentLevelID,
-                                           CurrentLevel.Areas(ListBoxAdv_LM_Areas.SelectedIndex).AreaID)
-            frm.ShowDialog()
+                                           CurrentArea.AreaID)
+            frm.Show()
+        Else
+            openAreaEditor.BringToFront()
         End If
     End Sub
 

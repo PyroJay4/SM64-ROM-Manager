@@ -109,31 +109,7 @@ Partial Class TrajectoryEditor
         '
         Me.IntegerInput1.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.IntegerInput1.ButtonCalculator.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonCalculator.DisplayPosition"), Integer)
-        Me.IntegerInput1.ButtonCalculator.Image = CType(resources.GetObject("IntegerInput1.ButtonCalculator.Image"), System.Drawing.Image)
-        Me.IntegerInput1.ButtonCalculator.Text = resources.GetString("IntegerInput1.ButtonCalculator.Text")
-        Me.IntegerInput1.ButtonCalculator.Tooltip = resources.GetString("IntegerInput1.ButtonCalculator.Tooltip")
-        Me.IntegerInput1.ButtonClear.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonClear.DisplayPosition"), Integer)
-        Me.IntegerInput1.ButtonClear.Image = CType(resources.GetObject("IntegerInput1.ButtonClear.Image"), System.Drawing.Image)
-        Me.IntegerInput1.ButtonClear.Text = resources.GetString("IntegerInput1.ButtonClear.Text")
-        Me.IntegerInput1.ButtonClear.Tooltip = resources.GetString("IntegerInput1.ButtonClear.Tooltip")
-        Me.IntegerInput1.ButtonCustom.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonCustom.DisplayPosition"), Integer)
-        Me.IntegerInput1.ButtonCustom.Image = CType(resources.GetObject("IntegerInput1.ButtonCustom.Image"), System.Drawing.Image)
-        Me.IntegerInput1.ButtonCustom.Text = resources.GetString("IntegerInput1.ButtonCustom.Text")
-        Me.IntegerInput1.ButtonCustom.Tooltip = resources.GetString("IntegerInput1.ButtonCustom.Tooltip")
-        Me.IntegerInput1.ButtonCustom2.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonCustom2.DisplayPosition"), Integer)
-        Me.IntegerInput1.ButtonCustom2.Image = CType(resources.GetObject("IntegerInput1.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.IntegerInput1.ButtonCustom2.Text = resources.GetString("IntegerInput1.ButtonCustom2.Text")
-        Me.IntegerInput1.ButtonCustom2.Tooltip = resources.GetString("IntegerInput1.ButtonCustom2.Tooltip")
-        Me.IntegerInput1.ButtonDropDown.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonDropDown.DisplayPosition"), Integer)
-        Me.IntegerInput1.ButtonDropDown.Image = CType(resources.GetObject("IntegerInput1.ButtonDropDown.Image"), System.Drawing.Image)
-        Me.IntegerInput1.ButtonDropDown.Text = resources.GetString("IntegerInput1.ButtonDropDown.Text")
-        Me.IntegerInput1.ButtonDropDown.Tooltip = resources.GetString("IntegerInput1.ButtonDropDown.Tooltip")
-        Me.IntegerInput1.ButtonFreeText.DisplayPosition = CType(resources.GetObject("IntegerInput1.ButtonFreeText.DisplayPosition"), Integer)
-        Me.IntegerInput1.ButtonFreeText.Image = CType(resources.GetObject("IntegerInput1.ButtonFreeText.Image"), System.Drawing.Image)
         Me.IntegerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput1.ButtonFreeText.Text = resources.GetString("IntegerInput1.ButtonFreeText.Text")
-        Me.IntegerInput1.ButtonFreeText.Tooltip = resources.GetString("IntegerInput1.ButtonFreeText.Tooltip")
         Me.IntegerInput1.MaxValue = 65535
         Me.IntegerInput1.MinValue = -65535
         Me.IntegerInput1.Name = "IntegerInput1"
@@ -147,31 +123,7 @@ Partial Class TrajectoryEditor
         '
         Me.IntegerInput2.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.IntegerInput2.ButtonCalculator.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonCalculator.DisplayPosition"), Integer)
-        Me.IntegerInput2.ButtonCalculator.Image = CType(resources.GetObject("IntegerInput2.ButtonCalculator.Image"), System.Drawing.Image)
-        Me.IntegerInput2.ButtonCalculator.Text = resources.GetString("IntegerInput2.ButtonCalculator.Text")
-        Me.IntegerInput2.ButtonCalculator.Tooltip = resources.GetString("IntegerInput2.ButtonCalculator.Tooltip")
-        Me.IntegerInput2.ButtonClear.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonClear.DisplayPosition"), Integer)
-        Me.IntegerInput2.ButtonClear.Image = CType(resources.GetObject("IntegerInput2.ButtonClear.Image"), System.Drawing.Image)
-        Me.IntegerInput2.ButtonClear.Text = resources.GetString("IntegerInput2.ButtonClear.Text")
-        Me.IntegerInput2.ButtonClear.Tooltip = resources.GetString("IntegerInput2.ButtonClear.Tooltip")
-        Me.IntegerInput2.ButtonCustom.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonCustom.DisplayPosition"), Integer)
-        Me.IntegerInput2.ButtonCustom.Image = CType(resources.GetObject("IntegerInput2.ButtonCustom.Image"), System.Drawing.Image)
-        Me.IntegerInput2.ButtonCustom.Text = resources.GetString("IntegerInput2.ButtonCustom.Text")
-        Me.IntegerInput2.ButtonCustom.Tooltip = resources.GetString("IntegerInput2.ButtonCustom.Tooltip")
-        Me.IntegerInput2.ButtonCustom2.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonCustom2.DisplayPosition"), Integer)
-        Me.IntegerInput2.ButtonCustom2.Image = CType(resources.GetObject("IntegerInput2.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.IntegerInput2.ButtonCustom2.Text = resources.GetString("IntegerInput2.ButtonCustom2.Text")
-        Me.IntegerInput2.ButtonCustom2.Tooltip = resources.GetString("IntegerInput2.ButtonCustom2.Tooltip")
-        Me.IntegerInput2.ButtonDropDown.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonDropDown.DisplayPosition"), Integer)
-        Me.IntegerInput2.ButtonDropDown.Image = CType(resources.GetObject("IntegerInput2.ButtonDropDown.Image"), System.Drawing.Image)
-        Me.IntegerInput2.ButtonDropDown.Text = resources.GetString("IntegerInput2.ButtonDropDown.Text")
-        Me.IntegerInput2.ButtonDropDown.Tooltip = resources.GetString("IntegerInput2.ButtonDropDown.Tooltip")
-        Me.IntegerInput2.ButtonFreeText.DisplayPosition = CType(resources.GetObject("IntegerInput2.ButtonFreeText.DisplayPosition"), Integer)
-        Me.IntegerInput2.ButtonFreeText.Image = CType(resources.GetObject("IntegerInput2.ButtonFreeText.Image"), System.Drawing.Image)
         Me.IntegerInput2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput2.ButtonFreeText.Text = resources.GetString("IntegerInput2.ButtonFreeText.Text")
-        Me.IntegerInput2.ButtonFreeText.Tooltip = resources.GetString("IntegerInput2.ButtonFreeText.Tooltip")
         Me.IntegerInput2.MaxValue = 65535
         Me.IntegerInput2.MinValue = -65535
         Me.IntegerInput2.Name = "IntegerInput2"
@@ -185,31 +137,7 @@ Partial Class TrajectoryEditor
         '
         Me.IntegerInput3.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.IntegerInput3.ButtonCalculator.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonCalculator.DisplayPosition"), Integer)
-        Me.IntegerInput3.ButtonCalculator.Image = CType(resources.GetObject("IntegerInput3.ButtonCalculator.Image"), System.Drawing.Image)
-        Me.IntegerInput3.ButtonCalculator.Text = resources.GetString("IntegerInput3.ButtonCalculator.Text")
-        Me.IntegerInput3.ButtonCalculator.Tooltip = resources.GetString("IntegerInput3.ButtonCalculator.Tooltip")
-        Me.IntegerInput3.ButtonClear.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonClear.DisplayPosition"), Integer)
-        Me.IntegerInput3.ButtonClear.Image = CType(resources.GetObject("IntegerInput3.ButtonClear.Image"), System.Drawing.Image)
-        Me.IntegerInput3.ButtonClear.Text = resources.GetString("IntegerInput3.ButtonClear.Text")
-        Me.IntegerInput3.ButtonClear.Tooltip = resources.GetString("IntegerInput3.ButtonClear.Tooltip")
-        Me.IntegerInput3.ButtonCustom.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonCustom.DisplayPosition"), Integer)
-        Me.IntegerInput3.ButtonCustom.Image = CType(resources.GetObject("IntegerInput3.ButtonCustom.Image"), System.Drawing.Image)
-        Me.IntegerInput3.ButtonCustom.Text = resources.GetString("IntegerInput3.ButtonCustom.Text")
-        Me.IntegerInput3.ButtonCustom.Tooltip = resources.GetString("IntegerInput3.ButtonCustom.Tooltip")
-        Me.IntegerInput3.ButtonCustom2.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonCustom2.DisplayPosition"), Integer)
-        Me.IntegerInput3.ButtonCustom2.Image = CType(resources.GetObject("IntegerInput3.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.IntegerInput3.ButtonCustom2.Text = resources.GetString("IntegerInput3.ButtonCustom2.Text")
-        Me.IntegerInput3.ButtonCustom2.Tooltip = resources.GetString("IntegerInput3.ButtonCustom2.Tooltip")
-        Me.IntegerInput3.ButtonDropDown.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonDropDown.DisplayPosition"), Integer)
-        Me.IntegerInput3.ButtonDropDown.Image = CType(resources.GetObject("IntegerInput3.ButtonDropDown.Image"), System.Drawing.Image)
-        Me.IntegerInput3.ButtonDropDown.Text = resources.GetString("IntegerInput3.ButtonDropDown.Text")
-        Me.IntegerInput3.ButtonDropDown.Tooltip = resources.GetString("IntegerInput3.ButtonDropDown.Tooltip")
-        Me.IntegerInput3.ButtonFreeText.DisplayPosition = CType(resources.GetObject("IntegerInput3.ButtonFreeText.DisplayPosition"), Integer)
-        Me.IntegerInput3.ButtonFreeText.Image = CType(resources.GetObject("IntegerInput3.ButtonFreeText.Image"), System.Drawing.Image)
         Me.IntegerInput3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput3.ButtonFreeText.Text = resources.GetString("IntegerInput3.ButtonFreeText.Text")
-        Me.IntegerInput3.ButtonFreeText.Tooltip = resources.GetString("IntegerInput3.ButtonFreeText.Tooltip")
         Me.IntegerInput3.MaxValue = 65535
         Me.IntegerInput3.MinValue = -65535
         Me.IntegerInput3.Name = "IntegerInput3"
@@ -250,8 +178,8 @@ Partial Class TrajectoryEditor
         '
         'ButtonX1
         '
-        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX1.FocusCuesEnabled = False
         Me.ButtonX1.Name = "ButtonX1"
@@ -263,8 +191,8 @@ Partial Class TrajectoryEditor
         '
         'ButtonX2
         '
-        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
         Me.ButtonX2.Name = "ButtonX2"
@@ -276,8 +204,8 @@ Partial Class TrajectoryEditor
         '
         'ButtonX3
         '
-        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX3.FocusCuesEnabled = False
         Me.ButtonX3.Name = "ButtonX3"
@@ -285,8 +213,8 @@ Partial Class TrajectoryEditor
         '
         'ButtonX4
         '
-        resources.ApplyResources(Me.ButtonX4, "ButtonX4")
         Me.ButtonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX4, "ButtonX4")
         Me.ButtonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX4.FocusCuesEnabled = False
         Me.ButtonX4.Name = "ButtonX4"
@@ -334,17 +262,17 @@ Partial Class TrajectoryEditor
         '
         'ButtonX5
         '
-        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX5.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.Name = "ButtonX5"
         Me.ButtonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ButtonX6
         '
-        resources.ApplyResources(Me.ButtonX6, "ButtonX6")
         Me.ButtonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX6, "ButtonX6")
         Me.ButtonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX6.FocusCuesEnabled = False
         Me.ButtonX6.Name = "ButtonX6"
@@ -355,8 +283,8 @@ Partial Class TrajectoryEditor
         '
         'ButtonX7
         '
-        resources.ApplyResources(Me.ButtonX7, "ButtonX7")
         Me.ButtonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX7, "ButtonX7")
         Me.ButtonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX7.FocusCuesEnabled = False
         Me.ButtonX7.Name = "ButtonX7"
@@ -367,8 +295,8 @@ Partial Class TrajectoryEditor
         '
         'ButtonX8
         '
-        resources.ApplyResources(Me.ButtonX8, "ButtonX8")
         Me.ButtonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX8, "ButtonX8")
         Me.ButtonX8.AutoExpandOnClick = True
         Me.ButtonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX8.FocusCuesEnabled = False

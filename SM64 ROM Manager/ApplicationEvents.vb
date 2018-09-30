@@ -10,17 +10,13 @@ Namespace My
     ' NetworkAvailabilityChanged: Wird beim Herstellen oder Trennen der Netzwerkverbindung ausgelöst.
 
     Partial Friend Class MyApplication
+
+        Private Sub OnAppStart(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
+            AddHandler TextValueConverter.WantIntegerValueMode, Sub(ee) ee.IntegerValueMode = SM64_ROM_Manager.SettingsManager.Settings.General.IntegerValueMode
+        End Sub
+
         Private Sub OnErrorMessage(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
             If Debugger.IsAttached Then Return
-
-            'Dim dialogInfo As New TaskDialogInfo With {
-            '    .DialogButtons = eTaskDialogButton.Ok Or eTaskDialogButton.Close,
-            '    .Header = "Unknown Error happend",
-            '    .Title = "Unknown Error",
-            '    .Text = "Sorry, but an unknown error has been detected.<br/>Please tell this error the developer. Explain how this message happend.<br/><br/>Click to <u>Ok</u> to continue with the application <i>(not recommed</i> or click to <u>Close</u> to close the application <i>(recommed)</i>.",
-            '    .TaskDialogIcon = eTaskDialogIcon.Exclamation}
-
-            'If TaskDialog.Show(dialogInfo) = eTaskDialogResult.Close Then End
 
             Dim frm As New Form_ErrorDialog
             frm.ErrorText = e.Exception.Message & vbNewLine & vbNewLine & e.Exception.StackTrace
@@ -29,5 +25,7 @@ Namespace My
 
             e.ExitApplication = frm.ExitApplicaiton
         End Sub
+
     End Class
+
 End Namespace

@@ -54,7 +54,7 @@ Namespace Global.SM64Lib.Levels.ScrolTex
         ''' Indicates the scroll behavior.
         ''' </summary>
         ''' <returns></returns>
-        <DisplayName("Behavior")>
+        <DisplayName("Type")>
         <Description("Indicates the scroll type.")>
         <Category("Behavior")>
         Public Property Type As ScrollType = ScrollType.NormalScrolling
@@ -63,18 +63,18 @@ Namespace Global.SM64Lib.Levels.ScrolTex
         ''' The Scrolling Speed per Frame (less then 0x1000).
         ''' </summary>
         ''' <returns></returns>
-        <DisplayName("Params")>
+        <DisplayName("Scrolling Speed")>
         <Description("The Scrolling Speed per Frame (less then 0x1000).")>
-        <Category("Data")>
+        <Category("Params")>
         Public Property ScrollingSpeed As Int16 = 60
 
         ''' <summary>
         ''' Indicates the duration of a cycle in frames.
         ''' </summary>
         ''' <returns></returns>
-        <DisplayName("Params")>
+        <DisplayName("Cycle Duration")>
         <Description("Cycle duration of the sine wave or jumpy scrolling in frames.")>
-        <Category("Pointer")>
+        <Category("Params")>
         Public Property CycleDuration As Byte = 20
 
         ''' <summary>
@@ -92,7 +92,7 @@ Namespace Global.SM64Lib.Levels.ScrolTex
         ''' <returns></returns>
         <DisplayName("Vertex Data")>
         <Description("Pointer to the vertices.")>
-        <Category("Pointer")>
+        <Category("Data")>
         Public Property VertexPointer As Integer = 0
 
         <DisplayName("Act 1")>

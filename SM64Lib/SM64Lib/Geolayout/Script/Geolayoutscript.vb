@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms
+Imports SM64Lib.Data
 
 Namespace Global.SM64Lib.Geolayout.Script
     Public Class Geolayoutscript
@@ -17,16 +18,16 @@ Namespace Global.SM64Lib.Geolayout.Script
         End Function
 
         Public Sub Read(rommgr As RomManager, segAddress As Integer)
-            Me.Close()
-            Me.Clear()
+            Close()
+            Clear()
             GeopointerOffsets.Clear()
 
             Dim segBank As SegmentedBank = rommgr.GetSegBank(segAddress >> 24)
             If segBank Is Nothing Then Return
             segBank.ReadDataIfNull(rommgr.RomFile)
-            Dim br As New BinaryReader(segBank.Data)
+            Dim data As New BinaryStreamData(segBank.Data)
 
-            segBank.Data.Position = segBank.BankOffsetFromSegAddr(segAddress)
+            data.Position = segBank.BankOffsetFromSegAddr(segAddress)
             Dim tb As New List(Of Byte)
             Dim cb As GeolayoutCommandTypes = Nothing
             Dim subNodeIndex As Integer = 0
@@ -34,8 +35,8 @@ Namespace Global.SM64Lib.Geolayout.Script
 
             Do Until ende
 
-                If segBank.Data.Position >= segBank.Data.Length Then Exit Do
-                cb = br.ReadByte
+                If data.Position >= data.Length Then Exit Do
+                cb = data.ReadByte
                 Dim lenth As Byte = 0
 
                 Select Case cb
@@ -56,7 +57,7 @@ Namespace Global.SM64Lib.Geolayout.Script
                     Case GeolayoutCommandTypes.BillboardModel : lenth = &H8
                     Case GeolayoutCommandTypes.BranchAndStore : lenth = &H8
                     Case GeolayoutCommandTypes.x0A
-                        Select Case br.ReadByte
+                        Select Case data.ReadByte
                             Case &H1 : lenth = &HC
                             Case Else : lenth = &H8
                         End Select : segBank.Data.Position -= 1
@@ -82,14 +83,14 @@ Namespace Global.SM64Lib.Geolayout.Script
                 End If
 
                 For i As Integer = 1 To lenth
-                    tb.Add(br.ReadByte)
+                    tb.Add(data.ReadByte)
                 Next
 
                 Dim tCommand = New GeolayoutCommand(tb.ToArray)
                 Dim bankOffset As Integer = segBank.Data.Position - lenth
                 tCommand.RomAddress = segBank.RomStart + bankOffset
                 tCommand.BankAddress = segBank.BankAddress + bankOffset
-                Me.Add(tCommand)
+                Add(tCommand)
 
                 tb.Clear()
 

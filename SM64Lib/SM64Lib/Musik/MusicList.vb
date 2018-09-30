@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports SM64Lib.Data
 
 Namespace Global.SM64Lib.Music
 
@@ -29,10 +30,11 @@ Namespace Global.SM64Lib.Music
             fs.Close()
         End Sub
         Public Sub Read(s As Stream)
-            Dim br As New BinaryReader(s)
-
+            Read(New BinaryStreamData(s))
+        End Sub
+        Public Sub Read(s As BinaryData)
             s.Position = &H1210002
-            Dim musicCount As Int16 = SwapInts.SwapInt16(br.ReadInt16)
+            Dim musicCount As Int16 = s.ReadInt16
 
             'Read NInsts
             Dim tNInstList() As InstrumentSetList = ReadNInsts(s, &H7F0000, musicCount)
@@ -47,19 +49,17 @@ Namespace Global.SM64Lib.Music
             'Check for Music Hack
             Dim needUpdateChecksum As Boolean = False
             s.Position = &HD213A
-            Dim t001 = SwapInts.SwapUInt16(br.ReadUInt16)
+            Dim t001 = s.ReadUInt16
             s.Position = &HD213E
-            Dim t002 = SwapInts.SwapUInt16(br.ReadUInt16)
+            Dim t002 = s.ReadUInt16
             EnableMusicHack = t001 = &H807C And t002 = &H0
         End Sub
 
-        Private Shared Function ReadNInsts(s As Stream, TableStart As Integer, Count As Int16) As InstrumentSetList()
-            Dim br As New BinaryReader(s)
-
+        Private Shared Function ReadNInsts(s As BinaryData, TableStart As Integer, Count As Int16) As InstrumentSetList()
             Dim tNInstList As New List(Of InstrumentSetList)
             s.Position = TableStart
             For i As Integer = 0 To Count - 1
-                Dim startoff As UShort = SwapInts.SwapUInt16(br.ReadUInt16())
+                Dim startoff As UShort = s.ReadUInt16()
 
                 Dim n As New InstrumentSetList
                 tNInstList.Add(n)
@@ -71,30 +71,27 @@ Namespace Global.SM64Lib.Music
 
             Return tNInstList.ToArray
         End Function
-        Private Shared Function ReadSequenceNames(s As Stream, RomAddress As Integer, Count As Integer) As String()
-            Dim br As New BinaryReader(s)
-
+        Private Shared Function ReadSequenceNames(s As BinaryData, RomAddress As Integer, Count As Integer) As String()
             s.Position = RomAddress
             Dim tNames As New List(Of String)
+
             For i As Integer = 0 To Count - 1
-                If br.ReadByte() = &HFF Then
+                If s.ReadByte = &HFF Then
                     s.Position -= 1
                 Else
                     s.Position -= 1
-                    tNames.Add(br.ReadString)
+                    tNames.Add(s.ReadString)
                 End If
             Next
 
             Return tNames.ToArray
         End Function
-        Private Shared Function ReadSequences(s As Stream, TableStart As Integer, Count As Integer, tNInstList As InstrumentSetList(), tNames As String()) As MusicSequence()
-            Dim br As New BinaryReader(s)
-
+        Private Shared Function ReadSequences(s As BinaryData, TableStart As Integer, Count As Integer, tNInstList As InstrumentSetList(), tNames As String()) As MusicSequence()
             s.Position = TableStart + 4
             Dim tSequences As New List(Of MusicSequence)
             For i As Integer = 0 To Count - 1
-                Dim startoff As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
-                Dim len As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                Dim startoff As UInteger = s.ReadUInt32
+                Dim len As UInteger = s.ReadUInt32
 
                 Dim ms As New MusicSequence
                 tSequences.Add(ms)
@@ -116,11 +113,12 @@ Namespace Global.SM64Lib.Music
             fs.Close()
         End Sub
         Public Shared Sub Prepaire(s As Stream)
-            Dim bw As New BinaryWriter(s)
-            Dim br As New BinaryReader(s)
+            Prepaire(New BinaryStreamData(s))
+        End Sub
+        Public Shared Sub Prepaire(s As BinaryData)
 
             s.Position = &H7B0863
-            Dim musicCount As Byte = br.ReadByte
+            Dim musicCount As Byte = s.ReadByte
 
             'Set original Names
             Dim tNames As String() = {
@@ -164,7 +162,7 @@ Namespace Global.SM64Lib.Music
             Dim tSequences As MusicSequence() = ReadSequences(s, &H7B0860, musicCount, {}, tNames)
 
             s.Position = &HDC0B8
-            bw.Write(SwapInts.SwapUInt32(0))
+            s.Write(0)
 
             'Write sequences to the new Position
             WriteSequences(s, addrMusicStart, tSequences, True)
@@ -177,53 +175,53 @@ Namespace Global.SM64Lib.Music
 
             'Edit ASM-Code to load from the new location
             s.Position = &H7B085F
-            bw.Write(17)
+            s.Write(17)
             s.Position = &HD4714
-            bw.Write(SwapInts.SwapUInt32(&H3C040121))
+            s.Write(&H3C040121)
             s.Position = &HD471C
-            bw.Write(SwapInts.SwapUInt32(&H24840000))
+            s.Write(&H24840000)
             s.Position = &HD4768
-            bw.Write(SwapInts.SwapUInt32(&H3C040121))
+            s.Write(&H3C040121)
             s.Position = &HD4770
-            bw.Write(SwapInts.SwapUInt32(&H24840000))
+            s.Write(&H24840000)
             s.Position = &HD4784
-            bw.Write(SwapInts.SwapUInt32(&H3C050121))
+            s.Write(&H3C050121)
             s.Position = &HD4788
-            bw.Write(SwapInts.SwapUInt32(&H24A50000))
+            s.Write(&H24A50000)
             s.Position = &HD48B4
-            bw.Write(SwapInts.SwapUInt32(&H3C02807C))
+            s.Write(&H3C02807C)
             s.Position = &HD48B8
-            bw.Write(SwapInts.SwapUInt32(&H34420000))
+            s.Write(&H34420000)
 
             'Edit ASM-Code to load from new location
             s.Position = &HD48C6
-            bw.Write(SwapInts.SwapInt16(&H7F))
+            s.Write(CShort(&H7F))
             s.Position = &HD48CC
-            bw.Write(SwapInts.SwapUInt32(&H34840000))
+            s.Write(&H34840000)
             s.Position = &HD48DA
-            bw.Write(SwapInts.SwapInt16(&H200))
+            s.Write(CShort(&H200))
 
             'Check for Music Hack
             s.Position = &HD213A
-            Dim t001 = SwapInts.SwapUInt16(br.ReadUInt16)
+            Dim t001 = s.ReadUInt16
             s.Position = &HD213E
-            Dim t002 = SwapInts.SwapUInt16(br.ReadUInt16)
+            Dim t002 = s.ReadUInt16
 
             If t001 = &H805D And t002 = &HC000 Then
                 s.Position = &HD213A
-                bw.Write(SwapInts.SwapUInt16(&H807C))
+                s.Write(CUShort(&H807C))
                 s.Position = &HD213E
-                bw.Write(SwapInts.SwapUInt16(&H0))
+                s.Write(CUShort(&H0))
                 s.Position = &HD215A
-                bw.Write(SwapInts.SwapUInt16(&H807C))
+                s.Write(CUShort(&H807C))
                 s.Position = &HD215E
-                bw.Write(SwapInts.SwapUInt16(&H0))
+                s.Write(CUShort(&H0))
                 s.Position = &HD459A
-                bw.Write(SwapInts.SwapUInt16(&H807C))
+                s.Write(CUShort(&H807C))
                 s.Position = &HD459E
-                bw.Write(SwapInts.SwapUInt16(&H0))
+                s.Write(CUShort(&H0))
                 s.Position = &HEE2B0
-                bw.Write(SwapInts.SwapUInt32(&HBD00))
+                s.Write(CUInt(&HBD00))
             End If
 
         End Sub
@@ -234,28 +232,29 @@ Namespace Global.SM64Lib.Music
             fs.Close()
         End Sub
         Public Sub Write(s As Stream, ByRef lastPosition As Integer)
-            Dim bw As New BinaryWriter(s)
-
+            Write(New BinaryStreamData(s), lastPosition)
+        End Sub
+        Public Sub Write(s As BinaryData, ByRef lastPosition As Integer)
             'Enable/Disable Music Hack
             If NeedToSaveMusicHackSettings Then
                 s.Position = &HD213A
-                bw.Write(SwapInts.SwapUInt16(If(EnableMusicHack, &H807C, &H801D)))
+                s.Write(CUShort(If(EnableMusicHack, &H807C, &H801D)))
                 s.Position = &HD213E
-                bw.Write(SwapInts.SwapUInt16(If(EnableMusicHack, &H0, &HE000)))
+                s.Write(CUShort(If(EnableMusicHack, &H0, &HE000)))
                 s.Position = &HD215A
-                bw.Write(SwapInts.SwapUInt16(If(EnableMusicHack, &H807C, &H801D)))
+                s.Write(CUShort(If(EnableMusicHack, &H807C, &H801D)))
                 s.Position = &HD215E
-                bw.Write(SwapInts.SwapUInt16(If(EnableMusicHack, &H0, &HE000)))
+                s.Write(CUShort(If(EnableMusicHack, &H0, &HE000)))
                 s.Position = &HD459A
-                bw.Write(SwapInts.SwapUInt16(If(EnableMusicHack, &H807C, &H801D)))
+                s.Write(CUShort(If(EnableMusicHack, &H807C, &H801D)))
                 s.Position = &HD459E
-                bw.Write(SwapInts.SwapUInt16(If(EnableMusicHack, &H0, &HE000)))
+                s.Write(CUShort(If(EnableMusicHack, &H0, &HE000)))
                 s.Position = &HEE2B0
-                bw.Write(SwapInts.SwapUInt32(If(EnableMusicHack, &HBD00, &H6D00)))
+                s.Write(CUInt(If(EnableMusicHack, &HBD00, &H6D00)))
                 s.Position = &HD48B4
-                bw.Write(SwapInts.SwapUInt32(If(EnableMusicHack, &H3C02803D, &H3C02807C)))
+                s.Write(CUInt(If(EnableMusicHack, &H3C02803D, &H3C02807C)))
                 s.Position = &HD48B8
-                bw.Write(SwapInts.SwapUInt32(If(EnableMusicHack, &H34420000, &H34420000)))
+                s.Write(CUInt(If(EnableMusicHack, &H34420000, &H34420000)))
             End If
 
             Dim arrMe() As MusicSequence = Me.ToArray
@@ -280,23 +279,19 @@ Namespace Global.SM64Lib.Music
             NeedToSaveMusicHackSettings = False
         End Sub
 
-        Private Shared Sub WriteSequenceNames(s As Stream, TableStart As Integer, sequences As MusicSequence())
-            Dim bw As New BinaryWriter(s)
-
+        Private Shared Sub WriteSequenceNames(s As BinaryData, TableStart As Integer, sequences As MusicSequence())
             s.Position = TableStart
             For Each ms As MusicSequence In sequences
-                bw.Write(ms.Name)
+                s.Write(ms.Name)
             Next
         End Sub
 
-        Private Shared Sub WriteNInst(s As Stream, TableStart As Integer, sequences As MusicSequence())
-            Dim bw As New BinaryWriter(s)
-
+        Private Shared Sub WriteNInst(s As BinaryData, TableStart As Integer, sequences As MusicSequence())
             s.Position = TableStart
             Dim lastNInstDataOffset As Integer = TableStart + sequences.Length * 2
 
             For Each ms As MusicSequence In sequences
-                bw.Write(SwapInts.SwapUInt16(lastNInstDataOffset - TableStart))
+                s.Write(CUShort(lastNInstDataOffset - TableStart))
 
                 Dim lastOff As Integer = s.Position
                 ms.InstrumentSets.WriteNInst(s, lastNInstDataOffset)
@@ -305,19 +300,17 @@ Namespace Global.SM64Lib.Music
             Next
         End Sub
 
-        Private Shared Function WriteSequences(s As Stream, TableStart As Integer, sequences As MusicSequence(), WriteData As Boolean) As Integer
-            Dim bw As New BinaryWriter(s)
-
+        Private Shared Function WriteSequences(s As BinaryData, TableStart As Integer, sequences As MusicSequence(), WriteData As Boolean) As Integer
             s.Position = TableStart
-            bw.Write(SwapInts.SwapInt16(3))
-            bw.Write(SwapInts.SwapInt16(sequences.Length))
+            s.Write(CShort(3))
+            s.Write(CShort(sequences.Length))
 
             'Write sequences to the new Position
             Dim curMsDataOff As Integer = HexRoundUp1(TableStart + 4 + sequences.Length * &H8)
             For Each ms As MusicSequence In sequences
                 If WriteData Then
-                    bw.Write(SwapInts.SwapUInt32(curMsDataOff - TableStart))
-                    bw.Write(SwapInts.SwapUInt32(ms.Lenght))
+                    s.Write(CUInt(curMsDataOff - TableStart))
+                    s.Write(CUInt(ms.Lenght))
 
                     Dim lastOff As Integer = s.Position
                     ms.WriteData(s, curMsDataOff)

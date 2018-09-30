@@ -49,18 +49,18 @@ Partial Class ModelImporter
         Me.TextBoxX2 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.SuperTooltip1 = New DevComponents.DotNetBar.SuperTooltip()
         Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonX2 = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.LabelX_Description = New DevComponents.DotNetBar.LabelX()
         Me.LabelX_PatchName = New DevComponents.DotNetBar.LabelX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX6 = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX4 = New DevComponents.DotNetBar.ButtonX()
         Me.Flyout1 = New DevComponents.DotNetBar.Controls.Flyout(Me.components)
-        Me.ButtonX2 = New DevComponents.DotNetBar.ButtonX()
-        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -441,6 +441,44 @@ Partial Class ModelImporter
         Me.ButtonX3.SymbolSize = 12.0!
         Me.ButtonX3.TabIndex = 39
         '
+        'ButtonX2
+        '
+        Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
+        Me.ButtonX2.FocusCuesEnabled = False
+        Me.ButtonX2.Location = New System.Drawing.Point(112, 3)
+        Me.ButtonX2.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.ButtonX2.Name = "ButtonX2"
+        Me.ButtonX2.Size = New System.Drawing.Size(115, 20)
+        Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX2, New DevComponents.DotNetBar.SuperTooltipInfo("", "", "Edit Name & Description", Nothing, Nothing, DevComponents.DotNetBar.eTooltipColor.Gray, False, False, New System.Drawing.Size(0, 0)))
+        Me.ButtonX2.Symbol = "57680"
+        Me.ButtonX2.SymbolColor = System.Drawing.Color.Goldenrod
+        Me.ButtonX2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonX2.SymbolSize = 12.0!
+        Me.ButtonX2.TabIndex = 45
+        Me.ButtonX2.Text = "Edit Preset Info"
+        '
+        'ButtonX1
+        '
+        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
+        Me.ButtonX1.FocusCuesEnabled = False
+        Me.ButtonX1.Location = New System.Drawing.Point(112, 29)
+        Me.ButtonX1.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.ButtonX1.Name = "ButtonX1"
+        Me.ButtonX1.Size = New System.Drawing.Size(95, 20)
+        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX1, New DevComponents.DotNetBar.SuperTooltipInfo("", "", "Edit Name & Description", Nothing, Nothing, DevComponents.DotNetBar.eTooltipColor.Gray, False, False, New System.Drawing.Size(0, 0)))
+        Me.ButtonX1.Symbol = "57697"
+        Me.ButtonX1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.ButtonX1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonX1.SymbolSize = 12.0!
+        Me.ButtonX1.TabIndex = 46
+        Me.ButtonX1.Text = "Save Preset"
+        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
@@ -536,23 +574,6 @@ Partial Class ModelImporter
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(236, 52)
         Me.TableLayoutPanel1.TabIndex = 47
         '
-        'ButtonX7
-        '
-        Me.ButtonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.ButtonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
-        Me.ButtonX7.FocusCuesEnabled = False
-        Me.ButtonX7.Location = New System.Drawing.Point(3, 29)
-        Me.ButtonX7.Name = "ButtonX7"
-        Me.ButtonX7.Size = New System.Drawing.Size(103, 20)
-        Me.ButtonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX7.Symbol = "57676"
-        Me.ButtonX7.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.ButtonX7.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonX7.SymbolSize = 12.0!
-        Me.ButtonX7.TabIndex = 45
-        Me.ButtonX7.Text = "Delete Preset"
-        '
         'ButtonX6
         '
         Me.ButtonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -569,6 +590,23 @@ Partial Class ModelImporter
         Me.ButtonX6.SymbolSize = 12.0!
         Me.ButtonX6.TabIndex = 44
         Me.ButtonX6.Text = "Edit Script"
+        '
+        'ButtonX7
+        '
+        Me.ButtonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButtonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
+        Me.ButtonX7.FocusCuesEnabled = False
+        Me.ButtonX7.Location = New System.Drawing.Point(3, 29)
+        Me.ButtonX7.Name = "ButtonX7"
+        Me.ButtonX7.Size = New System.Drawing.Size(103, 20)
+        Me.ButtonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX7.Symbol = "57676"
+        Me.ButtonX7.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ButtonX7.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonX7.SymbolSize = 12.0!
+        Me.ButtonX7.TabIndex = 45
+        Me.ButtonX7.Text = "Delete Preset"
         '
         'ButtonX4
         '
@@ -591,44 +629,6 @@ Partial Class ModelImporter
         Me.Flyout1.DisplayMode = DevComponents.DotNetBar.Controls.eFlyoutDisplayMode.MouseHover
         Me.Flyout1.DropShadow = False
         Me.Flyout1.TargetControl = Me.ComboBoxEx2
-        '
-        'ButtonX2
-        '
-        Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
-        Me.ButtonX2.FocusCuesEnabled = False
-        Me.ButtonX2.Location = New System.Drawing.Point(112, 3)
-        Me.ButtonX2.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.ButtonX2.Name = "ButtonX2"
-        Me.ButtonX2.Size = New System.Drawing.Size(115, 20)
-        Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX2, New DevComponents.DotNetBar.SuperTooltipInfo("", "", "Edit Name & Description", Nothing, Nothing, DevComponents.DotNetBar.eTooltipColor.Gray, False, False, New System.Drawing.Size(0, 0)))
-        Me.ButtonX2.Symbol = "57680"
-        Me.ButtonX2.SymbolColor = System.Drawing.Color.Goldenrod
-        Me.ButtonX2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonX2.SymbolSize = 12.0!
-        Me.ButtonX2.TabIndex = 45
-        Me.ButtonX2.Text = "Edit Preset Info"
-        '
-        'ButtonX1
-        '
-        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
-        Me.ButtonX1.FocusCuesEnabled = False
-        Me.ButtonX1.Location = New System.Drawing.Point(112, 29)
-        Me.ButtonX1.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Size = New System.Drawing.Size(95, 20)
-        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX1, New DevComponents.DotNetBar.SuperTooltipInfo("", "", "Edit Name & Description", Nothing, Nothing, DevComponents.DotNetBar.eTooltipColor.Gray, False, False, New System.Drawing.Size(0, 0)))
-        Me.ButtonX1.Symbol = "57697"
-        Me.ButtonX1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ButtonX1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonX1.SymbolSize = 12.0!
-        Me.ButtonX1.TabIndex = 46
-        Me.ButtonX1.Text = "Save Preset"
         '
         'ModelImporter
         '

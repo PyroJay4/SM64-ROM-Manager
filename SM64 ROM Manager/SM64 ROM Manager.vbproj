@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <LangVersion>15.5</LangVersion>
+    <LangVersion>latest</LangVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -138,15 +138,12 @@
     <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoUpdater.NET, Version=1.4.10.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autoupdater.NET.Official.1.4.10\lib\net40\AutoUpdater.NET.dll</HintPath>
-    </Reference>
     <Reference Include="Ben.Demystifier, Version=0.1.0.0, Culture=neutral, PublicKeyToken=a6d206e05440431a, processorArchitecture=MSIL">
       <HintPath>..\packages\Ben.Demystifier.0.1.1\lib\net45\Ben.Demystifier.dll</HintPath>
     </Reference>
-    <Reference Include="DevComponents.DotNetBar.Layout, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
-    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
-    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.Layout, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="FastColoredTextBox">
       <HintPath>..\..\..\..\Desktop\FastColoredTextBox-master\FastColoredTextBox\bin\Release\FastColoredTextBox.dll</HintPath>
     </Reference>
@@ -182,8 +179,8 @@
       <HintPath>..\packages\PaintingControls.1.0.0\lib\net45\PaintingControls.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="SharpDX, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.4.1.0\lib\net45\SharpDX.dll</HintPath>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.DirectInput, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.DirectInput.4.1.0\lib\net45\SharpDX.DirectInput.dll</HintPath>
@@ -197,6 +194,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Net" />
@@ -207,6 +205,9 @@
       <HintPath>..\packages\System.Reflection.Metadata.1.6.0\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -226,22 +227,24 @@
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
+    <Import Include="TextValueConverter" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="RomManager\GUI\Area Editor\AdvPropGrid_BehaviorManager.vb" />
     <Compile Include="RomManager\GUI\Area Editor\Managed3DObject.vb" />
     <Compile Include="RomManager\GUI\Area Editor\ManagedInstantWarp.vb" />
     <Compile Include="RomManager\GUI\Area Editor\ManagedWarp.vb" />
-    <Compile Include="RomManager\GUI\Custom Banks\CustomBankManager.Designer.vb">
+    <Compile Include="RomManager\GUI\Tools\CustomBankManager.Designer.vb">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Custom Banks\CustomBankManager.vb">
+    <Compile Include="RomManager\GUI\Tools\CustomBankManager.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\ImportLevelDialog.Designer.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\ImportLevelDialog.Designer.vb">
       <DependentUpon>ImportLevelDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\ImportLevelDialog.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\ImportLevelDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Main Form\ApplyStyleMgrStyle.Designer.vb">
@@ -280,14 +283,26 @@
     <Compile Include="RomManager\GUI\Main Form\Tab_TextManager.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexEditor.Designer.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Scrolling Texture Editor\ScrollTexEditor.Designer.vb">
       <DependentUpon>ScrollTexEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexEditor.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Scrolling Texture Editor\ScrollTexEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexPropertyClass.vb" />
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Scrolling Texture Editor\ScrollTexPropertyClass.vb" />
     <Compile Include="RomManager\GUI\Settings\LevelEditorInputSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\ItemBoxContentEditor.Designer.vb">
+      <DependentUpon>ItemBoxContentEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\ItemBoxContentEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\StarPositionEditor.Designer.vb">
+      <DependentUpon>StarPositionEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\StarPositionEditor.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Trajectory Editor\TrajectoryEditor.Designer.vb">
@@ -325,10 +340,10 @@
     </Compile>
     <Compile Include="RomManager\Components\PropertyValueEditors.vb" />
     <Compile Include="RomManager\Components\TypeConverters.vb" />
-    <Compile Include="RomManager\GUI\Level Manager\ValueInputDialog.Designer.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\ValueInputDialog.Designer.vb">
       <DependentUpon>ValueInputDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\ValueInputDialog.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\ValueInputDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Script\ScriptDumper.Designer.vb">
@@ -358,10 +373,10 @@
     <Compile Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_SelectImportModelFormat.Designer.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.Designer.vb">
       <DependentUpon>Form_SelectImportModelFormat.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_SelectImportModelFormat.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Components\LM Custom ListViewItems.vb" />
@@ -377,22 +392,22 @@
     <Compile Include="RomManager\GUI\Settings\Form_Settings.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_AddSpecialItem.Designer.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_AddSpecialItem.Designer.vb">
       <DependentUpon>Form_AddSpecialItem.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_AddSpecialItem.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_AddSpecialItem.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_AddNewLevel.Designer.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_AddNewLevel.Designer.vb">
       <DependentUpon>Form_AddNewLevel.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_AddNewLevel.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_AddNewLevel.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_SetUpRGBA.Designer.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SetUpRGBA.Designer.vb">
       <DependentUpon>Form_SetUpRGBA.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_SetUpRGBA.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SetUpRGBA.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Components\ListBoxCustomModelItem.Designer.vb">
@@ -416,10 +431,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_SetUpPoint.Designer.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SetUpPoint.Designer.vb">
       <DependentUpon>Form_SetUpPoint.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Level Manager\Form_SetUpPoint.vb">
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SetUpPoint.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.Designer.vb">
@@ -438,10 +453,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="RomManager\GUI\Custom Banks\CustomBankManager.resx">
+    <EmbeddedResource Include="RomManager\GUI\Tools\CustomBankManager.resx">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager\ImportLevelDialog.resx">
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\ImportLevelDialog.resx">
       <DependentUpon>ImportLevelDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\ApplyStyleMgrStyle.resx">
@@ -474,7 +489,7 @@
     <EmbeddedResource Include="RomManager\GUI\Main Form\Tab_TextManager.resx">
       <DependentUpon>Tab_TextManager.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Scrolling Texture Editor\ScrollTexEditor.resx">
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Scrolling Texture Editor\ScrollTexEditor.resx">
       <DependentUpon>ScrollTexEditor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Settings\Form_Settings.de.resx">
@@ -491,6 +506,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.de.resx">
       <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\ItemBoxContentEditor.de.resx">
+      <DependentUpon>ItemBoxContentEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\ItemBoxContentEditor.resx">
+      <DependentUpon>ItemBoxContentEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\StarPositionEditor.de.resx">
+      <DependentUpon>StarPositionEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\StarPositionEditor.resx">
+      <DependentUpon>StarPositionEditor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Trajectory Editor\TrajectoryEditor.de.resx">
       <DependentUpon>TrajectoryEditor.vb</DependentUpon>
@@ -522,7 +549,7 @@
       <DependentUpon>Form_AreaEditor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager\ValueInputDialog.resx">
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\ValueInputDialog.resx">
       <DependentUpon>ValueInputDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Script\ScriptDumper.resx">
@@ -537,20 +564,20 @@
     <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.resx">
       <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_SelectImportModelFormat.resx">
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.resx">
       <DependentUpon>Form_SelectImportModelFormat.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_About.resx">
       <DependentUpon>Form_About.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_AddNewLevel.resx">
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Form_AddNewLevel.resx">
       <DependentUpon>Form_AddNewLevel.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_AddSpecialItem.resx">
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Form_AddSpecialItem.resx">
       <DependentUpon>Form_AddSpecialItem.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_SetUpRGBA.resx">
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Form_SetUpRGBA.resx">
       <DependentUpon>Form_SetUpRGBA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -559,7 +586,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Level Manager\Form_SetUpPoint.resx">
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Form_SetUpPoint.resx">
       <DependentUpon>Form_SetUpPoint.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Settings\Form_Settings.resx">
@@ -603,6 +630,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\ApplyPPF\ApplyPPF.vbproj">
+      <Project>{34873a8f-d8df-4c98-b290-2ee3e64aea1f}</Project>
+      <Name>ApplyPPF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LIBMIO0\LIBMIO0.csproj">
       <Project>{e4cec3b1-5778-4d63-8c97-c95153cdc052}</Project>
       <Name>LIBMIO0</Name>

@@ -126,6 +126,7 @@ Public Class Tab_MusicManager
                 If ListBoxAdv_MS_MusicSequences.Items.Count > 0 Then _
                     newItem = ListBoxAdv_MS_MusicSequences.Items(ListBoxAdv_MS_MusicSequences.Items.Count - 1)
                 ListBoxAdv_MS_MusicSequences.SelectedItem = newItem
+                ListBoxAdv_MS_MusicSequences.EnsureVisible(newItem)
             Else
                 ListBoxAdv_MS_MusicSequences_SelectedIndexChanged(ListBoxAdv_MS_MusicSequences, New EventArgs)
             End If

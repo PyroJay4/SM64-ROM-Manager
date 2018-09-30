@@ -46,9 +46,9 @@ Partial Class TweakViewer
         Me.Flyout1 = New DevComponents.DotNetBar.Controls.Flyout(Me.components)
         Me.ItemListBox1 = New Publics.Controls.ItemListBox()
         Me.SuperTooltip1 = New DevComponents.DotNetBar.SuperTooltip()
-        Me.CircularProgress1 = New DevComponents.DotNetBar.Controls.CircularProgress()
         Me.TextBoxX1 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
+        Me.CircularProgress1 = New DevComponents.DotNetBar.Controls.CircularProgress()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -77,7 +77,7 @@ Partial Class TweakViewer
         Me.ButtonX_AddNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonX_AddNew.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_AddNew.FocusCuesEnabled = False
-        Me.ButtonX_AddNew.Location = New System.Drawing.Point(395, 12)
+        Me.ButtonX_AddNew.Location = New System.Drawing.Point(407, 12)
         Me.ButtonX_AddNew.Name = "ButtonX_AddNew"
         Me.ButtonX_AddNew.Size = New System.Drawing.Size(75, 23)
         Me.ButtonX_AddNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -332,9 +332,6 @@ Partial Class TweakViewer
         '
         'ItemListBox1
         '
-        Me.ItemListBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ItemListBox1.AutoScroll = True
         '
         '
@@ -342,13 +339,14 @@ Partial Class TweakViewer
         Me.ItemListBox1.BackgroundStyle.Class = "ItemPanel"
         Me.ItemListBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ItemListBox1.ContainerControlProcessDialogKey = True
+        Me.ItemListBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ItemListBox1.DragDropSupport = True
         Me.ItemListBox1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
         Me.ItemListBox1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.ItemListBox1.Location = New System.Drawing.Point(12, 41)
+        Me.ItemListBox1.Location = New System.Drawing.Point(0, 41)
         Me.ItemListBox1.Name = "ItemListBox1"
         Me.ItemListBox1.ReserveLeftSpace = False
-        Me.ItemListBox1.Size = New System.Drawing.Size(458, 556)
+        Me.ItemListBox1.Size = New System.Drawing.Size(482, 568)
         Me.ItemListBox1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ItemListBox1.TabIndex = 39
         Me.ItemListBox1.Text = "ItemListBox1"
@@ -357,20 +355,6 @@ Partial Class TweakViewer
         '
         Me.SuperTooltip1.DefaultTooltipSettings = New DevComponents.DotNetBar.SuperTooltipInfo("", "", "", Nothing, Nothing, DevComponents.DotNetBar.eTooltipColor.Gray)
         Me.SuperTooltip1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        '
-        'CircularProgress1
-        '
-        '
-        '
-        '
-        Me.CircularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.CircularProgress1.Location = New System.Drawing.Point(255, 267)
-        Me.CircularProgress1.Name = "CircularProgress1"
-        Me.CircularProgress1.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot
-        Me.CircularProgress1.Size = New System.Drawing.Size(75, 75)
-        Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
-        Me.CircularProgress1.TabIndex = 42
-        Me.CircularProgress1.Visible = False
         '
         'TextBoxX1
         '
@@ -382,10 +366,10 @@ Partial Class TweakViewer
         Me.TextBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TextBoxX1.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX1.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxX1.Location = New System.Drawing.Point(12, 13)
+        Me.TextBoxX1.Location = New System.Drawing.Point(0, 13)
         Me.TextBoxX1.Name = "TextBoxX1"
         Me.TextBoxX1.PreventEnterBeep = True
-        Me.TextBoxX1.Size = New System.Drawing.Size(296, 20)
+        Me.TextBoxX1.Size = New System.Drawing.Size(320, 20)
         Me.TextBoxX1.TabIndex = 43
         Me.TextBoxX1.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
         Me.TextBoxX1.WatermarkText = "Search ..."
@@ -396,7 +380,7 @@ Partial Class TweakViewer
         Me.ButtonX7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX7.FocusCuesEnabled = False
-        Me.ButtonX7.Location = New System.Drawing.Point(314, 12)
+        Me.ButtonX7.Location = New System.Drawing.Point(326, 12)
         Me.ButtonX7.Name = "ButtonX7"
         Me.ButtonX7.Size = New System.Drawing.Size(75, 23)
         Me.ButtonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -406,15 +390,29 @@ Partial Class TweakViewer
         Me.ButtonX7.TabIndex = 44
         Me.ButtonX7.Text = "Search"
         '
+        'CircularProgress1
+        '
+        '
+        '
+        '
+        Me.CircularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CircularProgress1.Location = New System.Drawing.Point(204, 267)
+        Me.CircularProgress1.Name = "CircularProgress1"
+        Me.CircularProgress1.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot
+        Me.CircularProgress1.Size = New System.Drawing.Size(75, 75)
+        Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
+        Me.CircularProgress1.TabIndex = 45
+        Me.CircularProgress1.Visible = False
+        '
         'TweakViewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(482, 609)
+        Me.Controls.Add(Me.CircularProgress1)
         Me.Controls.Add(Me.ButtonX7)
         Me.Controls.Add(Me.TextBoxX1)
         Me.Controls.Add(Me.ButtonX_AddNew)
-        Me.Controls.Add(Me.CircularProgress1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ItemListBox1)
         Me.DoubleBuffered = True
@@ -452,8 +450,8 @@ Partial Class TweakViewer
     Friend WithEvents LabelX_Description As DevComponents.DotNetBar.LabelX
     Friend WithEvents ButtonX2 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents CircularProgress1 As DevComponents.DotNetBar.Controls.CircularProgress
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
     Friend WithEvents ButtonX7 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents TextBoxX1 As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents CircularProgress1 As DevComponents.DotNetBar.Controls.CircularProgress
 End Class

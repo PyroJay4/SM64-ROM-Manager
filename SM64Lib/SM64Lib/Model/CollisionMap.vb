@@ -3,6 +3,7 @@ Imports S3DFileParser
 Imports System.Numerics
 Imports System.Windows.Forms
 Imports Extensions
+Imports SM64Lib.Data
 
 Namespace Global.SM64Lib.Model.Collision
 
@@ -26,22 +27,24 @@ Namespace Global.SM64Lib.Model.Collision
         End Function
 
         Public Sub FromStream(s As Stream, RomOffset As Integer)
+            FromBinaryData(New BinaryStreamData(s), RomOffset)
+        End Sub
+        Public Sub FromBinaryData(s As BinaryData, dataOffset As Integer)
             Mesh = New ColMesh
             SpecialBoxes.Clear()
 
-            Dim br As New BinaryReader(s)
-            s.Position = RomOffset
+            s.Position = dataOffset
 
             Do
-                Dim curVal As Int16 = SwapInts.SwapInt16(br.ReadInt16)
+                Dim curVal As Int16 = s.ReadInt16
                 Select Case curVal
                     Case &H40 'S T A R T   O F   V E R T I C E S
                         'Lese Eckpunkte / Read Vertices
-                        For i As Integer = 1 To SwapInts.SwapUInt16(br.ReadUInt16)
+                        For i As Integer = 1 To s.ReadUInt16
                             Dim nVert As New Vertex With {
-                            .X = SwapInts.SwapInt16(br.ReadInt16),
-                            .Y = SwapInts.SwapInt16(br.ReadInt16),
-                            .Z = SwapInts.SwapInt16(br.ReadInt16)}
+                            .X = s.ReadInt16,
+                            .Y = s.ReadInt16,
+                            .Z = s.ReadInt16}
                             Mesh.Vertices.Add(nVert)
                         Next
 
@@ -49,18 +52,18 @@ Namespace Global.SM64Lib.Model.Collision
                         If Mesh.Vertices.Count > 0 Then
                             Dim ende As Boolean = False
                             Do Until ende
-                                Dim Coltype As Int16 = SwapInts.SwapInt16(br.ReadInt16)
+                                Dim Coltype As Int16 = s.ReadInt16
                                 If Not Coltype.IsInRange(&H40, &H44) Then
-                                    For i As Integer = 1 To SwapInts.SwapUInt16(br.ReadUInt16)
+                                    For i As Integer = 1 To s.ReadUInt16
                                         Dim pol As New Triangle With {.CollisionType = Coltype}
 
                                         For iv As Integer = 0 To pol.Vertices.Count - 1
-                                            pol.Vertices(iv) = Mesh.Vertices(SwapInts.SwapInt16(br.ReadInt16))
+                                            pol.Vertices(iv) = Mesh.Vertices(s.ReadInt16)
                                         Next
 
                                         If ColtypesWithParams.Contains(Coltype) Then
                                             For ip As Integer = 0 To pol.ColParams.Count - 1
-                                                pol.ColParams(ip) = br.ReadByte
+                                                pol.ColParams(ip) = s.ReadByte
                                             Next
                                         End If
 
@@ -92,7 +95,7 @@ Namespace Global.SM64Lib.Model.Collision
                 End Select
             Loop
 
-            _Length = s.Position - RomOffset
+            _Length = s.Position - dataOffset
         End Sub
         Public Function FromStreamAsync(s As Stream, RomOffset As Integer) As Task
             Dim t As New Task(Sub() FromStream(s, RomOffset))
@@ -100,18 +103,17 @@ Namespace Global.SM64Lib.Model.Collision
             Return t
         End Function
 
-        Private Shared Function ReadBoxData(s As Stream, type As BoxDataType) As BoxData()
-            Dim br As New BinaryReader(s)
+        Private Shared Function ReadBoxData(s As BinaryData, type As BoxDataType) As BoxData()
             Dim spBoxes As New List(Of BoxData)
-            For i As Integer = 1 To SwapInts.SwapInt16(br.ReadInt16)
+            For i As Integer = 1 To s.ReadInt16
                 Dim wb As New BoxData
-                Dim index As Int16 = SwapInts.SwapInt16(br.ReadInt16)
+                Dim index As Int16 = s.ReadInt16
                 wb.Type = type
-                wb.X1 = SwapInts.SwapInt16(br.ReadInt16)
-                wb.Z1 = SwapInts.SwapInt16(br.ReadInt16)
-                wb.X2 = SwapInts.SwapInt16(br.ReadInt16)
-                wb.Z2 = SwapInts.SwapInt16(br.ReadInt16)
-                wb.Y = SwapInts.SwapInt16(br.ReadInt16)
+                wb.X1 = s.ReadInt16
+                wb.Z1 = s.ReadInt16
+                wb.X2 = s.ReadInt16
+                wb.Z2 = s.ReadInt16
+                wb.Y = s.ReadInt16
                 spBoxes.Add(wb)
             Next
             Return spBoxes.ToArray
@@ -172,9 +174,13 @@ Namespace Global.SM64Lib.Model.Collision
             Return t
         End Function
 
-        Public Sub ToStream(ByRef s As Stream, RomOffset As Integer)
-            Dim bw As New BinaryWriter(s)
-            s.Position = RomOffset
+        Public Sub ToStream(s As Stream, RomOffset As Integer)
+            ToBinaryData(New BinaryStreamData(s), RomOffset)
+        End Sub
+
+        Public Sub ToBinaryData(data As BinaryData, dataOffset As Integer)
+
+            data.Position = dataOffset
 
             For Each mesh As ColMesh In Me.Mesh.SplitMesh
 
@@ -182,14 +188,14 @@ Namespace Global.SM64Lib.Model.Collision
 
                 If mesh.Vertices.Count > 0 Then
                     'Start vertices
-                    bw.Write(SwapInts.SwapInt16(&H40))
-                    bw.Write(SwapInts.SwapUInt16(mesh.Vertices.Count))
+                    data.Write(&H40S)
+                    data.Write(CShort(mesh.Vertices.Count))
 
                     'Write vertices data
                     For Each vert In mesh.Vertices
-                        bw.Write(SwapInts.SwapInt16(vert.X))
-                        bw.Write(SwapInts.SwapInt16(vert.Y))
-                        bw.Write(SwapInts.SwapInt16(vert.Z))
+                        data.Write(vert.X)
+                        data.Write(vert.Y)
+                        data.Write(vert.Z)
                     Next
                 End If
 
@@ -201,10 +207,10 @@ Namespace Global.SM64Lib.Model.Collision
 
                     If tries.Length > 0 Then
                         'Write new collision type
-                        bw.Write(SwapInts.SwapInt16(curType))
+                        data.Write(CShort(curType))
 
                         'Write count of triangles
-                        bw.Write(SwapInts.SwapUInt16(tries.Length))
+                        data.Write(CShort(tries.Length))
 
                         'Check if collisiontype has params
                         Dim hasParams As Boolean = ColtypesWithParams.Contains(curType)
@@ -212,13 +218,13 @@ Namespace Global.SM64Lib.Model.Collision
                         For Each tri As Triangle In tries
                             'Write Vertex Indicies
                             For Each vert As Vertex In tri.Vertices
-                                bw.Write(SwapInts.SwapUInt16(vert.Index))
+                                data.Write(CShort(vert.Index))
                             Next
 
                             'Write Collision Params, if avaiable
                             If hasParams Then
                                 For ip As Integer = 0 To tri.ColParams.Count - 1
-                                    bw.Write(tri.ColParams(ip))
+                                    data.Write(tri.ColParams(ip))
                                 Next
                             End If
                         Next
@@ -227,7 +233,7 @@ Namespace Global.SM64Lib.Model.Collision
 
                 'E N D   0 x 4 0   C O M M A N D
 
-                bw.Write(SwapInts.SwapInt16(&H41))
+                data.Write(&H41S)
 
             Next
 
@@ -238,51 +244,30 @@ Namespace Global.SM64Lib.Model.Collision
             'S P E C I A L   B O X E S
 
             If SpecialBoxes.Count > 0 Then
-                WriteBoxData(s, SpecialBoxes.OrderBy(Function(n) n.Type))
+                WriteBoxData(data, SpecialBoxes.OrderBy(Function(n) n.Type))
             End If
 
             'E N D   C O L L I S I O N   D A T A
 
-            bw.Write(SwapInts.SwapInt16(&H42))
+            data.Write(&H42S)
         End Sub
-        Private Shared Sub WriteBoxData(s As Stream, bodex As IEnumerable(Of BoxData))
-            Dim bw As New BinaryWriter(s)
+        Private Shared Sub WriteBoxData(data As BinaryData, bodex As IEnumerable(Of BoxData))
 
             If bodex.Any Then
-                bw.Write(SwapInts.SwapInt16(&H44))
-                bw.Write(SwapInts.SwapInt16(bodex.Count))
+                data.Write(&H44S)
+                data.Write(CShort(bodex.Count))
 
                 For Each t As BoxDataType In [Enum].GetValues(GetType(BoxDataType))
                     For Each wb In bodex.Where(Function(n) n.Type = t)
-                        bw.Write(SwapInts.SwapInt16(wb.Index))
-                        bw.Write(SwapInts.SwapInt16(wb.X1))
-                        bw.Write(SwapInts.SwapInt16(wb.Z1))
-                        bw.Write(SwapInts.SwapInt16(wb.X2))
-                        bw.Write(SwapInts.SwapInt16(wb.Z2))
-                        bw.Write(SwapInts.SwapInt16(wb.Y))
+                        data.Write(wb.Index)
+                        data.Write(wb.X1)
+                        data.Write(wb.Z1)
+                        data.Write(wb.X2)
+                        data.Write(wb.Z2)
+                        data.Write(wb.Y)
                     Next
                 Next
             End If
-
-            'For Each t As BoxDataType In [Enum].GetValues(GetType(BoxDataType))
-            '    Dim t_boxes As IEnumerable(Of BoxData) = bodex.Where(Function(n) n.Type = t)
-
-            '    If t_boxes.Any Then
-            '        bw.Write(SwapInts.SwapInt16(t))
-            '        bw.Write(SwapInts.SwapInt16(t_boxes.Count))
-
-            '        Dim cWBID As Integer = 0
-            '        For Each wb In t_boxes
-            '            bw.Write(SwapInts.SwapInt16(cWBID))
-            '            bw.Write(SwapInts.SwapInt16(wb.X1))
-            '            bw.Write(SwapInts.SwapInt16(wb.Z1))
-            '            bw.Write(SwapInts.SwapInt16(wb.X2))
-            '            bw.Write(SwapInts.SwapInt16(wb.Z2))
-            '            bw.Write(SwapInts.SwapInt16(wb.Y))
-            '            cWBID += 1
-            '        Next
-            '    End If
-            'Next
         End Sub
 
         Public Property Length As Long

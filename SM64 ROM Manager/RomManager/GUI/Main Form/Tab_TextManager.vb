@@ -25,6 +25,19 @@ Public Class Tab_TextManager
         End Set
     End Property
 
+    Public ReadOnly Property OverLimit As Boolean
+        Get
+            For Each tbl As Text.TextTable In RomMgr.TextTables
+                If tbl IsNot Nothing Then
+                    If CalcTableBytes(tbl).percent > 1 Then
+                        Return True
+                    End If
+                End If
+            Next
+            Return False
+        End Get
+    End Property
+
     Private Sub TabStrip1_SelectedTabChanged(sender As Object, e As TabStripTabChangedEventArgs) Handles TabStrip_TM_TableSelection.SelectedTabChanged
         Application.DoEvents()
 
@@ -74,9 +87,9 @@ Public Class Tab_TextManager
         End If
 
         mainForm.StatusText = Form_Main_Resources.Status_CalculatingTextSpace
-        TM_CalcTableBytes()
+        ShowCurTableBytes()
 
-        mainForm.StatusText = ""
+        MainForm.StatusText = ""
     End Sub
 
     Private Sub TM_CheckComboBoxText(sender As Object, Optional e As EventArgs = Nothing) Handles ComboBoxEx_TM_DialogPosX.TextChanged, ComboBoxEx_TM_DialogPosY.TextChanged
@@ -194,7 +207,7 @@ Public Class Tab_TextManager
             TM_GetCurrentTextTable.NeedToSave = True
         End If
 
-        TM_CalcTableBytes()
+        ShowCurTableBytes()
     End Sub
 
     Private Sub IntegerInput_TM_DialogSize_ValueChanged(sender As IntegerInput, e As EventArgs) Handles IntegerInput_TM_DialogSize.ValueChanged
@@ -284,9 +297,24 @@ Public Class Tab_TextManager
         Return list
     End Function
 
-    Private Sub TM_CalcTableBytes()
+    Private Sub ShowCurTableBytes()
         Dim curTable = TM_GetCurrentTextTable()
 
+        If curTable IsNot Nothing Then
+            Dim res = CalcTableBytes(curTable)
+
+            TM_BytesLeft = res.left
+
+            LabelX_TM_BytesLeft.Text = String.Format(Form_Main_Resources.Text_UsedOfMaxLeft, res.used, res.max, res.left) '$"{used} of {max} used / {left} left"
+            If res.percent > 1 Then
+                LabelX_TM_BytesLeft.ForeColor = Color.Red
+            Else
+                LabelX_TM_BytesLeft.ForeColor = Color.Green
+            End If
+        End If
+    End Sub
+
+    Private Function CalcTableBytes(curTable As Text.TextTable) As (used As Integer, max As Integer, left As Integer, percent As Single)
         If curTable IsNot Nothing Then
             Dim max As Integer = curTable.MaxTextDataSize
             Dim used As Integer = curTable.BytesCount
@@ -294,15 +322,8 @@ Public Class Tab_TextManager
             Dim percent As Single = used / max
             Dim left As Integer = max - used
 
-            TM_BytesLeft = left
-
-            LabelX_TM_BytesLeft.Text = String.Format(Form_Main_Resources.Text_UsedOfMaxLeft, used, max, left) '$"{used} of {max} used / {left} left"
-            If percent > 1 Then
-                LabelX_TM_BytesLeft.ForeColor = Color.Red
-            Else
-                LabelX_TM_BytesLeft.ForeColor = Color.Green
-            End If
+            Return (used, max, left, percent)
         End If
-    End Sub
+    End Function
 
 End Class

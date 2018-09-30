@@ -39,6 +39,7 @@ Public Class TweakViewer
         For Each f As String In Directory.GetFiles(pathTweaks, "*.xml", SearchOption.AllDirectories)
             myPatchs.Add(mgr.Read(f))
         Next
+        myPatchs = myPatchs.OrderBy(Function(n) n.Name).ToList
 
         LoadTweakList()
 

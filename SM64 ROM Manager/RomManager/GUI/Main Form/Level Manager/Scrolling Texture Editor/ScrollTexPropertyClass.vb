@@ -24,7 +24,7 @@ Public Class ScrollTexPropertyClass
         End Set
     End Property
 
-    <DisplayName("Behavior")>
+    <DisplayName("Type")>
     <Description("Indicates the scroll type.")>
     <Category("Behavior")>
     <PropertyMultiChoiceEditor({"Normal Scrolling", "Jumping Scroll", "Sine Wave"}, {ScrollType.NormalScrolling, ScrollType.JumpingScroll, ScrollType.SineWave})>
@@ -37,9 +37,9 @@ Public Class ScrollTexPropertyClass
         End Set
     End Property
 
-    <DisplayName("Params")>
+    <DisplayName("Scrolling Speed")>
     <Description("The Scrolling Speed per Frame (less then 0x1000).")>
-    <Category("Data")>
+    <Category("Params")>
     Public Property ScrollingSpeed As Int16
         Get
             Return ScrollingTexture.ScrollingSpeed
@@ -49,7 +49,7 @@ Public Class ScrollTexPropertyClass
         End Set
     End Property
 
-    <DisplayName("Vertex Data")>
+    <DisplayName("Face Count")>
     <Description("Amount of vertices to count.")>
     <Category("Data")>
     Public Property FacesCount As UInt16
@@ -61,9 +61,9 @@ Public Class ScrollTexPropertyClass
         End Set
     End Property
 
-    <DisplayName("Vertex Data")>
+    <DisplayName("Vertex Pointer")>
     <Description("Pointer to the vertices.")>
-    <Category("Pointer")>
+    <Category("Data")>
     Public Property VertexPointer As Integer
         Get
             Return ScrollingTexture.VertexPointer
@@ -73,9 +73,9 @@ Public Class ScrollTexPropertyClass
         End Set
     End Property
 
-    <DisplayName("Params")>
+    <DisplayName("Cycle Duration")>
     <Description("Cycle duration of the sine wave or jumpy scrolling.")>
-    <Category("Pointer")>
+    <Category("Params")>
     Public Property CycleDuration As Byte
         Get
             Return ScrollingTexture.CycleDuration

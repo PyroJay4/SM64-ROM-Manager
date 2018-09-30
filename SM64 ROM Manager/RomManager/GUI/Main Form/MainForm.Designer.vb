@@ -54,12 +54,13 @@ Partial Class MainForm
         Me.ButtonItem_ModelImporter = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem17 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_TrajectoryEditor = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem32 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem14 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem32 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem18 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem22 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem9 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem12 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem23 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_Bar_Plugins = New DevComponents.DotNetBar.ButtonItem()
@@ -74,6 +75,7 @@ Partial Class MainForm
         Me.ButtonItem30 = New DevComponents.DotNetBar.ButtonItem()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.LabelItem1 = New DevComponents.DotNetBar.LabelItem()
+        Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel1.SuspendLayout()
         CType(Me.TabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -375,7 +377,7 @@ Partial Class MainForm
         '
         Me.ButtonItem7.BeginGroup = True
         Me.ButtonItem7.Name = "ButtonItem7"
-        Me.ButtonItem7.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem2, Me.ButtonItem8, Me.ButtonItem10, Me.ButtonItem11, Me.LabelItem3, Me.ButtonItem_ModelImporter, Me.ButtonItem17, Me.ButtonItem_TrajectoryEditor, Me.ButtonItem32, Me.ButtonItem14, Me.ButtonItem18})
+        Me.ButtonItem7.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem2, Me.ButtonItem8, Me.ButtonItem10, Me.ButtonItem11, Me.LabelItem3, Me.ButtonItem_ModelImporter, Me.ButtonItem17, Me.ButtonItem_TrajectoryEditor, Me.ButtonItem14, Me.ButtonItem13, Me.ButtonItem32, Me.ButtonItem18})
         Me.ButtonItem7.Text = "Modules"
         '
         'LabelItem2
@@ -430,17 +432,16 @@ Partial Class MainForm
         Me.ButtonItem_TrajectoryEditor.Name = "ButtonItem_TrajectoryEditor"
         Me.ButtonItem_TrajectoryEditor.Text = "Trajectory Editor"
         '
+        'ButtonItem14
+        '
+        Me.ButtonItem14.Name = "ButtonItem14"
+        Me.ButtonItem14.Text = "Item Box Content Editor"
+        '
         'ButtonItem32
         '
         Me.ButtonItem32.Enabled = False
         Me.ButtonItem32.Name = "ButtonItem32"
         Me.ButtonItem32.Text = "Script Editor"
-        '
-        'ButtonItem14
-        '
-        Me.ButtonItem14.Enabled = False
-        Me.ButtonItem14.Name = "ButtonItem14"
-        Me.ButtonItem14.Text = "Item Box Content Editor"
         '
         'ButtonItem18
         '
@@ -451,7 +452,7 @@ Partial Class MainForm
         'ButtonItem22
         '
         Me.ButtonItem22.Name = "ButtonItem22"
-        Me.ButtonItem22.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem4})
+        Me.ButtonItem22.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem4, Me.ButtonItem9})
         Me.ButtonItem22.Text = "More"
         '
         'ButtonItem1
@@ -467,6 +468,11 @@ Partial Class MainForm
         Me.ButtonItem4.Enabled = False
         Me.ButtonItem4.Name = "ButtonItem4"
         Me.ButtonItem4.Text = "Model Converter"
+        '
+        'ButtonItem9
+        '
+        Me.ButtonItem9.Name = "ButtonItem9"
+        Me.ButtonItem9.Text = "Appy PPF Patch"
         '
         'ButtonItem12
         '
@@ -583,6 +589,11 @@ Partial Class MainForm
         Me.LabelItem1.Name = "LabelItem1"
         Me.LabelItem1.Text = "Ready"
         '
+        'ButtonItem13
+        '
+        Me.ButtonItem13.Name = "ButtonItem13"
+        Me.ButtonItem13.Text = "Star Position Editor"
+        '
         'MainForm
         '
         Me.ClientSize = New System.Drawing.Size(696, 650)
@@ -663,4 +674,6 @@ Partial Class MainForm
     Friend WithEvents tabLevelManager As Tab_LevelManager
     Friend WithEvents tabMusicManager As Tab_MusicManager
     Friend WithEvents tabTextManager As Tab_TextManager
+    Friend WithEvents ButtonItem9 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem13 As DevComponents.DotNetBar.ButtonItem
 End Class
