@@ -199,7 +199,6 @@ Public Module General
 
     Public Function HexRoundUp1(value As Integer) As Integer
         Do
-            Application.DoEvents()
             If Hex(value).EndsWith("0") Then Exit Do 'Or Hex(value).EndsWith("8")
             value += 1
         Loop
@@ -207,7 +206,6 @@ Public Module General
     End Function
     Public Sub HexRoundUp2(ByRef value As Integer)
         Do
-            Application.DoEvents()
             If Hex(value).EndsWith("0") Then Exit Do 'Or Hex(value).EndsWith("8")
             value += 1
         Loop

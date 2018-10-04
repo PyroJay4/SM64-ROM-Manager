@@ -54,14 +54,12 @@ Namespace Global.SM64Lib.Text
 
                     Me.Add(newItem)
                     s.Position = lastPos
-                    Application.DoEvents()
                 Next
 
             Else
                 s.Position = TableRomStart
                 For i As Integer = 1 To MaxTextItems
                     Me.Add(GetTextItem(s, SwapInts.SwapInt32(br.ReadInt32) - BankRamStart + BankRomStart))
-                    Application.DoEvents()
                 Next
 
             End If
@@ -80,7 +78,6 @@ Namespace Global.SM64Lib.Text
                 tempByte = br.ReadByte
                 byteBuffer.Add(tempByte)
                 If tempByte = &HFF Then Exit Do
-                Application.DoEvents()
             Loop
 
             s.Position = lastPos
@@ -120,8 +117,6 @@ Namespace Global.SM64Lib.Text
                     s.Position = DataRomOffset
                     WriteTextItem(s, DataRomOffset, textitem.ToByteArray)
                     DataRomOffset += textitem.DataLenght
-
-                    Application.DoEvents()
                 Next
 
             Else
@@ -135,8 +130,6 @@ Namespace Global.SM64Lib.Text
                     s.Position = DataRomOffset
                     WriteTextItem(s, DataRomOffset, textitem.ToByteArray)
                     DataRomOffset += textitem.DataLenght
-
-                    Application.DoEvents()
                 Next
 
             End If
@@ -146,7 +139,6 @@ Namespace Global.SM64Lib.Text
             s.Position = RomAddress
             For Each b In Bytes
                 s.WriteByte(b)
-                Application.DoEvents()
             Next
         End Sub
 

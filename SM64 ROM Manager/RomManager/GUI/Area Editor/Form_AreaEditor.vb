@@ -22,6 +22,7 @@ Imports DevComponents.Editors
 Imports SM64_ROM_Manager.PropertyValueEditors
 Imports Publics
 Imports DevComponents.AdvTree
+Imports System.Timers
 
 Public Class Form_AreaEditor
 
@@ -86,6 +87,7 @@ Public Class Form_AreaEditor
     'Components
     Private WithEvents PropertyTree As AdvTree
     Private bpMgr As AdvPropGrid_ObjectPropertiesHelper
+    Private WithEvents Timer_ListViewEx_Objects_SelectionChanged As New Timer With {.AutoReset = False, .SynchronizingObject = Me, .Interval = 40}
 
     'Delegates
     Private Delegate Function RemoveAllObjectsWhereExpression(mobj As Managed3DObject) As Boolean
@@ -210,6 +212,12 @@ Public Class Form_AreaEditor
         'Initialize Components
         InitializeComponent()
 
+        'ListViews
+        ListViewEx_Objects.SetValue("DoubleBuffered", True)
+        ListViewEx_Warps.SetValue("DoubleBuffered", True)
+        ListViewEx_CollVertices.SetValue("DoubleBuffered", True)
+        ListViewEx_ColFaces.SetValue("DoubleBuffered", True)
+
         'Stop drawing
         Me.SuspendLayout()
 
@@ -261,8 +269,6 @@ Public Class Form_AreaEditor
         'Init Object Properties Helper
         PropertyTree = AdvPropertyGrid1.PropertyTree
         bpMgr = New AdvPropGrid_ObjectPropertiesHelper(AdvPropertyGrid1, myObjectCombos, NameOf(Managed3DObject.BehaviorID), "BParam")
-        'bpMgr.RegisterEditorHandler(NameOf(bpMgr.CbEditorBParam1), AddressOf ProvideBParamContentList)
-        'bpMgr.RegisterEditorHandler(NameOf(bpMgr.CbEditorBParam2), AddressOf ProvideBParamContentList)
 
         'Get the PropertyTree of AdvPropertyGrid1
         PropertyTree = AdvPropertyGrid1.PropertyTree
@@ -279,13 +285,17 @@ Public Class Form_AreaEditor
 #Region "Form & Controls"
 
     Private Sub ProgressControl(enabled As Boolean)
-        CircularProgress1.IsRunning = enabled
+        Dim t As New Task(Sub() CircularProgress1.Invoke(New ProgressControlOnInstanceHandler(AddressOf ProgressControlOnInstance), enabled))
+        t.Start()
+    End Sub
+    Private Delegate Sub ProgressControlOnInstanceHandler(enabled As Boolean)
+    Private Sub ProgressControlOnInstance(enabled As Boolean)
         CircularProgress1.Visible = enabled
-        Application.DoEvents()
+        CircularProgress1.IsRunning = enabled
     End Sub
 
     Private Sub ButtonItem10_Click(sender As Object, e As EventArgs) Handles ButtonItem3.Click
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub Form_AreaEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -1162,6 +1172,8 @@ Public Class Form_AreaEditor
             glControl1.Invalidate()
 
             ProgressControl(False)
+
+            Console.WriteLine("Done!")
         End If
     End Function
 
@@ -1249,6 +1261,7 @@ Public Class Form_AreaEditor
         SaveAllWarpProperties()
 
         ProgressControl(True)
+        Application.DoEvents()
         rommgr_SavingRom = True
 
         SaveRom(rommgr)
@@ -1257,13 +1270,19 @@ Public Class Form_AreaEditor
         ProgressControl(False)
     End Sub
 
-    Private Sub ButtonItem_LaunchROM_Click(sender As Object, e As EventArgs) Handles ButtonItem_LaunchROM.Click
-        Do While rommgr_SavingRom
-            Application.DoEvents()
-        Loop
-
+    Private Async Sub ButtonItem_LaunchROM_Click(sender As Object, e As EventArgs) Handles ButtonItem_LaunchROM.Click
+        Await WaitWhileSavingRom()
         LaunchRom(rommgr)
     End Sub
+
+    Private Function WaitWhileSavingRom() As Task
+        Dim t As New Task(Sub()
+                              Do While rommgr_SavingRom
+                              Loop
+                          End Sub)
+        t.Start()
+        Return t
+    End Function
 
     Public Sub SetCameraMode(mode As CameraMode)
         camera.SetCameraMode(mode, camMtx)
@@ -1756,6 +1775,14 @@ Public Class Form_AreaEditor
     End Sub
 
     Private Sub ListViewEx_Objects_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListViewEx_Objects.SelectedIndexChanged
+        With Timer_ListViewEx_Objects_SelectionChanged
+            If .Enabled Then
+                .Stop()
+            End If
+            .Start()
+        End With
+    End Sub
+    Private Sub Timer_ListViewEx_Objects_SelectionChanged_Elapsed(sender As Object, e As ElapsedEventArgs) Handles Timer_ListViewEx_Objects_SelectionChanged.Elapsed
         If Not loadingObj AndAlso SelectedObject IsNot Nothing Then
             SelectObjects(SelectedObjects)
             ShowObjectProperties()
@@ -2082,7 +2109,7 @@ Public Class Form_AreaEditor
 
 #Region "Render Settings"
     Private Sub SomeButtonItems_Click(sender As Object, e As EventArgs) Handles ButtonItem_ViewColMap.Click, ButtonItem_ViewVisualMap.Click, ButtonItem_DrawOutline.Click, ButtonItem_DrawFill.Click, ButtonItem_DrawObjects.Click, ButtonItem_DrawBackfaces.Click
-        Application.DoEvents()
+        'Application.DoEvents()
         glControl1?.Invalidate()
     End Sub
     Private Sub ButtonItem_DrawBackfaces_CheckChanged(sender As Object, e As EventArgs) Handles ButtonItem_DrawBackfaces.CheckedChanged

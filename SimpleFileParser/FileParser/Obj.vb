@@ -331,8 +331,6 @@ Namespace Obj
                         End If
 
                 End Select
-
-                Application.DoEvents()
             Loop
 
             srMtl.Close()

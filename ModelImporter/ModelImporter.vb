@@ -33,23 +33,21 @@ Public Class ModelImporter
     Public Sub New()
         InitializeComponent()
 
+        StyleManager.Style = eStyle.Metro
+        StyleManager.MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
+        UpdateAmbientColors()
+
         ComboBoxEx1.Items.Clear()
         Dim layers As String() = [Enum].GetNames(GetType(Geolayer))
         ComboBoxEx1.Items.Add("Don't force")
         ComboBoxEx1.Items.AddRange(layers)
         ComboBoxEx1.SelectedIndex = Array.IndexOf(layers, [Enum].GetName(GetType(Geolayer), &H4)) + 1
+        ComboBoxEx1.UpdateAmbientColors
     End Sub
 
     Public Sub New(rommgr As SM64Lib.RomManager)
         Me.New
         Me.rommgr = rommgr
-    End Sub
-
-    Private Sub ModelImporter_Load(sender As Object, e As EventArgs) Handles Me.Load
-        StyleManager.Style = eStyle.Metro
-        StyleManager.MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
-
-        UpdateAmbientColors()
     End Sub
 
     Private Sub ClearOutput()

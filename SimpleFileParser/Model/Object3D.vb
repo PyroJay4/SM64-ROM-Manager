@@ -14,7 +14,6 @@ Public Class Object3D
                 v.X *= factor
                 v.Y *= factor
                 v.Z *= factor
-                Application.DoEvents()
             Next
         Next
     End Sub
@@ -25,7 +24,6 @@ Public Class Object3D
                 v.X += off.X
                 v.Y += off.Y
                 v.Z += off.Z
-                Application.DoEvents()
             Next
         Next
     End Sub

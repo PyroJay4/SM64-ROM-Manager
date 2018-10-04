@@ -513,7 +513,6 @@ Public Class LevelEditorInputManager
             End Try
         End With
 
-        Application.DoEvents()
         curProfile = p
     End Sub
 

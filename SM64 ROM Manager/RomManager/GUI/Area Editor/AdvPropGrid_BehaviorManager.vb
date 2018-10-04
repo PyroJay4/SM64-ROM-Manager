@@ -241,8 +241,8 @@ Friend Class AdvPropGrid_ObjectPropertiesHelper
     Private Sub AdvPropertyGrid1_PropertiesLoaded(sender As Object, e As EventArgs) Handles AdvPropertyGrid1.PropertiesLoaded
         If Not hasFirstFocued Then
             If CbEditorBParam1 IsNot Nothing AndAlso CbEditorBParam2 IsNot Nothing Then
-                CbEditorBParam1.Focus()
-                CbEditorBParam2.Focus()
+                'CbEditorBParam1.Focus()
+                'CbEditorBParam2.Focus()
                 hasFirstFocued = True
             End If
         End If

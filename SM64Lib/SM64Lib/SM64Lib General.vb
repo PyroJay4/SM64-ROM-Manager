@@ -83,9 +83,7 @@ Namespace Global.SM64Lib
         Public Sub RunSM64TextureFix(ByRef ObjFile As String)
             Dim uvaObjFile As String = Path.GetDirectoryName(ObjFile) & "\" & Path.GetFileNameWithoutExtension(ObjFile) & "_uva" & Path.GetExtension(ObjFile)
             If Not File.Exists(uvaObjFile) OrElse File.GetLastWriteTime(uvaObjFile) < File.GetLastWriteTime(ObjFile) Then
-                Application.DoEvents()
                 If File.Exists(uvaObjFile) Then File.Delete(uvaObjFile)
-                Application.DoEvents()
                 Dim pExe As String = MyDataPath & "\Tools\SM64 Texture Fix for Obj-Files.exe"
                 RunExeProcess(pExe, {ObjFile}, Path.GetDirectoryName(ObjFile), True)
             End If
@@ -106,17 +104,6 @@ Namespace Global.SM64Lib
                 bwFakeROM.Write(CByte(&H1))
             Next
             bwFakeROM.BaseStream.Close()
-        End Sub
-
-        Public Sub ClearFakeROM(FakeROMFile As String)
-            Dim bwFakeROM As New BinaryWriter(New FileStream(FakeROMFile, FileMode.Open, FileAccess.Write))
-            bwFakeROM.BaseStream.Position = &H2510000
-            For i As Integer = 1 To 5
-                bwFakeROM.Write(SwapInts.SwapInt32(&H1010101))
-                Application.DoEvents()
-            Next
-            bwFakeROM.BaseStream.Close()
-            Application.DoEvents()
         End Sub
 
         Public Function GetDigitOfByte(value As Byte, digit As Byte) As Byte
@@ -150,12 +137,10 @@ Namespace Global.SM64Lib
                 .RedirectStandardOutput = True
             End With
 
-            Application.DoEvents()
             pExe.Start()
 
             Dim OldOutput As String = Nothing
             Do Until pExe.HasExited
-                Application.DoEvents()
                 Dim NewOutput As String = pExe.StandardOutput.ReadToEnd
                 If Not (NewOutput = OldOutput) Then
                     OldOutput = NewOutput
@@ -303,7 +288,6 @@ Namespace Global.SM64Lib
             If charCount = 0 Then Return str
             Do While str.Count < charCount
                 str = fillVal & str
-                Application.DoEvents()
             Loop
             Return str
         End Function

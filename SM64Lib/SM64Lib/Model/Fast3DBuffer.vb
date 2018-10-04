@@ -95,15 +95,14 @@ Namespace Global.SM64Lib.Model.Fast3D
                             Case &H3, &H4, &H6, &HFD
                                 Position += 3
 
-                                Dim brBuffer As New BinaryReader(Me)
-                                Dim bwBuffer As New BinaryWriter(Me)
+                                Dim sd As New BinaryStreamData(Me)
 
-                                Dim p As Integer = brBuffer.ReadInt32
+                                Dim p As Integer = sd.ReadInt32
                                 p += tdif
 
                                 Position -= 4
 
-                                bwBuffer.Write(p)
+                                sd.Write(p)
 
                             Case Else
                                 Position += 7
@@ -120,7 +119,7 @@ Namespace Global.SM64Lib.Model.Fast3D
                 data.Write(b)
             Next
 
-            Fast3DBankStart = newBankStart 'RomPos - BankRomStart + BankRamStart
+            Fast3DBankStart = newBankStart
         End Sub
 
     End Class

@@ -319,8 +319,8 @@ Namespace PropertyValueEditors
 
                     If DataSource Is Nothing Then
                         For i As Integer = 0 To Items.Count - 1
-                            Dim ci As ComboItem = DirectCast(Items(i), ComboItem)
                             If Not found Then
+                                Dim ci As ComboItem = DirectCast(Items(i), ComboItem)
                                 If ci.Tag = value Then
                                     found = True
                                     SelectedItem = ci
@@ -381,7 +381,6 @@ Namespace PropertyValueEditors
 
             Private Sub OnNeedValues()
                 RaiseEvent NeedValues(Me, New EventArgs)
-                Application.DoEvents()
             End Sub
 
             Protected Overrides Sub Dispose(disposing As Boolean)

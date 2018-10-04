@@ -11,11 +11,13 @@ Imports SM64Lib.Music
 Imports SM64Lib.Levels
 Imports PatchScripts
 Imports SM64_ROM_Manager.SettingsManager
+Imports SM64Lib.Exceptions
 
 Public Class MainForm
 
     Private updateManager As UpdateManager = Nothing
     Private rommgr As RomManager = Nothing
+    Private WithEvents RomWatcher As FileSystemWatcher = Nothing
 
     Friend loadRecentROM As Boolean = False
     Friend FinishedLoading As Boolean = False
@@ -95,8 +97,6 @@ Public Class MainForm
         StyleManager.MetroColorGeneratorParameters = New Metro.ColorTables.MetroColorGeneratorParameters(Color.FromArgb(Settings.StyleManager.MetroColorParams.CanvasColor.ToArgb Or &HFF000000),
                                                                                                          Color.FromArgb(Settings.StyleManager.MetroColorParams.BaseColor.ToArgb Or &HFF000000))
 
-        Application.DoEvents()
-
         UpdateAmbientColors()
 
         tabTextManager.Line_TM_Green.ForeColor = Color.Green
@@ -169,13 +169,19 @@ Public Class MainForm
         Environment.Exit(Environment.ExitCode)
     End Sub
 
-    Private Sub MenuItem_LaunchROM_Click(sender As Object, e As EventArgs) Handles ButtonItem_LaunchROM.Click
-        Do While savingRom
-            Application.DoEvents()
-        Loop
-
+    Private Async Sub MenuItem_LaunchROM_Click(sender As Object, e As EventArgs) Handles ButtonItem_LaunchROM.Click
+        Await WaitWhileSavingRom()
         LaunchRom(rommgr)
     End Sub
+
+    Private Function WaitWhileSavingRom() As Task
+        Dim t As New Task(Sub()
+                              Do While savingRom
+                              Loop
+                          End Sub)
+        t.Start()
+        Return t
+    End Function
 
     Private Sub ButtonItem12_Click(sender As Object, e As EventArgs) Handles ButtonItem_SaveRom.Click
         If AllowSavingRom() Then
@@ -369,7 +375,9 @@ Public Class MainForm
                 ButtonItem_LaunchROM.Enabled = True
                 RefreshAppTitel()
 
-            Catch ex As SM64Lib.Exceptions.RomCompatiblityException
+                CreateRomWatcherForCurrentRom()
+
+            Catch ex As RomCompatiblityException
                 MessageBoxEx.Show(ex.Message, "Loading ROM", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Catch ex As ReadOnlyException
                 MessageBoxEx.Show(ex.Message, "Loading ROM", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -500,6 +508,32 @@ Public Class MainForm
         End If
 
         spo.Show()
+    End Sub
+
+    Private Sub CreateRomWatcherForCurrentRom()
+        If rommgr IsNot Nothing Then
+            RomWatcher = New FileSystemWatcher(Path.GetDirectoryName(rommgr.RomFile), Path.GetFileName(rommgr.RomFile)) With {.EnableRaisingEvents = True, .SynchronizingObject = Me}
+        Else
+            RomWatcher = Nothing
+        End If
+    End Sub
+
+    Private Sub RomWatcher_Changed(sender As Object, e As FileSystemEventArgs) Handles RomWatcher.Changed
+    End Sub
+
+    Private Sub RomWatcher_Renamed(sender As Object, e As RenamedEventArgs) Handles RomWatcher.Renamed
+        If rommgr IsNot Nothing AndAlso e.OldFullPath = rommgr.RomFile Then
+            rommgr.RomFile = e.FullPath
+            RefreshAppTitel()
+        End If
+    End Sub
+
+    Private Sub RomWatcher_Deleted(sender As Object, e As FileSystemEventArgs) Handles RomWatcher.Deleted
+        If rommgr IsNot Nothing AndAlso e.FullPath = rommgr.RomFile Then
+            If MessageBoxEx.Show("The Rom that was opend in this program has been removed!<br/>This programm will close now.", "Rom was removed", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = DialogResult.OK Then
+                Close()
+            End If
+        End If
     End Sub
 
 #End Region

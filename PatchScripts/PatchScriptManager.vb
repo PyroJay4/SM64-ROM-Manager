@@ -326,7 +326,7 @@ Public Class PatchingManager
     End Function
 
     Public Sub ExecuteScript(assembly As Assembly, stream As Stream, br As BinaryReader, bw As BinaryWriter)
-        Dim main As MethodInfo = assembly.GetType("Script")?.GetMethod("Main", BindingFlags.Instance Or BindingFlags.Static Or BindingFlags.Public Or BindingFlags.NonPublic)
+        Dim main As MethodInfo = assembly.GetType("Script")?.GetMethod("Main", BindingFlags.Static Or BindingFlags.Public Or BindingFlags.NonPublic)
 
         If main IsNot Nothing Then
             main.Invoke(Nothing, {stream})

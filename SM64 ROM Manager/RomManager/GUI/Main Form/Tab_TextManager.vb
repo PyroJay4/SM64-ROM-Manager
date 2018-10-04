@@ -39,8 +39,6 @@ Public Class Tab_TextManager
     End Property
 
     Private Sub TabStrip1_SelectedTabChanged(sender As Object, e As TabStripTabChangedEventArgs) Handles TabStrip_TM_TableSelection.SelectedTabChanged
-        Application.DoEvents()
-
         Dim isDialogs As Boolean = TabStrip_TM_TableSelection.SelectedTab Is TabItem_TM_Dialogs
 
         Line_TM_Green.Visible = isDialogs

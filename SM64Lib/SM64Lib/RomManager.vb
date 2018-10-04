@@ -20,7 +20,7 @@ Namespace Global.SM64Lib
 
         Public ReadOnly Property LevelInfoData As New LevelInfoDataTabelList
         Public ReadOnly Property Levels As New Levels.LevelList
-        Public ReadOnly Property RomFile As String = ""
+        Public Property RomFile As String = ""
         Public ReadOnly Property IsSM64EditorMode As Boolean = False
         Public ReadOnly Property Settings As New ManagerSettings
         Public ReadOnly Property TextTables As Text.TextTable() = {Nothing, Nothing, Nothing}

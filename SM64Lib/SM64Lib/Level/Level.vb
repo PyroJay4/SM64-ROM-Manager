@@ -88,7 +88,6 @@ Namespace Global.SM64Lib.Levels
             End With
 
             For Each c As LevelscriptCommand In Levelscript
-                Application.DoEvents()
                 If c.CommandType <> LevelscriptCommandTypes.LoadRomToRam Then Continue For
                 If clLoadRomToRam.GetSegmentedID(c) <> &HE Then Continue For
             Next
