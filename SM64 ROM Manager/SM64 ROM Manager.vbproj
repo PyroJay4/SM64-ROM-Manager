@@ -352,6 +352,16 @@
     <Compile Include="RomManager\GUI\Script\ScriptDumper.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RomManager\Language Ressources\Star Position Editor\Star_Position_Editor_Ressources.de.Designer.vb">
+      <DependentUpon>Star_Position_Editor_Ressources.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RomManager\Language Ressources\Star Position Editor\Star_Position_Editor_Ressources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Star_Position_Editor_Ressources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RomManager\Modules\BehaviorInfos.vb" />
     <Compile Include="RomManager\Modules\Extensions.vb" />
     <Compile Include="RomManager\Modules\OutputMidi.vb" />
@@ -597,6 +607,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Update\UpdateDialog.resx">
       <DependentUpon>UpdateDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\Language Ressources\Star Position Editor\Star_Position_Editor_Ressources.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Star_Position_Editor_Ressources.de.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\Language Ressources\Star Position Editor\Star_Position_Editor_Ressources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Star_Position_Editor_Ressources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -680,9 +680,12 @@ Public Class Tab_LevelManager
 
     Private Sub ListBoxAdv_LM_Levels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxAdv_LM_Levels.SelectedItemChanged, ListBoxAdv_LM_Levels.ItemRemoved
         Dim index As Integer = ListBoxAdv_LM_Levels.Items.IndexOf(ListBoxAdv_LM_Levels.SelectedItem)
+
         TabControl_LM_Level.Enabled = Not (index < 0)
         TabControl_LM_Level.Enabled = Not (index < 0)
+
         If LM_LoadingLevel Then Return
+
         If index < 0 Then
             TabControl_LM_Area.Enabled = False
             GroupBox_LM_Areas.Enabled = False
@@ -701,13 +704,18 @@ Public Class Tab_LevelManager
         CurrentLevel.SetSegmentedBanks(RomMgr)
 
         'Load Levelsettings
-        ComboBox_LM_OB0x0C.SelectedIndex = CInt(CurrentLevel.ObjectBank0x0C)
-        ComboBox_LM_OB0x0D.SelectedIndex = CInt(CurrentLevel.ObjectBank0x0D)
-        ComboBox_LM_OB0x09.SelectedIndex = CInt(CurrentLevel.ObjectBank0x0E)
+        ComboBox_LM_OB0x0C.SelectedIndex = CurrentLevel.ObjectBank0x0C
+        ComboBox_LM_OB0x0D.SelectedIndex = CurrentLevel.ObjectBank0x0D
+        ComboBox_LM_OB0x09.SelectedIndex = CurrentLevel.ObjectBank0x0E
         SwitchButton_LM_ActSelector.Value = CurrentLevel.ActSelector
         SwitchButton_LM_HardcodedCameraSettings.Value = CurrentLevel.HardcodedCameraSettings
-        NUD_LM_DefaultPositionAreaID.Value = clDefaultPosition.GetAreaID(CurrentLevel.GetDefaultPositionCmd)
-        NUD_LM_DefaultPositionYRotation.Value = clDefaultPosition.GetRotation(CurrentLevel.GetDefaultPositionCmd)
+
+        'Default Start Psoition
+        Dim cmdDefStartPos = CurrentLevel.GetDefaultPositionCmd
+        If cmdDefStartPos IsNot Nothing Then
+            NUD_LM_DefaultPositionAreaID.Value = clDefaultPosition.GetAreaID(CurrentLevel.GetDefaultPositionCmd)
+            NUD_LM_DefaultPositionYRotation.Value = clDefaultPosition.GetRotation(CurrentLevel.GetDefaultPositionCmd)
+        End If
 
         'Load Level Bachground
         With CurrentLevel.Background

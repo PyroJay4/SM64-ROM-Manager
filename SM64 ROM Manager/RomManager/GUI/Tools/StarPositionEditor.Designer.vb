@@ -88,6 +88,7 @@ Partial Class StarPositionEditor
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.Name = "ButtonX1"
+        Me.ButtonX1.FocusCuesEnabled = False
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX1.Symbol = "57697"
         Me.ButtonX1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))

@@ -1,5 +1,7 @@
+Imports DevComponents.DotNetBar
 Imports DevComponents.Editors
 Imports SM64Lib
+Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib.Objects
 
 Public Class StarPositionEditor
@@ -19,14 +21,21 @@ Public Class StarPositionEditor
     Private Sub ComboBoxEx1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx1.SelectedIndexChanged
         Dim item As ComboItem = ComboBoxEx1.SelectedItem
         curStar = New StarPosition(item.Tag)
+        curStar.Position = GetPosition()
     End Sub
 
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
-        curStar.Position = New Numerics.Vector3(IntegerInput_X.Value, IntegerInput_Y.Value, IntegerInput_z.Value)
+        curStar.Position = GetPosition()
         curStar.SavePosition(rommgr)
+        PatchClass.UpdateChecksum(rommgr.RomFile)
+        MessageBoxEx.Show(Star_Position_Editor_Ressources.MsgBox_Done, Star_Position_Editor_Ressources.MsgBox_Done_Title, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
 #Region "Funktionen"
+
+    Private Function GetPosition() As Numerics.Vector3
+        Return New Numerics.Vector3(IntegerInput_X.Value, IntegerInput_Y.Value, IntegerInput_z.Value)
+    End Function
 
     Private Sub LoadList()
         For Each value As StarNames In [Enum].GetValues(GetType(StarNames))
