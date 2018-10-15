@@ -10,14 +10,16 @@
                     Return Convert.ToInt32(Text.Substring(2), 16)
                 Case Text.StartsWith("$")
                     Return Convert.ToInt32(Text.Substring(1), 16)
+                Case Text.StartsWith("0b"), Text.StartsWith("&b")
+                    Return Convert.ToInt32(Text.Substring(2), 2)
                 Case Else
-                    If IVM <> 0 Then
+                    If IVM = 0 Then
                         Try
-                            Return Convert.ToInt32(Text, 16)
+                            Return Convert.ToInt32(Text)
                         Catch ex As Exception
                         End Try
                     End If
-                    Return Convert.ToInt32(Text)
+                    Return Convert.ToInt32(Text, 16)
             End Select
         Catch ex As Exception
             Return DefaultValue

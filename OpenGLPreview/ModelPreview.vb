@@ -6,6 +6,7 @@ Imports OpenGLCamera
 Imports OpenGLRenderer
 Imports OpenTK
 Imports OpenTK.Graphics.OpenGL
+Imports PaintingControls
 Imports S3DFileParser
 Imports SM64_ROM_Manager.SettingsManager
 
@@ -42,11 +43,12 @@ Public Class ModelPreview
         'glControl1
         Me.glControl1 = New GLControl
         Me.glControl1.BackColor = Color.Black
-        Me.glControl1.Dock = DockStyle.Fill
         Me.glControl1.Location = New Drawing.Point(0, 0)
         Me.glControl1.MinimumSize = New Size(600, 120)
         Me.glControl1.Name = "glControl1"
-        Me.glControl1.Size = New Size(880, 538)
+        Me.glControl1.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Right Or AnchorStyles.Bottom
+        Me.glControl1.Location = New Drawing.Point(0, 0)
+        Me.glControl1.Size = Me.PanelEx1.Size
         Me.glControl1.TabIndex = 0
         Me.glControl1.TabStop = False
         Me.glControl1.VSync = False
@@ -107,7 +109,33 @@ Public Class ModelPreview
 
             glControl1.SwapBuffers()
         End If
+
+        'If obj3d IsNot Nothing Then
+        '    e.Graphics.DrawString(GetModelInfoAsString, New Font(FontFamily.GenericSansSerif, 10), New SolidBrush(Panel1.ForeColor), New Drawing.Point(10, 10))
+        'End If
     End Sub
+
+    Private Function GetModelInfoAsString() As String
+        Dim matsCount As Long = obj3d.Materials.Count
+        Dim facesCount As Long = 0
+        Dim vertsCount As Long = 0
+        Dim vcCount As Long = 0
+        Dim uvCount As Long = 0
+
+        For Each m As Mesh In obj3d.Meshes
+            vertsCount += m.Vertices.Count
+            facesCount += m.Faces.Count
+            vcCount += m.VertexColors.Count
+            uvCount += m.UVs.Count
+        Next
+
+        Return String.Format("Materials:{0}{1}
+Faces:{0}{0}{2}
+Vertices:{0}{3}
+Vertex Colors{0}{4}
+UVs:{0}{0}{5}",
+vbTab, matsCount, facesCount, vertsCount, vcCount, uvCount)
+    End Function
 
     Private Sub glControl1_Resize(sender As Object, e As EventArgs) Handles glControl1.Resize
         glControl1.Context.Update(glControl1.WindowInfo)

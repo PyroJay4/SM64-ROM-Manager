@@ -23,15 +23,28 @@ Partial Class ModelPreview
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ModelPreview))
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelEx1 = New DevComponents.DotNetBar.PanelEx()
         Me.PanelEx2 = New DevComponents.DotNetBar.PanelEx()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.DoubleInput1 = New DevComponents.Editors.DoubleInput()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.Panel1.SuspendLayout()
         Me.PanelEx2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DoubleInput1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.PanelEx1)
+        Me.Panel1.Controls.Add(Me.PanelEx2)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(880, 538)
+        Me.Panel1.TabIndex = 11
         '
         'PanelEx1
         '
@@ -46,7 +59,7 @@ Partial Class ModelPreview
         Me.PanelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
         Me.PanelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
         Me.PanelEx1.Style.GradientAngle = 90
-        Me.PanelEx1.TabIndex = 0
+        Me.PanelEx1.TabIndex = 11
         '
         'PanelEx2
         '
@@ -64,7 +77,7 @@ Partial Class ModelPreview
         Me.PanelEx2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
         Me.PanelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
         Me.PanelEx2.Style.GradientAngle = 90
-        Me.PanelEx2.TabIndex = 7
+        Me.PanelEx2.TabIndex = 12
         Me.PanelEx2.Visible = False
         '
         'PictureBox1
@@ -107,8 +120,7 @@ Partial Class ModelPreview
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(880, 538)
-        Me.Controls.Add(Me.PanelEx1)
-        Me.Controls.Add(Me.PanelEx2)
+        Me.Controls.Add(Me.Panel1)
         Me.DoubleBuffered = True
         Me.EnableGlass = False
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -118,6 +130,7 @@ Partial Class ModelPreview
         Me.Text = "ModelPreview"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
+        Me.Panel1.ResumeLayout(False)
         Me.PanelEx2.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DoubleInput1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -125,9 +138,10 @@ Partial Class ModelPreview
 
     End Sub
 
+    Friend WithEvents Panel1 As Windows.Forms.Panel
     Friend WithEvents PanelEx1 As DevComponents.DotNetBar.PanelEx
     Friend WithEvents PanelEx2 As DevComponents.DotNetBar.PanelEx
+    Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
     Friend WithEvents DoubleInput1 As DevComponents.Editors.DoubleInput
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
 End Class

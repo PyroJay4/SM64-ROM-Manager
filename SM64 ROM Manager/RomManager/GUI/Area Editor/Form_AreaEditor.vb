@@ -438,7 +438,7 @@ Public Class Form_AreaEditor
         Settings.AreaEditor.RibbonControlExpanded = RibbonControl1.Expanded
     End Sub
 
-    Private Async Sub RibbonControl1_SelectedRibbonTabChanged(sender As Object, e As EventArgs) Handles RibbonControl1.SelectedRibbonTabChanged
+    Private Sub RibbonControl1_SelectedRibbonTabChanged(sender As Object, e As EventArgs) Handles RibbonControl1.SelectedRibbonTabChanged
         Dim srti As RibbonTabItem = RibbonControl1.SelectedRibbonTabItem
 
         Select Case True
@@ -455,7 +455,7 @@ Public Class Form_AreaEditor
             Case srti.Equals(RibbonTabItem_Collision)
 
                 If cCollisionMap Is Nothing Then
-                    Await LoadAreaCollisionAsObject3D()
+                    LoadAreaCollisionAsObject3D()
                 End If
                 LoadCollisionLists()
                 DockContainerItem5.Selected = True
@@ -513,7 +513,7 @@ Public Class Form_AreaEditor
                 End If
             End If
             If loadAreaMdl Then
-                LoadAreaModel().Wait()
+                LoadAreaModel()
             End If
         End If
     End Sub
@@ -1139,17 +1139,17 @@ Public Class Form_AreaEditor
         Next
     End Sub
 
-    Private Function LoadAreaModel() As Task
-        Return LoadAreaModel(CurrentModelDrawMod)
-    End Function
-    Private Async Function LoadAreaModel(modelMode As ModelDrawMod) As Task
+    Private Sub LoadAreaModel()
+        LoadAreaModel(CurrentModelDrawMod)
+    End Sub
+    Private Sub LoadAreaModel(modelMode As ModelDrawMod)
         If cArea IsNot Nothing Then
             ProgressControl(True)
 
             Select Case modelMode
                 Case ModelDrawMod.Collision
                     If cCollisionMap Is Nothing Then
-                        Await LoadAreaCollisionAsObject3D()
+                        LoadAreaCollisionAsObject3D()
                         rndrCollisionMap?.ReleaseBuffers()
                         rndrCollisionMap = Nothing
                     End If
@@ -1160,7 +1160,7 @@ Public Class Form_AreaEditor
                     End If
                 Case ModelDrawMod.VisualMap
                     If cVisualMap Is Nothing Then
-                        Await LoadAreaVisualMapAsObject3D()
+                        LoadAreaVisualMapAsObject3D()
                         rndrVisualMap?.ReleaseBuffers()
                         rndrVisualMap = Nothing
                     End If
@@ -1173,19 +1173,19 @@ Public Class Form_AreaEditor
 
             ProgressControl(False)
 
-            Console.WriteLine("Done!")
+            'Console.WriteLine("Done!")
         End If
-    End Function
+    End Sub
 
-    Private Async Function LoadAreaCollisionAsObject3D() As Task
+    Private Sub LoadAreaCollisionAsObject3D()
         hashCollisionMap = cArea.AreaModel.Collision.GetHashCode
-        cCollisionMap = Await cArea.AreaModel.Collision.ToObject3DAsync
-    End Function
+        cCollisionMap = AwaitOnUI(cArea.AreaModel.Collision.ToObject3DAsync)
+    End Sub
 
-    Private Async Function LoadAreaVisualMapAsObject3D() As Task
+    Private Sub LoadAreaVisualMapAsObject3D()
         hashVisualMap = cArea.AreaModel.Fast3DBuffer.GetBuffer.GetHashCode
-        cVisualMap = Await General.LoadAreaVisualMapAsObject3D(rommgr, cArea)
-    End Function
+        cVisualMap = AwaitOnUI(LoadAreaVisualMapAsObject3DAsync(rommgr, cArea))
+    End Sub
 
     Public Sub LoadCollisionLists()
         ListViewEx_ColFaces.SuspendLayout()
@@ -1233,15 +1233,15 @@ Public Class Form_AreaEditor
         ListViewEx_CollVertices.ResumeLayout()
     End Sub
 
-    Private Async Sub ButtonItem_ExportCollision_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportCollision.Click, ButtonItem86.Click
+    Private Sub ButtonItem_ExportCollision_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportCollision.Click, ButtonItem86.Click
         If cArea.AreaModel.Collision IsNot Nothing Then
-            Await LoadAreaModel(ModelDrawMod.Collision)
+            LoadAreaModel(ModelDrawMod.Collision)
             ExportModel(rndrCollisionMap.Model, LoaderModule.SimpleFileParser)
         End If
     End Sub
-    Private Async Sub ButtonItem_ExportVisualMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportVisualMap.Click
+    Private Sub ButtonItem_ExportVisualMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportVisualMap.Click
         If cArea.AreaModel.Fast3DBuffer IsNot Nothing Then
-            Await LoadAreaModel(ModelDrawMod.VisualMap)
+            LoadAreaModel(ModelDrawMod.VisualMap)
             ExportModel(rndrVisualMap.Model, LoaderModule.SimpleFileParser)
         End If
     End Sub
@@ -1932,7 +1932,7 @@ Public Class Form_AreaEditor
 
 #Region "Area"
 
-    Private Async Function SwitchCurrentArea() As Task
+    Private Sub SwitchCurrentArea()
         If Not isLoadingAreaIDs Then
 
             'If backupCurrentAreaIndex > -1 Then
@@ -1960,7 +1960,7 @@ Public Class Form_AreaEditor
 
             cCollisionMap = Nothing
             cVisualMap = Nothing
-            Await LoadAreaModel()
+            LoadAreaModel()
 
             LoadObjectLists()
             LoadWarpsLists()
@@ -1972,15 +1972,15 @@ Public Class Form_AreaEditor
             End If
 
         End If
-    End Function
-    Private Async Sub ComboBoxEx_Area_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItem_Area.SelectedIndexChanged
-        Await SwitchCurrentArea()
+    End Sub
+    Private Sub ComboBoxEx_Area_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItem_Area.SelectedIndexChanged
+        SwitchCurrentArea()
     End Sub
 
     Private Sub ButtonItem47_Click(sender As Object, e As EventArgs) Handles ButtonItem47.Click
         ButtonItem_ImportModel.RaiseClick()
     End Sub
-    Private Async Sub ButtonItem_ImportModel_Click(sender As Object, e As EventArgs) Handles ButtonItem_ImportModel.Click, ButtonItem_ImportCollision.Click, ButtonItem_ImportVisualMap.Click, ButtonItem85.Click
+    Private Sub ButtonItem_ImportModel_Click(sender As Object, e As EventArgs) Handles ButtonItem_ImportModel.Click, ButtonItem_ImportCollision.Click, ButtonItem_ImportVisualMap.Click, ButtonItem85.Click
         Dim frm As New MainModelConverter
         frm.CheckBoxX_ConvertModel.Checked = sender Is ButtonItem_ImportModel OrElse sender Is ButtonItem_ImportVisualMap
         frm.CheckBoxX_ConvertCollision.Checked = sender Is ButtonItem_ImportModel OrElse sender Is ButtonItem_ImportCollision OrElse sender Is ButtonItem85
@@ -2058,7 +2058,7 @@ Public Class Form_AreaEditor
         End With
 
         cArea.SetSegmentedBanks(rommgr)
-        Await LoadAreaModel()
+        LoadAreaModel()
 
         Me.ResumeLayout()
     End Sub
@@ -2115,7 +2115,7 @@ Public Class Form_AreaEditor
     Private Sub ButtonItem_DrawBackfaces_CheckChanged(sender As Object, e As EventArgs) Handles ButtonItem_DrawBackfaces.CheckedChanged
         If sender.Checked Then GL.Disable(EnableCap.CullFace) Else GL.Enable(EnableCap.CullFace)
     End Sub
-    Private Async Sub ViewModeButtonItems_CheckChanged(sender As Object, e As EventArgs) Handles ButtonItem_ViewVisualMap.CheckedChanged, ButtonItem_ViewColMap.CheckedChanged, ButtonItem_ViewColMap.CheckedChanged, ButtonItem_ViewVisualMap.CheckedChanged
+    Private Sub ViewModeButtonItems_CheckChanged(sender As Object, e As EventArgs) Handles ButtonItem_ViewVisualMap.CheckedChanged, ButtonItem_ViewColMap.CheckedChanged, ButtonItem_ViewColMap.CheckedChanged, ButtonItem_ViewVisualMap.CheckedChanged
         If sender.Checked Then
             For Each btn As CheckBoxItem In {ButtonItem_ViewVisualMap, ButtonItem_ViewColMap}
                 If btn IsNot sender Then btn.Checked = False
@@ -2123,7 +2123,7 @@ Public Class Form_AreaEditor
             If sender Is ButtonItem_ViewColMap Then
                 ButtonItem_DrawOutline.Checked = True
             End If
-            If cLevel IsNot Nothing AndAlso cArea IsNot Nothing Then Await LoadAreaModel()
+            If cLevel IsNot Nothing AndAlso cArea IsNot Nothing Then LoadAreaModel()
             glControl1?.Invalidate()
         End If
     End Sub
@@ -2831,6 +2831,39 @@ Public Class Form_AreaEditor
                               {cArea, managedWarps, ListViewEx_Warps.Items, removedWarps, removedlvis, removedCmds, dicGroups})
 
         End If
+    End Sub
+
+#End Region
+
+#Region "Tools"
+
+    Private Sub SetPauseMenuWarp()
+        Dim warp As IManagedLevelscriptCommand = SelectedWarp
+        If warp IsNot Nothing Then
+            Dim lid, aid, wid As Short
+            Dim err As Boolean = False
+
+            If TypeOf warp Is ManagedWarp Then
+                With CType(warp, ManagedWarp)
+                    lid = .DestLevelID
+                    aid = .DestAreaID
+                    wid = .DestWarpID
+                End With
+            Else
+                err = True
+            End If
+
+            If Not err Then
+                PatchClass.Open(rommgr.GetBinaryRom(FileAccess.ReadWrite))
+                PatchClass.SetPauseMenuWarp(lid, aid, wid)
+                PatchClass.Close()
+                PatchClass.UpdateChecksum(rommgr.RomFile)
+            End If
+        End If
+    End Sub
+
+    Private Sub ButtonItem29_Click(sender As Object, e As EventArgs) Handles ButtonItem29.Click
+        SetPauseMenuWarp()
     End Sub
 
 #End Region

@@ -49,6 +49,7 @@ Partial Class TweakViewer
         Me.TextBoxX1 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
         Me.CircularProgress1 = New DevComponents.DotNetBar.Controls.CircularProgress()
+        Me.ButtonX9 = New DevComponents.DotNetBar.ButtonX()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -404,11 +405,27 @@ Partial Class TweakViewer
         Me.CircularProgress1.TabIndex = 45
         Me.CircularProgress1.Visible = False
         '
+        'ButtonX9
+        '
+        Me.ButtonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
+        Me.ButtonX9.FocusCuesEnabled = False
+        Me.ButtonX9.Location = New System.Drawing.Point(301, 14)
+        Me.ButtonX9.MinimumSize = New System.Drawing.Size(18, 18)
+        Me.ButtonX9.Name = "ButtonX9"
+        Me.ButtonX9.Size = New System.Drawing.Size(18, 18)
+        Me.ButtonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX9.Symbol = "57676"
+        Me.ButtonX9.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonX9.SymbolSize = 12.0!
+        Me.ButtonX9.TabIndex = 46
+        '
         'TweakViewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(482, 609)
+        Me.Controls.Add(Me.ButtonX9)
         Me.Controls.Add(Me.CircularProgress1)
         Me.Controls.Add(Me.ButtonX7)
         Me.Controls.Add(Me.TextBoxX1)
@@ -454,4 +471,5 @@ Partial Class TweakViewer
     Friend WithEvents ButtonX7 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents TextBoxX1 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents CircularProgress1 As DevComponents.DotNetBar.Controls.CircularProgress
+    Friend WithEvents ButtonX9 As DevComponents.DotNetBar.ButtonX
 End Class

@@ -48,10 +48,14 @@ Public Class TweakViewer
     End Sub
 
     Private Sub LoadTweakList(Optional Filter As String = "")
+        Dim enableFilter As Boolean = Filter.Trim <> ""
+        Dim filterLower As String = Filter.ToLower
         ItemListBox1.Items.Clear()
 
         For Each patch As PatchProfile In myPatchs
-            If Filter.Trim <> "" AndAlso Not patch.Name.ToLower.Contains(Filter.ToLower) Then
+            If enableFilter AndAlso
+                Not patch.Name.ToLower.Contains(filterLower) AndAlso
+                patch.Scripts.Where(Function(n) n.Name.ToLower.Contains(filterLower)).Count = 0 Then
                 Continue For
             End If
 
@@ -334,4 +338,14 @@ Public Class TweakViewer
     Private Sub Flyout1_FlyoutShown(sender As Object, e As EventArgs) Handles Flyout1.FlyoutShown
         Flyout1.Content?.Focus()
     End Sub
+
+    Private Sub ItemListBox1_Scroll(sender As Object, e As ScrollEventArgs) Handles ItemListBox1.Scroll
+        Flyout1.Close()
+    End Sub
+
+    Private Sub ButtonX9_Click(sender As Object, e As EventArgs) Handles ButtonX9.Click
+        TextBoxX1.Text = ""
+        LoadTweakList()
+    End Sub
+
 End Class

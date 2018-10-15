@@ -293,6 +293,9 @@ Partial Class Form_AreaEditor
         Me.ButtonItem_Undo = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_Redo = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonBar26 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ItemContainer22 = New DevComponents.DotNetBar.ItemContainer()
+        Me.ButtonItem29 = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel_GLControl.SuspendLayout()
         Me.DockSite4.SuspendLayout()
         CType(Me.Bar_Controls, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1945,9 +1948,9 @@ Partial Class Form_AreaEditor
         Me.RibbonControl1.CanCustomize = False
         Me.RibbonControl1.CaptionVisible = True
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel1)
-        Me.RibbonControl1.Controls.Add(Me.RibbonPanel3)
-        Me.RibbonControl1.Controls.Add(Me.RibbonPanel5)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel2)
+        Me.RibbonControl1.Controls.Add(Me.RibbonPanel5)
+        Me.RibbonControl1.Controls.Add(Me.RibbonPanel3)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel4)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel6)
         Me.RibbonControl1.Dock = System.Windows.Forms.DockStyle.Top
@@ -2783,6 +2786,7 @@ Partial Class Form_AreaEditor
         '
         Me.RibbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonPanel2.Controls.Add(Me.RibbonBar2)
+        Me.RibbonPanel2.Controls.Add(Me.RibbonBar26)
         Me.RibbonPanel2.Controls.Add(Me.RibbonBar10)
         Me.RibbonPanel2.Controls.Add(Me.RibbonBar11)
         Me.RibbonPanel2.Controls.Add(Me.RibbonBar12)
@@ -2822,7 +2826,7 @@ Partial Class Form_AreaEditor
         Me.RibbonBar2.DragDropSupport = True
         Me.RibbonBar2.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer10})
         Me.RibbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar2.Location = New System.Drawing.Point(266, 0)
+        Me.RibbonBar2.Location = New System.Drawing.Point(454, 0)
         Me.RibbonBar2.Name = "RibbonBar2"
         Me.RibbonBar2.Size = New System.Drawing.Size(182, 91)
         Me.RibbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -3911,6 +3915,61 @@ Partial Class Form_AreaEditor
         Me.ButtonItem13.SymbolSize = 32.0!
         Me.ButtonItem13.Text = " 1 Vertex"
         '
+        'RibbonBar26
+        '
+        Me.RibbonBar26.AutoOverflowEnabled = True
+        '
+        '
+        '
+        Me.RibbonBar26.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar26.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar26.ContainerControlProcessDialogKey = True
+        Me.RibbonBar26.Dock = System.Windows.Forms.DockStyle.Left
+        Me.RibbonBar26.DragDropSupport = True
+        Me.RibbonBar26.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer22})
+        Me.RibbonBar26.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+        Me.RibbonBar26.Location = New System.Drawing.Point(266, 0)
+        Me.RibbonBar26.Name = "RibbonBar26"
+        Me.RibbonBar26.Size = New System.Drawing.Size(188, 91)
+        Me.RibbonBar26.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonBar26.TabIndex = 11
+        Me.RibbonBar26.Text = "Tools"
+        '
+        '
+        '
+        Me.RibbonBar26.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar26.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ItemContainer22
+        '
+        '
+        '
+        '
+        Me.ItemContainer22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ItemContainer22.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+        Me.ItemContainer22.Name = "ItemContainer22"
+        Me.ItemContainer22.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem29})
+        '
+        '
+        '
+        Me.ItemContainer22.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.ItemContainer22.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonItem29
+        '
+        Me.ButtonItem29.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem29.Name = "ButtonItem29"
+        Me.ButtonItem29.Text = "Set as Pause Menu Warp"
+        '
         'Form_AreaEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -4256,4 +4315,7 @@ Partial Class Form_AreaEditor
     Friend WithEvents ItemContainer21 As DevComponents.DotNetBar.ItemContainer
     Friend WithEvents ButtonItem27 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem28 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents RibbonBar26 As DevComponents.DotNetBar.RibbonBar
+    Friend WithEvents ItemContainer22 As DevComponents.DotNetBar.ItemContainer
+    Friend WithEvents ButtonItem29 As DevComponents.DotNetBar.ButtonItem
 End Class

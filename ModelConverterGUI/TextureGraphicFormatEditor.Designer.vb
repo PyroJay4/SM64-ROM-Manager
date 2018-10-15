@@ -34,6 +34,9 @@ Partial Class TextureGraphicFormatEditor
         Me.CheckBoxX_EnableTextureAnimation = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.ComboBoxEx_SelectDisplaylist = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.CheckBoxX_EnableMirror = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.CheckBoxX_EnableClamp = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.CheckBoxX_EnableCrystalEffect = New DevComponents.DotNetBar.Controls.CheckBoxX()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -196,11 +199,59 @@ Partial Class TextureGraphicFormatEditor
         Me.LabelX2.TabIndex = 126
         Me.LabelX2.Text = "Select Displaylist:"
         '
+        'CheckBoxX_EnableMirror
+        '
+        Me.CheckBoxX_EnableMirror.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        '
+        '
+        '
+        Me.CheckBoxX_EnableMirror.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX_EnableMirror.FocusCuesEnabled = False
+        Me.CheckBoxX_EnableMirror.Location = New System.Drawing.Point(475, 155)
+        Me.CheckBoxX_EnableMirror.Name = "CheckBoxX_EnableMirror"
+        Me.CheckBoxX_EnableMirror.Size = New System.Drawing.Size(102, 23)
+        Me.CheckBoxX_EnableMirror.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CheckBoxX_EnableMirror.TabIndex = 128
+        Me.CheckBoxX_EnableMirror.Text = "Enable Mirror"
+        '
+        'CheckBoxX_EnableClamp
+        '
+        Me.CheckBoxX_EnableClamp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        '
+        '
+        '
+        Me.CheckBoxX_EnableClamp.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX_EnableClamp.FocusCuesEnabled = False
+        Me.CheckBoxX_EnableClamp.Location = New System.Drawing.Point(584, 155)
+        Me.CheckBoxX_EnableClamp.Name = "CheckBoxX_EnableClamp"
+        Me.CheckBoxX_EnableClamp.Size = New System.Drawing.Size(102, 23)
+        Me.CheckBoxX_EnableClamp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CheckBoxX_EnableClamp.TabIndex = 129
+        Me.CheckBoxX_EnableClamp.Text = "Enable Clamp"
+        '
+        'CheckBoxX_EnableCrystalEffect
+        '
+        Me.CheckBoxX_EnableCrystalEffect.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        '
+        '
+        '
+        Me.CheckBoxX_EnableCrystalEffect.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX_EnableCrystalEffect.FocusCuesEnabled = False
+        Me.CheckBoxX_EnableCrystalEffect.Location = New System.Drawing.Point(475, 184)
+        Me.CheckBoxX_EnableCrystalEffect.Name = "CheckBoxX_EnableCrystalEffect"
+        Me.CheckBoxX_EnableCrystalEffect.Size = New System.Drawing.Size(211, 23)
+        Me.CheckBoxX_EnableCrystalEffect.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CheckBoxX_EnableCrystalEffect.TabIndex = 130
+        Me.CheckBoxX_EnableCrystalEffect.Text = "Enable Crystal Effect"
+        '
         'TextureGraphicFormatEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(698, 511)
+        Me.Controls.Add(Me.CheckBoxX_EnableCrystalEffect)
+        Me.Controls.Add(Me.CheckBoxX_EnableClamp)
+        Me.Controls.Add(Me.CheckBoxX_EnableMirror)
         Me.Controls.Add(Me.ComboBoxEx_SelectDisplaylist)
         Me.Controls.Add(Me.LabelX2)
         Me.Controls.Add(Me.CheckBoxX_EnableTextureAnimation)
@@ -219,7 +270,7 @@ Partial Class TextureGraphicFormatEditor
         Me.MinimizeBox = False
         Me.Name = "TextureGraphicFormatEditor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Texture Format Editor"
+        Me.Text = "Graphics Editor"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -238,4 +289,7 @@ Partial Class TextureGraphicFormatEditor
     Friend WithEvents CheckBoxX_EnableTextureAnimation As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents ComboBoxEx_SelectDisplaylist As DevComponents.DotNetBar.Controls.ComboBoxEx
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents CheckBoxX_EnableMirror As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents CheckBoxX_EnableClamp As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents CheckBoxX_EnableCrystalEffect As DevComponents.DotNetBar.Controls.CheckBoxX
 End Class

@@ -768,9 +768,9 @@ Public Class Tab_LevelManager
     Private Async Sub ButtonItem_ExportVisualMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportVisualMap.Click
         If AllowSavingAreaSettings Then
             mainForm.StatusText = Form_Main_Resources.Status_LoadingModel
-            Dim mdl As Object3D = Await LoadAreaVisualMapAsObject3D(RomMgr, CurrentArea)
+            Dim mdl As Object3D = Await LoadAreaVisualMapAsObject3DAsync(RomMgr, CurrentArea)
 
-            mainForm.StatusText = Form_Main_Resources.Status_ExportingModel
+            MainForm.StatusText = Form_Main_Resources.Status_ExportingModel
             Publics.Publics.ExportModel(mdl, LoaderModule.SimpleFileParser)
 
             mainForm.StatusText = ""

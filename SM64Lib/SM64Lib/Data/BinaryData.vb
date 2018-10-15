@@ -140,6 +140,18 @@ Namespace Global.SM64Lib.Data
             BaseStream.Close()
         End Sub
 
+        Public ReadOnly Property CanRead As Boolean
+            Get
+                Return BaseStream.CanRead
+            End Get
+        End Property
+
+        Public ReadOnly Property CanWrite As Boolean
+            Get
+                Return BaseStream.CanWrite
+            End Get
+        End Property
+
     End Class
 
 End Namespace

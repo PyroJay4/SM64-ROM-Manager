@@ -405,7 +405,7 @@ Namespace Global.SM64Lib
             Next
 
             'Patch Act-Selector
-            PatchClass.Openfs(fs)
+            PatchClass.Open(fs)
             PatchClass.ActSelector_ApplyPatch()
 
             'Hardcoded Camera Settings

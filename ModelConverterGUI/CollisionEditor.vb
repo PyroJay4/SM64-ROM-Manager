@@ -239,10 +239,9 @@ Public Class CollisionEditor
         End Select
     End Sub
 
-    Private Sub UpdateTextureListItemSettings(txt As String)
+    Private Sub UpdateTextureListItemSettings(ct As Byte)
         If ListViewEx1.SelectedIndices.Count > 0 Then
 
-            Dim ct As Byte = ValueFromText(txt)
             Dim cp1 As Byte = ValueFromText(TextBoxX_ColParam1.Text)
             Dim cp2 As Byte = ValueFromText(TextBoxX_ColParam2.Text)
 

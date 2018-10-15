@@ -113,8 +113,10 @@ Public Class TextureGraphicFormatEditor
             End If
 
             CheckBoxX_EnableTextureAnimation.Checked = curEntry.IsScrollingTexture
-
             ComboBoxEx_SelectDisplaylist.SelectedIndex = CByte(curEntry.SelectDisplaylistMode)
+            CheckBoxX_EnableMirror.Checked = curEntry.EnableMirror
+            CheckBoxX_EnableClamp.Checked = curEntry.EnableClamp
+            CheckBoxX_EnableCrystalEffect.Checked = curEntry.EnableCrystalEffect
 
             loadingtexItemSettings = False
 
@@ -144,12 +146,15 @@ Public Class TextureGraphicFormatEditor
                 curEntry.IsScrollingTexture = CheckBoxX_EnableTextureAnimation.Checked
                 curEntry.TextureFormat = id
                 curEntry.SelectDisplaylistMode = ComboBoxEx_SelectDisplaylist.SelectedIndex
+                curEntry.EnableMirror = CheckBoxX_EnableMirror.Checked
+                curEntry.EnableClamp = CheckBoxX_EnableClamp.Checked
+                curEntry.EnableCrystalEffect = CheckBoxX_EnableCrystalEffect.Checked
             Next
 
         End If
     End Sub
 
-    Private Sub ButtonItem_IsScollTex_Click() Handles CheckBoxX_EnableTextureAnimation.CheckedChanged, ComboBoxEx_SelectDisplaylist.SelectedIndexChanged
+    Private Sub ButtonItem_IsScollTex_Click() Handles CheckBoxX_EnableTextureAnimation.CheckedChanged, ComboBoxEx_SelectDisplaylist.SelectedIndexChanged, CheckBoxX_EnableClamp.CheckedChanged, CheckBoxX_EnableMirror.CheckedChanged, CheckBoxX_EnableCrystalEffect.CheckedChanged
         If hasInit AndAlso Not loadingtexItemSettings Then
             Dim selItem As ComboItem = ComboBox_ColType.SelectedItem
             Dim id As String = selItem.Tag
@@ -157,4 +162,7 @@ Public Class TextureGraphicFormatEditor
         End If
     End Sub
 
+    Private Sub ButtonItem_IsScollTex_Click(sender As Object, e As EventArgs) Handles ComboBoxEx_SelectDisplaylist.SelectedIndexChanged, CheckBoxX_EnableTextureAnimation.CheckedChanged, CheckBoxX_EnableMirror.CheckedChanged, CheckBoxX_EnableClamp.CheckedChanged, CheckBoxX_EnableCrystalEffect.CheckedChanged
+
+    End Sub
 End Class

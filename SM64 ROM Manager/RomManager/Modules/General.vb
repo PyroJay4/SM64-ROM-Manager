@@ -77,13 +77,19 @@ Friend Module General
         End If
     End Sub
 
-    Friend Async Function LoadAreaVisualMapAsObject3D(rommgr As RomManager, area As LevelArea) As Task(Of Object3D)
+    Friend Function LoadAreaVisualMapAsObject3DAsync(rommgr As RomManager, area As LevelArea) As Task(Of Object3D)
+        Dim t As New Task(Of Object3D)(Function() LoadAreaVisualMapAsObject3D(rommgr, area))
+        t.Start()
+        Return t
+    End Function
+
+    Friend Function LoadAreaVisualMapAsObject3D(rommgr As RomManager, area As LevelArea) As Object3D
         Dim obj As New Object3D
 
         For Each geop As Geopointer In area.AreaModel.Fast3DBuffer.DLPointers
             Dim dl As New DisplayList
-            Await dl.FromStreamAsync(geop, rommgr, area.AreaID)
-            Await dl.ToObject3DAsync(obj, rommgr, area.AreaID)
+            dl.FromStream(geop, rommgr, area.AreaID)
+            dl.ToObject3D(obj, rommgr, area.AreaID)
         Next
 
         Return obj
@@ -118,6 +124,18 @@ Friend Module General
             End If
         Next
         Return Nothing
+    End Function
+
+    Public Sub AwaitOnUI(Of T As Task)(task As T)
+        Do While task.Status = TaskStatus.Running
+            Application.DoEvents()
+        Loop
+    End Sub
+    Public Function AwaitOnUI(Of T)(task As Task(Of T)) As Object
+        Do While task.Status = TaskStatus.Running
+            Application.DoEvents()
+        Loop
+        Return task.Result
     End Function
 
 #Region "Level Background/Environment/Camera/etc."

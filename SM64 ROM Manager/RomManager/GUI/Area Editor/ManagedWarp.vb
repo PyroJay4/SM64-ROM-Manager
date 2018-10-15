@@ -48,6 +48,11 @@ Public Class ManagedWarp
     <Description("The Warp where the player should came out.")>
     Public Property DestWarpID As Byte
 
+    <DisplayName("Create Checkpoint")>
+    <Category("Destination")>
+    <Description("The game will create a checkpoint when entering this warp. When the player re-enter this level after he died he will start on this warp.")>
+    Public Property CreateCheckpoint As Boolean
+
     Public Sub New(cmd As LevelscriptCommand)
         Me._Command = cmd
         LoadpProperties()
@@ -65,6 +70,9 @@ Public Class ManagedWarp
 
         'Destination Warp-ID
         DestWarpID = clWarp.GetDestinationWarpID(Command)
+
+        'Create Checkpoint
+        CreateCheckpoint = clWarp.GetCreateCheckpoint(Command)
     End Sub
 
     Public Sub SaveProperties() Implements IManagedLevelscriptCommand.SaveProperties
@@ -83,6 +91,9 @@ Public Class ManagedWarp
 
         'Destination Warp-ID
         clWarp.SetDestinationWarpID(Command, DestWarpID)
+
+        'Create Checkpoint
+        clWarp.SetCreateCheckpoint(Command, CreateCheckpoint)
     End Sub
 
 End Class

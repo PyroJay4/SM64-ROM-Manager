@@ -57,9 +57,12 @@ Namespace Global.SM64Lib.Model.Fast3D
             Public Property IsScrollingTexture As Boolean = False
             Public Property SelectDisplaylistMode As SelectDisplaylistMode = SelectDisplaylistMode.Automatic
             Public Property FaceCullingMode As FaceCullingMode = FaceCullingMode.Back
+            Public Property EnableMirror As Boolean = False
+            Public Property EnableClamp As Boolean = False
+            Public Property EnableCrystalEffect As Boolean = False
 
             Public Overloads Function ToString() As String
-                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{CByte(SelectDisplaylistMode)};{CByte(FaceCullingMode)}"
+                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{CByte(SelectDisplaylistMode)};{CByte(FaceCullingMode)};{EnableMirror.ToString};{EnableClamp.ToString};{EnableCrystalEffect.ToString}"
             End Function
 
             Public Sub FromString(str As String)
@@ -69,6 +72,11 @@ Namespace Global.SM64Lib.Model.Fast3D
                 If parts.Length > 2 Then IsScrollingTexture = Convert.ToBoolean(parts(2))
                 If parts.Length > 3 Then SelectDisplaylistMode = Convert.ToByte(parts(3))
                 If parts.Length > 4 Then FaceCullingMode = Convert.ToByte(parts(4))
+                If parts.Length > 5 Then
+                    EnableMirror = Convert.ToBoolean(parts(5))
+                    EnableClamp = Convert.ToBoolean(parts(6))
+                End If
+                If parts.Length > 7 Then EnableCrystalEffect = Convert.ToBoolean(parts(7))
             End Sub
 
         End Class

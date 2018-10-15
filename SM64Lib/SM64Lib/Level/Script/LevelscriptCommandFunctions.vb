@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Numerics
+Imports SM64Lib.Data
 Imports SM64Lib.Script
 
 Namespace Global.SM64Lib.Levels.Script
@@ -235,6 +236,20 @@ Namespace Global.SM64Lib.Levels.Script
                 Command.Position = 5
                 bw.Write(ID)
                 Command.Position = 0
+            End Sub
+
+            Public Shared Function GetCreateCheckpoint(cmd As LevelscriptCommand) As Boolean
+                Dim data As New BinaryStreamData(cmd)
+                data.Position = 6
+                Return Bits.GetBoolOfByte(data.ReadByte, 0)
+            End Function
+            Public Shared Sub SetCreateCheckpoint(cmd As LevelscriptCommand, value As Boolean)
+                Dim data As New BinaryStreamData(cmd)
+                data.Position = 6
+                Dim b As Byte = data.ReadByte
+                b = Bits.SetInByte(b, 0, value)
+                data.Position -= 1
+                data.Write(b)
             End Sub
 
         End Class

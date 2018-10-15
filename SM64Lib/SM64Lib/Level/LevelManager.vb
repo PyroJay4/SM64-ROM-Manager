@@ -201,7 +201,7 @@ Namespace Levels
             lvl.OneBank0xESystemEnabled = True
 
             'Act Selector
-            PatchClass.Openfs(fs)
+            PatchClass.Open(fs)
             lvl.ActSelector = PatchClass.ActSelector_Enabled(LevelID)
 
             'Hardcoded Camera
@@ -413,7 +413,7 @@ Namespace Levels
             lvl.OneBank0xESystemEnabled = True
 
             'Act Selector
-            PatchClass.Openfs(fs)
+            PatchClass.Open(fs)
             lvl.ActSelector = PatchClass.ActSelector_Enabled(LevelID)
 
             'Hardcoded Camera
@@ -612,7 +612,7 @@ Namespace Levels
             lvl.OneBank0xESystemEnabled = True
 
             'Act Selector
-            PatchClass.Openfs(fs)
+            PatchClass.Open(fs)
             lvl.ActSelector = PatchClass.ActSelector_Enabled(LevelID)
 
             'Hardcoded Camera
@@ -1004,7 +1004,7 @@ Namespace Levels
             lvl.bank0x19.WriteData(output)
 
             'Hardcoded Camera Settings & Act Selector
-            PatchClass.Openfs(output)
+            PatchClass.Open(output)
             PatchClass.HardcodedCamera_Enabled(lvl.LevelID) = lvl.HardcodedCameraSettings
             PatchClass.ActSelector_Enabled(lvl.LevelID) = lvl.ActSelector
 

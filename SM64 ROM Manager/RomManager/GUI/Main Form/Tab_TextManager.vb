@@ -27,13 +27,15 @@ Public Class Tab_TextManager
 
     Public ReadOnly Property OverLimit As Boolean
         Get
-            For Each tbl As Text.TextTable In RomMgr.TextTables
-                If tbl IsNot Nothing Then
-                    If CalcTableBytes(tbl).percent > 1 Then
-                        Return True
+            If RomMgr IsNot Nothing Then
+                For Each tbl As Text.TextTable In RomMgr.TextTables
+                    If tbl IsNot Nothing Then
+                        If CalcTableBytes(tbl).percent > 1 Then
+                            Return True
+                        End If
                     End If
-                End If
-            Next
+                Next
+            End If
             Return False
         End Get
     End Property

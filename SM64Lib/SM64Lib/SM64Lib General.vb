@@ -7,21 +7,27 @@ Imports System.Runtime.InteropServices
 Imports System.Drawing.Drawing2D
 Imports System.Drawing
 Imports System.Windows.Forms
+Imports System.Reflection
 
 Namespace Global.SM64Lib
 
     Public Module General
 
+        Private _MyDataPath As String = String.Empty
+
         Public DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
         Public FileIniParser As New IniParser.FileIniDataParser
         Public StreamIniParser As New IniParser.StreamIniDataParser
         Public ObjectBankData As New List(Of IniData)
-        Public ActSelectorDefaultValues As Byte() = New Byte() {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
+        Public ActSelectorDefaultValues As Byte() = {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
         Public PatchClass As New SM64PatchClass
 
         Public ReadOnly Property MyDataPath As String
             Get
-                Return Path.Combine(Directory.GetCurrentDirectory, "Data")
+                If String.IsNullOrEmpty(_MyDataPath) Then
+                    _MyDataPath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Data")
+                End If
+                Return _MyDataPath
             End Get
         End Property
 

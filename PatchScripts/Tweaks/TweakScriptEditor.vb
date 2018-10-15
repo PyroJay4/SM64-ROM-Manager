@@ -76,7 +76,16 @@ Public Class TweakScriptEditor
     End Sub
 
     Private Sub TweakScriptEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        SaveAllData()
+        If True Then
+            If Not {CloseReason.ApplicationExitCall, CloseReason.WindowsShutDown, CloseReason.TaskManagerClosing}.Contains(e.CloseReason) Then
+                Select Case MessageBoxEx.Show("Do you want to save changes?", "Save", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+                    Case DialogResult.Yes
+                        SaveAllData()
+                    Case DialogResult.Cancel
+                        e.Cancel = True
+                End Select
+            End If
+        End If
     End Sub
 
     Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click
