@@ -34,6 +34,11 @@ Partial Class Form_Settings
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.TabControl2 = New DevComponents.DotNetBar.TabControl()
         Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.ComboBoxEx_HexEditorMode = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.ComboItem7 = New DevComponents.Editors.ComboItem()
+        Me.ComboItem8 = New DevComponents.Editors.ComboItem()
+        Me.TextBoxX_HexEditorCustomPath = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.ButtonX4 = New DevComponents.DotNetBar.ButtonX()
         Me.ComboBoxEx1 = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.ComboItem1 = New DevComponents.Editors.ComboItem()
@@ -54,6 +59,7 @@ Partial Class Form_Settings
         Me.TabControlPanel3 = New DevComponents.DotNetBar.TabControlPanel()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.TabItem3 = New DevComponents.DotNetBar.TabItem(Me.components)
+        Me.ButtonX5 = New DevComponents.DotNetBar.ButtonX()
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl2.SuspendLayout()
         Me.TabControlPanel1.SuspendLayout()
@@ -64,11 +70,11 @@ Partial Class Form_Settings
         '
         'ComboBox_DefaultValueType
         '
+        resources.ApplyResources(Me.ComboBox_DefaultValueType, "ComboBox_DefaultValueType")
         Me.ComboBox_DefaultValueType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBox_DefaultValueType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_DefaultValueType.ForeColor = System.Drawing.Color.Black
         Me.ComboBox_DefaultValueType.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBox_DefaultValueType, "ComboBox_DefaultValueType")
         Me.ComboBox_DefaultValueType.Items.AddRange(New Object() {resources.GetString("ComboBox_DefaultValueType.Items"), resources.GetString("ComboBox_DefaultValueType.Items1"), resources.GetString("ComboBox_DefaultValueType.Items2"), resources.GetString("ComboBox_DefaultValueType.Items3")})
         Me.ComboBox_DefaultValueType.Name = "ComboBox_DefaultValueType"
         Me.ComboBox_DefaultValueType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -86,11 +92,11 @@ Partial Class Form_Settings
         '
         'SwitchButton_SearchUpdates
         '
+        resources.ApplyResources(Me.SwitchButton_SearchUpdates, "SwitchButton_SearchUpdates")
         '
         '
         '
         Me.SwitchButton_SearchUpdates.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.SwitchButton_SearchUpdates, "SwitchButton_SearchUpdates")
         Me.SwitchButton_SearchUpdates.Name = "SwitchButton_SearchUpdates"
         Me.SwitchButton_SearchUpdates.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.SwitchButton_SearchUpdates.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
@@ -115,11 +121,11 @@ Partial Class Form_Settings
         '
         'ComboBox_AreaEditor_DefaultWindowMode
         '
+        resources.ApplyResources(Me.ComboBox_AreaEditor_DefaultWindowMode, "ComboBox_AreaEditor_DefaultWindowMode")
         Me.ComboBox_AreaEditor_DefaultWindowMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBox_AreaEditor_DefaultWindowMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_AreaEditor_DefaultWindowMode.ForeColor = System.Drawing.Color.Black
         Me.ComboBox_AreaEditor_DefaultWindowMode.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBox_AreaEditor_DefaultWindowMode, "ComboBox_AreaEditor_DefaultWindowMode")
         Me.ComboBox_AreaEditor_DefaultWindowMode.Items.AddRange(New Object() {resources.GetString("ComboBox_AreaEditor_DefaultWindowMode.Items"), resources.GetString("ComboBox_AreaEditor_DefaultWindowMode.Items1")})
         Me.ComboBox_AreaEditor_DefaultWindowMode.Name = "ComboBox_AreaEditor_DefaultWindowMode"
         Me.ComboBox_AreaEditor_DefaultWindowMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -137,11 +143,11 @@ Partial Class Form_Settings
         '
         'ComboBox_AreaEditor_DefaultCameraMode
         '
+        resources.ApplyResources(Me.ComboBox_AreaEditor_DefaultCameraMode, "ComboBox_AreaEditor_DefaultCameraMode")
         Me.ComboBox_AreaEditor_DefaultCameraMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBox_AreaEditor_DefaultCameraMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_AreaEditor_DefaultCameraMode.ForeColor = System.Drawing.Color.Black
         Me.ComboBox_AreaEditor_DefaultCameraMode.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBox_AreaEditor_DefaultCameraMode, "ComboBox_AreaEditor_DefaultCameraMode")
         Me.ComboBox_AreaEditor_DefaultCameraMode.Items.AddRange(New Object() {resources.GetString("ComboBox_AreaEditor_DefaultCameraMode.Items"), resources.GetString("ComboBox_AreaEditor_DefaultCameraMode.Items1")})
         Me.ComboBox_AreaEditor_DefaultCameraMode.Name = "ComboBox_AreaEditor_DefaultCameraMode"
         Me.ComboBox_AreaEditor_DefaultCameraMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -179,6 +185,10 @@ Partial Class Form_Settings
         '
         'TabControlPanel1
         '
+        Me.TabControlPanel1.Controls.Add(Me.ButtonX5)
+        Me.TabControlPanel1.Controls.Add(Me.ComboBoxEx_HexEditorMode)
+        Me.TabControlPanel1.Controls.Add(Me.TextBoxX_HexEditorCustomPath)
+        Me.TabControlPanel1.Controls.Add(Me.LabelX4)
         Me.TabControlPanel1.Controls.Add(Me.ButtonX4)
         Me.TabControlPanel1.Controls.Add(Me.ComboBoxEx1)
         Me.TabControlPanel1.Controls.Add(Me.LabelX10)
@@ -201,21 +211,65 @@ Partial Class Form_Settings
         Me.TabControlPanel1.Style.GradientAngle = 90
         Me.TabControlPanel1.TabItem = Me.TabItem1
         '
+        'ComboBoxEx_HexEditorMode
+        '
+        resources.ApplyResources(Me.ComboBoxEx_HexEditorMode, "ComboBoxEx_HexEditorMode")
+        Me.ComboBoxEx_HexEditorMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ComboBoxEx_HexEditorMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEx_HexEditorMode.ForeColor = System.Drawing.Color.Black
+        Me.ComboBoxEx_HexEditorMode.FormattingEnabled = True
+        Me.ComboBoxEx_HexEditorMode.Items.AddRange(New Object() {Me.ComboItem7, Me.ComboItem8})
+        Me.ComboBoxEx_HexEditorMode.Name = "ComboBoxEx_HexEditorMode"
+        Me.ComboBoxEx_HexEditorMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'ComboItem7
+        '
+        resources.ApplyResources(Me.ComboItem7, "ComboItem7")
+        '
+        'ComboItem8
+        '
+        resources.ApplyResources(Me.ComboItem8, "ComboItem8")
+        '
+        'TextBoxX_HexEditorCustomPath
+        '
+        resources.ApplyResources(Me.TextBoxX_HexEditorCustomPath, "TextBoxX_HexEditorCustomPath")
+        Me.TextBoxX_HexEditorCustomPath.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.TextBoxX_HexEditorCustomPath.Border.Class = "TextBoxBorder"
+        Me.TextBoxX_HexEditorCustomPath.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TextBoxX_HexEditorCustomPath.DisabledBackColor = System.Drawing.Color.White
+        Me.TextBoxX_HexEditorCustomPath.ForeColor = System.Drawing.Color.Black
+        Me.TextBoxX_HexEditorCustomPath.Name = "TextBoxX_HexEditorCustomPath"
+        Me.TextBoxX_HexEditorCustomPath.PreventEnterBeep = True
+        '
+        'LabelX4
+        '
+        Me.LabelX4.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX4, "LabelX4")
+        Me.LabelX4.Name = "LabelX4"
+        Me.LabelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
+        '
         'ButtonX4
         '
         Me.ButtonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         resources.ApplyResources(Me.ButtonX4, "ButtonX4")
+        Me.ButtonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX4.Name = "ButtonX4"
         Me.ButtonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ComboBoxEx1
         '
+        resources.ApplyResources(Me.ComboBoxEx1, "ComboBoxEx1")
         Me.ComboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEx1.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx1.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBoxEx1, "ComboBoxEx1")
         Me.ComboBoxEx1.Items.AddRange(New Object() {Me.ComboItem1, Me.ComboItem2, Me.ComboItem3})
         Me.ComboBoxEx1.Name = "ComboBoxEx1"
         Me.ComboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -246,9 +300,9 @@ Partial Class Form_Settings
         'ButtonX3
         '
         Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX3.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.Name = "ButtonX3"
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX3.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -256,9 +310,9 @@ Partial Class Form_Settings
         'ButtonX2
         '
         Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.Name = "ButtonX2"
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX2.Symbol = "58055"
@@ -268,6 +322,7 @@ Partial Class Form_Settings
         '
         'TextBoxX_EmulatorPatch
         '
+        resources.ApplyResources(Me.TextBoxX_EmulatorPatch, "TextBoxX_EmulatorPatch")
         Me.TextBoxX_EmulatorPatch.BackColor = System.Drawing.Color.White
         '
         '
@@ -276,7 +331,6 @@ Partial Class Form_Settings
         Me.TextBoxX_EmulatorPatch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TextBoxX_EmulatorPatch.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_EmulatorPatch.ForeColor = System.Drawing.Color.Black
-        resources.ApplyResources(Me.TextBoxX_EmulatorPatch, "TextBoxX_EmulatorPatch")
         Me.TextBoxX_EmulatorPatch.Name = "TextBoxX_EmulatorPatch"
         Me.TextBoxX_EmulatorPatch.PreventEnterBeep = True
         '
@@ -314,11 +368,11 @@ Partial Class Form_Settings
         '
         'ComboBoxEx_LoaderModule
         '
+        resources.ApplyResources(Me.ComboBoxEx_LoaderModule, "ComboBoxEx_LoaderModule")
         Me.ComboBoxEx_LoaderModule.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_LoaderModule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEx_LoaderModule.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx_LoaderModule.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBoxEx_LoaderModule, "ComboBoxEx_LoaderModule")
         Me.ComboBoxEx_LoaderModule.Name = "ComboBoxEx_LoaderModule"
         '
         'LabelX2
@@ -390,6 +444,19 @@ Partial Class Form_Settings
         Me.TabItem3.Name = "TabItem3"
         resources.ApplyResources(Me.TabItem3, "TabItem3")
         '
+        'ButtonX5
+        '
+        Me.ButtonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
+        Me.ButtonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX5.FocusCuesEnabled = False
+        Me.ButtonX5.Name = "ButtonX5"
+        Me.ButtonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX5.Symbol = "58055"
+        Me.ButtonX5.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
+        Me.ButtonX5.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonX5.SymbolSize = 12.0!
+        '
         'Form_Settings
         '
         resources.ApplyResources(Me, "$this")
@@ -443,4 +510,10 @@ Partial Class Form_Settings
     Friend WithEvents ComboItem2 As DevComponents.Editors.ComboItem
     Friend WithEvents ComboItem3 As DevComponents.Editors.ComboItem
     Friend WithEvents ButtonX4 As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents TextBoxX_HexEditorCustomPath As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents ComboBoxEx_HexEditorMode As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents ComboItem7 As DevComponents.Editors.ComboItem
+    Friend WithEvents ComboItem8 As DevComponents.Editors.ComboItem
+    Friend WithEvents ButtonX5 As DevComponents.DotNetBar.ButtonX
 End Class

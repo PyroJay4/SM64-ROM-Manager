@@ -4,6 +4,7 @@ Imports System.Numerics
 Imports DevComponents.DotNetBar
 Imports ModelConverterGUI
 Imports S3DFileParser
+Imports SM64_ROM_Manager.LevelEditor
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib
 Imports SM64Lib.Levels.Script.Commands
@@ -74,12 +75,12 @@ Public Class Tab_LevelManager
 
     Private ReadOnly Property AllowSavingLevelSettings As Boolean
         Get
-            Return Not mainForm?.LoadingROM AndAlso Not LM_LoadingLevel AndAlso CurrentLevel IsNot Nothing
+            Return Not MainForm?.LoadingROM AndAlso Not LM_LoadingLevel AndAlso CurrentLevel IsNot Nothing
         End Get
     End Property
     Private ReadOnly Property AllowSavingAreaSettings As Boolean
         Get
-            Return Not mainForm?.LoadingROM AndAlso Not LM_LoadingLevel AndAlso Not LM_LoadingAreaList AndAlso Not LM_LoadingArea AndAlso CurrentArea IsNot Nothing
+            Return Not MainForm?.LoadingROM AndAlso Not LM_LoadingLevel AndAlso Not LM_LoadingAreaList AndAlso Not LM_LoadingArea AndAlso CurrentArea IsNot Nothing
         End Get
     End Property
 
@@ -187,7 +188,7 @@ Public Class Tab_LevelManager
     Private Sub LM_RemoveArea() Handles Button_LM_RemoveArea.Click
         If LM_LoadingArea Then Return
         If LM_LoadingAreaList Then Return
-        If Not mainForm.FinishedLoading Then Return
+        If Not MainForm.FinishedLoading Then Return
 
         Dim index = ListBoxAdv_LM_Areas.SelectedIndex
         If index < 0 Then Return
@@ -634,7 +635,7 @@ Public Class Tab_LevelManager
         Button_LM_RemoveArea.Enabled = Not skip
         Button_LM_AreaEditor.Enabled = Not skip
 
-        If mainForm.LoadingROM Then Return
+        If MainForm.LoadingROM Then Return
         If LM_LoadingLevel Then Return
         If LM_LoadingAreaList Then Return
         If skip Then Return
@@ -695,10 +696,10 @@ Public Class Tab_LevelManager
             Return
         End If
 
-        If mainForm.LoadingROM Then Return
+        If MainForm.LoadingROM Then Return
 
         LM_LoadingLevel = True
-        mainForm.StatusText = Form_Main_Resources.Status_LoadingLevel
+        MainForm.StatusText = Form_Main_Resources.Status_LoadingLevel
 
         'Load Level Segemented Banks
         CurrentLevel.SetSegmentedBanks(RomMgr)
@@ -730,7 +731,7 @@ Public Class Tab_LevelManager
         End With
 
         Button_LM_AddArea.Enabled = Not (CurrentLevel.Areas.Count = 8)
-        mainForm.StatusText = ""
+        MainForm.StatusText = ""
         LM_LoadingLevel = False
         LM_LoadAreaList()
         GroupBox_LM_Areas.Enabled = True
@@ -755,10 +756,10 @@ Public Class Tab_LevelManager
 
         If frm.ShowDialog <> DialogResult.OK Then Return
 
-        RomMgr.ChangeLevelID(CurrentLevel, CurrentLevel.LevelID,
+        RomMgr.ChangeLevelID(CurrentLevel, frm.SelectedLevel.ID,
                              frm.SelectedLevel.Type = LevelInfoDataTabelList.LevelTypes.Level)
 
-        ListBoxAdv_LM_Levels.Items(CurrentLevelIndex).Text = frm.SelectedLevel.Name
+        CType(ListBoxAdv_LM_Levels.SelectedItem, BaseItem).Text = frm.SelectedLevel.Name
     End Sub
 
     Private Sub ButtonItem21_Click(sender As Object, e As EventArgs) Handles ButtonItem21.Click
@@ -767,25 +768,25 @@ Public Class Tab_LevelManager
 
     Private Async Sub ButtonItem_ExportVisualMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportVisualMap.Click
         If AllowSavingAreaSettings Then
-            mainForm.StatusText = Form_Main_Resources.Status_LoadingModel
+            MainForm.StatusText = Form_Main_Resources.Status_LoadingModel
             Dim mdl As Object3D = Await LoadAreaVisualMapAsObject3DAsync(RomMgr, CurrentArea)
 
             MainForm.StatusText = Form_Main_Resources.Status_ExportingModel
             Publics.Publics.ExportModel(mdl, LoaderModule.SimpleFileParser)
 
-            mainForm.StatusText = ""
+            MainForm.StatusText = ""
         End If
     End Sub
 
     Private Async Sub ButtonItem_ExportCollisionMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportCollisionMap.Click
         If AllowSavingAreaSettings Then
-            mainForm.StatusText = Form_Main_Resources.Status_LoadingModel
+            MainForm.StatusText = Form_Main_Resources.Status_LoadingModel
             Dim mdl As Object3D = Await CurrentArea.AreaModel.Collision.ToObject3DAsync
 
-            mainForm.StatusText = Form_Main_Resources.Status_ExportingModel
+            MainForm.StatusText = Form_Main_Resources.Status_ExportingModel
             Publics.Publics.ExportModel(mdl, LoaderModule.SimpleFileParser)
 
-            mainForm.StatusText = ""
+            MainForm.StatusText = ""
         End If
     End Sub
 

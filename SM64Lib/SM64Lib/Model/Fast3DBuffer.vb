@@ -26,11 +26,11 @@ Namespace Global.SM64Lib.Model.Fast3D
                 .CenterModel = ObjSettings.CenterModel,
                 .Scale = ObjSettings.Scaling,
                 .ResizeTextures = ObjSettings.ResizeTextures,
-                .FlipTexturesVerticaly = ObjSettings.FlipTextures,
                 .ReduceVertLevel = ObjSettings.ReduceDupVertLevel,
                 .SegmentedAddress = &HE000000,
                 .ForceDisplaylist = ObjSettings.ForceDisplaylist,
-                .Fog = ObjSettings.Fog
+                .Fog = ObjSettings.Fog,
+                .OptimizeTransparencyChecks = ObjSettings.OptimizeTransparencyChecks
             }
             model.Shading = ObjSettings.Shading
 

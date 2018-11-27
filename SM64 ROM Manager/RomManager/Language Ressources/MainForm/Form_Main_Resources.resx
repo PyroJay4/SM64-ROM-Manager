@@ -120,14 +120,35 @@
   <data name="Button_OpenRom" xml:space="preserve">
     <value>Open ROM ...</value>
   </data>
+  <data name="Exception_RomWasUsedBySM64E" xml:space="preserve">
+    <value>This ROM was used by the SM64 Editor and isn't compatible with the SM64 ROM Manager.</value>
+  </data>
   <data name="MsgBox_BankSizeChangedSuccess" xml:space="preserve">
     <value>Size of Bank 0x19 changed successfully!</value>
   </data>
   <data name="MsgBox_BankSizeChangedSuccess_Title" xml:space="preserve">
     <value>Size changed</value>
   </data>
+  <data name="MsgBox_ConvertToMidi_Failed" xml:space="preserve">
+    <value>An error happend at converting .m64 to .midi!</value>
+  </data>
+  <data name="MsgBox_ConvertToMidi_Failed_Titel" xml:space="preserve">
+    <value>M64 to MIDI failed</value>
+  </data>
+  <data name="MsgBox_ConvertToMidi_Succes" xml:space="preserve">
+    <value>M64 successfully converted to MIDI</value>
+  </data>
+  <data name="MsgBox_ConvertToMidi_Succes_Titel" xml:space="preserve">
+    <value>M64 to MIDI success</value>
+  </data>
   <data name="MsgBox_ErrorSavingSequence" xml:space="preserve">
     <value>An Error happend at saving sequence.</value>
+  </data>
+  <data name="MsgBox_ExportToMidi_Failed" xml:space="preserve">
+    <value>An error happend at exporting sequence as MIDI.</value>
+  </data>
+  <data name="MsgBox_ExportToMidi_Failed_Titel" xml:space="preserve">
+    <value>Export to MIDI</value>
   </data>
   <data name="MsgBox_GameNameHasInvalidChars" xml:space="preserve">
     <value>The Game Name probably contains invalid chars.</value>
@@ -174,11 +195,29 @@
   <data name="MsgBox_RomCanNotBestarted_Title" xml:space="preserve">
     <value>Launch Game</value>
   </data>
+  <data name="MsgBox_RomChanged_ReloadRom" xml:space="preserve">
+    <value>Your ROM file has been changed outside this tool. You need to reload the ROM to be able to save. Reload now?</value>
+  </data>
+  <data name="MsgBox_RomChanged_ReloadRom_Titel" xml:space="preserve">
+    <value>ROM has been changed</value>
+  </data>
+  <data name="MsgBox_RomRemoved" xml:space="preserve">
+    <value>The ROM that was open in this program has been removed!&lt;br/&gt;This programm will close now.</value>
+  </data>
+  <data name="MsgBox_RomRemoved_Titel" xml:space="preserve">
+    <value>ROM has been removed</value>
+  </data>
   <data name="MsgBox_TextsOverLimit" xml:space="preserve">
     <value>Your texts needs more space then allowed! Please reduce them before saving ROM.</value>
   </data>
   <data name="MsgBox_TextsOverLimit_Title" xml:space="preserve">
     <value>Over Limit</value>
+  </data>
+  <data name="MsgBox_UnknownErrorAtLoadingRom" xml:space="preserve">
+    <value>A unknown error happend at loading ROM.</value>
+  </data>
+  <data name="MsgBox_UnknownErrorAtLoadingRom_Titel" xml:space="preserve">
+    <value>Loading ROM</value>
   </data>
   <data name="MsgBox_UnsavedChanges" xml:space="preserve">
     <value>If there are unsaved changes left, you will lose them all.&lt;br/&gt;Do you want to save the ROM?</value>

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5E9F0B0A-F7B8-49A9-80FC-6DFE0D44CC84}</ProjectGuid>
+    <ProjectGuid>{26AD6422-F5D8-48D3-AC57-398F9C094217}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>OpenGLRenderer</RootNamespace>
-    <AssemblyName>Object3DRenderer</AssemblyName>
+    <RootNamespace>OpenGLFactory.CameraN</RootNamespace>
+    <AssemblyName>OpenGLFactory.Camera</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -18,7 +18,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Object3DRenderer.xml</DocumentationFile>
+    <DocumentationFile>OpenGLFactory.Camera.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -27,7 +27,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Object3DRenderer.xml</DocumentationFile>
+    <DocumentationFile>OpenGLFactory.Camera.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -52,7 +52,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
     </Reference>
@@ -75,9 +74,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoundingBox.vb" />
-    <Compile Include="CameraPoint.vb" />
-    <Compile Include="ContentPipe.vb" />
+    <Compile Include="Camera.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -93,7 +90,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Renderer.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -104,7 +100,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -118,12 +113,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenGLRenderer\OpenGLFactory.RenderingN.vbproj">
+      <Project>{5E9F0B0A-F7B8-49A9-80FC-6DFE0D44CC84}</Project>
+      <Name>OpenGLFactory.RenderingN</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
       <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
       <Name>SimpleFileParser</Name>
     </ProjectReference>
     <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
-      <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
+      <Project>{50BE8215-8945-4A29-908A-36E1102A540C}</Project>
       <Name>SM64Lib</Name>
     </ProjectReference>
   </ItemGroup>

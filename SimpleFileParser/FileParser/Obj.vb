@@ -276,8 +276,11 @@ Namespace Obj
     Public Class MaterialLib
 
         Public ReadOnly Property Materials As New Dictionary(Of String, Material)
+        Private ReadOnly LoadedImages As New Dictionary(Of String, Image)
 
         Public Sub FromFile(fileName As String, LoadMaterials As Boolean)
+            LoadedImages.Clear()
+
             Dim curMatLibPath As String = Path.GetDirectoryName(fileName)
 
             Dim curMat As Material = Nothing
@@ -324,9 +327,23 @@ Namespace Obj
                             End If
 
                             If imgfile <> "" Then
-                                Dim fs As New FileStream(imgfile, FileMode.Open, FileAccess.Read)
-                                curMat.Image = Image.FromStream(fs)
-                                fs.Close()
+                                If LoadedImages.ContainsKey(imgfile) Then
+                                    curMat.Image = LoadedImages(imgfile)
+                                Else
+                                    Dim fs As New FileStream(imgfile, FileMode.Open, FileAccess.Read)
+                                    curMat.Image = Image.FromStream(fs)
+                                    fs.Close()
+                                    Dim imgExists As Boolean = False
+                                    For Each kvp In LoadedImages
+                                        If Not imgExists AndAlso IsTheSameAs(kvp.Value, curMat.Image) Then
+                                            curMat.Image = kvp.Value
+                                            imgExists = True
+                                        End If
+                                    Next
+                                    If Not imgExists Then
+                                        LoadedImages.Add(imgfile, curMat.Image)
+                                    End If
+                                End If
                             End If
                         End If
 
@@ -370,4 +387,5 @@ Namespace Obj
         End Sub
 
     End Class
+
 End Namespace

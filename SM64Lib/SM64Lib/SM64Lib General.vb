@@ -517,11 +517,11 @@ Namespace Global.SM64Lib
         Public Property ForceDisplaylist As Geolayout.Geolayer = -1
         Public Property Scaling As Double = 500.0
         Public Property ReduceDupVertLevel = ReduceDuplicateVerticesLevel.Level1
-        Public Property FlipTextures As Boolean = False
         Public Property Fog As Fog = Nothing
         Public Property ResizeTextures As Boolean = True
         Public Property CenterModel As Boolean = False
         Public ReadOnly Property Shading As New S3DFileParser.Shading
+        Public Property OptimizeTransparencyChecks As Boolean = False
 
         Public Enum ReduceDuplicateVerticesLevel
             ''' <summary>Don't reduce vertices.</summary>

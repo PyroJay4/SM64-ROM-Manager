@@ -120,9 +120,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenGLCamera\OpenGLCamera.vbproj">
+    <ProjectReference Include="..\OpenGLCamera\OpenGLFactory.CameraN.vbproj">
       <Project>{26ad6422-f5d8-48d3-ac57-398f9c094217}</Project>
-      <Name>OpenGLCamera</Name>
+      <Name>OpenGLFactory.CameraN</Name>
     </ProjectReference>
     <ProjectReference Include="..\SettingsManager\SettingsManager.vbproj">
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>

@@ -2,8 +2,8 @@ Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
-Imports OpenGLCamera
-Imports OpenGLRenderer
+Imports OpenGLFactory.CameraN
+Imports OpenGLFactory.RenderingN
 Imports OpenTK
 Imports OpenTK.Graphics.OpenGL
 Imports PaintingControls
@@ -19,7 +19,7 @@ Public Class ModelPreview
     Private camMtx As Matrix4 = Matrix4.Identity
     Private WithEvents Camera As New Camera
     Private savedCamPos As New Vector3
-    Private isMouseDown As Boolean = False
+    Private _isMouseDown As Boolean = False
     Private pressedKeys As New List(Of Keys)
     Private WithEvents glControl1 As GLControl
     Private curScale As Single = 500.0F
@@ -33,6 +33,16 @@ Public Class ModelPreview
         Get
             Return pressedKeys.Contains(Keys.ShiftKey)
         End Get
+    End Property
+
+    Public Property IsMouseDown As Boolean
+        Get
+            Return _isMouseDown
+        End Get
+        Set(value As Boolean)
+            _isMouseDown = value
+            glControl1.Refresh()
+        End Set
     End Property
 
     Public Sub New(obj As Object3D, scale As Single)
@@ -105,13 +115,14 @@ Public Class ModelPreview
             GL.MatrixMode(MatrixMode.Modelview)
             GL.LoadMatrix(camMtx)
 
-            rndr.DrawModel(OpenGLRenderer.RenderMode.FillOutline)
+            rndr.DrawModel(RenderingN.RenderMode.FillOutline)
 
             glControl1.SwapBuffers()
         End If
 
-        'If obj3d IsNot Nothing Then
-        '    e.Graphics.DrawString(GetModelInfoAsString, New Font(FontFamily.GenericSansSerif, 10), New SolidBrush(Panel1.ForeColor), New Drawing.Point(10, 10))
+        'If Not IsMouseDown AndAlso obj3d IsNot Nothing Then
+        '    e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+        '    e.Graphics.DrawString(GetModelInfoAsString, New Font(FontFamily.GenericSerif, 10), New SolidBrush(Panel1.ForeColor), New Drawing.Point(10, 10))
         'End If
     End Sub
 
@@ -158,7 +169,7 @@ vbTab, matsCount, facesCount, vertsCount, vcCount, uvCount)
 
     Private Sub glControl1_MouseLeave(ByVal sender As Object, ByVal e As EventArgs) Handles glControl1.MouseLeave, glControl1.MouseUp
         Camera.resetMouseStuff()
-        isMouseDown = False
+        IsMouseDown = False
     End Sub
 
     Private Sub glControl1_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles glControl1.MouseMove
@@ -214,11 +225,12 @@ vbTab, matsCount, facesCount, vertsCount, vcCount, uvCount)
         Next
     End Sub
 
-    Private Sub camera_NeedSelectedObject(e As Camera.NeedSelectedObjectEventArgs) Handles Camera.NeedSelectedObject
+    Private Sub camera_NeedSelectedObject(e As CameraN.Camera.NeedSelectedObjectEventArgs) Handles Camera.NeedSelectedObject
         e.Points = Nothing
     End Sub
 
     Private Sub ModelPreview_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         rndr?.ReleaseBuffers()
     End Sub
+
 End Class

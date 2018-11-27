@@ -1,12 +1,13 @@
 ﻿Imports System.Drawing
 Imports System.Numerics
-Imports OpenGLRenderer
+Imports OpenGLFactory.RenderingN
 Imports SM64Lib.General
 Imports SM64Lib.Levels.Script
 Imports SM64Lib.Levels.Script.Commands
 Imports System.ComponentModel
 Imports System.Globalization
 Imports SM64_ROM_Manager.TypeConverters
+Imports SM64_ROM_Manager.LevelEditor
 
 <DefaultProperty("AllActs")>
 Public Class Managed3DObject
@@ -44,10 +45,10 @@ Public Class Managed3DObject
         Get
             Return myObjectCombos.GetObjectComboOfObject(Me).Name
         End Get
-        Set(value As String)
-            Dim oc As ObjectComboList.ObjectCombo = myObjectCombos.FirstOrDefault(Function(n) n.Name = value)
+        Set
+            Dim oc As ObjectCombo = myObjectCombos.FirstOrDefault(Function(n) n.Name = Value)
             ModelID = oc.ModelID
-            BehaviorID = oc.BehaviorID
+            BehaviorID = oc.BehaviorAddress
         End Set
     End Property
 
@@ -223,7 +224,7 @@ Public Class Managed3DObject
         LoadProperties()
     End Sub
 
-    Public Sub LoadProperties() Implements IManagedLevelscriptCommand.LoadpProperties
+    Public Sub LoadProperties() Implements IManagedLevelscriptCommand.LoadProperties
         'Acts
         Dim acts() As Boolean = Bits.ByteToBoolArray(clNormal3DObject.GetActs(Command))
         Act1 = acts(7)

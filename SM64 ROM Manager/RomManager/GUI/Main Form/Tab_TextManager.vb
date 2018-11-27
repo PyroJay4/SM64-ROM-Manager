@@ -78,7 +78,7 @@ Public Class Tab_TextManager
             If nameList.Count > curIndex Then _
                 nameEntry = nameList(curIndex)
 
-            Dim newItem As New ListViewItem({ListViewEx_TM_TableEntries.Items.Count, nameEntry, textItem.Text})
+            Dim newItem As New ListViewItem({ListViewEx_TM_TableEntries.Items.Count, nameEntry, textItem.Text.Split({ControlChars.Cr, ControlChars.Lf}).FirstOrDefault})
             ListViewEx_TM_TableEntries.Items.Add(newItem)
         Next
 

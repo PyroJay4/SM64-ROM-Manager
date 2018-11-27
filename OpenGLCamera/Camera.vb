@@ -167,7 +167,7 @@ Public Class Camera
     End Sub
 
     Public Sub resetOrbitToSelectedObject()
-        Dim objs As OpenGLRenderer.ICameraPoint() = getSelectedObject()
+        Dim objs As RenderingN.ICameraPoint() = getSelectedObject()
         If objs?.Length > 0 Then
             orbitTheta = -(CalculateCenterYRotationOfObjects(objs) * (CSng(Math.PI) / 180.0F))
             orbitPhi = -0.3F
@@ -177,7 +177,7 @@ Public Class Camera
 
     Public Sub updateOrbitCamera(ByRef cameraMatrix As Matrix4)
         If camMode_Renamed = CameraMode.ORBIT Then
-            Dim objs As OpenGLRenderer.ICameraPoint() = getSelectedObject()
+            Dim objs As OpenGLFactory.RenderingN.ICameraPoint() = getSelectedObject()
             If objs?.Length > 0 Then
                 Dim centerPos As Numerics.Vector3 = CalculateCenterPositionOfObjects(objs)
                 pos.X = centerPos.X + CSng(Math.Cos(orbitPhi) * -Math.Sin(orbitTheta) * orbitDistance)
@@ -467,9 +467,9 @@ Public Class Camera
         resetMouse = True
     End Sub
 
-    Private Function CalculateCenterPositionOfObjects(objs As OpenGLRenderer.ICameraPoint()) As Numerics.Vector3
+    Private Function CalculateCenterPositionOfObjects(objs As RenderingN.ICameraPoint()) As Numerics.Vector3
         If objs.Length <= 1 Then
-            Dim obj As OpenGLRenderer.ICameraPoint = objs.FirstOrDefault
+            Dim obj As RenderingN.ICameraPoint = objs.FirstOrDefault
             If obj Is Nothing Then
                 Return Numerics.Vector3.Zero
             Else
@@ -486,7 +486,7 @@ Public Class Camera
         Dim minY As Single? = Nothing
         Dim minZ As Single? = Nothing
 
-        For Each obj As OpenGLRenderer.ICameraPoint In objs
+        For Each obj As RenderingN.ICameraPoint In objs
             Dim pos As Numerics.Vector3 = obj.Position
             If maxX Is Nothing OrElse pos.X > maxX Then maxX = pos.X
             If maxY Is Nothing OrElse pos.Y > maxY Then maxY = pos.Y
@@ -511,9 +511,9 @@ Public Class Camera
         Return middle
     End Function
 
-    Private Function CalculateCenterYRotationOfObjects(objs As OpenGLRenderer.ICameraPoint()) As Single
+    Private Function CalculateCenterYRotationOfObjects(objs As RenderingN.ICameraPoint()) As Single
         If objs.Length <= 1 Then
-            Dim obj As OpenGLRenderer.ICameraPoint = objs.FirstOrDefault
+            Dim obj As RenderingN.ICameraPoint = objs.FirstOrDefault
             If obj Is Nothing Then
                 Return 0
             Else
@@ -523,14 +523,14 @@ Public Class Camera
 
         Dim yRot As New List(Of Single)
 
-        For Each obj As OpenGLRenderer.ICameraPoint In objs
+        For Each obj As RenderingN.ICameraPoint In objs
             yRot.Add(obj.Rotation.Y)
         Next
 
         Return yRot.Average
     End Function
 
-    Private Function getSelectedObject() As OpenGLRenderer.ICameraPoint()
+    Private Function getSelectedObject() As RenderingN.ICameraPoint()
         Dim e As New NeedSelectedObjectEventArgs
         RaiseEvent NeedSelectedObject(e)
 
@@ -557,12 +557,12 @@ Public Class Camera
             End Get
         End Property
 
-        Private _Points As OpenGLRenderer.ICameraPoint() = Nothing
-        Public Property Points As OpenGLRenderer.ICameraPoint()
+        Private _Points As RenderingN.ICameraPoint() = Nothing
+        Public Property Points As RenderingN.ICameraPoint()
             Get
                 Return _Points
             End Get
-            Set(value As OpenGLRenderer.ICameraPoint())
+            Set(value As RenderingN.ICameraPoint())
                 _Points = value
                 _HasObjectSetted = True
             End Set

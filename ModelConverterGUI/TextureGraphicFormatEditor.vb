@@ -22,10 +22,9 @@ Public Class TextureGraphicFormatEditor
         obj3d = obj
         AcceptButton = Button_SaveColsettings
 
-        For Each name As String In [Enum].GetNames(GetType(SM64Lib.Model.Fast3D.TextureFormatSettings.SelectDisplaylistMode))
-            ComboBoxEx_SelectDisplaylist.Items.Add(name)
-        Next
-        ComboBoxEx_SelectDisplaylist.SelectedIndex = 0
+        LoadDisplayListTypes()
+        LoadN64TextureFormatTypes()
+        LoadRotateFlip()
 
         UpdateAmbientColors()
 
@@ -34,8 +33,32 @@ Public Class TextureGraphicFormatEditor
         Me.ResumeLayout()
     End Sub
     Private Sub Form_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        LoadN64TextureFormatTypes()
         LoadTexturesFromModel()
+    End Sub
+
+    Private Sub LoadDisplayListTypes()
+        For Each name As String In [Enum].GetNames(GetType(SM64Lib.Model.Fast3D.TextureFormatSettings.SelectDisplaylistMode))
+            ComboBoxEx_SelectDisplaylist.Items.Add(name)
+        Next
+        ComboBoxEx_SelectDisplaylist.SelectedIndex = 0
+    End Sub
+
+    Private Sub LoadRotateFlip()
+        With ComboBoxEx_RotateFlip.Items
+            .Add(New ComboItem With {.Text = "None", .Tag = RotateFlipType.RotateNoneFlipNone})
+            .Add(New ComboItem With {.Text = "Y", .Tag = RotateFlipType.RotateNoneFlipY})
+            .Add(New ComboItem With {.Text = "X", .Tag = RotateFlipType.RotateNoneFlipX})
+            .Add(New ComboItem With {.Text = "X & Y", .Tag = RotateFlipType.RotateNoneFlipXY})
+
+            '.Add(New ComboItem With {.Text = "None / None", .Tag = RotateFlipType.RotateNoneFlipNone})
+            '.Add(New ComboItem With {.Text = "Y / None", .Tag = RotateFlipType.RotateNoneFlipY})
+            '.Add(New ComboItem With {.Text = "X / None", .Tag = RotateFlipType.RotateNoneFlipX})
+            '.Add(New ComboItem With {.Text = "X & Y / None", .Tag = RotateFlipType.RotateNoneFlipXY})
+            '.Add(New ComboItem With {.Text = "Y / 180°", .Tag = RotateFlipType.Rotate180FlipY})
+            '.Add(New ComboItem With {.Text = "X / 180°", .Tag = RotateFlipType.Rotate180FlipX})
+            '.Add(New ComboItem With {.Text = "X & Y / 180°", .Tag = RotateFlipType.Rotate180FlipXY})
+        End With
+        ComboBoxEx_RotateFlip.SelectedIndex = 0
     End Sub
 
     Private Sub LoadTexturesFromModel()
@@ -77,7 +100,7 @@ Public Class TextureGraphicFormatEditor
         Dim names As String() = [Enum].GetNames(eType)
         Dim values As Integer() = [Enum].GetValues(eType)
 
-        For i As Integer = 0 To names.Count - 2
+        For i As Integer = 0 To names.Count - 3
             Dim item As New ComboItem
             item.Text = names(i)
             item.Tag = N64Graphics.N64Graphics.CodecString(values(i))
@@ -117,6 +140,7 @@ Public Class TextureGraphicFormatEditor
             CheckBoxX_EnableMirror.Checked = curEntry.EnableMirror
             CheckBoxX_EnableClamp.Checked = curEntry.EnableClamp
             CheckBoxX_EnableCrystalEffect.Checked = curEntry.EnableCrystalEffect
+            ComboBoxEx_RotateFlip.SelectedItem = GetRotateFlipComboItem(curEntry.RotateFlip)
 
             loadingtexItemSettings = False
 
@@ -125,6 +149,22 @@ Public Class TextureGraphicFormatEditor
             End If
         End If
     End Sub
+
+    Private Function GetRotateFlipComboItem(type As RotateFlipType) As ComboItem
+        Dim var As ComboItem = Nothing
+
+        For Each item As ComboItem In ComboBoxEx_RotateFlip.Items
+            If var Is Nothing AndAlso item.Tag = type Then
+                var = item
+            End If
+        Next
+
+        If var Is Nothing AndAlso ComboBoxEx_RotateFlip.Items.Count > 0 Then
+            var = ComboBoxEx_RotateFlip.Items(0)
+        End If
+
+        Return var
+    End Function
 
     Private Sub ComboBox_CI_ColType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_ColType.SelectedIndexChanged
         Dim selItem As ComboItem = ComboBox_ColType.SelectedItem
@@ -149,12 +189,13 @@ Public Class TextureGraphicFormatEditor
                 curEntry.EnableMirror = CheckBoxX_EnableMirror.Checked
                 curEntry.EnableClamp = CheckBoxX_EnableClamp.Checked
                 curEntry.EnableCrystalEffect = CheckBoxX_EnableCrystalEffect.Checked
+                curEntry.RotateFlip = CType(ComboBoxEx_RotateFlip.SelectedItem, ComboItem).Tag
             Next
 
         End If
     End Sub
 
-    Private Sub ButtonItem_IsScollTex_Click() Handles CheckBoxX_EnableTextureAnimation.CheckedChanged, ComboBoxEx_SelectDisplaylist.SelectedIndexChanged, CheckBoxX_EnableClamp.CheckedChanged, CheckBoxX_EnableMirror.CheckedChanged, CheckBoxX_EnableCrystalEffect.CheckedChanged
+    Private Sub ButtonItem_IsScollTex_Click(sender As Object, e As EventArgs) Handles CheckBoxX_EnableTextureAnimation.CheckedChanged, ComboBoxEx_SelectDisplaylist.SelectedIndexChanged, CheckBoxX_EnableClamp.CheckedChanged, CheckBoxX_EnableMirror.CheckedChanged, CheckBoxX_EnableCrystalEffect.CheckedChanged, ComboBoxEx_RotateFlip.SelectedIndexChanged
         If hasInit AndAlso Not loadingtexItemSettings Then
             Dim selItem As ComboItem = ComboBox_ColType.SelectedItem
             Dim id As String = selItem.Tag
@@ -162,7 +203,4 @@ Public Class TextureGraphicFormatEditor
         End If
     End Sub
 
-    Private Sub ButtonItem_IsScollTex_Click(sender As Object, e As EventArgs) Handles ComboBoxEx_SelectDisplaylist.SelectedIndexChanged, CheckBoxX_EnableTextureAnimation.CheckedChanged, CheckBoxX_EnableMirror.CheckedChanged, CheckBoxX_EnableClamp.CheckedChanged, CheckBoxX_EnableCrystalEffect.CheckedChanged
-
-    End Sub
 End Class

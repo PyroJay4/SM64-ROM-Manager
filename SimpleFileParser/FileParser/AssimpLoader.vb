@@ -6,8 +6,8 @@ Namespace AssimpLoader
     Public Class AssimpLoader
 
         Public Shared Function FromFile(fileName As String, LoadMaterials As Boolean, UpAxis As UpAxis) As Object3D
+            Dim LoadedImages As New Dictionary(Of String, Image)
             Dim newObj As New Object3D
-
             Dim daeMdl As Scene = Nothing
             Dim ac As New AssimpContext
             Dim channelIndicies As New Dictionary(Of Material, Integer)
@@ -60,9 +60,9 @@ Namespace AssimpLoader
                         If filePath <> "" Then
                             Dim combiPath As String = Path.Combine(Path.GetDirectoryName(fileName), filePath)
                             If File.Exists(combiPath) Then
-                                newMat.Image = LoadImage(combiPath)
+                                newMat.Image = LoadImage(combiPath, LoadedImages)
                             ElseIf File.Exists(filePath) Then
-                                newMat.Image = LoadImage(filePath)
+                                newMat.Image = LoadImage(filePath, LoadedImages)
                             End If
                         ElseIf texSlot.Value.TextureIndex > -1 AndAlso daeMdl.Textures.Count > texSlot.Value.TextureIndex Then
                             Dim et As EmbeddedTexture = daeMdl.Textures(texSlot.Value.TextureIndex)
@@ -354,12 +354,24 @@ Namespace AssimpLoader
             ac.ExportFile(mdl, fileName, formatID)
         End Sub
 
-        Private Shared Function LoadImage(fileName As String) As Image
+        Private Shared Function LoadImage(fileName As String, loadedImages As Dictionary(Of String, Image)) As Image
             If File.Exists(fileName) Then
-                Dim fs As New FileStream(fileName, FileMode.Open, FileAccess.Read)
-                Dim img = Image.FromStream(fs)
-                fs.Close()
-                Return img
+                If loadedImages.ContainsKey(fileName) Then
+                    Return loadedImages(fileName)
+                Else
+                    Dim fs As New FileStream(fileName, FileMode.Open, FileAccess.Read)
+                    Dim img As Image = Image.FromStream(fs)
+                    fs.Close()
+
+                    For Each kvp In loadedImages
+                        If IsTheSameAs(img, kvp.Value) Then
+                            Return kvp.Value
+                        End If
+                    Next
+
+                    loadedImages.Add(fileName, img)
+                    Return img
+                End If
             End If
             Return Nothing
         End Function

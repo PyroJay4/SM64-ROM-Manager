@@ -117,19 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Line2.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LabelX_Colfile.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 41</value>
   </data>
   <data name="LabelX_Colfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 23</value>
-  </data>
-  <data name="LabelX_Colfile.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="LabelX_Colfile.Text" xml:space="preserve">
     <value>&lt;i&gt;Kein Modell geladen!&lt;/i&gt;</value>
@@ -140,26 +133,17 @@
   <data name="LabelX_Modelfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 23</value>
   </data>
-  <data name="LabelX_Modelfile.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="LabelX_Modelfile.Text" xml:space="preserve">
     <value>&lt;i&gt;Kein Modell geladen!&lt;/i&gt;</value>
   </data>
   <data name="LabelX2.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 23</value>
   </data>
-  <data name="LabelX2.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="LabelX2.Text" xml:space="preserve">
     <value>Kollision:</value>
   </data>
   <data name="LabelX1.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 23</value>
-  </data>
-  <data name="LabelX1.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="LabelX1.Text" xml:space="preserve">
     <value>Visuelles Modell:</value>
@@ -173,66 +157,14 @@
   <data name="SwitchButton_EnableFog.OnText" xml:space="preserve">
     <value>Ja</value>
   </data>
-  <data name="SwitchButton_EnableFog.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Button_ColEditor.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="Button_ColEditor.Text" xml:space="preserve">
     <value>Kollision-editor</value>
-  </data>
-  <data name="Button_SetUpFog.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX20.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="LabelX20.Text" xml:space="preserve">
     <value>Nebel:</value>
   </data>
-  <data name="LabelX16.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="LabelX16.Text" xml:space="preserve">
     <value>Skalierung:</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="NUD_Scaling.ButtonCalculator.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCalculator.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonClear.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="NUD_Scaling.ButtonClear.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonCustom.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonCustom2.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom2.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonDropDown.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="NUD_Scaling.ButtonDropDown.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonFreeText.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="NUD_Scaling.ButtonFreeText.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="Button_LoadCol.Text" xml:space="preserve">
     <value>Laden ...</value>
@@ -240,32 +172,11 @@
   <data name="Button_LoadModel.Text" xml:space="preserve">
     <value>Laden ...</value>
   </data>
-  <data name="Line3.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Button_ConvertModel.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="Button_ConvertModel.Text" xml:space="preserve">
     <value>Konver-tieren</value>
   </data>
-  <data name="CircularProgress1.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX9.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="LabelX9.Text" xml:space="preserve">
     <value>Modell zentrieren:</value>
-  </data>
-  <data name="CheckBoxX_ConvertModel.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="CheckBoxX_ConvertCollision.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX3.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="LabelX3.Text" xml:space="preserve">
     <value>Texturgröße anpassen:</value>
@@ -276,17 +187,8 @@
   <data name="SwitchButton_ResizeTextures.OnText" xml:space="preserve">
     <value>Ja</value>
   </data>
-  <data name="SwitchButton_ResizeTextures.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX5.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="LabelX5.Text" xml:space="preserve">
     <value>Schattierung:</value>
-  </data>
-  <data name="LabelX6.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="LabelX6.Text" xml:space="preserve">
     <value>Hell</value>
@@ -294,26 +196,8 @@
   <data name="LabelX7.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="LabelX7.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="LabelX7.Text" xml:space="preserve">
     <value>Dunkel</value>
-  </data>
-  <data name="SwitchButton_TextureFlip.OffText" xml:space="preserve">
-    <value>Nein</value>
-  </data>
-  <data name="SwitchButton_TextureFlip.OnText" xml:space="preserve">
-    <value>Ja</value>
-  </data>
-  <data name="SwitchButton_TextureFlip.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX8.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX8.Text" xml:space="preserve">
-    <value>Texturen umdrehen:</value>
   </data>
   <data name="SwitchButton_CenterModel.OffText" xml:space="preserve">
     <value>Nein</value>
@@ -321,17 +205,8 @@
   <data name="SwitchButton_CenterModel.OnText" xml:space="preserve">
     <value>Ja</value>
   </data>
-  <data name="SwitchButton_CenterModel.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ButtonX_VisualMapPreview.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="ButtonX_VisualMapPreview.Text" xml:space="preserve">
     <value>Modell-vorschau</value>
-  </data>
-  <data name="ButtonX_CollisionMapPreview.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="ButtonX_CollisionMapPreview.Text" xml:space="preserve">
     <value>Kollision-vorschau</value>
@@ -341,12 +216,6 @@
   </data>
   <data name="SwitchButton_EnableReduceVertices.OnText" xml:space="preserve">
     <value>Ja</value>
-  </data>
-  <data name="SwitchButton_EnableReduceVertices.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX10.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="LabelX10.Text" xml:space="preserve">
     <value>Oben-Axe:</value>
@@ -358,27 +227,31 @@
         HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="ColorPickerButton_ShadingLight.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ButtonX_GraphicsEditor.Text" xml:space="preserve">
+    <value>Grafikeditor</value>
   </data>
-  <data name="ColorPickerButton_ShadingDark.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ColorPickerButton_FogColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
         HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="ColorPickerButton_ShadingDark.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 248</value>
+  <data name="LabelX8.Text" xml:space="preserve">
+    <value>Optimiere Transparenz-Checks;</value>
   </data>
-  <data name="ColorPickerButton_ShadingDark.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SwitchButton_OptimizeTransChecks.OffText" xml:space="preserve">
+    <value>Nein</value>
   </data>
-  <data name="ButtonX_GraphicsEditor.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SwitchButton_OptimizeTransChecks.OnText" xml:space="preserve">
+    <value>Ja</value>
   </data>
-  <data name="ButtonX_GraphicsEditor.Text" xml:space="preserve">
-    <value>Grafikeditor</value>
+  <data name="ColorPickerButton_ShadingDarkNeu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
+        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
+</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2236,9 +2109,6 @@
         MDEtMDU6MDDkOlH3AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDEyLTExLTIwVDA5OjAzOjUzLTA2OjAwpVUc
         +QAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="$this.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Modell-Konverter</value>

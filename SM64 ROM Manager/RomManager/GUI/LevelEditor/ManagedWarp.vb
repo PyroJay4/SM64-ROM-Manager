@@ -55,10 +55,10 @@ Public Class ManagedWarp
 
     Public Sub New(cmd As LevelscriptCommand)
         Me._Command = cmd
-        LoadpProperties()
+        LoadProperties()
     End Sub
 
-    Public Sub LoadpProperties() Implements IManagedLevelscriptCommand.LoadpProperties
+    Public Sub LoadProperties() Implements IManagedLevelscriptCommand.LoadProperties
         'Warp-ID
         WarpID = clWarp.GetWarpID(Command)
 

@@ -120,14 +120,35 @@
   <data name="Button_OpenRom" xml:space="preserve">
     <value>ROM öffnen ...</value>
   </data>
+  <data name="Exception_RomWasUsedBySM64E" xml:space="preserve">
+    <value>Diese ROM wurde vom SM64 Editor genutzt und ist nicht mit diesem Programm kompatibel.</value>
+  </data>
   <data name="MsgBox_BankSizeChangedSuccess" xml:space="preserve">
     <value>Die Größe der Bank 0x19 wurde erforlgriech geändert.</value>
   </data>
   <data name="MsgBox_BankSizeChangedSuccess_Title" xml:space="preserve">
     <value>Größe geändert</value>
   </data>
+  <data name="MsgBox_ConvertToMidi_Failed" xml:space="preserve">
+    <value>Ein Fehler ist während des Konvertierens von M64 zu MIDI aufgetreten.</value>
+  </data>
+  <data name="MsgBox_ConvertToMidi_Failed_Titel" xml:space="preserve">
+    <value>M64 zu MIDI fehlgeschlagen</value>
+  </data>
+  <data name="MsgBox_ConvertToMidi_Succes" xml:space="preserve">
+    <value>M64 erfolgreich zu MIDI konvertiert.</value>
+  </data>
+  <data name="MsgBox_ConvertToMidi_Succes_Titel" xml:space="preserve">
+    <value>M64 zu MIDI erfolgreich</value>
+  </data>
   <data name="MsgBox_ErrorSavingSequence" xml:space="preserve">
     <value>Während des Speicherns der Sequenzen ist ein Fehler aufgetreten.</value>
+  </data>
+  <data name="MsgBox_ExportToMidi_Failed" xml:space="preserve">
+    <value>Ein Fehler ist während des Exports der Sequenz als MIDIaufgetreten.</value>
+  </data>
+  <data name="MsgBox_ExportToMidi_Failed_Titel" xml:space="preserve">
+    <value>Export to midi</value>
   </data>
   <data name="MsgBox_GameNameHasInvalidChars" xml:space="preserve">
     <value>Der Spiel-Name enthällt möglicherweise nicht kompatible Zeichen.</value>
@@ -174,11 +195,29 @@
   <data name="MsgBox_RomCanNotBestarted_Title" xml:space="preserve">
     <value>Spiel starten</value>
   </data>
+  <data name="MsgBox_RomChanged_ReloadRom" xml:space="preserve">
+    <value>Die ROM wurde in einem anderen Programm geändert. Um speichern zu können muss die ROM einmal neu geladen werden. Soll sie jetzt neu geladen werden?</value>
+  </data>
+  <data name="MsgBox_RomChanged_ReloadRom_Titel" xml:space="preserve">
+    <value>ROM wurde geändert</value>
+  </data>
+  <data name="MsgBox_RomRemoved" xml:space="preserve">
+    <value>Die in diesem Fenster geöffnete ROM wurde gelöscht.&lt;br/&gt;Das Programm wird sich nun schließen.</value>
+  </data>
+  <data name="MsgBox_RomRemoved_Titel" xml:space="preserve">
+    <value>ROM wurde gelöscht</value>
+  </data>
   <data name="MsgBox_TextsOverLimit" xml:space="preserve">
     <value>Deine Texte brauchen zu viel Platz! Bitte reduziere die Anzahl von Zeichen bzw. verkürze deine Texte, bevor du speicherst.</value>
   </data>
   <data name="MsgBox_TextsOverLimit_Title" xml:space="preserve">
     <value>Über dem Limit</value>
+  </data>
+  <data name="MsgBox_UnknownErrorAtLoadingRom" xml:space="preserve">
+    <value>Ein unbekannter Fehler ist während des Ladens der ROM aufgetreten.</value>
+  </data>
+  <data name="MsgBox_UnknownErrorAtLoadingRom_Titel" xml:space="preserve">
+    <value>ROM laden</value>
   </data>
   <data name="MsgBox_UnsavedChanges" xml:space="preserve">
     <value>Wenn Änderungen noch nicht gepspeichert wurde, gehen diese verloren.&lt;br/&gt;Möchtest du die ROM jetzt speichern?</value>

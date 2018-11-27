@@ -6,6 +6,7 @@ Imports TextValueConverter
 Imports SM64Lib, SM64Lib.Objects
 Imports DevComponents.AdvTree
 Imports System.ComponentModel
+Imports SM64_ROM_Manager.LevelEditor
 
 Public Class ItemBoxContentEditor
 
@@ -37,8 +38,8 @@ Public Class ItemBoxContentEditor
                 Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
                 If n IsNot Nothing Then
                     If n.TagString = "" Then
-                        Dim info As BehaviorInfoList.BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehavAddress)
-                        Dim param As BehaviorInfoList.BParam = info?.GetValue($"BParam{i}")
+                        Dim info As BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehavAddress)
+                        Dim param As BehaviorInfo.BParam = info?.GetValue($"BParam{i}")
                         If param IsNot Nothing Then
                             If param.Name <> "" Then
                                 n.Text = param.Name

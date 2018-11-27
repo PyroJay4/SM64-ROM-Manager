@@ -28,16 +28,12 @@ Partial Class MainForm
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New DevComponents.DotNetBar.TabControl()
         Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.tabGeneral = New SM64_ROM_Manager.Tab_General()
         Me.TabItem_General = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.tabLevelManager = New SM64_ROM_Manager.Tab_LevelManager()
         Me.TabItem_LevelManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel3 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.tabTextManager = New SM64_ROM_Manager.Tab_TextManager()
         Me.TabItem_TextManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel4 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.tabMusicManager = New SM64_ROM_Manager.Tab_MusicManager()
         Me.TabItem_MusicManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.Bar2 = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
@@ -55,12 +51,14 @@ Partial Class MainForm
         Me.ButtonItem17 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_TrajectoryEditor = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem14 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem32 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem18 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem22 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem9 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_M64ToMidiConverter = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem12 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem23 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_Bar_Plugins = New DevComponents.DotNetBar.ButtonItem()
@@ -75,7 +73,10 @@ Partial Class MainForm
         Me.ButtonItem30 = New DevComponents.DotNetBar.ButtonItem()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.LabelItem1 = New DevComponents.DotNetBar.LabelItem()
-        Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
+        Me.tabGeneral = New SM64_ROM_Manager.Tab_General()
+        Me.tabLevelManager = New SM64_ROM_Manager.Tab_LevelManager()
+        Me.tabTextManager = New SM64_ROM_Manager.Tab_TextManager()
+        Me.tabMusicManager = New SM64_ROM_Manager.Tab_MusicManager()
         Me.Panel1.SuspendLayout()
         CType(Me.TabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -101,6 +102,7 @@ Partial Class MainForm
         Me.RibbonControl1.KeyTipsFont = New System.Drawing.Font("Tahoma", 7.0!)
         Me.RibbonControl1.Location = New System.Drawing.Point(5, 1)
         Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Padding = New System.Windows.Forms.Padding(0, 0, 0, 3)
         Me.RibbonControl1.Size = New System.Drawing.Size(686, 30)
         Me.RibbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonControl1.SystemText.MaximizeRibbonText = "&Maximize the Ribbon"
@@ -167,27 +169,15 @@ Partial Class MainForm
         Me.TabControlPanel1.Name = "TabControlPanel1"
         Me.TabControlPanel1.Padding = New System.Windows.Forms.Padding(1)
         Me.TabControlPanel1.Size = New System.Drawing.Size(694, 546)
-        Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel1.Style.GradientAngle = 90
         Me.TabControlPanel1.TabIndex = 1
         Me.TabControlPanel1.TabItem = Me.TabItem_General
-        '
-        'tabGeneral
-        '
-        Me.tabGeneral.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabGeneral.BackColor = System.Drawing.Color.White
-        Me.tabGeneral.Location = New System.Drawing.Point(0, 0)
-        Me.tabGeneral.MainForm = Nothing
-        Me.tabGeneral.Name = "tabGeneral"
-        Me.tabGeneral.RomMgr = Nothing
-        Me.tabGeneral.Size = New System.Drawing.Size(694, 546)
-        Me.tabGeneral.TabIndex = 0
         '
         'TabItem_General
         '
@@ -204,27 +194,15 @@ Partial Class MainForm
         Me.TabControlPanel2.Name = "TabControlPanel2"
         Me.TabControlPanel2.Padding = New System.Windows.Forms.Padding(1)
         Me.TabControlPanel2.Size = New System.Drawing.Size(694, 546)
-        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel2.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel2.Style.GradientAngle = 90
         Me.TabControlPanel2.TabIndex = 5
         Me.TabControlPanel2.TabItem = Me.TabItem_LevelManager
-        '
-        'tabLevelManager
-        '
-        Me.tabLevelManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabLevelManager.BackColor = System.Drawing.Color.White
-        Me.tabLevelManager.Location = New System.Drawing.Point(0, 0)
-        Me.tabLevelManager.MainForm = Nothing
-        Me.tabLevelManager.Name = "tabLevelManager"
-        Me.tabLevelManager.RomMgr = Nothing
-        Me.tabLevelManager.Size = New System.Drawing.Size(694, 546)
-        Me.tabLevelManager.TabIndex = 0
         '
         'TabItem_LevelManager
         '
@@ -241,27 +219,15 @@ Partial Class MainForm
         Me.TabControlPanel3.Name = "TabControlPanel3"
         Me.TabControlPanel3.Padding = New System.Windows.Forms.Padding(1)
         Me.TabControlPanel3.Size = New System.Drawing.Size(694, 546)
-        Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel3.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel3.Style.GradientAngle = 90
         Me.TabControlPanel3.TabIndex = 9
         Me.TabControlPanel3.TabItem = Me.TabItem_TextManager
-        '
-        'tabTextManager
-        '
-        Me.tabTextManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabTextManager.BackColor = System.Drawing.Color.White
-        Me.tabTextManager.Location = New System.Drawing.Point(0, 0)
-        Me.tabTextManager.MainForm = Nothing
-        Me.tabTextManager.Name = "tabTextManager"
-        Me.tabTextManager.RomMgr = Nothing
-        Me.tabTextManager.Size = New System.Drawing.Size(694, 546)
-        Me.tabTextManager.TabIndex = 0
         '
         'TabItem_TextManager
         '
@@ -278,27 +244,15 @@ Partial Class MainForm
         Me.TabControlPanel4.Name = "TabControlPanel4"
         Me.TabControlPanel4.Padding = New System.Windows.Forms.Padding(1)
         Me.TabControlPanel4.Size = New System.Drawing.Size(694, 546)
-        Me.TabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel4.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel4.Style.GradientAngle = 90
         Me.TabControlPanel4.TabIndex = 13
         Me.TabControlPanel4.TabItem = Me.TabItem_MusicManager
-        '
-        'tabMusicManager
-        '
-        Me.tabMusicManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabMusicManager.BackColor = System.Drawing.Color.White
-        Me.tabMusicManager.Location = New System.Drawing.Point(0, 0)
-        Me.tabMusicManager.MainForm = Nothing
-        Me.tabMusicManager.Name = "tabMusicManager"
-        Me.tabMusicManager.RomMgr = Nothing
-        Me.tabMusicManager.Size = New System.Drawing.Size(694, 546)
-        Me.tabMusicManager.TabIndex = 0
         '
         'TabItem_MusicManager
         '
@@ -308,8 +262,8 @@ Partial Class MainForm
         '
         'Bar2
         '
-        Me.Bar2.AccessibleDescription = "DotNetBar Bar (Bar2)"
-        Me.Bar2.AccessibleName = "DotNetBar Bar"
+        Me.Bar2.AccessibleDescription = "Bar2 (Bar2)"
+        Me.Bar2.AccessibleName = "Bar2"
         Me.Bar2.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar
         Me.Bar2.AntiAlias = True
         Me.Bar2.BarType = DevComponents.DotNetBar.eBarType.MenuBar
@@ -437,6 +391,11 @@ Partial Class MainForm
         Me.ButtonItem14.Name = "ButtonItem14"
         Me.ButtonItem14.Text = "Item Box Content Editor"
         '
+        'ButtonItem13
+        '
+        Me.ButtonItem13.Name = "ButtonItem13"
+        Me.ButtonItem13.Text = "Star Position Editor"
+        '
         'ButtonItem32
         '
         Me.ButtonItem32.Enabled = False
@@ -452,7 +411,7 @@ Partial Class MainForm
         'ButtonItem22
         '
         Me.ButtonItem22.Name = "ButtonItem22"
-        Me.ButtonItem22.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem4, Me.ButtonItem9})
+        Me.ButtonItem22.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem4, Me.ButtonItem9, Me.ButtonItem_M64ToMidiConverter})
         Me.ButtonItem22.Text = "More"
         '
         'ButtonItem1
@@ -473,6 +432,11 @@ Partial Class MainForm
         '
         Me.ButtonItem9.Name = "ButtonItem9"
         Me.ButtonItem9.Text = "Appy PPF Patch"
+        '
+        'ButtonItem_M64ToMidiConverter
+        '
+        Me.ButtonItem_M64ToMidiConverter.Name = "ButtonItem_M64ToMidiConverter"
+        Me.ButtonItem_M64ToMidiConverter.Text = "M64 to MIDI Converter"
         '
         'ButtonItem12
         '
@@ -589,13 +553,61 @@ Partial Class MainForm
         Me.LabelItem1.Name = "LabelItem1"
         Me.LabelItem1.Text = "Ready"
         '
-        'ButtonItem13
+        'tabGeneral
         '
-        Me.ButtonItem13.Name = "ButtonItem13"
-        Me.ButtonItem13.Text = "Star Position Editor"
+        Me.tabGeneral.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabGeneral.BackColor = System.Drawing.Color.White
+        Me.tabGeneral.Location = New System.Drawing.Point(0, 0)
+        Me.tabGeneral.MainForm = Nothing
+        Me.tabGeneral.Name = "tabGeneral"
+        Me.tabGeneral.RomMgr = Nothing
+        Me.tabGeneral.Size = New System.Drawing.Size(694, 546)
+        Me.tabGeneral.TabIndex = 0
+        '
+        'tabLevelManager
+        '
+        Me.tabLevelManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabLevelManager.BackColor = System.Drawing.Color.White
+        Me.tabLevelManager.Location = New System.Drawing.Point(0, 0)
+        Me.tabLevelManager.MainForm = Nothing
+        Me.tabLevelManager.Name = "tabLevelManager"
+        Me.tabLevelManager.RomMgr = Nothing
+        Me.tabLevelManager.Size = New System.Drawing.Size(694, 546)
+        Me.tabLevelManager.TabIndex = 0
+        '
+        'tabTextManager
+        '
+        Me.tabTextManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabTextManager.BackColor = System.Drawing.Color.White
+        Me.tabTextManager.Location = New System.Drawing.Point(0, 0)
+        Me.tabTextManager.MainForm = Nothing
+        Me.tabTextManager.Name = "tabTextManager"
+        Me.tabTextManager.RomMgr = Nothing
+        Me.tabTextManager.Size = New System.Drawing.Size(694, 546)
+        Me.tabTextManager.TabIndex = 0
+        '
+        'tabMusicManager
+        '
+        Me.tabMusicManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabMusicManager.BackColor = System.Drawing.Color.White
+        Me.tabMusicManager.Location = New System.Drawing.Point(0, 0)
+        Me.tabMusicManager.MainForm = Nothing
+        Me.tabMusicManager.Name = "tabMusicManager"
+        Me.tabMusicManager.RomMgr = Nothing
+        Me.tabMusicManager.Size = New System.Drawing.Size(694, 546)
+        Me.tabMusicManager.TabIndex = 0
         '
         'MainForm
         '
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(696, 650)
         Me.Controls.Add(Me.Bar1)
         Me.Controls.Add(Me.Panel1)
@@ -676,4 +688,5 @@ Partial Class MainForm
     Friend WithEvents tabTextManager As Tab_TextManager
     Friend WithEvents ButtonItem9 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem13 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_M64ToMidiConverter As DevComponents.DotNetBar.ButtonItem
 End Class

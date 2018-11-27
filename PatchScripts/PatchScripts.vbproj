@@ -145,7 +145,7 @@
       <Name>Publics</Name>
     </ProjectReference>
     <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
-      <Project>{50BE8215-8945-4A29-908A-36E1102A540C}</Project>
+      <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
       <Name>SM64Lib</Name>
     </ProjectReference>
     <ProjectReference Include="..\TextValueConverter\TextValueConverter.vbproj">

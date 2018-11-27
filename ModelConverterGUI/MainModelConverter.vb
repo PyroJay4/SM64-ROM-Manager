@@ -6,7 +6,7 @@ Imports SM64Lib
 Imports System.Numerics
 Imports S3DFileParser
 Imports SM64_ROM_Manager.SettingsManager
-Imports OpenGLPreview
+Imports OpenGLFactory.PreviewN
 Imports System.Windows.Forms
 Imports System.Drawing
 Imports Publics
@@ -73,7 +73,6 @@ Public Class MainModelConverter
             .Scaling = 1.0F
             .ReduceDupVertLevel = If(SwitchButton_EnableReduceVertices.Value, ObjInputSettings.ReduceDuplicateVerticesLevel.Level1, ObjInputSettings.ReduceDuplicateVerticesLevel.Level0) 'CType(ComboBox_ReduceDupVertLevel.SelectedIndex, ObjInputSettings.ReduceDuplicateVerticesLevel)
             .ResizeTextures = SwitchButton_ResizeTextures.Value
-            .FlipTextures = SwitchButton_TextureFlip.Value
             .CenterModel = SwitchButton_CenterModel.Value
             .ForceDisplaylist = ForceDisplaylist
 
@@ -204,7 +203,8 @@ Public Class MainModelConverter
     Private Sub PrepaireTexture(model As Object3D, texSettings As TextureFormatSettings)
         For Each mat In model.Materials
             If mat.Value.Image IsNot Nothing Then
-                TextureManager.PrepaireImage(mat.Value.Image, SwitchButton_TextureFlip.Value, N64Graphics.N64Graphics.StringCodec(texSettings.GetEntry(mat.Key).TextureFormat))
+                Dim entry = curTexFormatSettings.GetEntry(mat.Key)
+                TextureManager.PrepaireImage(mat.Value.Image, entry.RotateFlip, N64Graphics.N64Graphics.StringCodec(texSettings.GetEntry(mat.Key).TextureFormat))
             End If
         Next
     End Sub

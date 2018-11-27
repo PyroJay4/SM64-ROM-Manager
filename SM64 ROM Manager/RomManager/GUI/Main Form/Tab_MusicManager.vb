@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 Imports DevComponents.DotNetBar
+Imports Microsoft.WindowsAPICodePack.Dialogs
+Imports Microsoft.WindowsAPICodePack.Dialogs.Controls
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib
 Imports SM64Lib.Levels
@@ -14,35 +16,27 @@ Public Class Tab_MusicManager
         InitializeComponent()
     End Sub
 
+    Private ReadOnly Property SelectedSequence As MusicSequence
+        Get
+            Dim index As Integer = ListBoxAdv_MS_MusicSequences.SelectedIndex
+            If index > -1 Then
+                Return RomMgr.MusicList(ListBoxAdv_MS_MusicSequences.SelectedIndex)
+            Else
+                Return Nothing
+            End If
+        End Get
+    End Property
+
     Private Sub ListBoxAdv_MS_MusicSequences_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxAdv_MS_MusicSequences.SelectedItemChanged
-        If TextBoxX_MS_Sequencename.ReadOnly Then Return
-
-        Dim cIndex As Integer = ListBoxAdv_MS_MusicSequences.SelectedIndex
-        Dim IsNoIndex = (cIndex < 0)
-        Dim IsIndex0 = (cIndex = 0)
-        ' Dim IsIndex10 = (cIndex = 10)
-        'Dim IsIndex23 = (cIndex < &H23)
-        GroupBox_MS_SelectedSequence.Enabled = Not IsIndex0 'AndAlso Not IsIndex10
-        GroupBox_MS_SeqProperties.Enabled = Not IsIndex0 'AndAlso Not IsIndex10
-        ButtonX_MS_RemoveSequence.Enabled = Not IsIndex0 'Not IsIndex23
-
-        If Not IsNoIndex Then
-            'Load Sequence Informations
-            Dim tID As Integer = ListBoxAdv_MS_MusicSequences.SelectedIndex
-            Dim item As MusicSequence = RomMgr.MusicList(ListBoxAdv_MS_MusicSequences.SelectedIndex)
-            TextBoxX_MS_Sequencename.ReadOnly = True
-            TextBoxX_MS_Sequencename.Text = item.Name
-            LabelX_MS_SequenceID.Text = String.Format("{0}", TextFromValue(tID))
-            LabelX_MS_SeqSize.Text = String.Format("{0} Bytes", TextFromValue(item.Lenght))
-            ComboBox_MS_NInst.SelectedIndex = item.InstrumentSets.Sets(0)
-            TextBoxX_MS_Sequencename.ReadOnly = False
+        If Not TextBoxX_MS_Sequencename.ReadOnly Then
+            LoadCurrentSequence()
         End If
     End Sub
     Private Sub MusicSettings_SequenceNameChanged(sender As Object, e As EventArgs) Handles TextBoxX_MS_Sequencename.TextChanged
         If Not TextBoxX_MS_Sequencename.ReadOnly Then
-            RomMgr.MusicList(ListBoxAdv_MS_MusicSequences.SelectedIndex).Name = TextBoxX_MS_Sequencename.Text
+            SelectedSequence.Name = TextBoxX_MS_Sequencename.Text
             RomMgr.MusicList.NeedToSaveSequenceNames = True
-            mainForm.MusicSettings_RefreshList()
+            MainForm.MusicSettings_RefreshList()
         End If
     End Sub
     Private Sub ComboBox_MS_NInst_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_MS_NInst.SelectedIndexChanged
@@ -89,12 +83,12 @@ Public Class Tab_MusicManager
         If ofd IsNot Nothing Then
             Dim curMusic As MusicSequence = Nothing
             If addNew Then
-                mainForm.StatusText = Form_Main_Resources.Status_CreatingNewSequence
+                MainForm.StatusText = Form_Main_Resources.Status_CreatingNewSequence
                 curMusic = New MusicSequence
                 RomMgr.MusicList.Add(curMusic)
-                mainForm.MusicSettings_CreateList()
+                MainForm.MusicSettings_CreateList()
             Else
-                mainForm.StatusText = Form_Main_Resources.Status_ImportingSequence
+                MainForm.StatusText = Form_Main_Resources.Status_ImportingSequence
                 curMusic = RomMgr.MusicList(ListBoxAdv_MS_MusicSequences.SelectedIndex)
             End If
 
@@ -115,11 +109,11 @@ Public Class Tab_MusicManager
             curMusic.InstrumentSets.Sets.Clear()
             curMusic.InstrumentSets.Sets.Add(37)
 
-            mainForm.MusicSettings_RefreshList()
+            MainForm.MusicSettings_RefreshList()
             RomMgr.MusicList.NeedToSaveSequences = True
             RomMgr.MusicList.NeedToSaveSequenceNames = True
             If addNew Then RomMgr.MusicList.NeedToSaveNInsts = True
-            mainForm.StatusText = ""
+            MainForm.StatusText = ""
 
             If addNew Then
                 Dim newItem As BaseItem = Nothing
@@ -135,38 +129,93 @@ Public Class Tab_MusicManager
     Private Sub Button_MS_ExtractSequence_Click(sender As Object, e As EventArgs) Handles Button_MS_ExtractSequence.Click
         Dim curMusic As MusicSequence = RomMgr.MusicList(ListBoxAdv_MS_MusicSequences.SelectedIndex)
 
-        Dim sfd As New SaveFileDialog
-        sfd.Filter = "M64 Sequence (*.m64)|*.m64|MIDI File (*.mid) [Experimental]|*.mid"
-        sfd.FileName = curMusic.Name
+        Dim sfd As New CommonSaveFileDialog
+        sfd.Filters.Add(New CommonFileDialogFilter("M64 Sequence", ".m64"))
+        sfd.Filters.Add(New CommonFileDialogFilter("MIDI File", ".mid"))
+        sfd.DefaultFileName = curMusic.Name
+        sfd.Controls.Add(GetMidiExportDialogControls)
+        AddHandler sfd.FileTypeChanged, AddressOf ExportSeqenceDialogFilterIndexChanged
         If sfd.ShowDialog <> DialogResult.OK Then Return
 
-        Try
-            mainForm.StatusText = Form_Main_Resources.Status_ExportingSequence
+        MainForm.StatusText = Form_Main_Resources.Status_ExportingSequence
 
-            Select Case sfd.FilterIndex
-                Case 1 '.m64
+        Select Case sfd.SelectedFileTypeIndex
+            Case 1 '.m64
+
+                Try
                     Dim fs As New FileStream(sfd.FileName, FileMode.Create, FileAccess.Write)
                     fs.Write(curMusic.BinaryData, 0, curMusic.BinaryData.Length)
                     fs.Close()
+                Catch ex As Exception
+                    MessageBoxEx.Show(Form_Main_Resources.MsgBox_ErrorSavingSequence, Global_Ressources.Text_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
 
-                Case 2 '.midi
-                    Dim ms As New MemoryStream(curMusic.BinaryData)
-                    ms.Position = 0
-                    OutputMIDI.ConvertToMIDI(sfd.FileName, ms, &H1, True)
-                    ms.Position = 0
-                    OutputMIDI.ConvertToMIDI(sfd.FileName, ms, &H2, True)
+            Case 2 '.midi
+                Dim chunks As Byte = 2
+                Select Case CType(sfd.Controls("MidiChunksSelector"), CommonFileDialogComboBox).SelectedIndex
+                    Case 0
+                        chunks = 1
+                    Case 1
+                        chunks = 2
+                End Select
+
+                'Create input stream
+                Dim ms As New MemoryStream(curMusic.BinaryData)
+                ms.Position = 0
+
+                'Convert .m64 to .midi
+                Try
+                    OutputMIDI.ConvertToMIDI(sfd.FileName, ms, chunks, True)
+                Catch ex As Exception
+                    MessageBoxEx.Show(Form_Main_Resources.MsgBox_ExportToMidi_Failed & vbNewLine & ex.Message, Form_Main_Resources.MsgBox_ExportToMidi_Failed_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Finally
                     ms.Close()
+                End Try
 
-            End Select
-        Catch ex As Exception
-            MessageBoxEx.Show(Form_Main_Resources.MsgBox_ErrorSavingSequence, Global_Ressources.Text_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            mainForm.StatusText = ""
-        End Try
+        End Select
+
+        MainForm.StatusText = ""
+    End Sub
+
+    Private Sub ExportSeqenceDialogFilterIndexChanged(sender As Object, e As EventArgs)
+        Dim dialog As CommonSaveFileDialog = sender
+        Dim filterIndex As Integer = dialog.SelectedFileTypeIndex
+        Dim c As CommonFileDialogControl = dialog.Controls("MidiChunksSelector")
+        c.Visible = filterIndex = 2
+        dialog.DefaultExtension = dialog.Filters(dialog.SelectedFileTypeIndex - 1).Extensions.First
     End Sub
 
     Private Sub ButtonX_MS_RemoveSequence_Click(sender As Object, e As EventArgs) Handles ButtonX_MS_RemoveSequence.Click
-        mainForm.MusicSettings_RemoveEntry
+        MainForm.MusicSettings_RemoveEntry()
+    End Sub
+
+    Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
+        OpenHexEditor(SelectedSequence.BinaryData)
+        RomMgr.MusicList.NeedToSaveSequences = True
+        LoadCurrentSequence()
+    End Sub
+
+    Private Sub LoadCurrentSequence()
+        Dim cIndex As Integer = ListBoxAdv_MS_MusicSequences.SelectedIndex
+        Dim IsNoIndex = (cIndex < 0)
+        Dim IsIndex0 = (cIndex = 0)
+        ' Dim IsIndex10 = (cIndex = 10)
+        'Dim IsIndex23 = (cIndex < &H23)
+        GroupBox_MS_SelectedSequence.Enabled = Not IsIndex0 'AndAlso Not IsIndex10
+        GroupBox_MS_SeqProperties.Enabled = Not IsIndex0 'AndAlso Not IsIndex10
+        ButtonX_MS_RemoveSequence.Enabled = Not IsIndex0 'Not IsIndex23
+
+        If Not IsNoIndex Then
+            'Load Sequence Informations
+            Dim tID As Integer = ListBoxAdv_MS_MusicSequences.SelectedIndex
+            Dim item As MusicSequence = RomMgr.MusicList(ListBoxAdv_MS_MusicSequences.SelectedIndex)
+            TextBoxX_MS_Sequencename.ReadOnly = True
+            TextBoxX_MS_Sequencename.Text = item.Name
+            LabelX_MS_SequenceID.Text = String.Format("{0}", TextFromValue(tID))
+            LabelX_MS_SeqSize.Text = String.Format("{0} Bytes", TextFromValue(item.Lenght))
+            ComboBox_MS_NInst.SelectedIndex = item.InstrumentSets.Sets(0)
+            TextBoxX_MS_Sequencename.ReadOnly = False
+        End If
     End Sub
 
 End Class

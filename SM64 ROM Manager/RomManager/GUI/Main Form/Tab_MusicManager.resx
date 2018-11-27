@@ -131,6 +131,18 @@
   <data name="LabelX56.Text" xml:space="preserve">
     <value>Overwrite:</value>
   </data>
+  <data name="&gt;&gt;LabelX56.Name" xml:space="preserve">
+    <value>LabelX56</value>
+  </data>
+  <data name="&gt;&gt;LabelX56.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX56.Parent" xml:space="preserve">
+    <value>GroupPanel12</value>
+  </data>
+  <data name="&gt;&gt;LabelX56.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="SwitchButton_MS_OverwriteSizeRestrictions.Location" type="System.Drawing.Point, System.Drawing">
     <value>98, 3</value>
   </data>
@@ -146,8 +158,20 @@
   <data name="SwitchButton_MS_OverwriteSizeRestrictions.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
   </data>
+  <data name="&gt;&gt;SwitchButton_MS_OverwriteSizeRestrictions.Name" xml:space="preserve">
+    <value>SwitchButton_MS_OverwriteSizeRestrictions</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_MS_OverwriteSizeRestrictions.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_MS_OverwriteSizeRestrictions.Parent" xml:space="preserve">
+    <value>GroupPanel12</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_MS_OverwriteSizeRestrictions.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="GroupPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 131</value>
+    <value>257, 160</value>
   </data>
   <data name="GroupPanel12.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 46</value>
@@ -158,6 +182,18 @@
   <data name="GroupPanel12.Text" xml:space="preserve">
     <value>Size restrictions</value>
   </data>
+  <data name="&gt;&gt;GroupPanel12.Name" xml:space="preserve">
+    <value>GroupPanel12</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel12.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel12.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel12.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="LabelX_MS_SeqSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>49, 29</value>
   </data>
@@ -166,6 +202,18 @@
   </data>
   <data name="LabelX_MS_SeqSize.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
+  </data>
+  <data name="&gt;&gt;LabelX_MS_SeqSize.Name" xml:space="preserve">
+    <value>LabelX_MS_SeqSize</value>
+  </data>
+  <data name="&gt;&gt;LabelX_MS_SeqSize.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX_MS_SeqSize.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SeqProperties</value>
+  </data>
+  <data name="&gt;&gt;LabelX_MS_SeqSize.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="LabelX33.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -179,6 +227,18 @@
   <data name="LabelX33.Text" xml:space="preserve">
     <value>ID:</value>
   </data>
+  <data name="&gt;&gt;LabelX33.Name" xml:space="preserve">
+    <value>LabelX33</value>
+  </data>
+  <data name="&gt;&gt;LabelX33.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX33.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SeqProperties</value>
+  </data>
+  <data name="&gt;&gt;LabelX33.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="LabelX28.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 29</value>
   </data>
@@ -191,6 +251,18 @@
   <data name="LabelX28.Text" xml:space="preserve">
     <value>Size:</value>
   </data>
+  <data name="&gt;&gt;LabelX28.Name" xml:space="preserve">
+    <value>LabelX28</value>
+  </data>
+  <data name="&gt;&gt;LabelX28.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX28.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SeqProperties</value>
+  </data>
+  <data name="&gt;&gt;LabelX28.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="LabelX_MS_SequenceID.Location" type="System.Drawing.Point, System.Drawing">
     <value>49, 3</value>
   </data>
@@ -199,6 +271,18 @@
   </data>
   <data name="LabelX_MS_SequenceID.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
+  </data>
+  <data name="&gt;&gt;LabelX_MS_SequenceID.Name" xml:space="preserve">
+    <value>LabelX_MS_SequenceID</value>
+  </data>
+  <data name="&gt;&gt;LabelX_MS_SequenceID.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX_MS_SequenceID.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SeqProperties</value>
+  </data>
+  <data name="&gt;&gt;LabelX_MS_SequenceID.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="GroupBox_MS_SeqProperties.Location" type="System.Drawing.Point, System.Drawing">
     <value>521, 3</value>
@@ -211,6 +295,42 @@
   </data>
   <data name="GroupBox_MS_SeqProperties.Text" xml:space="preserve">
     <value>Properties</value>
+  </data>
+  <data name="&gt;&gt;GroupBox_MS_SeqProperties.Name" xml:space="preserve">
+    <value>GroupBox_MS_SeqProperties</value>
+  </data>
+  <data name="&gt;&gt;GroupBox_MS_SeqProperties.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;GroupBox_MS_SeqProperties.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GroupBox_MS_SeqProperties.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ButtonX1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 107</value>
+  </data>
+  <data name="ButtonX1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 23</value>
+  </data>
+  <data name="ButtonX1.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="ButtonX1.Text" xml:space="preserve">
+    <value>Edit Sequence in Hex Editor</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.Name" xml:space="preserve">
+    <value>ButtonX1</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SelectedSequence</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="ComboBox_MS_NInst.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -341,6 +461,18 @@
   <data name="ComboBox_MS_NInst.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
   </data>
+  <data name="&gt;&gt;ComboBox_MS_NInst.Name" xml:space="preserve">
+    <value>ComboBox_MS_NInst</value>
+  </data>
+  <data name="&gt;&gt;ComboBox_MS_NInst.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboBox_MS_NInst.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SelectedSequence</value>
+  </data>
+  <data name="&gt;&gt;ComboBox_MS_NInst.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="LabelX32.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -352,6 +484,18 @@
   </data>
   <data name="LabelX32.Text" xml:space="preserve">
     <value>Name:</value>
+  </data>
+  <data name="&gt;&gt;LabelX32.Name" xml:space="preserve">
+    <value>LabelX32</value>
+  </data>
+  <data name="&gt;&gt;LabelX32.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX32.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SelectedSequence</value>
+  </data>
+  <data name="&gt;&gt;LabelX32.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="LabelX5.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 29</value>
@@ -365,6 +509,18 @@
   <data name="LabelX5.Text" xml:space="preserve">
     <value>NInst:</value>
   </data>
+  <data name="&gt;&gt;LabelX5.Name" xml:space="preserve">
+    <value>LabelX5</value>
+  </data>
+  <data name="&gt;&gt;LabelX5.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX5.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SelectedSequence</value>
+  </data>
+  <data name="&gt;&gt;LabelX5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="TextBoxX_MS_Sequencename.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 3</value>
   </data>
@@ -373,6 +529,18 @@
   </data>
   <data name="TextBoxX_MS_Sequencename.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;TextBoxX_MS_Sequencename.Name" xml:space="preserve">
+    <value>TextBoxX_MS_Sequencename</value>
+  </data>
+  <data name="&gt;&gt;TextBoxX_MS_Sequencename.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;TextBoxX_MS_Sequencename.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SelectedSequence</value>
+  </data>
+  <data name="&gt;&gt;TextBoxX_MS_Sequencename.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="Button_MS_ExtractSequence.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 78</value>
@@ -386,6 +554,18 @@
   <data name="Button_MS_ExtractSequence.Text" xml:space="preserve">
     <value>Export Sequence</value>
   </data>
+  <data name="&gt;&gt;Button_MS_ExtractSequence.Name" xml:space="preserve">
+    <value>Button_MS_ExtractSequence</value>
+  </data>
+  <data name="&gt;&gt;Button_MS_ExtractSequence.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;Button_MS_ExtractSequence.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SelectedSequence</value>
+  </data>
+  <data name="&gt;&gt;Button_MS_ExtractSequence.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="Button_MS_ReplaceSequence.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 78</value>
   </data>
@@ -397,6 +577,18 @@
   </data>
   <data name="Button_MS_ReplaceSequence.Text" xml:space="preserve">
     <value>Import Sequence</value>
+  </data>
+  <data name="&gt;&gt;Button_MS_ReplaceSequence.Name" xml:space="preserve">
+    <value>Button_MS_ReplaceSequence</value>
+  </data>
+  <data name="&gt;&gt;Button_MS_ReplaceSequence.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;Button_MS_ReplaceSequence.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SelectedSequence</value>
+  </data>
+  <data name="&gt;&gt;Button_MS_ReplaceSequence.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="Line6.Location" type="System.Drawing.Point, System.Drawing">
     <value>-3, 52</value>
@@ -411,17 +603,41 @@
   <data name="Line6.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
   </data>
+  <data name="&gt;&gt;Line6.Name" xml:space="preserve">
+    <value>Line6</value>
+  </data>
+  <data name="&gt;&gt;Line6.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;Line6.Parent" xml:space="preserve">
+    <value>GroupBox_MS_SelectedSequence</value>
+  </data>
+  <data name="&gt;&gt;Line6.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="GroupBox_MS_SelectedSequence.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 3</value>
   </data>
   <data name="GroupBox_MS_SelectedSequence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 122</value>
+    <value>258, 151</value>
   </data>
   <data name="GroupBox_MS_SelectedSequence.TabIndex" type="System.Int32, mscorlib">
     <value>108</value>
   </data>
   <data name="GroupBox_MS_SelectedSequence.Text" xml:space="preserve">
     <value>Selected Sequence</value>
+  </data>
+  <data name="&gt;&gt;GroupBox_MS_SelectedSequence.Name" xml:space="preserve">
+    <value>GroupBox_MS_SelectedSequence</value>
+  </data>
+  <data name="&gt;&gt;GroupBox_MS_SelectedSequence.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;GroupBox_MS_SelectedSequence.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GroupBox_MS_SelectedSequence.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="ButtonX_MS_RemoveSequence.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -438,6 +654,18 @@
   <data name="ButtonX_MS_RemoveSequence.Text" xml:space="preserve">
     <value>Remove Sequence</value>
   </data>
+  <data name="&gt;&gt;ButtonX_MS_RemoveSequence.Name" xml:space="preserve">
+    <value>ButtonX_MS_RemoveSequence</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_MS_RemoveSequence.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_MS_RemoveSequence.Parent" xml:space="preserve">
+    <value>GroupPanel9</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_MS_RemoveSequence.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="ButtonX_MS_AddSequence.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -449,6 +677,18 @@
   </data>
   <data name="ButtonX_MS_AddSequence.Text" xml:space="preserve">
     <value>Add Sequence</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_MS_AddSequence.Name" xml:space="preserve">
+    <value>ButtonX_MS_AddSequence</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_MS_AddSequence.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_MS_AddSequence.Parent" xml:space="preserve">
+    <value>GroupPanel9</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_MS_AddSequence.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="ListBoxAdv_MS_MusicSequences.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -462,6 +702,18 @@
   <data name="ListBoxAdv_MS_MusicSequences.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
+  <data name="&gt;&gt;ListBoxAdv_MS_MusicSequences.Name" xml:space="preserve">
+    <value>ListBoxAdv_MS_MusicSequences</value>
+  </data>
+  <data name="&gt;&gt;ListBoxAdv_MS_MusicSequences.Type" xml:space="preserve">
+    <value>Publics.Controls.ItemListBox, Publics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ListBoxAdv_MS_MusicSequences.Parent" xml:space="preserve">
+    <value>GroupPanel9</value>
+  </data>
+  <data name="&gt;&gt;ListBoxAdv_MS_MusicSequences.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="GroupPanel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -474,13 +726,31 @@
   <data name="GroupPanel9.Text" xml:space="preserve">
     <value>Music Sequences</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;GroupPanel9.Name" xml:space="preserve">
+    <value>GroupPanel9</value>
   </data>
+  <data name="&gt;&gt;GroupPanel9.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel9.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GroupPanel9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>694, 546</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Tab_MusicManager</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

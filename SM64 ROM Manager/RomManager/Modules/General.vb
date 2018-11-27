@@ -9,24 +9,171 @@ Imports SM64Lib.Levels
 Imports SM64Lib.Model.Fast3D.DisplayLists
 Imports SM64Lib.Patching
 Imports SM64Lib.Text
+Imports Microsoft.WindowsAPICodePack.Dialogs.Controls
+Imports SM64_ROM_Manager.LevelEditor
+Imports SM64Lib.Script
 
 Friend Module General
 
-    Public BehaviorInfos As New BehaviorInfoList
-    Public ObjectCombos As New ObjectComboList
-    Public PatchClass As New SM64PatchClass
-    Public HasToolkitInit As Boolean = False
+    Private hasLoadedObjectCombos As Boolean = False
+    Private hasLoadedBehaviorInfos As Boolean = False
+    Private Const p_ObjectCombos As String = "Area Editor\Object Combos.json"
+    Private Const p_ObjectCombosCustom As String = "Area Editor\Object Combos Custom.json"
+    Private Const p_BehaviorInfos As String = "Area Editor\Behavior IDs.json"
+    Private Const p_BehaviorInfosCustom As String = "Area Editor\Behavior IDs Custom.json"
+
+    Public WithEvents RomWatcher As FileSystemWatcher = Nothing
+    Public lastRomChangedDate As Date = Date.Now
+
+    Public ReadOnly Property ObjectCombos As New ObjectComboList
+    Public ReadOnly Property BehaviorInfos As New BehaviorInfoList
+    Public ReadOnly Property ObjectCombosCustom As New ObjectComboList
+    Public ReadOnly Property BehaviorInfosCustom As New BehaviorInfoList
+    Public ReadOnly Property PatchClass As New SM64PatchClass
+    Public Property HasToolkitInit As Boolean = False
+
+    Public Function OpenHexEditorAsync(cmd As SM64Lib.Script.ICommand) As Task
+        Dim t As New Task(Sub() OpenHexEditor(cmd))
+        t.Start()
+        Return t
+    End Function
+
+    Public Sub OpenHexEditor(cmd As SM64Lib.Script.ICommand)
+        Dim ms As MemoryStream = cmd
+
+        'Copy content of command to a buffer
+        Dim buffer As Byte() = New Byte(ms.Length - 1) {}
+        ms.Position = 0
+        ms.Read(buffer, 0, buffer.Length)
+
+        'Let edit the buffer
+        OpenHexEditor(buffer)
+
+        'Copy content of buffer back to command
+        ms.SetLength(buffer.Length)
+        ms.Position = 0
+        ms.Write(buffer, 0, buffer.Length)
+    End Sub
+
+    Public Sub OpenHexEditor(ByRef buffer As Byte())
+        Select Case Settings.General.HexEditMode.Mode
+            Case HexEditModes.BuildInHexEditor
+                Dim editor As New HexEditor(buffer)
+                editor.ShowDialog()
+                buffer = editor.GetData
+
+            Case HexEditModes.CustomHexEditor
+                'Create temp file
+                Dim tempFile As String = Path.GetTempFileName
+
+                'Write content of command to temp file
+                Dim fs As New FileStream(tempFile, FileMode.Open, FileAccess.ReadWrite)
+                fs.Write(buffer, 0, buffer.Length)
+                fs.Flush()
+                fs.Close()
+
+                'Start Hex Editor and wait while running
+                Dim p As New Process
+                p.StartInfo.FileName = Settings.General.HexEditMode.CustomPath
+                p.StartInfo.Arguments = $"""{tempFile}"""
+                p.Start()
+                p.WaitForExit()
+
+                'Read content of temp file to command
+                fs = New FileStream(tempFile, FileMode.Open, FileAccess.Read)
+                buffer = New Byte(fs.Length - 1) {}
+                fs.Read(buffer, 0, buffer.Length)
+                fs.Close()
+
+                'Remove temp file
+                File.Delete(tempFile)
+        End Select
+    End Sub
 
     Public Sub LoadBehaviorInfosIfEmpty()
-        If Not BehaviorInfos.Any Then BehaviorInfos.ReadFromFile(MyDataPath & "\Area Editor\Behavior IDs.json")
+        If Not hasLoadedBehaviorInfos Then
+            LoadBehaviorInfos()
+        End If
+    End Sub
+    Public Sub LoadBehaviorInfos()
+        If Not hasLoadedBehaviorInfos Then
+            Dim p_Default As String = Path.Combine(MyDataPath, p_BehaviorInfos)
+            Dim p_Custom As String = Path.Combine(MyDataPath, p_BehaviorInfosCustom)
+
+            If File.Exists(p_Default) Then
+                BehaviorInfos.ReadFromFile(p_Default)
+            End If
+
+            If File.Exists(p_Custom) Then
+                BehaviorInfosCustom.ReadFromFile(p_Custom)
+            End If
+
+            hasLoadedBehaviorInfos = True
+        End If
     End Sub
     Public Sub LoadObjectCombosIfEmpty()
-        If Not ObjectCombos.Any Then ObjectCombos.ReadFromFile(MyDataPath & "\Area Editor\Object Combos.json")
+        If Not hasLoadedObjectCombos Then
+            LoadObjectCombos()
+        End If
     End Sub
+    Public Sub LoadObjectCombos()
+        Dim p_Default As String = Path.Combine(MyDataPath, p_ObjectCombos)
+        Dim p_Custom As String = Path.Combine(MyDataPath, p_ObjectCombosCustom)
+
+        If File.Exists(p_Default) Then
+            ObjectCombos.ReadFromFile(p_Default)
+        End If
+
+        If File.Exists(p_Custom) Then
+            ObjectCombosCustom.ReadFromFile(p_Custom)
+        End If
+
+        hasLoadedObjectCombos = True
+    End Sub
+
+    Public Sub SaveBehaviorInfos()
+        Dim p_Default As String = Path.Combine(MyDataPath, p_BehaviorInfos)
+        Dim p_Custom As String = Path.Combine(MyDataPath, p_BehaviorInfosCustom)
+        BehaviorInfos.WriteToFile(p_Default)
+        BehaviorInfosCustom.WriteToFile(p_Custom)
+    End Sub
+    Public Sub SaveObjectCombos()
+        Dim p_Default As String = Path.Combine(MyDataPath, p_ObjectCombos)
+        Dim p_Custom As String = Path.Combine(MyDataPath, p_ObjectCombosCustom)
+        ObjectCombos.WriteToFile(p_Default)
+        ObjectCombosCustom.WriteToFile(p_Custom)
+    End Sub
+
+    Public Function GetFiltersFromFilter(filter As String, ParamArray splitters As Char())
+        Dim filters As New List(Of String)
+
+        For Each f As String In filter.ToLower.Split(splitters)
+            f = f.Trim
+            If Not String.IsNullOrEmpty(f) Then
+                filters.Add(f)
+            End If
+        Next
+
+        Return filters.ToArray
+    End Function
+
+    Public Function GetMidiExportDialogControls() As CommonFileDialogControl
+        Dim cb As New CommonFileDialogComboBox With {
+            .Name = "MidiChunksSelector",
+            .IsProminent = True
+        }
+        cb.Items.Add(New CommonFileDialogComboBoxItem("1 Chunk"))
+        cb.Items.Add(New CommonFileDialogComboBoxItem("2 Chunks"))
+        cb.SelectedIndex = 1
+
+        Return cb
+    End Function
 
     Friend Sub SaveRom(rommgr As RomManager)
         If rommgr IsNot Nothing Then
             Dim dontpatchupdates As Boolean
+
+            RomWatcher.EnableRaisingEvents = False
 
             If rommgr.AreRomUpdatesAvaiable Then
                 Select Case Settings.General.ActionIfUpdatePatches
@@ -60,6 +207,8 @@ Friend Module General
             End If
 
             rommgr.SaveRom(, dontpatchupdates)
+
+            RomWatcher.EnableRaisingEvents = True
         End If
     End Sub
 

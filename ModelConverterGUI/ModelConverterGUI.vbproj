@@ -116,6 +116,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CollisionEditor.de.resx">
+      <DependentUpon>CollisionEditor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CollisionEditor.resx">
       <DependentUpon>CollisionEditor.vb</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +144,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="TextureGraphicFormatEditor.de.resx">
+      <DependentUpon>TextureGraphicFormatEditor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TextureGraphicFormatEditor.resx">
       <DependentUpon>TextureGraphicFormatEditor.vb</DependentUpon>
     </EmbeddedResource>
@@ -159,12 +165,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\N64Graphics\N64Graphics.csproj">
-      <Project>{D9258483-950C-46D1-A333-31F32492CD7E}</Project>
+      <Project>{d9258483-950c-46d1-a333-31f32492cd7e}</Project>
       <Name>N64Graphics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OpenGLPreview\OpenGLPreview.vbproj">
+    <ProjectReference Include="..\OpenGLPreview\OpenGLFactory.PreviewN.vbproj">
       <Project>{d3d19c7a-f7be-44f5-ace4-b0b5260f519f}</Project>
-      <Name>OpenGLPreview</Name>
+      <Name>OpenGLFactory.PreviewN</Name>
     </ProjectReference>
     <ProjectReference Include="..\Publics\Publics.vbproj">
       <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>

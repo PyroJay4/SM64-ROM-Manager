@@ -66,7 +66,7 @@ Namespace Global.SM64Lib.Script
             Return Not (cmd1 = cmd2)
         End Operator
 
-        Public Sub RefreshkDirty()
+        Public Sub RefreshDirty()
             dirtyHash = GetBuffer.GetHashCode()
         End Sub
 

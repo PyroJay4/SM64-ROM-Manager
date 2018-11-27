@@ -4,7 +4,7 @@ Namespace Global.SM64Lib.Model.Fast3D
 
     Public Class TextureManager
 
-        Public Shared Sub PrepaireImage(ByRef bmp As Bitmap, flipTexturesVertically As Boolean, texFormat As N64Graphics.N64Codec)
+        Public Shared Sub PrepaireImage(ByRef bmp As Bitmap, rotateFlipTexture As RotateFlipType, texFormat As N64Graphics.N64Codec)
             Dim maxPixels As Integer = GetMaxPixls(texFormat)
 
             'Resize Texture
@@ -24,8 +24,8 @@ Namespace Global.SM64Lib.Model.Fast3D
                 bmp = ResizeImage(bmp, New Size(newHeight, newWidth))
             End If
 
-            If flipTexturesVertically Then
-                bmp.RotateFlip(RotateFlipType.RotateNoneFlipY)
+            If rotateFlipTexture <> RotateFlipType.RotateNoneFlipNone Then
+                bmp.RotateFlip(rotateFlipTexture)
             End If
         End Sub
 

@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Drawing
+Imports System.IO
 
 Namespace Global.SM64Lib.Model.Fast3D
 
@@ -60,9 +61,10 @@ Namespace Global.SM64Lib.Model.Fast3D
             Public Property EnableMirror As Boolean = False
             Public Property EnableClamp As Boolean = False
             Public Property EnableCrystalEffect As Boolean = False
+            Public Property RotateFlip As RotateFlipType = RotateFlipType.RotateNoneFlipNone
 
             Public Overloads Function ToString() As String
-                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{CByte(SelectDisplaylistMode)};{CByte(FaceCullingMode)};{EnableMirror.ToString};{EnableClamp.ToString};{EnableCrystalEffect.ToString}"
+                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{CByte(SelectDisplaylistMode)};{CByte(FaceCullingMode)};{EnableMirror.ToString};{EnableClamp.ToString};{EnableCrystalEffect.ToString};{CInt(RotateFlip)}"
             End Function
 
             Public Sub FromString(str As String)
@@ -77,6 +79,7 @@ Namespace Global.SM64Lib.Model.Fast3D
                     EnableClamp = Convert.ToBoolean(parts(6))
                 End If
                 If parts.Length > 7 Then EnableCrystalEffect = Convert.ToBoolean(parts(7))
+                If parts.Length > 8 Then RotateFlip = Convert.ToInt32(parts(8))
             End Sub
 
         End Class

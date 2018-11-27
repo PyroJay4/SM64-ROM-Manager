@@ -38,7 +38,7 @@ Namespace Global.SM64Lib.Levels.ScrolTex
         ''' <param name="cmd">The levelscript command to use.</param>
         Public Sub New(cmd As LevelscriptCommand)
             Command = cmd
-            LoadpProperties()
+            LoadProperties()
         End Sub
 
         ''' <summary>
@@ -142,7 +142,7 @@ Namespace Global.SM64Lib.Levels.ScrolTex
             End Set
         End Property
 
-        Public Sub LoadpProperties() Implements IManagedLevelscriptCommand.LoadpProperties
+        Public Sub LoadProperties() Implements IManagedLevelscriptCommand.LoadProperties
             CycleDuration = clScrollingTexture.GetCycleDuration(Command)
             VertexPointer = clScrollingTexture.GetVertexPointer(Command)
             FacesCount = clScrollingTexture.GetCountOfFaces(Command)

@@ -74,6 +74,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die This ROM was used by the SM64 Editor and isn&apos;t compatible with the SM64 ROM Manager. ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property Exception_RomWasUsedBySM64E() As String
+            Get
+                Return ResourceManager.GetString("Exception_RomWasUsedBySM64E", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Size of Bank 0x19 changed successfully! ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_BankSizeChangedSuccess() As String
@@ -92,11 +101,65 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die An error happend at converting .m64 to .midi! ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_ConvertToMidi_Failed() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_ConvertToMidi_Failed", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die M64 to MIDI failed ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_ConvertToMidi_Failed_Titel() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_ConvertToMidi_Failed_Titel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die M64 successfully converted to MIDI ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_ConvertToMidi_Succes() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_ConvertToMidi_Succes", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die M64 to MIDI success ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_ConvertToMidi_Succes_Titel() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_ConvertToMidi_Succes_Titel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die An Error happend at saving sequence. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_ErrorSavingSequence() As String
             Get
                 Return ResourceManager.GetString("MsgBox_ErrorSavingSequence", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die An error happend at exporting sequence as MIDI. ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_ExportToMidi_Failed() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_ExportToMidi_Failed", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Export to MIDI ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_ExportToMidi_Failed_Titel() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_ExportToMidi_Failed_Titel", resourceCulture)
             End Get
         End Property
         
@@ -236,6 +299,42 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Your ROM file has been changed outside this tool. You need to reload the ROM to be able to save. Reload now? ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_RomChanged_ReloadRom() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_RomChanged_ReloadRom", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die ROM has been changed ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_RomChanged_ReloadRom_Titel() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_RomChanged_ReloadRom_Titel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM that was open in this program has been removed!&lt;br/&gt;This programm will close now. ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_RomRemoved() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_RomRemoved", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die ROM has been removed ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_RomRemoved_Titel() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_RomRemoved_Titel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Your texts needs more space then allowed! Please reduce them before saving ROM. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_TextsOverLimit() As String
@@ -250,6 +349,24 @@ Namespace My.Resources
         Friend Shared ReadOnly Property MsgBox_TextsOverLimit_Title() As String
             Get
                 Return ResourceManager.GetString("MsgBox_TextsOverLimit_Title", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die A unknown error happend at loading ROM. ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_UnknownErrorAtLoadingRom() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_UnknownErrorAtLoadingRom", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Loading ROM ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_UnknownErrorAtLoadingRom_Titel() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_UnknownErrorAtLoadingRom_Titel", resourceCulture)
             End Get
         End Property
         

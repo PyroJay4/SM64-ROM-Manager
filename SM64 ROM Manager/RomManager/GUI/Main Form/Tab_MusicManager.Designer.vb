@@ -32,6 +32,7 @@ Partial Class Tab_MusicManager
         Me.LabelX28 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX_MS_SequenceID = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox_MS_SelectedSequence = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.ComboBox_MS_NInst = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.LabelX32 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
@@ -202,6 +203,7 @@ Partial Class Tab_MusicManager
         Me.GroupBox_MS_SelectedSequence.BackColor = System.Drawing.Color.White
         Me.GroupBox_MS_SelectedSequence.CanvasColor = System.Drawing.Color.Empty
         Me.GroupBox_MS_SelectedSequence.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.GroupBox_MS_SelectedSequence.Controls.Add(Me.ButtonX1)
         Me.GroupBox_MS_SelectedSequence.Controls.Add(Me.ComboBox_MS_NInst)
         Me.GroupBox_MS_SelectedSequence.Controls.Add(Me.LabelX32)
         Me.GroupBox_MS_SelectedSequence.Controls.Add(Me.LabelX5)
@@ -238,6 +240,15 @@ Partial Class Tab_MusicManager
         '
         '
         Me.GroupBox_MS_SelectedSequence.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonX1
+        '
+        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX1.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
+        Me.ButtonX1.Name = "ButtonX1"
+        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ComboBox_MS_NInst
         '
@@ -430,4 +441,5 @@ Partial Class Tab_MusicManager
     Friend WithEvents ButtonX_MS_RemoveSequence As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX_MS_AddSequence As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ListBoxAdv_MS_MusicSequences As Publics.Controls.ItemListBox
+    Friend WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
 End Class

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D3D19C7A-F7BE-44F5-ACE4-B0B5260F519F}</ProjectGuid>
+    <ProjectGuid>{5E9F0B0A-F7B8-49A9-80FC-6DFE0D44CC84}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>OpenGLPreview</RootNamespace>
-    <AssemblyName>OpenGLPreview</AssemblyName>
+    <RootNamespace>OpenGLFactory.RenderingN</RootNamespace>
+    <AssemblyName>OpenGLFactory.Rendering</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -18,7 +18,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>OpenGLPreview.xml</DocumentationFile>
+    <DocumentationFile>OpenGLFactory.Rendering.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -27,7 +27,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>OpenGLPreview.xml</DocumentationFile>
+    <DocumentationFile>OpenGLFactory.Rendering.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -43,22 +43,16 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="OpenTK, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.3.0.1\lib\net20\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK.GLControl, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.GLControl.3.0.1\lib\net20\OpenTK.GLControl.dll</HintPath>
     </Reference>
-    <Reference Include="PaintingControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PaintingControls.1.0.0\lib\net45\PaintingControls.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
     </Reference>
@@ -81,12 +75,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelPreview.Designer.vb">
-      <DependentUpon>ModelPreview.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ModelPreview.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="BoundingBox.vb" />
+    <Compile Include="CameraPoint.vb" />
+    <Compile Include="ContentPipe.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -102,11 +93,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Renderer.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ModelPreview.resx">
-      <DependentUpon>ModelPreview.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -115,6 +104,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -128,21 +118,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenGLCamera\OpenGLCamera.vbproj">
-      <Project>{26ad6422-f5d8-48d3-ac57-398f9c094217}</Project>
-      <Name>OpenGLCamera</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OpenGLRenderer\OpenGLRenderer.vbproj">
-      <Project>{5e9f0b0a-f7b8-49a9-80fc-6dfe0d44cc84}</Project>
-      <Name>OpenGLRenderer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SettingsManager\SettingsManager.vbproj">
-      <Project>{9672AFEC-766D-4308-9184-74E1E770011B}</Project>
-      <Name>SettingsManager</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
       <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
       <Name>SimpleFileParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
+      <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
+      <Name>SM64Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

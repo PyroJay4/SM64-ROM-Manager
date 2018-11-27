@@ -55,10 +55,10 @@ Public Class ManagedInstantWarp
 
     Public Sub New(cmd As LevelscriptCommand)
         Me._Command = cmd
-        LoadpProperties()
+        LoadProperties()
     End Sub
 
-    Public Sub LoadpProperties() Implements IManagedLevelscriptCommand.LoadpProperties
+    Public Sub LoadProperties() Implements IManagedLevelscriptCommand.LoadProperties
         'Collision Type
         CollisionType = clInstantWarp.GetCollisionType(Command)
 

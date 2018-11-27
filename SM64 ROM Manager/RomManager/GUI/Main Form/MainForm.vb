@@ -12,25 +12,30 @@ Imports SM64Lib.Levels
 Imports PatchScripts
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib.Exceptions
+Imports Microsoft.WindowsAPICodePack.Dialogs
+Imports DevComponents.DotNetBar.Controls
+Imports Microsoft.WindowsAPICodePack.Dialogs.Controls
+Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
 
 Public Class MainForm
 
     Private updateManager As UpdateManager = Nothing
     Private rommgr As RomManager = Nothing
     Private WithEvents RomWatcher As FileSystemWatcher = Nothing
-
     Friend loadRecentROM As Boolean = False
     Friend FinishedLoading As Boolean = False
     Friend LoadingROM As Boolean = False
     Friend savingRom As Boolean = False
+    Friend hasRomChanged As Byte = 0
 
     Friend Property StatusText As String
         Get
             Return LabelItem1.Text
         End Get
-        Set(value As String)
-            If value = "" Then value = Form_Main_Resources.Status_Ready
-            LabelItem1.Text = value
+        Set
+            If Value = "" Then Value = Form_Main_Resources.Status_Ready
+            LabelItem1.Text = Value
             Bar1.Refresh()
         End Set
     End Property
@@ -39,10 +44,10 @@ Public Class MainForm
         SuspendLayout()
 
         InitializeComponent()
-
-        updateManager = New UpdateManager(New Uri("http://pilzinsel64.square7.ch/Updates/SM64_ROM_Manager_New/updates.json"), "<RSAKeyValue><Modulus>w5WpraTgIe2QlQGkvrJDcdrtRkb1AQ0iDMO0JMsCd7rPoUYw7cu7YnRreeadU5jBiit4G82oB/TOtT+quJPDBixxKjof9gKVqrxeKtMYU/3vwRQg0+Y77GFD6tMLNlJwrk1NzgS3FN2Zlpl9LplgeQr9g5RSKMyu+VJ5OTZOHZAyHpvMnPSD9V1Kpyj/WFf2ADf9PL3Z4vEJfcmoFdGY6i4hq4IAIe5o5lYGB5zC/QOfDuAHEO+oGbOkFs65BeHDZWkLnzBOYPI4rnHZpU9E/ChcJVerNln45D9XGElDVXy7AIdy417mefjqnPaqMgm/22aTUW3f1Jsy3kcUhe1/f5eE/PHQoFvLPjcezY5mPUkW5JT1Y+2tIROvXh5zejyb+/2ctyVLSqLhG6wh4UNFd60Be4mV2NJ+Acn9IagdvMW3AvUmbSgQK4Jmq2OP656XkrdDi2vGibdMOB2Nt+O/q5+GpbzrEAnX+t9ikxmT568PpfjGBVvh+DmQxhiEaKT28HKWuDwLOdq6bnnnw6LlqF0odHqf2L09uXULJQo9W8zMoA5lyNbgHTfrj1ik9X4xheZkqmwJWIyYrRsPsyLN6Eani4vqVeVgBfJxdon45x5tPqYhadHoIHWU8WxnIGBnDAmaBZ/6lQpfTmbo3c8T2WuNjQAarzmnFKHP6GqP9X7JFhGQklTI5LFNsz6IjFRoHl/R5bUi6GJddoFitKXT4XjaJw+zR4Vp6W37wLjbe/r7Wd+vBST3YxTELQ+zQ3lxOb3Ht+0psinyaqqWVG8jh69axesPDIXvqDmZsYTlbm8YWyHeViX6xDo1+gYCZkFnCqdpXaB2B2a/bnvV1DKRDWCUi122BzCkUQg104F2ncnTnwrEwGXBQzVcZkkCtNhoiQRbOz+kJZz3tdmF+IPdhsdevpB4XwVbb/aTCkx2T68LOrGCuaKZ8EmHzTEbX2thSs7q3+ImfxCC9pubzCgwQEiS4MD/k+BMfDt7JQEPSP8EvBDxLLJ8Ls34/GnX5DSkUwMC3a/DUoZ0FgV8aIJEPSequjB/HtVQaR9t8j8ynr9FpsxGS0Qa0UZLt5ACG76Z4wgnLdrPKJMD0hcscmdiy4ov3a3AkuvkvIeGDwWFRMFrwq4F+5+i5AvC+f+jjwRjCckOEUsUrgcycsLXDMKjD0VGRLQIr+qegB1I7Wrl15ctvS+z3YIgx+SrGNbrEzLKxV5Habe/HKZrQ2t8JzflurHJByifFQ/Szp0BkoOXkVmkuczAw0a/DglU2um1Ic8cXAuNIWP0PbYpvVDUnChZrFMVO5QFMAdI8Ei9LHbjlTNdegXtHXIGJS9uXdf8285rlHsyVkCHbtFyZRsQSkuDuQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", New CultureInfo("en"), New UpdateVersion(Application.ProductVersion))
+        updateManager = New UpdateManager(New Uri("http://pilzinsel64.square7.ch/Updates/SM64_ROM_Manager_New/updates.json"), "<RSAKeyValue><Modulus>w5WpraTgIe2QlQGkvrJDcdrtRkb1AQ0iDMO0JMsCd7rPoUYw7cu7YnRreeadU5jBiit4G82oB/TOtT+quJPDBixxKjof9gKVqrxeKtMYU/3vwRQg0+Y77GFD6tMLNlJwrk1NzgS3FN2Zlpl9LplgeQr9g5RSKMyu+VJ5OTZOHZAyHpvMnPSD9V1Kpyj/WFf2ADf9PL3Z4vEJfcmoFdGY6i4hq4IAIe5o5lYGB5zC/QOfDuAHEO+oGbOkFs65BeHDZWkLnzBOYPI4rnHZpU9E/ChcJVerNln45D9XGElDVXy7AIdy417mefjqnPaqMgm/22aTUW3f1Jsy3kcUhe1/f5eE/PHQoFvLPjcezY5mPUkW5JT1Y+2tIROvXh5zejyb+/2ctyVLSqLhG6wh4UNFd60Be4mV2NJ+Acn9IagdvMW3AvUmbSgQK4Jmq2OP656XkrdDi2vGibdMOB2Nt+O/q5+GpbzrEAnX+t9ikxmT568PpfjGBVvh+DmQxhiEaKT28HKWuDwLOdq6bnnnw6LlqF0odHqf2L09uXULJQo9W8zMoA5lyNbgHTfrj1ik9X4xheZkqmwJWIyYrRsPsyLN6Eani4vqVeVgBfJxdon45x5tPqYhadHoIHWU8WxnIGBnDAmaBZ/6lQpfTmbo3c8T2WuNjQAarzmnFKHP6GqP9X7JFhGQklTI5LFNsz6IjFRoHl/R5bUi6GJddoFitKXT4XjaJw+zR4Vp6W37wLjbe/r7Wd+vBST3YxTELQ+zQ3lxOb3Ht+0psinyaqqWVG8jh69axesPDIXvqDmZsYTlbm8YWyHeViX6xDo1+gYCZkFnCqdpXaB2B2a/bnvV1DKRDWCUi122BzCkUQg104F2ncnTnwrEwGXBQzVcZkkCtNhoiQRbOz+kJZz3tdmF+IPdhsdevpB4XwVbb/aTCkx2T68LOrGCuaKZ8EmHzTEbX2thSs7q3+ImfxCC9pubzCgwQEiS4MD/k+BMfDt7JQEPSP8EvBDxLLJ8Ls34/GnX5DSkUwMC3a/DUoZ0FgV8aIJEPSequjB/HtVQaR9t8j8ynr9FpsxGS0Qa0UZLt5ACG76Z4wgnLdrPKJMD0hcscmdiy4ov3a3AkuvkvIeGDwWFRMFrwq4F+5+i5AvC+f+jjwRjCckOEUsUrgcycsLXDMKjD0VGRLQIr+qegB1I7Wrl15ctvS+z3YIgx+SrGNbrEzLKxV5Habe/HKZrQ2t8JzflurHJByifFQ/Szp0BkoOXkVmkuczAw0a/DglU2um1Ic8cXAuNIWP0PbYpvVDUnChZrFMVO5QFMAdI8Ei9LHbjlTNdegXtHXIGJS9uXdf8285rlHsyVkCHbtFyZRsQSkuDuQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", New CultureInfo("en"))
         updateManager.CloseHostApplication = True
         updateManager.RestartHostApplication = True
+        updateManager.InstallAsAdmin = Settings.General.UseAdminRightsForUpdates
 
         'Set instance on Tabs   
         tabGeneral.MainForm = Me
@@ -53,43 +58,12 @@ Public Class MainForm
         'Enable Auto-Save for Settings
         Settings.AutoSave = True
 
-        'Takeover the settings from old settings file
-        TakeoverOldSettings()
-
         SetStyleManagerStyle()
 
         ResumeLayout()
 
         'TEMPORARY: Set the new client size until DotNetBar fixed the border issue
         ClientSize = New Size(712, 689)
-    End Sub
-
-    Private Sub TakeoverOldSettings()
-        If File.Exists(SettingsOld.SettingsFile) Then
-            'Load old Settings
-            SettingsOld.LoadSettings()
-
-            'Takeover the old settings
-            Settings.General.ActionIfUpdatePatches = SettingsOld.General.ActionIfUpdatePatches
-            Settings.General.AutoUpdates = SettingsOld.General.AutoUpdates
-            Settings.General.EmulatorPath = SettingsOld.General.EmulatorPath
-            Settings.General.IntegerValueMode = SettingsOld.General.IntegerValueMode
-            Settings.AreaEditor.RibbonControlExpanded = SettingsOld.AreaEditor.RibbonControlExpanded
-            Settings.AreaEditor.DefaultCameraMode = SettingsOld.AreaEditor.DefaultCameraMode
-            Settings.AreaEditor.DefaultWindowMode = SettingsOld.AreaEditor.DefaultWindowMode
-            Settings.FileParser.LoaderModule = SettingsOld.FileParser.LoaderModule
-            Settings.FileParser.UpAxis = SettingsOld.ModelConverter.UpAxis
-            Settings.StyleManager.AlwaysKeepBlueColors = SettingsOld.StyleManager.AlwaysKeepBlueColors
-            Settings.StyleManager.MetroColorParams = SettingsOld.StyleManager.MetroColorParams
-            Settings.RecentFiles.RecentROMs.AddRange(SettingsOld.RecentFiles.GetRecentFiles(SettingsOld.RecentFiles.RecentRomsSection))
-            Settings.RecentFiles.RecentModelFiles.AddRange(SettingsOld.RecentFiles.GetRecentFiles(SettingsOld.RecentFiles.RecentModelFilesSection))
-
-            'Save the new settings
-            Settings.SaveSettings()
-
-            'Delete old Settings file
-            File.Delete(SettingsOld.SettingsFile)
-        End If
     End Sub
 
     Private Sub SetStyleManagerStyle()
@@ -110,6 +84,11 @@ Public Class MainForm
         tabLevelManager.RomMgr = rommgr
         tabTextManager.RomMgr = rommgr
         tabMusicManager.RomMgr = rommgr
+        UpdateRomDate()
+    End Sub
+
+    Private Sub UpdateRomDate()
+        lastRomChangedDate = Date.Now
     End Sub
 
     Private Sub Form_Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -345,7 +324,7 @@ Public Class MainForm
         If Not loadRecentROM Then
             Try
                 Dim romFileInfo As New FileInfo(Romfile)
-                Dim newrommgr As New SM64Lib.RomManager(Romfile)
+                Dim newrommgr As New RomManager(Romfile)
                 StatusText = Form_Main_Resources.Status_Checking
 
                 If romFileInfo.Length = 8 * 1024 * 1024 Then
@@ -359,7 +338,7 @@ Public Class MainForm
                     StatusText = ""
                     Return
                 ElseIf newrommgr.IsSM64EditorMode Then
-                    Throw New SM64Lib.Exceptions.RomCompatiblityException("This ROM was used by the SM64 Editor and isn't compatible with the SM64 ROM Manager.")
+                    Throw New RomCompatiblityException(Form_Main_Resources.Exception_RomWasUsedBySM64E)
                 End If
 
                 loadRecentROM = True
@@ -382,7 +361,7 @@ Public Class MainForm
             Catch ex As ReadOnlyException
                 MessageBoxEx.Show(ex.Message, "Loading ROM", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Catch ex As Exception
-                MessageBoxEx.Show("A unknown error happend at loading ROM.", "Loading ROM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBoxEx.Show(Form_Main_Resources.MsgBox_RomRemoved, Form_Main_Resources.MsgBox_RomRemoved_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
             loadRecentROM = False
@@ -512,13 +491,18 @@ Public Class MainForm
 
     Private Sub CreateRomWatcherForCurrentRom()
         If rommgr IsNot Nothing Then
-            RomWatcher = New FileSystemWatcher(Path.GetDirectoryName(rommgr.RomFile), Path.GetFileName(rommgr.RomFile)) With {.EnableRaisingEvents = True, .SynchronizingObject = Me}
+            General.RomWatcher = New FileSystemWatcher(Path.GetDirectoryName(rommgr.RomFile), Path.GetFileName(rommgr.RomFile)) With {.EnableRaisingEvents = True, .SynchronizingObject = Me}
+            hasRomChanged = 0
         Else
-            RomWatcher = Nothing
+            General.RomWatcher = Nothing
         End If
+        RomWatcher = General.RomWatcher
     End Sub
 
     Private Sub RomWatcher_Changed(sender As Object, e As FileSystemEventArgs) Handles RomWatcher.Changed
+        If hasRomChanged <> 2 Then
+            hasRomChanged = 1
+        End If
     End Sub
 
     Private Sub RomWatcher_Renamed(sender As Object, e As RenamedEventArgs) Handles RomWatcher.Renamed
@@ -530,8 +514,57 @@ Public Class MainForm
 
     Private Sub RomWatcher_Deleted(sender As Object, e As FileSystemEventArgs) Handles RomWatcher.Deleted
         If rommgr IsNot Nothing AndAlso e.FullPath = rommgr.RomFile Then
-            If MessageBoxEx.Show("The Rom that was opend in this program has been removed!<br/>This programm will close now.", "Rom was removed", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = DialogResult.OK Then
+            If MessageBoxEx.Show(Form_Main_Resources.MsgBox_RomRemoved, Form_Main_Resources.MsgBox_RomRemoved_Titel, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = DialogResult.OK Then
                 Close()
+            End If
+        End If
+    End Sub
+
+    Private Sub ButtonItem_M64ToMidiConverter_Click(sender As Object, e As EventArgs) Handles ButtonItem_M64ToMidiConverter.Click
+        Dim ofd As New CommonOpenFileDialog
+        Dim sfd As CommonSaveFileDialog
+        Dim chunks As Byte = 2
+
+        ofd.Filters.Add(New CommonFileDialogFilter("M64 Sequences", "*.m64"))
+        ofd.EnsureFileExists = True
+
+        If ofd.ShowDialog = CommonFileDialogResult.Ok Then
+            sfd = New CommonSaveFileDialog
+            sfd.Filters.Add(New CommonFileDialogFilter("MIDI File [Experimental]", "*.mid"))
+            sfd.Controls.Add(GetMidiExportDialogControls)
+
+            If sfd.ShowDialog() = CommonFileDialogResult.Ok Then
+                'Get chunks
+                Select Case CType(sfd.Controls("MidiChunksSelector"), CommonFileDialogComboBox).SelectedIndex
+                    Case 0
+                        chunks = 1
+                    Case 1
+                        chunks = 2
+                End Select
+
+                'Create midi file
+                Dim fs As New FileStream(ofd.FileName, FileMode.Open, FileAccess.ReadWrite)
+
+                'Convert .m64 to .midi
+                Try
+                    OutputMIDI.ConvertToMIDI(sfd.FileName, fs, chunks, True)
+                    MessageBoxEx.Show(Form_Main_Resources.MsgBox_ConvertToMidi_Succes, Form_Main_Resources.MsgBox_ConvertToMidi_Succes_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Catch ex As Exception
+                    MessageBoxEx.Show(Form_Main_Resources.MsgBox_ConvertToMidi_Failed & vbNewLine & ex.Message, Form_Main_Resources.MsgBox_ConvertToMidi_Failed_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Finally
+                    fs.Close()
+                End Try
+            End If
+        End If
+    End Sub
+
+    Private Sub MainForm_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        If hasRomChanged = 1 Then
+            If MessageBoxEx.Show(Form_Main_Resources.MsgBox_RomChanged_ReloadRom, Form_Main_Resources.MsgBox_RomChanged_ReloadRom_Titel, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                OpenROMFile(rommgr.RomFile)
+                hasRomChanged = 0
+            Else
+                hasRomChanged = 2
             End If
         End If
     End Sub

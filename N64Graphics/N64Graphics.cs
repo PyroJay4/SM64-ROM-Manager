@@ -152,6 +152,21 @@ namespace N64Graphics
             return Color.FromArgb(a, i, i, i);
         }
 
+        public static void ColorIA16(Color col, out byte intensity, out byte alpha)
+        {
+            int sum = col.R + col.G + col.B;
+            intensity = (byte)(sum / 3);
+            alpha = col.A;
+        }
+
+        public static void ColorIA8(Color col, out byte intensity, out byte alpha, out byte value)
+        {
+            int sum = col.R + col.G + col.B;
+            intensity = SCALE_8_4((byte)(sum / 3));
+            alpha = SCALE_8_4(col.A);
+            value = (byte)((intensity << 4) | alpha);
+        }
+
         // return number of bytes needed to encode numPixels using codec
         public static int PixelsToBytes(N64Codec codec, int numPixels)
         {
@@ -248,6 +263,23 @@ namespace N64Graphics
                     break;
             }
             return color;
+        }
+
+        public static void FromColor(Color color, out byte[] data, N64Codec codec)
+        {
+            switch (codec)
+            {
+                case N64Codec.RGBA16:
+                    data = new byte[2];
+                    ColorRGBA16(color, out data[0], out data[1]);
+                    break;
+                case N64Codec.RGBA32:
+                    data = new byte[] { color.R, color.G, color.B, color.A};
+                    break;
+                default:
+                    data = new byte[] { };
+                    break;
+            }
         }
 
         public static void RenderTexture(Graphics g, byte[] data, byte[] palette, int offset, int width, int height, int scale, N64Codec codec, N64IMode mode)
@@ -348,8 +380,8 @@ namespace N64Graphics
                         {
                             Color col = bm.GetPixel(x, y);
                             int sum = col.R + col.G + col.B;
-                            byte intensity = (byte)(sum / 3);
-                            byte alpha = col.A;
+                            byte intensity, alpha;
+                            ColorIA16(col, out intensity, out alpha);
                             int idx = 2 * (y * bm.Width + x);
                             imageData[idx + 0] = intensity;
                             imageData[idx + 1] = alpha;
@@ -363,10 +395,10 @@ namespace N64Graphics
                         {
                             Color col = bm.GetPixel(x, y);
                             int sum = col.R + col.G + col.B;
-                            byte intensity = SCALE_8_4((byte)(sum / 3));
-                            byte alpha = SCALE_8_4(col.A);
+                            byte intensity, alpha, value;
+                            ColorIA8(col, out intensity, out alpha, out value);
                             int idx = y * bm.Width + x;
-                            imageData[idx] = (byte)((intensity << 4) | alpha);
+                            imageData[idx] = value;
                         }
                     }
                     break;

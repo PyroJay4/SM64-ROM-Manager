@@ -117,97 +117,155 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="DotNetBarManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>150, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>224</value>
-  </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="SplitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ButtonItem_CopyObjCmdAsHex.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAH5JREFUOE+9j9EJgDAMRDuVQ7hN++9QLtMhXEI5SaBJL7ZQ8MH9xON5TcuUUm6W
-        nPMmlW9Q9ojgmpIwAZDPY1SwH+cbBXeWbhWODHYXgX2aFnWBrogEtVYrYUXgxQC3NkYws6ClE3iY2P9g
-        ShBhBD6teLggQgUR/whGkeoKKT1XGv722h004AAAAABJRU5ErkJggg==
-</value>
+  <data name="SplitContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 25</value>
   </data>
-  <metadata name="SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>315, 17</value>
-  </metadata>
-  <data name="ButtonItem_PasteObjDefault.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAPZJREFUWEftlk0KwjAUhL24NiiNejJd6CG614V4gOhIKjGd5L2GFDcZ+DYN80Nb
-        SldNJbJ974wxP+CaP15ecfmIP15ecWHVAY/L1t3Pmy+4xm55WMjOxkcSZj2vO3nk7bSeDGAFGuANs8a8
-        rJiBhWtI5WXFDCxcQyovq9igMiVUlMVMNfE1aTFTTXxNWswk4a11xAok4GMvYcxxf1juDqAgJ5xba+UR
-        rEACPs2AYRjkEaxAAj7NAEgcwQok4NMOgLIjWIEEfJoBjE9pKFYgAV/Xdb5Kr6oDEDZXbUAb0Aa0AXQA
-        /t3jX3MJ+Kp9CUtl/j7gHTYf416wwUzgQMve2gAAAABJRU5ErkJggg==
-</value>
+  <data name="ButtonX_CancelSearch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
-  <data name="ButtonItem_ObjectsCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAH5JREFUOE+9j9EJgDAMRDuVQ7hN++9QLtMhXEI5SaBJL7ZQ8MH9xON5TcuUUm6W
-        nPMmlW9Q9ojgmpIwAZDPY1SwH+cbBXeWbhWODHYXgX2aFnWBrogEtVYrYUXgxQC3NkYws6ClE3iY2P9g
-        ShBhBD6teLggQgUR/whGkeoKKT1XGv722h004AAAAABJRU5ErkJggg==
-</value>
+  <data name="ButtonX_CancelSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 1</value>
   </data>
-  <data name="buttonItem55.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAQZJREFUOE9joDsIDQ1lKygo2F5UVPQfKkQ8QNYMw1ApTICsGEhfAokB6S5kzYWF
-        hefBirEBoOJ1aIpXZ2VlSQDpYzDNQCwEVY4AL/fX2zzaUS8ENKAR2QCopsNQQ2ZiaAZpfHmw4cCrQ03/
-        Xx5svPp0d70cNkNALoNqgYAXBxungTShY6D48+cH681wuQSqnYFh1apQZqCNG7EZAhT/BnRZCLohQANQ
-        A+/RqkLOlwcaT2IzBISBBlXADAFpxvA/CDzbVikKdPZtbAaA8IsDjfOvrKpngyrHDoDOVQHa9gqbAcAA
-        boQqww9AAQfyO1maYeDFgXo/oCF/yNIMA0A/F5GtmXjAwAAAc8UrgIN7yTkAAAAASUVORK5CYII=
-</value>
+  <data name="ButtonX_CancelSearch.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>18, 18</value>
   </data>
-  <data name="ButtonItem_CopyWarpCmdAsHex.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAH5JREFUOE+9j9EJgDAMRDuVQ7hN++9QLtMhXEI5SaBJL7ZQ8MH9xON5TcuUUm6W
-        nPMmlW9Q9ojgmpIwAZDPY1SwH+cbBXeWbhWODHYXgX2aFnWBrogEtVYrYUXgxQC3NkYws6ClE3iY2P9g
-        ShBhBD6teLggQgUR/whGkeoKKT1XGv722h004AAAAABJRU5ErkJggg==
-</value>
+  <data name="ButtonX_CancelSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 18</value>
   </data>
-  <data name="ButtonX_PasteWarpDefault.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAPZJREFUWEftlk0KwjAUhL24NiiNejJd6CG614V4gOhIKjGd5L2GFDcZ+DYN80Nb
-        SldNJbJ974wxP+CaP15ecfmIP15ecWHVAY/L1t3Pmy+4xm55WMjOxkcSZj2vO3nk7bSeDGAFGuANs8a8
-        rJiBhWtI5WXFDCxcQyovq9igMiVUlMVMNfE1aTFTTXxNWswk4a11xAok4GMvYcxxf1juDqAgJ5xba+UR
-        rEACPs2AYRjkEaxAAj7NAEgcwQok4NMOgLIjWIEEfJoBjE9pKFYgAV/Xdb5Kr6oDEDZXbUAb0Aa0AXQA
-        /t3jX3MJ+Kp9CUtl/j7gHTYf416wwUzgQMve2gAAAABJRU5ErkJggg==
-</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ButtonX_CancelSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
   </data>
-  <data name="ButtonX_WarpsCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAH5JREFUOE+9j9EJgDAMRDuVQ7hN++9QLtMhXEI5SaBJL7ZQ8MH9xON5TcuUUm6W
-        nPMmlW9Q9ojgmpIwAZDPY1SwH+cbBXeWbhWODHYXgX2aFnWBrogEtVYrYUXgxQC3NkYws6ClE3iY2P9g
-        ShBhBD6teLggQgUR/whGkeoKKT1XGv722h004AAAAABJRU5ErkJggg==
-</value>
+  <data name="ButtonX_CancelSearch.Tooltip" xml:space="preserve">
+    <value>Clear search</value>
   </data>
-  <data name="ButtonItem73.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAQZJREFUOE9joDsIDQ1lKygo2F5UVPQfKkQ8QNYMw1ApTICsGEhfAokB6S5kzYWF
-        hefBirEBoOJ1aIpXZ2VlSQDpYzDNQCwEVY4AL/fX2zzaUS8ENKAR2QCopsNQQ2ZiaAZpfHmw4cCrQ03/
-        Xx5svPp0d70cNkNALoNqgYAXBxungTShY6D48+cH681wuQSqnYFh1apQZqCNG7EZAhT/BnRZCLohQANQ
-        A+/RqkLOlwcaT2IzBISBBlXADAFpxvA/CDzbVikKdPZtbAaA8IsDjfOvrKpngyrHDoDOVQHa9gqbAcAA
-        boQqww9AAQfyO1maYeDFgXo/oCF/yNIMA0A/F5GtmXjAwAAAc8UrgIN7yTkAAAAASUVORK5CYII=
-</value>
+  <data name="ItemList.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="ButtonX_WarpsAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAPZJREFUWEftlk0KwjAUhL24NiiNejJd6CG614V4gOhIKjGd5L2GFDcZ+DYN80Nb
-        SldNJbJ974wxP+CaP15ecfmIP15ecWHVAY/L1t3Pmy+4xm55WMjOxkcSZj2vO3nk7bSeDGAFGuANs8a8
-        rJiBhWtI5WXFDCxcQyovq9igMiVUlMVMNfE1aTFTTXxNWswk4a11xAok4GMvYcxxf1juDqAgJ5xba+UR
-        rEACPs2AYRjkEaxAAj7NAEgcwQok4NMOgLIjWIEEfJoBjE9pKFYgAV/Xdb5Kr6oDEDZXbUAb0Aa0AXQA
-        /t3jX3MJ+Kp9CUtl/j7gHTYf416wwUzgQMve2gAAAABJRU5ErkJggg==
-</value>
+  <data name="ItemList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ItemList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="ItemList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 316</value>
+  </data>
+  <data name="ItemList.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="TextBoxX_Search.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="TextBoxX_Search.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="TextBoxX_Search.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 20</value>
+  </data>
+  <data name="TextBoxX_Search.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="TextBoxX_Search.WatermarkText" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="AdvPropertyGrid1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="AdvPropertyGrid1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="AdvPropertyGrid1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 336</value>
+  </data>
+  <data name="AdvPropertyGrid1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="SplitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>796, 336</value>
+  </data>
+  <data name="SplitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>396</value>
+  </data>
+  <data name="SplitContainer1.SplitterIncrement" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="SplitContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TabStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="TabStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 0</value>
+  </data>
+  <data name="TabItem_ObjectCombos.Text" xml:space="preserve">
+    <value>Object Combos</value>
+  </data>
+  <data name="TabStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>796, 25</value>
+  </data>
+  <data name="TabStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="TabItem_Behaviors.Text" xml:space="preserve">
+    <value>Behaviors</value>
+  </data>
+  <data name="Bar1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="Bar1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="ButtonItem_Add.Tooltip" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="ButtonItem_Remove.Tooltip" xml:space="preserve">
+    <value>Remove selected</value>
+  </data>
+  <data name="ButtonItem_SaveAll.Tooltip" xml:space="preserve">
+    <value>Save all</value>
+  </data>
+  <data name="ButtonItem_ReloadList.Tooltip" xml:space="preserve">
+    <value>Reload List</value>
+  </data>
+  <data name="Bar1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Bar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 361</value>
+  </data>
+  <data name="Bar1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Bar1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="Panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>824, 361</value>
+  </data>
+  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>824, 361</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2066,7 +2124,7 @@
         +QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>315, 17</value>
-  </metadata>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
 </root>

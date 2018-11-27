@@ -135,6 +135,9 @@
   <data name="GroupBox_MS_SeqProperties.Text" xml:space="preserve">
     <value>Eigenschaften</value>
   </data>
+  <data name="ButtonX1.Text" xml:space="preserve">
+    <value>In Hex-Editor bearbeiten</value>
+  </data>
   <data name="Button_MS_ExtractSequence.Text" xml:space="preserve">
     <value>Exportieren</value>
   </data>

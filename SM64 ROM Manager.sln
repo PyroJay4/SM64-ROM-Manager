@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N64Graphics", "N64Graphics\
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SimpleFileParser", "SimpleFileParser\SimpleFileParser.vbproj", "{AC955819-7910-450C-940C-7C1989483D4B}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenGLRenderer", "OpenGLRenderer\OpenGLRenderer.vbproj", "{5E9F0B0A-F7B8-49A9-80FC-6DFE0D44CC84}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenGLFactory.RenderingN", "OpenGLRenderer\OpenGLFactory.RenderingN.vbproj", "{5E9F0B0A-F7B8-49A9-80FC-6DFE0D44CC84}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SM64Lib", "SM64Lib\SM64Lib.vbproj", "{50BE8215-8945-4A29-908A-36E1102A540C}"
 EndProject
@@ -17,9 +17,9 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ModelImporterGUI", "ModelIm
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SettingsManager", "SettingsManager\SettingsManager.vbproj", "{9672AFEC-766D-4308-9184-74E1E770011B}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenGLCamera", "OpenGLCamera\OpenGLCamera.vbproj", "{26AD6422-F5D8-48D3-AC57-398F9C094217}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenGLFactory.CameraN", "OpenGLCamera\OpenGLFactory.CameraN.vbproj", "{26AD6422-F5D8-48D3-AC57-398F9C094217}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenGLPreview", "OpenGLPreview\OpenGLPreview.vbproj", "{D3D19C7A-F7BE-44F5-ACE4-B0B5260F519F}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenGLFactory.PreviewN", "OpenGLPreview\OpenGLFactory.PreviewN.vbproj", "{D3D19C7A-F7BE-44F5-ACE4-B0B5260F519F}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ModelConverterGUI", "ModelConverterGUI\ModelConverterGUI.vbproj", "{745E6A23-6957-45F8-9305-88EC5474D077}"
 EndProject

@@ -118,22 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MoveCameraWheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MoveCameraWheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MoveCameraCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MoveCameraCross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MoveObjectCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveObjectCross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RotateObjectWheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RotateObjectWheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="RotateObjectCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RotateObjectCross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kurznachricht_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kurznachricht_34px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Psychologie_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Psychologie_34px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MoveObjectWheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MoveObjectWheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MoveObjectCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MoveObjectCross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MoveCameraCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveCameraCross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RotateObjectCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RotateObjectCross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Psychologie_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Psychologie_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveCameraWheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoveCameraWheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Psychologie_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Psychologie_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

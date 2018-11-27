@@ -408,63 +408,60 @@ Public Class OutputMIDI
         End If
     End Sub
 
-    Public Shared Sub ConvertToMIDI(file As String, s As Stream, chunk As Byte, restrict As Boolean)
-        If Not IO.File.Exists(file) Then
-            MessageBoxEx.Show("Error converting to MIDI!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+    Public Shared Sub ConvertToMIDI(outputFile As String, inputStream As Stream, chunk As Byte, restrict As Boolean)
+        Settings.LimitChunks = chunk
+        Settings.Restrict = restrict
+
+        'Dim fileStream1 As New FileStream(file, FileMode.Open, FileAccess.Read)
+        Dim fileStream2 As New FileStream(outputFile, FileMode.Create, FileAccess.ReadWrite)
+        Dim br As New BinaryReader(inputStream)
+        Dim bw As New BinaryWriter(fileStream2)
+
+        ReadHeader(br)
+
+        If Not HeaderData.Valid Then
+            Throw New FormatException("Header of .m64 file is invalid!")
         Else
-            Settings.LimitChunks = chunk
-            Settings.Restrict = restrict
-            Dim str As String = ".mid"
-            If Settings.LimitChunks = 1 Then
-                str = ".0.mid"
-            End If
-            If Settings.LimitChunks = 2 Then
-                str = ".1.mid"
-            End If
-            IO.File.Delete(file & str)
-            'Dim fileStream1 As New FileStream(file, FileMode.Open, FileAccess.Read)
-            Dim fileStream2 As FileStream = IO.File.Create(file & str)
-            Dim br As New BinaryReader(s)
-            Dim bw As New BinaryWriter(fileStream2)
-            ReadHeader(br)
-            If Not HeaderData.Valid Then
-                MessageBoxEx.Show("Error converting to MIDI!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-            Else
-                StartMIDIHeader(bw)
-                StartMIDISettings(bw)
-                Dim position As Long = bw.BaseStream.Position
-                Dim track As Byte = 0
-                Do While CInt(track) < 16
-                    Dim layer As Byte = 0
-                    Do While CInt(layer) < 16
-                        HeaderData.TotalTimestamp = 0
-                        br.BaseStream.Position = 0L
-                        StartMIDITrack(bw, track)
-                        ConvertHeader(br, bw, track, layer)
-                        FinishMIDITrack(bw, track)
-                        _TrackData = New TrackClass
-                        _LayerData = New LayerClass
-                        _NoteData = New NoteClass
-                        layer += 1
-                    Loop
-                    track += 1
+            StartMIDIHeader(bw)
+            StartMIDISettings(bw)
+
+            Dim position As Long = bw.BaseStream.Position
+            Dim track As Byte = 0
+
+            Do While CInt(track) < 16
+                Dim layer As Byte = 0
+                Do While CInt(layer) < 16
+                    HeaderData.TotalTimestamp = 0
+                    br.BaseStream.Position = 0L
+                    StartMIDITrack(bw, track)
+                    ConvertHeader(br, bw, track, layer)
+                    FinishMIDITrack(bw, track)
+                    _TrackData = New TrackClass
+                    _LayerData = New LayerClass
+                    _NoteData = New NoteClass
+                    layer += 1
                 Loop
-                If position = bw.BaseStream.Position Then
-                    br.Close()
-                    bw.Close()
-                    'fileStream1.Close()
-                    fileStream2.Close()
-                    _HeaderData = New HeaderClass
-                    IO.File.Delete(fileStream2.Name)
-                Else
-                    FinishMIDIHeader(bw)
-                    FinishMIDISettings(bw)
-                    br.Close()
-                    bw.Close()
-                    'fileStream1.Close()
-                    fileStream2.Close()
-                    _HeaderData = New HeaderClass
-                End If
+                track += 1
+            Loop
+
+            If position = bw.BaseStream.Position Then
+                br.Close()
+                bw.Flush()
+                bw.Close()
+                'fileStream1.Close()
+                fileStream2.Close()
+                _HeaderData = New HeaderClass
+                IO.File.Delete(fileStream2.Name)
+                Throw New FormatException(".m64 file is invalid!")
+            Else
+                FinishMIDIHeader(bw)
+                FinishMIDISettings(bw)
+                br.Close()
+                bw.Flush()
+                bw.Close()
+                'fileStream1.Close()
+                fileStream2.Close()
+                _HeaderData = New HeaderClass
             End If
         End If
     End Sub

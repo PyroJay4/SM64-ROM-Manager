@@ -38,12 +38,12 @@ Namespace Global.SM64Lib.SM64Convert
             Public Property ColorTexData As String = ""
             Public Property GeoModeData As String = ""
             Public Property TexTypeData As String = ""
-            Public Property FlipTexturesVerticaly As Boolean = False
             Public Property ResizeTextures As Boolean = False
             Public Property CenterModel As Boolean = False
             Public Property Fog As Model.Fog = Nothing
             Public Property CollisionData As String = ""
             Public Property ForceDisplaylist As Geolayout.Geolayer = -1
+            Public Property OptimizeTransparencyChecks As Boolean = False
 
             Public ReadOnly Property EnableFog As Boolean
                 Get
@@ -219,10 +219,11 @@ Namespace Global.SM64Lib.SM64Convert
             End Property
         End Class
         Private Class TextureEntry
-            Public width As UInteger = 0
-            Public height As UInteger = 0
-            Public data As Byte() = {}
-            Public palette As Byte() = {}
+            Public Property Width As UInteger = 0
+            Public Property Height As UInteger = 0
+            Public Property Data As Byte() = {}
+            Public Property Palette As Byte() = {}
+            Public Property OriginalImage As Image = Nothing
         End Class
 
         Private Class ObjPtrs
@@ -344,7 +345,6 @@ Namespace Global.SM64Lib.SM64Convert
                     m.enableGeoMode = True
                     Return
                 End If
-
             Next
         End Sub
         Private Sub CheckColorTexInfo(m As Material)
@@ -476,199 +476,102 @@ Namespace Global.SM64Lib.SM64Convert
             Next
         End Sub
 
-        Private Sub ProcessImage(img As Image, mat As Material)
-            Dim data As Byte() = Nothing
-            Dim palette As Byte() = Nothing
+        Private Sub ProcessImage(obj As S3DFileParser.Object3D, img As Image, mat As Material)
+            Dim entry As TextureEntry = Nothing
+
+            For Each tex As TextureEntry In textureBank
+                If tex.OriginalImage Is img Then
+                    entry = tex
+                End If
+            Next
+
+            'Create & Add texture entry
+            If entry Is Nothing Then
+                entry = New TextureEntry With {
+                    .Width = mat.TexWidth,
+                    .Height = mat.TexHeight,
+                    .OriginalImage = img
+                }
+            End If
 
             'Load Texture from File
             Dim bmp As New Bitmap(img)
 
+            'Set texture size
+            mat.TexWidth = bmp.Width
+            mat.TexHeight = bmp.Height
+
             'Convert texture
-            N64Graphics.N64Graphics.Convert(data, palette, mat.texType, bmp)
+            N64Graphics.N64Graphics.Convert(entry.Data, entry.Palette, mat.TexType, img)
 
-            mat.texWidth = bmp.Width
-            mat.texHeight = bmp.Height
+            'Get Texture like it is ingame (fixes bug that sometimes transparency is there even if there isn't)
+            If settings.OptimizeTransparencyChecks Then
+                bmp = New Bitmap(bmp.Width, bmp.Height)
+                Dim g As Graphics = Graphics.FromImage(bmp)
+                N64Graphics.N64Graphics.RenderTexture(g, entry.Data, entry.Palette, 0, mat.TexWidth, mat.TexHeight, 1, mat.TexType, N64IMode.AlphaCopyIntensity)
+            End If
 
-            mat.type = MaterialType.TextureSolid
+            'Set material type
+            mat.Type = MaterialType.TextureSolid
 
+            'Check for alpha and transparency
             For y As Integer = 0 To bmp.Height - 1
                 For x As Integer = 0 To bmp.Width - 1
                     Dim pix As Color = bmp.GetPixel(x, y)
 
-                    Select Case mat.texType
+                    Select Case mat.TexType
                         Case N64Codec.RGBA16, N64Codec.RGBA32, N64Codec.IA4, N64Codec.IA8, N64Codec.IA16, N64Codec.CI4, N64Codec.CI8
 
-                            If pix.A = 0 Then
-                                mat.hasTextureAlpha = True
-                                mat.type = MaterialType.TextureAlpha
-                                mat.hasTransparency = False
-                            ElseIf pix.A < &HFF OrElse mat.opacity < &HFF Then
-                                If mat.type <> MaterialType.TextureAlpha Then
-                                    If mat.opacity = &HFF Then
-                                        mat.opacity = (CInt(mat.opacity) * pix.A) And &HFF
+                            If pix.A = 0 AndAlso Not mat.HasTransparency Then
+                                mat.HasTextureAlpha = True
+                                mat.Type = MaterialType.TextureAlpha
+                            ElseIf pix.A < &HFF OrElse mat.Opacity < &HFF Then
+                                If mat.Type <> MaterialType.TextureAlpha Then
+                                    If mat.Opacity = &HFF Then
+                                        mat.Opacity = (CInt(mat.Opacity) * pix.A) And &HFF
                                     End If
-                                    mat.type = MaterialType.TextureTransparent
-                                    mat.hasTransparency = True
+                                    mat.Type = MaterialType.TextureTransparent
+                                    mat.HasTransparency = True
                                 End If
                             End If
 
+                            'If pix.A = 0 Then
+                            '    mat.hasTextureAlpha = True
+                            '    mat.type = MaterialType.TextureAlpha
+                            '    mat.HasTransparency = False
+                            'ElseIf pix.A < &HFF OrElse mat.opacity < &HFF Then
+                            '    If mat.Type <> MaterialType.TextureAlpha Then
+                            '        If mat.Opacity = &HFF Then
+                            '            mat.Opacity = (CInt(mat.Opacity) * pix.A) And &HFF
+                            '        End If
+                            '        mat.Type = MaterialType.TextureTransparent
+                            '        mat.HasTransparency = True
+                            '    End If
+                            'End If
+
                         Case N64Codec.I4, N64Codec.I8
 
-                            If pix.A < &HFF OrElse mat.opacity < &HFF OrElse mat.enableAlphaMask Then
-                                If mat.opacity = &HFF Then mat.opacity *= (CInt(mat.opacity) * pix.A) And &HFF
-                                mat.type = MaterialType.TextureTransparent
-                                mat.hasTransparency = True
+                            If pix.A < &HFF OrElse mat.Opacity < &HFF OrElse mat.EnableAlphaMask Then
+                                If mat.Opacity = &HFF Then mat.Opacity *= (CInt(mat.Opacity) * pix.A) And &HFF
+                                mat.Type = MaterialType.TextureTransparent
+                                mat.HasTransparency = True
                             End If
-
-                            'Case N64Codec.IA4, N64Codec.IA8, N64Codec.IA16
-
-                            '    'Dim intensity As Byte = ((pix.R + pix.G + pix.B) \ 3)
-                            '    'If Bits = 4 Then
-                            '    '    intensity \= 32
-                            '    '    alpha = If(pix.A < &HFF, 0, 1)
-                            '    'ElseIf Bits = 8 Then
-                            '    '    intensity \= 16
-                            '    '    alpha \= 16
-                            '    'End If
-
-                            '    'If (alpha > 0 AndAlso alpha < &HFF) OrElse mat.opacity < &HFF Then
-                            '    '    If mat.type <> MaterialType.TEXTURE_ALPHA Then
-                            '    '        If mat.opacity = &HFF Then
-                            '    '            mat.opacity *= (CInt(mat.opacity) * pix.A) And &HFF
-                            '    '        End If
-                            '    '        mat.type = MaterialType.TEXTURE_TRANSPARENT
-                            '    '        mat.hasTransparency = True
-                            '    '    End If
-                            '    'ElseIf alpha = 0 Then
-                            '    '    If mat.type <> MaterialType.TEXTURE_TRANSPARENT Then
-                            '    '        mat.type = MaterialType.TEXTURE_ALPHA
-                            '    '    End If
-                            '    'End If
-
-                            '    If pix.A = 0 Then
-                            '        mat.hasTextureAlpha = True
-                            '        mat.type = MaterialType.TEXTURE_ALPHA
-                            '        mat.hasTransparency = False
-                            '    ElseIf pix.A < &HFF OrElse mat.opacity < &HFF Then
-                            '        If mat.type <> MaterialType.TEXTURE_ALPHA Then
-                            '            If mat.opacity = &HFF Then
-                            '                mat.opacity = (CInt(mat.opacity) * pix.A) And &HFF
-                            '            End If
-                            '            mat.type = MaterialType.TEXTURE_TRANSPARENT
-                            '            mat.hasTransparency = True
-                            '        End If
-                            '    End If
 
                     End Select
                 Next
             Next
 
-            Dim entry As New TextureEntry With {
-                .data = data,
-                .palette = If(palette, New Byte() {}),
-                .width = bmp.Width,
-                .height = bmp.Height
-            }
-            textureBank.Add(entry)
-            mat.texture = entry
+            If Not textureBank.Contains(entry) Then _
+                textureBank.Add(entry)
 
-            mat.hasTexture = True
-            mat.hasPalette = palette IsNot Nothing
-        End Sub
-
-        Private Sub addMaterialPosition(str As String)
-            For Each m In materials
-                If m.Name = str Then
-                    Dim mp As New VertexGroupList With {
-                        .Position = currentFace,
-                        .Material = m
-                    }
-                    currentMaterial = m
-                    mp.Length = 0
-                    vertexGroups.Add(mp)
-                    lastPos = currentFace
-                    Return
-                End If
-            Next
+            mat.Texture = entry
+            mat.HasTexture = True
+            mat.HasPalette = entry.palette.Any
         End Sub
 
         Private Sub processObject3DModel(obj As S3DFileParser.Object3D, texFormatSettings As TextureFormatSettings)
             'Process Materials
-            Dim size As Integer = 0
-            For Each kvp In obj.Materials
-                Dim curEntry As TextureFormatSettings.Entry = texFormatSettings.GetEntry(kvp.Key)
-                Dim m As New Material With {
-                    .Type = MaterialType.ColorSolid,
-                    .Color = 0,
-                    .HasTexture = False,
-                    .HasTextureAlpha = False,
-                    .HasTransparency = False,
-                    .Name = kvp.Key,
-                    .Collision = 0,
-                    .Opacity = &HFF,
-                    .OpacityOrg = &HFF,
-                    .EnableGeoMode = False,
-                    .EnableTextureColor = False,
-                    .EnableAlphaMask = False,
-                    .CameFromBMP = False,
-                    .EnableScrolling = curEntry.IsScrollingTexture,
-                    .SelectDisplaylist = curEntry.SelectDisplaylistMode,
-                    .EnableMirror = curEntry.EnableMirror,
-                    .EnableClamp = curEntry.EnableClamp,
-                    .EnableCrystalEffect = curEntry.EnableCrystalEffect
-                }
-
-                'Set default size
-                size = &H10
-
-                'Check some things
-                CheckGeoModeInfo(m)
-                CheckColorTexInfo(m)
-
-                'Add material
-                materials.Add(m)
-
-                'Process Material Color
-                If Not m.enableTextureColor Then
-                    Dim r As UInteger = kvp.Value.Color.Value.R
-                    Dim g As UInteger = kvp.Value.Color.Value.G
-                    Dim b As UInteger = kvp.Value.Color.Value.B
-                    Dim a As UInteger = kvp.Value.Color.Value.A
-                    m.color = r << 24 Or g << 16 Or b << 8 Or a
-                    If a = &HFF Then
-                        m.type = MaterialType.ColorSolid
-                    Else
-                        m.type = MaterialType.ColorTransparent
-                    End If
-                End If
-
-                'Process Material Color Alpha
-                If kvp.Value.Opacity IsNot Nothing Then
-                    Dim tempopacity As Single = kvp.Value.Opacity
-                    With m
-                        .opacity = (tempopacity * &HFF) And &HFF
-                        .opacityOrg = .opacity
-                    End With
-                    processMaterialColorAlpha(tempopacity, m)
-                End If
-
-                'Check Texture Type
-                If texFormatSettings IsNot Nothing Then
-                    m.texType = N64Graphics.N64Graphics.StringCodec(texFormatSettings.GetEntry(kvp.Key).TextureFormat)
-                End If
-
-                'Process Material Image
-                If kvp.Value.Image IsNot Nothing Then
-                    ProcessImage(kvp.Value.Image, m)
-                    size = m.texture.data.Length
-                End If
-
-                'Set offset and size
-                m.size = size
-                If m.texture?.palette IsNot Nothing Then
-                    m.paletteSize = m.texture.palette.Length
-                End If
-            Next
+            ProcessObject3DMaterials(obj, texFormatSettings)
 
             For Each mesh As S3DFileParser.Mesh In obj.Meshes
                 Dim curIndexStart As Integer = verts.Count
@@ -876,6 +779,102 @@ Namespace Global.SM64Lib.SM64Convert
                     currentFace += 1
                 Next
             Next
+        End Sub
+
+        Private Sub ProcessObject3DMaterials(obj As S3DFileParser.Object3D, texFormatSettings As TextureFormatSettings)
+            Dim size As Integer = 0
+            Dim tasks As New List(Of Task)
+
+            'Start converting each image
+            For Each kvp In obj.Materials
+                ProcessObject3DMaterial(obj, kvp, texFormatSettings)
+                'Dim t As New Task(Sub() ProcessObject3DMaterial(obj, kvp, texFormatSettings))
+                't.Start()
+                'tasks.Add(t)
+            Next
+
+            'Wait until all images has been converted
+            'For Each t As Task In tasks
+            '    t.Wait()
+            'Next
+        End Sub
+
+        Private Sub ProcessObject3DMaterial(obj As S3DFileParser.Object3D, kvp As KeyValuePair(Of String, S3DFileParser.Material), texFormatSettings As TextureFormatSettings)
+            Dim size As Integer = 0
+            Dim curEntry As TextureFormatSettings.Entry = texFormatSettings.GetEntry(kvp.Key)
+
+            'Create new Material
+            Dim m As New Material With {
+                .Type = MaterialType.ColorSolid,
+                .Color = 0,
+                .HasTexture = False,
+                .HasTextureAlpha = False,
+                .HasTransparency = False,
+                .Name = kvp.Key,
+                .Collision = 0,
+                .Opacity = &HFF,
+                .OpacityOrg = &HFF,
+                .EnableGeoMode = False,
+                .EnableTextureColor = False,
+                .EnableAlphaMask = False,
+                .CameFromBMP = False,
+                .EnableScrolling = curEntry.IsScrollingTexture,
+                .SelectDisplaylist = curEntry.SelectDisplaylistMode,
+                .EnableMirror = curEntry.EnableMirror,
+                .EnableClamp = curEntry.EnableClamp,
+                .EnableCrystalEffect = curEntry.EnableCrystalEffect
+            }
+
+            'Set default size
+            size = &H10
+
+            'Check some things
+            CheckGeoModeInfo(m)
+            CheckColorTexInfo(m)
+
+            'Add material
+            materials.Add(m)
+
+            'Process Material Color
+            If Not m.EnableTextureColor Then
+                Dim r As UInteger = kvp.Value.Color.Value.R
+                Dim g As UInteger = kvp.Value.Color.Value.G
+                Dim b As UInteger = kvp.Value.Color.Value.B
+                Dim a As UInteger = kvp.Value.Color.Value.A
+                m.Color = r << 24 Or g << 16 Or b << 8 Or a
+                If a = &HFF Then
+                    m.Type = MaterialType.ColorSolid
+                Else
+                    m.Type = MaterialType.ColorTransparent
+                End If
+            End If
+
+            'Process Material Color Alpha
+            If kvp.Value.Opacity IsNot Nothing Then
+                Dim tempopacity As Single = kvp.Value.Opacity
+                With m
+                    .Opacity = (tempopacity * &HFF) And &HFF
+                    .OpacityOrg = .Opacity
+                End With
+                processMaterialColorAlpha(tempopacity, m)
+            End If
+
+            'Check Texture Type
+            If texFormatSettings IsNot Nothing Then
+                m.TexType = N64Graphics.N64Graphics.StringCodec(texFormatSettings.GetEntry(kvp.Key).TextureFormat)
+            End If
+
+            'Process Material Image
+            If kvp.Value.Image IsNot Nothing Then
+                ProcessImage(obj, kvp.Value.Image, m)
+                size = m.Texture.Data.Length
+            End If
+
+            'Set offset and size
+            m.Size = size
+            If m.Texture?.Palette IsNot Nothing Then
+                m.PaletteSize = m.Texture.Palette.Length
+            End If
         End Sub
 
         Private Sub FixUVs(uv1 As TexCord, uv2 As TexCord, uv3 As TexCord, matWidth As Integer, matHeight As Integer)
@@ -1241,21 +1240,21 @@ Namespace Global.SM64Lib.SM64Convert
             ImpF3D(cmd)
         End Sub
 
-        Private Sub addCmdFC(ByVal mat As Material)
-            If mat.hasTexture Then
-                If mat.texType = N64Codec.RGBA32 Then
+        Private Sub addCmdFC(mat As Material)
+            If mat.HasTexture Then
+                If mat.TexType = N64Codec.RGBA32 Then
                     ImpF3D("FC 11 96 23 FF 2F FF FF")
-                ElseIf mat.texType = N64Codec.IA4 OrElse mat.texType = N64Codec.IA8 OrElse mat.texType = N64Codec.IA16 Then
+                ElseIf mat.TexType = N64Codec.IA4 OrElse mat.TexType = N64Codec.IA8 OrElse mat.TexType = N64Codec.IA16 Then
                     ImpF3D("FC 12 18 24 FF 33 FF FF") 'strF3D("FC 12 9A 25 FF 37 FF FF"))
-                ElseIf mat.texType = N64Codec.I4 OrElse mat.texType = N64Codec.I8 Then
-                    If mat.enableAlphaMask Then
+                ElseIf mat.TexType = N64Codec.I4 OrElse mat.TexType = N64Codec.I8 Then
+                    If mat.EnableAlphaMask Then
                         ImpF3D("FC 12 7E A0 FF FF F3 F8")
                     Else
                         ImpF3D("FC 30 B2 61 FF FF FF FF")
                     End If
-                ElseIf mat.hasTransparency Then 'mat.type = MaterialType.TEXTURE_TRANSPARENT
+                ElseIf mat.HasTransparency Then 'mat.type = MaterialType.TEXTURE_TRANSPARENT
                     ImpF3D("FC 12 2E 24 FF FF FB FD")
-                ElseIf mat.hasTextureAlpha Then
+                ElseIf mat.HasTextureAlpha Then
                     If settings.EnableFog Then
                         ImpF3D("FC FF FF FF FF FC F2 38")
                     Else
@@ -1269,7 +1268,7 @@ Namespace Global.SM64Lib.SM64Convert
                     End If
                 End If
             Else
-                If mat.type = MaterialType.ColorTransparent Then
+                If mat.Type = MaterialType.ColorTransparent Then
                     ImpF3D("FC FF FF FF FF FE FB FD")
                 Else
                     ImpF3D("FC FF FF FF FF FE 7B 3D")

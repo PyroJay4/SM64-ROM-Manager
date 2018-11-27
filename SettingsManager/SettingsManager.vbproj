@@ -78,7 +78,6 @@
     <Compile Include="Settings.vb" />
     <Compile Include="Settings\SubStruc\AreaEditorSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\FileParserSettingsStruc.vb" />
-    <Compile Include="SettingsOld.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -98,6 +97,7 @@
     <Compile Include="Settings\SubStruc\GeneralSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\RecentFilesSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\StyleManagerSettingsStruc.vb" />
+    <Compile Include="Settings\SubStruc\SubStruc\HexEditModeStruc.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -121,18 +121,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenGLCamera\OpenGLCamera.vbproj">
+    <ProjectReference Include="..\OpenGLCamera\OpenGLFactory.CameraN.vbproj">
       <Project>{26AD6422-F5D8-48D3-AC57-398F9C094217}</Project>
-      <Name>OpenGLCamera</Name>
+      <Name>OpenGLFactory.CameraN</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OpenGLRenderer\OpenGLRenderer.vbproj">
+    <ProjectReference Include="..\OpenGLRenderer\OpenGLFactory.RenderingN.vbproj">
       <Project>{5E9F0B0A-F7B8-49A9-80FC-6DFE0D44CC84}</Project>
-      <Name>OpenGLRenderer</Name>
+      <Name>OpenGLFactory.RenderingN</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
       <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
       <Name>SimpleFileParser</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

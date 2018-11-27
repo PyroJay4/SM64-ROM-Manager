@@ -24,6 +24,7 @@ Public Class Form_Settings
         ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex = Settings.AreaEditor.DefaultCameraMode
         ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = If(Settings.AreaEditor.DefaultWindowMode = FormWindowState.Maximized, 1, 0)
         ComboBoxEx_LoaderModule.SelectedIndex = Settings.FileParser.LoaderModule
+        TextBoxX_HexEditorCustomPath.Text = Settings.General.HexEditMode.CustomPath
 
         Select Case Settings.General.ActionIfUpdatePatches
             Case DialogResult.None
@@ -32,6 +33,13 @@ Public Class Form_Settings
                 ComboBoxEx1.SelectedIndex = 1
             Case DialogResult.No
                 ComboBoxEx1.SelectedIndex = 2
+        End Select
+
+        Select Case Settings.General.HexEditMode.Mode
+            Case HexEditModes.BuildInHexEditor
+                ComboBoxEx_HexEditorMode.SelectedIndex = 0
+            Case HexEditModes.CustomHexEditor
+                ComboBoxEx_HexEditorMode.SelectedIndex = 1
         End Select
     End Sub
 
@@ -51,6 +59,15 @@ Public Class Form_Settings
             Case 2
                 Settings.General.ActionIfUpdatePatches = DialogResult.No
         End Select
+
+        Select Case ComboBoxEx_HexEditorMode.SelectedIndex
+            Case 0
+                Settings.General.HexEditMode.Mode = HexEditModes.BuildInHexEditor
+                Settings.General.HexEditMode.CustomPath = String.Empty
+            Case 1
+                Settings.General.HexEditMode.Mode = HexEditModes.CustomHexEditor
+                Settings.General.HexEditMode.CustomPath = TextBoxX_HexEditorCustomPath.Text.Trim
+        End Select
     End Sub
 
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
@@ -63,10 +80,7 @@ Public Class Form_Settings
     End Sub
 
     Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles ButtonX2.Click
-        Dim ofd As New OpenFileDialog With {.Filter = "Executeables (*.exe)|*.exe", .Title = "Select Emulator .exe File ..."}
-        If ofd.ShowDialog = DialogResult.OK Then
-            TextBoxX_EmulatorPatch.Text = ofd.FileName
-        End If
+        OpenExcuteableFile(TextBoxX_EmulatorPatch, "Select Emulator .exe File ...")
     End Sub
 
     Private Sub ButtonX4_Click(sender As Object, e As EventArgs) Handles ButtonX4.Click
@@ -75,6 +89,21 @@ Public Class Form_Settings
 
     Private Sub Form_Settings_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         Settings.SaveSettings()
+    End Sub
+
+    Private Sub ComboBoxEx2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_HexEditorMode.SelectedIndexChanged
+        TextBoxX_HexEditorCustomPath.Enabled = ComboBoxEx_HexEditorMode.SelectedIndex = 1
+    End Sub
+
+    Private Sub ButtonX5_Click(sender As Object, e As EventArgs) Handles ButtonX5.Click
+        OpenExcuteableFile(TextBoxX_HexEditorCustomPath, "Select Hex Editor ...")
+    End Sub
+
+    Private Sub OpenExcuteableFile(dest As TextBox, titel As String)
+        Dim ofd As New OpenFileDialog With {.Filter = "Executeables (*.exe)|*.exe", .Title = titel}
+        If ofd.ShowDialog = DialogResult.OK Then
+            dest.Text = ofd.FileName
+        End If
     End Sub
 
 End Class

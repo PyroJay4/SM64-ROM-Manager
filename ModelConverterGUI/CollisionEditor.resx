@@ -117,10 +117,258 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TextBoxX_ColParam2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TextBoxX_ColParam2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 140</value>
+  </data>
+  <data name="TextBoxX_ColParam2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TextBoxX_ColParam2.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="TextBoxX_ColParam2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TextBoxX_ColParam1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="TextBoxX_ColParam1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 114</value>
+  </data>
+  <data name="TextBoxX_ColParam1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="TextBoxX_ColParam1.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="TextBoxX_ColParam1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LabelX_ColParamsTipp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="LabelX_ColParamsTipp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 166</value>
+  </data>
+  <data name="LabelX_ColParamsTipp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 0</value>
+  </data>
+  <data name="LabelX_ColParamsTipp.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="LabelX_ColParamsTipp.Text" xml:space="preserve">
+    <value>&lt;u&gt;Params-Tipp:&lt;/u&gt;&lt;br&gt;&lt;/br&gt;No tipp.</value>
+  </data>
+  <data name="LabelX_ColParamsTipp.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LabelX_Param2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="LabelX_Param2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 140</value>
+  </data>
+  <data name="LabelX_Param2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 20</value>
+  </data>
+  <data name="LabelX_Param2.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="LabelX_Param2.Text" xml:space="preserve">
+    <value>Param 2:</value>
+  </data>
+  <data name="LabelX_Param2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LabelX_Param1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="LabelX_Param1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 114</value>
+  </data>
+  <data name="LabelX_Param1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 20</value>
+  </data>
+  <data name="LabelX_Param1.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="LabelX_Param1.Text" xml:space="preserve">
+    <value>Param 1:</value>
+  </data>
+  <data name="LabelX_Param1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="Button_SaveColsettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="Button_SaveColsettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>551, 476</value>
+  </data>
+  <data name="Button_SaveColsettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 23</value>
+  </data>
+  <data name="Button_SaveColsettings.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="Button_SaveColsettings.Text" xml:space="preserve">
+    <value>Save &amp;&amp; Exit</value>
+  </data>
+  <data name="Button_SaveColsettings.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LabelX48.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="LabelX48.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 23</value>
+  </data>
+  <data name="LabelX48.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="LabelX48.Text" xml:space="preserve">
+    <value>Textures:</value>
+  </data>
+  <data name="ComboBox_ColType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ComboBox_ColType.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ComboBox_ColType.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ComboBox_ColType.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="ComboBox_ColType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 29</value>
+  </data>
+  <data name="ComboBox_ColType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 21</value>
+  </data>
+  <data name="ComboBox_ColType.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="ComboBox_ColType.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LabelX_CollisionType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="LabelX_CollisionType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="LabelX_CollisionType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 23</value>
+  </data>
+  <data name="LabelX_CollisionType.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="LabelX_CollisionType.Text" xml:space="preserve">
+    <value>Collision-Type:</value>
+  </data>
+  <data name="LabelX_CollisionType.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="CheckBoxX1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="CheckBoxX1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 56</value>
+  </data>
+  <data name="CheckBoxX1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 23</value>
+  </data>
+  <data name="CheckBoxX1.TabIndex" type="System.Int32, mscorlib">
+    <value>114</value>
+  </data>
+  <data name="CheckBoxX1.Text" xml:space="preserve">
+    <value>Custom:</value>
+  </data>
+  <data name="TextBoxX1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="TextBoxX1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 57</value>
+  </data>
+  <data name="TextBoxX1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="TextBoxX1.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
+  </data>
+  <data name="ListViewEx1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="ListViewEx1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 41</value>
+  </data>
+  <data name="ListViewEx1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>457, 458</value>
+  </data>
+  <data name="ListViewEx1.TabIndex" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
+  </data>
+  <data name="PictureBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="PictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>475, 263</value>
+  </data>
+  <data name="PictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 207</value>
+  </data>
+  <data name="PictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="PictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>116</value>
+  </data>
+  <data name="Panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>475, 12</value>
+  </data>
+  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 245</value>
+  </data>
+  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>119</value>
+  </data>
+  <data name="CheckBoxX_IsNonSolid.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="CheckBoxX_IsNonSolid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>475, 97</value>
+  </data>
+  <data name="CheckBoxX_IsNonSolid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 23</value>
+  </data>
+  <data name="CheckBoxX_IsNonSolid.TabIndex" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="CheckBoxX_IsNonSolid.Text" xml:space="preserve">
+    <value>Is Non-Solid</value>
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>698, 511</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAgIAAAAEAIAAoCAEAJgAAAAAAAAABACAAz6kAAE4IAQAoAAAAgAAAAAABAAABACAAAAAAAAAA
@@ -1977,5 +2225,11 @@
         MDEtMDU6MDDkOlH3AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDEyLTExLTIwVDA5OjAzOjUzLTA2OjAwpVUc
         +QAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Collision Editor</value>
   </data>
 </root>

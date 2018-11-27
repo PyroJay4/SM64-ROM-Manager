@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.IO
 Imports System.Windows.Forms
-Imports OpenGLCamera
+Imports OpenGLFactory.CameraN
 Imports SettingsMgr
 
 Public Class SettingsStruc
