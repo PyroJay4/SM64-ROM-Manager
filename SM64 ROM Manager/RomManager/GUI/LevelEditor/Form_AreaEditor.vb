@@ -752,6 +752,7 @@ Namespace LevelEditor
 
         Public Sub PictureBox_ObjCntrWheel_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox_ObjCntrWheel.MouseDown
             moveObj_UpDown_lastMouseY = e.Y
+            saveObjectPositionToList()
             StoreObjectHistoryPoint(SelectedObjects, NameOf(Managed3DObject.Position))
             moveObj_UpDown_mouseDown = True
         End Sub
@@ -760,8 +761,9 @@ Namespace LevelEditor
         End Sub
         Public Sub PictureBox_ObjCntrWheel_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox_ObjCntrWheel.MouseMove
             If moveObj_UpDown_mouseDown Then
-                For Each obj As Managed3DObject In SelectedObjects
-                    moveObjectY(obj, e, False)
+                For mo_s_incr As Integer = 0 To SelectedObjects.Length - 1
+                    Dim obj As Managed3DObject = SelectedObjects(mo_s_incr)
+                    moveObjectY(obj, e.Location, moveObj_saved(mo_s_incr), False)
                 Next
 
                 If KeepObjectOnGround Then
@@ -814,17 +816,17 @@ Namespace LevelEditor
             End If
         End Sub
 
-        Private Sub moveObjectY(obj As Managed3DObject, e As MouseEventArgs, forRotation As Boolean)
+        Private Sub moveObjectY(obj As Managed3DObject, e As Drawing.Point, savedPos As Numerics.Vector3, forRotation As Boolean)
             If Not forRotation Then
                 Dim newY As Short = -Math.Truncate(30 * (e.Y - moveObj_UpDown_lastMouseY) * ObjectMoveSpeed)
-                obj.Position = New Numerics.Vector3(0, newY, 0)
+                obj.Position = New Numerics.Vector3(obj.Position.X, savedPos.Y + newY, obj.Position.Z)
             Else
                 'Dim oldRot As Numerics.Vector3 = obj.Rotation
                 'Dim newRot As New Numerics.Vector3(oldRot.X,
                 '                               keepDegreesWithin360(oldRot.Y - (Math.Truncate((e.Y - rotObj_Yaw_lastMouseY) * ObjectMoveSpeed))),
                 '                               oldRot.Z)
                 Dim newY As Short = -(Math.Truncate((e.Y - rotObj_Yaw_lastMouseY) * ObjectMoveSpeed))
-                RotateObject(obj, New Numerics.Vector3(0, newY, 0))
+                RotateObject(obj, New Numerics.Vector3(obj.Rotation.X, newY, obj.Rotation.Z))
             End If
 
             UpdateOrbitCamera()
@@ -906,9 +908,12 @@ Namespace LevelEditor
         Private Sub PictureBox_ObjRotWheel_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox_ObjRotWheel.MouseMove
             If rotObj_Yaw_mouseDown Then
                 If EditObjects AndAlso SelectedObject IsNot Nothing Then
-                    For Each obj As Managed3DObject In SelectedObjects
-                        moveObjectY(obj, e, True)
+
+                    For mo_s_incr As Integer = 0 To SelectedObjects.Length - 1
+                        Dim obj As Managed3DObject = SelectedObjects(mo_s_incr)
+                        moveObjectY(obj, e.Location, moveObj_saved(mo_s_incr), True)
                     Next
+
                     glControl1.Invalidate()
                     rotObj_Yaw_lastMouseY = e.Y
                     AdvPropertyGrid1_RefreshPropertyValues()
@@ -931,9 +936,8 @@ Namespace LevelEditor
         Private Sub PictureBox_ObjRotCross_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox_ObjRotCross.MouseMove
             If rotObj_mouseDown Then
                 If EditObjects AndAlso SelectedObject IsNot Nothing Then
-                    Dim mo_s_incr As Integer = 0
-
-                    For Each obj As Managed3DObject In SelectedObjects
+                    For mo_s_incr = 0 To SelectedObjects.Length - 1
+                        Dim obj As Managed3DObject = SelectedObjects(mo_s_incr)
                         moveObjectXZ(obj,
                                      CType(sender, Control).PointToClient(Cursor.Position),
                                      moveObj_saved(mo_s_incr),

@@ -15,7 +15,7 @@ Public Class TextureGraphicFormatEditor
     Private hasInit As Boolean = False
 
     Public Sub New(obj As Object3D)
-        Me.SuspendLayout()
+        SuspendLayout()
 
         InitializeComponent()
 
@@ -30,7 +30,7 @@ Public Class TextureGraphicFormatEditor
 
         hasInit = True
 
-        Me.ResumeLayout()
+        ResumeLayout()
     End Sub
     Private Sub Form_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         LoadTexturesFromModel()
@@ -100,7 +100,7 @@ Public Class TextureGraphicFormatEditor
         Dim names As String() = [Enum].GetNames(eType)
         Dim values As Integer() = [Enum].GetValues(eType)
 
-        For i As Integer = 0 To names.Count - 3
+        For i As Integer = 0 To names.Count - 2
             Dim item As New ComboItem
             item.Text = names(i)
             item.Tag = N64Graphics.N64Graphics.CodecString(values(i))
