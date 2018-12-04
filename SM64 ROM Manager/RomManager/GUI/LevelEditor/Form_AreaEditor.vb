@@ -1389,6 +1389,7 @@ Namespace LevelEditor
             If Clipboard.ContainsData(pasteSettings.DataFormat) Then
                 Dim cmds() As LevelscriptCommand = Clipboard.GetData(pasteSettings.DataFormat)
 
+                Dim selItems As ListView.SelectedListViewItemCollection
                 Dim indexListToUse As ListViewEx = Nothing
                 Dim cmdListToUse As List(Of LevelscriptCommand) = Nothing
                 Select Case pasteSettings.GetType
@@ -1400,17 +1401,19 @@ Namespace LevelEditor
                         cmdListToUse = cArea.Warps
                 End Select
 
-                If indexListToUse.SelectedIndices.Count > 0 Then
+                selItems = indexListToUse.SelectedItems
+
+                If selItems.Count > 0 Then
                     Dim curCmdIndex As Integer = 0
 
-                    Do
+                    Do While selItems.Count > curCmdIndex
                         Dim curCmd1 As LevelscriptCommand '= cmdListToUse(curListIndex)
                         Dim curCmd2 As LevelscriptCommand = cmds(curCmdIndex)
 
                         Select Case pasteSettings.GetType
                             Case GetType(PasteObjectSettings)
 
-                                Dim mobj As Managed3DObject = indexListToUse.SelectedItems(curCmdIndex).Tag
+                                Dim mobj As Managed3DObject = selItems(curCmdIndex).Tag
                                 curCmd1 = mobj.Command
                                 mobj.SaveProperties()
 
@@ -1427,7 +1430,7 @@ Namespace LevelEditor
 
                             Case GetType(PasteWarpSettings)
 
-                                Dim mwarp As IManagedLevelscriptCommand = indexListToUse.SelectedItems(curCmdIndex).Tag
+                                Dim mwarp As IManagedLevelscriptCommand = selItems(curCmdIndex).Tag
                                 curCmd1 = mwarp.Command
                                 mwarp.SaveProperties()
 
@@ -2315,6 +2318,33 @@ Namespace LevelEditor
             Dim cmd As LevelscriptCommand = SelectedObject?.Command
             If cmd IsNot Nothing Then
                 OpenHexEditor(cmd)
+            End If
+        End Sub
+
+        Private Sub ButtonItem33_Click(sender As Object, e As EventArgs) Handles ButtonItem33.Click
+            Dim obj As Managed3DObject = SelectedObject
+            Dim exists As Boolean = False
+
+            For Each objCombo As ObjectCombo In ObjectCombos.Concat(ObjectCombosCustom)
+                If obj.ModelID = objCombo.ModelID AndAlso obj.BehaviorID = objCombo.BehaviorAddress Then
+                    exists = True
+                End If
+            Next
+
+            If exists Then
+                MessageBoxEx.Show("There already exists at least one object combo with the same Model ID and the same Behavior Address.", "Duplicate Object Combos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                Dim dialog As New StringInputDialog
+                dialog.Titel = "New Object Combo Name"
+                If dialog.ShowDialog = DialogResult.OK Then
+                    Dim combo As New ObjectCombo
+                    combo.BehaviorAddress = obj.BehaviorID
+                    combo.ModelID = obj.ModelID
+                    combo.Name = dialog.Value.Trim
+                    ObjectCombosCustom.Add(combo)
+                    SaveObjectCombos()
+                    MessageBoxEx.Show("Object Combo has been added successfully.<br/>The Object Combo will appear in the object combo list after you re-opend the Level Editor.", "Object Combo added successfully", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
             End If
         End Sub
 

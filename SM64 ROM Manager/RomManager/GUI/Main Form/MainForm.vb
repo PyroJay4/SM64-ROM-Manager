@@ -58,6 +58,9 @@ Public Class MainForm
         'Enable Auto-Save for Settings
         Settings.AutoSave = True
 
+        'Set AutoScaleMode
+        SetValue("AutoScaleMode", Settings.General.AutoScaleMode)
+
         SetStyleManagerStyle()
 
         ResumeLayout()
@@ -560,12 +563,12 @@ Public Class MainForm
 
     Private Sub MainForm_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         If hasRomChanged = 1 Then
-            If MessageBoxEx.Show(Form_Main_Resources.MsgBox_RomChanged_ReloadRom, Form_Main_Resources.MsgBox_RomChanged_ReloadRom_Titel, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                OpenROMFile(rommgr.RomFile)
-                hasRomChanged = 0
-            Else
-                hasRomChanged = 2
-            End If
+            'If MessageBoxEx.Show(Form_Main_Resources.MsgBox_RomChanged_ReloadRom, Form_Main_Resources.MsgBox_RomChanged_ReloadRom_Titel, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            '    OpenROMFile(rommgr.RomFile)
+            '    hasRomChanged = 0
+            'Else
+            '    hasRomChanged = 2
+            'End If
         End If
     End Sub
 

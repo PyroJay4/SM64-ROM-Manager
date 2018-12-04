@@ -158,10 +158,10 @@ Namespace Global.SM64Lib.Levels.Script
                 Command.Position = 0
             End Sub
 
-            Public Shared Function GetSegBehaviorAddr(Command As LevelscriptCommand) As Integer
+            Public Shared Function GetSegBehaviorAddr(Command As LevelscriptCommand) As UInteger
                 Dim br As New BinaryReader(Command)
                 Command.Position = 20
-                Dim SegBehaviorAddr As Integer = SwapInts.SwapInt32(br.ReadInt32)
+                Dim SegBehaviorAddr As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
                 Command.Position = 0
                 Return SegBehaviorAddr
             End Function

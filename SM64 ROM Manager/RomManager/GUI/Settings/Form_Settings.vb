@@ -41,6 +41,15 @@ Public Class Form_Settings
             Case HexEditModes.CustomHexEditor
                 ComboBoxEx_HexEditorMode.SelectedIndex = 1
         End Select
+
+        Select Case Settings.General.AutoScaleMode
+            Case AutoScaleMode.None
+                ComboBoxEx_AutoScaleMode.SelectedIndex = 0
+            Case AutoScaleMode.Dpi
+                ComboBoxEx_AutoScaleMode.SelectedIndex = 1
+            Case AutoScaleMode.Font
+                ComboBoxEx_AutoScaleMode.SelectedIndex = 2
+        End Select
     End Sub
 
     Private Sub Form_Settings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -68,6 +77,18 @@ Public Class Form_Settings
                 Settings.General.HexEditMode.Mode = HexEditModes.CustomHexEditor
                 Settings.General.HexEditMode.CustomPath = TextBoxX_HexEditorCustomPath.Text.Trim
         End Select
+
+        Select Case ComboBoxEx_AutoScaleMode.SelectedIndex
+            Case 0
+                Settings.General.AutoScaleMode = AutoScaleMode.None
+            Case 1
+                Settings.General.AutoScaleMode = AutoScaleMode.Dpi
+            Case 2
+                Settings.General.AutoScaleMode = AutoScaleMode.Font
+        End Select
+        For Each from As Form In Application.OpenForms
+            from.SetValue("AutoScaleMode", Settings.General.AutoScaleMode)
+        Next
     End Sub
 
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
@@ -105,5 +126,4 @@ Public Class Form_Settings
             dest.Text = ofd.FileName
         End If
     End Sub
-
 End Class

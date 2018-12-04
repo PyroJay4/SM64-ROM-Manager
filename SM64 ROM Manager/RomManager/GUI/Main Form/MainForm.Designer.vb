@@ -28,12 +28,16 @@ Partial Class MainForm
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New DevComponents.DotNetBar.TabControl()
         Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.tabGeneral = New SM64_ROM_Manager.Tab_General()
         Me.TabItem_General = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.tabLevelManager = New SM64_ROM_Manager.Tab_LevelManager()
         Me.TabItem_LevelManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel3 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.tabTextManager = New SM64_ROM_Manager.Tab_TextManager()
         Me.TabItem_TextManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel4 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.tabMusicManager = New SM64_ROM_Manager.Tab_MusicManager()
         Me.TabItem_MusicManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.Bar2 = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
@@ -73,10 +77,6 @@ Partial Class MainForm
         Me.ButtonItem30 = New DevComponents.DotNetBar.ButtonItem()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.LabelItem1 = New DevComponents.DotNetBar.LabelItem()
-        Me.tabGeneral = New SM64_ROM_Manager.Tab_General()
-        Me.tabLevelManager = New SM64_ROM_Manager.Tab_LevelManager()
-        Me.tabTextManager = New SM64_ROM_Manager.Tab_TextManager()
-        Me.tabMusicManager = New SM64_ROM_Manager.Tab_MusicManager()
         Me.Panel1.SuspendLayout()
         CType(Me.TabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -179,6 +179,19 @@ Partial Class MainForm
         Me.TabControlPanel1.TabIndex = 1
         Me.TabControlPanel1.TabItem = Me.TabItem_General
         '
+        'tabGeneral
+        '
+        Me.tabGeneral.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabGeneral.BackColor = System.Drawing.Color.White
+        Me.tabGeneral.Location = New System.Drawing.Point(0, 0)
+        Me.tabGeneral.MainForm = Nothing
+        Me.tabGeneral.Name = "tabGeneral"
+        Me.tabGeneral.RomMgr = Nothing
+        Me.tabGeneral.Size = New System.Drawing.Size(694, 546)
+        Me.tabGeneral.TabIndex = 0
+        '
         'TabItem_General
         '
         Me.TabItem_General.AttachedControl = Me.TabControlPanel1
@@ -203,6 +216,19 @@ Partial Class MainForm
         Me.TabControlPanel2.Style.GradientAngle = 90
         Me.TabControlPanel2.TabIndex = 5
         Me.TabControlPanel2.TabItem = Me.TabItem_LevelManager
+        '
+        'tabLevelManager
+        '
+        Me.tabLevelManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabLevelManager.BackColor = System.Drawing.Color.White
+        Me.tabLevelManager.Location = New System.Drawing.Point(0, 0)
+        Me.tabLevelManager.MainForm = Nothing
+        Me.tabLevelManager.Name = "tabLevelManager"
+        Me.tabLevelManager.RomMgr = Nothing
+        Me.tabLevelManager.Size = New System.Drawing.Size(694, 546)
+        Me.tabLevelManager.TabIndex = 0
         '
         'TabItem_LevelManager
         '
@@ -229,6 +255,19 @@ Partial Class MainForm
         Me.TabControlPanel3.TabIndex = 9
         Me.TabControlPanel3.TabItem = Me.TabItem_TextManager
         '
+        'tabTextManager
+        '
+        Me.tabTextManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabTextManager.BackColor = System.Drawing.Color.White
+        Me.tabTextManager.Location = New System.Drawing.Point(0, 0)
+        Me.tabTextManager.MainForm = Nothing
+        Me.tabTextManager.Name = "tabTextManager"
+        Me.tabTextManager.RomMgr = Nothing
+        Me.tabTextManager.Size = New System.Drawing.Size(694, 546)
+        Me.tabTextManager.TabIndex = 0
+        '
         'TabItem_TextManager
         '
         Me.TabItem_TextManager.AttachedControl = Me.TabControlPanel3
@@ -254,6 +293,19 @@ Partial Class MainForm
         Me.TabControlPanel4.TabIndex = 13
         Me.TabControlPanel4.TabItem = Me.TabItem_MusicManager
         '
+        'tabMusicManager
+        '
+        Me.tabMusicManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabMusicManager.BackColor = System.Drawing.Color.White
+        Me.tabMusicManager.Location = New System.Drawing.Point(0, 0)
+        Me.tabMusicManager.MainForm = Nothing
+        Me.tabMusicManager.Name = "tabMusicManager"
+        Me.tabMusicManager.RomMgr = Nothing
+        Me.tabMusicManager.Size = New System.Drawing.Size(694, 546)
+        Me.tabMusicManager.TabIndex = 0
+        '
         'TabItem_MusicManager
         '
         Me.TabItem_MusicManager.AttachedControl = Me.TabControlPanel4
@@ -262,8 +314,8 @@ Partial Class MainForm
         '
         'Bar2
         '
-        Me.Bar2.AccessibleDescription = "Bar2 (Bar2)"
-        Me.Bar2.AccessibleName = "Bar2"
+        Me.Bar2.AccessibleDescription = "DotNetBar Bar (Bar2)"
+        Me.Bar2.AccessibleName = "DotNetBar Bar"
         Me.Bar2.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar
         Me.Bar2.AntiAlias = True
         Me.Bar2.BarType = DevComponents.DotNetBar.eBarType.MenuBar
@@ -552,58 +604,6 @@ Partial Class MainForm
         '
         Me.LabelItem1.Name = "LabelItem1"
         Me.LabelItem1.Text = "Ready"
-        '
-        'tabGeneral
-        '
-        Me.tabGeneral.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabGeneral.BackColor = System.Drawing.Color.White
-        Me.tabGeneral.Location = New System.Drawing.Point(0, 0)
-        Me.tabGeneral.MainForm = Nothing
-        Me.tabGeneral.Name = "tabGeneral"
-        Me.tabGeneral.RomMgr = Nothing
-        Me.tabGeneral.Size = New System.Drawing.Size(694, 546)
-        Me.tabGeneral.TabIndex = 0
-        '
-        'tabLevelManager
-        '
-        Me.tabLevelManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabLevelManager.BackColor = System.Drawing.Color.White
-        Me.tabLevelManager.Location = New System.Drawing.Point(0, 0)
-        Me.tabLevelManager.MainForm = Nothing
-        Me.tabLevelManager.Name = "tabLevelManager"
-        Me.tabLevelManager.RomMgr = Nothing
-        Me.tabLevelManager.Size = New System.Drawing.Size(694, 546)
-        Me.tabLevelManager.TabIndex = 0
-        '
-        'tabTextManager
-        '
-        Me.tabTextManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabTextManager.BackColor = System.Drawing.Color.White
-        Me.tabTextManager.Location = New System.Drawing.Point(0, 0)
-        Me.tabTextManager.MainForm = Nothing
-        Me.tabTextManager.Name = "tabTextManager"
-        Me.tabTextManager.RomMgr = Nothing
-        Me.tabTextManager.Size = New System.Drawing.Size(694, 546)
-        Me.tabTextManager.TabIndex = 0
-        '
-        'tabMusicManager
-        '
-        Me.tabMusicManager.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabMusicManager.BackColor = System.Drawing.Color.White
-        Me.tabMusicManager.Location = New System.Drawing.Point(0, 0)
-        Me.tabMusicManager.MainForm = Nothing
-        Me.tabMusicManager.Name = "tabMusicManager"
-        Me.tabMusicManager.RomMgr = Nothing
-        Me.tabMusicManager.Size = New System.Drawing.Size(694, 546)
-        Me.tabMusicManager.TabIndex = 0
         '
         'MainForm
         '

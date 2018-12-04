@@ -770,7 +770,7 @@ Namespace Global.SM64Lib.SM64Convert
                         fc.Data(12) = nc.A
                         fc.Data(13) = nc.B
                         fc.Data(14) = nc.C
-                        fc.Data(15) = nc.D
+                        fc.Data(15) = If(mat.TexType = N64Codec.RGBA16, mat.Opacity, nc.D)
                         fc.EnableVertexColor = False
                     End If
 

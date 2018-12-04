@@ -247,7 +247,7 @@ Public Class Tab_LevelManager
             With CurrentLevel.Background
                 .ID = GetBackgroundIDOfIndex(ComboBox_LM_LevelBG.SelectedIndex)
                 .Enabled = True
-                .IsCustom = ComboBox_LM_LevelBG.SelectedIndex = 1
+                .IsCustom = False
             End With
         End If
     End Sub

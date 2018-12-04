@@ -34,6 +34,7 @@ Partial Class Form_Settings
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.TabControl2 = New DevComponents.DotNetBar.TabControl()
         Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.ButtonX5 = New DevComponents.DotNetBar.ButtonX()
         Me.ComboBoxEx_HexEditorMode = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.ComboItem7 = New DevComponents.Editors.ComboItem()
         Me.ComboItem8 = New DevComponents.Editors.ComboItem()
@@ -59,7 +60,11 @@ Partial Class Form_Settings
         Me.TabControlPanel3 = New DevComponents.DotNetBar.TabControlPanel()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.TabItem3 = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.ButtonX5 = New DevComponents.DotNetBar.ButtonX()
+        Me.ComboBoxEx_AutoScaleMode = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
+        Me.ComboItem6 = New DevComponents.Editors.ComboItem()
+        Me.ComboItem9 = New DevComponents.Editors.ComboItem()
+        Me.ComboItem10 = New DevComponents.Editors.ComboItem()
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl2.SuspendLayout()
         Me.TabControlPanel1.SuspendLayout()
@@ -185,6 +190,8 @@ Partial Class Form_Settings
         '
         'TabControlPanel1
         '
+        Me.TabControlPanel1.Controls.Add(Me.ComboBoxEx_AutoScaleMode)
+        Me.TabControlPanel1.Controls.Add(Me.LabelX5)
         Me.TabControlPanel1.Controls.Add(Me.ButtonX5)
         Me.TabControlPanel1.Controls.Add(Me.ComboBoxEx_HexEditorMode)
         Me.TabControlPanel1.Controls.Add(Me.TextBoxX_HexEditorCustomPath)
@@ -203,13 +210,27 @@ Partial Class Form_Settings
         Me.TabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty
         resources.ApplyResources(Me.TabControlPanel1, "TabControlPanel1")
         Me.TabControlPanel1.Name = "TabControlPanel1"
-        Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel1.Style.GradientAngle = 90
         Me.TabControlPanel1.TabItem = Me.TabItem1
+        '
+        'ButtonX5
+        '
+        Me.ButtonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
+        Me.ButtonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX5.FocusCuesEnabled = False
+        Me.ButtonX5.Name = "ButtonX5"
+        Me.ButtonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX5.Symbol = "58055"
+        Me.ButtonX5.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
+        Me.ButtonX5.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonX5.SymbolSize = 12.0!
         '
         'ComboBoxEx_HexEditorMode
         '
@@ -358,9 +379,10 @@ Partial Class Form_Settings
         Me.TabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty
         resources.ApplyResources(Me.TabControlPanel4, "TabControlPanel4")
         Me.TabControlPanel4.Name = "TabControlPanel4"
-        Me.TabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel4.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel4.Style.GradientAngle = 90
@@ -401,9 +423,10 @@ Partial Class Form_Settings
         Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
         resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
         Me.TabControlPanel2.Name = "TabControlPanel2"
-        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel2.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel2.Style.GradientAngle = 90
@@ -421,9 +444,10 @@ Partial Class Form_Settings
         Me.TabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty
         resources.ApplyResources(Me.TabControlPanel3, "TabControlPanel3")
         Me.TabControlPanel3.Name = "TabControlPanel3"
-        Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel3.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel3.Style.GradientAngle = 90
@@ -444,18 +468,39 @@ Partial Class Form_Settings
         Me.TabItem3.Name = "TabItem3"
         resources.ApplyResources(Me.TabItem3, "TabItem3")
         '
-        'ButtonX5
+        'ComboBoxEx_AutoScaleMode
         '
-        Me.ButtonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
-        Me.ButtonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX5.FocusCuesEnabled = False
-        Me.ButtonX5.Name = "ButtonX5"
-        Me.ButtonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX5.Symbol = "58055"
-        Me.ButtonX5.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
-        Me.ButtonX5.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonX5.SymbolSize = 12.0!
+        resources.ApplyResources(Me.ComboBoxEx_AutoScaleMode, "ComboBoxEx_AutoScaleMode")
+        Me.ComboBoxEx_AutoScaleMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ComboBoxEx_AutoScaleMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEx_AutoScaleMode.ForeColor = System.Drawing.Color.Black
+        Me.ComboBoxEx_AutoScaleMode.FormattingEnabled = True
+        Me.ComboBoxEx_AutoScaleMode.Items.AddRange(New Object() {Me.ComboItem6, Me.ComboItem9, Me.ComboItem10})
+        Me.ComboBoxEx_AutoScaleMode.Name = "ComboBoxEx_AutoScaleMode"
+        Me.ComboBoxEx_AutoScaleMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'LabelX5
+        '
+        Me.LabelX5.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX5, "LabelX5")
+        Me.LabelX5.Name = "LabelX5"
+        Me.LabelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
+        '
+        'ComboItem6
+        '
+        resources.ApplyResources(Me.ComboItem6, "ComboItem6")
+        '
+        'ComboItem9
+        '
+        resources.ApplyResources(Me.ComboItem9, "ComboItem9")
+        '
+        'ComboItem10
+        '
+        resources.ApplyResources(Me.ComboItem10, "ComboItem10")
         '
         'Form_Settings
         '
@@ -516,4 +561,9 @@ Partial Class Form_Settings
     Friend WithEvents ComboItem7 As DevComponents.Editors.ComboItem
     Friend WithEvents ComboItem8 As DevComponents.Editors.ComboItem
     Friend WithEvents ButtonX5 As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents ComboBoxEx_AutoScaleMode As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents ComboItem6 As DevComponents.Editors.ComboItem
+    Friend WithEvents ComboItem9 As DevComponents.Editors.ComboItem
+    Friend WithEvents ComboItem10 As DevComponents.Editors.ComboItem
 End Class

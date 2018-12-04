@@ -124,9 +124,6 @@
   <data name="ColumnHeaderA.Text" xml:space="preserve">
     <value>Water Type</value>
   </data>
-  <data name="ListBoxAdv_LM_ContentOfOB0x0D.Text" xml:space="preserve">
-    <value>ListBoxAdv5</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Button_LM_LoadLevelBG.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -230,9 +227,6 @@
   </data>
   <data name="SwitchButton_LM_ActSelector.OnText" xml:space="preserve">
     <value>On</value>
-  </data>
-  <data name="ListBoxAdv_LM_ContentOfOB0x0C.Text" xml:space="preserve">
-    <value>ListBoxAdv4</value>
   </data>
   <data name="ComboBox_LM_LevelBG.Location" type="System.Drawing.Point, System.Drawing">
     <value>273, 82</value>
@@ -434,7 +428,7 @@
     <value>5, 4</value>
   </data>
   <data name="ColumnHeader6.Text" xml:space="preserve">
-    <value>Y-2</value>
+    <value>Z-2</value>
   </data>
   <data name="ButtonX_LM_LevelsMore.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 6</value>
@@ -511,9 +505,6 @@
   <data name="Button_LM_AddSpecial.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 4</value>
   </data>
-  <data name="ListBoxAdv_LM_ContentOfOB0x09.Text" xml:space="preserve">
-    <value>ListBoxAdv6</value>
-  </data>
   <data name="SwitchButton_LM_ActSelector.OffText" xml:space="preserve">
     <value>Off</value>
   </data>
@@ -587,7 +578,7 @@
     <value>Switches</value>
   </data>
   <data name="ColumnHeader4.Text" xml:space="preserve">
-    <value>Y-1</value>
+    <value>Z-1</value>
   </data>
   <data name="ComboBox_LM_LevelBG.Items2" xml:space="preserve">
     <value>Desert</value>
