@@ -16,6 +16,8 @@ Public Module General
     Public StreamIniParser As New StreamIniDataParser
     Public ActSelectorDefaultValues As Byte() = New Byte() {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
 
+    Public Declare Sub SetDPIAware Lib "user32.dll" Alias "SetProcessDPIAware" ()
+
     Public ReadOnly Property MyDataPath As String
         Get
             Return Path.Combine(Directory.GetCurrentDirectory, "Data")

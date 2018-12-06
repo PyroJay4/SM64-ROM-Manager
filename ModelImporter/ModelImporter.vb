@@ -9,6 +9,7 @@ Imports System.Text
 Imports SM64Lib.Geolayout
 Imports ModelImporterGUI.ImporterPresets
 Imports DevComponents.Editors
+Imports System.Reflection
 
 Public Class ModelImporter
 
@@ -31,10 +32,16 @@ Public Class ModelImporter
     End Property
 
     Public Sub New()
+        SetDPIAware
+
         InitializeComponent()
 
-        StyleManager.Style = eStyle.Metro
-        StyleManager.MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
+        If Assembly.GetExecutingAssembly = Assembly.GetEntryAssembly Then
+            Settings.SettingsConfigFilePath = Path.Combine(Application.StartupPath, "Data\Settings.json")
+            StyleManager.Style = eStyle.Metro
+            StyleManager.MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
+        End If
+
         UpdateAmbientColors()
 
         ComboBoxEx1.Items.Clear()

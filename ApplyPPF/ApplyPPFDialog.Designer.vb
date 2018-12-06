@@ -147,6 +147,7 @@ Partial Class ApplyPPFDialog
         'ApplyPPFDialog
         '
         resources.ApplyResources(Me, "$this")
+        Me.StartPosition = FormStartPosition.CenterScreen
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel1)
         Me.DoubleBuffered = True

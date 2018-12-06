@@ -176,7 +176,7 @@ Public Class MainModelConverter
         End If
 
         EnableCirProgress(True)
-        Me.DialogResult = DialogResult.OK
+        DialogResult = DialogResult.OK
     End Sub
 
     Private Function CheckIfInBounds(v As Vertex)

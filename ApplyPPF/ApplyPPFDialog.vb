@@ -3,6 +3,7 @@ Imports System.Reflection
 Imports DevComponents.DotNetBar
 Imports SM64_ROM_Manager.SettingsManager
 Imports ApplyPPF.My.Resources
+Imports Publics
 
 Public Class ApplyPPFDialog
 
@@ -11,11 +12,14 @@ Public Class ApplyPPFDialog
 
     Public Sub New()
         If Assembly.GetExecutingAssembly = Assembly.GetEntryAssembly Then
+            SetDPIAware
+
             Settings.AutoSave = False
             Settings.SettingsConfigFilePath = Path.Combine(Application.StartupPath, "Data\Settings.json")
             StyleManager.Style = eStyle.Metro
             StyleManager.MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
         End If
+
         InitializeComponent()
     End Sub
     Public Sub New(romFile As String, patchFile As String)

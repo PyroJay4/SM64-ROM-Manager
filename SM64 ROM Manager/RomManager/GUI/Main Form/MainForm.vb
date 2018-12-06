@@ -41,6 +41,8 @@ Public Class MainForm
     End Property
 
     Public Sub New()
+        SetDPIAware
+
         SuspendLayout()
 
         InitializeComponent()
