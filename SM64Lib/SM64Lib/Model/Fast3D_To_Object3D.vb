@@ -21,8 +21,6 @@ Namespace Global.SM64Lib.SM64Convert
             Dim cmdIndex As Integer = 0
             Dim cmd As DisplayListCommand = Nothing
             Dim cmdarr As Byte() = Nothing
-            'Dim curSegBank As SegmentedBank = If(TypeOf param Is SegmentedBank, param, Nothing)
-            'Dim rommgr As RomManager = If(TypeOf param Is RomManager, param, Nothing)
 
             Dim knownTextures As New Dictionary(Of Integer, Material)
             Dim knownColors As New Dictionary(Of Integer, Color)
@@ -104,14 +102,14 @@ Namespace Global.SM64Lib.SM64Convert
                         numColorsToLoadInPalette = bdata.ReadUInt16 >> 6 '+ 1
 
                         Dim seg As SegmentedBank = rommgr.GetSegBank(curTexSegAddr >> 24, AreaID)
-                        curTexPalette = New Byte(numColorsToLoadInPalette) {}
+                        curTexPalette = New Byte(numColorsToLoadInPalette * 2 + 1) {}
                         Dim offset As Integer = curTexSegAddr And &HFFFFFF
 
-                        For i As Integer = 0 To numColorsToLoadInPalette '- 1
-                            Dim ii As Integer = i * 2
+                        For i As Integer = 1 To numColorsToLoadInPalette + 1
+                            Dim ii As Integer = i * 2 - 2
                             seg.Data.Position = offset + ii
-                            curTexPalette(ii) = cmd.ReadByte
-                            curTexPalette(ii + 1) = cmd.ReadByte
+                            curTexPalette(ii) = seg.Data.ReadByte
+                            curTexPalette(ii + 1) = seg.Data.ReadByte
                         Next
 
                     Case CommandTypes.F3D_Triangle1

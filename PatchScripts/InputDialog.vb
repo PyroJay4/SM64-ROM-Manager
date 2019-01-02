@@ -30,20 +30,24 @@ Friend Class InputDialog
                 ComboBoxEx1.Text = "Text"
 
             Case InputValueType.Sequence
-                Dim id As Byte = 0
-                For Each ms As MusicSequence In rommgr.MusicList
-                    ComboBoxEx1.Items.Add($"{id.ToString("X2")} - {ms.Name}")
-                    id += 1
-                Next
-                ComboBoxEx1.DropDownStyle = ComboBoxStyle.DropDownList
-                ComboBoxEx1.SelectedIndex = 0
+                If rommgr IsNot Nothing Then
+                    Dim id As Byte = 0
+                    For Each ms As MusicSequence In rommgr.MusicList
+                        ComboBoxEx1.Items.Add($"{id.ToString("X2")} - {ms.Name}")
+                        id += 1
+                    Next
+                    ComboBoxEx1.DropDownStyle = ComboBoxStyle.DropDownList
+                    ComboBoxEx1.SelectedIndex = 0
+                End If
 
             Case InputValueType.LevelID
-                For Each lvi As LevelInfoDataTabelList.Level In rommgr.LevelInfoData
-                    ComboBoxEx1.Items.Add($"{lvi.ID.ToString("X2")} - {lvi.Name}")
-                Next
-                ComboBoxEx1.DropDownStyle = ComboBoxStyle.DropDownList
-                ComboBoxEx1.SelectedIndex = 0
+                If rommgr IsNot Nothing Then
+                    For Each lvi As LevelInfoDataTabelList.Level In rommgr.LevelInfoData
+                        ComboBoxEx1.Items.Add($"{lvi.ID.ToString("X2")} - {lvi.Name}")
+                    Next
+                    ComboBoxEx1.DropDownStyle = ComboBoxStyle.DropDownList
+                    ComboBoxEx1.SelectedIndex = 0
+                End If
 
         End Select
     End Sub

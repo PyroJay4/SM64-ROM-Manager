@@ -100,10 +100,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TweakProfileEditor.Designer.vb">
-      <DependentUpon>TweakProfileEditor.vb</DependentUpon>
+    <Compile Include="PresetInfoEditor.Designer.vb">
+      <DependentUpon>PresetInfoEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="TweakProfileEditor.vb">
+    <Compile Include="PresetInfoEditor.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -117,8 +117,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="TweakProfileEditor.resx">
-      <DependentUpon>TweakProfileEditor.vb</DependentUpon>
+    <EmbeddedResource Include="PresetInfoEditor.resx">
+      <DependentUpon>PresetInfoEditor.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

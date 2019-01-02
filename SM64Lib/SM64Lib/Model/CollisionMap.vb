@@ -478,6 +478,13 @@ Namespace Global.SM64Lib.Model.Collision
             MyBase.Insert(index, item)
             item.ParentList = Me
         End Sub
+
+        Public Overloads Sub AddRange(collection As IEnumerable(Of Vertex))
+            For Each v As Vertex In collection
+                v.ParentList = Me
+            Next
+            MyBase.AddRange(collection)
+        End Sub
     End Class
 
     Public Class Triangle
@@ -502,6 +509,13 @@ Namespace Global.SM64Lib.Model.Collision
         Public Overloads Sub Insert(index As Integer, item As Triangle)
             MyBase.Insert(index, item)
             item.ParentList = Me
+        End Sub
+
+        Public Overloads Sub AddRange(collection As IEnumerable(Of Triangle))
+            For Each v As Triangle In collection
+                v.ParentList = Me
+            Next
+            MyBase.AddRange(collection)
         End Sub
     End Class
 

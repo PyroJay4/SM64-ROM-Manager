@@ -34,7 +34,7 @@ Namespace LevelEditor
         Friend hashCollisionMap As Integer = 0
         Friend cVisualMap As Object3D = Nothing
         Friend cCollisionMap As Object3D = Nothing
-        Friend rndrVisualMap As Renderer = Nothing 'RenderEngineOld.Model3D = Nothing
+        Friend rndrVisualMap As Renderer = Nothing
         Friend rndrCollisionMap As Renderer = Nothing
         Friend cLevel As Level = Nothing
         Private lastKeyLeaveTimer As Date = Date.Now
@@ -2168,7 +2168,7 @@ Namespace LevelEditor
 
 #Region "Default Start Position"
 
-        Private Sub ButtonItem8_Click(sender As Object, e As EventArgs) Handles ButtonItem84.Click
+        Private Sub ButtonItem84_Click(sender As Object, e As EventArgs) Handles ButtonItem84.Click
             Dim selobj As Managed3DObject = SelectedObject
             SetDefaultPosition(selobj.Position, selobj.Rotation.Y)
         End Sub
@@ -3101,6 +3101,149 @@ Namespace LevelEditor
                 Next
             End If
         End Sub
+
+        Private Sub ButtonX_CamMode_Click(sender As Object, e As EventArgs) Handles ButtonX_CamMode.Click
+
+        End Sub
+
+#End Region
+
+#Region "Collision"
+
+#Region "Death Floor"
+
+        Private Sub ButtonItem8_Click(sender As Object, e As EventArgs) Handles ButtonItem8.Click
+            Dim input As New Form_SetUpPoint("Death Floor Height", False, True, False, 0, 0, 0)
+            If input.ShowDialog = DialogResult.OK Then
+                Dim height As Short = input.IntegerInput_Y.Value
+                AddDeathFloorAt(height)
+            End If
+        End Sub
+
+        Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem4.Click
+            RemoveCollisionTrianglesWithCollisionType(&HA)
+            ReloadCollisionInOpenGL()
+        End Sub
+
+        Private Sub ButtonItem11_Click(sender As Object, e As EventArgs) Handles ButtonItem11.Click
+            Dim input As New ValueInputDialog With {.Text = "Remove faces"}
+            input.InfoLabel.Text = "Collision type:"
+            input.ValueTextBox.Text = 0
+            If input.ShowDialog = DialogResult.OK Then
+                Dim typ As Short = ValueFromText(input.ValueTextBox.Text)
+                RemoveCollisionTrianglesWithCollisionType(typ)
+            End If
+        End Sub
+
+        Friend Sub ReloadCollisionInOpenGL()
+            cCollisionMap = Nothing
+            LoadAreaModel()
+        End Sub
+
+        Private Sub AddDeathFloorAt(height As Short)
+            'Create vertices
+            Dim v1 As New Collision.Vertex
+            Dim v2 As New Collision.Vertex
+            Dim v3 As New Collision.Vertex
+            Dim v4 As New Collision.Vertex
+
+            'Create faces
+            Dim f1 As New Collision.Triangle
+            Dim f2 As New Collision.Triangle
+
+            'Build faces
+            f1.Vertices(0) = v4
+            f1.Vertices(1) = v1
+            f1.Vertices(2) = v2
+
+            f2.Vertices(0) = v4
+            f2.Vertices(1) = v2
+            f2.Vertices(2) = v3
+
+            'Set collision to death floor
+            f1.CollisionType = &HA
+            f2.CollisionType = &HA
+
+            'Set coordinates to vertices
+
+            v1.X = Short.MaxValue
+            v1.Z = Short.MaxValue
+            v1.Y = height
+
+            v2.X = Short.MaxValue
+            v2.Z = Short.MinValue
+            v2.Y = height
+
+            v3.X = Short.MinValue
+            v3.Z = Short.MinValue
+            v3.Y = height
+
+            v4.X = Short.MinValue
+            v4.Z = Short.MaxValue
+            v4.Y = height
+
+            'Create collections
+            Dim vs As Collision.Vertex() = {v1, v2, v3, v4}
+            Dim ts As Collision.Triangle() = {f1, f2}
+
+            'Add vertices
+            cArea.AreaModel.Collision.Mesh.Vertices.AddRange(vs)
+
+            'Add faces
+            cArea.AreaModel.Collision.Mesh.Triangles.AddRange(ts)
+
+            'Store history point
+            StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes(NameOf(AreaEditorHistoryFunctions.RemoveFromCollision)),
+                              AreaEditorHistoryFunctions.Methodes(NameOf(AreaEditorHistoryFunctions.AddToCollision)),
+                              {Me, cArea.AreaModel.Collision.Mesh.Vertices, vs, cArea.AreaModel.Collision.Mesh.Triangles, ts})
+
+            ReloadCollisionInOpenGL()
+        End Sub
+
+        Private Function IsVertexUsedInSM64Collision(v As Collision.Vertex) As Boolean
+            For Each t As Collision.Triangle In cArea.AreaModel.Collision.Mesh.Triangles
+                For Each vv As Collision.Vertex In t.Vertices
+                    If vv Is v Then
+                        Return True
+                    End If
+                Next
+            Next
+            Return False
+        End Function
+
+        Private Sub RemoveCollisionTrianglesWithCollisionType(colType As Byte)
+            Dim vs As New List(Of Collision.Vertex)
+            Dim ts As New List(Of Collision.Triangle)
+
+            'Remove faces
+            For Each t As Collision.Triangle In cArea.AreaModel.Collision.Mesh.Triangles.ToArray
+                If t.CollisionType = colType Then
+                    ts.Add(t)
+                    cArea.AreaModel.Collision.Mesh.Triangles.Remove(t)
+                End If
+            Next
+
+            'Remove unused vertices
+            For Each t As Collision.Triangle In ts
+                For Each v As Collision.Vertex In t.Vertices
+                    If Not IsVertexUsedInSM64Collision(v) Then
+                        vs.Add(v)
+                        cArea.AreaModel.Collision.Mesh.Vertices.Remove(v)
+                    End If
+                Next
+            Next
+
+            'Store history point
+            If ts.Any Then
+                StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes(NameOf(AreaEditorHistoryFunctions.AddToCollision)),
+                                  AreaEditorHistoryFunctions.Methodes(NameOf(AreaEditorHistoryFunctions.RemoveFromCollision)),
+                                  {Me, cArea.AreaModel.Collision.Mesh.Vertices, vs.ToArray, cArea.AreaModel.Collision.Mesh.Triangles, ts.ToArray})
+            End If
+
+            ReloadCollisionInOpenGL()
+        End Sub
+
+#End Region
 
 #End Region
 

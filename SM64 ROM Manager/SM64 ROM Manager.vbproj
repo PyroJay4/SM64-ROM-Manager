@@ -500,11 +500,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MyIcons.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\LevelEditor\Form_AreaEditor.de.resx">
+      <DependentUpon>Form_AreaEditor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\LevelEditor\InformationListsDialog.de.resx">
       <DependentUpon>InformationListsDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\LevelEditor\InformationListsDialog.resx">
       <DependentUpon>InformationListsDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\MainForm.de.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\CustomBankManager.resx">
       <DependentUpon>CustomBankManager.vb</DependentUpon>

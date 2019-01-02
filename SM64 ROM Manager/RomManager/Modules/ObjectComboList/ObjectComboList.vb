@@ -19,9 +19,9 @@ Namespace LevelEditor
                 For Each entry As JObject In CType(jobj("ObjectCombos"), JArray)
                     Me.Add(New ObjectCombo With {
                            .Name = entry?("Name"),
-                           .ModelID = CByte(ValueFromText(entry?("ModelID"))),
-                           .ModelAddress = CUInt(ValueFromText(entry?("ModelAddress"))),
-                           .BehaviorAddress = CUInt(ValueFromText(entry?("Behavior"))),
+                           .ModelID = entry?("ModelID"),
+                           .ModelAddress = entry?("ModelAddress"),
+                           .BehaviorAddress = entry?("Behavior"),
                            .BParam1 = New BParam With {.Name = entry?("BP1_NAME"), .Description = entry?("BP1_DESCRIPTION")},
                            .BParam2 = New BParam With {.Name = entry?("BP2_NAME"), .Description = entry?("BP2_DESCRIPTION")},
                            .BParam3 = New BParam With {.Name = entry?("BP3_NAME"), .Description = entry?("BP3_DESCRIPTION")},

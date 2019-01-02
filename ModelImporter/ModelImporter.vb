@@ -158,17 +158,13 @@ Public Class ModelImporter
         Next
 
         If preset.Script IsNot Nothing AndAlso Not String.IsNullOrEmpty(preset.Script.Script) Then
-            If rommgr IsNot Nothing Then
-                WriteOutput("Executing Script ...")
-                Dim pm As New PatchScripts.PatchingManager
-                pm.Patch(preset.Script, rommgr, "", Me)
-            Else
-                WriteOutput("Warning: The Script hasn't been patched, while Tweaks aren't enabled whe started as stand-alone!")
-            End If
+            WriteOutput("Executing Script ...")
+            Dim pm As New PatchScripts.PatchingManager
+            pm.Patch(preset.Script, RomFile, "", Me)
         End If
 
         WriteOutput()
-        WriteOutput(DateTime.Now.ToShortTimeString & " - Done")
+        WriteOutput(Now.ToShortTimeString & " - Done")
 
         'MessageBoxEx.Show("Model has been imported succesfully!", "Model imported", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ButtonX_ImportMdl.Symbol = ""

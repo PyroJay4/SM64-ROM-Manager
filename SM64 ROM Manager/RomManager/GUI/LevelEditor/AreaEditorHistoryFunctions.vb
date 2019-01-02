@@ -113,6 +113,26 @@ Namespace LevelEditor
             Next
         End Sub
 
+        Public Shared Sub RemoveFromCollision(base As Form_AreaEditor, vlist As VertexList, vs As Vertex(), tlist As TriangleList, ts As Triangle())
+            For Each t As Triangle In ts
+                tlist.Remove(t)
+            Next
+            For Each v As Vertex In vs
+                vlist.Remove(v)
+            Next
+            base.ReloadCollisionInOpenGL()
+        End Sub
+
+        Public Shared Sub AddToCollision(base As Form_AreaEditor, vlist As VertexList, vs As Vertex(), tlist As TriangleList, ts As Triangle())
+            For Each v As Vertex In vs
+                vlist.Add(v)
+            Next
+            For Each t As Triangle In ts
+                tlist.Add(t)
+            Next
+            base.ReloadCollisionInOpenGL()
+        End Sub
+
     End Class
 
 End Namespace

@@ -102,14 +102,19 @@ Public Class PatchingManager
     End Function
 
     Public Sub Patch(script As PatchScript, rommgr As RomManager, assemblyPath As String, owner As IWin32Window)
+        Patch(script, rommgr.RomFile, rommgr, assemblyPath, owner)
+    End Sub
+
+    Public Sub Patch(script As PatchScript, romfile As String, assemblyPath As String, owner As IWin32Window)
+        Patch(script, romfile, Nothing, assemblyPath, owner)
+    End Sub
+
+    Private Sub Patch(script As PatchScript, romfile As String, rommgr As RomManager, assemblyPath As String, owner As IWin32Window)
         If script Is Nothing Then
             Throw New ArgumentNullException(NameOf(script))
         End If
-        If rommgr Is Nothing Then
-            Throw New ArgumentNullException(NameOf(rommgr))
-        End If
 
-        Dim stream As New FileStream(rommgr.RomFile, FileMode.Open, FileAccess.ReadWrite)
+        Dim stream As New FileStream(romfile, FileMode.Open, FileAccess.ReadWrite)
         Dim bw As New BinaryWriter(stream)
         Dim br As New BinaryReader(stream)
 
@@ -270,7 +275,7 @@ Public Class PatchingManager
         End Select
 
         stream.Close()
-        PatchClass.UpdateChecksum(rommgr.RomFile)
+        PatchClass.UpdateChecksum(romfile)
     End Sub
 
     Public Function CompileScript(script As PatchScript) As CompilerResults
