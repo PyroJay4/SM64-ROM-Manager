@@ -1163,8 +1163,8 @@ Namespace Global.SM64Lib.SM64Convert
         End Function
         Private Function getTexelShift(type As N64Codec) As Byte
             Select Case type
-                Case N64Codec.I4, N64Codec.IA4 : Return 2
-                Case N64Codec.IA8, N64Codec.I8 : Return 1
+                Case N64Codec.I4, N64Codec.IA4, N64Codec.CI4 : Return 2
+                Case N64Codec.IA8, N64Codec.I8, N64Codec.CI8 : Return 1
                 Case Else : Return 0
             End Select
         End Function
@@ -1215,9 +1215,18 @@ Namespace Global.SM64Lib.SM64Convert
         End Sub
 
         Private Sub addCmdF3(mat As Material)
-            Dim numTexels As UInteger = ((mat.TexWidth * mat.TexHeight + getTexelIncrement(mat.TexType)) >> getTexelShift(mat.TexType)) - 1
+            Dim numTexels As UInteger
             Dim bpt As Integer = bytesPerType(mat.TexType)
             Dim tl As UInteger
+
+            Select Case mat.TexType
+                'Case N64Codec.CI4
+                '    numTexels = mat.TexWidth * mat.TexHeight / 4 - 1
+                'Case N64Codec.CI8
+                '    numTexels = mat.TexWidth * mat.TexHeight - 1
+                Case Else
+                    numTexels = ((mat.TexWidth * mat.TexHeight + getTexelIncrement(mat.TexType)) >> getTexelShift(mat.TexType)) - 1
+            End Select
 
             If bpt <> 0 Then
                 tl = CALC_DXT(mat.TexWidth, bpt) And &HFFF
