@@ -1215,18 +1215,11 @@ Namespace Global.SM64Lib.SM64Convert
         End Sub
 
         Private Sub addCmdF3(mat As Material)
-            Dim numTexels As UInteger
+            Dim numTexels As UInteger = ((mat.TexWidth * mat.TexHeight + getTexelIncrement(mat.TexType)) >> getTexelShift(mat.TexType)) - 1
             Dim bpt As Integer = bytesPerType(mat.TexType)
             Dim tl As UInteger
-
-            Select Case mat.TexType
-                'Case N64Codec.CI4
-                '    numTexels = mat.TexWidth * mat.TexHeight / 4 - 1
-                'Case N64Codec.CI8
-                '    numTexels = mat.TexWidth * mat.TexHeight - 1
-                Case Else
-                    numTexels = ((mat.TexWidth * mat.TexHeight + getTexelIncrement(mat.TexType)) >> getTexelShift(mat.TexType)) - 1
-            End Select
+            Dim lower As UInteger
+            Dim cmd As String
 
             If bpt <> 0 Then
                 tl = CALC_DXT(mat.TexWidth, bpt) And &HFFF
@@ -1234,9 +1227,9 @@ Namespace Global.SM64Lib.SM64Convert
                 tl = CALC_DXT_4b(mat.TexWidth) And &HFFF
             End If
 
-            Dim lower As UInteger = ((numTexels << 12) Or tl) And &HFFFFFF
+            lower = ((numTexels << 12) Or tl) And &HFFFFFF
+            cmd = $"F3 00 00 00 07 {Hex((lower >> 16) And &HFF)} {Hex((lower >> 8) And &HFF)} {Hex(lower And &HFF)}"
 
-            Dim cmd As String = $"F3 00 00 00 07 {Hex((lower >> 16) And &HFF)} {Hex((lower >> 8) And &HFF)} {Hex(lower And &HFF)}"
             ImpF3D(cmd)
         End Sub
 
