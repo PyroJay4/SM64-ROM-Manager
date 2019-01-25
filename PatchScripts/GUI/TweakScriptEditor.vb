@@ -192,16 +192,17 @@ Public Class TweakScriptEditor
 
     Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
         CheckBoxX_VBScript.Checked = True
-        CodeEditor.Text = "Imports Microsoft.VisualBasic
+        CodeEditor.Text =
+"Imports Microsoft.VisualBasic
 Imports System
 Imports System.Linq
 Imports System.Windows.Forms
 Imports System.IO
-
+Imports SM64Lib
 
 Module Script
 
-    Sub Main(rom As Stream)
+    Sub Main(romFile As String)
         
         
         
@@ -212,17 +213,18 @@ End Module
     End Sub
     Private Sub ButtonItem2_Click(sender As Object, e As EventArgs) Handles ButtonItem2.Click
         CheckBoxX_CSharpScript.Checked = True
-        CodeEditor.Text = "using Microsoft.CSharp;
+        CodeEditor.Text =
+"using Microsoft.CSharp;
 using System;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
-
+using SM64Lib;
 
 class Script
 {
 
-    static void Main(Stream rom)
+    static void Main(string romFile)
     {
     
     

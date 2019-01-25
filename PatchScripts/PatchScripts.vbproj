@@ -71,8 +71,8 @@
     <Import Include="TextValueConverter" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InputDialog.Designer.vb" />
-    <Compile Include="InputDialog.vb">
+    <Compile Include="GUI\InputDialog.Designer.vb" />
+    <Compile Include="GUI\InputDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -90,24 +90,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PatchScript.vb" />
-    <Compile Include="PatchScriptManager.vb" />
-    <Compile Include="Tweaks\TweakProfileEditor.Designer.vb">
+    <Compile Include="Classes\PatchScript.vb" />
+    <Compile Include="Classes\PatchScriptManager.vb" />
+    <Compile Include="GUI\TweakProfileEditor.Designer.vb">
       <DependentUpon>TweakProfileEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="Tweaks\TweakProfileEditor.vb">
+    <Compile Include="GUI\TweakProfileEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tweaks\TweakScriptEditor.Designer.vb">
+    <Compile Include="GUI\TweakScriptEditor.Designer.vb">
       <DependentUpon>TweakScriptEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="Tweaks\TweakScriptEditor.vb">
+    <Compile Include="GUI\TweakScriptEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tweaks\TweakViewer.Designer.vb">
+    <Compile Include="GUI\TweakViewer.Designer.vb">
       <DependentUpon>TweakViewer.vb</DependentUpon>
     </Compile>
-    <Compile Include="Tweaks\TweakViewer.vb">
+    <Compile Include="GUI\TweakViewer.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -118,17 +118,18 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tweaks\TweakProfileEditor.resx">
+    <EmbeddedResource Include="GUI\TweakProfileEditor.resx">
       <DependentUpon>TweakProfileEditor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tweaks\TweakScriptEditor.resx">
+    <EmbeddedResource Include="GUI\TweakScriptEditor.resx">
       <DependentUpon>TweakScriptEditor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tweaks\TweakViewer.resx">
+    <EmbeddedResource Include="GUI\TweakViewer.resx">
       <DependentUpon>TweakViewer.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

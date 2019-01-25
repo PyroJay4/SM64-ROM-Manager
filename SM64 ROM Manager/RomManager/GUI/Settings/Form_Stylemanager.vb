@@ -20,7 +20,7 @@ Public Class Form_Stylemanager
     Private Sub Form_Stylemanager_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComboBoxEx1.Items.Clear()
 
-        Dim themes As MetroColorGeneratorParameters() = MetroColorGeneratorParameters.GetAllPredefinedThemes
+        Dim themes As MetroColorGeneratorParameters() = {StyleManagerSettingsStruc.VisualThemeLight, StyleManagerSettingsStruc.VisualThemeGray, StyleManagerSettingsStruc.VisualThemeDark} 'MetroColorGeneratorParameters.GetAllPredefinedThemes
         Dim myTheme As MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
         Dim ciToSelect As ComboItem = Nothing
 
@@ -43,17 +43,25 @@ Public Class Form_Stylemanager
             ComboBoxEx1.SelectedIndex = 0
         End If
 
+        If Settings.StyleManager.UseWindows10Style Then
+            CheckBoxX1.Checked = True
+        Else
+            CheckBoxX2.Checked = True
+        End If
+
         CheckBoxX_KeepEditorControlBarBlue.Checked = Settings.StyleManager.AlwaysKeepBlueColors
 
         isLoading = False
     End Sub
 
-    Private Sub ComboBoxEx1_SelectedIndexChanged(sender As Controls.ComboBoxEx, e As EventArgs) Handles ComboBoxEx1.SelectedIndexChanged
+    Private Sub ComboBoxEx1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx1.SelectedIndexChanged, CheckBoxX1.CheckedChanged
         If isLoading Then Return
 
-        Dim newTheme As MetroColorGeneratorParameters = CType(sender.SelectedItem, ComboItem).Tag
-        StyleManager.MetroColorGeneratorParameters = newTheme
+        Dim newTheme As MetroColorGeneratorParameters = CType(ComboBoxEx1.SelectedItem, ComboItem).Tag
         Settings.StyleManager.MetroColorParams = newTheme
+        Settings.StyleManager.UseWindows10Style = CheckBoxX1.Checked
+
+        Publics.SetVisualTheme()
 
         For Each frm As Form In Application.OpenForms
             frm.UpdateAmbientColors()
@@ -68,6 +76,10 @@ Public Class Form_Stylemanager
 
     Private Sub Form_Stylemanager_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Settings.SaveSettings()
+    End Sub
+
+    Private Sub CheckBoxX2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxX2.CheckedChanged
+        ComboBoxEx1.Enabled = CheckBoxX2.Checked
     End Sub
 
 End Class

@@ -6,7 +6,7 @@ Public Class LevelSelectorDialog
 
     Public rommgr As RomManager = Nothing
     Private FinishedLoading As Boolean = False
-    Private lidtable As New LevelInfoDataTabelList
+    Private lidtable As New Levels.LevelInfoDataTabelList
 
     Public Sub New(rommgr As RomManager)
         InitializeComponent()
@@ -14,7 +14,7 @@ Public Class LevelSelectorDialog
         Me.rommgr = rommgr
     End Sub
 
-    Public ReadOnly Property SelectedLevel As LevelInfoDataTabelList.Level
+    Public ReadOnly Property SelectedLevel As Levels.LevelInfoDataTabelList.Level
         Get
             Return lidtable(ComboBox_Level.SelectedIndex)
         End Get
@@ -39,7 +39,7 @@ Public Class LevelSelectorDialog
         With ComboBox_Level.Items
             .Clear()
             For Each lid In lidtable
-                .Add(If(lid.Type = LevelInfoDataTabelList.LevelTypes.Level, CInt(lid.Number).ToString("00") & " - ", "") & lid.Name)
+                .Add(If(lid.Type = Levels.LevelInfoDataTabelList.LevelTypes.Level, CInt(lid.Number).ToString("00") & " - ", "") & lid.Name)
             Next
         End With
     End Sub

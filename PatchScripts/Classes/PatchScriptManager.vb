@@ -102,7 +102,7 @@ Public Class PatchingManager
     End Function
 
     Public Sub Patch(script As PatchScript, rommgr As RomManager, assemblyPath As String, owner As IWin32Window)
-        Patch(script, rommgr.RomFile, rommgr, assemblyPath, owner)
+        Patch(script, rommgr?.RomFile, rommgr, assemblyPath, owner)
     End Sub
 
     Public Sub Patch(script As PatchScript, romfile As String, assemblyPath As String, owner As IWin32Window)
@@ -114,12 +114,12 @@ Public Class PatchingManager
             Throw New ArgumentNullException(NameOf(script))
         End If
 
-        Dim stream As New FileStream(romfile, FileMode.Open, FileAccess.ReadWrite)
-        Dim bw As New BinaryWriter(stream)
-        Dim br As New BinaryReader(stream)
-
         Select Case script.Type
             Case ScriptType.TweakScript
+                Dim stream As New FileStream(romfile, FileMode.Open, FileAccess.ReadWrite)
+                Dim bw As New BinaryWriter(stream)
+                Dim br As New BinaryReader(stream)
+
                 Dim reader As New StringReader(script.Script)
 
                 Do While reader.Peek > -1
@@ -265,16 +265,16 @@ Public Class PatchingManager
                 Loop
 
                 reader.Close()
+                stream.Close()
 
             Case ScriptType.VisualBasic, ScriptType.CSharp
                 Dim assembly As Assembly = GetAssembly(script)
                 If assembly IsNot Nothing Then
-                    ExecuteScript(assembly, stream, br, bw)
+                    ExecuteScript(assembly, romfile)
                 End If
 
         End Select
 
-        stream.Close()
         PatchClass.UpdateChecksum(romfile)
     End Sub
 
@@ -312,6 +312,14 @@ Public Class PatchingManager
         options.ReferencedAssemblies.Add("System.Xml.Linq.dll")
         options.ReferencedAssemblies.Add("System.IO.dll")
 
+        Dim LibPath As String
+        If Debugger.IsAttached Then
+            LibPath = Path.GetDirectoryName(Application.ExecutablePath)
+        Else
+            LibPath = Path.Combine(MyDataPath, "Lib")
+        End If
+        options.ReferencedAssemblies.Add(Path.Combine(LibPath, "SM64Lib.dll"))
+
         For Each ref As String In script.References
             If Not options.ReferencedAssemblies.Contains(ref) Then
                 options.ReferencedAssemblies.Add(ref)
@@ -330,11 +338,25 @@ Public Class PatchingManager
         End If
     End Function
 
-    Public Sub ExecuteScript(assembly As Assembly, stream As Stream, br As BinaryReader, bw As BinaryWriter)
+    Public Sub ExecuteScript(assembly As Assembly, romFile As String)
         Dim main As MethodInfo = assembly.GetType("Script")?.GetMethod("Main", BindingFlags.Static Or BindingFlags.Public Or BindingFlags.NonPublic)
+        Dim fs As FileStream = Nothing
+        Dim param As Object() = {Nothing}
+        Dim paraminfo As ParameterInfo() = main.GetParameters
+
+        If paraminfo.Length = 1 AndAlso paraminfo(0).ParameterType = GetType(Stream) AndAlso Not String.IsNullOrEmpty(romFile) Then
+            fs = New FileStream(romFile, FileMode.Open, FileAccess.ReadWrite)
+            param = {fs}
+        ElseIf paraminfo.Length = 1 AndAlso paraminfo(0).ParameterType = GetType(String) Then
+            param = {romFile}
+        End If
 
         If main IsNot Nothing Then
-            main.Invoke(Nothing, {stream})
+            main.Invoke(Nothing, param)
+        End If
+
+        If fs IsNot Nothing Then
+            fs.Close()
         End If
     End Sub
 

@@ -16,47 +16,75 @@ Public Module General
     Public StreamIniParser As New StreamIniDataParser
     Public ActSelectorDefaultValues As Byte() = New Byte() {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
 
+    Public ReadOnly Property PluginManager As New Plugins.PluginManager(Path.Combine(MyDataPath, "Plugins"))
+
     Public Declare Sub SetDPIAware Lib "user32.dll" Alias "SetProcessDPIAware" ()
 
     Public ReadOnly Property MyDataPath As String
         Get
-            Return Path.Combine(Directory.GetCurrentDirectory, "Data")
+            Return Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Data")
         End Get
     End Property
 
-    Public Function GetExtensionFilter(modul As LoaderModule) As String
+    ''' <param name="mode">0 = Loader; 1 = Exporter</param>
+    Public Function GetExtensionFilter(strmodul As String, mode As Byte) As String
+        Dim modul As File3DLoaderModule = If(mode = 0, GetLoaderModuleFromID(strmodul), GetExporterModuleFromID(strmodul))
+        Return GetExtensionFilter(modul)
+    End Function
+
+    Public Function GetExtensionFilter(modul As File3DLoaderModule) As String
         Dim combiFormats As String = ""
         Dim splittedFormats As String = ""
 
-        Dim ids As Dictionary(Of String, String) = S3DFileParser.Publics.GetAllFileFormatIDs(modul)
-        Dim descriptions As Dictionary(Of String, String) = S3DFileParser.Publics.GetAllFileFormatDescriptions(modul)
-
-        For Each ext As String In S3DFileParser.Publics.GetAllowedFileExtensions(modul)
-            Dim desc As String = ""
-
-            If descriptions.ContainsKey(ext.Substring(1)) Then desc = descriptions(ext.Substring(1))
-
+        For Each kvp In modul.SupportedFormats
             If combiFormats <> "" Then
                 combiFormats &= ";"
             End If
-            combiFormats &= "*" & ext
+            combiFormats &= "*." & kvp.Key
 
             If splittedFormats <> "" Then
                 splittedFormats &= "|"
             End If
 
-            If desc = "" Then
-                If ids.ContainsKey(ext.Substring(1)) Then desc = ids(ext.Substring(1))
-            End If
-            If desc = "" Then
-                desc = $"{ext.Substring(1)} Files"
-            End If
-
-            splittedFormats &= $"{desc} (*{ext})|*{ext}"
+            splittedFormats &= $"{kvp.Value} (*{kvp.Key})|*{kvp.Key}"
         Next
 
         Return $"All supported files|{combiFormats}|{splittedFormats}"
     End Function
+
+    'Public Function GetExtensionFilter(modul As LoaderModule) As String
+    '    Dim combiFormats As String = ""
+    '    Dim splittedFormats As String = ""
+
+    '    Dim ids As Dictionary(Of String, String) = S3DFileParser.Publics.GetAllFileFormatIDs(modul)
+    '    Dim descriptions As Dictionary(Of String, String) = S3DFileParser.Publics.GetAllFileFormatDescriptions(modul)
+
+    '    For Each ext As String In S3DFileParser.Publics.GetAllowedFileExtensions(modul)
+    '        Dim desc As String = ""
+
+    '        If descriptions.ContainsKey(ext.Substring(1)) Then desc = descriptions(ext.Substring(1))
+
+    '        If combiFormats <> "" Then
+    '            combiFormats &= ";"
+    '        End If
+    '        combiFormats &= "*" & ext
+
+    '        If splittedFormats <> "" Then
+    '            splittedFormats &= "|"
+    '        End If
+
+    '        If desc = "" Then
+    '            If ids.ContainsKey(ext.Substring(1)) Then desc = ids(ext.Substring(1))
+    '        End If
+    '        If desc = "" Then
+    '            desc = $"{ext.Substring(1)} Files"
+    '        End If
+
+    '        splittedFormats &= $"{desc} (*{ext})|*{ext}"
+    '    Next
+
+    '    Return $"All supported files|{combiFormats}|{splittedFormats}"
+    'End Function
 
     Public Function keepDegreesWithin360(value As Short) As Short
         If value < 0 Then

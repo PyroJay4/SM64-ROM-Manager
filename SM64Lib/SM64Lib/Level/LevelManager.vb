@@ -11,12 +11,6 @@ Imports SM64Lib.Levels.ScrolTex
 
 Namespace Levels
 
-    Public Enum LevelType
-        Original
-        SM64RomManager
-        SM64Editor
-    End Enum
-
     Public Class LevelManager
 
         Public Shared Sub LoadSM64EditorLevel(lvl As Level, rommgr As RomManager, LevelID As UShort, segAddress As UInteger)
@@ -713,9 +707,9 @@ Namespace Levels
 
             'Get Bank 0x19
             If lvl.bank0x19 Is Nothing Then
-                lvl.bank0x19 = rommgr.SetSegBank(&H19, curOff, RomManager.ManagerSettings.defaultLevelscriptSize)
+                lvl.bank0x19 = rommgr.SetSegBank(&H19, curOff, RomManagerSettings.DefaultLevelscriptSize)
                 lvl.bank0x19.Data = New MemoryStream
-                lvl.bank0x19.Length = RomManager.ManagerSettings.defaultLevelscriptSize
+                lvl.bank0x19.Length = RomManagerSettings.DefaultLevelscriptSize
             Else
                 Dim oldData As MemoryStream = lvl.bank0x19.Data
                 lvl.bank0x19 = rommgr.SetSegBank(&H19, curOff, curOff + lvl.bank0x19.Length)

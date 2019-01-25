@@ -17,6 +17,8 @@ Imports DevComponents.DotNetBar.Controls
 Imports Microsoft.WindowsAPICodePack.Dialogs.Controls
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
+Imports System.Reflection
+Imports Microsoft.Win32
 
 Public Class MainForm
 
@@ -72,9 +74,7 @@ Public Class MainForm
     End Sub
 
     Private Sub SetStyleManagerStyle()
-        StyleManager.Style = eStyle.Metro
-        StyleManager.MetroColorGeneratorParameters = New Metro.ColorTables.MetroColorGeneratorParameters(Color.FromArgb(Settings.StyleManager.MetroColorParams.CanvasColor.ToArgb Or &HFF000000),
-                                                                                                         Color.FromArgb(Settings.StyleManager.MetroColorParams.BaseColor.ToArgb Or &HFF000000))
+        SetVisualTheme()
 
         UpdateAmbientColors()
 
@@ -111,7 +111,34 @@ Public Class MainForm
 
         CheckCommandLineArgs()
 
+        PluginManager.LoadPlugins()
+        AddMyPluginCommands()
+
         SearchForUpdates()
+    End Sub
+
+    Private Sub AddMyPluginCommands()
+        Dim lastFunc As Plugins.PluginFunction = Nothing
+
+        For Each func As Plugins.PluginFunction In PluginManager.GetAllImplementMethods("pluginmenu")
+            Dim btn As New ButtonItem
+
+            If lastFunc IsNot func Then
+                'btn.BeginGroup = True
+                lastFunc = func
+            End If
+
+            btn.Text = func.Params(0)
+            btn.Tag = func
+
+            AddHandler btn.Click, Sub(sender As ButtonItem, e As EventArgs)
+                                      CType(sender.Tag, Plugins.PluginFunction).Invoke()
+                                  End Sub
+
+            ButtonItem_Bar_Plugins.SubItems.Add(btn)
+        Next
+
+        Bar2.Refresh()
     End Sub
 
     Private Sub CheckCommandLineArgs()
@@ -253,6 +280,10 @@ Public Class MainForm
     End Sub
 
     Private Sub ButtonItem17_Click(sender As Object, e As EventArgs) Handles ButtonItem17.Click
+        If rommgr Is Nothing Then
+            MessageBoxEx.Show("No ROM is loaded. Some tweaks probably will not work correctly.<br/>Load a ROM to solve this problem.", "No ROM loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+
         Dim tweaks As New TweakViewer(rommgr)
         tweaks.Show()
     End Sub
@@ -279,6 +310,11 @@ Public Class MainForm
 
     Private Sub SuperTabControl_Main_ControlAdded(sender As Object, e As ControlEventArgs) Handles TabControl1.ControlAdded
         TabControl1.SelectedTabIndex = TabControl1.Tabs.Count - 1
+    End Sub
+
+    Private Sub ButtonItem15_Click(sender As Object, e As EventArgs) Handles ButtonItem15.Click
+        Dim editor As New RGBEditor(rommgr)
+        editor.Show()
     End Sub
 
 #Region "General"

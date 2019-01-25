@@ -1,6 +1,7 @@
 ﻿Imports System.Globalization
 Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
+Imports Publics
 Imports SM64Lib
 Imports SM64Lib.Music
 
@@ -42,7 +43,7 @@ Friend Class InputDialog
 
             Case InputValueType.LevelID
                 If rommgr IsNot Nothing Then
-                    For Each lvi As LevelInfoDataTabelList.Level In rommgr.LevelInfoData
+                    For Each lvi As Levels.LevelInfoDataTabelList.Level In rommgr.LevelInfoData
                         ComboBoxEx1.Items.Add($"{lvi.ID.ToString("X2")} - {lvi.Name}")
                     Next
                     ComboBoxEx1.DropDownStyle = ComboBoxStyle.DropDownList

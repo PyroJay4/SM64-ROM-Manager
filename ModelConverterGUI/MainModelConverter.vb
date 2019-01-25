@@ -223,7 +223,7 @@ Public Class MainModelConverter
 
     Private Async Sub Button_LM_LoadModel_Click(sender As Object, e As EventArgs) Handles Button_LoadModel.Click
         Dim ofd As New OpenFileDialog
-        ofd.Filter = GetExtensionFilter(Settings.FileParser.LoaderModule) '"All supported files|*.obj;*.dae|OBJ Files (*.obj)|*.obj|Collada Files (*.dae)|*.dae"
+        ofd.Filter = GetExtensionFilter(Settings.FileParser.FileLoaderModule, 0) '"All supported files|*.obj;*.dae|OBJ Files (*.obj)|*.obj|Collada Files (*.dae)|*.dae"
 
         Dim p As StringCollection = Settings.RecentFiles.RecentModelFiles
         If p.Count > 0 Then ofd.InitialDirectory = Path.GetDirectoryName(p(0))
@@ -233,7 +233,7 @@ Public Class MainModelConverter
     End Sub
     Private Async Sub Button3_LM_LoadCol_Click(sender As Object, e As EventArgs) Handles Button_LoadCol.Click
         Dim ofd As New OpenFileDialog
-        ofd.Filter = GetExtensionFilter(Settings.FileParser.LoaderModule) '"All supported files|*.obj;*.dae|OBJ Files (*.obj)|*.obj|Collada Files (*.dae)|*.dae"
+        ofd.Filter = GetExtensionFilter(Settings.FileParser.FileLoaderModule, 0) '"All supported files|*.obj;*.dae|OBJ Files (*.obj)|*.obj|Collada Files (*.dae)|*.dae"
 
         Dim p As StringCollection = Settings.RecentFiles.RecentModelFiles
         If p.Count > 0 Then ofd.InitialDirectory = Path.GetDirectoryName(p(0))
@@ -245,16 +245,19 @@ Public Class MainModelConverter
     Private Async Function LoadModel(fileName As String) As Task
         EnableCirProgress()
 
+        Dim m As File3DLoaderModule = GetLoaderModuleFromID(Settings.FileParser.FileLoaderModule)
         Dim useascoltoo As Boolean = CheckBoxX_ConvertCollision.Checked AndAlso objCollisionMap Is Nothing OrElse objCollisionMap Is objVisualMap
 
         Try
-            objVisualMap = Object3D.FromFile(fileName, True, ComboBoxEx_UpAxis.SelectedIndex, Settings.FileParser.LoaderModule)
+            'objVisualMap = Object3D.FromFile(fileName, True, ComboBoxEx_UpAxis.SelectedIndex, Settings.FileParser.LoaderModuleHash)
+            objVisualMap = m.Invoke(fileName, New LoaderOptions(True, ComboBoxEx_UpAxis.SelectedIndex))
+
             curTexFormatSettings = New TextureFormatSettings
             Await curTexFormatSettings.Load(fileName & ".gf")
 
             objVisualMap.RemoveUnusedMaterials()
 
-            Publics.Publics.AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
+            AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
             LoadRecentFiles()
             LabelX_Modelfile.Text = Path.GetFileName(fileName)
             curModelFile = fileName
@@ -281,14 +284,18 @@ Public Class MainModelConverter
     Private Async Function LoadCollision(fileName As String) As Task
         EnableCirProgress()
 
+        Dim m As File3DLoaderModule = GetLoaderModuleFromID(Settings.FileParser.FileLoaderModule)
+
         Try
-            objCollisionMap = Object3D.FromFile(fileName, True, ComboBoxEx_UpAxis.SelectedIndex, Settings.FileParser.LoaderModule)
+            'objCollisionMap = Object3D.FromFile(fileName, True, ComboBoxEx_UpAxis.SelectedIndex, Settings.FileParser.LoaderModuleHash)
+            objCollisionMap = m.Invoke(fileName, New LoaderOptions(True, ComboBoxEx_UpAxis.SelectedIndex))
+
             curColSettings = New Collision.CollisionSettings
             Await curColSettings.Load(fileName & ".col")
 
             objCollisionMap.RemoveUnusedMaterials()
 
-            Publics.Publics.AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
+            AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
             LoadRecentFiles()
             LabelX_Colfile.Text = Path.GetFileName(fileName)
             curCollisionFile = fileName

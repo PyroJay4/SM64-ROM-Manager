@@ -139,7 +139,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ben.Demystifier, Version=0.1.0.0, Culture=neutral, PublicKeyToken=a6d206e05440431a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ben.Demystifier.0.1.1\lib\net45\Ben.Demystifier.dll</HintPath>
+      <HintPath>..\packages\Ben.Demystifier.0.1.3\lib\net45\Ben.Demystifier.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar.Layout, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
@@ -164,7 +164,7 @@
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
@@ -172,8 +172,8 @@
     <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nUpdate.Internal, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\nUpdate.ProvideTAP.3.3.1\lib\net40\nUpdate.Internal.dll</HintPath>
@@ -195,8 +195,8 @@
     <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.DirectInput, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.DirectInput.4.1.0\lib\net45\SharpDX.DirectInput.dll</HintPath>
+    <Reference Include="SharpDX.DirectInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.DirectInput.4.2.0\lib\net45\SharpDX.DirectInput.dll</HintPath>
     </Reference>
     <Reference Include="SimpleHistory, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleHistory.1.0.0.1\lib\net45\SimpleHistory.dll</HintPath>
@@ -248,6 +248,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyIcons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Coins Settings\Coins Settings.Designer.vb">
+      <DependentUpon>Coins Settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Coins Settings\Coins Settings.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\LevelEditor\AdvPropGrid_BehaviorManager.vb" />
     <Compile Include="RomManager\GUI\LevelEditor\Managed3DObject.vb" />
@@ -327,6 +333,18 @@
       <DependentUpon>ItemBoxContentEditor.vb</DependentUpon>
     </Compile>
     <Compile Include="RomManager\GUI\Tools\ItemBoxContentEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\RGB Editor\RGBEditInfoEditor.Designer.vb">
+      <DependentUpon>RGBEditInfoEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\RGB Editor\RGBEditInfoEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\RGB Editor\RGBEditor.Designer.vb">
+      <DependentUpon>RGBEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\RGB Editor\RGBEditor.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Tools\StarPositionEditor.Designer.vb">
@@ -500,6 +518,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MyIcons.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Coins Settings\Coins Settings.resx">
+      <DependentUpon>Coins Settings.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\LevelEditor\Form_AreaEditor.de.resx">
       <DependentUpon>Form_AreaEditor.vb</DependentUpon>
     </EmbeddedResource>
@@ -574,6 +595,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\ItemBoxContentEditor.resx">
       <DependentUpon>ItemBoxContentEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\RGB Editor\RGBEditInfoEditor.resx">
+      <DependentUpon>RGBEditInfoEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\RGB Editor\RGBEditor.resx">
+      <DependentUpon>RGBEditor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\StarPositionEditor.de.resx">
       <DependentUpon>StarPositionEditor.vb</DependentUpon>
@@ -715,11 +742,13 @@
     <None Include="Resources\Aktualisieren_16px.png" />
     <None Include="Resources\Zusammen_ziehen_32px.png" />
     <None Include="Resources\Psychologie_32px.png" />
+    <None Include="Resources\Speichern_16px.png" />
+    <None Include="Resources\Speichern_20px.png" />
+    <None Include="Resources\Speichern_18px.png" />
+    <None Include="Resources\Speichern_19px.png" />
     <Content Include="RomManager\Others\RomMap.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RomManager\GUI\Trajectory Editor\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
@@ -759,6 +788,10 @@
     <ProjectReference Include="..\OpenGLRenderer\OpenGLFactory.RenderingN.vbproj">
       <Project>{5e9f0b0a-f7b8-49a9-80fc-6dfe0d44cc84}</Project>
       <Name>OpenGLFactory.RenderingN</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatchHelper\PluginCenter.vbproj">
+      <Project>{5044ef07-04a7-45af-aa3a-d261d7123a66}</Project>
+      <Name>PluginCenter</Name>
     </ProjectReference>
     <ProjectReference Include="..\PatchScripts\PatchScripts.vbproj">
       <Project>{c5de39f9-c9aa-48df-bd74-68a057012953}</Project>

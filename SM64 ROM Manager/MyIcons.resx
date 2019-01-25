@@ -118,23 +118,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Hinzufügen_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Hinzufügen_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kurznachricht_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Kurznachricht_34px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Psychologie_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Psychologie_16px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bearbeiten_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Bearbeiten_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Zusammen_ziehen_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Zusammen_ziehen_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Zusammen_ziehen_16px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Zusammen_ziehen_16px2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Zusammen_ziehen_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Zusammen_ziehen_16px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Zusammen_ziehen_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Zusammen_ziehen_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Aktualisieren_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Aktualisieren_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Speichern_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Speichern_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Alle_Speichern_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Alle_Speichern_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Kurznachricht_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Kurznachricht_34px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Zusammen_ziehen_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Zusammen_ziehen_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Psychologie_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Psychologie_34px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,19 +154,19 @@
   <data name="Alle_Speichern_16px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Alle_Speichern_16px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Aktualisieren_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Aktualisieren_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Löschen_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Löschen_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Zusammen_ziehen_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Zusammen_ziehen_16px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Bearbeiten_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Bearbeiten_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Hinzufügen_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Hinzufügen_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Speichern_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Speichern_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Zusammen_ziehen_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Zusammen_ziehen_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Speichern_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Speichern_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Speichern_19px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Speichern_19px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

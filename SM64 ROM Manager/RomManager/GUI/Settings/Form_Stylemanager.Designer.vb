@@ -25,15 +25,17 @@ Partial Class Form_Stylemanager
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_Stylemanager))
         Me.ComboBoxEx1 = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.CheckBoxX_KeepEditorControlBarBlue = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.CheckBoxX1 = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.CheckBoxX2 = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.SuspendLayout()
         '
         'ComboBoxEx1
         '
-        resources.ApplyResources(Me.ComboBoxEx1, "ComboBoxEx1")
         Me.ComboBoxEx1.DisplayMember = "Text"
         Me.ComboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx1.DropDownHeight = 150
         Me.ComboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        resources.ApplyResources(Me.ComboBoxEx1, "ComboBoxEx1")
         Me.ComboBoxEx1.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx1.FormattingEnabled = True
         Me.ComboBoxEx1.Name = "ComboBoxEx1"
@@ -41,14 +43,38 @@ Partial Class Form_Stylemanager
         '
         'CheckBoxX_KeepEditorControlBarBlue
         '
-        resources.ApplyResources(Me.CheckBoxX_KeepEditorControlBarBlue, "CheckBoxX_KeepEditorControlBarBlue")
         '
         '
         '
         Me.CheckBoxX_KeepEditorControlBarBlue.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CheckBoxX_KeepEditorControlBarBlue.FocusCuesEnabled = False
+        resources.ApplyResources(Me.CheckBoxX_KeepEditorControlBarBlue, "CheckBoxX_KeepEditorControlBarBlue")
         Me.CheckBoxX_KeepEditorControlBarBlue.Name = "CheckBoxX_KeepEditorControlBarBlue"
         Me.CheckBoxX_KeepEditorControlBarBlue.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'CheckBoxX1
+        '
+        '
+        '
+        '
+        Me.CheckBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX1.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+        Me.CheckBoxX1.FocusCuesEnabled = False
+        resources.ApplyResources(Me.CheckBoxX1, "CheckBoxX1")
+        Me.CheckBoxX1.Name = "CheckBoxX1"
+        Me.CheckBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'CheckBoxX2
+        '
+        '
+        '
+        '
+        Me.CheckBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX2.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+        Me.CheckBoxX2.FocusCuesEnabled = False
+        resources.ApplyResources(Me.CheckBoxX2, "CheckBoxX2")
+        Me.CheckBoxX2.Name = "CheckBoxX2"
+        Me.CheckBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'Form_Stylemanager
         '
@@ -56,6 +82,8 @@ Partial Class Form_Stylemanager
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BottomLeftCornerSize = 0
         Me.BottomRightCornerSize = 0
+        Me.Controls.Add(Me.CheckBoxX2)
+        Me.Controls.Add(Me.CheckBoxX1)
         Me.Controls.Add(Me.CheckBoxX_KeepEditorControlBarBlue)
         Me.Controls.Add(Me.ComboBoxEx1)
         Me.DoubleBuffered = True
@@ -73,4 +101,6 @@ Partial Class Form_Stylemanager
 
     Friend WithEvents ComboBoxEx1 As DevComponents.DotNetBar.Controls.ComboBoxEx
     Friend WithEvents CheckBoxX_KeepEditorControlBarBlue As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents CheckBoxX1 As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents CheckBoxX2 As DevComponents.DotNetBar.Controls.CheckBoxX
 End Class

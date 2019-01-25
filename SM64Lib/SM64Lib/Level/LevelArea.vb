@@ -8,7 +8,7 @@ Imports System.Windows.Forms
 Imports SM64Lib.Levels.ScrolTex
 Imports SM64Lib.ObjectBanks
 
-Namespace Global.SM64Lib.Levels
+Namespace Levels
 
     Public Class LevelArea
 

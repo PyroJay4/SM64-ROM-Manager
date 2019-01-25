@@ -27,7 +27,7 @@ Public Class Form_SM64TextConverter
                 TextBoxX_Output.Text = ""
                 If TextBoxX_Input.Text = "" Then Return
                 Try
-                    For Each b As Byte In Encoding.GetBytes(TextBoxX_Input.Text.Trim)
+                    For Each b As Byte In TextEncoding.GetBytes(TextBoxX_Input.Text.Trim)
                         If TextBoxX_Output.Text <> "" Then TextBoxX_Output.Text &= " "
                         Dim hexstring As String = Hex(b)
                         If hexstring.Count = 1 Then hexstring = "0" & hexstring
@@ -48,7 +48,7 @@ Public Class Form_SM64TextConverter
                     End Try
                 Next
                 Try
-                    TextBoxX_Output.Text = Encoding.GetString(byteList.ToArray)
+                    TextBoxX_Output.Text = TextEncoding.GetString(byteList.ToArray)
                 Catch ex As Exception
                     If Not RaisedClick Then
                         MessageBoxEx.Show("Eror error at converting from Hexadecimal to Text.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

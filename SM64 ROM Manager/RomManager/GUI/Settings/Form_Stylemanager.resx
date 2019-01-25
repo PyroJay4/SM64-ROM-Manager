@@ -117,79 +117,130 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;ComboBoxEx1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_KeepEditorControlBarBlue.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.31, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ComboBoxEx1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 21</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_KeepEditorControlBarBlue.Name" xml:space="preserve">
-    <value>CheckBoxX_KeepEditorControlBarBlue</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx1.Name" xml:space="preserve">
-    <value>ComboBoxEx1</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>192, 87</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ComboBoxEx1.ItemHeight" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="ComboBoxEx1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="ComboBoxEx1.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="ComboBoxEx1.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ComboBoxEx1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 56</value>
+  </data>
+  <data name="ComboBoxEx1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 21</value>
+  </data>
+  <data name="ComboBoxEx1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx1.Name" xml:space="preserve">
+    <value>ComboBoxEx1</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="CheckBoxX_KeepEditorControlBarBlue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 83</value>
+  </data>
   <data name="CheckBoxX_KeepEditorControlBarBlue.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 36</value>
   </data>
-  <data name="CheckBoxX_KeepEditorControlBarBlue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 39</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Form_Stylemanager</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="CheckBoxX_KeepEditorControlBarBlue.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="CheckBoxX_KeepEditorControlBarBlue.Text" xml:space="preserve">
     <value>Always keep blue Colors in Model Viewer and Level Editor</value>
   </data>
-  <data name="&gt;&gt;CheckBoxX_KeepEditorControlBarBlue.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;CheckBoxX_KeepEditorControlBarBlue.Name" xml:space="preserve">
+    <value>CheckBoxX_KeepEditorControlBarBlue</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX_KeepEditorControlBarBlue.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_KeepEditorControlBarBlue.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Style Manager</value>
+  <data name="&gt;&gt;CheckBoxX_KeepEditorControlBarBlue.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CheckBoxX1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 2</value>
+  </data>
+  <data name="CheckBoxX1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 21</value>
+  </data>
+  <data name="CheckBoxX1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="CheckBoxX1.Text" xml:space="preserve">
+    <value>Automatic (Windows 10)</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX1.Name" xml:space="preserve">
+    <value>CheckBoxX1</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="CheckBoxX2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 29</value>
+  </data>
+  <data name="CheckBoxX2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 21</value>
+  </data>
+  <data name="CheckBoxX2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="CheckBoxX2.Text" xml:space="preserve">
+    <value>Choose:</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX2.Name" xml:space="preserve">
+    <value>CheckBoxX2</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>192, 122</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="ComboBoxEx1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Style Manager</value>
   </data>
-  <data name="CheckBoxX_KeepEditorControlBarBlue.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form_Stylemanager</value>
   </data>
-  <data name="ComboBoxEx1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

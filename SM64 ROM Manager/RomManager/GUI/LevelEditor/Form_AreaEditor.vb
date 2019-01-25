@@ -1268,13 +1268,13 @@ Namespace LevelEditor
         Private Sub ButtonItem_ExportCollision_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportCollision.Click, ButtonItem86.Click
             If cArea.AreaModel.Collision IsNot Nothing Then
                 LoadAreaModel(ModelDrawMod.Collision)
-                ExportModel(rndrCollisionMap.Model, LoaderModule.SimpleFileParser)
+                ExportModel(rndrCollisionMap.Model, Settings.FileParser.FileExporterModule)
             End If
         End Sub
         Private Sub ButtonItem_ExportVisualMap_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportVisualMap.Click
             If cArea.AreaModel.Fast3DBuffer IsNot Nothing Then
                 LoadAreaModel(ModelDrawMod.VisualMap)
-                ExportModel(rndrVisualMap.Model, LoaderModule.SimpleFileParser)
+                ExportModel(rndrVisualMap.Model, Settings.FileParser.FileExporterModule)
             End If
         End Sub
 
@@ -2651,7 +2651,7 @@ Namespace LevelEditor
         Private Sub ButtonItem23_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportObjectModel.Click, ButtonItem68.Click
             Dim modelID As Byte = SelectedObject.ModelID
             If objectModels.ContainsKey(modelID) Then
-                ExportModel(objectModels(modelID).Model, LoaderModule.SimpleFileParser)
+                ExportModel(objectModels(modelID).Model, Settings.FileParser.FileExporterModule)
             Else
                 MessageBoxEx.Show("The Model wasn't found.", "Export Object Model", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If

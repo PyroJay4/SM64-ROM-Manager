@@ -3,7 +3,7 @@ Imports System.Windows.Forms
 
 Namespace Global.SM64Lib.Text
 
-    Public Class Encoding
+    Public Class TextEncoding
 
         Public Shared Function GetString(bytes() As Byte) As String
             Dim txt As String = ""
@@ -277,6 +277,7 @@ skip:
         Public Shared Function GetByteCount(s As String) As Integer
             Return GetBytes(s).Count
         End Function
+
     End Class
 
 End Namespace

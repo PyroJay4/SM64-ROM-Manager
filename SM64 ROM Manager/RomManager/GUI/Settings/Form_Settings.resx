@@ -151,7 +151,7 @@
     <value>ComboBox_DefaultValueType</value>
   </data>
   <data name="&gt;&gt;ComboBox_DefaultValueType.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboBox_DefaultValueType.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -175,7 +175,7 @@
     <value>LabelX3</value>
   </data>
   <data name="&gt;&gt;LabelX3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX3.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -205,7 +205,7 @@
     <value>SwitchButton_SearchUpdates</value>
   </data>
   <data name="&gt;&gt;SwitchButton_SearchUpdates.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;SwitchButton_SearchUpdates.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -229,7 +229,7 @@
     <value>LabelX1</value>
   </data>
   <data name="&gt;&gt;LabelX1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX1.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -262,7 +262,7 @@
     <value>ComboBox_AreaEditor_DefaultWindowMode</value>
   </data>
   <data name="&gt;&gt;ComboBox_AreaEditor_DefaultWindowMode.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboBox_AreaEditor_DefaultWindowMode.Parent" xml:space="preserve">
     <value>TabControlPanel2</value>
@@ -286,7 +286,7 @@
     <value>LabelX7</value>
   </data>
   <data name="&gt;&gt;LabelX7.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX7.Parent" xml:space="preserve">
     <value>TabControlPanel2</value>
@@ -319,7 +319,7 @@
     <value>ComboBox_AreaEditor_DefaultCameraMode</value>
   </data>
   <data name="&gt;&gt;ComboBox_AreaEditor_DefaultCameraMode.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboBox_AreaEditor_DefaultCameraMode.Parent" xml:space="preserve">
     <value>TabControlPanel2</value>
@@ -343,7 +343,7 @@
     <value>LabelX6</value>
   </data>
   <data name="&gt;&gt;LabelX6.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX6.Parent" xml:space="preserve">
     <value>TabControlPanel2</value>
@@ -351,20 +351,143 @@
   <data name="&gt;&gt;LabelX6.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="ComboBoxEx_ExporterModule.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ComboBoxEx_ExporterModule.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="ComboBoxEx_ExporterModule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 31</value>
+  </data>
+  <data name="ComboBoxEx_ExporterModule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 21</value>
+  </data>
+  <data name="ComboBoxEx_ExporterModule.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_ExporterModule.Name" xml:space="preserve">
+    <value>ComboBoxEx_ExporterModule</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_ExporterModule.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_ExporterModule.Parent" xml:space="preserve">
+    <value>TabControlPanel_LoaderModules</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_ExporterModule.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LabelX8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 31</value>
+  </data>
+  <data name="LabelX8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 22</value>
+  </data>
+  <data name="LabelX8.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="LabelX8.Text" xml:space="preserve">
+    <value>Exporter Module:</value>
+  </data>
+  <data name="&gt;&gt;LabelX8.Name" xml:space="preserve">
+    <value>LabelX8</value>
+  </data>
+  <data name="&gt;&gt;LabelX8.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX8.Parent" xml:space="preserve">
+    <value>TabControlPanel_LoaderModules</value>
+  </data>
+  <data name="&gt;&gt;LabelX8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ComboBoxEx_LoaderModule.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ComboBoxEx_LoaderModule.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="ComboBoxEx_LoaderModule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 4</value>
+  </data>
+  <data name="ComboBoxEx_LoaderModule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 21</value>
+  </data>
+  <data name="ComboBoxEx_LoaderModule.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_LoaderModule.Name" xml:space="preserve">
+    <value>ComboBoxEx_LoaderModule</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_LoaderModule.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_LoaderModule.Parent" xml:space="preserve">
+    <value>TabControlPanel_LoaderModules</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_LoaderModule.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="LabelX2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 4</value>
+  </data>
+  <data name="LabelX2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 22</value>
+  </data>
+  <data name="LabelX2.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="LabelX2.Text" xml:space="preserve">
+    <value>Loader Module:</value>
+  </data>
+  <data name="&gt;&gt;LabelX2.Name" xml:space="preserve">
+    <value>LabelX2</value>
+  </data>
+  <data name="&gt;&gt;LabelX2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX2.Parent" xml:space="preserve">
+    <value>TabControlPanel_LoaderModules</value>
+  </data>
+  <data name="&gt;&gt;LabelX2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="TabControlPanel_LoaderModules.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TabControlPanel_LoaderModules.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="TabControlPanel_LoaderModules.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="TabControlPanel_LoaderModules.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 262</value>
+  </data>
+  <data name="TabControlPanel_LoaderModules.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="TabItem4.Text" xml:space="preserve">
+    <value>File Parser</value>
+  </data>
+  <data name="&gt;&gt;TabControlPanel_LoaderModules.Name" xml:space="preserve">
+    <value>TabControlPanel_LoaderModules</value>
+  </data>
+  <data name="&gt;&gt;TabControlPanel_LoaderModules.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;TabControlPanel_LoaderModules.Parent" xml:space="preserve">
+    <value>TabControl2</value>
+  </data>
+  <data name="&gt;&gt;TabControlPanel_LoaderModules.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="ComboBoxEx_AutoScaleMode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="ComboBoxEx_AutoScaleMode.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
-  </data>
-  <data name="ComboItem6.Text" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="ComboItem9.Text" xml:space="preserve">
-    <value>Dpi</value>
-  </data>
-  <data name="ComboItem10.Text" xml:space="preserve">
-    <value>Font</value>
   </data>
   <data name="ComboBoxEx_AutoScaleMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 197</value>
@@ -379,7 +502,7 @@
     <value>ComboBoxEx_AutoScaleMode</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_AutoScaleMode.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_AutoScaleMode.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -403,7 +526,7 @@
     <value>LabelX5</value>
   </data>
   <data name="&gt;&gt;LabelX5.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX5.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -430,7 +553,7 @@
     <value>ButtonX5</value>
   </data>
   <data name="&gt;&gt;ButtonX5.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonX5.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -457,7 +580,7 @@
     <value>ComboBoxEx_HexEditorMode</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_HexEditorMode.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_HexEditorMode.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -481,7 +604,7 @@
     <value>TextBoxX_HexEditorCustomPath</value>
   </data>
   <data name="&gt;&gt;TextBoxX_HexEditorCustomPath.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;TextBoxX_HexEditorCustomPath.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -505,7 +628,7 @@
     <value>LabelX4</value>
   </data>
   <data name="&gt;&gt;LabelX4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX4.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -532,7 +655,7 @@
     <value>ButtonX4</value>
   </data>
   <data name="&gt;&gt;ButtonX4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonX4.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -559,7 +682,7 @@
     <value>ComboBoxEx1</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx1.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -583,7 +706,7 @@
     <value>LabelX10</value>
   </data>
   <data name="&gt;&gt;LabelX10.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX10.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -610,7 +733,7 @@
     <value>ButtonX3</value>
   </data>
   <data name="&gt;&gt;ButtonX3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonX3.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -637,7 +760,7 @@
     <value>ButtonX2</value>
   </data>
   <data name="&gt;&gt;ButtonX2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonX2.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -661,7 +784,7 @@
     <value>TextBoxX_EmulatorPatch</value>
   </data>
   <data name="&gt;&gt;TextBoxX_EmulatorPatch.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;TextBoxX_EmulatorPatch.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -685,7 +808,7 @@
     <value>LabelX9</value>
   </data>
   <data name="&gt;&gt;LabelX9.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX9.Parent" xml:space="preserve">
     <value>TabControlPanel1</value>
@@ -715,94 +838,13 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;TabControlPanel1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;TabControlPanel1.Parent" xml:space="preserve">
     <value>TabControl2</value>
   </data>
   <data name="&gt;&gt;TabControlPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ComboBoxEx_LoaderModule.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="ComboBoxEx_LoaderModule.ItemHeight" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="ComboBoxEx_LoaderModule.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 4</value>
-  </data>
-  <data name="ComboBoxEx_LoaderModule.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 21</value>
-  </data>
-  <data name="ComboBoxEx_LoaderModule.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_LoaderModule.Name" xml:space="preserve">
-    <value>ComboBoxEx_LoaderModule</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_LoaderModule.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_LoaderModule.Parent" xml:space="preserve">
-    <value>TabControlPanel4</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_LoaderModule.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="LabelX2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="LabelX2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 22</value>
-  </data>
-  <data name="LabelX2.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="LabelX2.Text" xml:space="preserve">
-    <value>Loader Module:</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.Name" xml:space="preserve">
-    <value>LabelX2</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.Parent" xml:space="preserve">
-    <value>TabControlPanel4</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="TabControlPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="TabControlPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="TabControlPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="TabControlPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 262</value>
-  </data>
-  <data name="TabControlPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="TabItem4.Text" xml:space="preserve">
-    <value>File Parser</value>
-  </data>
-  <data name="&gt;&gt;TabControlPanel4.Name" xml:space="preserve">
-    <value>TabControlPanel4</value>
-  </data>
-  <data name="&gt;&gt;TabControlPanel4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabControlPanel4.Parent" xml:space="preserve">
-    <value>TabControl2</value>
-  </data>
-  <data name="&gt;&gt;TabControlPanel4.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="TabControlPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -826,7 +868,7 @@
     <value>TabControlPanel2</value>
   </data>
   <data name="&gt;&gt;TabControlPanel2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;TabControlPanel2.Parent" xml:space="preserve">
     <value>TabControl2</value>
@@ -850,7 +892,7 @@
     <value>ButtonX1</value>
   </data>
   <data name="&gt;&gt;ButtonX1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonX1.Parent" xml:space="preserve">
     <value>TabControlPanel3</value>
@@ -880,7 +922,7 @@
     <value>TabControlPanel3</value>
   </data>
   <data name="&gt;&gt;TabControlPanel3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;TabControlPanel3.Parent" xml:space="preserve">
     <value>TabControl2</value>
@@ -904,13 +946,22 @@
     <value>TabControl2</value>
   </data>
   <data name="&gt;&gt;TabControl2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControl, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.TabControl, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;TabControl2.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TabControl2.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="ComboItem6.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ComboItem9.Text" xml:space="preserve">
+    <value>Dpi</value>
+  </data>
+  <data name="ComboItem10.Text" xml:space="preserve">
+    <value>Font</value>
   </data>
   <data name="ComboItem7.Text" xml:space="preserve">
     <value>Built-in</value>
@@ -2799,82 +2850,82 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="&gt;&gt;ComboItem7.Name" xml:space="preserve">
-    <value>ComboItem7</value>
-  </data>
-  <data name="&gt;&gt;ComboItem7.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboItem8.Name" xml:space="preserve">
-    <value>ComboItem8</value>
-  </data>
-  <data name="&gt;&gt;ComboItem8.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboItem1.Name" xml:space="preserve">
-    <value>ComboItem1</value>
-  </data>
-  <data name="&gt;&gt;ComboItem1.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboItem2.Name" xml:space="preserve">
-    <value>ComboItem2</value>
-  </data>
-  <data name="&gt;&gt;ComboItem2.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ComboItem3.Name" xml:space="preserve">
-    <value>ComboItem3</value>
-  </data>
-  <data name="&gt;&gt;ComboItem3.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabItem1.Name" xml:space="preserve">
-    <value>TabItem1</value>
-  </data>
-  <data name="&gt;&gt;TabItem1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabItem4.Name" xml:space="preserve">
-    <value>TabItem4</value>
-  </data>
-  <data name="&gt;&gt;TabItem4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabItem2.Name" xml:space="preserve">
-    <value>TabItem2</value>
-  </data>
-  <data name="&gt;&gt;TabItem2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabItem3.Name" xml:space="preserve">
-    <value>TabItem3</value>
-  </data>
-  <data name="&gt;&gt;TabItem3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
   <data name="&gt;&gt;ComboItem6.Name" xml:space="preserve">
     <value>ComboItem6</value>
   </data>
   <data name="&gt;&gt;ComboItem6.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboItem9.Name" xml:space="preserve">
     <value>ComboItem9</value>
   </data>
   <data name="&gt;&gt;ComboItem9.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboItem10.Name" xml:space="preserve">
     <value>ComboItem10</value>
   </data>
   <data name="&gt;&gt;ComboItem10.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboItem7.Name" xml:space="preserve">
+    <value>ComboItem7</value>
+  </data>
+  <data name="&gt;&gt;ComboItem7.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboItem8.Name" xml:space="preserve">
+    <value>ComboItem8</value>
+  </data>
+  <data name="&gt;&gt;ComboItem8.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboItem1.Name" xml:space="preserve">
+    <value>ComboItem1</value>
+  </data>
+  <data name="&gt;&gt;ComboItem1.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboItem2.Name" xml:space="preserve">
+    <value>ComboItem2</value>
+  </data>
+  <data name="&gt;&gt;ComboItem2.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboItem3.Name" xml:space="preserve">
+    <value>ComboItem3</value>
+  </data>
+  <data name="&gt;&gt;ComboItem3.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;TabItem1.Name" xml:space="preserve">
+    <value>TabItem1</value>
+  </data>
+  <data name="&gt;&gt;TabItem1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;TabItem4.Name" xml:space="preserve">
+    <value>TabItem4</value>
+  </data>
+  <data name="&gt;&gt;TabItem4.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;TabItem2.Name" xml:space="preserve">
+    <value>TabItem2</value>
+  </data>
+  <data name="&gt;&gt;TabItem2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;TabItem3.Name" xml:space="preserve">
+    <value>TabItem3</value>
+  </data>
+  <data name="&gt;&gt;TabItem3.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form_Settings</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
 </root>

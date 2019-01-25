@@ -18,13 +18,21 @@
                             Return Convert.ToInt32(Text)
                         Catch ex As Exception
                         End Try
+                        Try
+                            Return Convert.ToInt32(Text, 16)
+                        Catch ex As Exception
+                        End Try
                     Else
                         Try
                             Return Convert.ToInt32(Text, 16)
                         Catch ex As Exception
                         End Try
-                        Return Convert.ToInt32(Text)
+                        Try
+                            Return Convert.ToInt32(Text)
+                        Catch ex As Exception
+                        End Try
                     End If
+                    Return 0
             End Select
         Catch ex As Exception
             Return DefaultValue

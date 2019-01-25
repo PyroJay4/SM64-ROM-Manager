@@ -2,6 +2,8 @@
 Imports SM64_ROM_Manager.SettingsManager
 Imports TextValueConverter
 Imports Publics
+Imports DevComponents.Editors
+Imports S3DFileParser
 
 Public Class Form_Settings
 
@@ -9,11 +11,25 @@ Public Class Form_Settings
 
         ' Dieser Aufruf ist für den Designer erforderlich.
         InitializeComponent()
-        Me.UpdateAmbientColors
+        UpdateAmbientColors
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
         'StyleManager.UpdateAmbientColors(Me)
-        ComboBoxEx_LoaderModule.Items.AddRange([Enum].GetNames(GetType(S3DFileParser.LoaderModule)))
+
+        'ComboBoxEx_LoaderModule.Items.AddRange([Enum].GetNames(GetType(S3DFileParser.LoaderModule)))
+        For Each lm In GetAllLoaderModules
+            Dim item As New ComboItem With {
+                .Text = lm.Name,
+                .Tag = lm}
+            ComboBoxEx_LoaderModule.Items.Add(item)
+        Next
+
+        For Each lm In GetAllExporterModules
+            Dim item As New ComboItem With {
+                .Text = lm.Name,
+                .Tag = lm}
+            ComboBoxEx_ExporterModule.Items.Add(item)
+        Next
 
     End Sub
 
@@ -23,8 +39,21 @@ Public Class Form_Settings
         ComboBox_DefaultValueType.SelectedIndex = Settings.General.IntegerValueMode
         ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex = Settings.AreaEditor.DefaultCameraMode
         ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = If(Settings.AreaEditor.DefaultWindowMode = FormWindowState.Maximized, 1, 0)
-        ComboBoxEx_LoaderModule.SelectedIndex = Settings.FileParser.LoaderModule
         TextBoxX_HexEditorCustomPath.Text = Settings.General.HexEditMode.CustomPath
+
+        Dim curLoaderModule As File3DLoaderModule = GetLoaderModuleFromID(Settings.FileParser.FileLoaderModule)
+        For Each item As ComboItem In ComboBoxEx_LoaderModule.Items
+            If item.Tag Is curLoaderModule Then
+                ComboBoxEx_LoaderModule.SelectedItem = item
+            End If
+        Next
+
+        Dim curExporterModule As File3DLoaderModule = GetExporterModuleFromID(Settings.FileParser.FileExporterModule)
+        For Each item As ComboItem In ComboBoxEx_ExporterModule.Items
+            If item.Tag Is curExporterModule Then
+                ComboBoxEx_ExporterModule.SelectedItem = item
+            End If
+        Next
 
         Select Case Settings.General.ActionIfUpdatePatches
             Case DialogResult.None
@@ -58,7 +87,9 @@ Public Class Form_Settings
         Settings.General.AutoUpdates = SwitchButton_SearchUpdates.Value
         Settings.AreaEditor.DefaultCameraMode = ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex
         Settings.AreaEditor.DefaultWindowMode = If(ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = 1, FormWindowState.Maximized, FormWindowState.Normal)
-        Settings.FileParser.LoaderModule = ComboBoxEx_LoaderModule.SelectedIndex
+
+        Settings.FileParser.FileLoaderModule = GetLoaderIDFromModule(CType(ComboBoxEx_LoaderModule.SelectedItem, ComboItem).Tag)
+        Settings.FileParser.FileExporterModule = GetExporterIDFromModule(CType(ComboBoxEx_ExporterModule.SelectedItem, ComboItem).Tag)
 
         Select Case ComboBoxEx1.SelectedIndex
             Case 0

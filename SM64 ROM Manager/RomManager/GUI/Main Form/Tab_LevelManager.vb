@@ -6,6 +6,7 @@ Imports ModelConverterGUI
 Imports S3DFileParser
 Imports SM64_ROM_Manager.LevelEditor
 Imports SM64_ROM_Manager.My.Resources
+Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib
 Imports SM64Lib.Levels.Script.Commands
 Imports SM64Lib.Model
@@ -146,7 +147,7 @@ Public Class Tab_LevelManager
         If frm.ShowDialog <> DialogResult.OK Then Return
 
         RomMgr.AddLevel(frm.SelectedLevel.ID)
-        RomMgr.Levels.Last.ActSelector = (frm.SelectedLevel.Type = LevelInfoDataTabelList.LevelTypes.Level)
+        RomMgr.Levels.Last.ActSelector = (frm.SelectedLevel.Type = Levels.LevelInfoDataTabelList.LevelTypes.Level)
 
         Dim btn As New ButtonItem With {.Checked = False, .Text = RomMgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = frm.SelectedLevel.ID).Name}
         ListBoxAdv_LM_Levels.Items.Add(btn)
@@ -757,7 +758,7 @@ Public Class Tab_LevelManager
         If frm.ShowDialog <> DialogResult.OK Then Return
 
         RomMgr.ChangeLevelID(CurrentLevel, frm.SelectedLevel.ID,
-                             frm.SelectedLevel.Type = LevelInfoDataTabelList.LevelTypes.Level)
+                             frm.SelectedLevel.Type = Levels.LevelInfoDataTabelList.LevelTypes.Level)
 
         CType(ListBoxAdv_LM_Levels.SelectedItem, BaseItem).Text = frm.SelectedLevel.Name
     End Sub
@@ -772,7 +773,7 @@ Public Class Tab_LevelManager
             Dim mdl As Object3D = Await LoadAreaVisualMapAsObject3DAsync(RomMgr, CurrentArea)
 
             MainForm.StatusText = Form_Main_Resources.Status_ExportingModel
-            Publics.Publics.ExportModel(mdl, LoaderModule.SimpleFileParser)
+            Publics.Publics.ExportModel(mdl, Publics.GetExporterModuleFromID(Settings.FileParser.FileExporterModule))
 
             MainForm.StatusText = ""
         End If
@@ -784,7 +785,7 @@ Public Class Tab_LevelManager
             Dim mdl As Object3D = Await CurrentArea.AreaModel.Collision.ToObject3DAsync
 
             MainForm.StatusText = Form_Main_Resources.Status_ExportingModel
-            Publics.Publics.ExportModel(mdl, LoaderModule.SimpleFileParser)
+            Publics.Publics.ExportModel(mdl, Publics.GetExporterModuleFromID(Settings.FileParser.FileExporterModule))
 
             MainForm.StatusText = ""
         End If
@@ -858,7 +859,7 @@ Public Class Tab_LevelManager
         frm.ValueTextBox.Text = TextFromValue(CurrentLevel.bank0x19.Length)
 
         Dim [continue] As Boolean = True
-        Dim minSize As UInteger = SM64Lib.RomManager.ManagerSettings.defaultLevelscriptSize
+        Dim minSize As UInteger = RomManagerSettings.DefaultLevelscriptSize
 
         Do While [continue]
             If frm.ShowDialog = DialogResult.OK Then

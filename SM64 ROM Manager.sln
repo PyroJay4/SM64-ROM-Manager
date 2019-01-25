@@ -37,6 +37,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PatchScripts", "PatchScript
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ApplyPPF", "ApplyPPF\ApplyPPF.vbproj", "{34873A8F-D8DF-4C98-B290-2EE3E64AEA1F}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PluginCenter", "PatchHelper\PluginCenter.vbproj", "{5044EF07-04A7-45AF-AA3A-D261D7123A66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -251,6 +253,18 @@ Global
 		{34873A8F-D8DF-4C98-B290-2EE3E64AEA1F}.Release|x64.Build.0 = Release|Any CPU
 		{34873A8F-D8DF-4C98-B290-2EE3E64AEA1F}.Release|x86.ActiveCfg = Release|Any CPU
 		{34873A8F-D8DF-4C98-B290-2EE3E64AEA1F}.Release|x86.Build.0 = Release|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Debug|x64.Build.0 = Debug|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Debug|x86.Build.0 = Debug|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Release|x64.ActiveCfg = Release|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Release|x64.Build.0 = Release|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Release|x86.ActiveCfg = Release|Any CPU
+		{5044EF07-04A7-45AF-AA3A-D261D7123A66}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

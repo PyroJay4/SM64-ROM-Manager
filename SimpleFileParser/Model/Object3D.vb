@@ -28,62 +28,62 @@ Public Class Object3D
         Next
     End Sub
 
-    Shared Function FromFile(fileName As String, LoadMaterials As Boolean, UpAxis As UpAxis, modul As LoaderModule) As Object3D
-        Select Case modul
-            Case LoaderModule.SimpleFileParser
+    'Shared Function FromFile(fileName As String, LoadMaterials As Boolean, UpAxis As UpAxis, modul As LoaderModule) As Object3D
+    '    Select Case modul
+    '        Case LoaderModule.SimpleFileParser
 
-                Select Case Path.GetExtension(fileName).ToLower
-                    Case ".obj"
-                        Return Obj.ObjFile.FromFile(fileName, LoadMaterials, UpAxis)
-                    Case Else
-                        Throw New FormatException
-                End Select
+    '            Select Case Path.GetExtension(fileName).ToLower
+    '                Case ".obj"
+    '                    Return Obj.ObjFile.FromFile(fileName, LoadMaterials, UpAxis)
+    '                Case Else
+    '                    Throw New FormatException
+    '            End Select
 
-            Case LoaderModule.Assimp
+    '        Case LoaderModule.Assimp
 
-                Publics.LoadAssimpLibs()
-                Return AssimpLoader.AssimpLoader.FromFile(fileName, LoadMaterials, UpAxis)
+    '            Publics.LoadAssimpLibs()
+    '            Return AssimpLoader.AssimpLoader.FromFile(fileName, LoadMaterials, UpAxis)
 
-            Case LoaderModule.Aspose
+    '        Case LoaderModule.Aspose
 
-                Return Aspose3DLoader.FromFile(fileName, LoadMaterials, UpAxis)
+    '            Return Aspose3DLoader.FromFile(fileName, LoadMaterials, UpAxis)
 
-            Case Else
-                Return Nothing
+    '        Case Else
+    '            Return Nothing
 
-        End Select
-    End Function
+    '    End Select
+    'End Function
 
-    Shared Function FromFileAsync(fileName As String, LoadMaterials As Boolean, UpAxis As UpAxis, modul As LoaderModule) As Task(Of Object3D)
-        Dim t As New Task(Of Object3D)(Function() FromFile(fileName, LoadMaterials, UpAxis, modul))
-        t.Start()
-        Return t
-    End Function
+    'Shared Function FromFileAsync(fileName As String, LoadMaterials As Boolean, UpAxis As UpAxis, modul As LoaderModule) As Task(Of Object3D)
+    '    Dim t As New Task(Of Object3D)(Function() FromFile(fileName, LoadMaterials, UpAxis, modul))
+    '    t.Start()
+    '    Return t
+    'End Function
 
-    Public Sub ToFile(fileName As String, modul As LoaderModule)
-        Select Case modul
-            Case LoaderModule.SimpleFileParser
+    'Public Sub ToFile(fileName As String, modul As LoaderModule)
+    '    Select Case modul
+    '        Case LoaderModule.SimpleFileParser
 
-                ObjFile.ToFile(fileName, Me)
+    '            ObjFile.ToFile(fileName, Me)
 
-            Case LoaderModule.Assimp
+    '        Case LoaderModule.Assimp
 
-                Publics.LoadAssimpLibs()
-                AssimpLoader.AssimpLoader.ToFile(fileName, Me)
+    '            Publics.LoadAssimpLibs()
+    '            AssimpLoader.AssimpLoader.ToFile(fileName, Me)
 
-            Case LoaderModule.Aspose
+    '        Case LoaderModule.Aspose
 
-                Throw New NotImplementedException
-                '...
+    '            Throw New NotImplementedException
+    '            '...
 
-        End Select
-    End Sub
+    '    End Select
+    'End Sub
 
-    Public Function ToFileAsync(fileName As String, modul As LoaderModule) As Task
-        Dim t As New Task(Sub() ToFile(fileName, modul))
-        t.Start()
-        Return t
-    End Function
+    'Public Function ToFileAsync(fileName As String, modul As LoaderModule) As Task
+    '    Dim t As New Task(Sub() ToFile(fileName, modul))
+    '    t.Start()
+    '    Return t
+    'End Function
 
     Public Function GetBoundaries() As ModelBoundaries
         Dim maxX As Single? = Nothing
@@ -377,8 +377,8 @@ Public Enum UpAxis
     Z
 End Enum
 
-Public Enum LoaderModule
-    SimpleFileParser
-    Assimp
-    Aspose
-End Enum
+'Public Enum LoaderModule
+'    SimpleFileParser
+'    Assimp
+'    Aspose
+'End Enum

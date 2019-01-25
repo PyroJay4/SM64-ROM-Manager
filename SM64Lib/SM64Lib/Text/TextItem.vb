@@ -68,10 +68,10 @@ Namespace Global.SM64Lib.Text
 
         Public Property Text As String
             Get
-                Return Encoding.GetString(TextBytes)
+                Return TextEncoding.GetString(TextBytes)
             End Get
             Set(value As String)
-                TextBytes = Encoding.GetBytes(value)
+                TextBytes = TextEncoding.GetBytes(value)
             End Set
         End Property
 

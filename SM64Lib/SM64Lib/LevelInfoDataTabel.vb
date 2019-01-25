@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports Newtonsoft.Json.Linq
 
-Namespace Global.SM64Lib
+Namespace Global.SM64Lib.Levels
 
     Public Class LevelInfoDataTabelList
         Inherits List(Of Level)

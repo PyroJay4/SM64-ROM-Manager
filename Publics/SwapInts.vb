@@ -36,9 +36,10 @@
         Return BitConverter.ToUInt64(bytes, 0)
     End Function
 
-    Shared Function SwapFloat32(value As Single) As Single
+    Shared Function SwapSingle(value As Single) As Single
         Dim bytes As Byte() = BitConverter.GetBytes(value)
         Array.Reverse(bytes)
         Return BitConverter.ToSingle(bytes, 0)
     End Function
+
 End Class

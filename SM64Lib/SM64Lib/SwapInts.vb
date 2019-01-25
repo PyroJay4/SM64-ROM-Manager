@@ -1,5 +1,6 @@
-﻿Namespace Global.SM64Lib
-    Public Class SwapInts
+﻿Namespace Global.SM64Lib.ExtensionFeatures
+
+    Friend Class SwapInts
 
         Shared Function SwapInt16(ByVal value As Int16) As Int16
             Dim bytes() As Byte = BitConverter.GetBytes(value)
