@@ -23,6 +23,7 @@ Public Class ModelPreview
     Private pressedKeys As New List(Of Keys)
     Private WithEvents glControl1 As GLControl
     Private curScale As Single = 500.0F
+    Private isDeactivated As Boolean = False
 
     Private ReadOnly Property IsStrgPressed As Boolean
         Get
@@ -64,6 +65,7 @@ Public Class ModelPreview
         Me.glControl1.VSync = False
         Me.PanelEx1.Controls.Add(Me.glControl1)
         Me.ResumeLayout(False)
+        AddHandler System.Windows.Media.CompositionTarget.Rendering, AddressOf CompositionTarget_Rendering
 
         obj3d = obj
         curScale = scale
@@ -100,6 +102,22 @@ Public Class ModelPreview
         GL.AlphaFunc(AlphaFunction.Gequal, 0.5F)
 
         GL.Enable(EnableCap.CullFace)
+    End Sub
+
+    Private Sub Form_AreaEditor_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        If isDeactivated Then
+            isDeactivated = False
+        End If
+    End Sub
+
+    Private Sub Form_AreaEditor_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
+        isDeactivated = True
+    End Sub
+
+    Private Sub CompositionTarget_Rendering(sender As Object, e As EventArgs)
+        If Not isDeactivated Then
+            glControl1.Invalidate()
+        End If
     End Sub
 
     Private Sub glControl1_Paint(sender As Object, e As PaintEventArgs) Handles glControl1.Paint

@@ -190,10 +190,12 @@ Namespace Global.SM64Lib.Objects
         End Sub
 
         Private Sub WritePositionAsShort(rom As BinaryRom, position As Vector3, offset As Integer)
+            rom.Position = offset
             rom.Write(CShort(position.X))
             rom.Write(CShort(position.Y))
             rom.Write(CShort(position.Z))
         End Sub
+
         Private Sub WritePositionAsSingle(rom As BinaryRom, position As Vector3, offset As Integer)
             rom.Position = offset
             rom.Write(position.X)
