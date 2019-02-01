@@ -101,17 +101,18 @@ Public Class PatchingManager
         Return script
     End Function
 
-    Public Sub Patch(script As PatchScript, rommgr As RomManager, assemblyPath As String, owner As IWin32Window)
-        Patch(script, rommgr?.RomFile, rommgr, assemblyPath, owner)
+    Public Sub Patch(script As PatchScript, assemblyPath As String, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
+        Patch(script, Nothing, "", owner, params)
     End Sub
 
-    Public Sub Patch(script As PatchScript, romfile As String, assemblyPath As String, owner As IWin32Window)
-        Patch(script, romfile, Nothing, assemblyPath, owner)
-    End Sub
-
-    Private Sub Patch(script As PatchScript, romfile As String, rommgr As RomManager, assemblyPath As String, owner As IWin32Window)
+    Public Sub Patch(script As PatchScript, rommgr As RomManager, assemblyPath As String, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
         If script Is Nothing Then
             Throw New ArgumentNullException(NameOf(script))
+        End If
+
+        Dim romfile As String = ""
+        If params Is Nothing OrElse Not params.TryGetValue("romfile", romfile) Then
+            romfile = rommgr.RomFile
         End If
 
         Select Case script.Type
@@ -270,7 +271,7 @@ Public Class PatchingManager
             Case ScriptType.VisualBasic, ScriptType.CSharp
                 Dim assembly As Assembly = GetAssembly(script)
                 If assembly IsNot Nothing Then
-                    ExecuteScript(assembly, romfile)
+                    ExecuteScript(assembly, params)
                 End If
 
         End Select
@@ -338,17 +339,22 @@ Public Class PatchingManager
         End If
     End Function
 
-    Public Sub ExecuteScript(assembly As Assembly, romFile As String)
+    Public Sub ExecuteScript(assembly As Assembly, params As IReadOnlyDictionary(Of String, Object))
         Dim main As MethodInfo = assembly.GetType("Script")?.GetMethod("Main", BindingFlags.Static Or BindingFlags.Public Or BindingFlags.NonPublic)
         Dim fs As FileStream = Nothing
         Dim param As Object() = {Nothing}
         Dim paraminfo As ParameterInfo() = main.GetParameters
+        Dim romfile As String = ""
 
-        If paraminfo.Length = 1 AndAlso paraminfo(0).ParameterType = GetType(Stream) AndAlso Not String.IsNullOrEmpty(romFile) Then
-            fs = New FileStream(romFile, FileMode.Open, FileAccess.ReadWrite)
+        params.TryGetValue("romfile", romfile)
+
+        If paraminfo.Length = 1 AndAlso paraminfo(0).ParameterType = GetType(Stream) AndAlso Not String.IsNullOrEmpty(romfile) Then
+            fs = New FileStream(romfile, FileMode.Open, FileAccess.ReadWrite)
             param = {fs}
         ElseIf paraminfo.Length = 1 AndAlso paraminfo(0).ParameterType = GetType(String) Then
-            param = {romFile}
+            param = {romfile}
+        ElseIf paraminfo.Length = 1 AndAlso paraminfo(0).ParameterType = GetType(IReadOnlyDictionary(Of String, Object)) Then
+            param = {params}
         End If
 
         If main IsNot Nothing Then

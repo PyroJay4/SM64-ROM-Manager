@@ -33,6 +33,12 @@ Partial Class Form_Settings
         Me.ComboBox_AreaEditor_DefaultCameraMode = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.TabControl2 = New DevComponents.DotNetBar.TabControl()
+        Me.TabControlPanel_LoaderModules = New DevComponents.DotNetBar.TabControlPanel()
+        Me.ComboBoxEx_ExporterModule = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
+        Me.ComboBoxEx_LoaderModule = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.TabItem4 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
         Me.ComboBoxEx_AutoScaleMode = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.ComboItem6 = New DevComponents.Editors.ComboItem()
@@ -56,21 +62,15 @@ Partial Class Form_Settings
         Me.TextBoxX_EmulatorPatch = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.TabItem1 = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabControlPanel_LoaderModules = New DevComponents.DotNetBar.TabControlPanel()
-        Me.ComboBoxEx_LoaderModule = New DevComponents.DotNetBar.Controls.ComboBoxEx()
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
-        Me.TabItem4 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
         Me.TabItem2 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel3 = New DevComponents.DotNetBar.TabControlPanel()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.TabItem3 = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.ComboBoxEx_ExporterModule = New DevComponents.DotNetBar.Controls.ComboBoxEx()
-        Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl2.SuspendLayout()
-        Me.TabControlPanel1.SuspendLayout()
         Me.TabControlPanel_LoaderModules.SuspendLayout()
+        Me.TabControlPanel1.SuspendLayout()
         Me.TabControlPanel2.SuspendLayout()
         Me.TabControlPanel3.SuspendLayout()
         Me.SuspendLayout()
@@ -174,8 +174,8 @@ Partial Class Form_Settings
         '
         Me.TabControl2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControl2.CanReorderTabs = False
-        Me.TabControl2.Controls.Add(Me.TabControlPanel_LoaderModules)
         Me.TabControl2.Controls.Add(Me.TabControlPanel1)
+        Me.TabControl2.Controls.Add(Me.TabControlPanel_LoaderModules)
         Me.TabControl2.Controls.Add(Me.TabControlPanel2)
         Me.TabControl2.Controls.Add(Me.TabControlPanel3)
         resources.ApplyResources(Me.TabControl2, "TabControl2")
@@ -189,6 +189,71 @@ Partial Class Form_Settings
         Me.TabControl2.Tabs.Add(Me.TabItem3)
         Me.TabControl2.Tabs.Add(Me.TabItem2)
         Me.TabControl2.Tabs.Add(Me.TabItem4)
+        '
+        'TabControlPanel_LoaderModules
+        '
+        Me.TabControlPanel_LoaderModules.Controls.Add(Me.ComboBoxEx_ExporterModule)
+        Me.TabControlPanel_LoaderModules.Controls.Add(Me.LabelX8)
+        Me.TabControlPanel_LoaderModules.Controls.Add(Me.ComboBoxEx_LoaderModule)
+        Me.TabControlPanel_LoaderModules.Controls.Add(Me.LabelX2)
+        Me.TabControlPanel_LoaderModules.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel_LoaderModules, "TabControlPanel_LoaderModules")
+        Me.TabControlPanel_LoaderModules.Name = "TabControlPanel_LoaderModules"
+        Me.TabControlPanel_LoaderModules.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel_LoaderModules.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.TabControlPanel_LoaderModules.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel_LoaderModules.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+        Me.TabControlPanel_LoaderModules.Style.GradientAngle = 90
+        Me.TabControlPanel_LoaderModules.TabItem = Me.TabItem4
+        '
+        'ComboBoxEx_ExporterModule
+        '
+        resources.ApplyResources(Me.ComboBoxEx_ExporterModule, "ComboBoxEx_ExporterModule")
+        Me.ComboBoxEx_ExporterModule.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ComboBoxEx_ExporterModule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEx_ExporterModule.ForeColor = System.Drawing.Color.Black
+        Me.ComboBoxEx_ExporterModule.FormattingEnabled = True
+        Me.ComboBoxEx_ExporterModule.Name = "ComboBoxEx_ExporterModule"
+        Me.ComboBoxEx_ExporterModule.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'LabelX8
+        '
+        Me.LabelX8.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX8, "LabelX8")
+        Me.LabelX8.Name = "LabelX8"
+        Me.LabelX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
+        '
+        'ComboBoxEx_LoaderModule
+        '
+        resources.ApplyResources(Me.ComboBoxEx_LoaderModule, "ComboBoxEx_LoaderModule")
+        Me.ComboBoxEx_LoaderModule.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ComboBoxEx_LoaderModule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEx_LoaderModule.ForeColor = System.Drawing.Color.Black
+        Me.ComboBoxEx_LoaderModule.FormattingEnabled = True
+        Me.ComboBoxEx_LoaderModule.Name = "ComboBoxEx_LoaderModule"
+        Me.ComboBoxEx_LoaderModule.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX2, "LabelX2")
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
+        '
+        'TabItem4
+        '
+        Me.TabItem4.AttachedControl = Me.TabControlPanel_LoaderModules
+        Me.TabItem4.Name = "TabItem4"
+        resources.ApplyResources(Me.TabItem4, "TabItem4")
         '
         'TabControlPanel1
         '
@@ -407,49 +472,6 @@ Partial Class Form_Settings
         Me.TabItem1.Name = "TabItem1"
         resources.ApplyResources(Me.TabItem1, "TabItem1")
         '
-        'TabControlPanel_LoaderModules
-        '
-        Me.TabControlPanel_LoaderModules.Controls.Add(Me.ComboBoxEx_ExporterModule)
-        Me.TabControlPanel_LoaderModules.Controls.Add(Me.LabelX8)
-        Me.TabControlPanel_LoaderModules.Controls.Add(Me.ComboBoxEx_LoaderModule)
-        Me.TabControlPanel_LoaderModules.Controls.Add(Me.LabelX2)
-        Me.TabControlPanel_LoaderModules.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel_LoaderModules, "TabControlPanel_LoaderModules")
-        Me.TabControlPanel_LoaderModules.Name = "TabControlPanel_LoaderModules"
-        Me.TabControlPanel_LoaderModules.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel_LoaderModules.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel_LoaderModules.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
-        Me.TabControlPanel_LoaderModules.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-        Me.TabControlPanel_LoaderModules.Style.GradientAngle = 90
-        Me.TabControlPanel_LoaderModules.TabItem = Me.TabItem4
-        '
-        'ComboBoxEx_LoaderModule
-        '
-        resources.ApplyResources(Me.ComboBoxEx_LoaderModule, "ComboBoxEx_LoaderModule")
-        Me.ComboBoxEx_LoaderModule.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.ComboBoxEx_LoaderModule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxEx_LoaderModule.ForeColor = System.Drawing.Color.Black
-        Me.ComboBoxEx_LoaderModule.FormattingEnabled = True
-        Me.ComboBoxEx_LoaderModule.Name = "ComboBoxEx_LoaderModule"
-        '
-        'LabelX2
-        '
-        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX2, "LabelX2")
-        Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        '
-        'TabItem4
-        '
-        Me.TabItem4.AttachedControl = Me.TabControlPanel_LoaderModules
-        Me.TabItem4.Name = "TabItem4"
-        resources.ApplyResources(Me.TabItem4, "TabItem4")
-        '
         'TabControlPanel2
         '
         Me.TabControlPanel2.Controls.Add(Me.LabelX6)
@@ -502,26 +524,6 @@ Partial Class Form_Settings
         Me.TabItem3.Name = "TabItem3"
         resources.ApplyResources(Me.TabItem3, "TabItem3")
         '
-        'ComboBoxEx_ExporterModule
-        '
-        resources.ApplyResources(Me.ComboBoxEx_ExporterModule, "ComboBoxEx_ExporterModule")
-        Me.ComboBoxEx_ExporterModule.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.ComboBoxEx_ExporterModule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxEx_ExporterModule.ForeColor = System.Drawing.Color.Black
-        Me.ComboBoxEx_ExporterModule.FormattingEnabled = True
-        Me.ComboBoxEx_ExporterModule.Name = "ComboBoxEx_ExporterModule"
-        '
-        'LabelX8
-        '
-        Me.LabelX8.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX8, "LabelX8")
-        Me.LabelX8.Name = "LabelX8"
-        Me.LabelX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        '
         'Form_Settings
         '
         resources.ApplyResources(Me, "$this")
@@ -538,8 +540,8 @@ Partial Class Form_Settings
         Me.TopRightCornerSize = 0
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl2.ResumeLayout(False)
-        Me.TabControlPanel1.ResumeLayout(False)
         Me.TabControlPanel_LoaderModules.ResumeLayout(False)
+        Me.TabControlPanel1.ResumeLayout(False)
         Me.TabControlPanel2.ResumeLayout(False)
         Me.TabControlPanel3.ResumeLayout(False)
         Me.ResumeLayout(False)

@@ -90,7 +90,9 @@ Namespace Global.SM64Lib.Model
 
         Public ReadOnly Property Length As Integer
             Get
-                Return HexRoundUp1(Fast3DBuffer.Length) + HexRoundUp1(Collision.Length)
+                Return _
+                    If(Fast3DBuffer IsNot Nothing, HexRoundUp1(Fast3DBuffer.Length), 0) +
+                    If(Collision IsNot Nothing, HexRoundUp1(Collision.Length), 0)
             End Get
         End Property
 

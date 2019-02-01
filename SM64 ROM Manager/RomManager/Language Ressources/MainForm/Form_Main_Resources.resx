@@ -220,7 +220,7 @@
     <value>Loading ROM</value>
   </data>
   <data name="MsgBox_UnsavedChanges" xml:space="preserve">
-    <value>If there are unsaved changes left, you will lose them all.&lt;br/&gt;Do you want to save the ROM?</value>
+    <value>If there are unsaved changes left, you will lose them all.&lt;br/&gt;Do you want to save before closing?</value>
   </data>
   <data name="MsgBox_UnsavedChanges_Title" xml:space="preserve">
     <value>Unsaved changes</value>

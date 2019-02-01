@@ -1552,8 +1552,6 @@ Namespace Global.SM64Lib.SM64Convert
                     If lastMaterial IsNot mp.Material Then
                         lastMaterial = mp.Material
 
-                        ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
-
                         If lastN64Codec <> mp.Material.Type Then
                             addCmdFC(mp.Material)
                             ImpCmd03(mp.Material, importStart)
@@ -1570,6 +1568,9 @@ Namespace Global.SM64Lib.SM64Convert
                                 ImpCmd03(mp.Material, importStart)
                             End If
                         End If
+
+                        ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
+
                     End If
 
                     Dim grpOff As Integer = 0

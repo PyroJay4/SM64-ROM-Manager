@@ -371,7 +371,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die If there are unsaved changes left, you will lose them all.&lt;br/&gt;Do you want to save the ROM? ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die If there are unsaved changes left, you will lose them all.&lt;br/&gt;Do you want to save before closing? ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_UnsavedChanges() As String
             Get

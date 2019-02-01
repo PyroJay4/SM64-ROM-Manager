@@ -61,6 +61,8 @@ Partial Class ModelImporter
         Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX4 = New DevComponents.DotNetBar.ButtonX()
         Me.Flyout1 = New DevComponents.DotNetBar.Controls.Flyout(Me.components)
+        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -578,12 +580,14 @@ Partial Class ModelImporter
         '
         Me.ButtonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButtonX6.AutoExpandOnClick = True
         Me.ButtonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX6.FocusCuesEnabled = False
         Me.ButtonX6.Location = New System.Drawing.Point(3, 3)
         Me.ButtonX6.Name = "ButtonX6"
-        Me.ButtonX6.Size = New System.Drawing.Size(92, 20)
+        Me.ButtonX6.Size = New System.Drawing.Size(103, 20)
         Me.ButtonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX6.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem2})
         Me.ButtonX6.Symbol = "57680"
         Me.ButtonX6.SymbolColor = System.Drawing.Color.Goldenrod
         Me.ButtonX6.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -629,6 +633,18 @@ Partial Class ModelImporter
         Me.Flyout1.DisplayMode = DevComponents.DotNetBar.Controls.eFlyoutDisplayMode.MouseHover
         Me.Flyout1.DropShadow = False
         Me.Flyout1.TargetControl = Me.ComboBoxEx2
+        '
+        'ButtonItem1
+        '
+        Me.ButtonItem1.GlobalItem = False
+        Me.ButtonItem1.Name = "ButtonItem1"
+        Me.ButtonItem1.Text = "Script ""Before"""
+        '
+        'ButtonItem2
+        '
+        Me.ButtonItem2.GlobalItem = False
+        Me.ButtonItem2.Name = "ButtonItem2"
+        Me.ButtonItem2.Text = "Script ""After"""
         '
         'ModelImporter
         '
@@ -715,4 +731,6 @@ Partial Class ModelImporter
     Friend WithEvents Flyout1 As DevComponents.DotNetBar.Controls.Flyout
     Friend WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX2 As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem2 As DevComponents.DotNetBar.ButtonItem
 End Class

@@ -195,14 +195,15 @@ Public Class TweakScriptEditor
         CodeEditor.Text =
 "Imports Microsoft.VisualBasic
 Imports System
+Imports System.Collections.Generic
+Imports System.IO
 Imports System.Linq
 Imports System.Windows.Forms
-Imports System.IO
 Imports SM64Lib
 
 Module Script
 
-    Sub Main(romFile As String)
+    Sub Main(params as IReadOnlyDictionary(Of String, Object))
         
         
         
@@ -214,17 +215,17 @@ End Module
     Private Sub ButtonItem2_Click(sender As Object, e As EventArgs) Handles ButtonItem2.Click
         CheckBoxX_CSharpScript.Checked = True
         CodeEditor.Text =
-"using Microsoft.CSharp;
-using System;
+"using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.IO;
 using SM64Lib;
 
 class Script
 {
 
-    static void Main(string romFile)
+    static void Main(IReadOnlyDictionary<string, object> params)
     {
     
     

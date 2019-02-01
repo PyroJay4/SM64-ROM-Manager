@@ -19,9 +19,15 @@ Namespace ImporterPresets
                                               <ram_address><%= preset.RamAddress.ToString("X") %></ram_address>
                                           </preset>
 
-                If preset.Script IsNot Nothing Then
-                    Dim xscript As XElement = psmgr.ScriptToXElement(preset.Script)
-                    xscript.Name = "script"
+                If preset.ScriptAfter IsNot Nothing Then
+                    Dim xscript As XElement = psmgr.ScriptToXElement(preset.ScriptAfter)
+                    xscript.Name = "script_after"
+                    xpreset.Add(xscript)
+                End If
+
+                If preset.ScriptBefore IsNot Nothing Then
+                    Dim xscript As XElement = psmgr.ScriptToXElement(preset.ScriptBefore)
+                    xscript.Name = "script_before"
                     xpreset.Add(xscript)
                 End If
 
@@ -93,7 +99,7 @@ Namespace ImporterPresets
                         script.Name = "Extra Data"
                         script.Type = PatchScripts.ScriptType.TweakScript
                         script.Script = element.Value
-                        mainPreset.Script = script
+                        mainPreset.ScriptAfter = script
 
                     Case "preset"
                         mainPreset = Nothing
@@ -135,8 +141,11 @@ Namespace ImporterPresets
                     Case "description"
                         preset.Description = element.Value
 
-                    Case "script"
-                        preset.Script = psmgr.XElementToScript(element)
+                    Case "script", "script_after"
+                        preset.ScriptAfter = psmgr.XElementToScript(element)
+
+                    Case "script_before"
+                        preset.ScriptBefore = psmgr.XElementToScript(element)
 
                     Case "max_length"
                         preset.MaxLength = Convert.ToInt32(element.Value, 16)

@@ -1,8 +1,5 @@
-﻿Imports System.Drawing
-Imports System.Runtime.CompilerServices
+﻿Imports System.Runtime.CompilerServices
 Imports DevComponents.DotNetBar
-Imports DevComponents.DotNetBar.Controls
-Imports DevComponents.Editors
 
 Namespace Global.System.Drawing
 
@@ -20,12 +17,12 @@ Namespace Global.System.Windows.Forms
 
     Public Module Extensions
 
-        'Private ReadOnly ambientColorControlTypes() As Type = {GetType(Label), GetType(LabelX), GetType(TextBox), GetType(TextBoxX), GetType(NumericUpDown), GetType(DoubleInput), GetType(IntegerInput), GetType(ComboBox), GetType(ComboBoxEx), GetType(ListBoxAdv), GetType(ListView), GetType(ListViewEx), GetType(SwitchButton)}
+        Private ReadOnly ambientColorControlTypesBlackList() As Type = {GetType(Panel)}
 
         <Extension> Public Sub UpdateAmbientColors(c As Control)
-            'If ambientColorControlTypes.Contains(c.GetType) Then
-            StyleManager.UpdateAmbientColors(c)
-            'End If
+            If Not ambientColorControlTypesBlackList.Contains(c.GetType) Then
+                StyleManager.UpdateAmbientColors(c)
+            End If
             For Each cc As Control In c.Controls
                 UpdateAmbientColors(cc)
             Next

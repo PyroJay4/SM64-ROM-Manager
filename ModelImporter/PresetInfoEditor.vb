@@ -1,5 +1,10 @@
 Public Class InfoEditor
 
+    Public Sub New()
+        InitializeComponent()
+        UpdateAmbientColors
+    End Sub
+
     Public Property Titel As String
         Get
             Return TextBoxX1.Text

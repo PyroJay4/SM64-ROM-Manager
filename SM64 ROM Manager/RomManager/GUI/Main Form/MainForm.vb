@@ -317,6 +317,11 @@ Public Class MainForm
         editor.Show()
     End Sub
 
+    Private Sub ButtonItem16_Click(sender As Object, e As EventArgs) Handles ButtonItem16.Click
+        Dim frm As New Form_CoinsSettings(rommgr)
+        frm.Show(Me)
+    End Sub
+
 #Region "General"
 
     Friend Sub LoadRecentROMs()

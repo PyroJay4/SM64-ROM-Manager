@@ -117,75 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ButtonX_SaveSettings.Text" xml:space="preserve">
+    <value>Einstellungen speichern</value>
+  </data>
+  <data name="GroupBox4.Text" xml:space="preserve">
+    <value>3D-Münzen</value>
+  </data>
+  <data name="GroupBox3.Text" xml:space="preserve">
+    <value>Neuer Rote-Münz-Zähleranzeige (als Text)</value>
+  </data>
+  <data name="GroupBox1.Text" xml:space="preserve">
+    <value>Münzsterne</value>
+  </data>
+  <data name="ButtonX_Edit3DCoins.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="ButtonX_Remove3DCoins.Text" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="ButtonX_ImportKaze3DCoins.Text" xml:space="preserve">
+    <value>Kazes 3D-Münzen import.</value>
+  </data>
+  <data name="LabelX10.Text" xml:space="preserve">
+    <value>Aktiviert:</value>
+  </data>
+  <data name="LabelX6.Text" xml:space="preserve">
+    <value>%d = Münzzähler</value>
+  </data>
+  <data name="LabelX5.Text" xml:space="preserve">
+    <value>Münzen:</value>
+  </data>
+  <data name="LabelX1.Text" xml:space="preserve">
+    <value>Münze:</value>
+  </data>
+  <data name="LabelX9.Text" xml:space="preserve">
+    <value>Münzen können die Power aufladen:</value>
+  </data>
+  <data name="LabelX8.Text" xml:space="preserve">
+    <value>Münzanzeige in Oberwelten:</value>
+  </data>
+  <data name="LabelX7.Text" xml:space="preserve">
+    <value>100-Münz-Stern aktivieren:</value>
+  </data>
+  <data name="LabelX2.Text" xml:space="preserve">
+    <value>Münzen für normalen Roten-Münz-Stern:</value>
+  </data>
+  <data name="LabelX4.Text" xml:space="preserve">
+    <value>Münzen für Bowser-Roten-Münz-Stern:</value>
+  </data>
+  <data name="LabelX3.Text" xml:space="preserve">
+    <value>Münzen für 100-Münz-Stern:</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tabLevelManager.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="LabelItem1.Text" xml:space="preserve">
-    <value>Ready</value>
-  </data>
-  <data name="ButtonItem10.Text" xml:space="preserve">
-    <value>Music Manager</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="RibbonControl1.SystemText.QatDialogCategoriesLabel" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Bar2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 24</value>
-  </data>
-  <data name="ButtonItem3.Text" xml:space="preserve">
-    <value>Open ...</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="RibbonControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabTextManager.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="TabControlPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 546</value>
-  </data>
-  <data name="tabTextManager.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="TabItem_MusicManager.Text" xml:space="preserve">
-    <value>Music Table</value>
-  </data>
-  <data name="ButtonItem18.Text" xml:space="preserve">
-    <value>MOP Manager</value>
-  </data>
-  <data name="Bar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 628</value>
-  </data>
-  <data name="TabControlPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="TabControlPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 546</value>
-  </data>
-  <data name="TabControlPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatDialogCancelButton" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="TabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="ButtonItem_M64ToMidiConverter.Text" xml:space="preserve">
-    <value>M64 to MIDI Converter</value>
-  </data>
-  <data name="TabControlPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatAddItemText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ButtonItem23.Text" xml:space="preserve">
-    <value>Update Checksum</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAgIAAAAEAIAAoCAEAJgAAAAAAAAABACAAz6kAAE4IAQAoAAAAgAAAAAABAAABACAAAAAAAAAA
@@ -2043,295 +2026,7 @@
         +QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="tabMusicManager.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="Bar1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="TabControlPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="ButtonItem28.Text" xml:space="preserve">
-    <value>Send Message</value>
-  </data>
-  <data name="Bar1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="tabLevelManager.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 546</value>
-  </data>
-  <data name="TabControlPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="ButtonItem6.Text" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="Bar2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TabControlPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="ButtonItem30.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="ButtonItem15.Text" xml:space="preserve">
-    <value>RGB Editor</value>
-  </data>
-  <data name="TabControlPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 546</value>
-  </data>
-  <data name="tabGeneral.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 546</value>
-  </data>
-  <data name="ButtonItem_SaveRom.Text" xml:space="preserve">
-    <value>Save ROM</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatCustomizeText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="tabGeneral.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabLevelManager.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="ButtonItem11.Text" xml:space="preserve">
-    <value>Text Manager</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainForm</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>696, 650</value>
-  </data>
-  <data name="ButtonItem8.Text" xml:space="preserve">
-    <value>Level Manager</value>
-  </data>
-  <data name="Bar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>686, 20</value>
-  </data>
-  <data name="tabMusicManager.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 546</value>
-  </data>
-  <data name="Bar1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 597</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatDialogAddButton" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="TabControlPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="tabMusicManager.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ButtonItem32.Text" xml:space="preserve">
-    <value>Script Editor</value>
-  </data>
-  <data name="TabControlPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="RibbonControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="TabControlPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="TabItem_General.Text" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="TabControlPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="ButtonItem_TrajectoryEditor.Text" xml:space="preserve">
-    <value>Trajectory Editor</value>
-  </data>
-  <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="TabControlPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 546</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatDialogCaption" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ButtonItem27.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="ButtonItem5.Text" xml:space="preserve">
-    <value>Style Manager</value>
-  </data>
-  <data name="LabelItem3.Text" xml:space="preserve">
-    <value>Advanced:</value>
-  </data>
-  <data name="ButtonItem2.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="TabControlPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="Panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="LabelItem2.Text" xml:space="preserve">
-    <value>Main:</value>
-  </data>
-  <data name="tabGeneral.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ButtonItem16.Text" xml:space="preserve">
-    <value>Coin Properties</value>
-  </data>
-  <data name="ButtonItem_ModelImporter.Text" xml:space="preserve">
-    <value>Model Importer</value>
-  </data>
-  <data name="ButtonItem13.Text" xml:space="preserve">
-    <value>Star Position Editor</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatDialogPlacementCheckbox" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="TabControlPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="ButtonItem17.Text" xml:space="preserve">
-    <value>Tweaks</value>
-  </data>
-  <data name="Bar2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatPlaceBelowRibbonText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ButtonItem12.Text" xml:space="preserve">
-    <value>Tools</value>
-  </data>
-  <data name="tabLevelManager.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ButtonItem558.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatCustomizeMenuLabel" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="TabControlPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="RibbonControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>686, 30</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatRemoveItemText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 31</value>
-  </data>
-  <data name="RibbonControl1.SystemText.MaximizeRibbonText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="tabGeneral.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatDialogRemoveButton" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ButtonItem1.Text" xml:space="preserve">
-    <value>Text Converter</value>
-  </data>
-  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatPlaceAboveRibbonText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="TabItem_TextManager.Text" xml:space="preserve">
-    <value>Text Editor</value>
-  </data>
-  <data name="ButtonItem_Bar_Plugins.Text" xml:space="preserve">
-    <value>Plugins</value>
-  </data>
-  <data name="tabMusicManager.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TabItem_LevelManager.Text" xml:space="preserve">
-    <value>Level Manager</value>
-  </data>
-  <data name="tabTextManager.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 546</value>
-  </data>
-  <data name="ButtonItem9.Text" xml:space="preserve">
-    <value>Appy PPF Patch</value>
-  </data>
-  <data name="TabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 573</value>
-  </data>
-  <data name="TabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="ButtonItem6.AlternateShortCutText" xml:space="preserve">
-    <value>Alt+F4</value>
-  </data>
-  <data name="ButtonItem22.Text" xml:space="preserve">
-    <value>More</value>
-  </data>
-  <data name="ButtonItem7.Text" xml:space="preserve">
-    <value>Modules</value>
-  </data>
-  <data name="RibbonControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 1</value>
-  </data>
-  <data name="ButtonItem4.Text" xml:space="preserve">
-    <value>Model Converter</value>
-  </data>
-  <data name="Bar2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="tabTextManager.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TabControlPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="Bar2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="TabControlPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="ButtonItem25.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="RibbonControl1.SystemText.QatDialogOkButton" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="TabControlPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="RibbonControl1.SystemText.MinimizeRibbonText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ButtonItem14.Text" xml:space="preserve">
-    <value>Item Box Content Editor</value>
-  </data>
-  <data name="ButtonItem_LaunchROM.Text" xml:space="preserve">
-    <value>Launch ROM</value>
-  </data>
-  <data name="ButtonItem_Bar_EnableExpertMode.Text" xml:space="preserve">
-    <value>Enable Expert Mode</value>
-  </data>
-  <data name="ButtonItem29.Text" xml:space="preserve">
-    <value>Updates</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Münzeigenschaften</value>
   </data>
 </root>

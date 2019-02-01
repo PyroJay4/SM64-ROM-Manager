@@ -309,7 +309,7 @@ Public Class TweakViewer
         If script IsNot Nothing Then
             Try
                 Dim mgr As New PatchingManager
-                mgr.Patch(script, rommgr, "", Me)
+                mgr.Patch(script, rommgr, "", Me, New Dictionary(Of String, Object) From {{"romfile", rommgr.RomFile}, {"rommgr", rommgr}})
                 MessageBoxEx.Show(Me, "Patched successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 MessageBoxEx.Show(Me, "Error at executing the script. It probably has errors.", "Script Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

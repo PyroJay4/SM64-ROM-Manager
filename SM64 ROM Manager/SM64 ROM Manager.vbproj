@@ -359,6 +359,16 @@
     <Compile Include="RomManager\GUI\Tools\TrajectoryEditor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RomManager\Language Ressources\Coins Properties\LangResCoinsManager.de.Designer.vb">
+      <DependentUpon>LangResCoinsManager.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RomManager\Language Ressources\Coins Properties\LangResCoinsManager.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LangResCoinsManager.resx</DependentUpon>
+    </Compile>
     <Compile Include="RomManager\Language Ressources\MainForm\Form_Main_Resources.de.Designer.vb">
       <DependentUpon>Form_Main_Resources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -518,6 +528,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MyIcons.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Coins Settings\Coins Settings.de.resx">
+      <DependentUpon>Coins Settings.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Coins Settings\Coins Settings.resx">
       <DependentUpon>Coins Settings.vb</DependentUpon>
     </EmbeddedResource>
@@ -613,6 +626,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\TrajectoryEditor.resx">
       <DependentUpon>TrajectoryEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\Language Ressources\Coins Properties\LangResCoinsManager.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangResCoinsManager.de.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\Language Ressources\Coins Properties\LangResCoinsManager.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangResCoinsManager.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\Language Ressources\Global\Global_Ressources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>

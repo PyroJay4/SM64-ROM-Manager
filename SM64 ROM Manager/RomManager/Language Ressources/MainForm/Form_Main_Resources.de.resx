@@ -220,7 +220,7 @@
     <value>ROM laden</value>
   </data>
   <data name="MsgBox_UnsavedChanges" xml:space="preserve">
-    <value>Wenn Änderungen noch nicht gepspeichert wurde, gehen diese verloren.&lt;br/&gt;Möchtest du die ROM jetzt speichern?</value>
+    <value>Wenn Änderungen noch nicht gepspeichert wurde, gehen diese verloren.&lt;br/&gt;Möchtest du jetzt speichern?</value>
   </data>
   <data name="MsgBox_UnsavedChanges_Title" xml:space="preserve">
     <value>Nicht gespeicherte Änderungen</value>

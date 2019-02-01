@@ -121,7 +121,7 @@ Public Module Publics
         Else
             For Each m In modules
                 If m.Name = moduleID Then
-                    Return modules
+                    Return m
                 End If
             Next
         End If

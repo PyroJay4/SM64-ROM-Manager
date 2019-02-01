@@ -132,11 +132,11 @@ Public Class File3DLoaderModule
         Return Aspose3DLoader.FromFile(fileName, options.LoadMaterials, options.UpAxis)
     End Function
 
-    Private Shared Sub ExportViaSimpleFileParser(o As Object, fileName As String)
-        o.ObjFile.ToFile(fileName, o)
+    Private Shared Sub ExportViaSimpleFileParser(o As Object3D, fileName As String)
+        Obj.ObjFile.ToFile(fileName, o)
     End Sub
 
-    Private Shared Sub ExportViaAssimp(o As Object, fileName As String)
+    Private Shared Sub ExportViaAssimp(o As Object3D, fileName As String)
         Publics.LoadAssimpLibs()
         AssimpLoader.AssimpLoader.ToFile(fileName, o)
     End Sub

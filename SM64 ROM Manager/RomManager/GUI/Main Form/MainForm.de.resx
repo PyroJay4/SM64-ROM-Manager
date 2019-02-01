@@ -120,14 +120,14 @@
   <data name="TabItem_General.Text" xml:space="preserve">
     <value>Allgemein</value>
   </data>
+  <data name="TabItem_LevelManager.Text" xml:space="preserve">
+    <value>Level-Manager</value>
+  </data>
   <data name="TabItem_MusicManager.Text" xml:space="preserve">
     <value>Music-Table</value>
   </data>
   <data name="TabItem_TextManager.Text" xml:space="preserve">
     <value>Text-Editor</value>
-  </data>
-  <data name="TabItem_LevelManager.Text" xml:space="preserve">
-    <value>Level-Manager</value>
   </data>
   <data name="ButtonItem3.Text" xml:space="preserve">
     <value>Öffnen ...</value>
@@ -171,6 +171,9 @@
   <data name="ButtonItem13.Text" xml:space="preserve">
     <value>Sternposition-Editor</value>
   </data>
+  <data name="ButtonItem16.Text" xml:space="preserve">
+    <value>Münzeigenschaften</value>
+  </data>
   <data name="ButtonItem7.Text" xml:space="preserve">
     <value>Module</value>
   </data>
@@ -191,9 +194,6 @@
   </data>
   <data name="ButtonItem12.Text" xml:space="preserve">
     <value>Werkzeug</value>
-  </data>
-  <data name="ButtonItem31.Text" xml:space="preserve">
-    <value>Erweiterungen verwalten</value>
   </data>
   <data name="ButtonItem_Bar_Plugins.Text" xml:space="preserve">
     <value>Erweiterungen</value>

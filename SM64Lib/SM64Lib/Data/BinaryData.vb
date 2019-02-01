@@ -136,6 +136,12 @@ Namespace Global.SM64Lib.Data
             Reader.Read(buffer, index, count)
         End Sub
 
+        Public Function Read(count As Integer) As Byte()
+            Dim buf As Byte() = New Byte(count - 1) {}
+            Read(buf, 0, count)
+            Return buf
+        End Function
+
         Public Sub Close()
             BaseStream.Close()
         End Sub

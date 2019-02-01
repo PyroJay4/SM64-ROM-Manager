@@ -43,6 +43,7 @@ Public Class ModelImporter
         End If
 
         UpdateAmbientColors()
+        Panel1.BackColor = BackColor
 
         ComboBoxEx1.Items.Clear()
         Dim layers As String() = [Enum].GetNames(GetType(Geolayer))
@@ -92,15 +93,36 @@ Public Class ModelImporter
 
     Private Sub ButtonX_ImportMdl_Click(sender As Object, e As EventArgs) Handles ButtonX_ImportMdl.Click
         ButtonX_ImportMdl.Symbol = ""
-        Dim preset As ImporterPreset = SelectedPreset()
 
+        Dim preset As ImporterPreset = SelectedPreset()
         Dim romAddr As Integer = preset.RomAddress 'ValueFromText(TextBoxX_RomAddr.Text)
         Dim bankAddr As Integer = preset.RamAddress 'ValueFromText(TextBoxX_BankAddr.Text)
         Dim maxLength As Integer = preset.MaxLength 'ValueFromText(TextBoxX_MaxLength.Text)
+        Dim pm As New PatchScripts.PatchingManager
+        Dim scriptparams As New Dictionary(Of String, Object) From {
+            {"romfile", RomFile},
+            {"presetName", preset.Name},
+            {"presetDescription", preset.Description},
+            {"RomAddress", preset.RomAddress},
+            {"RamAddress", preset.RamAddress},
+            {"MaxLength", preset.MaxLength},
+            {"CollisionPointersArray", preset.CollisionPointers.ToArray},
+            {"GeoPointersArray", preset.GeometryPointers.ToArray},
+            {"ConvertedModelLength", mdl.Length},
+            {"ConvertedModel", mdl}
+        }
 
         If maxLength > 0 AndAlso mdl.Length > maxLength Then
             MessageBoxEx.Show("Model is bigger then the max allowed length!", "Model too big", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
+        End If
+
+        ClearOutput()
+
+        'Execute Script Before
+        If preset.ScriptBefore IsNot Nothing AndAlso Not String.IsNullOrEmpty(preset.ScriptBefore.Script) Then
+            WriteOutput("Executing Script ...")
+            pm.Patch(preset.ScriptBefore, "", Me, scriptparams)
         End If
 
         Dim col As Integer = -1
@@ -114,6 +136,12 @@ Public Class ModelImporter
 
         'Write to stream
         sr = mdl.ToStream(fs, romAddr, romAddr - (bankAddr And &HFFFFFF), bankAddr And &HFF000000)
+
+        If sr IsNot Nothing Then
+            geo = sr.GeoPointers.ToArray
+            col = sr.CollisionPointer
+            len = sr.Length
+        End If
 
         'Write Collision Pointer
         If col > -1 Then
@@ -143,13 +171,6 @@ Public Class ModelImporter
 
         fs.Close()
 
-        If sr IsNot Nothing Then
-            geo = sr.GeoPointers.ToArray
-            col = sr.CollisionPointer
-            len = sr.Length
-        End If
-
-        ClearOutput()
         If col > -1 Then
             WriteOutput($"Collision Pointer:{vbTab}{sr.CollisionPointer.ToString("X")}")
         End If
@@ -157,10 +178,9 @@ Public Class ModelImporter
             WriteOutput($"DL-Pointer:{vbTab}{g.SegPointer.ToString("X")} ({g.Layer.ToString})")
         Next
 
-        If preset.Script IsNot Nothing AndAlso Not String.IsNullOrEmpty(preset.Script.Script) Then
+        If preset.ScriptAfter IsNot Nothing AndAlso Not String.IsNullOrEmpty(preset.ScriptAfter.Script) Then
             WriteOutput("Executing Script ...")
-            Dim pm As New PatchScripts.PatchingManager
-            pm.Patch(preset.Script, RomFile, "", Me)
+            pm.Patch(preset.ScriptAfter, "", Me, scriptparams)
         End If
 
         WriteOutput()
@@ -247,16 +267,23 @@ Public Class ModelImporter
         Flyout1.Close()
     End Sub
 
-    Private Sub ButtonX6_Click(sender As Object, e As EventArgs) Handles ButtonX6.Click
-        Dim preset As ImporterPreset = SelectedPreset()
-        If preset.Script Is Nothing Then preset.Script = New PatchScripts.PatchScript
+    Private Sub EditScript(ByRef script As PatchScripts.PatchScript)
+        If script Is Nothing Then script = New PatchScripts.PatchScript
 
-        Dim editor As New PatchScripts.TweakScriptEditor(preset.Script)
+        Dim editor As New PatchScripts.TweakScriptEditor(script)
         If editor.ShowDialog(Me) = DialogResult.OK Then
             If editor.NeedToSave Then
                 SaveProfile(SelectedProfile)
             End If
         End If
+    End Sub
+
+    Private Sub ButtonItem2_Click(sender As Object, e As EventArgs) Handles ButtonItem2.Click
+        EditScript(SelectedPreset.ScriptAfter)
+    End Sub
+
+    Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
+        EditScript(SelectedPreset.ScriptBefore)
     End Sub
 
     Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles ButtonX2.Click
@@ -368,4 +395,5 @@ Public Class ModelImporter
     Private Sub Flyout1_FlyoutShowing(sender As Object, e As DevComponents.DotNetBar.Controls.FlyoutShowingEventArgs) Handles Flyout1.FlyoutShowing
         e.Cancel = ComboBoxEx2.SelectedIndex = 0
     End Sub
+
 End Class

@@ -15,7 +15,8 @@
         Public Property Name As String = ""
         Public Property Description As String = ""
 
-        Public Property Script As PatchScripts.PatchScript = Nothing
+        Public Property ScriptAfter As PatchScripts.PatchScript = Nothing
+        Public Property ScriptBefore As PatchScripts.PatchScript = Nothing
 
         Public Property RomAddress As Integer = 0
         Public Property RamAddress As Integer = 0
