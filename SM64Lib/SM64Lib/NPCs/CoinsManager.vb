@@ -52,8 +52,8 @@ Namespace NPCs
             CoinsRestoreHealth = data.ReadInt32 <> 0
 
             'Enable New Red Coins Counter
-            data.Position = &H966E8 + 3
-            EnableNewRedCoinsCounter = data.ReadByte = &HE0
+            data.Position = &H966E8
+            EnableNewRedCoinsCounter = data.ReadInt32 = &H27BDFFE0
 
             'New Red Coins Counter Text For Coins
             If EnableNewRedCoinsCounter Then
@@ -154,7 +154,9 @@ Namespace NPCs
             data.Close()
 
             'Update checksum (because of code changes)
-            PatchClass.UpdateChecksum(RomManager.RomFile)
+            If updateChecksum Then
+                PatchClass.UpdateChecksum(RomManager.RomFile)
+            End If
         End Sub
 
         ''' <summary>

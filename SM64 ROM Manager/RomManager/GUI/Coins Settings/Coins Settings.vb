@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports DevComponents.DotNetBar
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib
 Imports SM64Lib.NPCs
@@ -61,7 +62,7 @@ Public Class Form_CoinsSettings
     End Sub
 
     Private Sub ButtonX_Remove3DCoins_Click(sender As Object, e As EventArgs) Handles ButtonX_Remove3DCoins.Click
-        If MessageBoxex.Show(LangResCoinsManager.MsgBox_Experimental3DCoinsRemove, LangResCoinsManager.MsgBox_Experimental3DCoinsRemove_Titel, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+        If MessageBoxEx.Show(LangResCoinsManager.MsgBox_Experimental3DCoinsRemove, LangResCoinsManager.MsgBox_Experimental3DCoinsRemove_Titel, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             coinMgr.Remove3DCoins()
             Publics.ShowToadnotifiaction(Panel1, LangResCoinsManager.Notify_3DCoinsRemovedSuccess, DevComponents.DotNetBar.eToastGlowColor.Green)
         End If
