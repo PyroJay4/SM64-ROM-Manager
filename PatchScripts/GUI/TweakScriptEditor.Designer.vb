@@ -44,15 +44,6 @@ Partial Class TweakScriptEditor
         Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonX_CheckForErros = New DevComponents.DotNetBar.ButtonX()
-        Me.ContextMenuBar1 = New DevComponents.DotNetBar.ContextMenuBar()
-        Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem_Copy = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem_cut = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem_Paste = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem_SelectAll = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem7 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem_Remove = New DevComponents.DotNetBar.ButtonItem()
         Me.ItemListBox1 = New Publics.Controls.ItemListBox()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -62,7 +53,6 @@ Partial Class TweakScriptEditor
         Me.TextBoxX_ReferenceName = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
-        CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -302,87 +292,6 @@ Partial Class TweakScriptEditor
         Me.ButtonX_CheckForErros.TabIndex = 2
         Me.ButtonX_CheckForErros.Text = "Check for Errors"
         '
-        'ContextMenuBar1
-        '
-        Me.ContextMenuBar1.AntiAlias = True
-        Me.ContextMenuBar1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ContextMenuBar1.IsMaximized = False
-        Me.ContextMenuBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem5})
-        Me.ContextMenuBar1.Location = New System.Drawing.Point(310, 1)
-        Me.ContextMenuBar1.Name = "ContextMenuBar1"
-        Me.ContextMenuBar1.Size = New System.Drawing.Size(81, 25)
-        Me.ContextMenuBar1.Stretch = True
-        Me.ContextMenuBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ContextMenuBar1.TabIndex = 14
-        Me.ContextMenuBar1.TabStop = False
-        Me.ContextMenuBar1.Text = "ContextMenuBar1"
-        '
-        'ButtonItem5
-        '
-        Me.ButtonItem5.AutoExpandOnClick = True
-        Me.ButtonItem5.Name = "ButtonItem5"
-        Me.ButtonItem5.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_Copy, Me.ButtonItem_cut, Me.ButtonItem_Paste, Me.ButtonItem_SelectAll, Me.ButtonItem6, Me.ButtonItem7, Me.ButtonItem_Remove})
-        Me.ButtonItem5.Text = "ContextMenu"
-        '
-        'ButtonItem_Copy
-        '
-        Me.ButtonItem_Copy.Name = "ButtonItem_Copy"
-        Me.ButtonItem_Copy.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlC)
-        Me.ButtonItem_Copy.Symbol = "57677"
-        Me.ButtonItem_Copy.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem_Copy.SymbolSize = 12.0!
-        Me.ButtonItem_Copy.Text = "Copy"
-        '
-        'ButtonItem_cut
-        '
-        Me.ButtonItem_cut.Name = "ButtonItem_cut"
-        Me.ButtonItem_cut.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlX)
-        Me.ButtonItem_cut.Symbol = "57678"
-        Me.ButtonItem_cut.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem_cut.SymbolSize = 12.0!
-        Me.ButtonItem_cut.Text = "Cut"
-        '
-        'ButtonItem_Paste
-        '
-        Me.ButtonItem_Paste.Name = "ButtonItem_Paste"
-        Me.ButtonItem_Paste.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlV)
-        Me.ButtonItem_Paste.Symbol = "57679"
-        Me.ButtonItem_Paste.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem_Paste.SymbolSize = 12.0!
-        Me.ButtonItem_Paste.Text = "Past"
-        '
-        'ButtonItem_SelectAll
-        '
-        Me.ButtonItem_SelectAll.BeginGroup = True
-        Me.ButtonItem_SelectAll.Name = "ButtonItem_SelectAll"
-        Me.ButtonItem_SelectAll.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlA)
-        Me.ButtonItem_SelectAll.SymbolSize = 12.0!
-        Me.ButtonItem_SelectAll.Text = "Select All"
-        '
-        'ButtonItem6
-        '
-        Me.ButtonItem6.BeginGroup = True
-        Me.ButtonItem6.Name = "ButtonItem6"
-        Me.ButtonItem6.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlZ)
-        Me.ButtonItem6.Text = "Undo"
-        '
-        'ButtonItem7
-        '
-        Me.ButtonItem7.Name = "ButtonItem7"
-        Me.ButtonItem7.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlY)
-        Me.ButtonItem7.Text = "Redo"
-        '
-        'ButtonItem_Remove
-        '
-        Me.ButtonItem_Remove.BeginGroup = True
-        Me.ButtonItem_Remove.Name = "ButtonItem_Remove"
-        Me.ButtonItem_Remove.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.Del)
-        Me.ButtonItem_Remove.Symbol = "57676"
-        Me.ButtonItem_Remove.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.ButtonItem_Remove.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem_Remove.SymbolSize = 12.0!
-        Me.ButtonItem_Remove.Text = "Remove"
-        '
         'ItemListBox1
         '
         '
@@ -497,7 +406,6 @@ Partial Class TweakScriptEditor
         Me.ClientSize = New System.Drawing.Size(1048, 661)
         Me.Controls.Add(Me.TextBoxX_ScriptName)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.ContextMenuBar1)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.LabelX4)
         Me.Controls.Add(Me.Panel2)
@@ -516,7 +424,6 @@ Partial Class TweakScriptEditor
         Me.TopRightCornerSize = 0
         Me.Panel1.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
-        CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)
@@ -543,13 +450,6 @@ Partial Class TweakScriptEditor
     Friend WithEvents ButtonX2 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonItem3 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ContextMenuBar1 As DevComponents.DotNetBar.ContextMenuBar
-    Friend WithEvents ButtonItem5 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem_Copy As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem_cut As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem_Paste As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem_SelectAll As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem_Remove As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ItemListBox1 As Publics.Controls.ItemListBox
     Private WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Panel3 As Panel
@@ -557,7 +457,5 @@ Partial Class TweakScriptEditor
     Friend WithEvents TextBoxX_ReferenceName As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents ButtonX3 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX4 As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents ButtonItem6 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem7 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonX_CheckForErros As DevComponents.DotNetBar.ButtonX
 End Class

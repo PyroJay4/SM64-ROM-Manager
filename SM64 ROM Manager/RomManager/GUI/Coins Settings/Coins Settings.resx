@@ -143,6 +143,9 @@
   <data name="&gt;&gt;ButtonX_SaveSettings.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="ButtonX_Edit3DCoins.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ButtonX_Edit3DCoins.Location" type="System.Drawing.Point, System.Drawing">
     <value>153, 19</value>
   </data>
@@ -153,7 +156,7 @@
     <value>18</value>
   </data>
   <data name="ButtonX_Edit3DCoins.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>&lt;s&gt;Edit&lt;/s&gt;</value>
   </data>
   <data name="&gt;&gt;ButtonX_Edit3DCoins.Name" xml:space="preserve">
     <value>ButtonX_Edit3DCoins</value>

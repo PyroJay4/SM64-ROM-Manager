@@ -1,28 +1,27 @@
 ﻿Imports DevComponents.DotNetBar
 Imports S3DFileParser
 Imports System.Windows.Forms
-Imports Publics.SwapInts
-Imports Publics.Publics
-Imports Publics.IconExtractor
 Imports Publics
 Imports System.Drawing
 Imports SM64Lib
 Imports System.IO
 Imports DevComponents.Editors
+Imports OfficeOpenXml
 
 Public Class CollisionEditor
 
+    Private Shared terrainTypesComboItems As New List(Of ComboItem)
     Private LoadingColItemSettings As Boolean = False
     Private LoadingTextures As Boolean = False
     Private obj3d As Object3D = Nothing
     Public Property CollisionSettings As Model.Collision.CollisionSettings = Nothing
 
     Public Sub New(obj As Object3D)
-        Me.SuspendLayout()
+        SuspendLayout()
 
         InitializeComponent()
 
-        Me.obj3d = obj
+        obj3d = obj
 
         Button_SaveColsettings.Visible = True
         LabelX_CollisionType.Visible = True
@@ -36,7 +35,7 @@ Public Class CollisionEditor
         TextBoxX_ColParam2.Enabled = True
         LabelX_Param1.Enabled = True
         LabelX_Param2.Enabled = True
-        Me.AcceptButton = Button_SaveColsettings
+        AcceptButton = Button_SaveColsettings
 
         UpdateAmbientColors()
 
@@ -44,10 +43,10 @@ Public Class CollisionEditor
         TextBoxX_ColParam1.Enabled = False
         TextBoxX_ColParam2.Enabled = False
 
-        Me.ResumeLayout()
+        ResumeLayout()
     End Sub
-    Private Sub Form_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        LoadFloorTypes()
+    Private Async Sub Form_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        Await LoadFloorTypes()
         LoadTexturesFromModel()
     End Sub
 
@@ -79,63 +78,58 @@ Public Class CollisionEditor
             firstItem.Selected = True
         End If
 
-        ListViewEx1.Refresh()
+        ListViewEx1.Visible = True
     End Sub
 
-    Private Sub LoadFloorTypes()
-        Dim dt As New DataTableEx
-        Dim tableFile As String = Publics.MyDataPath & "\Other\Floor Types.csv"
-
-        If File.Exists(tableFile) Then
-            dt.Load(tableFile)
-        Else
-            MessageBox.Show("Can't find the collision types table:<br/>" & tableFile, "Load Collision Types", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Me.Close()
-            Return
+    Private Async Function LoadFloorTypes() As Task
+        If Not terrainTypesComboItems.Any Then
+            CircularProgress1.Start
+            Await Task.Run(AddressOf LoadFloorTypesFromDatabase)
+            CircularProgress1.Stop
         End If
 
-        If dt.Rows.Count > 0 Then
+        ComboBox_ColType.Items.Clear()
+        ComboBox_ColType.SuspendLayout()
+        ComboBox_ColType.Items.AddRange(terrainTypesComboItems.ToArray)
+        ComboBox_ColType.ResumeLayout()
+    End Function
 
-            ComboBox_ColType.SuspendLayout()
-            ComboBox_ColType.Items.Clear()
+    Private Sub LoadFloorTypesFromDatabase()
+        Dim ws As ExcelWorksheet = SurfaceData.Worksheets("Terrain Hexes")
 
-            For i As Integer = 0 To dt.Rows.Count - 1
-                Dim row As DataRow = dt.Rows(i)
+        If ws.Cells.Rows > 0 Then
+            For i As Integer = 2 To ws.Cells.Rows
+                If ws.Cells(i, 1).Style.Fill.BackgroundColor.Rgb = "" Then
+                    Dim typeDec As String = ws.Cells(i, 1).Value
+                    Dim title As String = ws.Cells(i, 3).Value
+                    Dim typeByte As Byte
 
-                Dim typeDec As String = row.ItemArray(0)
-                Dim title As String = row.ItemArray(2)
-                Dim typeByte As Byte
+                    If Not String.IsNullOrEmpty(typeDec) AndAlso Not String.IsNullOrEmpty(title) Then
+                        If Byte.TryParse(typeDec, typeByte) Then
+                            Dim item As New ComboItem
+                            Dim desc As String
+                            Dim notes As String
 
-                If Not String.IsNullOrEmpty(title) Then
-                    If Byte.TryParse(typeDec, typeByte) Then
+                            desc = ws.Cells(i, 5).Value
+                            notes = ws.Cells(i, 7).Value
 
-                        Dim item As New ComboItem
-                        Dim desc As String
-                        Dim notes As String
+                            item.Text = $"{typeByte.ToString("X2")}: {title}"
+                            item.Tag = {typeByte, title, desc, notes}
 
-                        desc = row.ItemArray(4)
-                        notes = row.ItemArray(6)
-
-                        item.Text = $"{typeByte.ToString("X2")}: {title}"
-                        item.Tag = {typeByte, title, desc, notes}
-
-                        ComboBox_ColType.Items.Add(item)
-
+                            If item IsNot Nothing Then
+                                terrainTypesComboItems.Add(item)
+                            End If
+                        End If
                     End If
                 End If
-
             Next
-
-            ComboBox_ColType.ResumeLayout()
-
         End If
 
-        If dt.Rows.Count = 0 OrElse ComboBox_ColType.Items.Count = 0 Then
+        If ws.Cells.Rows = 0 OrElse terrainTypesComboItems.Count = 0 Then
             MessageBox.Show("The collision types table is empty.", "Load Collision Types", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Me.Close()
+            Close()
             Return
         End If
-
     End Sub
 
     Private Sub ListBoxAdv_CI_Textures_ItemClick(sender As Object, e As EventArgs) Handles ListViewEx1.SelectedIndexChanged

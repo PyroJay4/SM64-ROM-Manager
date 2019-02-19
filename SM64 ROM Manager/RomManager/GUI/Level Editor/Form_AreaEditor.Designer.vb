@@ -173,6 +173,8 @@
             Me.LabelItem3 = New DevComponents.DotNetBar.LabelItem()
             Me.RibbonControl1 = New DevComponents.DotNetBar.RibbonControl()
             Me.RibbonPanel1 = New DevComponents.DotNetBar.RibbonPanel()
+            Me.RibbonBar29 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ButtonItem35 = New DevComponents.DotNetBar.ButtonItem()
             Me.RibbonBar9 = New DevComponents.DotNetBar.RibbonBar()
             Me.ItemContainer11 = New DevComponents.DotNetBar.ItemContainer()
             Me.ButtonItem_ObjectsEditorCmd = New DevComponents.DotNetBar.ButtonItem()
@@ -206,6 +208,26 @@
             Me.ButtonItem41 = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItem42 = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItem43 = New DevComponents.DotNetBar.ButtonItem()
+            Me.RibbonPanel5 = New DevComponents.DotNetBar.RibbonPanel()
+            Me.RibbonBar30 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ButtonItem36 = New DevComponents.DotNetBar.ButtonItem()
+            Me.RibbonBar6 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ButtonItem47 = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem_ImportModel = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem_ImportVisualMap = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem_ImportCollision = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem53 = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem_ExportVisualMap = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem_ExportCollision = New DevComponents.DotNetBar.ButtonItem()
+            Me.RibbonBar5 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ItemContainer8 = New DevComponents.DotNetBar.ItemContainer()
+            Me.ItemContainer9 = New DevComponents.DotNetBar.ItemContainer()
+            Me.ComboBoxItem_Area = New DevComponents.DotNetBar.ComboBoxItem()
+            Me.ButtonItem_AddArea = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem_RemoveArea = New DevComponents.DotNetBar.ButtonItem()
+            Me.RibbonPanel7 = New DevComponents.DotNetBar.RibbonPanel()
+            Me.RibbonBar28 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ButtonItem34 = New DevComponents.DotNetBar.ButtonItem()
             Me.RibbonPanel2 = New DevComponents.DotNetBar.RibbonPanel()
             Me.RibbonBar2 = New DevComponents.DotNetBar.RibbonBar()
             Me.ItemContainer10 = New DevComponents.DotNetBar.ItemContainer()
@@ -221,47 +243,6 @@
             Me.ButtonX_WarpsAddConnectedWarp = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonX_WarpsAddPaintingWarp = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItem_WarpsAddInstantWarp = New DevComponents.DotNetBar.ButtonItem()
-            Me.RibbonPanel5 = New DevComponents.DotNetBar.RibbonPanel()
-            Me.RibbonBar6 = New DevComponents.DotNetBar.RibbonBar()
-            Me.ButtonItem47 = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem_ImportModel = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem_ImportVisualMap = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem_ImportCollision = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem53 = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem_ExportVisualMap = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem_ExportCollision = New DevComponents.DotNetBar.ButtonItem()
-            Me.RibbonBar5 = New DevComponents.DotNetBar.RibbonBar()
-            Me.ItemContainer8 = New DevComponents.DotNetBar.ItemContainer()
-            Me.ItemContainer9 = New DevComponents.DotNetBar.ItemContainer()
-            Me.ComboBoxItem_Area = New DevComponents.DotNetBar.ComboBoxItem()
-            Me.ButtonItem_AddArea = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem_RemoveArea = New DevComponents.DotNetBar.ButtonItem()
-            Me.RibbonPanel3 = New DevComponents.DotNetBar.RibbonPanel()
-            Me.RibbonBar4 = New DevComponents.DotNetBar.RibbonBar()
-            Me.ItemContainer13 = New DevComponents.DotNetBar.ItemContainer()
-            Me.ButtonItem83 = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem84 = New DevComponents.DotNetBar.ButtonItem()
-            Me.RibbonBar16 = New DevComponents.DotNetBar.RibbonBar()
-            Me.RibbonPanel6 = New DevComponents.DotNetBar.RibbonPanel()
-            Me.RibbonBar23 = New DevComponents.DotNetBar.RibbonBar()
-            Me.ItemContainer4 = New DevComponents.DotNetBar.ItemContainer()
-            Me.CheckBoxItem_PerspectiveMode = New DevComponents.DotNetBar.CheckBoxItem()
-            Me.CheckBoxItem_OrthoMode = New DevComponents.DotNetBar.CheckBoxItem()
-            Me.RibbonBar22 = New DevComponents.DotNetBar.RibbonBar()
-            Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
-            Me.RibbonBar21 = New DevComponents.DotNetBar.RibbonBar()
-            Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
-            Me.RibbonBar20 = New DevComponents.DotNetBar.RibbonBar()
-            Me.ItemContainer2 = New DevComponents.DotNetBar.ItemContainer()
-            Me.ButtonItem_DrawBackfaces = New DevComponents.DotNetBar.CheckBoxItem()
-            Me.ButtonItem_DrawObjects = New DevComponents.DotNetBar.CheckBoxItem()
-            Me.ItemContainer3 = New DevComponents.DotNetBar.ItemContainer()
-            Me.ButtonItem_DrawFill = New DevComponents.DotNetBar.CheckBoxItem()
-            Me.ButtonItem_DrawOutline = New DevComponents.DotNetBar.CheckBoxItem()
-            Me.RibbonBar19 = New DevComponents.DotNetBar.RibbonBar()
-            Me.ItemContainer1 = New DevComponents.DotNetBar.ItemContainer()
-            Me.ButtonItem_ViewVisualMap = New DevComponents.DotNetBar.CheckBoxItem()
-            Me.ButtonItem_ViewColMap = New DevComponents.DotNetBar.CheckBoxItem()
             Me.RibbonPanel4 = New DevComponents.DotNetBar.RibbonPanel()
             Me.RibbonBar14 = New DevComponents.DotNetBar.RibbonBar()
             Me.RibbonBar25 = New DevComponents.DotNetBar.RibbonBar()
@@ -290,17 +271,44 @@
             Me.RibbonBar17 = New DevComponents.DotNetBar.RibbonBar()
             Me.ButtonItem85 = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItem86 = New DevComponents.DotNetBar.ButtonItem()
-            Me.ApplicationButton1 = New DevComponents.DotNetBar.ApplicationButton()
-            Me.ButtonItem_SaveRom = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem_LaunchROM = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
+            Me.RibbonPanel6 = New DevComponents.DotNetBar.RibbonPanel()
+            Me.RibbonBar23 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ItemContainer4 = New DevComponents.DotNetBar.ItemContainer()
+            Me.CheckBoxItem_PerspectiveMode = New DevComponents.DotNetBar.CheckBoxItem()
+            Me.CheckBoxItem_OrthoMode = New DevComponents.DotNetBar.CheckBoxItem()
+            Me.RibbonBar22 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
+            Me.RibbonBar21 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
+            Me.RibbonBar20 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ItemContainer2 = New DevComponents.DotNetBar.ItemContainer()
+            Me.ButtonItem_DrawBackfaces = New DevComponents.DotNetBar.CheckBoxItem()
+            Me.ButtonItem_DrawObjects = New DevComponents.DotNetBar.CheckBoxItem()
+            Me.ItemContainer3 = New DevComponents.DotNetBar.ItemContainer()
+            Me.ButtonItem_DrawFill = New DevComponents.DotNetBar.CheckBoxItem()
+            Me.ButtonItem_DrawOutline = New DevComponents.DotNetBar.CheckBoxItem()
+            Me.RibbonBar19 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ItemContainer1 = New DevComponents.DotNetBar.ItemContainer()
+            Me.ButtonItem_ViewVisualMap = New DevComponents.DotNetBar.CheckBoxItem()
+            Me.ButtonItem_ViewColMap = New DevComponents.DotNetBar.CheckBoxItem()
+            Me.RibbonPanel3 = New DevComponents.DotNetBar.RibbonPanel()
+            Me.RibbonBar4 = New DevComponents.DotNetBar.RibbonBar()
+            Me.ItemContainer13 = New DevComponents.DotNetBar.ItemContainer()
+            Me.ButtonItem83 = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem84 = New DevComponents.DotNetBar.ButtonItem()
+            Me.RibbonBar16 = New DevComponents.DotNetBar.RibbonBar()
             Me.RibbonTabItem3 = New DevComponents.DotNetBar.RibbonTabItem()
             Me.RibbonTabItem5 = New DevComponents.DotNetBar.RibbonTabItem()
             Me.RibbonTabItem_Objects = New DevComponents.DotNetBar.RibbonTabItem()
             Me.RibbonTabItem_Warps = New DevComponents.DotNetBar.RibbonTabItem()
             Me.RibbonTabItem_Collision = New DevComponents.DotNetBar.RibbonTabItem()
             Me.RibbonTabItem6 = New DevComponents.DotNetBar.RibbonTabItem()
+            Me.RibbonTabItem1 = New DevComponents.DotNetBar.RibbonTabItem()
             Me.ButtonItem95 = New DevComponents.DotNetBar.ButtonItem()
+            Me.ApplicationButton1 = New DevComponents.DotNetBar.ApplicationButton()
+            Me.ButtonItem_SaveRom = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem_LaunchROM = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItem_Undo = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItem_Redo = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
@@ -343,11 +351,12 @@
             CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.RibbonControl1.SuspendLayout()
             Me.RibbonPanel1.SuspendLayout()
-            Me.RibbonPanel2.SuspendLayout()
             Me.RibbonPanel5.SuspendLayout()
-            Me.RibbonPanel3.SuspendLayout()
-            Me.RibbonPanel6.SuspendLayout()
+            Me.RibbonPanel7.SuspendLayout()
+            Me.RibbonPanel2.SuspendLayout()
             Me.RibbonPanel4.SuspendLayout()
+            Me.RibbonPanel6.SuspendLayout()
+            Me.RibbonPanel3.SuspendLayout()
             Me.SuspendLayout()
             '
             'ListViewEx_Warps
@@ -1754,14 +1763,15 @@
             Me.RibbonControl1.CanCustomize = False
             Me.RibbonControl1.CaptionVisible = True
             Me.RibbonControl1.Controls.Add(Me.RibbonPanel1)
-            Me.RibbonControl1.Controls.Add(Me.RibbonPanel4)
-            Me.RibbonControl1.Controls.Add(Me.RibbonPanel2)
             Me.RibbonControl1.Controls.Add(Me.RibbonPanel5)
-            Me.RibbonControl1.Controls.Add(Me.RibbonPanel3)
+            Me.RibbonControl1.Controls.Add(Me.RibbonPanel7)
+            Me.RibbonControl1.Controls.Add(Me.RibbonPanel2)
+            Me.RibbonControl1.Controls.Add(Me.RibbonPanel4)
             Me.RibbonControl1.Controls.Add(Me.RibbonPanel6)
+            Me.RibbonControl1.Controls.Add(Me.RibbonPanel3)
             resources.ApplyResources(Me.RibbonControl1, "RibbonControl1")
             Me.RibbonControl1.ForeColor = System.Drawing.Color.Black
-            Me.RibbonControl1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.RibbonTabItem3, Me.RibbonTabItem5, Me.RibbonTabItem_Objects, Me.RibbonTabItem_Warps, Me.RibbonTabItem_Collision, Me.RibbonTabItem6, Me.ButtonItem95})
+            Me.RibbonControl1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.RibbonTabItem3, Me.RibbonTabItem5, Me.RibbonTabItem_Objects, Me.RibbonTabItem_Warps, Me.RibbonTabItem_Collision, Me.RibbonTabItem6, Me.RibbonTabItem1, Me.ButtonItem95})
             Me.RibbonControl1.KeyTipsFont = New System.Drawing.Font("Tahoma", 7.0!)
             Me.RibbonControl1.MdiSystemItemVisible = False
             Me.RibbonControl1.Name = "RibbonControl1"
@@ -1788,6 +1798,7 @@
             'RibbonPanel1
             '
             Me.RibbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RibbonPanel1.Controls.Add(Me.RibbonBar29)
             Me.RibbonPanel1.Controls.Add(Me.RibbonBar9)
             Me.RibbonPanel1.Controls.Add(Me.RibbonBar18)
             Me.RibbonPanel1.Controls.Add(Me.RibbonBar7)
@@ -1809,6 +1820,42 @@
             '
             '
             Me.RibbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'RibbonBar29
+            '
+            Me.RibbonBar29.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar29.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar29.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar29.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar29, "RibbonBar29")
+            Me.RibbonBar29.DragDropSupport = True
+            Me.RibbonBar29.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem35})
+            Me.RibbonBar29.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar29.Name = "RibbonBar29"
+            Me.RibbonBar29.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar29.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar29.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ButtonItem35
+            '
+            Me.ButtonItem35.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItem35.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Bild_Bearbeiten_32px
+            Me.ButtonItem35.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItem35.Name = "ButtonItem35"
+            Me.ButtonItem35.SubItemsExpandWidth = 14
+            resources.ApplyResources(Me.ButtonItem35, "ButtonItem35")
             '
             'RibbonBar9
             '
@@ -1870,7 +1917,6 @@
             Me.ButtonItem_ResetObjToDefault.GlobalItem = False
             Me.ButtonItem_ResetObjToDefault.Name = "ButtonItem_ResetObjToDefault"
             Me.ButtonItem_ResetObjToDefault.Symbol = ""
-            Me.ButtonItem_ResetObjToDefault.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem_ResetObjToDefault.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem_ResetObjToDefault, "ButtonItem_ResetObjToDefault")
             '
@@ -1957,7 +2003,6 @@
             Me.ButtonItem_KeepOnGround.AutoCheckOnClick = True
             Me.ButtonItem_KeepOnGround.Name = "ButtonItem_KeepOnGround"
             Me.ButtonItem_KeepOnGround.Symbol = "57944"
-            Me.ButtonItem_KeepOnGround.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem_KeepOnGround.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem_KeepOnGround.SymbolSize = 12.0!
             '
@@ -1966,7 +2011,6 @@
             Me.ButtonItem_KeepOnTop.AutoCheckOnClick = True
             Me.ButtonItem_KeepOnTop.Name = "ButtonItem_KeepOnTop"
             Me.ButtonItem_KeepOnTop.Symbol = "57944"
-            Me.ButtonItem_KeepOnTop.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem_KeepOnTop.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem_KeepOnTop.SymbolSize = 12.0!
             '
@@ -1975,7 +2019,6 @@
             Me.ButtonItem_KeepOnButtom.AutoCheckOnClick = True
             Me.ButtonItem_KeepOnButtom.Name = "ButtonItem_KeepOnButtom"
             Me.ButtonItem_KeepOnButtom.Symbol = "57944"
-            Me.ButtonItem_KeepOnButtom.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem_KeepOnButtom.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem_KeepOnButtom.SymbolSize = 12.0!
             '
@@ -2011,7 +2054,6 @@
             Me.ButtonItem_ExportObjectModel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem_ExportObjectModel.Name = "ButtonItem_ExportObjectModel"
             Me.ButtonItem_ExportObjectModel.Symbol = "57946"
-            Me.ButtonItem_ExportObjectModel.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem_ExportObjectModel.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem_ExportObjectModel.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem_ExportObjectModel, "ButtonItem_ExportObjectModel")
@@ -2276,6 +2318,283 @@
             Me.ButtonItem43.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem43, "ButtonItem43")
             '
+            'RibbonPanel5
+            '
+            Me.RibbonPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RibbonPanel5.Controls.Add(Me.RibbonBar30)
+            Me.RibbonPanel5.Controls.Add(Me.RibbonBar6)
+            Me.RibbonPanel5.Controls.Add(Me.RibbonBar5)
+            resources.ApplyResources(Me.RibbonPanel5, "RibbonPanel5")
+            Me.RibbonPanel5.Name = "RibbonPanel5"
+            '
+            '
+            '
+            Me.RibbonPanel5.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonPanel5.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonPanel5.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'RibbonBar30
+            '
+            Me.RibbonBar30.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar30.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar30.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar30, "RibbonBar30")
+            Me.RibbonBar30.DragDropSupport = True
+            Me.RibbonBar30.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem36})
+            Me.RibbonBar30.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar30.Name = "RibbonBar30"
+            Me.RibbonBar30.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar30.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar30.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ButtonItem36
+            '
+            Me.ButtonItem36.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItem36.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Bild_Bearbeiten_32px
+            Me.ButtonItem36.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItem36.Name = "ButtonItem36"
+            Me.ButtonItem36.SubItemsExpandWidth = 14
+            resources.ApplyResources(Me.ButtonItem36, "ButtonItem36")
+            '
+            'RibbonBar6
+            '
+            Me.RibbonBar6.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar6.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar6.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar6, "RibbonBar6")
+            Me.RibbonBar6.DragDropSupport = True
+            Me.RibbonBar6.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem47, Me.ButtonItem53})
+            Me.RibbonBar6.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar6.Name = "RibbonBar6"
+            Me.RibbonBar6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar6.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar6.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ButtonItem47
+            '
+            Me.ButtonItem47.Image = Global.SM64_ROM_Manager.My.Resources.Resources.MoveCameraCross
+            Me.ButtonItem47.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItem47.Name = "ButtonItem47"
+            Me.ButtonItem47.SplitButton = True
+            Me.ButtonItem47.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ImportModel, Me.ButtonItem_ImportVisualMap, Me.ButtonItem_ImportCollision})
+            Me.ButtonItem47.Symbol = "57944"
+            Me.ButtonItem47.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+            Me.ButtonItem47.SymbolSize = 24.0!
+            resources.ApplyResources(Me.ButtonItem47, "ButtonItem47")
+            '
+            'ButtonItem_ImportModel
+            '
+            Me.ButtonItem_ImportModel.Name = "ButtonItem_ImportModel"
+            resources.ApplyResources(Me.ButtonItem_ImportModel, "ButtonItem_ImportModel")
+            '
+            'ButtonItem_ImportVisualMap
+            '
+            Me.ButtonItem_ImportVisualMap.BeginGroup = True
+            Me.ButtonItem_ImportVisualMap.Name = "ButtonItem_ImportVisualMap"
+            resources.ApplyResources(Me.ButtonItem_ImportVisualMap, "ButtonItem_ImportVisualMap")
+            '
+            'ButtonItem_ImportCollision
+            '
+            Me.ButtonItem_ImportCollision.Name = "ButtonItem_ImportCollision"
+            resources.ApplyResources(Me.ButtonItem_ImportCollision, "ButtonItem_ImportCollision")
+            '
+            'ButtonItem53
+            '
+            Me.ButtonItem53.AutoExpandOnClick = True
+            Me.ButtonItem53.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItem53.Name = "ButtonItem53"
+            Me.ButtonItem53.SplitButton = True
+            Me.ButtonItem53.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ExportVisualMap, Me.ButtonItem_ExportCollision})
+            Me.ButtonItem53.Symbol = "57946"
+            Me.ButtonItem53.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+            Me.ButtonItem53.SymbolSize = 24.0!
+            resources.ApplyResources(Me.ButtonItem53, "ButtonItem53")
+            '
+            'ButtonItem_ExportVisualMap
+            '
+            Me.ButtonItem_ExportVisualMap.BeginGroup = True
+            Me.ButtonItem_ExportVisualMap.Name = "ButtonItem_ExportVisualMap"
+            resources.ApplyResources(Me.ButtonItem_ExportVisualMap, "ButtonItem_ExportVisualMap")
+            '
+            'ButtonItem_ExportCollision
+            '
+            Me.ButtonItem_ExportCollision.Name = "ButtonItem_ExportCollision"
+            resources.ApplyResources(Me.ButtonItem_ExportCollision, "ButtonItem_ExportCollision")
+            '
+            'RibbonBar5
+            '
+            Me.RibbonBar5.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar5.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar5.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar5, "RibbonBar5")
+            Me.RibbonBar5.DragDropSupport = True
+            Me.RibbonBar5.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer8})
+            Me.RibbonBar5.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar5.Name = "RibbonBar5"
+            Me.RibbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar5.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar5.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ItemContainer8
+            '
+            '
+            '
+            '
+            Me.ItemContainer8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer8.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+            Me.ItemContainer8.Name = "ItemContainer8"
+            Me.ItemContainer8.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer9, Me.ButtonItem_AddArea, Me.ButtonItem_RemoveArea})
+            '
+            '
+            '
+            Me.ItemContainer8.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainer8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ItemContainer9
+            '
+            '
+            '
+            '
+            Me.ItemContainer9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer9.Name = "ItemContainer9"
+            Me.ItemContainer9.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ComboBoxItem_Area})
+            '
+            '
+            '
+            Me.ItemContainer9.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainer9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ComboBoxItem_Area
+            '
+            Me.ComboBoxItem_Area.DropDownHeight = 106
+            Me.ComboBoxItem_Area.Name = "ComboBoxItem_Area"
+            '
+            'ButtonItem_AddArea
+            '
+            Me.ButtonItem_AddArea.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItem_AddArea.Name = "ButtonItem_AddArea"
+            Me.ButtonItem_AddArea.Symbol = "57669"
+            Me.ButtonItem_AddArea.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
+            Me.ButtonItem_AddArea.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+            Me.ButtonItem_AddArea.SymbolSize = 12.0!
+            resources.ApplyResources(Me.ButtonItem_AddArea, "ButtonItem_AddArea")
+            '
+            'ButtonItem_RemoveArea
+            '
+            Me.ButtonItem_RemoveArea.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItem_RemoveArea.Name = "ButtonItem_RemoveArea"
+            Me.ButtonItem_RemoveArea.Symbol = "57676"
+            Me.ButtonItem_RemoveArea.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ButtonItem_RemoveArea.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+            Me.ButtonItem_RemoveArea.SymbolSize = 12.0!
+            resources.ApplyResources(Me.ButtonItem_RemoveArea, "ButtonItem_RemoveArea")
+            '
+            'RibbonPanel7
+            '
+            Me.RibbonPanel7.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RibbonPanel7.Controls.Add(Me.RibbonBar28)
+            resources.ApplyResources(Me.RibbonPanel7, "RibbonPanel7")
+            Me.RibbonPanel7.Name = "RibbonPanel7"
+            '
+            '
+            '
+            Me.RibbonPanel7.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonPanel7.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonPanel7.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'RibbonBar28
+            '
+            Me.RibbonBar28.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar28.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar28.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar28, "RibbonBar28")
+            Me.RibbonBar28.DragDropSupport = True
+            Me.RibbonBar28.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem34})
+            Me.RibbonBar28.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar28.Name = "RibbonBar28"
+            Me.RibbonBar28.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar28.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar28.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ButtonItem34
+            '
+            Me.ButtonItem34.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItem34.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Bild_Bearbeiten_32px
+            Me.ButtonItem34.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItem34.Name = "ButtonItem34"
+            Me.ButtonItem34.SubItemsExpandWidth = 14
+            resources.ApplyResources(Me.ButtonItem34, "ButtonItem34")
+            '
             'RibbonPanel2
             '
             Me.RibbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -2359,7 +2678,6 @@
             Me.ButtonItem69.GlobalItem = False
             Me.ButtonItem69.Name = "ButtonItem69"
             Me.ButtonItem69.Symbol = ""
-            Me.ButtonItem69.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem69.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem69, "ButtonItem69")
             '
@@ -2508,619 +2826,6 @@
             '
             Me.ButtonItem_WarpsAddInstantWarp.Name = "ButtonItem_WarpsAddInstantWarp"
             resources.ApplyResources(Me.ButtonItem_WarpsAddInstantWarp, "ButtonItem_WarpsAddInstantWarp")
-            '
-            'RibbonPanel5
-            '
-            Me.RibbonPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RibbonPanel5.Controls.Add(Me.RibbonBar6)
-            Me.RibbonPanel5.Controls.Add(Me.RibbonBar5)
-            resources.ApplyResources(Me.RibbonPanel5, "RibbonPanel5")
-            Me.RibbonPanel5.Name = "RibbonPanel5"
-            '
-            '
-            '
-            Me.RibbonPanel5.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonPanel5.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonPanel5.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'RibbonBar6
-            '
-            Me.RibbonBar6.AutoOverflowEnabled = True
-            '
-            '
-            '
-            Me.RibbonBar6.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar6.ContainerControlProcessDialogKey = True
-            resources.ApplyResources(Me.RibbonBar6, "RibbonBar6")
-            Me.RibbonBar6.DragDropSupport = True
-            Me.RibbonBar6.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem47, Me.ButtonItem53})
-            Me.RibbonBar6.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBar6.Name = "RibbonBar6"
-            Me.RibbonBar6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            '
-            '
-            '
-            Me.RibbonBar6.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar6.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'ButtonItem47
-            '
-            Me.ButtonItem47.Image = Global.SM64_ROM_Manager.My.Resources.Resources.MoveCameraCross
-            Me.ButtonItem47.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-            Me.ButtonItem47.Name = "ButtonItem47"
-            Me.ButtonItem47.SplitButton = True
-            Me.ButtonItem47.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ImportModel, Me.ButtonItem_ImportVisualMap, Me.ButtonItem_ImportCollision})
-            Me.ButtonItem47.Symbol = "57944"
-            Me.ButtonItem47.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem47.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem47.SymbolSize = 24.0!
-            resources.ApplyResources(Me.ButtonItem47, "ButtonItem47")
-            '
-            'ButtonItem_ImportModel
-            '
-            Me.ButtonItem_ImportModel.Name = "ButtonItem_ImportModel"
-            resources.ApplyResources(Me.ButtonItem_ImportModel, "ButtonItem_ImportModel")
-            '
-            'ButtonItem_ImportVisualMap
-            '
-            Me.ButtonItem_ImportVisualMap.BeginGroup = True
-            Me.ButtonItem_ImportVisualMap.Name = "ButtonItem_ImportVisualMap"
-            resources.ApplyResources(Me.ButtonItem_ImportVisualMap, "ButtonItem_ImportVisualMap")
-            '
-            'ButtonItem_ImportCollision
-            '
-            Me.ButtonItem_ImportCollision.Name = "ButtonItem_ImportCollision"
-            resources.ApplyResources(Me.ButtonItem_ImportCollision, "ButtonItem_ImportCollision")
-            '
-            'ButtonItem53
-            '
-            Me.ButtonItem53.AutoExpandOnClick = True
-            Me.ButtonItem53.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-            Me.ButtonItem53.Name = "ButtonItem53"
-            Me.ButtonItem53.SplitButton = True
-            Me.ButtonItem53.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ExportVisualMap, Me.ButtonItem_ExportCollision})
-            Me.ButtonItem53.Symbol = "57946"
-            Me.ButtonItem53.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem53.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem53.SymbolSize = 24.0!
-            resources.ApplyResources(Me.ButtonItem53, "ButtonItem53")
-            '
-            'ButtonItem_ExportVisualMap
-            '
-            Me.ButtonItem_ExportVisualMap.BeginGroup = True
-            Me.ButtonItem_ExportVisualMap.Name = "ButtonItem_ExportVisualMap"
-            resources.ApplyResources(Me.ButtonItem_ExportVisualMap, "ButtonItem_ExportVisualMap")
-            '
-            'ButtonItem_ExportCollision
-            '
-            Me.ButtonItem_ExportCollision.Name = "ButtonItem_ExportCollision"
-            resources.ApplyResources(Me.ButtonItem_ExportCollision, "ButtonItem_ExportCollision")
-            '
-            'RibbonBar5
-            '
-            Me.RibbonBar5.AutoOverflowEnabled = True
-            '
-            '
-            '
-            Me.RibbonBar5.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar5.ContainerControlProcessDialogKey = True
-            resources.ApplyResources(Me.RibbonBar5, "RibbonBar5")
-            Me.RibbonBar5.DragDropSupport = True
-            Me.RibbonBar5.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer8})
-            Me.RibbonBar5.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBar5.Name = "RibbonBar5"
-            Me.RibbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            '
-            '
-            '
-            Me.RibbonBar5.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar5.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'ItemContainer8
-            '
-            '
-            '
-            '
-            Me.ItemContainer8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer8.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-            Me.ItemContainer8.Name = "ItemContainer8"
-            Me.ItemContainer8.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer9, Me.ButtonItem_AddArea, Me.ButtonItem_RemoveArea})
-            '
-            '
-            '
-            Me.ItemContainer8.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.ItemContainer8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'ItemContainer9
-            '
-            '
-            '
-            '
-            Me.ItemContainer9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer9.Name = "ItemContainer9"
-            Me.ItemContainer9.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ComboBoxItem_Area})
-            '
-            '
-            '
-            Me.ItemContainer9.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.ItemContainer9.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'ComboBoxItem_Area
-            '
-            Me.ComboBoxItem_Area.DropDownHeight = 106
-            Me.ComboBoxItem_Area.Name = "ComboBoxItem_Area"
-            '
-            'ButtonItem_AddArea
-            '
-            Me.ButtonItem_AddArea.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem_AddArea.Name = "ButtonItem_AddArea"
-            Me.ButtonItem_AddArea.Symbol = "57669"
-            Me.ButtonItem_AddArea.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem_AddArea.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_AddArea.SymbolSize = 12.0!
-            resources.ApplyResources(Me.ButtonItem_AddArea, "ButtonItem_AddArea")
-            '
-            'ButtonItem_RemoveArea
-            '
-            Me.ButtonItem_RemoveArea.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem_RemoveArea.Name = "ButtonItem_RemoveArea"
-            Me.ButtonItem_RemoveArea.Symbol = "57676"
-            Me.ButtonItem_RemoveArea.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem_RemoveArea.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_RemoveArea.SymbolSize = 12.0!
-            resources.ApplyResources(Me.ButtonItem_RemoveArea, "ButtonItem_RemoveArea")
-            '
-            'RibbonPanel3
-            '
-            Me.RibbonPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RibbonPanel3.Controls.Add(Me.RibbonBar4)
-            Me.RibbonPanel3.Controls.Add(Me.RibbonBar16)
-            resources.ApplyResources(Me.RibbonPanel3, "RibbonPanel3")
-            Me.RibbonPanel3.Name = "RibbonPanel3"
-            '
-            '
-            '
-            Me.RibbonPanel3.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonPanel3.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'RibbonBar4
-            '
-            Me.RibbonBar4.AutoOverflowEnabled = True
-            '
-            '
-            '
-            Me.RibbonBar4.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar4.ContainerControlProcessDialogKey = True
-            resources.ApplyResources(Me.RibbonBar4, "RibbonBar4")
-            Me.RibbonBar4.DragDropSupport = True
-            Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer13})
-            Me.RibbonBar4.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBar4.Name = "RibbonBar4"
-            Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            '
-            '
-            '
-            Me.RibbonBar4.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar4.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'ItemContainer13
-            '
-            '
-            '
-            '
-            Me.ItemContainer13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer13.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-            Me.ItemContainer13.Name = "ItemContainer13"
-            Me.ItemContainer13.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem83, Me.ButtonItem84})
-            '
-            '
-            '
-            Me.ItemContainer13.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.ItemContainer13.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'ButtonItem83
-            '
-            Me.ButtonItem83.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem83.Enabled = False
-            Me.ButtonItem83.Name = "ButtonItem83"
-            Me.ButtonItem83.Symbol = ""
-            Me.ButtonItem83.SymbolColor = System.Drawing.Color.Goldenrod
-            Me.ButtonItem83.SymbolSize = 12.0!
-            resources.ApplyResources(Me.ButtonItem83, "ButtonItem83")
-            '
-            'ButtonItem84
-            '
-            Me.ButtonItem84.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem84.Name = "ButtonItem84"
-            Me.ButtonItem84.Symbol = "57686"
-            Me.ButtonItem84.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem84.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem84.SymbolSize = 12.0!
-            resources.ApplyResources(Me.ButtonItem84, "ButtonItem84")
-            '
-            'RibbonBar16
-            '
-            Me.RibbonBar16.AutoOverflowEnabled = True
-            '
-            '
-            '
-            Me.RibbonBar16.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar16.ContainerControlProcessDialogKey = True
-            resources.ApplyResources(Me.RibbonBar16, "RibbonBar16")
-            Me.RibbonBar16.DragDropSupport = True
-            Me.RibbonBar16.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBar16.Name = "RibbonBar16"
-            Me.RibbonBar16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            '
-            '
-            '
-            Me.RibbonBar16.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar16.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'RibbonPanel6
-            '
-            Me.RibbonPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RibbonPanel6.Controls.Add(Me.RibbonBar23)
-            Me.RibbonPanel6.Controls.Add(Me.RibbonBar22)
-            Me.RibbonPanel6.Controls.Add(Me.RibbonBar21)
-            Me.RibbonPanel6.Controls.Add(Me.RibbonBar20)
-            Me.RibbonPanel6.Controls.Add(Me.RibbonBar19)
-            resources.ApplyResources(Me.RibbonPanel6, "RibbonPanel6")
-            Me.RibbonPanel6.Name = "RibbonPanel6"
-            '
-            '
-            '
-            Me.RibbonPanel6.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonPanel6.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'RibbonBar23
-            '
-            Me.RibbonBar23.AutoOverflowEnabled = True
-            '
-            '
-            '
-            Me.RibbonBar23.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar23.ContainerControlProcessDialogKey = True
-            resources.ApplyResources(Me.RibbonBar23, "RibbonBar23")
-            Me.RibbonBar23.DragDropSupport = True
-            Me.RibbonBar23.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer4})
-            Me.RibbonBar23.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBar23.Name = "RibbonBar23"
-            Me.RibbonBar23.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            '
-            '
-            '
-            Me.RibbonBar23.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar23.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar23.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
-            '
-            'ItemContainer4
-            '
-            '
-            '
-            '
-            Me.ItemContainer4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer4.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-            Me.ItemContainer4.Name = "ItemContainer4"
-            Me.ItemContainer4.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.CheckBoxItem_PerspectiveMode, Me.CheckBoxItem_OrthoMode})
-            '
-            '
-            '
-            Me.ItemContainer4.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.ItemContainer4.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer4.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
-            '
-            'CheckBoxItem_PerspectiveMode
-            '
-            Me.CheckBoxItem_PerspectiveMode.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.CheckBoxItem_PerspectiveMode.Checked = True
-            Me.CheckBoxItem_PerspectiveMode.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.CheckBoxItem_PerspectiveMode.Name = "CheckBoxItem_PerspectiveMode"
-            resources.ApplyResources(Me.CheckBoxItem_PerspectiveMode, "CheckBoxItem_PerspectiveMode")
-            '
-            'CheckBoxItem_OrthoMode
-            '
-            Me.CheckBoxItem_OrthoMode.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.CheckBoxItem_OrthoMode.Name = "CheckBoxItem_OrthoMode"
-            resources.ApplyResources(Me.CheckBoxItem_OrthoMode, "CheckBoxItem_OrthoMode")
-            '
-            'RibbonBar22
-            '
-            Me.RibbonBar22.AutoOverflowEnabled = True
-            '
-            '
-            '
-            Me.RibbonBar22.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar22.ContainerControlProcessDialogKey = True
-            resources.ApplyResources(Me.RibbonBar22, "RibbonBar22")
-            Me.RibbonBar22.DragDropSupport = True
-            Me.RibbonBar22.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem2})
-            Me.RibbonBar22.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBar22.Name = "RibbonBar22"
-            Me.RibbonBar22.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            '
-            '
-            '
-            Me.RibbonBar22.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar22.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'ButtonItem2
-            '
-            Me.ButtonItem2.AutoCheckOnClick = True
-            Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-            Me.ButtonItem2.Name = "ButtonItem2"
-            Me.ButtonItem2.SubItemsExpandWidth = 14
-            Me.ButtonItem2.Symbol = "59588"
-            Me.ButtonItem2.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem2.SymbolSize = 24.0!
-            resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
-            '
-            'RibbonBar21
-            '
-            Me.RibbonBar21.AutoOverflowEnabled = True
-            '
-            '
-            '
-            Me.RibbonBar21.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar21.ContainerControlProcessDialogKey = True
-            resources.ApplyResources(Me.RibbonBar21, "RibbonBar21")
-            Me.RibbonBar21.DragDropSupport = True
-            Me.RibbonBar21.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1})
-            Me.RibbonBar21.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBar21.Name = "RibbonBar21"
-            Me.RibbonBar21.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            '
-            '
-            '
-            Me.RibbonBar21.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar21.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            'ButtonItem1
-            '
-            Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-            Me.ButtonItem1.Name = "ButtonItem1"
-            Me.ButtonItem1.SubItemsExpandWidth = 14
-            Me.ButtonItem1.Symbol = "58163"
-            Me.ButtonItem1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem1.SymbolSize = 24.0!
-            resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
-            '
-            'RibbonBar20
-            '
-            Me.RibbonBar20.AutoOverflowEnabled = True
-            '
-            '
-            '
-            Me.RibbonBar20.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar20.ContainerControlProcessDialogKey = True
-            resources.ApplyResources(Me.RibbonBar20, "RibbonBar20")
-            Me.RibbonBar20.DragDropSupport = True
-            Me.RibbonBar20.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer2, Me.ItemContainer3})
-            Me.RibbonBar20.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBar20.Name = "RibbonBar20"
-            Me.RibbonBar20.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            '
-            '
-            '
-            Me.RibbonBar20.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar20.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar20.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
-            '
-            'ItemContainer2
-            '
-            '
-            '
-            '
-            Me.ItemContainer2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer2.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-            Me.ItemContainer2.Name = "ItemContainer2"
-            Me.ItemContainer2.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_DrawBackfaces, Me.ButtonItem_DrawObjects})
-            '
-            '
-            '
-            Me.ItemContainer2.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.ItemContainer2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer2.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
-            '
-            'ButtonItem_DrawBackfaces
-            '
-            Me.ButtonItem_DrawBackfaces.Name = "ButtonItem_DrawBackfaces"
-            resources.ApplyResources(Me.ButtonItem_DrawBackfaces, "ButtonItem_DrawBackfaces")
-            '
-            'ButtonItem_DrawObjects
-            '
-            Me.ButtonItem_DrawObjects.Checked = True
-            Me.ButtonItem_DrawObjects.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.ButtonItem_DrawObjects.Name = "ButtonItem_DrawObjects"
-            resources.ApplyResources(Me.ButtonItem_DrawObjects, "ButtonItem_DrawObjects")
-            '
-            'ItemContainer3
-            '
-            '
-            '
-            '
-            Me.ItemContainer3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer3.BeginGroup = True
-            Me.ItemContainer3.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-            Me.ItemContainer3.Name = "ItemContainer3"
-            Me.ItemContainer3.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_DrawFill, Me.ButtonItem_DrawOutline})
-            '
-            '
-            '
-            Me.ItemContainer3.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.ItemContainer3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer3.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
-            '
-            'ButtonItem_DrawFill
-            '
-            Me.ButtonItem_DrawFill.Checked = True
-            Me.ButtonItem_DrawFill.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.ButtonItem_DrawFill.Name = "ButtonItem_DrawFill"
-            resources.ApplyResources(Me.ButtonItem_DrawFill, "ButtonItem_DrawFill")
-            '
-            'ButtonItem_DrawOutline
-            '
-            Me.ButtonItem_DrawOutline.Name = "ButtonItem_DrawOutline"
-            resources.ApplyResources(Me.ButtonItem_DrawOutline, "ButtonItem_DrawOutline")
-            '
-            'RibbonBar19
-            '
-            Me.RibbonBar19.AutoOverflowEnabled = True
-            '
-            '
-            '
-            Me.RibbonBar19.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar19.ContainerControlProcessDialogKey = True
-            resources.ApplyResources(Me.RibbonBar19, "RibbonBar19")
-            Me.RibbonBar19.DragDropSupport = True
-            Me.RibbonBar19.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer1})
-            Me.RibbonBar19.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBar19.Name = "RibbonBar19"
-            Me.RibbonBar19.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            '
-            '
-            '
-            Me.RibbonBar19.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.RibbonBar19.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonBar19.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
-            '
-            'ItemContainer1
-            '
-            '
-            '
-            '
-            Me.ItemContainer1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
-            Me.ItemContainer1.Name = "ItemContainer1"
-            Me.ItemContainer1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ViewVisualMap, Me.ButtonItem_ViewColMap})
-            '
-            '
-            '
-            Me.ItemContainer1.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            '
-            '
-            '
-            Me.ItemContainer1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.ItemContainer1.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
-            '
-            'ButtonItem_ViewVisualMap
-            '
-            Me.ButtonItem_ViewVisualMap.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.ButtonItem_ViewVisualMap.Checked = True
-            Me.ButtonItem_ViewVisualMap.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.ButtonItem_ViewVisualMap.Name = "ButtonItem_ViewVisualMap"
-            resources.ApplyResources(Me.ButtonItem_ViewVisualMap, "ButtonItem_ViewVisualMap")
-            '
-            'ButtonItem_ViewColMap
-            '
-            Me.ButtonItem_ViewColMap.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.ButtonItem_ViewColMap.Name = "ButtonItem_ViewColMap"
-            resources.ApplyResources(Me.ButtonItem_ViewColMap, "ButtonItem_ViewColMap")
             '
             'RibbonPanel4
             '
@@ -3546,7 +3251,6 @@
             Me.ButtonItem85.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem85.Name = "ButtonItem85"
             Me.ButtonItem85.Symbol = "57944"
-            Me.ButtonItem85.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem85.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem85.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem85, "ButtonItem85")
@@ -3556,10 +3260,484 @@
             Me.ButtonItem86.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem86.Name = "ButtonItem86"
             Me.ButtonItem86.Symbol = "57946"
-            Me.ButtonItem86.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem86.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem86.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem86, "ButtonItem86")
+            '
+            'RibbonPanel6
+            '
+            Me.RibbonPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RibbonPanel6.Controls.Add(Me.RibbonBar23)
+            Me.RibbonPanel6.Controls.Add(Me.RibbonBar22)
+            Me.RibbonPanel6.Controls.Add(Me.RibbonBar21)
+            Me.RibbonPanel6.Controls.Add(Me.RibbonBar20)
+            Me.RibbonPanel6.Controls.Add(Me.RibbonBar19)
+            resources.ApplyResources(Me.RibbonPanel6, "RibbonPanel6")
+            Me.RibbonPanel6.Name = "RibbonPanel6"
+            '
+            '
+            '
+            Me.RibbonPanel6.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonPanel6.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'RibbonBar23
+            '
+            Me.RibbonBar23.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar23.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar23.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar23, "RibbonBar23")
+            Me.RibbonBar23.DragDropSupport = True
+            Me.RibbonBar23.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer4})
+            Me.RibbonBar23.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar23.Name = "RibbonBar23"
+            Me.RibbonBar23.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar23.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar23.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar23.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
+            '
+            'ItemContainer4
+            '
+            '
+            '
+            '
+            Me.ItemContainer4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer4.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+            Me.ItemContainer4.Name = "ItemContainer4"
+            Me.ItemContainer4.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.CheckBoxItem_PerspectiveMode, Me.CheckBoxItem_OrthoMode})
+            '
+            '
+            '
+            Me.ItemContainer4.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainer4.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer4.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
+            '
+            'CheckBoxItem_PerspectiveMode
+            '
+            Me.CheckBoxItem_PerspectiveMode.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.CheckBoxItem_PerspectiveMode.Checked = True
+            Me.CheckBoxItem_PerspectiveMode.CheckState = System.Windows.Forms.CheckState.Checked
+            Me.CheckBoxItem_PerspectiveMode.Name = "CheckBoxItem_PerspectiveMode"
+            resources.ApplyResources(Me.CheckBoxItem_PerspectiveMode, "CheckBoxItem_PerspectiveMode")
+            '
+            'CheckBoxItem_OrthoMode
+            '
+            Me.CheckBoxItem_OrthoMode.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.CheckBoxItem_OrthoMode.Name = "CheckBoxItem_OrthoMode"
+            resources.ApplyResources(Me.CheckBoxItem_OrthoMode, "CheckBoxItem_OrthoMode")
+            '
+            'RibbonBar22
+            '
+            Me.RibbonBar22.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar22.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar22.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar22, "RibbonBar22")
+            Me.RibbonBar22.DragDropSupport = True
+            Me.RibbonBar22.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem2})
+            Me.RibbonBar22.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar22.Name = "RibbonBar22"
+            Me.RibbonBar22.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar22.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar22.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ButtonItem2
+            '
+            Me.ButtonItem2.AutoCheckOnClick = True
+            Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItem2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItem2.Name = "ButtonItem2"
+            Me.ButtonItem2.SubItemsExpandWidth = 14
+            Me.ButtonItem2.Symbol = "59588"
+            Me.ButtonItem2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+            Me.ButtonItem2.SymbolSize = 24.0!
+            resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
+            '
+            'RibbonBar21
+            '
+            Me.RibbonBar21.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar21.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar21.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar21, "RibbonBar21")
+            Me.RibbonBar21.DragDropSupport = True
+            Me.RibbonBar21.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1})
+            Me.RibbonBar21.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar21.Name = "RibbonBar21"
+            Me.RibbonBar21.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar21.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar21.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ButtonItem1
+            '
+            Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItem1.Name = "ButtonItem1"
+            Me.ButtonItem1.SubItemsExpandWidth = 14
+            Me.ButtonItem1.Symbol = "58163"
+            Me.ButtonItem1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+            Me.ButtonItem1.SymbolSize = 24.0!
+            resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
+            '
+            'RibbonBar20
+            '
+            Me.RibbonBar20.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar20.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar20.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar20, "RibbonBar20")
+            Me.RibbonBar20.DragDropSupport = True
+            Me.RibbonBar20.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer2, Me.ItemContainer3})
+            Me.RibbonBar20.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar20.Name = "RibbonBar20"
+            Me.RibbonBar20.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar20.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar20.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar20.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
+            '
+            'ItemContainer2
+            '
+            '
+            '
+            '
+            Me.ItemContainer2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer2.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+            Me.ItemContainer2.Name = "ItemContainer2"
+            Me.ItemContainer2.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_DrawBackfaces, Me.ButtonItem_DrawObjects})
+            '
+            '
+            '
+            Me.ItemContainer2.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainer2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer2.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
+            '
+            'ButtonItem_DrawBackfaces
+            '
+            Me.ButtonItem_DrawBackfaces.Name = "ButtonItem_DrawBackfaces"
+            resources.ApplyResources(Me.ButtonItem_DrawBackfaces, "ButtonItem_DrawBackfaces")
+            '
+            'ButtonItem_DrawObjects
+            '
+            Me.ButtonItem_DrawObjects.Checked = True
+            Me.ButtonItem_DrawObjects.CheckState = System.Windows.Forms.CheckState.Checked
+            Me.ButtonItem_DrawObjects.Name = "ButtonItem_DrawObjects"
+            resources.ApplyResources(Me.ButtonItem_DrawObjects, "ButtonItem_DrawObjects")
+            '
+            'ItemContainer3
+            '
+            '
+            '
+            '
+            Me.ItemContainer3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer3.BeginGroup = True
+            Me.ItemContainer3.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+            Me.ItemContainer3.Name = "ItemContainer3"
+            Me.ItemContainer3.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_DrawFill, Me.ButtonItem_DrawOutline})
+            '
+            '
+            '
+            Me.ItemContainer3.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainer3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer3.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
+            '
+            'ButtonItem_DrawFill
+            '
+            Me.ButtonItem_DrawFill.Checked = True
+            Me.ButtonItem_DrawFill.CheckState = System.Windows.Forms.CheckState.Checked
+            Me.ButtonItem_DrawFill.Name = "ButtonItem_DrawFill"
+            resources.ApplyResources(Me.ButtonItem_DrawFill, "ButtonItem_DrawFill")
+            '
+            'ButtonItem_DrawOutline
+            '
+            Me.ButtonItem_DrawOutline.Name = "ButtonItem_DrawOutline"
+            resources.ApplyResources(Me.ButtonItem_DrawOutline, "ButtonItem_DrawOutline")
+            '
+            'RibbonBar19
+            '
+            Me.RibbonBar19.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar19.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar19.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar19, "RibbonBar19")
+            Me.RibbonBar19.DragDropSupport = True
+            Me.RibbonBar19.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer1})
+            Me.RibbonBar19.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar19.Name = "RibbonBar19"
+            Me.RibbonBar19.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar19.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar19.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar19.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
+            '
+            'ItemContainer1
+            '
+            '
+            '
+            '
+            Me.ItemContainer1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+            Me.ItemContainer1.Name = "ItemContainer1"
+            Me.ItemContainer1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ViewVisualMap, Me.ButtonItem_ViewColMap})
+            '
+            '
+            '
+            Me.ItemContainer1.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainer1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer1.VerticalItemAlignment = DevComponents.DotNetBar.eVerticalItemsAlignment.Middle
+            '
+            'ButtonItem_ViewVisualMap
+            '
+            Me.ButtonItem_ViewVisualMap.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.ButtonItem_ViewVisualMap.Checked = True
+            Me.ButtonItem_ViewVisualMap.CheckState = System.Windows.Forms.CheckState.Checked
+            Me.ButtonItem_ViewVisualMap.Name = "ButtonItem_ViewVisualMap"
+            resources.ApplyResources(Me.ButtonItem_ViewVisualMap, "ButtonItem_ViewVisualMap")
+            '
+            'ButtonItem_ViewColMap
+            '
+            Me.ButtonItem_ViewColMap.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.ButtonItem_ViewColMap.Name = "ButtonItem_ViewColMap"
+            resources.ApplyResources(Me.ButtonItem_ViewColMap, "ButtonItem_ViewColMap")
+            '
+            'RibbonPanel3
+            '
+            Me.RibbonPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RibbonPanel3.Controls.Add(Me.RibbonBar4)
+            Me.RibbonPanel3.Controls.Add(Me.RibbonBar16)
+            resources.ApplyResources(Me.RibbonPanel3, "RibbonPanel3")
+            Me.RibbonPanel3.Name = "RibbonPanel3"
+            '
+            '
+            '
+            Me.RibbonPanel3.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonPanel3.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'RibbonBar4
+            '
+            Me.RibbonBar4.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar4.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar4.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar4, "RibbonBar4")
+            Me.RibbonBar4.DragDropSupport = True
+            Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer13})
+            Me.RibbonBar4.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar4.Name = "RibbonBar4"
+            Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar4.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar4.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ItemContainer13
+            '
+            '
+            '
+            '
+            Me.ItemContainer13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainer13.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+            Me.ItemContainer13.Name = "ItemContainer13"
+            Me.ItemContainer13.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem83, Me.ButtonItem84})
+            '
+            '
+            '
+            Me.ItemContainer13.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainer13.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ButtonItem83
+            '
+            Me.ButtonItem83.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItem83.Enabled = False
+            Me.ButtonItem83.Name = "ButtonItem83"
+            Me.ButtonItem83.Symbol = ""
+            Me.ButtonItem83.SymbolColor = System.Drawing.Color.Goldenrod
+            Me.ButtonItem83.SymbolSize = 12.0!
+            resources.ApplyResources(Me.ButtonItem83, "ButtonItem83")
+            '
+            'ButtonItem84
+            '
+            Me.ButtonItem84.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItem84.Name = "ButtonItem84"
+            Me.ButtonItem84.Symbol = "57686"
+            Me.ButtonItem84.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+            Me.ButtonItem84.SymbolSize = 12.0!
+            resources.ApplyResources(Me.ButtonItem84, "ButtonItem84")
+            '
+            'RibbonBar16
+            '
+            Me.RibbonBar16.AutoOverflowEnabled = True
+            '
+            '
+            '
+            Me.RibbonBar16.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RibbonBar16.ContainerControlProcessDialogKey = True
+            resources.ApplyResources(Me.RibbonBar16, "RibbonBar16")
+            Me.RibbonBar16.DragDropSupport = True
+            Me.RibbonBar16.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+            Me.RibbonBar16.Name = "RibbonBar16"
+            Me.RibbonBar16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            '
+            '
+            '
+            Me.RibbonBar16.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.RibbonBar16.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'RibbonTabItem3
+            '
+            Me.RibbonTabItem3.Name = "RibbonTabItem3"
+            Me.RibbonTabItem3.Panel = Me.RibbonPanel3
+            resources.ApplyResources(Me.RibbonTabItem3, "RibbonTabItem3")
+            '
+            'RibbonTabItem5
+            '
+            Me.RibbonTabItem5.Name = "RibbonTabItem5"
+            Me.RibbonTabItem5.Panel = Me.RibbonPanel5
+            resources.ApplyResources(Me.RibbonTabItem5, "RibbonTabItem5")
+            '
+            'RibbonTabItem_Objects
+            '
+            Me.RibbonTabItem_Objects.Checked = True
+            Me.RibbonTabItem_Objects.Name = "RibbonTabItem_Objects"
+            Me.RibbonTabItem_Objects.Panel = Me.RibbonPanel1
+            resources.ApplyResources(Me.RibbonTabItem_Objects, "RibbonTabItem_Objects")
+            '
+            'RibbonTabItem_Warps
+            '
+            Me.RibbonTabItem_Warps.Name = "RibbonTabItem_Warps"
+            Me.RibbonTabItem_Warps.Panel = Me.RibbonPanel2
+            resources.ApplyResources(Me.RibbonTabItem_Warps, "RibbonTabItem_Warps")
+            '
+            'RibbonTabItem_Collision
+            '
+            Me.RibbonTabItem_Collision.Name = "RibbonTabItem_Collision"
+            Me.RibbonTabItem_Collision.Panel = Me.RibbonPanel4
+            resources.ApplyResources(Me.RibbonTabItem_Collision, "RibbonTabItem_Collision")
+            '
+            'RibbonTabItem6
+            '
+            Me.RibbonTabItem6.Name = "RibbonTabItem6"
+            Me.RibbonTabItem6.Panel = Me.RibbonPanel6
+            resources.ApplyResources(Me.RibbonTabItem6, "RibbonTabItem6")
+            '
+            'RibbonTabItem1
+            '
+            Me.RibbonTabItem1.Name = "RibbonTabItem1"
+            Me.RibbonTabItem1.Panel = Me.RibbonPanel7
+            resources.ApplyResources(Me.RibbonTabItem1, "RibbonTabItem1")
+            '
+            'ButtonItem95
+            '
+            Me.ButtonItem95.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
+            Me.ButtonItem95.Name = "ButtonItem95"
+            Me.ButtonItem95.Symbol = "58830"
+            Me.ButtonItem95.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+            Me.ButtonItem95.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+            Me.ButtonItem95.SymbolSize = 12.0!
             '
             'ApplicationButton1
             '
@@ -3602,52 +3780,6 @@
             Me.ButtonItem3.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem3.SymbolSize = 12.0!
             '
-            'RibbonTabItem3
-            '
-            Me.RibbonTabItem3.Name = "RibbonTabItem3"
-            Me.RibbonTabItem3.Panel = Me.RibbonPanel3
-            resources.ApplyResources(Me.RibbonTabItem3, "RibbonTabItem3")
-            '
-            'RibbonTabItem5
-            '
-            Me.RibbonTabItem5.Name = "RibbonTabItem5"
-            Me.RibbonTabItem5.Panel = Me.RibbonPanel5
-            resources.ApplyResources(Me.RibbonTabItem5, "RibbonTabItem5")
-            '
-            'RibbonTabItem_Objects
-            '
-            Me.RibbonTabItem_Objects.Checked = True
-            Me.RibbonTabItem_Objects.Name = "RibbonTabItem_Objects"
-            Me.RibbonTabItem_Objects.Panel = Me.RibbonPanel1
-            resources.ApplyResources(Me.RibbonTabItem_Objects, "RibbonTabItem_Objects")
-            '
-            'RibbonTabItem_Warps
-            '
-            Me.RibbonTabItem_Warps.Name = "RibbonTabItem_Warps"
-            Me.RibbonTabItem_Warps.Panel = Me.RibbonPanel2
-            resources.ApplyResources(Me.RibbonTabItem_Warps, "RibbonTabItem_Warps")
-            '
-            'RibbonTabItem_Collision
-            '
-            Me.RibbonTabItem_Collision.Name = "RibbonTabItem_Collision"
-            Me.RibbonTabItem_Collision.Panel = Me.RibbonPanel4
-            resources.ApplyResources(Me.RibbonTabItem_Collision, "RibbonTabItem_Collision")
-            '
-            'RibbonTabItem6
-            '
-            Me.RibbonTabItem6.Name = "RibbonTabItem6"
-            Me.RibbonTabItem6.Panel = Me.RibbonPanel6
-            resources.ApplyResources(Me.RibbonTabItem6, "RibbonTabItem6")
-            '
-            'ButtonItem95
-            '
-            Me.ButtonItem95.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
-            Me.ButtonItem95.Name = "ButtonItem95"
-            Me.ButtonItem95.Symbol = "58830"
-            Me.ButtonItem95.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem95.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem95.SymbolSize = 12.0!
-            '
             'ButtonItem_Undo
             '
             Me.ButtonItem_Undo.Name = "ButtonItem_Undo"
@@ -3665,7 +3797,6 @@
             Me.ButtonItem_Redo.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(122, Byte), Integer))
             Me.ButtonItem_Redo.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem_Redo.SymbolSize = 12.0!
-            resources.ApplyResources(Me.ButtonItem_Redo, "ButtonItem_Redo")
             '
             'ButtonItem13
             '
@@ -3741,11 +3872,12 @@
             Me.RibbonControl1.ResumeLayout(False)
             Me.RibbonControl1.PerformLayout()
             Me.RibbonPanel1.ResumeLayout(False)
-            Me.RibbonPanel2.ResumeLayout(False)
             Me.RibbonPanel5.ResumeLayout(False)
-            Me.RibbonPanel3.ResumeLayout(False)
-            Me.RibbonPanel6.ResumeLayout(False)
+            Me.RibbonPanel7.ResumeLayout(False)
+            Me.RibbonPanel2.ResumeLayout(False)
             Me.RibbonPanel4.ResumeLayout(False)
+            Me.RibbonPanel6.ResumeLayout(False)
+            Me.RibbonPanel3.ResumeLayout(False)
             Me.ResumeLayout(False)
 
         End Sub
@@ -4028,6 +4160,14 @@
         Friend WithEvents ButtonItem31 As DevComponents.DotNetBar.ButtonItem
         Friend WithEvents ButtonItem32 As DevComponents.DotNetBar.ButtonItem
         Friend WithEvents ButtonItem33 As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents RibbonPanel7 As DevComponents.DotNetBar.RibbonPanel
+        Friend WithEvents RibbonBar28 As DevComponents.DotNetBar.RibbonBar
+        Friend WithEvents ButtonItem34 As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents RibbonTabItem1 As DevComponents.DotNetBar.RibbonTabItem
+        Friend WithEvents RibbonBar30 As DevComponents.DotNetBar.RibbonBar
+        Friend WithEvents ButtonItem36 As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents RibbonBar29 As DevComponents.DotNetBar.RibbonBar
+        Friend WithEvents ButtonItem35 As DevComponents.DotNetBar.ButtonItem
     End Class
 
 End Namespace

@@ -44,15 +44,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="EPPlus, Version=4.5.3.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -75,6 +81,12 @@
     <Compile Include="DataTableEx.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Dialogs\FilesFilterDialog.Designer.vb">
+      <DependentUpon>FilesFilterDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FilesFilterDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dialogs\StringInputDialog.Designer.vb">
       <DependentUpon>StringInputDialog.vb</DependentUpon>
     </Compile>
@@ -82,6 +94,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Extensions.vb" />
+    <Compile Include="FileDialogFilters.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileDialogFilters.resx</DependentUpon>
+    </Compile>
     <Compile Include="General.vb" />
     <Compile Include="IconExtractor.vb" />
     <Compile Include="ItemListBox.vb">
@@ -109,8 +126,19 @@
     <Compile Include="SwapInts.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dialogs\FilesFilterDialog.de.resx">
+      <DependentUpon>FilesFilterDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FilesFilterDialog.resx">
+      <DependentUpon>FilesFilterDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\StringInputDialog.resx">
       <DependentUpon>StringInputDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileDialogFilters.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileDialogFilters.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

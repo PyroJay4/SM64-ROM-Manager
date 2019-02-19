@@ -135,6 +135,7 @@ Public Class ModelImporter
         Dim bw As New BinaryWriter(fs)
 
         'Write to stream
+        WriteOutput("Writing Model ...")
         sr = mdl.ToStream(fs, romAddr, romAddr - (bankAddr And &HFFFFFF), bankAddr And &HFF000000)
 
         If sr IsNot Nothing Then
@@ -145,6 +146,7 @@ Public Class ModelImporter
 
         'Write Collision Pointer
         If col > -1 Then
+            WriteOutput("Chaning Collision Pointers ...")
             For Each cp As Integer In SelectedPreset.CollisionPointers
                 fs.Position = cp
                 bw.Write(SwapInts.SwapInt32(col))
@@ -153,6 +155,7 @@ Public Class ModelImporter
 
         'Write Geopointer
         If geo.Length > 0 Then
+            WriteOutput("Chaning Geometry Pointers ...")
             For Each gp As Integer In SelectedPreset.GeometryPointers
                 fs.Position = gp
                 bw.Write(SwapInts.SwapInt32(geo(0).SegPointer))
@@ -171,17 +174,17 @@ Public Class ModelImporter
 
         fs.Close()
 
+        If preset.ScriptAfter IsNot Nothing AndAlso Not String.IsNullOrEmpty(preset.ScriptAfter.Script) Then
+            WriteOutput("Executing Script ...")
+            pm.Patch(preset.ScriptAfter, "", Me, scriptparams)
+        End If
+
         If col > -1 Then
             WriteOutput($"Collision Pointer:{vbTab}{sr.CollisionPointer.ToString("X")}")
         End If
         For Each g As Geopointer In geo
             WriteOutput($"DL-Pointer:{vbTab}{g.SegPointer.ToString("X")} ({g.Layer.ToString})")
         Next
-
-        If preset.ScriptAfter IsNot Nothing AndAlso Not String.IsNullOrEmpty(preset.ScriptAfter.Script) Then
-            WriteOutput("Executing Script ...")
-            pm.Patch(preset.ScriptAfter, "", Me, scriptparams)
-        End If
 
         WriteOutput()
         WriteOutput(Now.ToShortTimeString & " - Done")
@@ -352,7 +355,9 @@ Public Class ModelImporter
         If preset IsNot Nothing Then
             preset.CollisionPointers.Clear()
             For Each cp As String In TextBoxX2.Text.Split(",")
-                preset.CollisionPointers.Add(ValueFromText(cp.Trim))
+                If Not String.IsNullOrEmpty(cp) Then
+                    preset.CollisionPointers.Add(ValueFromText(cp.Trim))
+                End If
             Next
         End If
     End Sub
@@ -362,7 +367,9 @@ Public Class ModelImporter
         If preset IsNot Nothing Then
             preset.GeometryPointers.Clear()
             For Each gp As String In TextBoxX1.Text.Split(",")
-                preset.GeometryPointers.Add(ValueFromText(gp.Trim))
+                If Not String.IsNullOrEmpty(gp) Then
+                    preset.GeometryPointers.Add(ValueFromText(gp.Trim))
+                End If
             Next
         End If
     End Sub

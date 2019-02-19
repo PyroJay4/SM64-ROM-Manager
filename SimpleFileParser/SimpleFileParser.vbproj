@@ -87,6 +87,17 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Face.vb" />
+    <Compile Include="Model\Material.vb" />
+    <Compile Include="Model\Mesh.vb" />
+    <Compile Include="Model\ModelBoundaries.vb" />
+    <Compile Include="Model\Normal.vb" />
+    <Compile Include="Model\Point.vb" />
+    <Compile Include="Model\Shading.vb" />
+    <Compile Include="Model\UpAxis.vb" />
+    <Compile Include="Model\UV.vb" />
+    <Compile Include="Model\Vertex.vb" />
+    <Compile Include="Model\VertexColor.vb" />
     <Compile Include="Other\LoaderModule.vb" />
     <Compile Include="FileParser\Aspose3DLoader.vb" />
     <Compile Include="FileParser\AssimpLoader.vb" />

@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Drawing
+Imports System.IO
 Imports SM64Lib.Data
 
 Namespace NPCs
@@ -175,6 +176,54 @@ Namespace NPCs
             Dim ppf As String = Path.Combine(MyDataPath, "Patchs\3D-Coins\Remove 3D Coins.ppf")
             PatchClass.ApplyPPF(RomManager.RomFile, ppf)
             PatchClass.UpdateChecksum(RomManager.RomFile)
+        End Sub
+
+        Public Function Read3DCoinsColors() As Coins3DColors
+            Dim rom As BinaryRom = RomManager.GetBinaryRom(FileAccess.Read)
+            Dim list As New List(Of Color)
+
+            For Each addr As Integer In {0, 0, 0, 0, 0, 0}
+                Dim r, g, b, a As Byte
+                rom.Position = addr
+                r = rom.ReadByte
+                g = rom.ReadByte
+                b = rom.ReadByte
+                a = rom.ReadByte
+                list.Add(Color.FromArgb(a, r, g, b))
+            Next
+
+            rom.Close()
+
+            Return New Coins3DColors With {
+                .NormalCoinsLight = list(0),
+                .RedCoinsLight = list(1),
+                .BlueCoinsLight = list(2),
+                .NormalCoinsDark = list(3),
+                .RedCoinsDark = list(4),
+                .BlueCoinsDark = list(5)
+            }
+        End Function
+
+        Public Sub Save3DCoinsColors(colors As Coins3DColors)
+            Dim rom As BinaryRom = RomManager.GetBinaryRom(FileAccess.ReadWrite)
+            Dim dic As New Dictionary(Of Integer, Color) From {
+                {0, colors.NormalCoinsLight},
+                {0, colors.RedCoinsLight},
+                {0, colors.BlueCoinsLight},
+                {0, colors.NormalCoinsDark},
+                {0, colors.RedCoinsDark},
+                {0, colors.BlueCoinsDark}
+            }
+
+            For Each kvp In dic
+                rom.Position = kvp.Key
+                rom.WriteByte(kvp.Value.R)
+                rom.WriteByte(kvp.Value.G)
+                rom.WriteByte(kvp.Value.B)
+                rom.WriteByte(kvp.Value.A)
+            Next
+
+            rom.Close()
         End Sub
 
     End Class

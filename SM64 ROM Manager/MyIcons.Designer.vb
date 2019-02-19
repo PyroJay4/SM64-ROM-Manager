@@ -107,6 +107,16 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
+        Friend Shared ReadOnly Property Bild_Bearbeiten_32px() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Bild_Bearbeiten_32px", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
         Friend Shared ReadOnly Property Hinzufügen_16px() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Hinzufügen_16px", resourceCulture)

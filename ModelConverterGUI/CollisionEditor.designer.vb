@@ -39,6 +39,7 @@ Partial Class CollisionEditor
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.CheckBoxX_IsNonSolid = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.CircularProgress1 = New DevComponents.DotNetBar.Controls.CircularProgress()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -221,10 +222,22 @@ Partial Class CollisionEditor
         Me.CheckBoxX_IsNonSolid.Name = "CheckBoxX_IsNonSolid"
         Me.CheckBoxX_IsNonSolid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
+        'CircularProgress1
+        '
+        resources.ApplyResources(Me.CircularProgress1, "CircularProgress1")
+        Me.CircularProgress1.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.CircularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CircularProgress1.Name = "CircularProgress1"
+        Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
+        '
         'CollisionEditor
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.CircularProgress1)
         Me.Controls.Add(Me.CheckBoxX_IsNonSolid)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PictureBox1)
@@ -260,4 +273,5 @@ Partial Class CollisionEditor
     Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
     Friend WithEvents Panel1 As Windows.Forms.Panel
     Friend WithEvents CheckBoxX_IsNonSolid As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents CircularProgress1 As DevComponents.DotNetBar.Controls.CircularProgress
 End Class

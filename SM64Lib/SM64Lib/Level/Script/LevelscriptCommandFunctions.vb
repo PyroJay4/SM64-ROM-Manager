@@ -422,6 +422,20 @@ Namespace Global.SM64Lib.Levels.Script
                 bw.Write(SwapInts.SwapUInt32(Address))
                 Command.Position = 0
             End Sub
+
+            Public Shared Function GetSegmentedAddressToJump(Command As LevelscriptCommand) As Integer
+                Dim br As New BinaryReader(Command)
+                Command.Position = 12
+                Dim value As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                Command.Position = 0
+                Return value
+            End Function
+            Public Shared Sub SetSegmentedAddressToJump(Command As LevelscriptCommand, Address As Integer)
+                Dim bw As New BinaryWriter(Command)
+                Command.Position = 12
+                bw.Write(SwapInts.SwapUInt32(Address))
+                Command.Position = 0
+            End Sub
         End Class
 
         Public Class clDefaultPosition

@@ -40,10 +40,12 @@ Namespace Global.SM64Lib.SM64Convert
             Dim curTexWrapS As Integer = 10497
             Dim curTexScale As New Numerics.Vector2(1.0F, 1.0F)
             Dim curTexPalette As Byte() = {}
+            Dim curTexPaletteSegAddr As Integer = -1
             Dim curTexFormat As N64Graphics.N64Codec? = Nothing
             Dim curGeometryMode As UInteger = &H22205
             Dim curMesh As Mesh = Nothing
             Dim curColor As Color? = Nothing
+            Dim curTexLoadedInfos As TextureLoadedInfos = Nothing
 
             Dim enableVertexColors As Boolean = False
 
@@ -98,12 +100,14 @@ Namespace Global.SM64Lib.SM64Convert
                         Dim paletteTileDescritpr As Byte = cmdarr(4)
                         Dim numColorsToLoadInPalette As UShort
 
+                        curTexPaletteSegAddr = curTexSegAddr
+
                         cmd.Position = 5
                         numColorsToLoadInPalette = bdata.ReadUInt16 >> 6 '+ 1
 
-                        Dim seg As SegmentedBank = rommgr.GetSegBank(curTexSegAddr >> 24, AreaID)
+                        Dim seg As SegmentedBank = rommgr.GetSegBank(curTexPaletteSegAddr >> 24, AreaID)
                         curTexPalette = New Byte(numColorsToLoadInPalette * 2 + 1) {}
-                        Dim offset As Integer = curTexSegAddr And &HFFFFFF
+                        Dim offset As Integer = curTexPaletteSegAddr And &HFFFFFF
 
                         For i As Integer = 1 To numColorsToLoadInPalette + 1
                             Dim ii As Integer = i * 2 - 2
@@ -116,7 +120,7 @@ Namespace Global.SM64Lib.SM64Convert
                         Dim f As New Face
 
                         If curTexFormat IsNot Nothing Then
-                            ProcessTexture(obj, rommgr, AreaID, dl, curTexFormat, knownTextures, curTexture, curTexSegAddr, curTexSize, curTexWrapT, curTexWrapS, curTexScale, curTexPalette, curColor)
+                            ProcessTexture(obj, rommgr, AreaID, dl, curTexFormat, knownTextures, curTexture, curTexSegAddr, curTexSize, curTexWrapT, curTexWrapS, curTexScale, curTexPalette, curTexPaletteSegAddr, curColor, curTexLoadedInfos)
                             f.Material = curTexture
                         End If
 
@@ -258,7 +262,7 @@ Namespace Global.SM64Lib.SM64Convert
             Return seg
         End Function
 
-        Private Shared Sub ProcessTexture(obj As Object3D, rommgr As RomManager, AreaID As Byte?, dl As DisplayList, texFormat As Byte, knownTextures As Dictionary(Of Integer, Material), ByRef curTexture As Material, curTexSegAddr As Integer, curTexSize As Size, curTexWrapT As Integer, curTexWrapS As Integer, curTexScale As Numerics.Vector2, curTexPalette As Byte(), curColor As Color?)
+        Private Shared Sub ProcessTexture(obj As Object3D, rommgr As RomManager, AreaID As Byte?, dl As DisplayList, texFormat As N64Graphics.N64Codec, knownTextures As Dictionary(Of Integer, Material), ByRef curTexture As Material, curTexSegAddr As Integer, curTexSize As Size, curTexWrapT As Integer, curTexWrapS As Integer, curTexScale As Numerics.Vector2, curTexPalette As Byte(), curTexPaletteSegAddr As Integer, curColor As Color?, ByRef curTexLoadedInfos As TextureLoadedInfos)
             If curTexSegAddr < 0 Then Return
 
             If knownTextures.ContainsKey(curTexSegAddr) Then
@@ -276,9 +280,17 @@ Namespace Global.SM64Lib.SM64Convert
 
                     GetTextureImage(seg.Data, seg.BankOffsetFromSegAddr(curTexSegAddr), mat, texFormat, curTexSize, curTexPalette)
 
+                    If mat.Image IsNot Nothing Then
+                        mat.Tag = New TextureLoadedInfos(Hex(curTexSegAddr), texFormat, curTexSegAddr, curTexPaletteSegAddr, seg.SegToRomAddr(curTexSegAddr), seg.SegToRomAddr(curTexPaletteSegAddr), mat.Image.Size)
+                    End If
+
                     curTexture = mat
+
                     knownTextures.Add(curTexSegAddr, mat)
-                    If Not obj.Materials.ContainsKey(curTexSegAddr) Then obj.Materials.Add(curTexSegAddr, mat)
+                    If Not obj.Materials.ContainsKey(curTexSegAddr) Then
+                        obj.Materials.Add(curTexSegAddr, mat)
+                    End If
+
                 Catch ex As Exception
                     'MsgBox(ex.Message)
                 End Try

@@ -34,6 +34,7 @@ Namespace LevelEditor
             LoadObjectCombosIfEmpty()
             LoadBehaviorInfosIfEmpty()
             SetUI()
+            UpdateAmbientColors
         End Sub
 
         Public Sub New(editMode As EditModes, avaiableCombos As ObjectComboList)

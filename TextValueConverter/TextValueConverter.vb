@@ -2,18 +2,18 @@
 
     Public Event WantIntegerValueMode(e As WantIntegerValueModeEventArgs)
 
-    Public Function ValueFromText(Text As String, Optional DefaultValue As Integer = 0) As Integer
+    Public Function ValueFromText(Text As String, Optional DefaultValue As Integer = 0, Optional useIVM As Integer = -1) As Integer
         Try
-            Dim IVM As Integer = GetIntegerValueMode()
+            Dim IVM As Integer = If(IVM > -1, IVM, GetIntegerValueMode())
             Select Case True
-                Case Text.StartsWith("0x"), Text.StartsWith("&h")
+                Case Text.StartsWith("0x"), Text.StartsWith("&h"), useIVM = 1, useIVM = 2
                     Return Convert.ToInt32(Text.Substring(2), 16)
-                Case Text.StartsWith("$")
+                Case Text.StartsWith("$"), useIVM = 3
                     Return Convert.ToInt32(Text.Substring(1), 16)
                 Case Text.StartsWith("0b"), Text.StartsWith("&b")
                     Return Convert.ToInt32(Text.Substring(2), 2)
                 Case Else
-                    If IVM = 0 Then
+                    If IVM = 0 OrElse useIVM = 0 Then
                         Try
                             Return Convert.ToInt32(Text)
                         Catch ex As Exception

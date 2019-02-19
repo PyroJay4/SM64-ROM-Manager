@@ -88,9 +88,10 @@ Namespace Global.SM64Lib
 
             LevelInfoData.ReadFromFile(MyDataPath & "\Other\Level Tabel.json")
 
+            SetSegBank(&H0, 0, New FileInfo(FileName).Length) 'Bank 0 means the whole ROM.
             SetSegBank(&H15, &H2ABCA0, &H2AC6B0)
-            SetSegBank(&H2, &H108A40, &H114750)
-            'SetSegBank(&H2, &H803156, 0) 'Text Table??
+            'SetSegBank(&H2, &H108A40, &H114750)
+            SetSegBank(&H2, &H803156, 0) 'Text Table??
 
             LoadDictionaryUpdatePatches()
         End Sub

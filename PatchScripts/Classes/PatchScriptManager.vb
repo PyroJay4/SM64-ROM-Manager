@@ -312,14 +312,11 @@ Public Class PatchingManager
         options.ReferencedAssemblies.Add("System.Xml.dll")
         options.ReferencedAssemblies.Add("System.Xml.Linq.dll")
         options.ReferencedAssemblies.Add("System.IO.dll")
-
-        Dim LibPath As String
-        If Debugger.IsAttached Then
-            LibPath = Path.GetDirectoryName(Application.ExecutablePath)
-        Else
-            LibPath = Path.Combine(MyDataPath, "Lib")
-        End If
-        options.ReferencedAssemblies.Add(Path.Combine(LibPath, "SM64Lib.dll"))
+        options.ReferencedAssemblies.Add("System.Drawing.dll")
+        options.ReferencedAssemblies.Add(GetType(PluginCenter.Controls).Assembly.Location)
+        options.ReferencedAssemblies.Add(GetType(S3DFileParser.Object3D).Assembly.Location)
+        options.ReferencedAssemblies.Add(GetType(DevComponents.DotNetBar.OfficeForm).Assembly.Location)
+        options.ReferencedAssemblies.Add(GetType(SM64Lib.RomManager).Assembly.Location)
 
         For Each ref As String In script.References
             If Not options.ReferencedAssemblies.Contains(ref) Then

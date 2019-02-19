@@ -43,6 +43,8 @@ Public Class MainForm
     End Property
 
     Public Sub New()
+        'CheckForIllegalCrossThreadCalls = False
+
         SetDPIAware
 
         SuspendLayout()

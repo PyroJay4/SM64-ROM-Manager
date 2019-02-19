@@ -67,12 +67,12 @@ Public Class TweakScriptEditor
     End Sub
 
     Private Sub CodeEditor_MouseClick(sender As Object, e As MouseEventArgs) Handles CodeEditor.MouseClick, TextBoxX_ReferenceName.MouseClick, TextBoxX_ScriptDescription.MouseClick, TextBoxX_ScriptName.MouseClick
-        If e.Button = MouseButtons.Right Then
-            ButtonItem5.Popup(Cursor.Position)
-        End If
+        'If e.Button = MouseButtons.Right Then
+        '    ButtonItem5.Popup(Cursor.Position)
+        'End If
     End Sub
     Private Sub CodeEditor_GotFocus(sender As Object, e As EventArgs) Handles CodeEditor.GotFocus, TextBoxX_ReferenceName.GotFocus, TextBoxX_ScriptDescription.GotFocus, TextBoxX_ScriptName.GotFocus
-        ButtonItem5.Tag = sender
+        'ButtonItem5.Tag = sender
     End Sub
 
     Private Sub TweakScriptEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -169,22 +169,7 @@ Public Class TweakScriptEditor
         End If
     End Sub
 
-    Private Sub ButtonItem_Copy_Click(sender As ButtonItem, e As EventArgs) Handles ButtonItem_Copy.Click
-        sender.Parent.Tag.Copy()
-    End Sub
-    Private Sub ButtonItem_cut_Click(sender As Object, e As EventArgs) Handles ButtonItem_cut.Click
-        sender.Parent.Tag.Cut()
-    End Sub
-    Private Sub ButtonItem_Paste_Click(sender As Object, e As EventArgs) Handles ButtonItem_Paste.Click
-        sender.Parent.Tag.Paste()
-    End Sub
-    Private Sub ButtonItem_SelectAll_Click(sender As Object, e As EventArgs) Handles ButtonItem_SelectAll.Click
-        sender.Parent.Tag.SelectAll()
-    End Sub
-    Private Sub ButtonItem6_Click(sender As Object, e As EventArgs) Handles ButtonItem6.Click
-        sender.Parent.Tag.Undo()
-    End Sub
-    Private Sub ButtonItem7_Click(sender As Object, e As EventArgs) Handles ButtonItem7.Click
+    Private Sub ButtonItem7_Click(sender As Object, e As EventArgs)
         If TypeOf sender.Parent.Tag Is FastColoredTextBox Then
             sender.Parent.Tag.Redo()
         End If

@@ -8,14 +8,14 @@ Imports DevComponents.Editors
 Imports System.Windows.Forms
 Imports S3DFileParser
 Imports System.Runtime.CompilerServices
+Imports OfficeOpenXml
 
 Public Module General
 
-    Public DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
-    Public FileIniParser As New FileIniDataParser
-    Public StreamIniParser As New StreamIniDataParser
-    Public ActSelectorDefaultValues As Byte() = New Byte() {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
+    Private _SurfaceData As ExcelWorkbook = Nothing
 
+    Public ReadOnly Property DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
+    Public ReadOnly Property ActSelectorDefaultValues As Byte() = New Byte() {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
     Public ReadOnly Property PluginManager As New Plugins.PluginManager(Path.Combine(MyDataPath, "Plugins"))
 
     Public Declare Sub SetDPIAware Lib "user32.dll" Alias "SetProcessDPIAware" ()
@@ -23,6 +23,17 @@ Public Module General
     Public ReadOnly Property MyDataPath As String
         Get
             Return Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Data")
+        End Get
+    End Property
+
+    Public ReadOnly Property SurfaceData As ExcelWorkbook
+        Get
+            If _SurfaceData Is Nothing Then
+                Dim tableFile As String = MyDataPath & "\Other\Surface Data.xlsx"
+                Dim pgk As New ExcelPackage(New FileInfo(tableFile))
+                _SurfaceData = pgk.Workbook
+            End If
+            Return _SurfaceData
         End Get
     End Property
 

@@ -120,7 +120,7 @@ Namespace LevelEditor
             For Each v As Vertex In vs
                 vlist.Remove(v)
             Next
-            base.ReloadCollisionInOpenGL()
+            base.maps.ReloadCollisionInOpenGL()
         End Sub
 
         Public Shared Sub AddToCollision(base As Form_AreaEditor, vlist As VertexList, vs As Vertex(), tlist As TriangleList, ts As Triangle())
@@ -130,7 +130,7 @@ Namespace LevelEditor
             For Each t As Triangle In ts
                 tlist.Add(t)
             Next
-            base.ReloadCollisionInOpenGL()
+            base.maps.ReloadCollisionInOpenGL()
         End Sub
 
     End Class

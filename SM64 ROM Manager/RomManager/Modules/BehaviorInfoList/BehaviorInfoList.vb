@@ -18,7 +18,7 @@ Namespace LevelEditor
                     Dim info As New BehaviorInfo
 
                     info.Name = entry("Name").Value(Of String)
-                    info.BehaviorAddress = ValueFromText(entry("Behavior").Value(Of String))
+                    info.BehaviorAddress = ValueFromText(entry("Behavior").Value(Of String),, 0)
 
                     For i As Integer = 1 To 4
                         If entry.ContainsKey($"BP{i} Name") Then

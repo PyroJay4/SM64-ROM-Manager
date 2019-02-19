@@ -73,10 +73,6 @@ Namespace Global.SM64Lib
             Me.Data = data
         End Sub
 
-        Public Sub MakeAsMIO0()
-            _IsMIO0 = True
-        End Sub
-
         Public Function SegToRomAddr(SegmentedAddress As Integer) As Integer
             Return SegmentedAddress - Me.BankAddress + Me.RomStart
         End Function
@@ -164,6 +160,10 @@ Namespace Global.SM64Lib
                     s.WriteByte(_Data.ReadByte)
                 Next
             End If
+        End Sub
+
+        Public Sub MakeAsMIO0()
+            _IsMIO0 = True
         End Sub
 
     End Class

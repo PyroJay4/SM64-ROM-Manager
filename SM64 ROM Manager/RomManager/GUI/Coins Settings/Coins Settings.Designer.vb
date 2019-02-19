@@ -91,8 +91,8 @@ Partial Class Form_CoinsSettings
         '
         Me.ButtonX_Edit3DCoins.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_Edit3DCoins.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX_Edit3DCoins.FocusCuesEnabled = False
         resources.ApplyResources(Me.ButtonX_Edit3DCoins, "ButtonX_Edit3DCoins")
+        Me.ButtonX_Edit3DCoins.FocusCuesEnabled = False
         Me.ButtonX_Edit3DCoins.Name = "ButtonX_Edit3DCoins"
         Me.ButtonX_Edit3DCoins.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '

@@ -17,7 +17,7 @@ Namespace Global.SM64Lib.Levels.Script
         Public Sub New()
         End Sub
 
-        Public Sub Read(rommgr As RomManager, scriptStartInBank As Integer, Optional EndAtCommand As LevelscriptCommandTypes = LevelscriptCommandTypes.EndOfLevel)
+        Public Sub Read(rommgr As RomManager, scriptStartInBank As Integer, Optional EndAtCommands As LevelscriptCommandTypes = LevelscriptCommandTypes.EndOfLevel, Optional segDic As Dictionary(Of Byte, SegmentedBank) = Nothing, Optional storeToRommgr As Boolean = True)
             Dim s As Stream = Nothing
             Dim br As BinaryReader = Nothing
             Dim fs As FileStream = Nothing
@@ -34,7 +34,7 @@ Namespace Global.SM64Lib.Levels.Script
 
             Close()
 
-            Read_GetStream(curSegBank, s, br, fs, brfs, rommgr, scriptStartInBank, dicBankBinaryReaders)
+            Read_GetStream(curSegBank, s, br, fs, brfs, rommgr, scriptStartInBank, dicBankBinaryReaders, segDic)
 
             Do While enableDo
                 Try
@@ -54,27 +54,38 @@ Namespace Global.SM64Lib.Levels.Script
                     Dim bankOffset As Integer = br.BaseStream.Position - lenth
                     curLvlCmd.RomAddress = curSegBank?.RomStart + bankOffset
                     curLvlCmd.BankAddress = curSegBank?.BankAddress + bankOffset
-                    Me.Add(curLvlCmd)
+                    Add(curLvlCmd)
                     tb.Clear()
 
                     Select Case curLvlCmd.CommandType
-                        Case EndAtCommand, LevelscriptCommandTypes.EndOfLevel
-                            enableDo = False
+                        Case LevelscriptCommandTypes.LoadRomToRam, LevelscriptCommandTypes.x1A, LevelscriptCommandTypes.x18, LevelscriptCommandTypes.x00, LevelscriptCommandTypes.x01
+                            Dim bank As New SegmentedBank With {
+                                .BankID = clLoadRomToRam.GetSegmentedID(curLvlCmd),
+                                .RomStart = clLoadRomToRam.GetRomStart(curLvlCmd),
+                                .RomEnd = clLoadRomToRam.GetRomEnd(curLvlCmd)
+                            }
 
-                        Case LevelscriptCommandTypes.LoadRomToRam
-                            rommgr.SetSegBank(clLoadRomToRam.GetSegmentedID(curLvlCmd),
-                                              clLoadRomToRam.GetRomStart(curLvlCmd),
-                                              clLoadRomToRam.GetRomEnd(curLvlCmd))
+                            If curLvlCmd.CommandType = LevelscriptCommandTypes.x1A Then bank.MakeAsMIO0()
+                            If storeToRommgr Then rommgr?.SetSegBank(bank)
+
+                            If segDic IsNot Nothing Then
+                                If segDic.ContainsKey(bank.BankID) Then
+                                    segDic(bank.BankID) = bank
+                                Else
+                                    segDic.Add(bank.BankID, bank)
+                                End If
+                            End If
+
+                            If {LevelscriptCommandTypes.x00, LevelscriptCommandTypes.x01}.Contains(curLvlCmd.CommandType) Then
+                                Dim SegAddr As Integer = clLoadRomToRam.GetSegmentedAddressToJump(curLvlCmd)
+                                JumpTo(jumpStack, sStack, brStack, segStack, curSegBank, s, br, fs, brfs, rommgr, SegAddr, dicBankBinaryReaders, segDic)
+                            End If
 
                         Case LevelscriptCommandTypes.JumpToSegAddr
                             Dim SegAddr As Integer = clJumpToSegAddr.GetSegJumpAddr(curLvlCmd)
 
-                            If ({&H19, &HE}).Contains(SegAddr >> 24) Then
-                                jumpStack.Push(s.Position)
-                                sStack.Push(s)
-                                brStack.Push(br)
-                                segStack.Push(curSegBank)
-                                Read_GetStream(curSegBank, s, br, fs, brfs, rommgr, SegAddr, dicBankBinaryReaders)
+                            If {&H19, &HE}.Contains(SegAddr >> 24) Then
+                                JumpTo(jumpStack, sStack, brStack, segStack, curSegBank, s, br, fs, brfs, rommgr, SegAddr, dicBankBinaryReaders, segDic)
                             End If
 
                         Case LevelscriptCommandTypes.JumpBack, &HA 'Jump back
@@ -84,6 +95,11 @@ Namespace Global.SM64Lib.Levels.Script
                             s.Position = jumpStack.Pop
 
                     End Select
+
+                    If curLvlCmd.CommandType = LevelscriptCommandTypes.EndOfLevel OrElse curLvlCmd.CommandType = EndAtCommands Then
+                        enableDo = False
+                    End If
+
                 Catch ex As Exception
                     enableDo = False
                 End Try
@@ -93,16 +109,32 @@ Namespace Global.SM64Lib.Levels.Script
             fs?.Close()
         End Sub
 
-        Private Sub Read_GetStream(ByRef curSegBank As SegmentedBank, ByRef s As Stream, ByRef br As BinaryReader, ByRef fs As FileStream, ByRef brfs As BinaryReader, rommgr As RomManager, scriptStartInBank As Integer, dicBankBinaryReaders As Dictionary(Of Byte, BinaryReader))
-            curSegBank = rommgr.GetSegBank((scriptStartInBank And &HFF000000) >> 24)
+        Private Sub JumpTo(jumpStack As Stack(Of Integer), sStack As Stack(Of Stream), brStack As Stack(Of BinaryReader), segStack As Stack(Of SegmentedBank), ByRef curSegBank As SegmentedBank, ByRef s As Stream, ByRef br As BinaryReader, ByRef fs As FileStream, ByRef brfs As BinaryReader, rommgr As RomManager, scriptStartInBank As Integer, dicBankBinaryReaders As Dictionary(Of Byte, BinaryReader), segDic As Dictionary(Of Byte, SegmentedBank))
+            jumpStack.Push(s.Position)
+            sStack.Push(s)
+            brStack.Push(br)
+            segStack.Push(curSegBank)
+            Read_GetStream(curSegBank, s, br, fs, brfs, rommgr, scriptStartInBank, dicBankBinaryReaders, segDic)
+        End Sub
+
+        Private Sub Read_GetStream(ByRef curSegBank As SegmentedBank, ByRef s As Stream, ByRef br As BinaryReader, ByRef fs As FileStream, ByRef brfs As BinaryReader, rommgr As RomManager, scriptStartInBank As Integer, dicBankBinaryReaders As Dictionary(Of Byte, BinaryReader), segDic As Dictionary(Of Byte, SegmentedBank))
+            Dim bankID As Byte = scriptStartInBank >> 24
+            curSegBank = rommgr.GetSegBank(bankID)
+
+            If curSegBank Is Nothing AndAlso segDic?.ContainsKey(bankID) Then
+                curSegBank = segDic(bankID)
+            End If
+
             If curSegBank?.Data IsNot Nothing Then
                 s = curSegBank.Data
+
                 If dicBankBinaryReaders.ContainsKey(curSegBank.BankID) Then
                     br = dicBankBinaryReaders(curSegBank.BankID)
                 Else
                     br = New BinaryReader(curSegBank.Data)
                     dicBankBinaryReaders.Add(curSegBank.BankID, br)
                 End If
+
             Else
                 If fs Is Nothing Then fs = New FileStream(rommgr.RomFile, FileMode.Open, FileAccess.Read)
                 If brfs Is Nothing Then brfs = New BinaryReader(fs)
@@ -113,7 +145,8 @@ Namespace Global.SM64Lib.Levels.Script
             If curSegBank IsNot Nothing Then
                 s.Position = If(s Is fs,
                     curSegBank.SegToRomAddr(scriptStartInBank),
-                    curSegBank.BankOffsetFromSegAddr(scriptStartInBank))
+                    curSegBank.BankOffsetFromSegAddr(scriptStartInBank)
+                    )
             End If
         End Sub
 

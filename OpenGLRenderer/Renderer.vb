@@ -15,6 +15,7 @@ Public Class Renderer
     Private selectedLineTexture As Bitmap = Nothing
     Public Property ModelScaling As Single = 1.0F
     Public ReadOnly Property HasRendered As Boolean = False
+    Public ReadOnly Property SelectedElements As List(Of Object)
 
     Private ReadOnly Property VertexBuffers As New Dictionary(Of Mesh, Integer)
     Private ReadOnly Property IndicesBuffers As New Dictionary(Of Mesh, List(Of Integer))
@@ -56,6 +57,7 @@ Public Class Renderer
         GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBuffers(m))
         GL.BufferSubData(BufferTarget.ArrayBuffer, CType(m.Vertices.IndexOf(v) * Vector3.SizeInBytes, IntPtr), Vector3.SizeInBytes, New Vector3(v.X, v.Y, v.Z))
     End Sub
+
     ''' <summary>
     ''' Updates the Data of a Normal in the buffer.
     ''' </summary>
@@ -65,6 +67,7 @@ Public Class Renderer
         GL.BindBuffer(BufferTarget.ArrayBuffer, NormalBuffers(m))
         GL.BufferSubData(BufferTarget.ArrayBuffer, CType(m.Normals.IndexOf(n) * Vector3.SizeInBytes, IntPtr), Vector3.SizeInBytes, New Vector3(n.X, n.Y, n.Z))
     End Sub
+
     ''' <summary>
     ''' Updates the Data of a Vertex Color in the buffer.
     ''' </summary>
@@ -74,6 +77,7 @@ Public Class Renderer
         GL.BindBuffer(BufferTarget.ArrayBuffer, VertexColorBuffers(m))
         GL.BufferSubData(BufferTarget.ArrayBuffer, CType(m.VertexColors.IndexOf(vc) * Vector4.SizeInBytes, IntPtr), Vector4.SizeInBytes, New Vector4(vc.R, vc.G, vc.B, vc.A))
     End Sub
+
     ''' <summary>
     ''' Updates the Data of a UV in the buffer.
     ''' </summary>
@@ -83,6 +87,7 @@ Public Class Renderer
         GL.BindBuffer(BufferTarget.ArrayBuffer, UVBuffers(m))
         GL.BufferSubData(BufferTarget.ArrayBuffer, CType(m.UVs.IndexOf(uv) * Vector2.SizeInBytes, IntPtr), Vector2.SizeInBytes, New Vector2(uv.U, uv.V))
     End Sub
+
     ''' <summary>
     ''' Updates the indicies of a face in the buffer.
     ''' </summary>
@@ -97,6 +102,30 @@ Public Class Renderer
 
         GL.BindBuffer(BufferTarget.ArrayBuffer, IndicesBuffers(m)(faceIndex))
         GL.BufferSubData(BufferTarget.ArrayBuffer, CType(uintlen * faceIndex, IntPtr), uintlen, indicies)
+    End Sub
+
+    ''' <summary>
+    ''' Replace an Image with a new one.
+    ''' </summary>
+    ''' <param name="oldImage"></param>
+    ''' <param name="newImage"></param>
+    Public Sub UpdateTexture(oldImage As Image, newImage As Image)
+        If dicTextureIDs.ContainsKey(oldImage) Then
+            Dim id As Integer = dicTextureIDs(oldImage)
+            dicTextureIDs.Remove(oldImage)
+            dicTextureIDs.Add(newImage, id)
+            ContentPipe.LoadTexture(newImage, id)
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Updates an Image.
+    ''' </summary>
+    ''' <param name="image"></param>
+    Public Sub UpdateTexture(image As Image)
+        If dicTextureIDs.ContainsKey(image) Then
+            ContentPipe.LoadTexture(dicTextureIDs(image))
+        End If
     End Sub
 
     ''' <summary>
@@ -326,6 +355,49 @@ Public Class Renderer
 
         GL.DisableClientState(ArrayCap.VertexArray)
         GL.DisableClientState(ArrayCap.TextureCoordArray)
+        GL.PopMatrix()
+    End Sub
+
+    Public Sub DrawFacePicking()
+        DrawFacePicking(Vector3.Zero, Quaternion.Identity, New Vector3(ModelScaling, ModelScaling, ModelScaling))
+    End Sub
+    Public Sub DrawFacePicking(pos As Vector3, rot As Quaternion)
+        DrawFacePicking(pos, rot, New Vector3(ModelScaling, ModelScaling, ModelScaling))
+    End Sub
+    Public Sub DrawFacePicking(pos As Vector3, rot As Quaternion, scale As Vector3)
+        If Not _HasRendered Then Return
+
+        GL.PushMatrix()
+        GL.Translate(pos.X, pos.Y, pos.Z)
+        GL.Rotate(rot.X, 1, 0, 0)
+        GL.Rotate(rot.Y, 0, 1, 0)
+        GL.Rotate(rot.Z, 0, 0, 1)
+        GL.Scale(scale)
+        GL.EnableClientState(ArrayCap.VertexArray)
+
+        For iMesh As Integer = 0 To obj3d.Meshes.Count - 1
+            Dim mesh As Mesh = obj3d.Meshes(iMesh)
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBuffers(mesh))
+            GL.VertexPointer(3, VertexPointerType.Float, 0, IntPtr.Zero)
+
+            For iFace As Integer = 0 To mesh.Faces.Count - 1
+                Dim l As Face = mesh.Faces(iFace)
+
+                GL.BindBuffer(BufferTarget.ElementArrayBuffer, IndicesBuffers(mesh)(iFace))
+
+                GL.Color4(Color.FromArgb(&H20000000 + (iMesh << 16) + iFace)) 'Color: "2f ff xx xx" -> where 'f' = mesh index and where 'x' is face index
+
+                GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill)
+
+                GL.DrawElements(PrimitiveType.Triangles, l.Points.Count,
+                                    DrawElementsType.UnsignedInt, IntPtr.Zero)
+            Next
+
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill)
+        Next
+
+        GL.DisableClientState(ArrayCap.VertexArray)
         GL.PopMatrix()
     End Sub
 

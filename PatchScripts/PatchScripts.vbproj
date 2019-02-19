@@ -141,9 +141,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PatchHelper\PluginCenter.vbproj">
+      <Project>{5044ef07-04a7-45af-aa3a-d261d7123a66}</Project>
+      <Name>PluginCenter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Publics\Publics.vbproj">
       <Project>{5013D291-0C3D-45AE-B216-792260C246EC}</Project>
       <Name>Publics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
+      <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
+      <Name>SimpleFileParser</Name>
     </ProjectReference>
     <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
       <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>

@@ -104,6 +104,8 @@
     <Compile Include="SM64Lib\Geolayout\TerrainType.vb" />
     <Compile Include="SM64Lib\Level\LevelType.vb" />
     <Compile Include="SM64Lib\Level\SpecialBoxList.vb" />
+    <Compile Include="SM64Lib\Model\TextureLoadedInfos.vb" />
+    <Compile Include="SM64Lib\NPCs\Coins3DColors.vb" />
     <Compile Include="SM64Lib\NPCs\CoinsManager.vb" />
     <Compile Include="SM64Lib\Objects\StarNames.vb" />
     <Compile Include="SM64Lib\RomManagerSettings.vb" />
