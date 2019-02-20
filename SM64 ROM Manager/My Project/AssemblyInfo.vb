@@ -32,4 +32,4 @@ Imports nUpdate.Core
 ' übernehmen, indem Sie "*" eingeben:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.7.0.0")>
+<Assembly: AssemblyVersion("0.7.1.0")>
