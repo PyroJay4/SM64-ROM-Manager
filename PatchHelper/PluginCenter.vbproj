@@ -69,7 +69,6 @@
   <ItemGroup>
     <Compile Include="Attributes\EntryMethodAttribute.vb" />
     <Compile Include="Attributes\MenuEntryMethodAttribute.vb" />
-    <Compile Include="Controls.vb" />
     <Compile Include="Userinterface\General.vb" />
     <Compile Include="Userinterface\LevelManager.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

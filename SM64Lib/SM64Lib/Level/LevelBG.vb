@@ -6,12 +6,19 @@ Namespace Global.SM64Lib.Levels
 
     Public Class LevelBG
 
-        Public Property ID As Geolayout.BackgroundIDs = Geolayout.BackgroundIDs.Ocean
+        'F i e l d s
+
         Private _ImageBytes As Byte() = Nothing
+        Private _Image As Bitmap = Nothing
+
+        'A u t o   P r o p e r t i e s
+
         Public Property Enabled As Boolean = True
         Public Property IsCustom As Boolean = False
+        Public Property ID As Geolayout.BackgroundIDs = Geolayout.BackgroundIDs.Ocean
 
-        Private _Image As Bitmap = Nothing
+        'A u t o   P r o p e r t i e s
+
         Public ReadOnly Property Image As Bitmap
             Get
                 If _Image IsNot Nothing Then
@@ -45,15 +52,21 @@ Namespace Global.SM64Lib.Levels
             End Get
         End Property
 
+        'C o n s t r c u t o r s
+
         Public Sub New()
         End Sub
+
         Public Sub New(ID As Geolayout.BackgroundIDs)
             Me.ID = ID
         End Sub
+
         Public Sub New(Image As Image)
             Me.ID = Geolayout.BackgroundIDs.Custom
             SetImage(Image)
         End Sub
+
+        'M e t h o d s
 
         Public Sub WriteImage(s As Stream, offset As Integer)
             'Write Image Data
@@ -72,6 +85,7 @@ Namespace Global.SM64Lib.Levels
         Public Sub SetImage(image As Image)
             SetImage(New Bitmap(image))
         End Sub
+
         Public Sub SetImage(bmp As Bitmap)
             Dim s As New Size(248, 248) '((&H20140 - &H140) / 256 / 2 / 32) * 31)
             If bmp.Size <> s Then
@@ -123,6 +137,8 @@ Namespace Global.SM64Lib.Levels
                 &HA, &H1, &HC0, &H0, &HA, &H1, &HC8, &H0
             }
         End Function
+
+        'C l a s s e s
 
         Private Class BackgroundImageConverter
 

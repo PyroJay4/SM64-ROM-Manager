@@ -107,19 +107,15 @@ namespace LIBMIO0
             // verify MIO0 header
             if (!valid)
             {
-                Console.WriteLine("Error: MIO0 Header is not valid.");
                 return null;
             }
 
             if (!head.big_endian)
             {
-                Console.WriteLine("Error: Sorry, only big endian supported right now.");
                 return null;
             }
 
             byte[] decoded = new byte[head.dest_size];
-
-            //Console.WriteLine("Decoded Length: 0x"+decoded.Length.ToString("X"));
 
             // decode data
             while (bytes_written < head.dest_size)

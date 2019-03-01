@@ -13,7 +13,6 @@ Namespace ImporterPresets
             For Each preset As ImporterPreset In profile.Presets
                 Dim xpreset As XElement = <preset name=<%= preset.Name %>>
                                               <description><%= preset.Description %></description>
-                                              <script></script>
                                               <max_length><%= preset.MaxLength.ToString("X") %></max_length>
                                               <rom_address><%= preset.RomAddress.ToString("X") %></rom_address>
                                               <ram_address><%= preset.RamAddress.ToString("X") %></ram_address>

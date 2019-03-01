@@ -8,18 +8,18 @@ Imports SM64Lib.Levels.ScrolTex
 
 Namespace Global.SM64Lib.Levels
 
-    Public Class LevelList
-        Inherits List(Of Level)
-        Public ReadOnly Property NeedToSave As Boolean
-            Get
-                Return Me.Where(Function(n) n.NeedToSaveLevelscript OrElse n.NeedToSaveBanks0E).Count > 0
-            End Get
-        End Property
-    End Class
-
     Public Class Level
 
-        Public ReadOnly LevelscriptStart() As Byte = {&H80, &H8, &H0, &H0, &H19, &H0, &H0, &H1C, &H8, &H0, &H0, &HA, &H0, &HA0, &H0, &H78, &H0, &HA0, &H0, &H78, &H4, &H0, &H0, &H0, &HC, &H0, &H0, &H0}
+        'S h a r e d   M e m b e r s
+
+        Friend Shared ReadOnly LevelscriptStart() As Byte = {&H80, &H8, &H0, &H0, &H19, &H0, &H0, &H1C, &H8, &H0, &H0, &HA, &H0, &HA0, &H0, &H78, &H0, &HA0, &H0, &H78, &H4, &H0, &H0, &H0, &HC, &H0, &H0, &H0}
+
+        'F i e l d s
+
+        Private _Bank0x19 As SegmentedBank = Nothing
+
+        'A u t o   P r o p e r t i e s
+
         Public ReadOnly Property LevelType As LevelType = LevelType.SM64RomManager
         Public Property Levelscript As New Levelscript
         Public ReadOnly Property Areas As New List(Of LevelArea)
@@ -40,8 +40,38 @@ Namespace Global.SM64Lib.Levels
         Public Property NeedToSaveBanks0E As Boolean = False
         Public Property OneBank0xESystemEnabled As Boolean = True
 
-        Public additionalRange() As Byte = {}
-        Public bank0x19 As SegmentedBank = Nothing
+        'O t h e r   P r o p e r t i e s
+
+        Public Property Bank0x19 As SegmentedBank
+            Get
+                Return _Bank0x19
+            End Get
+            Friend Set(value As SegmentedBank)
+                _Bank0x19 = value
+            End Set
+        End Property
+
+        Public ReadOnly Property ObjectsCount As Integer
+            Get
+                Dim tcount As Integer = 0
+                For Each a In Areas
+                    tcount += a.Objects.Count
+                Next
+                Return tcount
+            End Get
+        End Property
+
+        Public ReadOnly Property WarpsCount As Integer
+            Get
+                Dim tcount As Integer = 0
+                For Each a In Areas
+                    tcount += a.Warps.Count
+                Next
+                Return tcount
+            End Get
+        End Property
+
+        'C o n s t r u c t o r s
 
         Public Sub New(LevelID As UShort, LevelIndex As Integer)
             Me.LevelID = LevelID
@@ -49,9 +79,12 @@ Namespace Global.SM64Lib.Levels
             HardcodedCameraSettings = False
             ActSelector = ActSelectorDefaultValues(LevelIndex)
         End Sub
+
         Public Sub New(type As LevelType)
             LevelType = type
         End Sub
+
+        'M e t h o d s
 
         Public Sub CreateNewLevelscript()
             _LevelType = LevelType.SM64RomManager
@@ -114,10 +147,12 @@ Namespace Global.SM64Lib.Levels
         Public Function GetDefaultPositionCmd() As LevelscriptCommand
             Return Levelscript.FirstOrDefault(Function(n) n.CommandType = LevelscriptCommandTypes.DefaultPosition)
         End Function
+
         Public Sub ChangeObjectBank(BankEntries As ObjectBank0x0C)
             ChangeObjectBank(1, CInt(BankEntries) - 1, CInt(ObjectBank0x0C) - 1)
             ObjectBank0x0C = BankEntries
         End Sub
+
         Public Function GetObjectBank0x0C() As ObjectBank0x0C
             Return CType(GetObjectBank(1) + 1, ObjectBank0x0C)
         End Function
@@ -126,6 +161,7 @@ Namespace Global.SM64Lib.Levels
             ChangeObjectBank(2, CInt(BankEntries) - 1, CInt(ObjectBank0x0D) - 1)
             ObjectBank0x0D = BankEntries
         End Sub
+
         Public Function GetObjectBank0x0D() As ObjectBank0x0D
             Return CType(GetObjectBank(2) + 1, ObjectBank0x0D)
         End Function
@@ -134,6 +170,7 @@ Namespace Global.SM64Lib.Levels
             ChangeObjectBank(3, CInt(BankEntries) - 1, CInt(ObjectBank0x0E) - 1)
             ObjectBank0x0E = BankEntries
         End Sub
+
         Public Function GetObjectBank0x0E() As ObjectBank0x0E
             Return CType(GetObjectBank(3) + 1, ObjectBank0x0E)
         End Function
@@ -226,6 +263,7 @@ AddCmds:'Add new commands
             Next
             Return NameLists(Index)
         End Function
+
         Private Function GetObjectBankSectionIndexOfName(Bank As Integer, Name As String) As Integer
             Dim cIndex As Integer = 0
             For Each s In ObjectBankData(Bank).Sections
@@ -247,25 +285,6 @@ AddCmds:'Add new commands
             Closed = True
         End Sub
 
-        Public ReadOnly Property ObjectsCount As Integer
-            Get
-                Dim tcount As Integer = 0
-                For Each a In Areas
-                    tcount += a.Objects.Count
-                Next
-                Return tcount
-            End Get
-        End Property
-        Public ReadOnly Property WarpsCount As Integer
-            Get
-                Dim tcount As Integer = 0
-                For Each a In Areas
-                    tcount += a.Warps.Count
-                Next
-                Return tcount
-            End Get
-        End Property
-
         Public Overrides Function ToString() As String
             Dim output As String = ""
             For Each cmd In Levelscript
@@ -285,6 +304,7 @@ AddCmds:'Add new commands
             GetLevelIDList(fs)
             fs.Close()
         End Sub
+
         Shared Function GetLevelIDList(ByRef fs As FileStream, Optional LevelCount As Integer = 30) As Byte()
             Dim br As New BinaryReader(fs)
             Dim tlist As New List(Of Byte)

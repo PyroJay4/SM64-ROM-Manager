@@ -30,13 +30,14 @@ Namespace Global.SM64Lib.Model.Fast3D
                 .SegmentedAddress = &HE000000,
                 .ForceDisplaylist = ObjSettings.ForceDisplaylist,
                 .Fog = ObjSettings.Fog,
-                .OptimizeTransparencyChecks = ObjSettings.OptimizeTransparencyChecks
+                .OptimizeTransparencyChecks = ObjSettings.OptimizeTransparencyChecks,
+                .TextureFormatSettings = texFormatSettings
             }
             model.Shading = ObjSettings.Shading
 
             'Convert Model
             Dim con As New SM64Convert.Fast3DWriter
-            ConvertResult = con.ConvertModel(Me, conSettings, model, texFormatSettings)
+            ConvertResult = con.ConvertModel(Me, conSettings, model)
 
             'Fit to align
             SetLength(HexRoundUp1(Length))

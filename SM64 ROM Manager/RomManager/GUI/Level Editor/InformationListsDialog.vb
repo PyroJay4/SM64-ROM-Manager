@@ -9,7 +9,6 @@ Namespace LevelEditor
         Private avaiableCombos As ObjectComboList = Nothing
         Private editMode As EditModes
         Private finishedLoading As Boolean = False
-
         Private ReadOnly objComboListItems As New List(Of BaseItem)
         Private ReadOnly behavListItems As New List(Of BaseItem)
 
@@ -20,6 +19,7 @@ Namespace LevelEditor
             EnableObjComboTab = 2
             EnableBehavTab = 4
         End Enum
+
         Public Enum ItemsType
             ObjCombos
             Behavs
@@ -49,11 +49,13 @@ Namespace LevelEditor
                 Return (editMode And EditModes.Editable) = EditModes.Editable
             End Get
         End Property
+
         Public ReadOnly Property EnableObjCombos As Boolean
             Get
                 Return (editMode And EditModes.EnableObjComboTab) = EditModes.EnableObjComboTab
             End Get
         End Property
+
         Public ReadOnly Property EnableBehavs As Boolean
             Get
                 Return (editMode And EditModes.EnableBehavTab) = EditModes.EnableBehavTab
@@ -82,6 +84,7 @@ Namespace LevelEditor
                 End If
             End Set
         End Property
+
         Public Property SelectedBehavior As BehaviorInfo
             Get
                 If CurrentItemsType = ItemsType.Behavs Then
@@ -129,6 +132,7 @@ Namespace LevelEditor
                 End Select
             End Get
         End Property
+
         Private ReadOnly Property CurrentCustomObjectList As IList
             Get
                 Select Case CurrentItemsType
@@ -220,6 +224,7 @@ Namespace LevelEditor
                 LoadNewItems()
             End If
         End Sub
+
         Private Sub LoadNewItems()
             Dim itemsList As List(Of BaseItem) = CurrentItemsList
 
@@ -246,12 +251,14 @@ Namespace LevelEditor
                 Return Nothing
             End If
         End Function
+
         Private Function GetItemFromObjCombo(obj As ObjectCombo) As ButtonItem
             Return New ButtonItem With {
                 .Text = GetItemTextFromObjCombo(obj),
                 .Tag = obj,
                 .ForeColor = If(avaiableCombos?.Contains(obj), Color.DarkGreen, Nothing)}
         End Function
+
         Private Function GetItemFromBehav(obj As BehaviorInfo) As ButtonItem
             Return New ButtonItem With {
                 .Text = GetItemTextFromBehav(obj),
@@ -267,9 +274,11 @@ Namespace LevelEditor
                 Return String.Empty
             End If
         End Function
+
         Private Function GetItemTextFromObjCombo(obj As ObjectCombo) As String
             Return obj.Name
         End Function
+
         Private Function GetItemTextFromBehav(obj As BehaviorInfo) As String
             Return $"{obj.BehaviorAddressText} - {obj.Name}"
         End Function
@@ -279,9 +288,11 @@ Namespace LevelEditor
                 ListNewItems()
             End If
         End Sub
+
         Private Sub ListNewItems()
             ListNewItems(String.Empty)
         End Sub
+
         Private Sub ListNewItems(filter As String)
             ItemList.SuspendLayout()
             filter = filter.Trim
@@ -344,9 +355,11 @@ Namespace LevelEditor
                 Return False
             End If
         End Function
+
         Private Function EqualsFilterInObjectCombo(filter As String, obj As ObjectCombo) As Boolean
             Return obj.Name.ToLower.Contains(filter) OrElse TextFromValue(obj.BehaviorAddress).ToLower.Contains(filter) OrElse TextFromValue(obj.ModelAddress).ToLower.Contains(filter)
         End Function
+
         Private Function EqualsFilterInBehaviorInfo(filter As String, obj As BehaviorInfo) As Boolean
             Return obj.Name.ToLower.Contains(filter) OrElse TextFromValue(obj.BehaviorAddress).ToLower.Contains(filter)
         End Function
@@ -424,6 +437,7 @@ Namespace LevelEditor
                 ItemList.EnsureVisible(ItemList.SelectedItem)
             End If
         End Sub
+
         Private Sub SetBParamValueText()
             For i As Integer = 1 To 4
                 Dim n As PropertyNode = AdvPropertyGrid1.GetPropertyNode("BParam" & i)
@@ -441,6 +455,7 @@ Namespace LevelEditor
                 DialogResult = DialogResult.OK
             End If
         End Sub
+
         Private Sub ItemList_SelectedItemChanged(sender As Object, e As EventArgs) Handles ItemList.SelectedItemChanged
             If EnableEdit Then
                 ShowItemProperties()
@@ -450,6 +465,7 @@ Namespace LevelEditor
         Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem_Add.Click
             AddNewItem()
         End Sub
+
         Private Sub ButtonItem3_Click(sender As Object, e As EventArgs) Handles ButtonItem_Remove.Click
             RemoveItem()
         End Sub
@@ -459,6 +475,7 @@ Namespace LevelEditor
                 ListNewItems(TextBoxX_Search.Text)
             End If
         End Sub
+
         Private Sub ButtonX_CancelSearch_Click(sender As Object, e As EventArgs) Handles ButtonX_CancelSearch.Click
             Dim wasEmpty As Boolean = String.IsNullOrEmpty(TextBoxX_Search.Text.Trim)
             TextBoxX_Search.Text = String.Empty
@@ -479,6 +496,7 @@ Namespace LevelEditor
                     e.IsConverted = True
             End Select
         End Sub
+
         Private Sub AdvPropertyGrid1_ConvertFromStringToPropertyValue(sender As Object, e As ConvertValueEventArgs) Handles AdvPropertyGrid1.ConvertFromStringToPropertyValue
             Select Case e.PropertyDescriptor.PropertyType
                 Case GetType(System.Byte)

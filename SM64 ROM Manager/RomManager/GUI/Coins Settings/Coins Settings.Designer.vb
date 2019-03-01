@@ -26,7 +26,6 @@ Partial Class Form_CoinsSettings
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ButtonX_SaveSettings = New DevComponents.DotNetBar.ButtonX()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.ButtonX_Edit3DCoins = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX_Remove3DCoins = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX_ImportKaze3DCoins = New DevComponents.DotNetBar.ButtonX()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -80,21 +79,11 @@ Partial Class Form_CoinsSettings
         '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.ButtonX_Edit3DCoins)
         Me.GroupBox4.Controls.Add(Me.ButtonX_Remove3DCoins)
         Me.GroupBox4.Controls.Add(Me.ButtonX_ImportKaze3DCoins)
         resources.ApplyResources(Me.GroupBox4, "GroupBox4")
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.TabStop = False
-        '
-        'ButtonX_Edit3DCoins
-        '
-        Me.ButtonX_Edit3DCoins.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX_Edit3DCoins.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        resources.ApplyResources(Me.ButtonX_Edit3DCoins, "ButtonX_Edit3DCoins")
-        Me.ButtonX_Edit3DCoins.FocusCuesEnabled = False
-        Me.ButtonX_Edit3DCoins.Name = "ButtonX_Edit3DCoins"
-        Me.ButtonX_Edit3DCoins.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ButtonX_Remove3DCoins
         '
@@ -414,7 +403,6 @@ Partial Class Form_CoinsSettings
     Friend WithEvents TextBoxX_NewRedCoinsCounterTextForCoin As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
     Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents ButtonX_Edit3DCoins As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX_Remove3DCoins As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX_ImportKaze3DCoins As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX7 As DevComponents.DotNetBar.LabelX

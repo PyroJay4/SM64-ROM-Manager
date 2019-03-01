@@ -6,14 +6,19 @@ Namespace Global.SM64Lib.Music
     Public Class MusicList
         Inherits List(Of MusicSequence)
 
-        Public Property EnableMusicHack As Boolean = False
+        'C o n s t s
 
+        Public Const addrMusicStart As Integer = &H1210000
+
+        'A u t o   P r o p e r t i e s
+
+        Public Property EnableMusicHack As Boolean = False
         Public Property NeedToSaveNInsts As Boolean = False
         Public Property NeedToSaveSequenceNames As Boolean = False
         Public Property NeedToSaveSequences As Boolean = False
         Public Property NeedToSaveMusicHackSettings As Boolean = False
 
-        Public Const addrMusicStart As Integer = &H1210000
+        'O t h e r   P r o p e r t i e s
 
         Public ReadOnly Property NeedToSave As Boolean
             Get
@@ -24,14 +29,18 @@ Namespace Global.SM64Lib.Music
             End Get
         End Property
 
+        'M e t h o d s
+
         Public Sub Read(Romfile As String)
             Dim fs As New FileStream(Romfile, FileMode.Open, FileAccess.Read)
             Read(fs)
             fs.Close()
         End Sub
+
         Public Sub Read(s As Stream)
             Read(New BinaryStreamData(s))
         End Sub
+
         Public Sub Read(s As BinaryData)
             s.Position = &H1210002
             Dim musicCount As Int16 = s.ReadInt16
@@ -55,6 +64,63 @@ Namespace Global.SM64Lib.Music
             EnableMusicHack = t001 = &H807C And t002 = &H0
         End Sub
 
+        Public Sub Write(Romfile As String, ByRef lastPosition As Integer)
+            Dim fs As New FileStream(Romfile, FileMode.Open, FileAccess.ReadWrite)
+            Write(fs, lastPosition)
+            fs.Close()
+        End Sub
+
+        Public Sub Write(s As Stream, ByRef lastPosition As Integer)
+            Write(New BinaryStreamData(s), lastPosition)
+        End Sub
+
+        Public Sub Write(s As BinaryData, ByRef lastPosition As Integer)
+            'Enable/Disable Music Hack
+            If NeedToSaveMusicHackSettings Then
+                s.Position = &HD213A
+                s.Write(CUShort(If(EnableMusicHack, &H807C, &H801D)))
+                s.Position = &HD213E
+                s.Write(CUShort(If(EnableMusicHack, &H0, &HE000)))
+                s.Position = &HD215A
+                s.Write(CUShort(If(EnableMusicHack, &H807C, &H801D)))
+                s.Position = &HD215E
+                s.Write(CUShort(If(EnableMusicHack, &H0, &HE000)))
+                s.Position = &HD459A
+                s.Write(CUShort(If(EnableMusicHack, &H807C, &H801D)))
+                s.Position = &HD459E
+                s.Write(CUShort(If(EnableMusicHack, &H0, &HE000)))
+                s.Position = &HEE2B0
+                s.Write(CUInt(If(EnableMusicHack, &HBD00, &H6D00)))
+                s.Position = &HD48B4
+                s.Write(CUInt(&H3C02807C)) 'If(EnableMusicHack, &H3C02803D, &H3C02807C)
+                s.Position = &HD48B8
+                s.Write(CUInt(If(EnableMusicHack, &H34420000, &H34420000)))
+            End If
+
+            Dim arrMe() As MusicSequence = Me.ToArray
+
+            'Write Music Names
+            If NeedToSaveSequenceNames Then
+                WriteSequenceNames(s, &H7F1000, arrMe)
+            End If
+
+            'Write NInsts
+            If NeedToSaveNInsts Then
+                WriteNInst(s, &H7F0000, arrMe)
+            End If
+
+            'Write Music Sequences
+            lastPosition = WriteSequences(s, addrMusicStart, arrMe, NeedToSaveSequences)
+
+            'Reset NeedToSave Properties
+            NeedToSaveSequences = False
+            NeedToSaveNInsts = False
+            NeedToSaveSequenceNames = False
+            NeedToSaveMusicHackSettings = False
+        End Sub
+
+        'S h a r e d   M e t h o d s
+
         Private Shared Function ReadNInsts(s As BinaryData, TableStart As Integer, Count As Int16) As InstrumentSetList()
             Dim tNInstList As New List(Of InstrumentSetList)
             s.Position = TableStart
@@ -71,6 +137,7 @@ Namespace Global.SM64Lib.Music
 
             Return tNInstList.ToArray
         End Function
+
         Private Shared Function ReadSequenceNames(s As BinaryData, RomAddress As Integer, Count As Integer) As String()
             s.Position = RomAddress
             Dim tNames As New List(Of String)
@@ -86,6 +153,7 @@ Namespace Global.SM64Lib.Music
 
             Return tNames.ToArray
         End Function
+
         Private Shared Function ReadSequences(s As BinaryData, TableStart As Integer, Count As Integer, tNInstList As InstrumentSetList(), tNames As String()) As MusicSequence()
             s.Position = TableStart + 4
             Dim tSequences As New List(Of MusicSequence)
@@ -112,9 +180,11 @@ Namespace Global.SM64Lib.Music
             Prepaire(fs)
             fs.Close()
         End Sub
+
         Public Shared Sub Prepaire(s As Stream)
             Prepaire(New BinaryStreamData(s))
         End Sub
+
         Public Shared Sub Prepaire(s As BinaryData)
 
             s.Position = &H7B0863
@@ -224,59 +294,6 @@ Namespace Global.SM64Lib.Music
                 s.Write(CUInt(&HBD00))
             End If
 
-        End Sub
-
-        Public Sub Write(Romfile As String, ByRef lastPosition As Integer)
-            Dim fs As New FileStream(Romfile, FileMode.Open, FileAccess.ReadWrite)
-            Write(fs, lastPosition)
-            fs.Close()
-        End Sub
-        Public Sub Write(s As Stream, ByRef lastPosition As Integer)
-            Write(New BinaryStreamData(s), lastPosition)
-        End Sub
-        Public Sub Write(s As BinaryData, ByRef lastPosition As Integer)
-            'Enable/Disable Music Hack
-            If NeedToSaveMusicHackSettings Then
-                s.Position = &HD213A
-                s.Write(CUShort(If(EnableMusicHack, &H807C, &H801D)))
-                s.Position = &HD213E
-                s.Write(CUShort(If(EnableMusicHack, &H0, &HE000)))
-                s.Position = &HD215A
-                s.Write(CUShort(If(EnableMusicHack, &H807C, &H801D)))
-                s.Position = &HD215E
-                s.Write(CUShort(If(EnableMusicHack, &H0, &HE000)))
-                s.Position = &HD459A
-                s.Write(CUShort(If(EnableMusicHack, &H807C, &H801D)))
-                s.Position = &HD459E
-                s.Write(CUShort(If(EnableMusicHack, &H0, &HE000)))
-                s.Position = &HEE2B0
-                s.Write(CUInt(If(EnableMusicHack, &HBD00, &H6D00)))
-                s.Position = &HD48B4
-                s.Write(CUInt(&H3C02807C)) 'If(EnableMusicHack, &H3C02803D, &H3C02807C)
-                s.Position = &HD48B8
-                s.Write(CUInt(If(EnableMusicHack, &H34420000, &H34420000)))
-            End If
-
-            Dim arrMe() As MusicSequence = Me.ToArray
-
-            'Write Music Names
-            If NeedToSaveSequenceNames Then
-                WriteSequenceNames(s, &H7F1000, arrMe)
-            End If
-
-            'Write NInsts
-            If NeedToSaveNInsts Then
-                WriteNInst(s, &H7F0000, arrMe)
-            End If
-
-            'Write Music Sequences
-            lastPosition = WriteSequences(s, addrMusicStart, arrMe, NeedToSaveSequences)
-
-            'Reset NeedToSave Properties
-            NeedToSaveSequences = False
-            NeedToSaveNInsts = False
-            NeedToSaveSequenceNames = False
-            NeedToSaveMusicHackSettings = False
         End Sub
 
         Private Shared Sub WriteSequenceNames(s As BinaryData, TableStart As Integer, sequences As MusicSequence())

@@ -54,7 +54,7 @@ Namespace NPCs
 
             'Enable New Red Coins Counter
             data.Position = &H966E8
-            EnableNewRedCoinsCounter = data.ReadInt32 = &H27BDFFE0
+            EnableNewRedCoinsCounter = data.ReadInt32 = &H27BDFFE8
 
             'New Red Coins Counter Text For Coins
             If EnableNewRedCoinsCounter Then
@@ -132,9 +132,9 @@ Namespace NPCs
             data.Position = &H966E8
             Dim nrccCode As String
             If EnableNewRedCoinsCounter Then
-                nrccCode = "27 BD FF E0 AF BF 00 14 3C 0E 80 36 81 CE 13 FE A3 A0 00 1F 19 C0 00 12 00 00 00 00 83 AF 00 1F 24 19 01 22 24 05 00 10 00 0F C0 80 03 0F C0 21 00 18 C0 80 0C 0B 6D 26 03 38 20 23 83 A8 00 1F 3C 0C 80 36 81 8C 13 FE 25 09 00 01 00 09 56 00 00 0A 5E 03 01 6C 08 2A 14 20 FF F0 A3 A9 00 1F"
-            Else
                 nrccCode = "27 BD FF E8 AF BF 00 14 3C 0E 80 36 81 C7 13 FE 10 E0 00 10 00 00 00 00 24 01 00 01 10 E1 00 08 00 00 00 00 24 05 00 24 3C 06 80 2A 34 C6 E9 08 0C 0B 58 B6 24 04 00 A0 10 00 00 06 00 00 00 00 24 05 00 24 3C 06 80 2A 34 C6 E9 18 0C 0B 58 B6 24 04 00 A0 8F BF 00 14 03 E0 00 08 27 BD 00 18"
+            Else
+                nrccCode = "27 BD FF E0 AF BF 00 14 3C 0E 80 36 81 CE 13 FE A3 A0 00 1F 19 C0 00 12 00 00 00 00 83 AF 00 1F 24 19 01 22 24 05 00 10 00 0F C0 80 03 0F C0 21 00 18 C0 80 0C 0B 6D 26 03 38 20 23 83 A8 00 1F 3C 0C 80 36 81 8C 13 FE 25 09 00 01 00 09 56 00 00 0A 5E 03 01 6C 08 2A 14 20 FF F0 A3 A9 00 1F"
             End If
             For Each b As String In nrccCode.Split(" ")
                 data.Write(Convert.ToByte(b, 16))
@@ -176,54 +176,6 @@ Namespace NPCs
             Dim ppf As String = Path.Combine(MyDataPath, "Patchs\3D-Coins\Remove 3D Coins.ppf")
             PatchClass.ApplyPPF(RomManager.RomFile, ppf)
             PatchClass.UpdateChecksum(RomManager.RomFile)
-        End Sub
-
-        Public Function Read3DCoinsColors() As Coins3DColors
-            Dim rom As BinaryRom = RomManager.GetBinaryRom(FileAccess.Read)
-            Dim list As New List(Of Color)
-
-            For Each addr As Integer In {0, 0, 0, 0, 0, 0}
-                Dim r, g, b, a As Byte
-                rom.Position = addr
-                r = rom.ReadByte
-                g = rom.ReadByte
-                b = rom.ReadByte
-                a = rom.ReadByte
-                list.Add(Color.FromArgb(a, r, g, b))
-            Next
-
-            rom.Close()
-
-            Return New Coins3DColors With {
-                .NormalCoinsLight = list(0),
-                .RedCoinsLight = list(1),
-                .BlueCoinsLight = list(2),
-                .NormalCoinsDark = list(3),
-                .RedCoinsDark = list(4),
-                .BlueCoinsDark = list(5)
-            }
-        End Function
-
-        Public Sub Save3DCoinsColors(colors As Coins3DColors)
-            Dim rom As BinaryRom = RomManager.GetBinaryRom(FileAccess.ReadWrite)
-            Dim dic As New Dictionary(Of Integer, Color) From {
-                {0, colors.NormalCoinsLight},
-                {0, colors.RedCoinsLight},
-                {0, colors.BlueCoinsLight},
-                {0, colors.NormalCoinsDark},
-                {0, colors.RedCoinsDark},
-                {0, colors.BlueCoinsDark}
-            }
-
-            For Each kvp In dic
-                rom.Position = kvp.Key
-                rom.WriteByte(kvp.Value.R)
-                rom.WriteByte(kvp.Value.G)
-                rom.WriteByte(kvp.Value.B)
-                rom.WriteByte(kvp.Value.A)
-            Next
-
-            rom.Close()
         End Sub
 
     End Class

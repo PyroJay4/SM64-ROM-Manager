@@ -12,14 +12,16 @@ Namespace Levels
 
     Public Class LevelArea
 
+        'S h a r e d   M e m b e r s
+
         Public Shared ReadOnly DefaultNormal3DObject() As Byte = {&H24, &H18, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H13, &H0, &H0, &H0}
-        Public Property Levelscript As New LevelscriptCommandCollection
-        Public Property Geolayout As New Geolayout.Geolayout(SM64Lib.Geolayout.Geolayout.NewScriptCreationMode.None)
-        Public Property TerrainType As Geolayout.TerrainTypes = SM64Lib.Geolayout.TerrainTypes.NoramlA
-        Public Property BGMusic As Byte = 0
-        Public Property AreaID As Byte = 0
-        Public Property GeolayoutOffset As UInteger = 0
-        Public Property AreaModel As New ObjectModel
+
+        'F i e l d s
+
+        Private _GettingAreaCollision As Boolean = False
+
+        'A u t o   P r o p e r t i e s
+
         Public ReadOnly Property SpecialBoxes As New SpecialBoxList
         Public ReadOnly Property ScrollingTextures As New List(Of ManagedScrollingTexture)
         Public ReadOnly Property Objects As New List(Of LevelscriptCommand)
@@ -28,11 +30,21 @@ Namespace Levels
         Public ReadOnly Property WarpsForGame As New List(Of LevelscriptCommand)
         Public ReadOnly Property ShowMessage As New ShowMessage
         Public ReadOnly Property Background As New AreaBG
+        Public Property Levelscript As New LevelscriptCommandCollection
+        Public Property Geolayout As New Geolayout.Geolayout(SM64Lib.Geolayout.Geolayout.NewScriptCreationMode.None)
+        Public Property TerrainType As Geolayout.TerrainTypes = SM64Lib.Geolayout.TerrainTypes.NoramlA
+        Public Property BGMusic As Byte = 0
+        Public Property AreaID As Byte = 0
+        Public Property GeolayoutOffset As UInteger = 0
+        Public Property AreaModel As New ObjectModel
         Public Property Enable2DCamera As Boolean = False
-        Private _GettingAreaCollision As Boolean = False
-
         Public ReadOnly Property CustomObjects As New CustomObjectBank
         Public Property CustomObjectsStartOffset As Integer = 0
+        Public Property Bank0x0EOffset As UInteger = 0
+        Public Property Bank0xELength As Integer
+
+        'O t h e r   P r o p e r t i e s
+
         Public ReadOnly Property HasCustomObjects As Boolean
             Get
                 Return CustomObjects.Objects.Any
@@ -44,13 +56,12 @@ Namespace Levels
                 Return Bank0x0EOffset
             End Get
         End Property
+
         Public ReadOnly Property Fast3DLength As Integer
             Get
                 Return CollisionPointer - &HE000000
             End Get
         End Property
-        Public Property Bank0x0EOffset As UInteger = 0
-        Public Property Bank0xELength As Integer
 
         Public ReadOnly Property IsCamera2D As Boolean
             Get
@@ -79,6 +90,8 @@ Namespace Levels
             End Set
         End Property
 
+        'M e t h o d s
+
         Public Sub SetSegmentedBanks(rommgr As RomManager)
             Dim bank0xE As SegmentedBank = rommgr.SetSegBank(&HE, Bank0x0EOffset, Bank0x0EOffset + Bank0xELength, AreaID)
             bank0xE.Data = AreaModel.Fast3DBuffer
@@ -89,6 +102,13 @@ Namespace Levels
                 scrollText.VertexPointer += offset
             Next
         End Sub
+
+        Public Sub Close()
+            Levelscript.Close()
+            Geolayout.Close()
+        End Sub
+
+        'C o n s t r u c t o r s
 
         Public Sub New(AreaID As Byte)
             Me.New(AreaID, 9)
@@ -127,11 +147,6 @@ Namespace Levels
 
         Public Sub New()
             Geolayout = New Geolayout.Geolayout(SM64Lib.Geolayout.Geolayout.NewScriptCreationMode.Level)
-        End Sub
-
-        Public Sub Close()
-            Levelscript.Close()
-            Geolayout.Close()
         End Sub
 
     End Class

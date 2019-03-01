@@ -13,10 +13,12 @@ Namespace Global.SM64Lib.Objects
         Public Sub New()
             Position = Vector3.Zero
         End Sub
+
         Public Sub New(name As StarNames)
             Me.New
             Me.Name = name
         End Sub
+
         Public Sub New(name As StarNames, position As Vector3)
             Me.Position = position
             Me.Name = name

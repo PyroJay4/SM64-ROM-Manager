@@ -3,6 +3,7 @@ Imports System.Windows.Forms
 Imports SM64Lib.Data
 
 Namespace Global.SM64Lib.Geolayout.Script
+
     Public Class Geolayoutscript
         Inherits GeolayoutCommandCollection
 
@@ -129,4 +130,5 @@ Namespace Global.SM64Lib.Geolayout.Script
         End Function
 
     End Class
+
 End Namespace

@@ -138,6 +138,7 @@ Public Class MainForm
                                   End Sub
 
             ButtonItem_Bar_Plugins.SubItems.Add(btn)
+            ButtonItem_Bar_Plugins.Visible = True
         Next
 
         Bar2.Refresh()

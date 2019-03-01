@@ -5,9 +5,19 @@ Namespace Global.SM64Lib.Music
 
     Public Class MusicSequence
 
+        Private _InstrumentSets As New InstrumentSetList
+
+        Public Property BinaryData As Byte() = {}
         Public Property Name As String = ""
-        Public BinaryData() As Byte = {}
-        Public InstrumentSets As New InstrumentSetList
+
+        Public Property InstrumentSets As InstrumentSetList
+            Get
+                Return _InstrumentSets
+            End Get
+            Friend Set(value As InstrumentSetList)
+                _InstrumentSets = value
+            End Set
+        End Property
 
         Public ReadOnly Property Lenght As Integer
             Get

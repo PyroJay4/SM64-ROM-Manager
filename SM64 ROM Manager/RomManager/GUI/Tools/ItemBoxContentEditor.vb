@@ -1,8 +1,3 @@
-Imports DevComponents.DotNetBar
-Imports DevComponents.Editors
-Imports SM64_ROM_Manager.PropertyValueEditors
-Imports SM64_ROM_Manager.SettingsManager
-Imports TextValueConverter
 Imports SM64Lib, SM64Lib.Objects
 Imports DevComponents.AdvTree
 Imports System.ComponentModel
@@ -17,6 +12,7 @@ Public Class ItemBoxContentEditor
 
     Public Sub New(rommgr As RomManager)
         InitializeComponent()
+        UpdateAmbientColors
         Me.romMgr = rommgr
         PropertyTree = AdvPropertyGrid1.PropertyTree
         bpMgr = New AdvPropGrid_ObjectPropertiesHelper(AdvPropertyGrid1, ObjectCombos, NameOf(ItemBoxContentEntry.BehavAddress), "BParam")

@@ -4,11 +4,18 @@ Namespace Global.SM64Lib
 
     Public Class SegmentedBank
 
+        'F i e l d s
+
+        Private _RomEnd As Integer = 0
+
+        'A u t o   P r o p e r t i e s
+
         Public Property RomStart As Integer = 0
         Public Property BankID As Byte = 0
-        Private _RomEnd As Integer = 0
         Public ReadOnly Property IsMIO0 As Boolean = False
         Public Property Data As MemoryStream = Nothing
+
+        'O t h e r   P r o p e r t i e s
 
         Public Property RomEnd As Integer
             Get
@@ -56,32 +63,43 @@ Namespace Global.SM64Lib
             End Set
         End Property
 
+        'C o n s t r u c t o r s
+
         Public Sub New()
         End Sub
+
         Public Sub New(bankID As Byte)
             Me.BankID = bankID
         End Sub
+
         Public Sub New(bankID As Byte, length As UInteger)
             Me.BankID = bankID
             Me.Length = length
         End Sub
+
         Public Sub New(bankID As Byte, data As MemoryStream)
             Me.BankID = bankID
             Me.Data = data
         End Sub
+
         Public Sub New(data As MemoryStream)
             Me.Data = data
         End Sub
 
+        'M e t h o d s
+
         Public Function SegToRomAddr(SegmentedAddress As Integer) As Integer
             Return SegmentedAddress - Me.BankAddress + Me.RomStart
         End Function
+
         Public Function RomToSegAddr(RomAddress As Integer) As Integer
             Return RomAddress - Me.RomStart + Me.BankAddress
         End Function
+
         Public Function BankOffsetFromSegAddr(segPointer As Integer) As Integer
             Return segPointer - Me.BankAddress
         End Function
+
         Public Function BankOffsetFromRomAddr(RomAddr As Integer) As Integer
             Return RomAddr - Me.RomStart
         End Function
@@ -96,12 +114,14 @@ Namespace Global.SM64Lib
             _Data = ms
             Return ms
         End Function
+
         Public Function ReadDataIfNull(s As Stream) As MemoryStream
             If _Data Is Nothing Then
                 ReadData(s)
             End If
             Return _Data
         End Function
+
         Public Function ReadDataIfNull(fileName As String) As MemoryStream
             If _Data Is Nothing Then
                 Dim fs As New FileStream(fileName, FileMode.Open, FileAccess.Read)
@@ -110,9 +130,11 @@ Namespace Global.SM64Lib
             End If
             Return _Data
         End Function
+
         Public Function ReadDataIfNull(rommgr As RomManager) As MemoryStream
             Return ReadDataIfNull(rommgr.RomFile)
         End Function
+
         Public Function ReadData(s As Stream) As MemoryStream
             Dim ms As New MemoryStream
 
@@ -152,6 +174,7 @@ Namespace Global.SM64Lib
                 fs.Close()
             End If
         End Sub
+
         Public Sub WriteData(s As Stream)
             If _Data IsNot Nothing Then
                 _Data.Position = 0

@@ -32,7 +32,6 @@ Partial Class TrajectoryEditor
         Me.IntegerInput1 = New DevComponents.Editors.IntegerInput()
         Me.IntegerInput2 = New DevComponents.Editors.IntegerInput()
         Me.IntegerInput3 = New DevComponents.Editors.IntegerInput()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
@@ -47,9 +46,11 @@ Partial Class TrajectoryEditor
         Me.ButtonX6 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX8 = New DevComponents.DotNetBar.ButtonX()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.IntegerInput1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IntegerInput2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IntegerInput3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ListViewEx1
@@ -142,17 +143,6 @@ Partial Class TrajectoryEditor
         Me.IntegerInput3.MinValue = -65535
         Me.IntegerInput3.Name = "IntegerInput3"
         Me.IntegerInput3.ShowUpDown = True
-        '
-        'LabelX1
-        '
-        resources.ApplyResources(Me.LabelX1, "LabelX1")
-        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX2
         '
@@ -263,9 +253,9 @@ Partial Class TrajectoryEditor
         'ButtonX5
         '
         Me.ButtonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX5.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.Name = "ButtonX5"
         Me.ButtonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
@@ -307,30 +297,36 @@ Partial Class TrajectoryEditor
         Me.ButtonX8.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX8.SymbolSize = 12.0!
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.ButtonX8)
+        Me.Panel1.Controls.Add(Me.ListViewEx1)
+        Me.Panel1.Controls.Add(Me.ButtonX6)
+        Me.Panel1.Controls.Add(Me.ComboBoxEx1)
+        Me.Panel1.Controls.Add(Me.ButtonX7)
+        Me.Panel1.Controls.Add(Me.LabelX4)
+        Me.Panel1.Controls.Add(Me.ButtonX5)
+        Me.Panel1.Controls.Add(Me.ButtonX3)
+        Me.Panel1.Controls.Add(Me.LabelX7)
+        Me.Panel1.Controls.Add(Me.ButtonX2)
+        Me.Panel1.Controls.Add(Me.IntegerInput3)
+        Me.Panel1.Controls.Add(Me.IntegerInput2)
+        Me.Panel1.Controls.Add(Me.LabelX5)
+        Me.Panel1.Controls.Add(Me.LabelX6)
+        Me.Panel1.Controls.Add(Me.LabelX3)
+        Me.Panel1.Controls.Add(Me.LabelX2)
+        Me.Panel1.Controls.Add(Me.ButtonX4)
+        Me.Panel1.Controls.Add(Me.ButtonX1)
+        Me.Panel1.Controls.Add(Me.IntegerInput1)
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.Name = "Panel1"
+        '
         'TrajectoryEditor
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.ButtonX8)
-        Me.Controls.Add(Me.ButtonX6)
-        Me.Controls.Add(Me.ButtonX7)
-        Me.Controls.Add(Me.ButtonX5)
-        Me.Controls.Add(Me.LabelX7)
-        Me.Controls.Add(Me.IntegerInput3)
-        Me.Controls.Add(Me.IntegerInput2)
-        Me.Controls.Add(Me.LabelX6)
-        Me.Controls.Add(Me.LabelX2)
-        Me.Controls.Add(Me.ButtonX1)
-        Me.Controls.Add(Me.IntegerInput1)
-        Me.Controls.Add(Me.ButtonX4)
-        Me.Controls.Add(Me.LabelX3)
-        Me.Controls.Add(Me.LabelX5)
-        Me.Controls.Add(Me.LabelX1)
-        Me.Controls.Add(Me.ButtonX2)
-        Me.Controls.Add(Me.ButtonX3)
-        Me.Controls.Add(Me.LabelX4)
-        Me.Controls.Add(Me.ComboBoxEx1)
-        Me.Controls.Add(Me.ListViewEx1)
+        Me.Controls.Add(Me.Panel1)
         Me.DoubleBuffered = True
         Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -341,6 +337,7 @@ Partial Class TrajectoryEditor
         CType(Me.IntegerInput1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IntegerInput2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IntegerInput3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -353,7 +350,6 @@ Partial Class TrajectoryEditor
     Friend WithEvents IntegerInput1 As DevComponents.Editors.IntegerInput
     Friend WithEvents IntegerInput2 As DevComponents.Editors.IntegerInput
     Friend WithEvents IntegerInput3 As DevComponents.Editors.IntegerInput
-    Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
     Friend WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
@@ -369,4 +365,5 @@ Partial Class TrajectoryEditor
     Friend WithEvents ButtonX7 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX8 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents Panel1 As Panel
 End Class

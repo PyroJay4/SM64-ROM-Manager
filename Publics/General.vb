@@ -51,7 +51,7 @@ Public Module General
             If combiFormats <> "" Then
                 combiFormats &= ";"
             End If
-            combiFormats &= "*." & kvp.Key
+            combiFormats &= "*" & kvp.Key
 
             If splittedFormats <> "" Then
                 splittedFormats &= "|"

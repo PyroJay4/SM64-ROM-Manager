@@ -4,14 +4,20 @@ Imports System.Windows.Forms
 Namespace Global.SM64Lib.Text
 
     Public Class TextItem
+
+        Private Lines As Integer = 4
+        Private HPosition As Int16 = 0
+        Private VPosition As Int16 = 0
+        Private _UnknownValue As Byte = 0
         Private TextBytes() As Byte = {}
         Private DialogParams As Boolean = False
+
         Public ReadOnly Property DialogParametersEnabled As Boolean
             Get
                 Return DialogParams
             End Get
         End Property
-        Private Lines As Integer = 4
+
         Public Property LinesPerSite As Integer
             Get
                 If Not DialogParams Then Throw New NotADialogItem
@@ -22,7 +28,7 @@ Namespace Global.SM64Lib.Text
                 Lines = value
             End Set
         End Property
-        Private VPosition As Int16 = 0
+
         Public Property VerticalPosition As VPos
             Get
                 If Not DialogParams Then Throw New NotADialogItem
@@ -33,7 +39,7 @@ Namespace Global.SM64Lib.Text
                 VPosition = value
             End Set
         End Property
-        Private HPosition As Int16 = 0
+
         Public Property HorizontalPosition As HPos
             Get
                 If Not DialogParams Then Throw New NotADialogItem
@@ -44,7 +50,7 @@ Namespace Global.SM64Lib.Text
                 HPosition = value
             End Set
         End Property
-        Private _UnknownValue As Byte = 0
+
         Public Property UnknownValue As Byte
             Get
                 If Not DialogParams Then Throw New NotADialogItem
@@ -61,11 +67,6 @@ Namespace Global.SM64Lib.Text
             DialogParams = EnableDialogParameters
         End Sub
 
-        Public Sub New(Text As String, Optional EnableDialogParameters As Boolean = False)
-            Me.Text = Text
-            DialogParams = EnableDialogParameters
-        End Sub
-
         Public Property Text As String
             Get
                 Return TextEncoding.GetString(TextBytes)
@@ -75,15 +76,20 @@ Namespace Global.SM64Lib.Text
             End Set
         End Property
 
-        Public Function ToByteArray() As Byte()
-            Return TextBytes
-        End Function
-
         Public ReadOnly Property DataLenght As Integer
             Get
                 Return TextBytes.Count
             End Get
         End Property
+
+        Public Sub New(Text As String, Optional EnableDialogParameters As Boolean = False)
+            Me.Text = Text
+            DialogParams = EnableDialogParameters
+        End Sub
+
+        Public Function ToByteArray() As Byte()
+            Return TextBytes
+        End Function
 
         Public Class NotADialogItem
             Inherits Exception
@@ -97,10 +103,12 @@ Namespace Global.SM64Lib.Text
             Centred = &H5F
             Right = &H96
         End Enum
+
         Public Enum HPos As Int16
             Middle = &H96
             Top = &HC8
         End Enum
+
     End Class
 
 End Namespace

@@ -6,6 +6,8 @@ Namespace Global.SM64Lib.Geolayout
 
     Public Class Geolayout
 
+        Private IndexForGeopointers As Integer = -1
+
         Public Property Geolayoutscript As New Geolayoutscript
         Public Property CameraPreset As CameraPresets = CameraPresets.OpenCamera
         Public Property EnvironmentEffect As EnvironmentEffects = Nothing
@@ -13,7 +15,6 @@ Namespace Global.SM64Lib.Geolayout
         Public Property Geopointers As New List(Of Geopointer)
         Public Property NewGeoOffset As Integer = 0
         Public Property Closed As Boolean = False
-        Private IndexForGeopointers As Integer = -1
 
         Public ReadOnly Property Length As Integer
             Get

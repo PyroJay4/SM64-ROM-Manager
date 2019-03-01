@@ -94,6 +94,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SM64Lib\General.vb" />
     <Compile Include="SM64Lib\Geolayout\BackgroundIDs.vb" />
     <Compile Include="SM64Lib\Geolayout\BackgroundPointers.vb" />
     <Compile Include="SM64Lib\Geolayout\CameraPresets.vb" />
@@ -101,13 +102,32 @@
     <Compile Include="SM64Lib\Geolayout\GeoAsmPointer.vb" />
     <Compile Include="SM64Lib\Geolayout\Geolayer.vb" />
     <Compile Include="SM64Lib\Geolayout\Geopointer.vb" />
+    <Compile Include="SM64Lib\Geolayout\Script\GeolayoutCommandCollection.vb" />
+    <Compile Include="SM64Lib\Geolayout\Script\GeolayoutCommandTypes.vb" />
     <Compile Include="SM64Lib\Geolayout\TerrainType.vb" />
+    <Compile Include="SM64Lib\Level\LevelList.vb" />
     <Compile Include="SM64Lib\Level\LevelType.vb" />
     <Compile Include="SM64Lib\Level\SpecialBoxList.vb" />
+    <Compile Include="SM64Lib\Model\Collision\BoxData.vb" />
+    <Compile Include="SM64Lib\Model\Collision\BoxDataType.vb" />
+    <Compile Include="SM64Lib\Model\Collision\ColMesh.vb" />
+    <Compile Include="SM64Lib\Model\Collision\Triangel.vb" />
+    <Compile Include="SM64Lib\Model\Collision\TriangelList.vb" />
+    <Compile Include="SM64Lib\Model\Collision\Vertex.vb" />
+    <Compile Include="SM64Lib\Model\Collision\VertexList.vb" />
+    <Compile Include="SM64Lib\Model\DisplayLists\Script\CommandTypes.vb" />
+    <Compile Include="SM64Lib\Model\DisplayLists\Script\DisplayListCommand.vb" />
+    <Compile Include="SM64Lib\Model\DisplayLists\Script\DisplayListScript.vb" />
+    <Compile Include="SM64Lib\Model\DisplayLists\DisplayList.vb" />
+    <Compile Include="SM64Lib\Model\DisplayLists\DisplayListCollection.vb" />
+    <Compile Include="SM64Lib\Model\Fog.vb" />
+    <Compile Include="SM64Lib\Model\FogPreset.vb" />
     <Compile Include="SM64Lib\Model\TextureLoadedInfos.vb" />
-    <Compile Include="SM64Lib\NPCs\Coins3DColors.vb" />
     <Compile Include="SM64Lib\NPCs\CoinsManager.vb" />
+    <Compile Include="SM64Lib\Object Banks\CustomObject.vb" />
     <Compile Include="SM64Lib\Objects\StarNames.vb" />
+    <Compile Include="SM64Lib\ObjInputSettings.vb" />
+    <Compile Include="SM64Lib\RGBColor.vb" />
     <Compile Include="SM64Lib\RomManagerSettings.vb" />
     <Compile Include="SM64Lib\Data\BinaryData.vb" />
     <Compile Include="SM64Lib\Data\BinaryArrayData.vb" />
@@ -118,7 +138,7 @@
     <Compile Include="SM64Lib\Geolayout\Script\GeolayoutCommandFunctions.vb" />
     <Compile Include="SM64Lib\Geolayout\Script\GeolayoutCommand.vb" />
     <Compile Include="SM64Lib\Geolayout\Script\Geolayoutscript.vb" />
-    <Compile Include="SM64Lib\LevelInfoDataTabel.vb" />
+    <Compile Include="SM64Lib\Level\LevelInfoDataTabel.vb" />
     <Compile Include="SM64Lib\Level\LevelArea.vb" />
     <Compile Include="SM64Lib\Level\AreaBG.vb" />
     <Compile Include="SM64Lib\Level\Enums.vb" />
@@ -132,11 +152,11 @@
     <Compile Include="SM64Lib\Level\Script\Managed Commands\IManagedLevelscriptCommand.vb" />
     <Compile Include="SM64Lib\Level\ShowMessage.vb" />
     <Compile Include="SM64Lib\Level\SpecialBox.vb" />
-    <Compile Include="SM64Lib\Model\CollisionMap.vb" />
+    <Compile Include="SM64Lib\Model\Collision\CollisionMap.vb" />
     <Compile Include="SM64Lib\Level\Script\Managed Commands\ManagedScrollingTextures.vb" />
     <Compile Include="SM64Lib\Model\TextureFormatSettings.vb" />
-    <Compile Include="SM64Lib\Model\CollisionSettings.vb" />
-    <Compile Include="SM64Lib\Model\DisplayLists.vb" />
+    <Compile Include="SM64Lib\Model\Collision\CollisionSettings.vb" />
+    <Compile Include="SM64Lib\Model\DisplayLists\Script\Commands.vb" />
     <Compile Include="SM64Lib\Model\Fast3DBuffer.vb" />
     <Compile Include="SM64Lib\Model\ObjectModel.vb" />
     <Compile Include="SM64Lib\Model\Fast3D_To_Object3D.vb" />
@@ -155,7 +175,7 @@
     <Compile Include="SM64Lib\Script\ICommand.vb" />
     <Compile Include="SM64Lib\SegmentedBank.vb" />
     <Compile Include="SM64Lib\Segmenteds.vb" />
-    <Compile Include="SM64Lib\SM64Lib General.vb" />
+    <Compile Include="SM64Lib\Datatypecastes.vb" />
     <Compile Include="SM64Lib\SM64LibException.vb" />
     <Compile Include="SM64Lib\SM64PatchClass.vb" />
     <Compile Include="SM64Lib\Objects\StarManager.vb" />

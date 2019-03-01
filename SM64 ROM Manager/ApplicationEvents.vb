@@ -18,8 +18,11 @@ Namespace My
         Private Sub OnErrorMessage(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
             If Debugger.IsAttached Then Return
 
+            Dim exception As Exception =
+                e.Exception.Demystify
+
             Dim frm As New Form_ErrorDialog
-            frm.ErrorText = e.Exception.Message & vbNewLine & vbNewLine & e.Exception.StackTrace
+            frm.ErrorText = exception.Message & vbNewLine & vbNewLine & exception.StackTrace
 
             frm.ShowDialog()
 

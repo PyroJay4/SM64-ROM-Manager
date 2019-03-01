@@ -11,6 +11,7 @@ Public Class StarPositionEditor
 
     Public Sub New(rommgr As RomManager)
         InitializeComponent()
+        UpdateAmbientColors
         Me.rommgr = rommgr
     End Sub
 

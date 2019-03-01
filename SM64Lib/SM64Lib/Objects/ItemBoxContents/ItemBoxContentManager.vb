@@ -15,6 +15,7 @@ Namespace Global.SM64Lib.Objects
         Public Sub New()
             ContentTable = New ItemBoxContentTable
         End Sub
+
         Public Sub New(table As ItemBoxContentTable)
             ContentTable = table
         End Sub
@@ -22,6 +23,7 @@ Namespace Global.SM64Lib.Objects
         Public Sub Read(rommgr As RomManager)
             Read(rommgr, True)
         End Sub
+
         Public Sub Read(rommgr As RomManager, clearList As Boolean)
             Try
                 Dim rom As BinaryRom
@@ -141,6 +143,7 @@ Namespace Global.SM64Lib.Objects
         Public Sub Read(fileName As String)
             Read(fileName, True)
         End Sub
+
         Public Sub Read(fileName As String, clearList As Boolean)
             If clearList Then _
                 ContentTable.Clear()

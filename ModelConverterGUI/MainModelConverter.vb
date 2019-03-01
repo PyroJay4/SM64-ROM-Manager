@@ -14,6 +14,7 @@ Imports SM64Lib.Model.Fast3D
 Imports ModelConverterGUI.My.Resources
 Imports System.Deployment.Application
 Imports System.Collections.Specialized
+Imports ModelConverterGUI
 
 Public Class MainModelConverter
 

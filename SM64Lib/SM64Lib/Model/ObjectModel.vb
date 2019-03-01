@@ -97,25 +97,10 @@ Namespace Global.SM64Lib.Model
         End Property
 
         Public Class SaveResult
-            Public Property CollisionPointer As Integer = 0
+            Public Property CollisionPointer As Integer = -1
             Public Property GeoPointers As New List(Of Geopointer)
             Public Property Length As Long = 0
         End Class
     End Class
 
-    Public Class Fog
-        Public Property Color As Drawing.Color = Drawing.Color.White
-        Public Property Type As New FogPreset
-    End Class
-    Public Enum FogPreset
-        SubtleFog1 = 0
-        SubtleFog2
-        ModerateFog1
-        ModerateFog2
-        ModerateFog3
-        ModerateFog4
-        IntenseFog
-        VeryIntenseFog
-        HardcoreFog
-    End Enum
 End Namespace

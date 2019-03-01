@@ -61,11 +61,11 @@ Partial Class TextureGraphicFormatEditor
         '
         'LabelX48
         '
-        resources.ApplyResources(Me.LabelX48, "LabelX48")
         '
         '
         '
         Me.LabelX48.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX48, "LabelX48")
         Me.LabelX48.Name = "LabelX48"
         Me.LabelX48.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         '
@@ -77,8 +77,8 @@ Partial Class TextureGraphicFormatEditor
         '
         'Button_SaveColsettings
         '
-        resources.ApplyResources(Me.Button_SaveColsettings, "Button_SaveColsettings")
         Me.Button_SaveColsettings.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.Button_SaveColsettings, "Button_SaveColsettings")
         Me.Button_SaveColsettings.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_SaveColsettings.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Button_SaveColsettings.FocusCuesEnabled = False
@@ -191,11 +191,11 @@ Partial Class TextureGraphicFormatEditor
         '
         'LabelX3
         '
-        resources.ApplyResources(Me.LabelX3, "LabelX3")
         '
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.Name = "LabelX3"
         '
         'ComboBoxEx_RotateFlip

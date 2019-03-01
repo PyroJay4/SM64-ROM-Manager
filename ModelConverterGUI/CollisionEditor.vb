@@ -45,6 +45,7 @@ Public Class CollisionEditor
 
         ResumeLayout()
     End Sub
+
     Private Async Sub Form_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Await LoadFloorTypes()
         LoadTexturesFromModel()
@@ -167,7 +168,7 @@ Public Class CollisionEditor
             LoadingColItemSettings = False
         End If
     End Sub
-    Private Sub ComboBox_CI_ColType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_ColType.SelectedIndexChanged
+    Private Sub ComboBox_CI_ColType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_ColType.SelectedIndexChanged, TextBoxX_ColParam1.TextChanged, TextBoxX_ColParam2.TextChanged
         Dim selItem As ComboItem = ComboBox_ColType.SelectedItem
         Dim id As Byte = selItem.Tag(0)
 
@@ -250,9 +251,6 @@ Public Class CollisionEditor
             Next
 
         End If
-    End Sub
-
-    Private Sub Button_SaveColsettings_Click(sender As Object, e As EventArgs) Handles Button_SaveColsettings.Click
     End Sub
 
     Private Sub CheckBoxX1_CheckedChanging(sender As Object, e As EventArgs) Handles CheckBoxX1.CheckedChanged
