@@ -48,13 +48,14 @@
   
   <application xmlns="urn:schemas-microsoft-com:asm.v3">
     <windowsSettings>
-      <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>
+      <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true/pm</dpiAware>
+      <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2</dpiAwareness>
     </windowsSettings>
   </application>
   
   <!-- Designs für allgemeine Windows-Steuerelemente und -Dialogfelder (Windows XP und höher) aktivieren -->
-  <!--
-  <dependency>
+  
+  <!--<dependency>
     <dependentAssembly>
       <assemblyIdentity
           type="win32"
@@ -65,6 +66,6 @@
           language="*"
         />
     </dependentAssembly>
-  </dependency>
-  -->
+  </dependency>-->
+  
 </assembly>

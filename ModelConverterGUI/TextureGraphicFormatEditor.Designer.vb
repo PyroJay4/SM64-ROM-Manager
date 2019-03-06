@@ -191,11 +191,11 @@ Partial Class TextureGraphicFormatEditor
         '
         'LabelX3
         '
+        resources.ApplyResources(Me.LabelX3, "LabelX3")
         '
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.Name = "LabelX3"
         '
         'ComboBoxEx_RotateFlip

@@ -333,6 +333,9 @@ Partial Class TweakViewer
         '
         'ItemListBox1
         '
+        Me.ItemListBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ItemListBox1.AutoScroll = True
         '
         '
@@ -340,7 +343,6 @@ Partial Class TweakViewer
         Me.ItemListBox1.BackgroundStyle.Class = "ItemPanel"
         Me.ItemListBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ItemListBox1.ContainerControlProcessDialogKey = True
-        Me.ItemListBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ItemListBox1.DragDropSupport = True
         Me.ItemListBox1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
         Me.ItemListBox1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"

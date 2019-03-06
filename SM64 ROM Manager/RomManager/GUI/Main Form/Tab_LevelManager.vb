@@ -742,7 +742,7 @@ Public Class Tab_LevelManager
     End Sub
 
     Private Sub ButtonItem19_Click(sender As Object, e As EventArgs) Handles ButtonItem19.Click
-        If MessageBoxEx.Show("You are going to remove the selected area. Continue?", "Remove Area", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+        If MessageBoxEx.Show("You are going to remove the selected level. Continue?", "Remove Area", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             RomMgr.RemoveLevel(CurrentLevel)
             ListBoxAdv_LM_Levels.Items.Remove(ListBoxAdv_LM_Levels.SelectedItem)
             ListBoxAdv_LM_Levels.Refresh()

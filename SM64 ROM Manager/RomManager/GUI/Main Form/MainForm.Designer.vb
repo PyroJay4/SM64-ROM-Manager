@@ -28,16 +28,12 @@ Partial Class MainForm
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New DevComponents.DotNetBar.TabControl()
         Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.tabGeneral = New SM64_ROM_Manager.Tab_General()
         Me.TabItem_General = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.tabLevelManager = New SM64_ROM_Manager.Tab_LevelManager()
         Me.TabItem_LevelManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel4 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.tabMusicManager = New SM64_ROM_Manager.Tab_MusicManager()
         Me.TabItem_MusicManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel3 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.tabTextManager = New SM64_ROM_Manager.Tab_TextManager()
         Me.TabItem_TextManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.Bar2 = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
@@ -78,6 +74,10 @@ Partial Class MainForm
         Me.ButtonItem30 = New DevComponents.DotNetBar.ButtonItem()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.LabelItem1 = New DevComponents.DotNetBar.LabelItem()
+        Me.tabGeneral = New SM64_ROM_Manager.Tab_General()
+        Me.tabLevelManager = New SM64_ROM_Manager.Tab_LevelManager()
+        Me.tabMusicManager = New SM64_ROM_Manager.Tab_MusicManager()
+        Me.tabTextManager = New SM64_ROM_Manager.Tab_TextManager()
         Me.Panel1.SuspendLayout()
         CType(Me.TabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -153,21 +153,14 @@ Partial Class MainForm
         Me.TabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty
         resources.ApplyResources(Me.TabControlPanel1, "TabControlPanel1")
         Me.TabControlPanel1.Name = "TabControlPanel1"
-        Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel1.Style.GradientAngle = 90
         Me.TabControlPanel1.TabItem = Me.TabItem_General
-        '
-        'tabGeneral
-        '
-        resources.ApplyResources(Me.tabGeneral, "tabGeneral")
-        Me.tabGeneral.BackColor = System.Drawing.Color.White
-        Me.tabGeneral.MainForm = Nothing
-        Me.tabGeneral.Name = "tabGeneral"
-        Me.tabGeneral.RomMgr = Nothing
         '
         'TabItem_General
         '
@@ -181,21 +174,14 @@ Partial Class MainForm
         Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
         resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
         Me.TabControlPanel2.Name = "TabControlPanel2"
-        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel2.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel2.Style.GradientAngle = 90
         Me.TabControlPanel2.TabItem = Me.TabItem_LevelManager
-        '
-        'tabLevelManager
-        '
-        resources.ApplyResources(Me.tabLevelManager, "tabLevelManager")
-        Me.tabLevelManager.BackColor = System.Drawing.Color.White
-        Me.tabLevelManager.MainForm = Nothing
-        Me.tabLevelManager.Name = "tabLevelManager"
-        Me.tabLevelManager.RomMgr = Nothing
         '
         'TabItem_LevelManager
         '
@@ -209,21 +195,14 @@ Partial Class MainForm
         Me.TabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty
         resources.ApplyResources(Me.TabControlPanel4, "TabControlPanel4")
         Me.TabControlPanel4.Name = "TabControlPanel4"
-        Me.TabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel4.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel4.Style.GradientAngle = 90
         Me.TabControlPanel4.TabItem = Me.TabItem_MusicManager
-        '
-        'tabMusicManager
-        '
-        resources.ApplyResources(Me.tabMusicManager, "tabMusicManager")
-        Me.tabMusicManager.BackColor = System.Drawing.Color.White
-        Me.tabMusicManager.MainForm = Nothing
-        Me.tabMusicManager.Name = "tabMusicManager"
-        Me.tabMusicManager.RomMgr = Nothing
         '
         'TabItem_MusicManager
         '
@@ -237,21 +216,14 @@ Partial Class MainForm
         Me.TabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty
         resources.ApplyResources(Me.TabControlPanel3, "TabControlPanel3")
         Me.TabControlPanel3.Name = "TabControlPanel3"
-        Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
+        Me.TabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.TabControlPanel3.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel3.Style.GradientAngle = 90
         Me.TabControlPanel3.TabItem = Me.TabItem_TextManager
-        '
-        'tabTextManager
-        '
-        resources.ApplyResources(Me.tabTextManager, "tabTextManager")
-        Me.tabTextManager.BackColor = System.Drawing.Color.White
-        Me.tabTextManager.MainForm = Nothing
-        Me.tabTextManager.Name = "tabTextManager"
-        Me.tabTextManager.RomMgr = Nothing
         '
         'TabItem_TextManager
         '
@@ -539,15 +511,47 @@ Partial Class MainForm
         Me.LabelItem1.Name = "LabelItem1"
         resources.ApplyResources(Me.LabelItem1, "LabelItem1")
         '
+        'tabGeneral
+        '
+        resources.ApplyResources(Me.tabGeneral, "tabGeneral")
+        Me.tabGeneral.BackColor = System.Drawing.Color.White
+        Me.tabGeneral.MainForm = Nothing
+        Me.tabGeneral.Name = "tabGeneral"
+        Me.tabGeneral.RomMgr = Nothing
+        '
+        'tabLevelManager
+        '
+        resources.ApplyResources(Me.tabLevelManager, "tabLevelManager")
+        Me.tabLevelManager.BackColor = System.Drawing.Color.White
+        Me.tabLevelManager.MainForm = Nothing
+        Me.tabLevelManager.Name = "tabLevelManager"
+        Me.tabLevelManager.RomMgr = Nothing
+        '
+        'tabMusicManager
+        '
+        resources.ApplyResources(Me.tabMusicManager, "tabMusicManager")
+        Me.tabMusicManager.BackColor = System.Drawing.Color.White
+        Me.tabMusicManager.MainForm = Nothing
+        Me.tabMusicManager.Name = "tabMusicManager"
+        Me.tabMusicManager.RomMgr = Nothing
+        '
+        'tabTextManager
+        '
+        resources.ApplyResources(Me.tabTextManager, "tabTextManager")
+        Me.tabTextManager.BackColor = System.Drawing.Color.White
+        Me.tabTextManager.MainForm = Nothing
+        Me.tabTextManager.Name = "tabTextManager"
+        Me.tabTextManager.RomMgr = Nothing
+        '
         'MainForm
         '
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         resources.ApplyResources(Me, "$this")
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Bar1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.RibbonControl1)
         Me.EnableGlass = False
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "MainForm"
         Me.TopLeftCornerSize = 0

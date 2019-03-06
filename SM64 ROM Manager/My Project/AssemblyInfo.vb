@@ -14,7 +14,7 @@ Imports nUpdate.Core
 <Assembly: AssemblyCompany("Pilzinsel64")>
 <Assembly: AssemblyProduct("SM64 ROM Manager")>
 <Assembly: AssemblyCopyright("Copyright © Pilzinsel64 2018 - 2019")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTrademark("All rights reserved.")>
 
 <Assembly: ComVisible(False)>
 

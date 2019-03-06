@@ -18,6 +18,7 @@ Namespace Global.SM64Lib
             cast.LongValue = value
             Return cast.Int16Value
         End Function
+
         <StructLayout(LayoutKind.Explicit)>
         Private Structure CasterLongInt16
             <FieldOffset(0)> Public LongValue As Long
@@ -29,6 +30,7 @@ Namespace Global.SM64Lib
             cast.LongValue = value
             Return cast.ByteValue
         End Function
+
         <StructLayout(LayoutKind.Explicit)>
         Private Structure CasterLongByte
             <FieldOffset(0)> Public LongValue As Long
