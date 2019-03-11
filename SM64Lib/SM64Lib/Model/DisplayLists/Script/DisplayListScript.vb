@@ -26,16 +26,14 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script
 
                 Select Case cmd.CommandType
                     Case CommandTypes.F3D_NOOP
-                        Dim br As New BinaryStreamData(cmd)
                         cmd.Position = 0
-                        Dim checkVal As Integer = br.ReadInt32
+                        Dim checkVal As Integer = cmd.ReadInt32
                         cmd.Position = 0
                         If checkVal <> 0 Then Exit Do
 
                     Case CommandTypes.F3D_DisplayList
-                        Dim br As New BinaryStreamData(cmd)
                         cmd.Position = 4
-                        Dim segAddr As Integer = br.ReadInt32
+                        Dim segAddr As Integer = cmd.ReadInt32
                         cmd.Position = 0
 
                         curSeg = FromStream_GetSegBank(rommgr, segAddr, AreaID)

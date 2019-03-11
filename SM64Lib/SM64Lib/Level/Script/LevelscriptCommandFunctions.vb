@@ -26,149 +26,131 @@ Namespace Global.SM64Lib.Levels.Script
 
         Public Class clJumpToSegAddr 'Jump to
             Public Shared Function GetSegJumpAddr(Command As LevelscriptCommand) As Integer
-                Dim br As New BinaryReader(Command)
                 Command.Position = 4
-                Dim jumpaddr = SwapInts.SwapInt32(br.ReadInt32)
+                Dim jumpaddr = Command.ReadInt32
                 Command.Position = 0
                 Return jumpaddr
             End Function
             Public Shared Sub SetSegJumpAddr(Command As LevelscriptCommand, SegJumpAddr As Integer)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 4
-                bw.Write(SwapInts.SwapUInt32(SegJumpAddr))
+                Command.Write(CUInt(SegJumpAddr))
                 Command.Position = 0
             End Sub
         End Class
 
         Public Class clStartArea 'Start Area
             Public Shared Function GetAreaID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 2
-                Dim areaid As Integer = br.ReadByte
+                Dim areaid As Integer = Command.ReadByte
                 Command.Position = 0
                 Return areaid
             End Function
             Public Shared Sub SetAreaID(Command As LevelscriptCommand, AreaID As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 2
-                bw.Write(AreaID)
+                Command.Write(AreaID)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetSegGeolayoutAddr(Command As LevelscriptCommand) As UInteger
-                Dim br As New BinaryReader(Command)
                 Command.Position = 4
-                Dim SegGeolayoutAddr As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                Dim SegGeolayoutAddr As UInteger = Command.ReadUInt32
                 Command.Position = 0
                 Return SegGeolayoutAddr
             End Function
             Public Shared Sub SetSegGeolayoutAddr(Command As LevelscriptCommand, SegGeolayoutAddr As UInteger)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 4
-                bw.Write(SwapInts.SwapUInt32(SegGeolayoutAddr))
+                Command.Write(SegGeolayoutAddr)
                 Command.Position = 0
             End Sub
         End Class
 
         Public Class clNormal3DObject 'Object
             Public Shared Function GetActs(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 2
-                Dim Acts As Integer = br.ReadByte
+                Dim Acts As Integer = Command.ReadByte
                 Command.Position = 0
                 Return Acts
             End Function
             Public Shared Sub SetActs(Command As LevelscriptCommand, Acts As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 2
-                bw.Write(Acts)
+                Command.Write(Acts)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetModelID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 3
-                Dim ModelID As Integer = br.ReadByte
+                Dim ModelID As Integer = Command.ReadByte
                 Command.Position = 0
                 Return ModelID
             End Function
             Public Shared Sub SetModelID(Command As LevelscriptCommand, ModelID As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 3
-                bw.Write(ModelID)
+                Command.Write(ModelID)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetPosition(Command As LevelscriptCommand) As Vector3
-                Dim br As New BinaryReader(Command)
                 Command.Position = 4
                 Dim Pos As New Vector3
-                Pos.X = SwapInts.SwapInt16(br.ReadInt16)
-                Pos.Y = SwapInts.SwapInt16(br.ReadInt16)
-                Pos.Z = SwapInts.SwapInt16(br.ReadInt16)
+                Pos.X = Command.ReadInt16
+                Pos.Y = Command.ReadInt16
+                Pos.Z = Command.ReadInt16
                 Command.Position = 0
                 Return Pos
             End Function
             Public Shared Sub SetPosition(Command As LevelscriptCommand, Pos As Vector3)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 4
-                bw.Write(SwapInts.SwapInt16(Pos.X))
-                bw.Write(SwapInts.SwapInt16(Pos.Y))
-                bw.Write(SwapInts.SwapInt16(Pos.Z))
+                Command.Write(CInt(Pos.X))
+                Command.Write(CInt(Pos.Y))
+                Command.Write(CInt(Pos.Z))
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetRotation(Command As LevelscriptCommand) As Vector3
-                Dim br As New BinaryReader(Command)
                 Command.Position = 10
                 Dim Rot As New Vector3
-                Rot.X = SwapInts.SwapInt16(br.ReadInt16)
-                Rot.Y = SwapInts.SwapInt16(br.ReadInt16)
-                Rot.Z = SwapInts.SwapInt16(br.ReadInt16)
+                Rot.X = Command.ReadInt16
+                Rot.Y = Command.ReadInt16
+                Rot.Z = Command.ReadInt16
                 Command.Position = 0
                 Return Rot
             End Function
             Public Shared Sub SetRotation(Command As LevelscriptCommand, Rot As Vector3)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 10
-                bw.Write(SwapInts.SwapInt16(Rot.X))
-                bw.Write(SwapInts.SwapInt16(Rot.Y))
-                bw.Write(SwapInts.SwapInt16(Rot.Z))
+                Command.Write(CInt(Rot.X))
+                Command.Write(CInt(Rot.Y))
+                Command.Write(CInt(Rot.Z))
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetParams(Command As LevelscriptCommand) As ObjBParams
-                Dim br As New BinaryReader(Command)
                 Command.Position = 16
                 Dim Params As New ObjBParams
-                Params.BParam1 = br.ReadByte
-                Params.BParam2 = br.ReadByte
-                Params.BParam3 = br.ReadByte
-                Params.BParam4 = br.ReadByte
+                Params.BParam1 = Command.ReadByte
+                Params.BParam2 = Command.ReadByte
+                Params.BParam3 = Command.ReadByte
+                Params.BParam4 = Command.ReadByte
                 Command.Position = 0
                 Return Params
             End Function
             Public Shared Sub SetParams(Command As LevelscriptCommand, Params As ObjBParams)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 16
-                bw.Write(Params.BParam1)
-                bw.Write(Params.BParam2)
-                bw.Write(Params.BParam3)
-                bw.Write(Params.BParam4)
+                Command.Write(Params.BParam1)
+                Command.Write(Params.BParam2)
+                Command.Write(Params.BParam3)
+                Command.Write(Params.BParam4)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetSegBehaviorAddr(Command As LevelscriptCommand) As UInteger
-                Dim br As New BinaryReader(Command)
                 Command.Position = 20
-                Dim SegBehaviorAddr As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                Dim SegBehaviorAddr As UInteger = Command.ReadUInt32
                 Command.Position = 0
                 Return SegBehaviorAddr
             End Function
             Public Shared Sub SetSegBehaviorAddr(Command As LevelscriptCommand, SegBehaviorAddr As UInteger)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 20
-                bw.Write(SwapInts.SwapUInt32(SegBehaviorAddr))
+                Command.Write(SegBehaviorAddr)
                 Command.Position = 0
             End Sub
 
@@ -183,73 +165,63 @@ Namespace Global.SM64Lib.Levels.Script
 
         Public Class clWarp 'Warp
             Public Shared Function GetWarpID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 2
-                Dim ID As Byte = br.ReadByte
+                Dim ID As Byte = Command.ReadByte
                 Command.Position = 0
                 Return ID
             End Function
             Public Shared Sub SetWarpID(Command As LevelscriptCommand, ID As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 2
-                bw.Write(ID)
+                Command.Write(ID)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetDestinationLevelID(Command As LevelscriptCommand) As Levels
-                Dim br As New BinaryReader(Command)
                 Command.Position = 3
-                Dim LevelID As Levels = br.ReadByte
+                Dim LevelID As Levels = Command.ReadByte
                 Command.Position = 0
                 Return LevelID
             End Function
             Public Shared Sub SetDestinationLevelID(Command As LevelscriptCommand, LevelID As Levels)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 3
-                bw.Write(CByte(LevelID))
+                Command.WriteByte(LevelID)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetDestinationAreaID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 4
-                Dim ID As Byte = br.ReadByte
+                Dim ID As Byte = Command.ReadByte
                 Command.Position = 0
                 Return ID
             End Function
             Public Shared Sub SetDestinationAreaID(Command As LevelscriptCommand, ID As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 4
-                bw.Write(ID)
+                Command.Write(ID)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetDestinationWarpID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 5
-                Dim ID As Byte = br.ReadByte
+                Dim ID As Byte = Command.ReadByte
                 Command.Position = 0
                 Return ID
             End Function
             Public Shared Sub SetDestinationWarpID(Command As LevelscriptCommand, ID As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 5
-                bw.Write(ID)
+                Command.Write(ID)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetCreateCheckpoint(cmd As LevelscriptCommand) As Boolean
-                Dim data As New BinaryStreamData(cmd)
-                data.Position = 6
-                Return Bits.GetBoolOfByte(data.ReadByte, 0)
+                cmd.Position = 6
+                Return Bits.GetBoolOfByte(cmd.ReadByte, 0)
             End Function
             Public Shared Sub SetCreateCheckpoint(cmd As LevelscriptCommand, value As Boolean)
-                Dim data As New BinaryStreamData(cmd)
-                data.Position = 6
-                Dim b As Byte = data.ReadByte
+                cmd.Position = 6
+                Dim b As Byte = cmd.ReadByte
                 b = Bits.SetInByte(b, 0, value)
-                data.Position -= 1
-                data.Write(b)
+                cmd.Position -= 1
+                cmd.Write(b)
             End Sub
 
         End Class
@@ -280,23 +252,21 @@ Namespace Global.SM64Lib.Levels.Script
             End Sub
 
             Public Shared Function GetLocation(cmd As LevelscriptCommand) As Vector3
-                Dim br As New BinaryReader(cmd)
                 cmd.Position = 4
 
-                Dim x As Int16 = SwapInts.SwapInt16(br.ReadInt16)
-                Dim y As Int16 = SwapInts.SwapInt16(br.ReadInt16)
-                Dim z As Int16 = SwapInts.SwapInt16(br.ReadInt16)
+                Dim x As Int16 = cmd.ReadInt16
+                Dim y As Int16 = cmd.ReadInt16
+                Dim z As Int16 = cmd.ReadInt16
 
                 cmd.Position = 0
                 Return New Vector3(x, y, z)
             End Function
             Public Shared Sub SetLocation(cmd As LevelscriptCommand, loc As Vector3)
-                Dim bw As New BinaryWriter(cmd)
                 cmd.Position = 4
 
-                bw.Write(SwapInts.SwapInt16(loc.X))
-                bw.Write(SwapInts.SwapInt16(loc.Y))
-                bw.Write(SwapInts.SwapInt16(loc.Z))
+                cmd.Write(CInt(loc.X))
+                cmd.Write(CInt(loc.Y))
+                cmd.Write(CInt(loc.Z))
 
                 cmd.Position = 0
             End Sub
@@ -304,171 +274,149 @@ Namespace Global.SM64Lib.Levels.Script
 
         Public Class clAreaCollision 'Area Collision
             Public Shared Function GetAreaCollision(Command As LevelscriptCommand) As UInteger
-                Dim br As New BinaryReader(Command)
                 Command.Position = 4
-                Dim AreaCollision As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                Dim AreaCollision As UInteger = Command.ReadUInt32
                 Command.Position = 0
                 Return AreaCollision
             End Function
             Public Shared Sub SetAreaCollision(Command As LevelscriptCommand, AreaCollision As UInteger)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 4
-                bw.Write(SwapInts.SwapUInt32(AreaCollision))
+                Command.Write(AreaCollision)
                 Command.Position = 0
             End Sub
         End Class
 
         Public Class clTerrian 'Terrian-Type
             Public Shared Function GetTerrainType(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 3
-                Dim Type As Integer = br.ReadByte
+                Dim Type As Integer = Command.ReadByte
                 Command.Position = 0
                 Return Type
             End Function
             Public Shared Sub SetTerrainType(Command As LevelscriptCommand, Type As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 3
-                bw.Write(Type)
+                Command.Write(Type)
                 Command.Position = 0
             End Sub
         End Class
 
         Public Class clAreaMusic 'Area Music
             Public Shared Function GetMusicID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 5
-                Dim MusicID As Integer = br.ReadByte
+                Dim MusicID As Integer = Command.ReadByte
                 Command.Position = 0
                 Return MusicID
             End Function
             Public Shared Sub SetMusicID(Command As LevelscriptCommand, MusicID As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 5
-                bw.Write(MusicID)
+                Command.Write(MusicID)
                 Command.Position = 0
             End Sub
         End Class
 
         Public Class clAreaMusicSimple 'Area Music
             Public Shared Function GetMusicID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 3
-                Dim MusicID As Integer = br.ReadByte
+                Dim MusicID As Integer = Command.ReadByte
                 Command.Position = 0
                 Return MusicID
             End Function
             Public Shared Sub SetMusicID(Command As LevelscriptCommand, MusicID As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 3
-                bw.Write(MusicID)
+                Command.Write(MusicID)
                 Command.Position = 0
             End Sub
         End Class
 
         Public Class clLoadRomToRam '0x17 Load ROM to RAM
             Public Shared Function GetParam1(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 2
-                Dim value As Integer = br.ReadByte
+                Dim value As Integer = Command.ReadByte
                 Command.Position = 0
                 Return value
             End Function
             Public Shared Sub SetParam1(Command As LevelscriptCommand, value As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 2
-                bw.Write(value)
+                Command.Write(value)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetSegmentedID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 3
-                Dim value As Integer = br.ReadByte
+                Dim value As Integer = Command.ReadByte
                 Command.Position = 0
                 Return value
             End Function
             Public Shared Sub SetSegmentedID(Command As LevelscriptCommand, ID As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 3
-                bw.Write(ID)
+                Command.Write(ID)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetRomStart(Command As LevelscriptCommand) As Integer
-                Dim br As New BinaryReader(Command)
                 Command.Position = 4
-                Dim value As Integer = SwapInts.SwapInt32(br.ReadInt32)
+                Dim value As Integer = Command.ReadInt32
                 Command.Position = 0
                 Return value
             End Function
             Public Shared Sub SetRomStart(Command As LevelscriptCommand, Address As Integer)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 4
-                bw.Write(SwapInts.SwapInt32(Address))
+                Command.Write(Address)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetRomEnd(Command As LevelscriptCommand) As Integer
-                Dim br As New BinaryReader(Command)
                 Command.Position = 8
-                Dim value As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                Dim value As UInteger = Command.ReadUInt32
                 Command.Position = 0
                 Return value
             End Function
             Public Shared Sub SetRomEnd(Command As LevelscriptCommand, Address As Integer)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 8
-                bw.Write(SwapInts.SwapUInt32(Address))
+                Command.Write(CUInt(Address))
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetSegmentedAddressToJump(Command As LevelscriptCommand) As Integer
-                Dim br As New BinaryReader(Command)
                 Command.Position = 12
-                Dim value As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                Dim value As UInteger = Command.ReadUInt32
                 Command.Position = 0
                 Return value
             End Function
             Public Shared Sub SetSegmentedAddressToJump(Command As LevelscriptCommand, Address As Integer)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 12
-                bw.Write(SwapInts.SwapUInt32(Address))
+                Command.Write(CUInt(Address))
                 Command.Position = 0
             End Sub
         End Class
 
         Public Class clDefaultPosition
             Public Shared Function GetAreaID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 2
-                Dim value = br.ReadByte
+                Dim value = Command.ReadByte
                 Command.Position = 0
                 Return value
             End Function
             Public Shared Sub SetAreaID(Command As LevelscriptCommand, value As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 2
-                bw.Write(value)
+                Command.Write(value)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetPosition(Command As LevelscriptCommand) As Vector3
-                Dim br As New BinaryReader(Command)
                 Command.Position = 6
                 Dim value As New Vector3
-                value.X = SwapInts.SwapInt16(br.ReadInt16)
-                value.Y = SwapInts.SwapInt16(br.ReadInt16)
-                value.Z = SwapInts.SwapInt16(br.ReadInt16)
+                value.X = Command.ReadInt16
+                value.Y = Command.ReadInt16
+                value.Z = Command.ReadInt16
                 Command.Position = 0
                 Return value
             End Function
             Public Shared Sub SetPosition(Command As LevelscriptCommand, value As Vector3)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 6
-                bw.Write(SwapInts.SwapInt16(value.X))
-                bw.Write(SwapInts.SwapInt16(value.Y))
-                bw.Write(SwapInts.SwapInt16(value.Z))
+                Command.Write(CInt(value.X))
+                Command.Write(CInt(value.Y))
+                Command.Write(CInt(value.Z))
                 Command.Position = 0
             End Sub
             Public Shared Sub SetPosition(Command As LevelscriptCommand, X As Int32, Y As Int32, Z As Int32)
@@ -476,20 +424,18 @@ Namespace Global.SM64Lib.Levels.Script
             End Sub
 
             Public Shared Function GetRotation(Command As LevelscriptCommand) As Int16
-                Dim br As New BinaryReader(Command)
                 Command.Position = 4
-                Dim value = SwapInts.SwapInt16(br.ReadInt16)
+                Dim value = Command.ReadInt16
                 Command.Position = 0
                 value = value Mod 360
                 If value < 0 Then value *= -1
                 Return value
             End Function
             Public Shared Sub SetRotation(Command As LevelscriptCommand, value As Int16)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 4
                 If value < 0 Then value *= -1
                 value = value Mod 360
-                bw.Write(SwapInts.SwapInt16(value))
+                Command.Write(value)
                 Command.Position = 0
             End Sub
         End Class
@@ -498,46 +444,40 @@ Namespace Global.SM64Lib.Levels.Script
             Inherits clLoadPolygonWithGeo
 
             Public Shared Function GetDrawingLayer(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 3
-                Dim areaid As Integer = br.ReadByte
+                Dim areaid As Integer = Command.ReadByte
                 Command.Position = 0
                 Return areaid >> 4
             End Function
             Public Shared Sub SetDrawingLayer(Command As LevelscriptCommand, layer As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 3
-                bw.Write(layer << 4)
+                Command.Write(layer << 4)
                 Command.Position = 0
             End Sub
         End Class
 
         Public Class clLoadPolygonWithGeo
             Public Shared Function GetModelID(Command As LevelscriptCommand) As Byte
-                Dim br As New BinaryReader(Command)
                 Command.Position = 3
-                Dim areaid As Integer = br.ReadByte
+                Dim areaid As Integer = Command.ReadByte
                 Command.Position = 0
                 Return areaid
             End Function
             Public Shared Sub SetModelID(Command As LevelscriptCommand, ModelID As Byte)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 3
-                bw.Write(ModelID)
+                Command.Write(ModelID)
                 Command.Position = 0
             End Sub
 
             Public Shared Function GetSegAddress(Command As LevelscriptCommand) As Integer
-                Dim br As New BinaryReader(Command)
                 Command.Position = 4
-                Dim SegGeolayoutAddr = SwapInts.SwapInt32(br.ReadInt32)
+                Dim SegGeolayoutAddr = Command.ReadInt32
                 Command.Position = 0
                 Return SegGeolayoutAddr
             End Function
             Public Shared Sub SetSegAddress(Command As LevelscriptCommand, SegAddress As Integer)
-                Dim bw As New BinaryWriter(Command)
                 Command.Position = 4
-                bw.Write(SwapInts.SwapInt32(SegAddress))
+                Command.Write(SegAddress)
                 Command.Position = 0
             End Sub
         End Class
@@ -559,29 +499,25 @@ Namespace Global.SM64Lib.Levels.Script
         Public Class clScrollingTexture
 
             Public Shared Function GetCountOfFaces(cmd As LevelscriptCommand) As UShort
-                Dim br As New BinaryReader(cmd)
                 cmd.Position = 4
-                Dim val As UShort = SwapInts.SwapUInt16(br.ReadUInt16)
+                Dim val As UShort = cmd.ReadUInt16
                 cmd.Position = 0
                 Return val
             End Function
             Public Shared Sub SetCountOfFaces(cmd As LevelscriptCommand, count As UShort)
-                Dim bw As New BinaryWriter(cmd)
                 cmd.Position = 4
-                bw.Write(SwapInts.SwapUInt16(count))
+                cmd.Write(count)
                 cmd.Position = 0
             End Sub
 
             Public Shared Function GetVertexPointer(cmd As LevelscriptCommand) As UInteger
-                Dim br As New BinaryReader(cmd)
                 cmd.Position = &H10
-                Dim value As Integer = SwapInts.SwapInt32(br.ReadInt32)
+                Dim value As Integer = cmd.ReadInt32
                 Return value
             End Function
             Public Shared Sub SetVertexPointer(cmd As LevelscriptCommand, ptr As UInteger)
-                Dim bw As New BinaryWriter(cmd)
                 cmd.Position = &H10
-                bw.Write(SwapInts.SwapInt32(ptr))
+                cmd.Write(CInt(ptr))
                 cmd.Position = 0
             End Sub
 
@@ -628,16 +564,14 @@ Namespace Global.SM64Lib.Levels.Script
             End Sub
 
             Public Shared Function GetScrollSpeed(cmd As LevelscriptCommand) As Int16
-                Dim br As New BinaryReader(cmd)
                 cmd.Position = 8
-                Dim val As Int16 = SwapInts.SwapInt16(br.ReadInt16)
+                Dim val As Int16 = cmd.ReadInt16
                 cmd.Position = 0
                 Return val
             End Function
             Public Shared Sub SetScrollSpeed(cmd As LevelscriptCommand, count As Int16)
-                Dim bw As New BinaryWriter(cmd)
                 cmd.Position = 8
-                bw.Write(SwapInts.SwapInt16(Math.Min(count, &HFFF)))
+                cmd.Write(Math.Min(count, &HFFF))
                 cmd.Position = 0
             End Sub
 

@@ -5,7 +5,7 @@ Namespace Global.SM64Lib.Script
 
     <Serializable>
     Public MustInherit Class BaseCommand(Of eTypes)
-        Inherits MemoryStream
+        Inherits Data.BinaryStreamData
         Implements ICommand
 
         Private dirtyHash As Integer = 0
@@ -15,7 +15,8 @@ Namespace Global.SM64Lib.Script
         Public MustOverride Property CommandType As eTypes
 
         Public Sub New(bytes As String, Optional enabledHex As Boolean = True)
-            Dim bts As New List(Of Byte)
+            Me.New
+                        Dim bts As New List(Of Byte)
             For Each b As String In bytes.Split(" ")
                 If enabledHex Then b = Convert.ToInt32(b, 16)
                 bts.Add(b)
@@ -24,9 +25,11 @@ Namespace Global.SM64Lib.Script
         End Sub
 
         Public Sub New()
+            MyBase.New(New MemoryStream)
         End Sub
 
         Public Sub New(bytes() As Byte)
+            Me.New
             NewBytes(bytes)
         End Sub
 
@@ -37,6 +40,10 @@ Namespace Global.SM64Lib.Script
             Next
             Position = 0
         End Sub
+
+        Public Function ToArray() As Byte()
+            Return CType(BaseStream, MemoryStream).ToArray
+        End Function
 
         Public Overrides Function ToString() As String
             ToString = $"{RomAddress.ToString("X")} ({BankAddress.ToString("X")}):"
@@ -50,8 +57,8 @@ Namespace Global.SM64Lib.Script
                 Return False
             End If
 
-            Dim buf1 As Byte() = cmd1.GetBuffer
-            Dim buf2 As Byte() = cmd1.GetBuffer
+            Dim buf1 As Byte() = CType(cmd1.BaseStream, MemoryStream).GetBuffer
+            Dim buf2 As Byte() = CType(cmd2.BaseStream, MemoryStream).GetBuffer
 
             For i As Integer = 0 To cmd1.Length - 1
                 If buf1(i) <> buf2(i) Then
@@ -67,12 +74,12 @@ Namespace Global.SM64Lib.Script
         End Operator
 
         Public Sub RefreshDirty()
-            dirtyHash = GetBuffer.GetHashCode()
+            dirtyHash = CType(BaseStream, MemoryStream).GetHashCode()
         End Sub
 
         Public ReadOnly Property IsDirty As Boolean Implements ICommand.IsDirty
             Get
-                Return GetBuffer.GetHashCode() <> dirtyHash
+                Return CType(BaseStream, MemoryStream).GetHashCode() <> dirtyHash
             End Get
         End Property
 

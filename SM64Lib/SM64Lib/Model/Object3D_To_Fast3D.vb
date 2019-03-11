@@ -1239,39 +1239,48 @@ Namespace Global.SM64Lib.SM64Convert
             ImpF3D(cmd)
         End Sub
 
-        Private Sub AddCmdFC(mat As Material)
+        Private Sub AddCmdFC(mat As Material, ByRef lastCmd As String)
+            Dim cmd As String = String.Empty
+
             If mat.HasTexture Then
                 If mat.TexType = N64Codec.RGBA32 Then
-                    ImpF3D("FC 11 96 23 FF 2F FF FF")
+                    cmd = "FC 11 96 23 FF 2F FF FF"
                 ElseIf mat.TexType = N64Codec.IA4 OrElse mat.TexType = N64Codec.IA8 OrElse mat.TexType = N64Codec.IA16 Then
-                    ImpF3D("FC 12 18 24 FF 33 FF FF") 'FC 12 9A 25 FF 37 FF FF
+                    cmd = "FC 12 18 24 FF 33 FF FF" 'FC 12 9A 25 FF 37 FF FF
                 ElseIf mat.TexType = N64Codec.I4 OrElse mat.TexType = N64Codec.I8 Then
-                    If mat.EnableAlphaMask Then
-                        ImpF3D("FC 12 7E A0 FF FF F3 F8")
-                    Else
-                        ImpF3D("FC 30 B2 61 FF FF FF FF")
-                    End If
+                    cmd = "FC 12 7E A0 FF FF F3 F8"
+                    'DOES NOT WORK:
+                    'If mat.EnableAlphaMask Then
+                    '    cmd = "FC 12 7E A0 FF FF F3 F8"
+                    'Else
+                    '    cmd = "FC 30 B2 61 FF FF FF FF"
+                    'End If
                 ElseIf mat.HasTransparency Then 'mat.type = MaterialType.TEXTURE_TRANSPARENT
-                    ImpF3D("FC 12 2E 24 FF FF FB FD")
+                    cmd = "FC 12 2E 24 FF FF FB FD"
                 ElseIf mat.HasTextureAlpha Then
                     If settings.EnableFog Then
-                        ImpF3D("FC FF FF FF FF FC F2 38")
+                        cmd = "FC FF FF FF FF FC F2 38"
                     Else
-                        ImpF3D("FC 12 18 24 FF 33 FF FF")
+                        cmd = "FC 12 18 24 FF 33 FF FF"
                     End If
                 Else
                     If settings.EnableFog Then
-                        ImpF3D("FC 12 7F FF FF FF F8 38")
+                        cmd = "FC 12 7F FF FF FF F8 38"
                     Else
-                        ImpF3D("FC 12 7E 24 FF FF F9 FC")
+                        cmd = "FC 12 7E 24 FF FF F9 FC"
                     End If
                 End If
             Else
                 If mat.Type = MaterialType.ColorTransparent Then
-                    ImpF3D("FC FF FF FF FF FE FB FD")
+                    cmd = "FC FF FF FF FF FE FB FD"
                 Else
-                    ImpF3D("FC FF FF FF FF FE 7B 3D")
+                    cmd = "FC FF FF FF FF FE 7B 3D"
                 End If
+            End If
+
+            If Not String.IsNullOrEmpty(cmd) AndAlso lastCmd <> cmd Then
+                ImpF3D(cmd)
+                lastCmd = cmd
             End If
         End Sub
 
@@ -1430,6 +1439,7 @@ Namespace Global.SM64Lib.SM64Convert
             Dim hasCrystalEffectEnabled, needToResetCrystalEffectCommands As Boolean
             Dim ciEnabled As Boolean
             Dim citextypes As N64Codec() = {N64Codec.CI4, N64Codec.CI8}
+            Dim lastCmdFC As String
 
             ProcessObject3DModel(model)
 
@@ -1522,6 +1532,7 @@ Namespace Global.SM64Lib.SM64Convert
                 lastMaterial = Nothing
                 lastN64Codec = MaterialType.None
                 lastTexType = Nothing
+                lastCmdFC = ""
 
                 ImpF3D("E7 00 00 00 00 00 00 00")
                 ImpF3D("B7 00 00 00 00 00 00 00")
@@ -1559,10 +1570,7 @@ Namespace Global.SM64Lib.SM64Convert
                     If lastMaterial IsNot mp.Material Then
                         lastMaterial = mp.Material
 
-                        If lastTexType Is Nothing OrElse lastTexType <> mp.Material.TexType Then
-                            AddCmdFC(mp.Material)
-                            lastTexType = mp.Material.TexType
-                        End If
+                        AddCmdFC(mp.Material, lastCmdFC)
 
                         If lastN64Codec <> mp.Material.Type Then
                             ImpCmd03(mp.Material, importStart)
@@ -1599,7 +1607,7 @@ Namespace Global.SM64Lib.SM64Convert
 
                 If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
                 If settings.EnableFog Then ImpFogEnd()
-                ImpF3D("FC FF FF FF FF FE 79 3C")
+                'ImpF3D("FC FF FF FF FF FE 79 3C")
                 ImpF3D("BB 00 00 00 FF FF FF FF")
                 If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
                 If ciEnabled Then ShiftTMEMBack()
@@ -1618,6 +1626,7 @@ Namespace Global.SM64Lib.SM64Convert
                 lastMaterial = Nothing
                 lastN64Codec = MaterialType.None
                 lastTexType = Nothing
+                lastCmdFC = ""
 
                 ImpF3D("E7 00 00 00 00 00 00 00")
                 If settings.EnableFog Then ImpF3D("B9 00 02 01 00 00 00 00")
@@ -1656,10 +1665,7 @@ Namespace Global.SM64Lib.SM64Convert
                     If lastMaterial IsNot mp.Material Then
                         lastMaterial = mp.Material
 
-                        If lastTexType Is Nothing OrElse lastTexType <> mp.Material.TexType Then
-                            AddCmdFC(mp.Material)
-                            lastTexType = mp.Material.TexType
-                        End If
+                        AddCmdFC(mp.Material, lastCmdFC)
 
                         ImpCmd03(mp.Material, importStart)
 
@@ -1704,6 +1710,7 @@ Namespace Global.SM64Lib.SM64Convert
                 lastMaterial = Nothing
                 lastN64Codec = MaterialType.None
                 lastTexType = Nothing
+                lastCmdFC = ""
 
                 ImpF3D("E7 00 00 00 00 00 00 00")
                 ImpF3D("B7 00 00 00 00 00 00 00")
@@ -1743,10 +1750,7 @@ Namespace Global.SM64Lib.SM64Convert
                             End If
                         End If
 
-                        If lastTexType Is Nothing OrElse lastTexType <> mp.Material.TexType Then
-                            AddCmdFC(mp.Material)
-                            lastTexType = mp.Material.TexType
-                        End If
+                        AddCmdFC(mp.Material, lastCmdFC)
 
                         If lastN64Codec <> mp.Material.Type Then
                             ImpCmd03(mp.Material, importStart)

@@ -59,7 +59,6 @@ Namespace Global.SM64Lib.SM64Convert
             Do While cmdIndex < dl.Script.Count AndAlso dl.Script(cmdIndex).CommandType <> CommandTypes.F3D_EndDisplaylist
                 cmd = dl.Script(cmdIndex)
                 cmdarr = cmd.ToArray
-                Dim bdata As New BinaryStreamData(cmd)
 
                 Select Case cmd.CommandType '&H20000
                     Case CommandTypes.F3D_ClearGeometryMode
@@ -103,7 +102,7 @@ Namespace Global.SM64Lib.SM64Convert
                         curTexPaletteSegAddr = curTexSegAddr
 
                         cmd.Position = 5
-                        numColorsToLoadInPalette = bdata.ReadUInt16 >> 6 '+ 1
+                        numColorsToLoadInPalette = cmd.ReadUInt16 >> 6 '+ 1
 
                         Dim seg As SegmentedBank = rommgr.GetSegBank(curTexPaletteSegAddr >> 24, AreaID)
                         curTexPalette = New Byte(numColorsToLoadInPalette * 2 + 1) {}
@@ -219,7 +218,7 @@ Namespace Global.SM64Lib.SM64Convert
 
                     Case CommandTypes.G_SetTile
                         cmd.Position = 4
-                        Dim checkVal As Integer = bdata.ReadInt32
+                        Dim checkVal As Integer = cmd.ReadInt32
                         cmd.Position = 0
 
                         If checkVal <> &H7000000 Then

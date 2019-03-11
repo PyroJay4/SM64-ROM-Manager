@@ -4,21 +4,6 @@ Imports S3DFileParser
 Imports SM64Lib.Levels.Script
 Imports SM64Lib.Levels.Script.Commands
 
-Public Enum CameraMode
-    FLY = 0
-    ORBIT = 1
-    LOOK_DIRECTION = 2
-End Enum
-
-Public Enum LookDirection
-    TOP
-    BOTTOM
-    LEFT
-    RIGHT
-    FRONT
-    BACK
-End Enum
-
 Public Class Camera
 
     Private ReadOnly TAU As Single = CSng(Math.PI * 2)

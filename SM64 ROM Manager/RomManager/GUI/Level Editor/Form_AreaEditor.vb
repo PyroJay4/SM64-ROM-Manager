@@ -520,9 +520,8 @@ Namespace LevelEditor
                                         End If
 
                                     Case Script.GeolayoutCommandTypes.Scale2
-                                        Dim br As New BinaryReader(gmd)
                                         gmd.Position = 4
-                                        Dim scale As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                                        Dim scale As UInteger = gmd.ReadUInt32
                                         mdlScale = New Numerics.Vector3(scale / 65536.0!)
                                         mdlScaleNodeIndex = nodeIndex
 

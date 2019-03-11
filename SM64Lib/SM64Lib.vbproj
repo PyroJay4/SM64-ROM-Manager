@@ -94,6 +94,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SM64Lib\Behavior\Script\Behaviorscript.vb" />
+    <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommand.vb" />
+    <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommandCollection.vb" />
     <Compile Include="SM64Lib\General.vb" />
     <Compile Include="SM64Lib\Geolayout\BackgroundIDs.vb" />
     <Compile Include="SM64Lib\Geolayout\BackgroundPointers.vb" />
@@ -107,6 +110,8 @@
     <Compile Include="SM64Lib\Geolayout\TerrainType.vb" />
     <Compile Include="SM64Lib\Level\LevelList.vb" />
     <Compile Include="SM64Lib\Level\LevelType.vb" />
+    <Compile Include="SM64Lib\Level\Script\LevelscriptCommandCollection.vb" />
+    <Compile Include="SM64Lib\Level\Script\LevelscriptCommandTypes.vb" />
     <Compile Include="SM64Lib\Level\SpecialBoxList.vb" />
     <Compile Include="SM64Lib\Model\Collision\BoxData.vb" />
     <Compile Include="SM64Lib\Model\Collision\BoxDataType.vb" />
@@ -233,8 +238,6 @@
       <Name>TextValueConverter</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SM64Lib\Behavior\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

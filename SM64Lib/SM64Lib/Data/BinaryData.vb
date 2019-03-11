@@ -180,6 +180,10 @@ Namespace Global.SM64Lib.Data
             End Get
         End Property
 
+        Public Sub SetLength(length As Long)
+            BaseStream.SetLength(length)
+        End Sub
+
     End Class
 
 End Namespace

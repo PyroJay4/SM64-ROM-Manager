@@ -4,10 +4,10 @@ Imports SM64Lib.Script
 Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script
 
     Public Class DisplayListCommand
-        Inherits MemoryStream
+        Inherits Data.BinaryStreamData
         Implements ICommand
-        Public Property CommandType As CommandTypes = CommandTypes.F3D_EndDisplaylist
 
+        Public Property CommandType As CommandTypes = CommandTypes.F3D_EndDisplaylist
         Public Property RomAddress As Integer = 0 Implements ICommand.RomAddress
         Public Property BankAddress As Integer = 0 Implements ICommand.BankAddress
 
@@ -17,7 +17,12 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script
             End Get
         End Property
 
+        Private Sub New()
+            MyBase.New(New MemoryStream)
+        End Sub
+
         Public Sub New(CommandType As Byte)
+            Me.New
             Me.CommandType = Command()
             SetLength(&H8)
             Position = 0
@@ -30,6 +35,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script
         End Sub
 
         Public Sub New(bytes() As Byte)
+            Me.New
             CommandType = bytes(0)
             SetLength(bytes.Count)
             For Each b In bytes
@@ -40,9 +46,13 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script
 
         Public Overrides Function ToString() As String
             ToString = $"{RomAddress.ToString("X")}:"
-            For Each b As Byte In Me.ToArray
+            For Each b As Byte In ToArray
                 ToString &= " " & b.ToString("X2")
             Next
+        End Function
+
+        Public Function ToArray() As Byte()
+            Return CType(BaseStream, MemoryStream).ToArray
         End Function
 
     End Class
