@@ -13,6 +13,7 @@ Public Class ScrollTexEditor
 
         ' Dieser Aufruf ist für den Designer erforderlich.
         InitializeComponent()
+        UpdateAmbientColors
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
         cArea = area

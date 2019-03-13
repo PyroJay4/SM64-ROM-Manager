@@ -100,9 +100,9 @@ Namespace Global.SM64Lib.Levels.Script
             End Function
             Public Shared Sub SetPosition(Command As LevelscriptCommand, Pos As Vector3)
                 Command.Position = 4
-                Command.Write(CInt(Pos.X))
-                Command.Write(CInt(Pos.Y))
-                Command.Write(CInt(Pos.Z))
+                Command.Write(CShort(Pos.X))
+                Command.Write(CShort(Pos.Y))
+                Command.Write(CShort(Pos.Z))
                 Command.Position = 0
             End Sub
 
@@ -117,9 +117,9 @@ Namespace Global.SM64Lib.Levels.Script
             End Function
             Public Shared Sub SetRotation(Command As LevelscriptCommand, Rot As Vector3)
                 Command.Position = 10
-                Command.Write(CInt(Rot.X))
-                Command.Write(CInt(Rot.Y))
-                Command.Write(CInt(Rot.Z))
+                Command.Write(CShort(Rot.X))
+                Command.Write(CShort(Rot.Y))
+                Command.Write(CShort(Rot.Z))
                 Command.Position = 0
             End Sub
 
@@ -264,9 +264,9 @@ Namespace Global.SM64Lib.Levels.Script
             Public Shared Sub SetLocation(cmd As LevelscriptCommand, loc As Vector3)
                 cmd.Position = 4
 
-                cmd.Write(CInt(loc.X))
-                cmd.Write(CInt(loc.Y))
-                cmd.Write(CInt(loc.Z))
+                cmd.Write(CShort(loc.X))
+                cmd.Write(CShort(loc.Y))
+                cmd.Write(CShort(loc.Z))
 
                 cmd.Position = 0
             End Sub
@@ -414,9 +414,9 @@ Namespace Global.SM64Lib.Levels.Script
             End Function
             Public Shared Sub SetPosition(Command As LevelscriptCommand, value As Vector3)
                 Command.Position = 6
-                Command.Write(CInt(value.X))
-                Command.Write(CInt(value.Y))
-                Command.Write(CInt(value.Z))
+                Command.Write(CShort(value.X))
+                Command.Write(CShort(value.Y))
+                Command.Write(CShort(value.Z))
                 Command.Position = 0
             End Sub
             Public Shared Sub SetPosition(Command As LevelscriptCommand, X As Int32, Y As Int32, Z As Int32)
