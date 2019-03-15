@@ -51,13 +51,13 @@ Public Module General
             If combiFormats <> "" Then
                 combiFormats &= ";"
             End If
-            combiFormats &= "*" & kvp.Key
+            combiFormats &= "*." & kvp.Key
 
             If splittedFormats <> "" Then
                 splittedFormats &= "|"
             End If
 
-            splittedFormats &= $"{kvp.Value} (*{kvp.Key})|*{kvp.Key}"
+            splittedFormats &= $"{kvp.Value} (*.{kvp.Key})|*.{kvp.Key}"
         Next
 
         Return $"All supported files|{combiFormats}|{splittedFormats}"

@@ -1554,7 +1554,6 @@
             Me.ButtonItem5.Name = "ButtonItem5"
             Me.SuperTooltip1.SetSuperTooltip(Me.ButtonItem5, New DevComponents.DotNetBar.SuperTooltipInfo(resources.GetString("ButtonItem5.SuperTooltip"), resources.GetString("ButtonItem5.SuperTooltip1"), resources.GetString("ButtonItem5.SuperTooltip2"), CType(resources.GetObject("ButtonItem5.SuperTooltip3"), System.Drawing.Image), CType(resources.GetObject("ButtonItem5.SuperTooltip4"), System.Drawing.Image), CType(resources.GetObject("ButtonItem5.SuperTooltip5"), DevComponents.DotNetBar.eTooltipColor), CType(resources.GetObject("ButtonItem5.SuperTooltip6"), Boolean), CType(resources.GetObject("ButtonItem5.SuperTooltip7"), Boolean), CType(resources.GetObject("ButtonItem5.SuperTooltip8"), System.Drawing.Size)))
             Me.ButtonItem5.Symbol = "57679"
-            Me.ButtonItem5.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem5.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem5.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem5, "ButtonItem5")
@@ -1564,7 +1563,6 @@
             Me.ButtonItem37.Name = "ButtonItem37"
             Me.SuperTooltip1.SetSuperTooltip(Me.ButtonItem37, New DevComponents.DotNetBar.SuperTooltipInfo(resources.GetString("ButtonItem37.SuperTooltip"), resources.GetString("ButtonItem37.SuperTooltip1"), resources.GetString("ButtonItem37.SuperTooltip2"), CType(resources.GetObject("ButtonItem37.SuperTooltip3"), System.Drawing.Image), CType(resources.GetObject("ButtonItem37.SuperTooltip4"), System.Drawing.Image), CType(resources.GetObject("ButtonItem37.SuperTooltip5"), DevComponents.DotNetBar.eTooltipColor), CType(resources.GetObject("ButtonItem37.SuperTooltip6"), Boolean), CType(resources.GetObject("ButtonItem37.SuperTooltip7"), Boolean), CType(resources.GetObject("ButtonItem37.SuperTooltip8"), System.Drawing.Size)))
             Me.ButtonItem37.Symbol = "57679"
-            Me.ButtonItem37.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem37.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem37.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem37, "ButtonItem37")
@@ -1607,7 +1605,6 @@
             '
             Me.ButtonItem9.Name = "ButtonItem9"
             Me.ButtonItem9.Symbol = "57677"
-            Me.ButtonItem9.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem9.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem9.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem9, "ButtonItem9")
@@ -1646,7 +1643,6 @@
             Me.ButtonItem64.GlobalItem = False
             Me.ButtonItem64.Name = "ButtonItem64"
             Me.ButtonItem64.Symbol = ""
-            Me.ButtonItem64.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem64.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem64, "ButtonItem64")
             '
@@ -1677,7 +1673,6 @@
             '
             Me.ButtonItem6.Name = "ButtonItem6"
             Me.ButtonItem6.Symbol = "57677"
-            Me.ButtonItem6.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
             Me.ButtonItem6.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonItem6.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem6, "ButtonItem6")

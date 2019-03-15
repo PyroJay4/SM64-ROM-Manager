@@ -25,6 +25,7 @@ Imports DevComponents.AdvTree
 Imports System.Timers
 Imports Newtonsoft.Json.Linq
 Imports SM64Lib.Data
+Imports System.Runtime.InteropServices
 
 Namespace LevelEditor
 
@@ -656,7 +657,7 @@ Namespace LevelEditor
         '    ogl.Invalidate()
         'End Sub
         Public Function GetCamerMode() As CameraMode
-            Return camera.CamMode
+            Return Camera.CamMode
         End Function
 
 #End Region
@@ -668,6 +669,7 @@ Namespace LevelEditor
         Friend Sub ButtonItem_Copy_Click(sender As Object, e As EventArgs) Handles ButtonX_WarpsCopy.Click, ButtonItem_ObjectsCopy.Click, ButtonItem6.Click, ButtonItem9.Click
             CopySelection()
         End Sub
+
         Friend Sub PasteObjectDefault(sender As Object, e As EventArgs) Handles ButtonItem_PasteObjDefault.Click, ButtonItem_PasteObjCombo.Click, ButtonItem_PasteObjRot.Click, ButtonItem_PasteObjPos.Click, ButtonItem_PasteObjBParams.Click, ButtonItem_PasteObjActs.Click, ButtonItem_PasteObjBehavID.Click, ButtonItem_PasteObjModelID.Click, ButtonItem37.Click
             Dim isDefault As Boolean = sender Is ButtonItem_PasteObjDefault OrElse sender Is ButtonItem37
             PasteSelection(New PasteObjectSettings With {
@@ -680,6 +682,7 @@ Namespace LevelEditor
                        .PasteRotation = isDefault OrElse sender Is ButtonItem_PasteObjRot
                        })
         End Sub
+
         Friend Sub PasteWarpDefault(sender As Object, e As EventArgs) Handles ButtonItem_PasteWarpDefault.Click, ButtonX_PasteWarpDefault.Click, ButtonItem_PasteWarpDestWarp.Click, ButtonItem_PasteWarpDestLevel.Click, ButtonItem_PasteWarpDestArea.Click, ButtonItem5.Click
             Dim isDefault As Boolean = sender Is ButtonItem_PasteWarpDefault OrElse sender Is ButtonItem5
             PasteSelection(New PasteWarpSettings With {
@@ -691,31 +694,56 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub CopySelection()
-            Dim cmds As New List(Of LevelscriptCommand)
+            Dim cmds As New List(Of IntPtr)
             Dim format As String = ""
 
+            Dim lastCmds As IntPtr() = Nothing
+
             For Each item As ListViewItem In selectedList.SelectedItems
+                Dim cmd As LevelscriptCommand = Nothing
+
                 Select Case True
                     Case EditObjects
                         Dim obj As Managed3DObject = CType(item.Tag, Managed3DObject)
                         obj.SaveProperties()
-                        cmds.Add(obj.Command)
+                        cmd = obj.Command
                         format = "sm64lvlcmdobj3d"
                     Case EditWarps
                         Dim warp As IManagedLevelscriptCommand = CType(item.Tag, IManagedLevelscriptCommand)
                         If TypeOf warp Is ManagedWarp Then
                             warp.SaveProperties()
-                            cmds.Add(warp.Command)
+                            cmd = warp.Command
                             format = "sm64lvlcmdconnectwarp"
                         End If
                 End Select
+
+                If cmd IsNot Nothing Then
+                    Dim h = GCHandle.Alloc(cmd)
+                    cmds.Add(h)
+                End If
             Next
 
+            'Get current clipboard content
+            If Clipboard.ContainsData("sm64lvlcmdobj3d") Then
+                lastCmds = Clipboard.GetData("sm64lvlcmdobj3d")
+            ElseIf Clipboard.ContainsData("sm64lvlcmdconnectwarp") Then
+                lastCmds = Clipboard.GetData("sm64lvlcmdconnectwarp")
+            End If
+
+            'Free current handles in clipboard
+            If lastCmds IsNot Nothing Then
+                For Each cmd As GCHandle In lastCmds
+                    cmd.Free()
+                Next
+            End If
+
+            'Set new handles as content to clipboard
             Clipboard.SetData(format, cmds.ToArray)
         End Sub
+
         Friend Sub PasteSelection(pasteSettings As PasteSettings)
             If Clipboard.ContainsData(pasteSettings.DataFormat) Then
-                Dim cmds() As LevelscriptCommand = Clipboard.GetData(pasteSettings.DataFormat)
+                Dim cmds() As IntPtr = Clipboard.GetData(pasteSettings.DataFormat)
 
                 Dim selItems As ListView.SelectedListViewItemCollection
                 Dim indexListToUse As ListViewEx = Nothing
@@ -733,48 +761,52 @@ Namespace LevelEditor
 
                 If selItems.Count > 0 Then
                     Dim curCmdIndex As Integer = 0
+                    Dim curCmd2Index As Integer = 0
 
-                    Do While selItems.Count > curCmdIndex
-                        Dim curCmd1 As LevelscriptCommand '= cmdListToUse(curListIndex)
-                        Dim curCmd2 As LevelscriptCommand = cmds(curCmdIndex)
+                    Do While selItems.Count > curCmd2Index
+                        Dim curCmd1 As LevelscriptCommand
+                        Dim curCmd2 As LevelscriptCommand = CType(cmds(curCmdIndex), GCHandle).Target
 
-                        Select Case pasteSettings.GetType
-                            Case GetType(PasteObjectSettings)
+                        If curCmd2 IsNot Nothing Then
+                            Select Case pasteSettings.GetType
+                                Case GetType(PasteObjectSettings)
 
-                                Dim mobj As Managed3DObject = selItems(curCmdIndex).Tag
-                                curCmd1 = mobj.Command
-                                mobj.SaveProperties()
+                                    Dim mobj As Managed3DObject = selItems(curCmd2Index).Tag
+                                    curCmd1 = mobj.Command
+                                    mobj.SaveProperties()
 
-                                With CType(pasteSettings, PasteObjectSettings)
-                                    If .PasteModelID Then clNormal3DObject.SetModelID(curCmd1, clNormal3DObject.GetModelID(curCmd2))
-                                    If .PasteBehavID Then clNormal3DObject.SetSegBehaviorAddr(curCmd1, clNormal3DObject.GetSegBehaviorAddr(curCmd2))
-                                    If .PasteBParams Then clNormal3DObject.SetParams(curCmd1, clNormal3DObject.GetParams(curCmd2))
-                                    If .PasteActs Then clNormal3DObject.SetActs(curCmd1, clNormal3DObject.GetActs(curCmd2))
-                                    If .PastePosition Then clNormal3DObject.SetPosition(curCmd1, clNormal3DObject.GetPosition(curCmd2))
-                                    If .PasteRotation Then clNormal3DObject.SetRotation(curCmd1, clNormal3DObject.GetRotation(curCmd2))
-                                End With
-
-                                mobj.LoadProperties()
-
-                            Case GetType(PasteWarpSettings)
-
-                                Dim mwarp As IManagedLevelscriptCommand = selItems(curCmdIndex).Tag
-                                curCmd1 = mwarp.Command
-                                mwarp.SaveProperties()
-
-                                If TypeOf mwarp Is ManagedWarp Then
-                                    With CType(pasteSettings, PasteWarpSettings)
-                                        If .PasteDestLevel Then clWarp.SetDestinationLevelID(curCmd1, clWarp.GetDestinationLevelID(curCmd2))
-                                        If .PasteDestArea Then clWarp.SetDestinationAreaID(curCmd1, clWarp.GetDestinationAreaID(curCmd2))
-                                        If .PasteDestWarp Then clWarp.SetDestinationWarpID(curCmd1, clWarp.GetDestinationWarpID(curCmd2))
+                                    With CType(pasteSettings, PasteObjectSettings)
+                                        If .PasteModelID Then clNormal3DObject.SetModelID(curCmd1, clNormal3DObject.GetModelID(curCmd2))
+                                        If .PasteBehavID Then clNormal3DObject.SetSegBehaviorAddr(curCmd1, clNormal3DObject.GetSegBehaviorAddr(curCmd2))
+                                        If .PasteBParams Then clNormal3DObject.SetParams(curCmd1, clNormal3DObject.GetParams(curCmd2))
+                                        If .PasteActs Then clNormal3DObject.SetActs(curCmd1, clNormal3DObject.GetActs(curCmd2))
+                                        If .PastePosition Then clNormal3DObject.SetPosition(curCmd1, clNormal3DObject.GetPosition(curCmd2))
+                                        If .PasteRotation Then clNormal3DObject.SetRotation(curCmd1, clNormal3DObject.GetRotation(curCmd2))
                                     End With
-                                End If
 
-                                mwarp.LoadProperties()
+                                    mobj.LoadProperties()
 
-                        End Select
+                                Case GetType(PasteWarpSettings)
+
+                                    Dim mwarp As IManagedLevelscriptCommand = selItems(curCmd2Index).Tag
+                                    curCmd1 = mwarp.Command
+                                    mwarp.SaveProperties()
+
+                                    If TypeOf mwarp Is ManagedWarp Then
+                                        With CType(pasteSettings, PasteWarpSettings)
+                                            If .PasteDestLevel Then clWarp.SetDestinationLevelID(curCmd1, clWarp.GetDestinationLevelID(curCmd2))
+                                            If .PasteDestArea Then clWarp.SetDestinationAreaID(curCmd1, clWarp.GetDestinationAreaID(curCmd2))
+                                            If .PasteDestWarp Then clWarp.SetDestinationWarpID(curCmd1, clWarp.GetDestinationWarpID(curCmd2))
+                                        End With
+                                    End If
+
+                                    mwarp.LoadProperties()
+
+                            End Select
+                        End If
 
                         curCmdIndex += 1
+                        curCmd2Index += 1
 
                         If curCmdIndex = cmds.Length Then
                             If curCmdIndex >= indexListToUse.SelectedIndices.Count Then
@@ -800,6 +832,7 @@ Namespace LevelEditor
         Friend Class PasteSettings
             Public Property DataFormat As String = ""
         End Class
+
         Friend Class PasteObjectSettings
             Inherits PasteSettings
 
@@ -810,6 +843,7 @@ Namespace LevelEditor
             Public Property PastePosition As Boolean = False
             Public Property PasteRotation As Boolean = False
         End Class
+
         Friend Class PasteWarpSettings
             Inherits PasteSettings
 

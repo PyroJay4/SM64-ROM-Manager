@@ -64,7 +64,7 @@ Public Class File3DLoaderModule
 
         list.Add(New File3DLoaderModule("Simple File Parser",
                                   AddressOf LoadViaSimpleFileParser,
-                                  New Dictionary(Of String, String) From {{".obj", "OBJ"}}))
+                                  New Dictionary(Of String, String) From {{"obj", "OBJ"}}))
 
         Publics.LoadAssimpLibs()
         Dim exts As New Dictionary(Of String, String)
@@ -79,22 +79,22 @@ Public Class File3DLoaderModule
         list.Add(New File3DLoaderModule("Aspose.3D",
                                    AddressOf LoadViaAspose3D,
                                    New Dictionary(Of String, String) From {
-                                   {".obj", "OBJ"},
-                                   {".dae", "DAE"},
-                                   {".fbx", "FBX"},
-                                   {".stl", "STL"},
-                                   {".3ds", "3DS"},
-                                   {".3d", "3D"},
-                                   {".gltf", "glTF"},
-                                   {".drc", "DRC"},
-                                   {".rvm", "RVM"},
-                                   {".pdf", "PDF"},
-                                   {".x", "X"},
-                                   {".jt", "JT"},
-                                   {".dfx", "DFX"},
-                                   {".ply", "PLY"},
-                                   {".3mf", "3MF"},
-                                   {".ase", "ASE"}}))
+                                   {"obj", "OBJ"},
+                                   {"dae", "DAE"},
+                                   {"fbx", "FBX"},
+                                   {"stl", "STL"},
+                                   {"3ds", "3DS"},
+                                   {"3d", "3D"},
+                                   {"gltf", "glTF"},
+                                   {"drc", "DRC"},
+                                   {"rvm", "RVM"},
+                                   {"pdf", "PDF"},
+                                   {"x", "X"},
+                                   {"jt", "JT"},
+                                   {"dfx", "DFX"},
+                                   {"ply", "PLY"},
+                                   {"3mf", "3MF"},
+                                   {"ase", "ASE"}}))
 
         Return list.ToArray
     End Function

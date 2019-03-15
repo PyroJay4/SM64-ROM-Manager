@@ -2510,7 +2510,7 @@
     <value>RibbonControl1</value>
   </data>
   <data name="&gt;&gt;RibbonPanel5.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="RibbonBar28.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
