@@ -571,7 +571,7 @@ Namespace Global.SM64Lib.Levels.Script
             End Function
             Public Shared Sub SetScrollSpeed(cmd As LevelscriptCommand, count As Int16)
                 cmd.Position = 8
-                cmd.Write(Math.Min(count, &HFFF))
+                cmd.Write(CShort(Math.Min(count, &HFFF)))
                 cmd.Position = 0
             End Sub
 
