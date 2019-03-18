@@ -106,16 +106,14 @@ Public Class MainModelConverter
         End If
 
         If vmap IsNot Nothing Then
-            If vmap.Meshes.Where(Function(n) n.Vertices.Where(Function(v) CheckIfInBounds(v)).Count > 0).Count > 0 Then
-                Dim msg As String = If(vmap Is colmap, "You model is too big or your scaling is too large.", "You visual map is too big or your scaling is too large.")
-                MessageBoxEx.Show(msg, "Out of bounds", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return
+            If vmap.Meshes.Where(Function(n) n.Vertices.Where(Function(v) CheckIfInBounds(v)).Any).Any Then
+                Dim msg As String = If(vmap Is colmap, "model", "visual map")
+                MessageBoxEx.Show(String.Format(MainModelconverter_Resources.MsgBox_ModelTooBig, msg), MainModelconverter_Resources.MsgBox_ModelTooBig_Title, MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
         End If
         If colmap IsNot Nothing AndAlso vmap IsNot colmap Then
-            If colmap.Meshes.Where(Function(n) n.Vertices.Where(Function(v) CheckIfInBounds(v)).Count > 0).Count > 0 Then
-                MessageBoxEx.Show("You collision map is too big or your scaling is too large.", "Out of bounds", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return
+            If colmap.Meshes.Where(Function(n) n.Vertices.Where(Function(v) CheckIfInBounds(v)).Any).Any Then
+                MessageBoxEx.Show(String.Format(MainModelconverter_Resources.MsgBox_ModelTooBig, "collision map"), MainModelconverter_Resources.MsgBox_ModelTooBig_Title, MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
         End If
 

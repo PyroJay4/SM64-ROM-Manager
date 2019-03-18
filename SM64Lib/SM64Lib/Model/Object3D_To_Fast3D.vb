@@ -576,9 +576,9 @@ Namespace Global.SM64Lib.SM64Convert
                 'Process Vertices
                 For Each vert In mesh.Vertices
                     Dim v As New Vertex With {
-                        .X = LongToInt16(Round((vert.X * settings.Scale) + settings.OffsetPosition.X)),
-                        .Y = LongToInt16(Round((vert.Y * settings.Scale) + settings.OffsetPosition.Y)),
-                        .Z = LongToInt16(Round((vert.Z * settings.Scale) + settings.OffsetPosition.Z))
+                        .X = KeepInInt16Range(Round((vert.X * settings.Scale) + settings.OffsetPosition.X)),
+                        .Y = KeepInInt16Range(Round((vert.Y * settings.Scale) + settings.OffsetPosition.Y)),
+                        .Z = KeepInInt16Range(Round((vert.Z * settings.Scale) + settings.OffsetPosition.Z))
                     }
                     verts.Add(v)
                 Next

@@ -1135,7 +1135,16 @@ Namespace LevelEditor
         End Sub
         Friend Sub SetObjectPropertiesToListViewItem(ByRef lvi As ListViewItem, obj As Managed3DObject, Optional objIndex As Integer = -1)
             If objIndex > -1 Then lvi.SubItems(0).Text = objIndex + 1
-            lvi.SubItems(1).Text = myObjectCombos.GetObjectComboOfObject(obj).Name
+            Dim combo = myObjectCombos.GetObjectComboOfObject(obj)
+            Dim txt As String = ""
+
+            If combo Is Nothing OrElse combo Is ObjectComboList.UnknownCombo Then
+                txt = TextFromValue(obj.BehaviorID) & " - " & TextFromValue(obj.ModelID)
+            Else
+                txt = combo.Name
+            End If
+
+            lvi.SubItems(1).Text = txt
         End Sub
         Friend Function WarpIDToString(id As Byte) As String
             Select Case id

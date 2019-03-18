@@ -154,9 +154,9 @@ Namespace Global.SM64Lib.Model.Collision
                                 v = dicVertices(curVert)
                             Else
                                 v = New Vertex
-                                v.X = LongToInt16(Round(curVert.X * ObjSettings.Scaling))
-                                v.Y = LongToInt16(Round(curVert.Y * ObjSettings.Scaling))
-                                v.Z = LongToInt16(Round(curVert.Z * ObjSettings.Scaling))
+                                v.X = KeepInInt16Range(Round(curVert.X * ObjSettings.Scaling))
+                                v.Y = KeepInInt16Range(Round(curVert.Y * ObjSettings.Scaling))
+                                v.Z = KeepInInt16Range(Round(curVert.Z * ObjSettings.Scaling))
                                 Mesh.Vertices.Add(v)
                                 dicVertices.Add(curVert, v)
                             End If
@@ -169,6 +169,7 @@ Namespace Global.SM64Lib.Model.Collision
                 Next
             Next
         End Sub
+
         Public Function FromObject3DAsync(ObjSettings As ObjInputSettings, model As Object3D, Optional colSettings As CollisionSettings = Nothing) As Task
             Dim t As New Task(Sub() FromObject3D(ObjSettings, model, colSettings))
             t.Start()

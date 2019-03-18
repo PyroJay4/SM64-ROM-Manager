@@ -101,6 +101,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Your {0} is too big or your scaling is too large. Your collision map probably will have some issues after importing. ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_ModelTooBig() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_ModelTooBig", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Out of bounds ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_ModelTooBig_Title() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_ModelTooBig_Title", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die To use different formats then Waverfront OBJ, you need &lt;b&gt;Microsoft Visual C++ Redistributable 2017&lt;/b&gt; installed on your PC.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Download links:&lt;/b&gt;&lt;br/&gt;&lt;a href=&quot;&quot;https://aka.ms/vs/15/release/vc_redist.x64.exe&quot;&quot;&gt;vc_redist.x64.exe&lt;/a&gt; (for &lt;b&gt;64-bit&lt;/b&gt; systems)&lt;br/&gt;&lt;a href=&quot;&quot;https://aka.ms/vs/15/release/vc_redist.x86.exe&quot;&quot;&gt;vc_redist.x32.exe&lt;/a&gt; (for &lt;b&gt;32-bit&lt;/b&gt; systems) ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_MVCppMissing() As String

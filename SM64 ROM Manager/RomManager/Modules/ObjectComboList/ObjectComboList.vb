@@ -8,7 +8,7 @@ Namespace LevelEditor
     Public Class ObjectComboList
         Inherits List(Of ObjectCombo)
 
-        Public ReadOnly unknownCombo As New ObjectCombo With {.Name = "Unknown Combo"}
+        Public Shared ReadOnly Property UnknownCombo As New ObjectCombo With {.Name = "Unknown Combo"}
 
         Public Sub ReadFromFile(fileName As String)
             Me.Clear()

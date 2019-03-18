@@ -22,6 +22,15 @@ Namespace Global.SM64Lib
         Public ActSelectorDefaultValues As Byte() = {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
         Public PatchClass As New SM64PatchClass
 
+        Public Function KeepInInt16Range(value As Double) As Short
+            If value > Short.MaxValue Then
+                value = Short.MaxValue
+            ElseIf value < Short.MinValue Then
+                value = Short.MinValue
+            End If
+            Return value
+        End Function
+
         Public ReadOnly Property MyDataPath As String
             Get
                 If String.IsNullOrEmpty(_MyDataPath) Then

@@ -230,7 +230,7 @@ Namespace LevelEditor
         Private Sub PictureBox_ObjRotWheel_MouseDown(sender As Object, e As MouseEventArgs)
             If Main.EditObjects AndAlso Main.SelectedObject IsNot Nothing Then
                 rotObj_Yaw_lastMouseY = e.Y
-                Main.StoreObjectHistoryPoint(Main.SelectedObjects, "Rotation")
+                Main.StoreObjectHistoryPoint(Main.SelectedObjects, NameOf(Managed3DObject.Rotation))
                 rotObj_Yaw_mouseDown = True
             End If
         End Sub
@@ -242,8 +242,10 @@ Namespace LevelEditor
                 If Main.EditObjects AndAlso Main.SelectedObject IsNot Nothing Then
 
                     For mo_s_incr As Integer = 0 To Main.SelectedObjects.Length - 1
-                        Dim obj As Managed3DObject = Main.SelectedObjects(mo_s_incr)
-                        moveObjectY(obj, e.Location, moveObj_saved(mo_s_incr), True)
+                        Dim obj As Managed3DObject = Main.SelectedObjects.ElementAtOrDefault(mo_s_incr)
+                        If obj IsNot Nothing Then
+                            moveObjectY(obj, e.Location, moveObj_saved(mo_s_incr), True)
+                        End If
                     Next
 
                     Main.ogl.Invalidate()
@@ -255,7 +257,7 @@ Namespace LevelEditor
 
         Private Sub PictureBox_ObjRotCross_MouseDown(sender As Object, e As MouseEventArgs)
             If Main.EditObjects AndAlso Main.SelectedObject IsNot Nothing Then
-                Main.StoreObjectHistoryPoint(Main.SelectedObjects, "Rotation")
+                Main.StoreObjectHistoryPoint(Main.SelectedObjects, NameOf(Managed3DObject.Rotation))
                 rotObj_mouseDown = True
                 rotObj_lastMouseX = e.X
                 rotObj_lastMouseY = e.Y
@@ -269,12 +271,14 @@ Namespace LevelEditor
             If rotObj_mouseDown Then
                 If Main.EditObjects AndAlso Main.SelectedObject IsNot Nothing Then
                     For mo_s_incr = 0 To Main.SelectedObjects.Length - 1
-                        Dim obj As Managed3DObject = Main.SelectedObjects(mo_s_incr)
-                        moveObjectXZ(obj,
-                                     CType(sender, Control).PointToClient(Cursor.Position),
-                                     moveObj_saved(mo_s_incr),
-                                     True)
-                        mo_s_incr += 1
+                        Dim obj As Managed3DObject = Main.SelectedObjects.ElementAtOrDefault(mo_s_incr)
+                        If obj IsNot Nothing Then
+                            moveObjectXZ(obj,
+                                         CType(sender, Control).PointToClient(Cursor.Position),
+                                         moveObj_saved(mo_s_incr),
+                                         True)
+                            mo_s_incr += 1
+                        End If
                     Next
 
                     Main.KeepObjectsOnGround()
