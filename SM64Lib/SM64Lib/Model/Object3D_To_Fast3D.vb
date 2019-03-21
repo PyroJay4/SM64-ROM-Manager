@@ -159,8 +159,8 @@ Namespace Global.SM64Lib.SM64Convert
             End Property
             Public ReadOnly Property EnableVertexTransparent As Boolean
                 Get
-                    Dim lod As Byte = Data.LastOrDefault()
-                    Return lod < &HFF AndAlso lod > &H0
+                    Dim db As Byte = Data.LastOrDefault()
+                    Return db < &HFF AndAlso db > 0
                 End Get
             End Property
         End Class
@@ -177,6 +177,14 @@ Namespace Global.SM64Lib.SM64Convert
                 Get
                     For Each fvd As FinalVertexData In FinalVertexData
                         If fvd.EnableVertexColor Then Return True
+                    Next
+                    Return False
+                End Get
+            End Property
+            Public ReadOnly Property EnableVertexAlpha As Boolean
+                Get
+                    For Each fvd As FinalVertexData In FinalVertexData
+                        If fvd.EnableVertexAlpha Then Return True
                     Next
                     Return False
                 End Get
@@ -711,6 +719,8 @@ Namespace Global.SM64Lib.SM64Convert
                         fa.Data(14) = vca.B
                         fa.Data(15) = vca.A
                         fa.EnableVertexColor = True
+                        mat.HasTextureAlpha = mat.HasTextureAlpha OrElse fa.EnableVertexAlpha
+                        mat.HasTransparency = mat.HasTransparency OrElse fa.EnableVertexTransparent
                     Else
                         fa.Data(12) = na.A
                         fa.Data(13) = na.B
@@ -737,6 +747,8 @@ Namespace Global.SM64Lib.SM64Convert
                         fb.Data(14) = vcb.B
                         fb.Data(15) = vcb.A
                         fb.EnableVertexColor = True
+                        mat.HasTextureAlpha = mat.HasTextureAlpha OrElse fb.EnableVertexAlpha
+                        mat.HasTransparency = mat.HasTransparency OrElse fb.EnableVertexTransparent
                     Else
                         fb.Data(12) = nb.A
                         fb.Data(13) = nb.B
@@ -763,6 +775,8 @@ Namespace Global.SM64Lib.SM64Convert
                         fc.Data(14) = vcc.B
                         fc.Data(15) = vcc.A
                         fc.EnableVertexColor = True
+                        mat.HasTextureAlpha = mat.HasTextureAlpha OrElse fc.EnableVertexAlpha
+                        mat.HasTransparency = mat.HasTransparency OrElse fc.EnableVertexTransparent
                     Else
                         fc.Data(12) = nc.A
                         fc.Data(13) = nc.B
@@ -1497,22 +1511,24 @@ Namespace Global.SM64Lib.SM64Convert
                 Next
             Next
 
-            'Check if Solid DL is requied
-            For Each m As Material In materials
-                If Not m.HasTransparency Then
-                    createSolidDL = True
-                End If
-            Next
-
             'Check which DLs should be created
             For Each mat As Material In materials
-                If mat.HasTransparency Then
-                    createTransDL = True
-                ElseIf mat.HasTextureAlpha Then
-                    createAlphaDL = True
-                Else
-                    createSolidDL = True
-                End If
+                Select Case mat.SelectDisplaylist
+                    Case TextureFormatSettings.SelectDisplaylistMode.Automatic
+                        If mat.HasTransparency Then
+                            createTransDL = True
+                        ElseIf mat.HasTextureAlpha Then
+                            createAlphaDL = True
+                        Else
+                            createSolidDL = True
+                        End If
+                    Case TextureFormatSettings.SelectDisplaylistMode.Solid
+                        createSolidDL = True
+                    Case TextureFormatSettings.SelectDisplaylistMode.Alpha
+                        createAlphaDL = True
+                    Case TextureFormatSettings.SelectDisplaylistMode.Transparent
+                        createTransDL = True
+                End Select
             Next
 
             'Check for forced DL-Type
@@ -1660,7 +1676,6 @@ Namespace Global.SM64Lib.SM64Convert
                         ImpF3D("B6 00 00 00 FF FF FF FF")
                         ImpF3D($"B7 00 00 00 {Hex((mp.Material.GeoMode >> 24) And &HFF)} {Hex((mp.Material.GeoMode >> 16) And &HFF)} {Hex((mp.Material.GeoMode >> 8) And &HFF)} {Hex(mp.Material.GeoMode And &HFF)}")
                     End If
-
 
                     If lastMaterial IsNot mp.Material Then
                         lastMaterial = mp.Material

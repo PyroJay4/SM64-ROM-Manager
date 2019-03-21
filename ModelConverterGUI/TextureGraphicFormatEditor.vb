@@ -13,6 +13,7 @@ Public Class TextureGraphicFormatEditor
     Public Property TextureFormatSettings As SM64Lib.Model.Fast3D.TextureFormatSettings = Nothing
     Private loadingtexItemSettings As Boolean = False
     Private hasInit As Boolean = False
+    Private colorImages As New List(Of Integer)
 
     Public Sub New(obj As Object3D)
         SuspendLayout()
@@ -32,6 +33,7 @@ Public Class TextureGraphicFormatEditor
 
         ResumeLayout()
     End Sub
+
     Private Sub Form_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         LoadTexturesFromModel()
     End Sub
@@ -49,14 +51,6 @@ Public Class TextureGraphicFormatEditor
             .Add(New ComboItem With {.Text = "Y", .Tag = RotateFlipType.RotateNoneFlipY})
             .Add(New ComboItem With {.Text = "X", .Tag = RotateFlipType.RotateNoneFlipX})
             .Add(New ComboItem With {.Text = "X & Y", .Tag = RotateFlipType.RotateNoneFlipXY})
-
-            '.Add(New ComboItem With {.Text = "None / None", .Tag = RotateFlipType.RotateNoneFlipNone})
-            '.Add(New ComboItem With {.Text = "Y / None", .Tag = RotateFlipType.RotateNoneFlipY})
-            '.Add(New ComboItem With {.Text = "X / None", .Tag = RotateFlipType.RotateNoneFlipX})
-            '.Add(New ComboItem With {.Text = "X & Y / None", .Tag = RotateFlipType.RotateNoneFlipXY})
-            '.Add(New ComboItem With {.Text = "Y / 180°", .Tag = RotateFlipType.Rotate180FlipY})
-            '.Add(New ComboItem With {.Text = "X / 180°", .Tag = RotateFlipType.Rotate180FlipX})
-            '.Add(New ComboItem With {.Text = "X & Y / 180°", .Tag = RotateFlipType.Rotate180FlipXY})
         End With
         ComboBoxEx_RotateFlip.SelectedIndex = 0
     End Sub
@@ -67,21 +61,26 @@ Public Class TextureGraphicFormatEditor
 
         'Clear Items
         ListViewEx1.Items.Clear()
+        colorImages.Clear()
 
         'Setup Imagelist
         imgList.ImageSize = New Size(64, 64)
         ListViewEx1.LargeImageList = imgList
 
         For Each mat As KeyValuePair(Of String, Material) In obj3d.Materials
+            Dim item As New ListViewItem
+            item.Text = mat.Key
+            item.ImageIndex = imgList.Images.Count
+            item.Tag = mat
             If mat.Value.Image IsNot Nothing Then
-                Dim item As New ListViewItem
-                item.Text = mat.Key
-                item.ImageIndex = imgList.Images.Count
-                item.Tag = mat
                 imgList.Images.Add(mat.Value.Image)
-                If firstItem Is Nothing Then firstItem = item
-                ListViewEx1.Items.Add(item)
+            Else
+                Dim img As Image = GetImageFromColor(mat.Value.Color, New Size(32, 32))
+                colorImages.Add(item.ImageIndex)
+                imgList.Images.Add(img)
             End If
+            If firstItem Is Nothing Then firstItem = item
+            ListViewEx1.Items.Add(item)
         Next
 
         'Select First Item
@@ -91,6 +90,13 @@ Public Class TextureGraphicFormatEditor
 
         ListViewEx1.Refresh()
     End Sub
+
+    Private Function GetImageFromColor(color As Color, size As Size) As Bitmap
+        Dim bmp As New Bitmap(size.Width, size.Height)
+        Dim g As Graphics = Graphics.FromImage(bmp)
+        g.Clear(color)
+        Return bmp
+    End Function
 
     Private Sub LoadN64TextureFormatTypes()
         ComboBox_ColType.SuspendLayout()
@@ -129,7 +135,6 @@ Public Class TextureGraphicFormatEditor
 
             If curItem.ImageIndex > -1 Then
                 PictureBox1.Image = ListViewEx1.LargeImageList.Images(curItem.ImageIndex)
-                'LabelX1.Text = $"Height: {PictureBox1.Image.Size.Height} Width: {PictureBox1.Image.Size.Width} ({PictureBox1.Image.Size.Width * PictureBox1.Image.Size.Height} Pixels)"
             Else
                 PictureBox1.Image = Nothing
                 LabelX1.Text = ""
@@ -141,6 +146,13 @@ Public Class TextureGraphicFormatEditor
             CheckBoxX_EnableClamp.Checked = curEntry.EnableClamp
             CheckBoxX_EnableCrystalEffect.Checked = curEntry.EnableCrystalEffect
             ComboBoxEx_RotateFlip.SelectedItem = GetRotateFlipComboItem(curEntry.RotateFlip)
+
+            Dim enTexTools As Boolean = Not colorImages.Contains(curItem.ImageIndex)
+            CheckBoxX_EnableTextureAnimation.Enabled = enTexTools
+            CheckBoxX_EnableMirror.Enabled = enTexTools
+            CheckBoxX_EnableClamp.Enabled = enTexTools
+            CheckBoxX_EnableCrystalEffect.Enabled = enTexTools
+            ComboBoxEx_RotateFlip.Enabled = enTexTools
 
             loadingtexItemSettings = False
 
