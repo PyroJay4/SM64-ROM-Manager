@@ -11,6 +11,7 @@ Imports OfficeOpenXml
 Public Class CollisionEditor
 
     Private Shared terrainTypesComboItems As New List(Of ComboItem)
+    Private Shared loadingTerrainTypesComboItems As Boolean = False
     Private LoadingColItemSettings As Boolean = False
     Private LoadingTextures As Boolean = False
     Private obj3d As Object3D = Nothing
@@ -85,7 +86,7 @@ Public Class CollisionEditor
     Private Async Function LoadFloorTypes() As Task
         If Not terrainTypesComboItems.Any Then
             CircularProgress1.Start
-            Await Task.Run(AddressOf LoadFloorTypesFromDatabase)
+            Await Task.Run(AddressOf WaitForFloorTypes)
             CircularProgress1.Stop
         End If
 
@@ -95,8 +96,29 @@ Public Class CollisionEditor
         ComboBox_ColType.ResumeLayout()
     End Function
 
-    Private Sub LoadFloorTypesFromDatabase()
-        Dim ws As ExcelWorksheet = SurfaceData.Worksheets("Terrain Hexes")
+    Private Sub WaitForFloorTypes()
+        If Not terrainTypesComboItems.Any AndAlso Not loadingTerrainTypesComboItems Then
+            LoadFloorTypesFromDatabase()
+        ElseIf loadingTerrainTypesComboItems Then
+            Do While loadingTerrainTypesComboItems
+            Loop
+        End If
+
+        If Not terrainTypesComboItems.Any Then
+            MessageBox.Show("The collision types table is empty.", "Load Collision Types", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Close()
+        End If
+    End Sub
+
+    Public Shared Sub LoadFloorTypesFromDatabaseAsync()
+        Task.Run(AddressOf LoadFloorTypesFromDatabase)
+    End Sub
+
+    Public Shared Sub LoadFloorTypesFromDatabase()
+        Dim ws As ExcelWorksheet
+
+        loadingTerrainTypesComboItems = True
+        ws = SurfaceData.Worksheets("Terrain Hexes")
 
         If ws.Cells.Rows > 0 Then
             For i As Integer = 2 To ws.Cells.Rows
@@ -126,11 +148,7 @@ Public Class CollisionEditor
             Next
         End If
 
-        If ws.Cells.Rows = 0 OrElse terrainTypesComboItems.Count = 0 Then
-            MessageBox.Show("The collision types table is empty.", "Load Collision Types", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Close()
-            Return
-        End If
+        loadingTerrainTypesComboItems = False
     End Sub
 
     Private Sub ListBoxAdv_CI_Textures_ItemClick(sender As Object, e As EventArgs) Handles ListViewEx1.SelectedIndexChanged

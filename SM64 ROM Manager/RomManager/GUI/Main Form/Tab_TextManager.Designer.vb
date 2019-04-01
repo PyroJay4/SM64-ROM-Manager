@@ -97,29 +97,29 @@ Partial Class Tab_TextManager
         '
         'LabelX22
         '
-        resources.ApplyResources(Me.LabelX22, "LabelX22")
         '
         '
         '
         Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX22, "LabelX22")
         Me.LabelX22.Name = "LabelX22"
         '
         'LabelX21
         '
-        resources.ApplyResources(Me.LabelX21, "LabelX21")
         '
         '
         '
         Me.LabelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX21, "LabelX21")
         Me.LabelX21.Name = "LabelX21"
         '
         'ComboBoxEx_TM_DialogPosY
         '
-        resources.ApplyResources(Me.ComboBoxEx_TM_DialogPosY, "ComboBoxEx_TM_DialogPosY")
         Me.ComboBoxEx_TM_DialogPosY.DisplayMember = "Text"
         Me.ComboBoxEx_TM_DialogPosY.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_TM_DialogPosY.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx_TM_DialogPosY.FormattingEnabled = True
+        resources.ApplyResources(Me.ComboBoxEx_TM_DialogPosY, "ComboBoxEx_TM_DialogPosY")
         Me.ComboBoxEx_TM_DialogPosY.Items.AddRange(New Object() {Me.ComboItem10, Me.ComboItem8})
         Me.ComboBoxEx_TM_DialogPosY.Name = "ComboBoxEx_TM_DialogPosY"
         Me.ComboBoxEx_TM_DialogPosY.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -134,37 +134,13 @@ Partial Class Tab_TextManager
         '
         'IntegerInput_TM_DialogSize
         '
-        resources.ApplyResources(Me.IntegerInput_TM_DialogSize, "IntegerInput_TM_DialogSize")
         '
         '
         '
         Me.IntegerInput_TM_DialogSize.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput_TM_DialogSize.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.IntegerInput_TM_DialogSize.ButtonCalculator.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCalculator.DisplayPosition"), Integer)
-        Me.IntegerInput_TM_DialogSize.ButtonCalculator.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCalculator.Image"), System.Drawing.Image)
-        Me.IntegerInput_TM_DialogSize.ButtonCalculator.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonCalculator.Text")
-        Me.IntegerInput_TM_DialogSize.ButtonCalculator.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonCalculator.Tooltip")
-        Me.IntegerInput_TM_DialogSize.ButtonClear.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonClear.DisplayPosition"), Integer)
-        Me.IntegerInput_TM_DialogSize.ButtonClear.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonClear.Image"), System.Drawing.Image)
-        Me.IntegerInput_TM_DialogSize.ButtonClear.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonClear.Text")
-        Me.IntegerInput_TM_DialogSize.ButtonClear.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonClear.Tooltip")
-        Me.IntegerInput_TM_DialogSize.ButtonCustom.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCustom.DisplayPosition"), Integer)
-        Me.IntegerInput_TM_DialogSize.ButtonCustom.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCustom.Image"), System.Drawing.Image)
-        Me.IntegerInput_TM_DialogSize.ButtonCustom.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonCustom.Text")
-        Me.IntegerInput_TM_DialogSize.ButtonCustom.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonCustom.Tooltip")
-        Me.IntegerInput_TM_DialogSize.ButtonCustom2.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCustom2.DisplayPosition"), Integer)
-        Me.IntegerInput_TM_DialogSize.ButtonCustom2.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.IntegerInput_TM_DialogSize.ButtonCustom2.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonCustom2.Text")
-        Me.IntegerInput_TM_DialogSize.ButtonCustom2.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonCustom2.Tooltip")
-        Me.IntegerInput_TM_DialogSize.ButtonDropDown.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonDropDown.DisplayPosition"), Integer)
-        Me.IntegerInput_TM_DialogSize.ButtonDropDown.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonDropDown.Image"), System.Drawing.Image)
-        Me.IntegerInput_TM_DialogSize.ButtonDropDown.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonDropDown.Text")
-        Me.IntegerInput_TM_DialogSize.ButtonDropDown.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonDropDown.Tooltip")
-        Me.IntegerInput_TM_DialogSize.ButtonFreeText.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonFreeText.DisplayPosition"), Integer)
-        Me.IntegerInput_TM_DialogSize.ButtonFreeText.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonFreeText.Image"), System.Drawing.Image)
         Me.IntegerInput_TM_DialogSize.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput_TM_DialogSize.ButtonFreeText.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonFreeText.Text")
-        Me.IntegerInput_TM_DialogSize.ButtonFreeText.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonFreeText.Tooltip")
+        resources.ApplyResources(Me.IntegerInput_TM_DialogSize, "IntegerInput_TM_DialogSize")
         Me.IntegerInput_TM_DialogSize.MaxValue = 255
         Me.IntegerInput_TM_DialogSize.MinValue = 1
         Me.IntegerInput_TM_DialogSize.Name = "IntegerInput_TM_DialogSize"
@@ -173,11 +149,11 @@ Partial Class Tab_TextManager
         '
         'ComboBoxEx_TM_DialogPosX
         '
-        resources.ApplyResources(Me.ComboBoxEx_TM_DialogPosX, "ComboBoxEx_TM_DialogPosX")
         Me.ComboBoxEx_TM_DialogPosX.DisplayMember = "Text"
         Me.ComboBoxEx_TM_DialogPosX.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_TM_DialogPosX.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx_TM_DialogPosX.FormattingEnabled = True
+        resources.ApplyResources(Me.ComboBoxEx_TM_DialogPosX, "ComboBoxEx_TM_DialogPosX")
         Me.ComboBoxEx_TM_DialogPosX.Items.AddRange(New Object() {Me.ComboItem5, Me.ComboItem6, Me.ComboItem7})
         Me.ComboBoxEx_TM_DialogPosX.Name = "ComboBoxEx_TM_DialogPosX"
         Me.ComboBoxEx_TM_DialogPosX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -196,11 +172,11 @@ Partial Class Tab_TextManager
         '
         'LabelX18
         '
-        resources.ApplyResources(Me.LabelX18, "LabelX18")
         '
         '
         '
         Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX18, "LabelX18")
         Me.LabelX18.Name = "LabelX18"
         '
         'TabStrip_TM_TableSelection
@@ -318,14 +294,6 @@ Partial Class Tab_TextManager
         '
         Me.TextBoxX_TM_TextEditor.Border.Class = "TextBoxBorder"
         Me.TextBoxX_TM_TextEditor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX_TM_TextEditor.ButtonCustom.DisplayPosition = CType(resources.GetObject("TextBoxX_TM_TextEditor.ButtonCustom.DisplayPosition"), Integer)
-        Me.TextBoxX_TM_TextEditor.ButtonCustom.Image = CType(resources.GetObject("TextBoxX_TM_TextEditor.ButtonCustom.Image"), System.Drawing.Image)
-        Me.TextBoxX_TM_TextEditor.ButtonCustom.Text = resources.GetString("TextBoxX_TM_TextEditor.ButtonCustom.Text")
-        Me.TextBoxX_TM_TextEditor.ButtonCustom.Tooltip = resources.GetString("TextBoxX_TM_TextEditor.ButtonCustom.Tooltip")
-        Me.TextBoxX_TM_TextEditor.ButtonCustom2.DisplayPosition = CType(resources.GetObject("TextBoxX_TM_TextEditor.ButtonCustom2.DisplayPosition"), Integer)
-        Me.TextBoxX_TM_TextEditor.ButtonCustom2.Image = CType(resources.GetObject("TextBoxX_TM_TextEditor.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.TextBoxX_TM_TextEditor.ButtonCustom2.Text = resources.GetString("TextBoxX_TM_TextEditor.ButtonCustom2.Text")
-        Me.TextBoxX_TM_TextEditor.ButtonCustom2.Tooltip = resources.GetString("TextBoxX_TM_TextEditor.ButtonCustom2.Tooltip")
         Me.TextBoxX_TM_TextEditor.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_TM_TextEditor.ForeColor = System.Drawing.Color.Black
         Me.TextBoxX_TM_TextEditor.Name = "TextBoxX_TM_TextEditor"

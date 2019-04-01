@@ -282,7 +282,7 @@ Namespace Global.SM64Lib.SM64Convert
 
         Private curSeg As Byte = 0
         Private startSegOffset As UInteger = 0
-        Private defaultColor() As Byte = {&HFF, &HFF, &HFF, &HFF, &HFF, &HFF, &HFF, &HFF, &H7F, &H7F, &H7F, &HFF, &H7F, &H7F, &H7F, &HFF}
+        Private defaultColor() As Byte = New Byte(8 + 16 - 1) {}
         Private settings As ConvertSettings = Nothing
         Private impdata As BinaryData = Nothing
         Private conRes As New ConvertResult
@@ -308,24 +308,48 @@ Namespace Global.SM64Lib.SM64Convert
         End Function
 
         Private Sub SetLightAndDarkValues(s As S3DFileParser.Shading)
-            defaultColor(0) = s.Light.R
-            defaultColor(1) = s.Light.G
-            defaultColor(2) = s.Light.B
-            defaultColor(3) = s.Light.A
-            defaultColor(4) = s.Light.R
-            defaultColor(5) = s.Light.G
-            defaultColor(6) = s.Light.B
-            defaultColor(7) = s.Light.A
-            defaultColor(8) = s.Dark.R
-            defaultColor(9) = s.Dark.G
-            defaultColor(10) = s.Dark.B
-            defaultColor(11) = s.Dark.A
-            defaultColor(12) = s.Dark.R
-            defaultColor(13) = s.Dark.G
-            defaultColor(14) = s.Dark.B
-            defaultColor(15) = s.Dark.A
+            'Ambient light color
+            defaultColor(0) = s.AmbientColor.R
+            defaultColor(1) = s.AmbientColor.G
+            defaultColor(2) = s.AmbientColor.B
+            defaultColor(3) = 0
+            defaultColor(4) = s.AmbientColor.R
+            defaultColor(5) = s.AmbientColor.G
+            defaultColor(6) = s.AmbientColor.B
+            defaultColor(7) = 0
+
+            'Diffuse light color
+            defaultColor(8) = s.DiffuseColor.R
+            defaultColor(9) = s.DiffuseColor.G
+            defaultColor(10) = s.DiffuseColor.B
+            defaultColor(11) = 0
+            defaultColor(12) = s.DiffuseColor.R
+            defaultColor(13) = s.DiffuseColor.G
+            defaultColor(14) = s.DiffuseColor.B
+            defaultColor(15) = 0
+
+            'Diffuse light direction
+            If s.DiffusePosition IsNot Nothing Then
+                Dim d As Single = 127 / Math.Sqrt(s.DiffusePosition.X * s.DiffusePosition.X _
+                                                  + s.DiffusePosition.Y * s.DiffusePosition.Y _
+                                                  + s.DiffusePosition.Z * s.DiffusePosition.Z)
+                If Single.IsInfinity(d) Then d = 0
+                defaultColor(16) = Math.Round(s.DiffusePosition.X * d)
+                defaultColor(17) = Math.Round(s.DiffusePosition.Y * d)
+                defaultColor(18) = Math.Round(s.DiffusePosition.Z * d)
+            Else
+                defaultColor(16) = 28
+                defaultColor(17) = 28
+                defaultColor(18) = 28
+            End If
+            defaultColor(19) = 0
+            defaultColor(20) = 0
+            defaultColor(21) = 0
+            defaultColor(22) = 0
+            defaultColor(23) = 0
         End Sub
-        Private Sub resetVariables()
+
+        Private Sub ResetVariables()
             vertexGroups.Clear()
             verts.Clear()
             norms.Clear()

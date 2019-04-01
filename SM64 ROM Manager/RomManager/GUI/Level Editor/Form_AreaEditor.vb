@@ -879,7 +879,7 @@ Namespace LevelEditor
         End Function
         Friend Function StoreHistoryPoint(ParamArray actions As ObjectAction()) As HistoryPoint
             Dim hp As New HistoryPoint
-            hp.Actions.AddRange(actions)
+            hp.Entries.AddRange(actions)
             history.Store(hp)
             Return hp
         End Function
@@ -899,7 +899,7 @@ Namespace LevelEditor
 
             If objs.Count > 0 Then
                 Dim hp As HistoryPoint = HistoryPoint.Concat(hps.ToArray)
-                If hp.States.Count > 0 Then
+                If hp.Entries.Any Then
                     history.Store(hp)
                 End If
             End If
@@ -1524,7 +1524,6 @@ Namespace LevelEditor
 #End Region
 
 #Region "Objects"
-        'End Sub
 
         Friend Sub SetObjectsToPropertyGrid(objs As Object())
             AdvPropertyGrid1.SuspendLayout()
@@ -1604,6 +1603,7 @@ Namespace LevelEditor
                 obj.SaveProperties()
             Next
         End Sub
+
         Friend Sub SaveSelectedObjectProperties()
             For Each obj As Managed3DObject In SelectedObjects
                 obj.SaveProperties()

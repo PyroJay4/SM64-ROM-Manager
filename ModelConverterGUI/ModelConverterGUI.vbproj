@@ -83,6 +83,12 @@
     <Compile Include="CollisionEditor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DialogSetUpPoint.Designer.vb">
+      <DependentUpon>DialogSetUpPoint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogSetUpPoint.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Language Resources\MainModelconverter_Resources.de.Designer.vb">
       <DependentUpon>MainModelconverter_Resources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CollisionEditor.resx">
       <DependentUpon>CollisionEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogSetUpPoint.resx">
+      <DependentUpon>DialogSetUpPoint.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Language Resources\MainModelconverter_Resources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>

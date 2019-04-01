@@ -32,7 +32,7 @@ Public Class ModelImporter
     End Property
 
     Public Sub New()
-        SetDPIAware
+        'SetDPIAware
 
         InitializeComponent()
 

@@ -263,13 +263,12 @@ Namespace LevelEditor
             frm.CheckBoxX_ConvertCollision.Checked = convertCollision
 
             With Main.cArea
-
                 If frm.ShowDialog() <> DialogResult.OK Then
-                    ogl.MakeCurrent()
+                    Ogl.MakeCurrent()
                     Return
                 End If
 
-                ogl.MakeCurrent()
+                Ogl.MakeCurrent()
                 Main.SuspendLayout()
 
                 Dim hp As HistoryPoint = Nothing
@@ -284,7 +283,7 @@ Namespace LevelEditor
                     os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
                     os.MemberType = ObjectValueType.Property
                     os.MemberName = "AreaModel"
-                    hp.States.Add(os)
+                    hp.Entries.Add(os)
 
                     .AreaModel = frm.ResModel
                     .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
@@ -300,7 +299,7 @@ Namespace LevelEditor
                     os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
                     os.MemberType = ObjectValueType.Property
                     os.MemberName = "Collision"
-                    hp.States.Add(os)
+                    hp.Entries.Add(os)
 
                     .AreaModel.Collision = frm.ResModel.Collision
                     .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
@@ -315,7 +314,7 @@ Namespace LevelEditor
                     os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
                     os.MemberType = ObjectValueType.Property
                     os.MemberName = "Fast3DBuffer"
-                    hp.States.Add(os)
+                    hp.Entries.Add(os)
 
                     .AreaModel = frm.ResModel
                     .AreaModel.Collision = OldAreaModel.Collision
@@ -328,10 +327,9 @@ Namespace LevelEditor
                     .ScrollingTextures.AddRange(.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
                 End If
 
-                If hp IsNot Nothing AndAlso (hp.States.Count > 0 OrElse hp.Actions.Count > 0) Then
+                If hp IsNot Nothing AndAlso hp.Entries.Any Then
                     Main.history.Store(hp)
                 End If
-
             End With
 
             Main.cArea.SetSegmentedBanks(Main.rommgr)

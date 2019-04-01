@@ -1,4 +1,5 @@
 ﻿Public Class Shading
-    Public Property Light As Color = Color.FromArgb(&HFFFFFFFF)
-    Public Property Dark As Color = Color.FromArgb(&HFF7F7F7F)
+    Public Property AmbientColor As Color = Color.FromArgb(&HFFFFFFFF)
+    Public Property DiffuseColor As Color = Color.FromArgb(&HFF7F7F7F)
+    Public Property DiffusePosition As Vertex = Nothing
 End Class

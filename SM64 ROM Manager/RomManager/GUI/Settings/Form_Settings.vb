@@ -4,33 +4,40 @@ Imports TextValueConverter
 Imports Publics
 Imports DevComponents.Editors
 Imports S3DFileParser
+Imports System.Globalization
+Imports System.IO
 
 Public Class Form_Settings
 
-    Public Sub New()
+    Private finishedLoading As Boolean = False
 
-        ' Dieser Aufruf ist für den Designer erforderlich.
+    Public Sub New()
         InitializeComponent()
         UpdateAmbientColors
 
-        ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
-        'StyleManager.UpdateAmbientColors(Me)
+        SuperTooltip1.SetSuperTooltip(SymbolBox1, New SuperTooltipInfo("Warning", "", "Some changes will completly affect only after a restart of the programm.", Nothing, Nothing, eTooltipColor.System, True, False, Nothing))
 
-        'ComboBoxEx_LoaderModule.Items.AddRange([Enum].GetNames(GetType(S3DFileParser.LoaderModule)))
-        For Each lm In GetAllLoaderModules
+        For Each lm In GetAllLoaderModules()
             Dim item As New ComboItem With {
                 .Text = lm.Name,
                 .Tag = lm}
             ComboBoxEx_LoaderModule.Items.Add(item)
         Next
 
-        For Each lm In GetAllExporterModules
+        For Each lm In GetAllExporterModules()
             Dim item As New ComboItem With {
                 .Text = lm.Name,
                 .Tag = lm}
             ComboBoxEx_ExporterModule.Items.Add(item)
         Next
 
+        For Each f As String In Directory.GetDirectories(MyDataPath & "\Lang")
+            Dim name As String = Path.GetFileName(f)
+            Dim cult As New CultureInfo(Name)
+            If cult IsNot Nothing Then
+                ComboBoxEx_Language.Items.Add(New ComboItem With {.Text = cult.NativeName, .Tag = cult})
+            End If
+        Next
     End Sub
 
     Private Sub Form_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -71,6 +78,16 @@ Public Class Form_Settings
                 ComboBoxEx_HexEditorMode.SelectedIndex = 1
         End Select
 
+        For Each item As ComboItem In ComboBoxEx_Language.Items
+            If item.Tag Is Nothing Then
+                If String.IsNullOrEmpty(Settings.General.Language) Then
+                    ComboBoxEx_Language.SelectedIndex = 0
+                End If
+            ElseIf CType(item.Tag, CultureInfo).Name = Settings.General.Language Then
+                ComboBoxEx_Language.SelectedItem = item
+            End If
+        Next
+
         Select Case Settings.General.AutoScaleMode
             Case AutoScaleMode.None
                 ComboBoxEx_AutoScaleMode.SelectedIndex = 0
@@ -79,6 +96,8 @@ Public Class Form_Settings
             Case AutoScaleMode.Font
                 ComboBoxEx_AutoScaleMode.SelectedIndex = 2
         End Select
+
+        finishedLoading = True
     End Sub
 
     Private Sub Form_Settings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -87,7 +106,6 @@ Public Class Form_Settings
         Settings.General.AutoUpdates = SwitchButton_SearchUpdates.Value
         Settings.AreaEditor.DefaultCameraMode = ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex
         Settings.AreaEditor.DefaultWindowMode = If(ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = 1, FormWindowState.Maximized, FormWindowState.Normal)
-
         Settings.FileParser.FileLoaderModule = GetLoaderIDFromModule(CType(ComboBoxEx_LoaderModule.SelectedItem, ComboItem).Tag)
         Settings.FileParser.FileExporterModule = GetExporterIDFromModule(CType(ComboBoxEx_ExporterModule.SelectedItem, ComboItem).Tag)
 
@@ -117,6 +135,16 @@ Public Class Form_Settings
             Case 2
                 Settings.General.AutoScaleMode = AutoScaleMode.Font
         End Select
+
+        Dim selLangItem As ComboItem = ComboBoxEx_Language.SelectedItem
+        If selLangItem.Tag Is Nothing Then
+            Settings.General.Language = String.Empty
+        Else
+            Dim cult As CultureInfo = selLangItem.Tag
+            Settings.General.Language = cult.Name
+        End If
+        SetCurrentLanguageCulture(Settings.General.Language)
+
         For Each from As Form In Application.OpenForms
             from.SetValue("AutoScaleMode", Settings.General.AutoScaleMode)
         Next
@@ -157,4 +185,13 @@ Public Class Form_Settings
             dest.Text = ofd.FileName
         End If
     End Sub
+
+    Private Sub ComboBoxEx_Language_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_Language.SelectedIndexChanged
+        EanbleRestartWarning()
+    End Sub
+
+    Private Sub EanbleRestartWarning()
+        If finishedLoading Then SymbolBox1.Visible = True
+    End Sub
+
 End Class

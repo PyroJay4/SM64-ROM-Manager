@@ -52,9 +52,9 @@
     <Reference Include="Aspose.3D, Version=18.4.0.0, Culture=neutral, PublicKeyToken=f071c641d0b4582b, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.3D.18.4.0\lib\net40\Aspose.3D.dll</HintPath>
     </Reference>
-    <Reference Include="AssimpNet, Version=3.3.2.0, Culture=neutral, PublicKeyToken=3edc10cb77b1bca2, processorArchitecture=MSIL">
+    <Reference Include="AssimpNet, Version=3.3.2.0, Culture=neutral, PublicKeyToken=0d51b391f59f42a6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\Starnick-assimpnet-10a0c77b76a9\AssimpNet\bin\Net45-Release\AssimpNet.dll</HintPath>
+      <HintPath>..\Shared Libs\AssimpNet.dll</HintPath>
     </Reference>
     <Reference Include="ColladaSchema">
       <HintPath>..\..\..\DLL's\ColladaSchema.dll</HintPath>

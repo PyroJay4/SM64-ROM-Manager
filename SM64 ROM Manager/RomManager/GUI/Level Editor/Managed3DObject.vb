@@ -49,6 +49,9 @@ Public Class Managed3DObject
             Dim oc As ObjectCombo = myObjectCombos.FirstOrDefault(Function(n) n.Name = Value)
             ModelID = oc.ModelID
             BehaviorID = oc.BehaviorAddress
+
+            'Enable this object if it isn't enabled
+            If Not AnyActs Then AllActs = True
         End Set
     End Property
 
@@ -97,6 +100,13 @@ Public Class Managed3DObject
             Act5 = value
             Act6 = False
         End Set
+    End Property
+
+    <Browsable(False)>
+    Public ReadOnly Property AnyActs As Boolean
+        Get
+            Return Act1 OrElse Act2 OrElse Act3 OrElse Act4 OrElse Act5 OrElse Act6
+        End Get
     End Property
 
     <DisplayName("Model ID")>

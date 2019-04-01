@@ -135,7 +135,7 @@
     <value>LabelX56</value>
   </data>
   <data name="&gt;&gt;LabelX56.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX56.Parent" xml:space="preserve">
     <value>GroupPanel12</value>
@@ -162,7 +162,7 @@
     <value>SwitchButton_MS_OverwriteSizeRestrictions</value>
   </data>
   <data name="&gt;&gt;SwitchButton_MS_OverwriteSizeRestrictions.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;SwitchButton_MS_OverwriteSizeRestrictions.Parent" xml:space="preserve">
     <value>GroupPanel12</value>
@@ -186,7 +186,7 @@
     <value>GroupPanel12</value>
   </data>
   <data name="&gt;&gt;GroupPanel12.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;GroupPanel12.Parent" xml:space="preserve">
     <value>$this</value>
@@ -207,7 +207,7 @@
     <value>LabelX_MS_SeqSize</value>
   </data>
   <data name="&gt;&gt;LabelX_MS_SeqSize.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX_MS_SeqSize.Parent" xml:space="preserve">
     <value>GroupBox_MS_SeqProperties</value>
@@ -231,7 +231,7 @@
     <value>LabelX33</value>
   </data>
   <data name="&gt;&gt;LabelX33.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX33.Parent" xml:space="preserve">
     <value>GroupBox_MS_SeqProperties</value>
@@ -255,7 +255,7 @@
     <value>LabelX28</value>
   </data>
   <data name="&gt;&gt;LabelX28.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX28.Parent" xml:space="preserve">
     <value>GroupBox_MS_SeqProperties</value>
@@ -276,7 +276,7 @@
     <value>LabelX_MS_SequenceID</value>
   </data>
   <data name="&gt;&gt;LabelX_MS_SequenceID.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX_MS_SequenceID.Parent" xml:space="preserve">
     <value>GroupBox_MS_SeqProperties</value>
@@ -300,7 +300,7 @@
     <value>GroupBox_MS_SeqProperties</value>
   </data>
   <data name="&gt;&gt;GroupBox_MS_SeqProperties.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;GroupBox_MS_SeqProperties.Parent" xml:space="preserve">
     <value>$this</value>
@@ -324,7 +324,7 @@
     <value>ButtonX1</value>
   </data>
   <data name="&gt;&gt;ButtonX1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonX1.Parent" xml:space="preserve">
     <value>GroupBox_MS_SelectedSequence</value>
@@ -465,7 +465,7 @@
     <value>ComboBox_MS_NInst</value>
   </data>
   <data name="&gt;&gt;ComboBox_MS_NInst.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboBox_MS_NInst.Parent" xml:space="preserve">
     <value>GroupBox_MS_SelectedSequence</value>
@@ -489,7 +489,7 @@
     <value>LabelX32</value>
   </data>
   <data name="&gt;&gt;LabelX32.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX32.Parent" xml:space="preserve">
     <value>GroupBox_MS_SelectedSequence</value>
@@ -513,7 +513,7 @@
     <value>LabelX5</value>
   </data>
   <data name="&gt;&gt;LabelX5.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;LabelX5.Parent" xml:space="preserve">
     <value>GroupBox_MS_SelectedSequence</value>
@@ -534,7 +534,7 @@
     <value>TextBoxX_MS_Sequencename</value>
   </data>
   <data name="&gt;&gt;TextBoxX_MS_Sequencename.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;TextBoxX_MS_Sequencename.Parent" xml:space="preserve">
     <value>GroupBox_MS_SelectedSequence</value>
@@ -558,7 +558,7 @@
     <value>Button_MS_ExtractSequence</value>
   </data>
   <data name="&gt;&gt;Button_MS_ExtractSequence.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;Button_MS_ExtractSequence.Parent" xml:space="preserve">
     <value>GroupBox_MS_SelectedSequence</value>
@@ -582,7 +582,7 @@
     <value>Button_MS_ReplaceSequence</value>
   </data>
   <data name="&gt;&gt;Button_MS_ReplaceSequence.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;Button_MS_ReplaceSequence.Parent" xml:space="preserve">
     <value>GroupBox_MS_SelectedSequence</value>
@@ -607,7 +607,7 @@
     <value>Line6</value>
   </data>
   <data name="&gt;&gt;Line6.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;Line6.Parent" xml:space="preserve">
     <value>GroupBox_MS_SelectedSequence</value>
@@ -631,13 +631,16 @@
     <value>GroupBox_MS_SelectedSequence</value>
   </data>
   <data name="&gt;&gt;GroupBox_MS_SelectedSequence.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;GroupBox_MS_SelectedSequence.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;GroupBox_MS_SelectedSequence.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="GroupPanel9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
   </data>
   <data name="ButtonX_MS_RemoveSequence.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -646,7 +649,7 @@
     <value>111, 3</value>
   </data>
   <data name="ButtonX_MS_RemoveSequence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 23</value>
+    <value>132, 23</value>
   </data>
   <data name="ButtonX_MS_RemoveSequence.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
@@ -658,7 +661,7 @@
     <value>ButtonX_MS_RemoveSequence</value>
   </data>
   <data name="&gt;&gt;ButtonX_MS_RemoveSequence.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonX_MS_RemoveSequence.Parent" xml:space="preserve">
     <value>GroupPanel9</value>
@@ -682,13 +685,16 @@
     <value>ButtonX_MS_AddSequence</value>
   </data>
   <data name="&gt;&gt;ButtonX_MS_AddSequence.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ButtonX_MS_AddSequence.Parent" xml:space="preserve">
     <value>GroupPanel9</value>
   </data>
   <data name="&gt;&gt;ButtonX_MS_AddSequence.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="ListBoxAdv_MS_MusicSequences.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="ListBoxAdv_MS_MusicSequences.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -697,7 +703,7 @@
     <value>3, 32</value>
   </data>
   <data name="ListBoxAdv_MS_MusicSequences.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 488</value>
+    <value>240, 503</value>
   </data>
   <data name="ListBoxAdv_MS_MusicSequences.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -730,7 +736,7 @@
     <value>GroupPanel9</value>
   </data>
   <data name="&gt;&gt;GroupPanel9.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;GroupPanel9.Parent" xml:space="preserve">
     <value>$this</value>

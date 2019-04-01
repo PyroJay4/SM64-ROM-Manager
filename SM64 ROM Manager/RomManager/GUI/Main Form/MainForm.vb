@@ -45,10 +45,16 @@ Public Class MainForm
     Public Sub New()
         'CheckForIllegalCrossThreadCalls = False
 
-        SetDPIAware
+        'Set language
+        SetCurrentLanguageCulture(Settings.General.Language)
 
+        'Set DPI Aware
+        'SetDPIAware
+
+        'Stop drawing
         SuspendLayout()
 
+        'Init Components
         InitializeComponent()
 
         'TEMPORARY: Set the new client size until DotNetBar fixed the border issue
@@ -70,11 +76,12 @@ Public Class MainForm
         Settings.AutoSave = True
 
         'Set AutoScaleMode
-        AutoScaleMode = Settings.General.AutoScaleMode
+        'AutoScaleMode = Settings.General.AutoScaleMode
 
         SetVisualTheme()
         SetStyleManagerStyle()
 
+        'Resume drawing
         ResumeLayout()
     End Sub
 
@@ -105,6 +112,8 @@ Public Class MainForm
 
     Private Sub Form_Main_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         StatusText = Form_Main_Resources.Status_StartingUp
+
+        Panel1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top
 
         LoadRecentROMs()
         tabLevelManager.LoadListBoxEntries()
@@ -270,6 +279,7 @@ Public Class MainForm
             End If
         End If
     End Sub
+
     Private Sub ButtonItem23_Click(sender As Object, e As EventArgs) Handles ButtonItem23.Click
         If rommgr IsNot Nothing Then
             PatchClass.UpdateChecksum(rommgr.RomFile)
@@ -299,9 +309,11 @@ Public Class MainForm
     Private Sub MenuItem20_Click(sender As Object, e As EventArgs) Handles ButtonItem8.Click
         TabControl1.SelectedTab = TabItem_LevelManager
     End Sub
+
     Private Sub MenuItem16_Click(sender As Object, e As EventArgs) Handles ButtonItem11.Click
         TabControl1.SelectedTab = TabItem_TextManager
     End Sub
+
     Private Sub MenuItem17_Click(sender As Object, e As EventArgs) Handles ButtonItem10.Click
         TabControl1.SelectedTab = TabItem_MusicManager
     End Sub

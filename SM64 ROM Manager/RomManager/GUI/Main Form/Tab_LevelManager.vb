@@ -464,30 +464,22 @@ Public Class Tab_LevelManager
     Private Sub LM_ListViewSpecialsAktuallisieren()
         'Clear everything
         ListViewEx_LM_Specials.Items.Clear()
-        'lvg_SpecialBox_Water.Items.Clear()
-        'lvg_SpecialBox_ToxicHaze.Items.Clear()
-        'lvg_SpecialBox_Mist.Items.Clear()
 
         'List all special boxes
         For Each sb As Levels.SpecialBox In CurrentArea.SpecialBoxes
             Dim typeToSelect As Levels.SpecialBoxType = Levels.SpecialBoxType.Water
-            'Dim lvgToSelect As ListViewGroup = Nothing
+            Dim lvi As ListViewItem
 
             Select Case sb.Type
                 Case Levels.SpecialBoxType.Water
                     typeToSelect = Levels.SpecialBoxType.Water
-                    'lvgToSelect = lvg_SpecialBox_Water
                 Case Levels.SpecialBoxType.ToxicHaze
                     typeToSelect = Levels.SpecialBoxType.ToxicHaze
-                    'lvgToSelect = lvg_SpecialBox_ToxicHaze
                 Case Levels.SpecialBoxType.Mist
                     typeToSelect = Levels.SpecialBoxType.Mist
-                    'lvgToSelect = lvg_SpecialBox_Mist
             End Select
 
-            Dim lvi As ListViewItem = LM_GetNewSpecialBoxListViewItem(sb, ListViewEx_LM_Specials.Items.Count + 1)
-            'lvi.Group = lvgToSelect
-
+            lvi = LM_GetNewSpecialBoxListViewItem(sb, ListViewEx_LM_Specials.Items.Count + 1)
             ListViewEx_LM_Specials.Items.Add(lvi)
         Next
 
@@ -511,25 +503,25 @@ Public Class Tab_LevelManager
         End If
 
         frm = New Form_AddSpecialItem(sb)
-        If frm.ShowDialog <> DialogResult.OK Then Return
+        AddHandler frm.FormClosed, Sub() If frm.DialogResult = DialogResult.OK Then FinishAddEditSpecial(frm, sender, sb, curArea, lvi)
+        frm.Show()
+    End Sub
 
+    Private Sub FinishAddEditSpecial(frm As Form_AddSpecialItem, btnsender As Object, sb As Levels.SpecialBox, curArea As Levels.LevelArea, lvi As ListViewItem)
         Dim newType As Levels.SpecialBoxType
         Select Case True
             Case frm.CheckBoxX_Water.Checked
                 newType = Levels.SpecialBoxType.Water
-                'lvi.Group = lvg_SpecialBox_Water
             Case frm.CheckBoxX_Mist.Checked
                 newType = Levels.SpecialBoxType.Mist
-                'lvi.Group = lvg_SpecialBox_Mist
             Case frm.CheckBoxX_ToxicHaze.Checked
                 newType = Levels.SpecialBoxType.ToxicHaze
-                'lvi.group = lvg_specialbox_toxichaze
         End Select
 
         'Reorder Positions in BoxData
         ReorderBoxDataPositions(sb)
 
-        If sender Is Button_LM_AddSpecial Then
+        If btnsender Is Button_LM_AddSpecial Then
             'Get new Itemnumber
             Dim newItemNumber As Integer = curArea.SpecialBoxes.Where(Function(n) n.Type = newType).Count + 1
 
@@ -543,8 +535,10 @@ Public Class Tab_LevelManager
             LM_UpdateSpecialBoxListViewItem(lvi, sb, newItemNumber)
 
             'Add ListViewItem
-            ListViewEx_LM_Specials.Items.Add(lvi)
-            ListViewEx_LM_Specials.Refresh()
+            If CurrentArea Is curArea Then 'Only if the current area is the same as where this water box should be added!
+                ListViewEx_LM_Specials.Items.Add(lvi)
+                ListViewEx_LM_Specials.Refresh()
+            End If
         Else
             'Define new Type for SpecialBox
             sb.Type = newType

@@ -325,6 +325,7 @@ Partial Class Tab_MusicManager
         '
         'GroupPanel9
         '
+        resources.ApplyResources(Me.GroupPanel9, "GroupPanel9")
         Me.GroupPanel9.BackColor = System.Drawing.Color.White
         Me.GroupPanel9.CanvasColor = System.Drawing.Color.Empty
         Me.GroupPanel9.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -332,7 +333,6 @@ Partial Class Tab_MusicManager
         Me.GroupPanel9.Controls.Add(Me.ButtonX_MS_AddSequence)
         Me.GroupPanel9.Controls.Add(Me.ListBoxAdv_MS_MusicSequences)
         Me.GroupPanel9.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.GroupPanel9, "GroupPanel9")
         Me.GroupPanel9.Name = "GroupPanel9"
         '
         '

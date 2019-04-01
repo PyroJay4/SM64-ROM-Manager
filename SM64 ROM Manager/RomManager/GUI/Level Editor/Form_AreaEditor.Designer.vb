@@ -1131,10 +1131,9 @@
             Me.TabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty
             resources.ApplyResources(Me.TabControlPanel1, "TabControlPanel1")
             Me.TabControlPanel1.Name = "TabControlPanel1"
-            Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
             Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
             Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
             Me.TabControlPanel1.Style.GradientAngle = 90
@@ -1187,10 +1186,9 @@
             Me.TabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty
             resources.ApplyResources(Me.TabControlPanel3, "TabControlPanel3")
             Me.TabControlPanel3.Name = "TabControlPanel3"
-            Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
             Me.TabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
             Me.TabControlPanel3.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
             Me.TabControlPanel3.Style.GradientAngle = 90
@@ -1208,10 +1206,9 @@
             Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
             resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
             Me.TabControlPanel2.Name = "TabControlPanel2"
-            Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
             Me.TabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
             Me.TabControlPanel2.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
             Me.TabControlPanel2.Style.GradientAngle = 90
@@ -1766,11 +1763,11 @@
             Me.RibbonControl1.Controls.Add(Me.RibbonPanel3)
             resources.ApplyResources(Me.RibbonControl1, "RibbonControl1")
             Me.RibbonControl1.ForeColor = System.Drawing.Color.Black
-            Me.RibbonControl1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.RibbonTabItem3, Me.RibbonTabItem5, Me.RibbonTabItem_Objects, Me.RibbonTabItem_Warps, Me.RibbonTabItem_Collision, Me.RibbonTabItem6, Me.RibbonTabItem1, Me.ButtonItem95})
+            Me.RibbonControl1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ApplicationButton1, Me.RibbonTabItem3, Me.RibbonTabItem5, Me.RibbonTabItem_Objects, Me.RibbonTabItem_Warps, Me.RibbonTabItem_Collision, Me.RibbonTabItem6, Me.RibbonTabItem1, Me.ButtonItem95})
             Me.RibbonControl1.KeyTipsFont = New System.Drawing.Font("Tahoma", 7.0!)
             Me.RibbonControl1.MdiSystemItemVisible = False
             Me.RibbonControl1.Name = "RibbonControl1"
-            Me.RibbonControl1.QuickToolbarItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ApplicationButton1, Me.ButtonItem_Undo, Me.ButtonItem_Redo})
+            Me.RibbonControl1.QuickToolbarItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_Undo, Me.ButtonItem_Redo})
             Me.RibbonControl1.RibbonStripFont = New System.Drawing.Font("Segoe UI", 9.25!)
             Me.RibbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.RibbonControl1.SystemText.MaximizeRibbonText = resources.GetString("RibbonControl1.SystemText.MaximizeRibbonText")
@@ -3739,8 +3736,9 @@
             Me.ApplicationButton1.AutoExpandOnClick = True
             Me.ApplicationButton1.CanCustomize = False
             Me.ApplicationButton1.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image
-            Me.ApplicationButton1.ImagePaddingHorizontal = 2
-            Me.ApplicationButton1.ImagePaddingVertical = 2
+            Me.ApplicationButton1.ImageFixedSize = New System.Drawing.Size(16, 16)
+            Me.ApplicationButton1.ImagePaddingHorizontal = 0
+            Me.ApplicationButton1.ImagePaddingVertical = 1
             Me.ApplicationButton1.Name = "ApplicationButton1"
             Me.ApplicationButton1.ShowSubItems = False
             Me.ApplicationButton1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_SaveRom, Me.ButtonItem_LaunchROM, Me.ButtonItem3})

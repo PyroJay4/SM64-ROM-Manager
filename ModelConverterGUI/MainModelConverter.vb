@@ -32,6 +32,7 @@ Public Class MainModelConverter
     Private curTexFormatSettings As Fast3D.TextureFormatSettings
     Private centredVisualMap As Boolean = False
     Private centredCollisionMap As Boolean = False
+    Private curDiffusePos As Vertex = Nothing
 
     Private isSliderMouseDown As Boolean = False
 
@@ -39,8 +40,8 @@ Public Class MainModelConverter
         InitializeComponent()
         UpdateAmbientColors()
 
-        ColorPickerButton_ShadingLight.SelectedColor = Color.FromArgb(&HFFFFFFFF)
-        ColorPickerButton_ShadingDarkNeu.SelectedColor = Color.FromArgb(&HFF7F7F7F)
+        ColorPickerButton_ShadingAmbient.SelectedColor = Color.FromArgb(&HFF7F7F7F)
+        ColorPickerButton_ShadingDiffuse.SelectedColor = Color.FromArgb(&HFFFFFFFF)
         ColorPickerButton_FogColor.SelectedColor = Color.White
     End Sub
 
@@ -56,6 +57,7 @@ Public Class MainModelConverter
     Public Overloads Function ShowDialog(objSettings As ObjInputSettings) As DialogResult
         If objSettings Is Nothing Then Me.objSettings = New ObjInputSettings
         Me.objSettings = objSettings
+
         With Me.objSettings
             NUD_Scaling.Value = .Scaling
         End With
@@ -77,8 +79,9 @@ Public Class MainModelConverter
             .CenterModel = SwitchButton_CenterModel.Value
             .ForceDisplaylist = ForceDisplaylist
 
-            .Shading.Light = ColorPickerButton_ShadingLight.SelectedColor
-            .Shading.Dark = ColorPickerButton_ShadingDarkNeu.SelectedColor
+            .Shading.AmbientColor = ColorPickerButton_ShadingAmbient.SelectedColor
+            .Shading.DiffuseColor = ColorPickerButton_ShadingDiffuse.SelectedColor
+            .Shading.DiffusePosition = curDiffusePos
 
             If SwitchButton_EnableFog.Value Then
                 .Fog = New Fog With {.Color = ColorPickerButton_FogColor.SelectedColor, .Type = ComboBox_FogTyp.SelectedIndex}
@@ -340,7 +343,7 @@ Public Class MainModelConverter
         Button_LoadModel.SubItems.Clear()
         Button_LoadCol.SubItems.Clear()
 
-        Publics.Publics.MergeRecentFiles(Settings.RecentFiles.RecentModelFiles)
+        MergeRecentFiles(Settings.RecentFiles.RecentModelFiles)
         For Each f As String In Settings.RecentFiles.RecentModelFiles
             Dim sf As String = Path.GetFileName(f)
             Dim ico As Image = IconExtractor.ExtractIcon(f, True).ToBitmap
@@ -442,6 +445,42 @@ Public Class MainModelConverter
 
     Private Sub Slider1_MouseUp(sender As Object, e As MouseEventArgs)
         isSliderMouseDown = False
+    End Sub
+
+    Private Sub MainModelConverter_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        If Environment.ProcessorCount >= 4 Then
+            CollisionEditor.LoadFloorTypesFromDatabaseAsync()
+        End If
+    End Sub
+
+    Private Sub ButtonItem_ResetDiffusePosition_Click(sender As Object, e As EventArgs) Handles ButtonItem_ResetDiffusePosition.Click
+        curDiffusePos = Nothing
+        ButtonItem_ResetDiffusePosition.Visible = False
+    End Sub
+
+    Private Sub ButtonItem_SetupDiffusePosition_Click(sender As Object, e As EventArgs) Handles ButtonItem_SetupDiffusePosition.Click
+        Dim cx, cy, cz As Integer
+        If curDiffusePos IsNot Nothing Then
+            cx = curDiffusePos.X
+            cy = curDiffusePos.Y
+            cz = curDiffusePos.Z
+        End If
+
+        Dim editor As New DialogSetUpPoint("Diffuse point", True, True, True, cx, cy, cz)
+        If editor.ShowDialog = DialogResult.OK Then
+            If curDiffusePos Is Nothing Then
+                curDiffusePos = New Vertex
+            End If
+            curDiffusePos.X = editor.IntegerInput_X.Value
+            curDiffusePos.Y = editor.IntegerInput_Y.Value
+            curDiffusePos.Z = editor.IntegerInput_Z.Value
+            ButtonItem_ResetDiffusePosition.Visible = True
+        End If
+    End Sub
+
+    Private Sub ColorPickerButton_ShadingDiffuse_PopupOpen(sender As Object, e As EventArgs) Handles ColorPickerButton_ShadingDiffuse.PopupContainerLoad
+        ColorPickerButton_ShadingDiffuse.SubItems.Add(ButtonItem_SetupDiffusePosition)
+        ColorPickerButton_ShadingDiffuse.SubItems.Add(ButtonItem_ResetDiffusePosition)
     End Sub
 
 End Class

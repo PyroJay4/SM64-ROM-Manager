@@ -30,6 +30,7 @@ Partial Class Form_AddSpecialItem
         Me.CheckBoxX_ToxicHaze = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.CheckBoxX_Water = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.GroupBox_Box = New System.Windows.Forms.GroupBox()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.IntegerInput_Alpha = New DevComponents.Editors.IntegerInput()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.ComboBox_WaterType = New DevComponents.DotNetBar.Controls.ComboBoxEx()
@@ -42,7 +43,6 @@ Partial Class Form_AddSpecialItem
         Me.LabelX_Pos2 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX_Pos1 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX59 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox_Type.SuspendLayout()
         Me.GroupBox_Box.SuspendLayout()
         CType(Me.IntegerInput_Alpha, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -154,6 +154,18 @@ Partial Class Form_AddSpecialItem
         Me.GroupBox_Box.TabStop = False
         Me.GroupBox_Box.Text = "Box Settings"
         Me.GroupBox_Box.Visible = False
+        '
+        'LabelX3
+        '
+        '
+        '
+        '
+        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX3.Location = New System.Drawing.Point(123, 121)
+        Me.LabelX3.Name = "LabelX3"
+        Me.LabelX3.Size = New System.Drawing.Size(15, 23)
+        Me.LabelX3.TabIndex = 116
+        Me.LabelX3.Text = "%"
         '
         'IntegerInput_Alpha
         '
@@ -315,18 +327,6 @@ Partial Class Form_AddSpecialItem
         Me.LabelX59.TabIndex = 95
         Me.LabelX59.Text = "Scale:"
         '
-        'LabelX3
-        '
-        '
-        '
-        '
-        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Location = New System.Drawing.Point(123, 121)
-        Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.Size = New System.Drawing.Size(15, 23)
-        Me.LabelX3.TabIndex = 116
-        Me.LabelX3.Text = "%"
-        '
         'Form_AddSpecialItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -344,7 +344,7 @@ Partial Class Form_AddSpecialItem
         Me.MinimizeBox = False
         Me.Name = "Form_AddSpecialItem"
         Me.ShowIcon = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Add Special Item"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0

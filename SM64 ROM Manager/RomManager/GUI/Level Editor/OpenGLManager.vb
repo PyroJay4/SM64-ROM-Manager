@@ -313,10 +313,10 @@ Namespace LevelEditor
                             'camera.Move(-moveSpeed, -moveSpeed, camMtx)
                             Camera.updateCameraMatrixWithScrollWheel(-moveSpeed, camMtx)
                             savedCamPos = Camera.Position
-                        Case Keys.D
+                        Case Keys.A
                             'camera.Move(-moveSpeed, 0, camMtx)
                             Camera.updateCameraOffsetDirectly(-moveSpeed, 0, camMtx)
-                        Case Keys.A
+                        Case Keys.D
                             'camera.Move(moveSpeed, 0, camMtx)
                             Camera.updateCameraOffsetDirectly(moveSpeed, 0, camMtx)
                         Case Keys.E

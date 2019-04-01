@@ -133,8 +133,8 @@ Partial Class Tab_General
         '
         'Button_G_SaveGameName
         '
-        resources.ApplyResources(Me.Button_G_SaveGameName, "Button_G_SaveGameName")
         Me.Button_G_SaveGameName.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.Button_G_SaveGameName, "Button_G_SaveGameName")
         Me.Button_G_SaveGameName.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_G_SaveGameName.FocusCuesEnabled = False
         Me.Button_G_SaveGameName.Name = "Button_G_SaveGameName"
@@ -142,12 +142,12 @@ Partial Class Tab_General
         '
         'LabelX27
         '
-        resources.ApplyResources(Me.LabelX27, "LabelX27")
         '
         '
         '
         Me.LabelX27.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
         Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX27, "LabelX27")
         Me.LabelX27.Name = "LabelX27"
         Me.LabelX27.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
@@ -171,14 +171,6 @@ Partial Class Tab_General
         '
         Me.TextBoxX_G_GameName.Border.Class = "TextBoxBorder"
         Me.TextBoxX_G_GameName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX_G_GameName.ButtonCustom.DisplayPosition = CType(resources.GetObject("TextBoxX_G_GameName.ButtonCustom.DisplayPosition"), Integer)
-        Me.TextBoxX_G_GameName.ButtonCustom.Image = CType(resources.GetObject("TextBoxX_G_GameName.ButtonCustom.Image"), System.Drawing.Image)
-        Me.TextBoxX_G_GameName.ButtonCustom.Text = resources.GetString("TextBoxX_G_GameName.ButtonCustom.Text")
-        Me.TextBoxX_G_GameName.ButtonCustom.Tooltip = resources.GetString("TextBoxX_G_GameName.ButtonCustom.Tooltip")
-        Me.TextBoxX_G_GameName.ButtonCustom2.DisplayPosition = CType(resources.GetObject("TextBoxX_G_GameName.ButtonCustom2.DisplayPosition"), Integer)
-        Me.TextBoxX_G_GameName.ButtonCustom2.Image = CType(resources.GetObject("TextBoxX_G_GameName.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.TextBoxX_G_GameName.ButtonCustom2.Text = resources.GetString("TextBoxX_G_GameName.ButtonCustom2.Text")
-        Me.TextBoxX_G_GameName.ButtonCustom2.Tooltip = resources.GetString("TextBoxX_G_GameName.ButtonCustom2.Tooltip")
         Me.TextBoxX_G_GameName.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_G_GameName.ForeColor = System.Drawing.Color.Black
         Me.TextBoxX_G_GameName.Name = "TextBoxX_G_GameName"
@@ -197,33 +189,33 @@ Partial Class Tab_General
         '
         'LabelX34
         '
-        resources.ApplyResources(Me.LabelX34, "LabelX34")
         '
         '
         '
         Me.LabelX34.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
         Me.LabelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX34, "LabelX34")
         Me.LabelX34.Name = "LabelX34"
         Me.LabelX34.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX35
         '
-        resources.ApplyResources(Me.LabelX35, "LabelX35")
         '
         '
         '
         Me.LabelX35.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
         Me.LabelX35.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX35, "LabelX35")
         Me.LabelX35.Name = "LabelX35"
         Me.LabelX35.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'Tab_General
         '
-        resources.ApplyResources(Me, "$this")
         Me.BackColor = System.Drawing.Color.White
         Me.Controls.Add(Me.GroupPanel2)
         Me.Controls.Add(Me.GroupPanel6)
         Me.Name = "Tab_General"
+        resources.ApplyResources(Me, "$this")
         Me.GroupPanel2.ResumeLayout(False)
         Me.GroupPanel6.ResumeLayout(False)
         Me.ResumeLayout(False)

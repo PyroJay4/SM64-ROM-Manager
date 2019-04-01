@@ -9,6 +9,8 @@ Imports System.Windows.Forms
 Imports S3DFileParser
 Imports System.Runtime.CompilerServices
 Imports OfficeOpenXml
+Imports System.Globalization
+Imports System.Threading
 
 Public Module General
 
@@ -36,6 +38,29 @@ Public Module General
             Return _SurfaceData
         End Get
     End Property
+
+    Public Sub SetCurrentLanguageCulture(cultureName As String)
+        Dim culture As CultureInfo
+
+        If String.IsNullOrEmpty(cultureName) Then
+            culture = Thread.CurrentThread.CurrentCulture
+            If culture.Name = Thread.CurrentThread.CurrentCulture.Name Then
+                culture = Nothing
+            End If
+        Else
+            culture = New CultureInfo(cultureName)
+        End If
+
+        If culture IsNot Nothing Then
+            'Change on current Thread
+            'Thread.CurrentThread.CurrentCulture = culture
+            Thread.CurrentThread.CurrentUICulture = culture
+
+            'Change for all new threads
+            'CultureInfo.DefaultThreadCurrentCulture = culture
+            CultureInfo.DefaultThreadCurrentUICulture = culture
+        End If
+    End Sub
 
     ''' <param name="mode">0 = Loader; 1 = Exporter</param>
     Public Function GetExtensionFilter(strmodul As String, mode As Byte) As String

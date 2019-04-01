@@ -1913,7 +1913,7 @@
     <value>1041, 0</value>
   </data>
   <data name="RibbonBar29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 84</value>
+    <value>75, 91</value>
   </data>
   <data name="RibbonBar29.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1978,7 +1978,7 @@
     <value>859, 0</value>
   </data>
   <data name="RibbonBar9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 84</value>
+    <value>182, 91</value>
   </data>
   <data name="RibbonBar9.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2014,7 +2014,7 @@
     <value>737, 0</value>
   </data>
   <data name="RibbonBar18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 84</value>
+    <value>122, 91</value>
   </data>
   <data name="RibbonBar18.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2044,7 +2044,7 @@
     <value>657, 0</value>
   </data>
   <data name="RibbonBar7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 84</value>
+    <value>80, 91</value>
   </data>
   <data name="RibbonBar7.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2080,7 +2080,7 @@
     <value>456, 0</value>
   </data>
   <data name="RibbonBar8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 84</value>
+    <value>201, 91</value>
   </data>
   <data name="RibbonBar8.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2113,7 +2113,7 @@
     <value>298, 0</value>
   </data>
   <data name="RibbonBar27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 84</value>
+    <value>158, 91</value>
   </data>
   <data name="RibbonBar27.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2255,7 +2255,7 @@
     <value>132, 0</value>
   </data>
   <data name="RibbonBar3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 84</value>
+    <value>166, 91</value>
   </data>
   <data name="RibbonBar3.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2321,7 +2321,7 @@
     <value>3, 0</value>
   </data>
   <data name="RibbonBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 84</value>
+    <value>129, 91</value>
   </data>
   <data name="RibbonBar1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2345,13 +2345,13 @@
     <value>Fill</value>
   </data>
   <data name="RibbonPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 57</value>
+    <value>0, 54</value>
   </data>
   <data name="RibbonPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="RibbonPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1241, 87</value>
+    <value>1241, 93</value>
   </data>
   <data name="RibbonPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2378,7 +2378,7 @@
     <value>229, 0</value>
   </data>
   <data name="RibbonBar30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 84</value>
+    <value>69, 85</value>
   </data>
   <data name="RibbonBar30.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2429,7 +2429,7 @@
     <value>138, 0</value>
   </data>
   <data name="RibbonBar6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 84</value>
+    <value>91, 85</value>
   </data>
   <data name="RibbonBar6.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2462,7 +2462,7 @@
     <value>3, 0</value>
   </data>
   <data name="RibbonBar5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 84</value>
+    <value>135, 85</value>
   </data>
   <data name="RibbonBar5.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2489,7 +2489,7 @@
     <value>0, 57</value>
   </data>
   <data name="RibbonPanel5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="RibbonPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>1241, 87</value>
@@ -2522,7 +2522,7 @@
     <value>3, 0</value>
   </data>
   <data name="RibbonBar28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 84</value>
+    <value>61, 85</value>
   </data>
   <data name="RibbonBar28.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2549,7 +2549,7 @@
     <value>0, 57</value>
   </data>
   <data name="RibbonPanel7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="RibbonPanel7.Size" type="System.Drawing.Size, System.Drawing">
     <value>1241, 87</value>
@@ -2614,7 +2614,7 @@
     <value>454, 0</value>
   </data>
   <data name="RibbonBar2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 84</value>
+    <value>182, 85</value>
   </data>
   <data name="RibbonBar2.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2644,7 +2644,7 @@
     <value>266, 0</value>
   </data>
   <data name="RibbonBar26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 84</value>
+    <value>188, 85</value>
   </data>
   <data name="RibbonBar26.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -2674,7 +2674,7 @@
     <value>216, 0</value>
   </data>
   <data name="RibbonBar10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 84</value>
+    <value>50, 85</value>
   </data>
   <data name="RibbonBar10.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -2804,7 +2804,7 @@
     <value>50, 0</value>
   </data>
   <data name="RibbonBar11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 84</value>
+    <value>166, 85</value>
   </data>
   <data name="RibbonBar11.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2871,7 +2871,7 @@
     <value>3, 0</value>
   </data>
   <data name="RibbonBar12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 84</value>
+    <value>47, 85</value>
   </data>
   <data name="RibbonBar12.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2898,7 +2898,7 @@
     <value>0, 57</value>
   </data>
   <data name="RibbonPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="RibbonPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>1241, 87</value>
@@ -2928,7 +2928,7 @@
     <value>737, 0</value>
   </data>
   <data name="RibbonBar14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 84</value>
+    <value>73, 85</value>
   </data>
   <data name="RibbonBar14.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2964,7 +2964,7 @@
     <value>601, 0</value>
   </data>
   <data name="RibbonBar25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 84</value>
+    <value>136, 85</value>
   </data>
   <data name="RibbonBar25.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3000,7 +3000,7 @@
     <value>429, 0</value>
   </data>
   <data name="RibbonBar24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 84</value>
+    <value>172, 85</value>
   </data>
   <data name="RibbonBar24.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3042,7 +3042,7 @@
     <value>257, 0</value>
   </data>
   <data name="RibbonBar15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 84</value>
+    <value>172, 85</value>
   </data>
   <data name="RibbonBar15.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3087,7 +3087,7 @@
     <value>111, 0</value>
   </data>
   <data name="RibbonBar13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 84</value>
+    <value>146, 85</value>
   </data>
   <data name="RibbonBar13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3120,7 +3120,7 @@
     <value>3, 0</value>
   </data>
   <data name="RibbonBar17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 84</value>
+    <value>108, 85</value>
   </data>
   <data name="RibbonBar17.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -3147,7 +3147,7 @@
     <value>0, 57</value>
   </data>
   <data name="RibbonPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="RibbonPanel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>1241, 87</value>
@@ -3183,7 +3183,7 @@
     <value>430, 0</value>
   </data>
   <data name="RibbonBar23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 84</value>
+    <value>118, 85</value>
   </data>
   <data name="RibbonBar23.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -3213,7 +3213,7 @@
     <value>365, 0</value>
   </data>
   <data name="RibbonBar22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 84</value>
+    <value>65, 85</value>
   </data>
   <data name="RibbonBar22.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3243,7 +3243,7 @@
     <value>297, 0</value>
   </data>
   <data name="RibbonBar21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 84</value>
+    <value>68, 85</value>
   </data>
   <data name="RibbonBar21.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3282,7 +3282,7 @@
     <value>100, 0</value>
   </data>
   <data name="RibbonBar20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 84</value>
+    <value>197, 85</value>
   </data>
   <data name="RibbonBar20.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3315,7 +3315,7 @@
     <value>3, 0</value>
   </data>
   <data name="RibbonBar19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 84</value>
+    <value>97, 85</value>
   </data>
   <data name="RibbonBar19.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3342,7 +3342,7 @@
     <value>0, 57</value>
   </data>
   <data name="RibbonPanel6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="RibbonPanel6.Size" type="System.Drawing.Size, System.Drawing">
     <value>1241, 87</value>
@@ -3378,7 +3378,7 @@
     <value>103, 0</value>
   </data>
   <data name="RibbonBar4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 84</value>
+    <value>139, 85</value>
   </data>
   <data name="RibbonBar4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3405,7 +3405,7 @@
     <value>3, 0</value>
   </data>
   <data name="RibbonBar16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 84</value>
+    <value>100, 85</value>
   </data>
   <data name="RibbonBar16.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3435,7 +3435,7 @@
     <value>0, 57</value>
   </data>
   <data name="RibbonPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="RibbonPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>1241, 87</value>
@@ -3461,6 +3461,21 @@
   <data name="RibbonControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="ButtonItem_SaveRom.Text" xml:space="preserve">
+    <value>Save ROM</value>
+  </data>
+  <data name="ButtonItem_LaunchROM.Text" xml:space="preserve">
+    <value>Launch ROM</value>
+  </data>
+  <data name="ButtonItem3.AlternateShortCutText" xml:space="preserve">
+    <value>Alt+F4</value>
+  </data>
+  <data name="ButtonItem3.Text" xml:space="preserve">
+    <value>Close Level Editor</value>
+  </data>
+  <data name="ApplicationButton1.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
   <data name="RibbonTabItem3.Text" xml:space="preserve">
     <value>Level</value>
   </data>
@@ -3484,24 +3499,6 @@
   </data>
   <data name="RibbonControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 1</value>
-  </data>
-  <data name="RibbonControl1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 3</value>
-  </data>
-  <data name="ButtonItem_SaveRom.Text" xml:space="preserve">
-    <value>Save ROM</value>
-  </data>
-  <data name="ButtonItem_LaunchROM.Text" xml:space="preserve">
-    <value>Launch ROM</value>
-  </data>
-  <data name="ButtonItem3.AlternateShortCutText" xml:space="preserve">
-    <value>Alt+F4</value>
-  </data>
-  <data name="ButtonItem3.Text" xml:space="preserve">
-    <value>Close Level Editor</value>
-  </data>
-  <data name="ApplicationButton1.Text" xml:space="preserve">
-    <value>File</value>
   </data>
   <data name="RibbonControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1241, 147</value>

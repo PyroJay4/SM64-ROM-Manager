@@ -71,7 +71,7 @@ Namespace Global.SM64Lib.SM64Convert
                         Dim segAddr As Integer = F3D_MOVEMEM.GetSegmentedOffset(cmd)
                         Dim smode As Byte = F3D_MOVEMEM.GetLightValueMode(cmd)
 
-                        If smode = &H86 Then 'Load Shading Light
+                        If smode = &H88 Then 'Load Shading Light
                             If knownShading.ContainsKey(segAddr) Then
                                 curColor = knownShading(segAddr)
                             Else
@@ -102,7 +102,7 @@ Namespace Global.SM64Lib.SM64Convert
                         curTexPaletteSegAddr = curTexSegAddr
 
                         cmd.Position = 5
-                        numColorsToLoadInPalette = cmd.ReadUInt16 >> 6 '+ 1
+                        numColorsToLoadInPalette = cmd.ReadUInt16 >> 6
 
                         Dim seg As SegmentedBank = rommgr.GetSegBank(curTexPaletteSegAddr >> 24, AreaID)
                         curTexPalette = New Byte(numColorsToLoadInPalette * 2 + 1) {}

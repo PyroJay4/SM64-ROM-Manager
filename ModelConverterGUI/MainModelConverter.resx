@@ -117,379 +117,371 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;SwitchButton_EnableFog.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCalculator.Text" xml:space="preserve">
-    <value />
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Button_ColEditor.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="&gt;&gt;Panel9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ComboBox_FogTyp.Items5" xml:space="preserve">
-    <value>Moderate Fog #4</value>
-  </data>
-  <data name="&gt;&gt;NUD_Scaling.Name" xml:space="preserve">
-    <value>NUD_Scaling</value>
-  </data>
-  <data name="&gt;&gt;LabelX7.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;NUD_Scaling.Parent" xml:space="preserve">
-    <value>Panel6</value>
+  <data name="Line2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 55</value>
-  </data>
-  <data name="LabelX7.Text" xml:space="preserve">
-    <value>Dark</value>
-  </data>
-  <data name="ButtonX_GraphicsEditor.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SwitchButton_ResizeTextures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="ButtonX_VisualMapPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 40</value>
-  </data>
-  <data name="LabelX7.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 55</value>
-  </data>
-  <data name="&gt;&gt;Button_ConvertModel.Name" xml:space="preserve">
-    <value>Button_ConvertModel</value>
-  </data>
-  <data name="&gt;&gt;LabelX1.Name" xml:space="preserve">
-    <value>LabelX1</value>
-  </data>
-  <data name="ComboBox_FogTyp.Items2" xml:space="preserve">
-    <value>Moderate Fog #1</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip7" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.Parent" xml:space="preserve">
-    <value>Panel3</value>
-  </data>
-  <data name="&gt;&gt;Panel4.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <assembly alias="DevComponents.DotNetBar2" name="DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04" />
-  <data name="Button_LoadCol.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
-    <value>Gray</value>
-  </data>
-  <data name="LabelX3.Text" xml:space="preserve">
-    <value>Resize Textures:</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingLight.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="SwitchButton_OptimizeTransChecks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="&gt;&gt;Button_ColEditor.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="SwitchButton_EnableReduceVertices.OffText" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>136</value>
-  </data>
-  <data name="&gt;&gt;Line2.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom.Tooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;LabelX2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="NUD_Scaling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadCol.Name" xml:space="preserve">
-    <value>Button_LoadCol</value>
-  </data>
-  <data name="&gt;&gt;Panel2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX6.Name" xml:space="preserve">
-    <value>LabelX6</value>
-  </data>
-  <data name="Button_LoadModel.SuperTooltip8" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;LabelX5.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="ButtonX_GraphicsEditor.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
-  </data>
-  <data name="LabelX16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="ButtonX_CollisionMapPreview.Text" xml:space="preserve">
-    <value>Collision Preview</value>
-  </data>
-  <data name="LabelX_Modelfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 12</value>
-  </data>
-  <data name="Panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 154</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ComboBoxEx_UpAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
-  </data>
-  <data name="&gt;&gt;Panel5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Panel2.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="CheckBoxX_ConvertModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 23</value>
-  </data>
-  <data name="ButtonX_VisualMapPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <data name="ComboBox_FogTyp.Items1" xml:space="preserve">
-    <value>Subtle Fog #2</value>
-  </data>
-  <data name="Button_LoadModel.TabIndex" type="System.Int32, mscorlib">
-    <value>84</value>
-  </data>
-  <data name="&gt;&gt;LabelX20.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Button_ConvertModel.Text" xml:space="preserve">
-    <value>Convert Model</value>
-  </data>
-  <data name="&gt;&gt;LabelX7.Name" xml:space="preserve">
-    <value>LabelX7</value>
-  </data>
-  <data name="LabelX20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="Button_ColEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 49</value>
-  </data>
-  <data name="Button_ColEditor.TabIndex" type="System.Int32, mscorlib">
-    <value>87</value>
-  </data>
-  <data name="Line3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="LabelX4.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Line2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-2, 67</value>
   </data>
   <data name="Line2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="Button_LoadCol.Text" xml:space="preserve">
-    <value>Load ...</value>
+  <data name="Line2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>547, 23</value>
   </data>
-  <data name="NUD_Scaling.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Line2.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="Line2.Text" xml:space="preserve">
+    <value>Line2</value>
+  </data>
+  <data name="&gt;&gt;Line2.Name" xml:space="preserve">
+    <value>Line2</value>
+  </data>
+  <data name="&gt;&gt;Line2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;Line2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Line2.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="LabelX_Colfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="LabelX_Colfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 41</value>
+  </data>
+  <data name="LabelX_Colfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 23</value>
+  </data>
+  <data name="LabelX_Colfile.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="LabelX_Colfile.Text" xml:space="preserve">
+    <value>&lt;i&gt;No file loaded!&lt;/i&gt;</value>
+  </data>
+  <data name="&gt;&gt;LabelX_Colfile.Name" xml:space="preserve">
+    <value>LabelX_Colfile</value>
+  </data>
+  <data name="&gt;&gt;LabelX_Colfile.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX_Colfile.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LabelX_Colfile.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="LabelX_Modelfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="LabelX_Modelfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 12</value>
+  </data>
+  <data name="LabelX_Modelfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 23</value>
+  </data>
+  <data name="LabelX_Modelfile.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="LabelX_Modelfile.Text" xml:space="preserve">
+    <value>&lt;i&gt;No file loaded!&lt;/i&gt;</value>
+  </data>
+  <data name="&gt;&gt;LabelX_Modelfile.Name" xml:space="preserve">
+    <value>LabelX_Modelfile</value>
+  </data>
+  <data name="&gt;&gt;LabelX_Modelfile.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX_Modelfile.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LabelX_Modelfile.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="LabelX2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 41</value>
+  </data>
+  <data name="LabelX2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 23</value>
+  </data>
+  <data name="LabelX2.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="LabelX2.Text" xml:space="preserve">
+    <value>Collision:</value>
+  </data>
+  <data name="&gt;&gt;LabelX2.Name" xml:space="preserve">
+    <value>LabelX2</value>
+  </data>
+  <data name="&gt;&gt;LabelX2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LabelX2.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="LabelX1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 12</value>
+  </data>
+  <data name="LabelX1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 23</value>
+  </data>
+  <data name="LabelX1.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="LabelX1.Text" xml:space="preserve">
+    <value>Visual Map:</value>
+  </data>
+  <data name="&gt;&gt;LabelX1.Name" xml:space="preserve">
+    <value>LabelX1</value>
+  </data>
+  <data name="&gt;&gt;LabelX1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LabelX1.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="LabelX4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="LabelX4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 23</value>
+  </data>
+  <metadata name="SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="SuperTooltip1.DefaultTooltipSettings" xml:space="preserve">
     <value />
   </data>
-  <data name="CircularProgress1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 40</value>
-  </data>
-  <data name="LabelX10.TabIndex" type="System.Int32, mscorlib">
-    <value>124</value>
-  </data>
-  <data name="ButtonX_CollisionMapPreview.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;Panel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_ResizeTextures.Name" xml:space="preserve">
-    <value>SwitchButton_ResizeTextures</value>
-  </data>
-  <data name="NUD_Scaling.ButtonFreeText.Tooltip" xml:space="preserve">
+  <data name="LabelX4.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 57</value>
-  </data>
-  <data name="ButtonX_VisualMapPreview.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="LabelX4.SuperTooltip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LabelX4.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
   <data name="LabelX4.SuperTooltip2" xml:space="preserve">
     <value>Vertices reduzieren</value>
   </data>
-  <data name="LabelX4.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
-    <value>Gray</value>
+  <data name="LabelX4.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="LabelX4.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="LabelX4.SuperTooltip7" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <assembly alias="DevComponents.DotNetBar2" name="DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04" />
+  <data name="LabelX4.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
+    <value>System</value>
   </data>
   <data name="LabelX4.SuperTooltip6" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="LabelX4.SuperTooltip7" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="LabelX4.SuperTooltip8" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;SwitchButton_EnableFog.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="LabelX4.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
   </data>
-  <data name="ColorPickerButton_ShadingLight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
-        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
-</value>
+  <data name="LabelX4.Text" xml:space="preserve">
+    <value>Reduce vertices:</value>
   </data>
-  <data name="Button_LoadModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
+  <data name="&gt;&gt;LabelX4.Name" xml:space="preserve">
+    <value>LabelX4</value>
   </data>
-  <data name="&gt;&gt;LabelX10.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;LabelX4.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX4.Parent" xml:space="preserve">
+    <value>Panel3</value>
+  </data>
+  <data name="&gt;&gt;LabelX4.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Button_ColEditor.Text" xml:space="preserve">
-    <value>Collision Editor</value>
+  <data name="SwitchButton_EnableFog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 5</value>
   </data>
-  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CheckBoxX_ConvertCollision.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Panel8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="Button_LoadModel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;Panel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SwitchButton_OptimizeTransChecks.OffText" xml:space="preserve">
+  <data name="SwitchButton_EnableFog.OffText" xml:space="preserve">
     <value>No</value>
   </data>
-  <data name="LabelX_Colfile.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SwitchButton_EnableFog.OnText" xml:space="preserve">
+    <value>Yes</value>
   </data>
-  <data name="&gt;&gt;Panel2.Name" xml:space="preserve">
-    <value>Panel2</value>
+  <data name="SwitchButton_EnableFog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
   </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertCollision.Name" xml:space="preserve">
-    <value>CheckBoxX_ConvertCollision</value>
-  </data>
-  <data name="&gt;&gt;SuperTooltip1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.SuperTooltip, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.ItemHeight" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="SwitchButton_ResizeTextures.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 5</value>
-  </data>
-  <data name="Button_LoadModel.SuperTooltip6" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;LabelX8.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  <data name="SwitchButton_EnableFog.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
   </data>
   <data name="&gt;&gt;SwitchButton_EnableFog.Name" xml:space="preserve">
     <value>SwitchButton_EnableFog</value>
   </data>
-  <data name="Panel6.TabIndex" type="System.Int32, mscorlib">
-    <value>141</value>
+  <data name="&gt;&gt;SwitchButton_EnableFog.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <data name="Button_LoadCol.TabIndex" type="System.Int32, mscorlib">
-    <value>85</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_CenterModel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="Button_LoadCol.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Line2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;LabelX3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="LabelX2.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_FogColor.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SwitchButton_EnableFog.Parent" xml:space="preserve">
     <value>Panel1</value>
   </data>
-  <data name="&gt;&gt;ButtonX_GraphicsEditor.Parent" xml:space="preserve">
-    <value>Panel8</value>
+  <data name="&gt;&gt;SwitchButton_EnableFog.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="Button_ConvertModel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  <data name="Button_ColEditor.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;SwitchButton_OptimizeTransChecks.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  <data name="Button_ColEditor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 49</value>
   </data>
-  <data name="&gt;&gt;LabelX9.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  <data name="Button_ColEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 40</value>
   </data>
-  <data name="LabelX9.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Button_ColEditor.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="Button_ColEditor.Text" xml:space="preserve">
+    <value>Collision Editor</value>
+  </data>
+  <data name="&gt;&gt;Button_ColEditor.Name" xml:space="preserve">
+    <value>Button_ColEditor</value>
+  </data>
+  <data name="&gt;&gt;Button_ColEditor.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;Button_ColEditor.Parent" xml:space="preserve">
+    <value>Panel9</value>
+  </data>
+  <data name="&gt;&gt;Button_ColEditor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LabelX20.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertModel.Name" xml:space="preserve">
-    <value>CheckBoxX_ConvertModel</value>
+  <data name="LabelX20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 23</value>
   </data>
-  <data name="SwitchButton_CenterModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
+  <data name="LabelX20.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
   </data>
-  <data name="Panel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 55</value>
+  <data name="LabelX20.Text" xml:space="preserve">
+    <value>Fog:</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="&gt;&gt;LabelX20.Name" xml:space="preserve">
+    <value>LabelX20</value>
+  </data>
+  <data name="&gt;&gt;LabelX20.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX20.Parent" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;LabelX20.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LabelX16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="LabelX16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 23</value>
+  </data>
+  <data name="LabelX16.TabIndex" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
+  <data name="LabelX16.Text" xml:space="preserve">
+    <value>Scaling:</value>
+  </data>
+  <data name="&gt;&gt;LabelX16.Name" xml:space="preserve">
+    <value>LabelX16</value>
+  </data>
+  <data name="&gt;&gt;LabelX16.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX16.Parent" xml:space="preserve">
+    <value>Panel6</value>
+  </data>
+  <data name="&gt;&gt;LabelX16.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="NUD_Scaling.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="NUD_Scaling.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="NUD_Scaling.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="NUD_Scaling.SuperTooltip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NUD_Scaling.SuperTooltip2" xml:space="preserve">
+    <value>Set how big your model will be saved.
+You can change this option later in the Area Settings.
+
+Example:
+Scaling = 1 --&gt; Original Modelsize
+Scaling = 500 --&gt; Modelsize * 500</value>
+  </data>
+  <data name="NUD_Scaling.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="NUD_Scaling.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="NUD_Scaling.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
+    <value>System</value>
+  </data>
+  <data name="NUD_Scaling.SuperTooltip6" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="NUD_Scaling.SuperTooltip7" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="NUD_Scaling.SuperTooltip8" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="NUD_Scaling.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="&gt;&gt;NUD_Scaling.Name" xml:space="preserve">
+    <value>NUD_Scaling</value>
+  </data>
+  <data name="&gt;&gt;NUD_Scaling.Type" xml:space="preserve">
+    <value>DevComponents.Editors.DoubleInput, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;NUD_Scaling.Parent" xml:space="preserve">
+    <value>Panel6</value>
+  </data>
+  <data name="&gt;&gt;NUD_Scaling.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Button_LoadCol.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Button_LoadCol.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 41</value>
+  </data>
+  <data name="Button_LoadCol.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="Button_LoadCol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="Button_LoadCol.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="Button_LoadCol.SuperTooltip1" xml:space="preserve">
     <value />
-  </data>
-  <data name="Button_ConvertModel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadCol.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;LabelX3.Name" xml:space="preserve">
-    <value>LabelX3</value>
   </data>
   <data name="Button_LoadCol.SuperTooltip2" xml:space="preserve">
     <value>Load a collision file.
@@ -497,245 +489,1052 @@
 The Collision is all what is solid for you.
 It is inviisble.</value>
   </data>
-  <data name="NUD_Scaling.ButtonClear.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom2.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="Button_LoadCol.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
-  </data>
-  <data name="NUD_Scaling.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="Button_LoadModel.SuperTooltip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Panel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 56</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadCol.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Panel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LabelX4.Parent" xml:space="preserve">
-    <value>Panel3</value>
-  </data>
-  <data name="SwitchButton_EnableFog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="LabelX_Colfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 41</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;SwitchButton_CenterModel.Name" xml:space="preserve">
-    <value>SwitchButton_CenterModel</value>
-  </data>
-  <data name="&gt;&gt;LabelX8.Name" xml:space="preserve">
-    <value>LabelX8</value>
-  </data>
-  <data name="Line2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, 67</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Colfile.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;CircularProgress1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="LabelX10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 23</value>
-  </data>
-  <data name="&gt;&gt;LabelX10.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="ComboBox_FogTyp.Items6" xml:space="preserve">
-    <value>Intense Fog</value>
-  </data>
-  <data name="LabelX2.Text" xml:space="preserve">
-    <value>Collision:</value>
-  </data>
-  <data name="ComboItem1.Text" xml:space="preserve">
-    <value>Y</value>
-  </data>
-  <data name="&gt;&gt;Button_ColEditor.Parent" xml:space="preserve">
-    <value>Panel9</value>
-  </data>
-  <data name="LabelX5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 23</value>
-  </data>
-  <data name="ButtonX_GraphicsEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 49</value>
-  </data>
-  <data name="LabelX2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 41</value>
-  </data>
-  <data name="&gt;&gt;Panel9.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="LabelX4.Text" xml:space="preserve">
-    <value>Reduce vertices:</value>
-  </data>
-  <data name="&gt;&gt;LabelX9.Name" xml:space="preserve">
-    <value>LabelX9</value>
-  </data>
-  <data name="&gt;&gt;ComboBox_FogTyp.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="NUD_Scaling.ButtonDropDown.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;Line3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="LabelX7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
   </data>
   <data name="Button_LoadCol.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="LabelX8.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="SwitchButton_EnableFog.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="SwitchButton_EnableReduceVertices.TabIndex" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="CheckBoxX_ConvertCollision.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 23</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom2.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="SwitchButton_EnableFog.OnText" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.Name" xml:space="preserve">
-    <value>ColorPickerButton_ShadingDarkNeu</value>
-  </data>
-  <data name="&gt;&gt;LabelX10.Name" xml:space="preserve">
-    <value>LabelX10</value>
-  </data>
-  <data name="LabelX16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 23</value>
-  </data>
-  <data name="SwitchButton_OptimizeTransChecks.TabIndex" type="System.Int32, mscorlib">
-    <value>109</value>
-  </data>
-  <data name="Panel7.TabIndex" type="System.Int32, mscorlib">
-    <value>142</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_CollisionMapPreview.Parent" xml:space="preserve">
-    <value>Panel9</value>
-  </data>
-  <data name="LabelX_Modelfile.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 23</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_CenterModel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Button_LoadCol.SuperTooltip7" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ComboBox_FogTyp.TabIndex" type="System.Int32, mscorlib">
-    <value>134</value>
-  </data>
-  <data name="&gt;&gt;Button_ConvertModel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="LabelX_Modelfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="Line3.TabIndex" type="System.Int32, mscorlib">
-    <value>95</value>
-  </data>
-  <data name="SwitchButton_EnableReduceVertices.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonDropDown.Tooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingLight.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="Panel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 92</value>
-  </data>
-  <data name="&gt;&gt;Panel8.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ButtonX_VisualMapPreview.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="SwitchButton_OptimizeTransChecks.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;Panel7.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertCollision.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="Button_LoadCol.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
+    <value>System</value>
   </data>
   <data name="Button_LoadCol.SuperTooltip6" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="LabelX4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="Button_LoadCol.SuperTooltip7" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="Button_LoadCol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
+  <data name="Button_LoadCol.SuperTooltip8" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;SwitchButton_EnableFog.Parent" xml:space="preserve">
-    <value>Panel1</value>
+  <data name="Button_LoadCol.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
   </data>
-  <data name="NUD_Scaling.ButtonCalculator.Tooltip" xml:space="preserve">
-    <value />
+  <data name="Button_LoadCol.Text" xml:space="preserve">
+    <value>Load ...</value>
   </data>
-  <data name="&gt;&gt;ComboBoxEx_UpAxis.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;Button_LoadCol.Name" xml:space="preserve">
+    <value>Button_LoadCol</value>
   </data>
-  <data name="&gt;&gt;LabelX_Colfile.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Button_LoadCol.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;Button_LoadCol.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="Panel1.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="&gt;&gt;Button_LoadCol.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="Button_LoadModel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Button_LoadModel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 12</value>
+  </data>
+  <data name="Button_LoadModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="Button_LoadModel.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
+  </data>
+  <data name="Button_LoadModel.SuperTooltip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Button_LoadModel.SuperTooltip2" xml:space="preserve">
+    <value>Load a model file.
+
+The Model is all what you can see.</value>
+  </data>
+  <data name="Button_LoadModel.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Button_LoadModel.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Button_LoadModel.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
+    <value>System</value>
+  </data>
+  <data name="Button_LoadModel.SuperTooltip6" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="Button_LoadModel.SuperTooltip7" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="Button_LoadModel.SuperTooltip8" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Button_LoadModel.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="Button_LoadModel.Text" xml:space="preserve">
+    <value>Load ...</value>
   </data>
   <data name="&gt;&gt;Button_LoadModel.Name" xml:space="preserve">
     <value>Button_LoadModel</value>
   </data>
-  <data name="&gt;&gt;LabelX6.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  <data name="&gt;&gt;Button_LoadModel.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <data name="SwitchButton_CenterModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
+  <data name="&gt;&gt;Button_LoadModel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;ButtonX_CollisionMapPreview.Name" xml:space="preserve">
-    <value>ButtonX_CollisionMapPreview</value>
+  <data name="&gt;&gt;Button_LoadModel.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="Line3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Line3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>431, 0</value>
+  </data>
+  <data name="Line3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="Line3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 78</value>
+  </data>
+  <data name="Line3.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="Line3.Text" xml:space="preserve">
+    <value>Line3</value>
+  </data>
+  <data name="&gt;&gt;Line3.Name" xml:space="preserve">
+    <value>Line3</value>
+  </data>
+  <data name="&gt;&gt;Line3.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;Line3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Line3.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="Button_ConvertModel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Button_ConvertModel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="Button_ConvertModel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="Button_ConvertModel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 20</value>
+  </data>
+  <data name="Button_ConvertModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 40</value>
+  </data>
+  <data name="Button_ConvertModel.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="Button_ConvertModel.Text" xml:space="preserve">
+    <value>Convert Model</value>
+  </data>
+  <data name="&gt;&gt;Button_ConvertModel.Name" xml:space="preserve">
+    <value>Button_ConvertModel</value>
+  </data>
+  <data name="&gt;&gt;Button_ConvertModel.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;Button_ConvertModel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Button_ConvertModel.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="CircularProgress1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="CircularProgress1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 20</value>
+  </data>
+  <data name="CircularProgress1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 40</value>
+  </data>
+  <data name="CircularProgress1.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="CircularProgress1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;CircularProgress1.Name" xml:space="preserve">
     <value>CircularProgress1</value>
   </data>
+  <data name="&gt;&gt;CircularProgress1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.CircularProgress, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;CircularProgress1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CircularProgress1.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="ComboBoxEx_UpAxis.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="ComboItem1.Text" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="ComboItem2.Text" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="ComboBoxEx_UpAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="ComboBoxEx_UpAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 21</value>
+  </data>
+  <data name="ComboBoxEx_UpAxis.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ComboBoxEx_UpAxis.SuperTooltip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ComboBoxEx_UpAxis.SuperTooltip2" xml:space="preserve">
+    <value>This option is to reduce dublicate vertices.
+As higher the level and as bigger the model, as more space will be saved!</value>
+  </data>
+  <data name="ComboBoxEx_UpAxis.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ComboBoxEx_UpAxis.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ComboBoxEx_UpAxis.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
+    <value>System</value>
+  </data>
+  <data name="ComboBoxEx_UpAxis.SuperTooltip6" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ComboBoxEx_UpAxis.SuperTooltip7" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ComboBoxEx_UpAxis.SuperTooltip8" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ComboBoxEx_UpAxis.TabIndex" type="System.Int32, mscorlib">
+    <value>123</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_UpAxis.Name" xml:space="preserve">
+    <value>ComboBoxEx_UpAxis</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_UpAxis.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_UpAxis.Parent" xml:space="preserve">
+    <value>Panel7</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxEx_UpAxis.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LabelX9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="LabelX9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 23</value>
+  </data>
+  <data name="LabelX9.TabIndex" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="LabelX9.Text" xml:space="preserve">
+    <value>Center Model:</value>
+  </data>
+  <data name="&gt;&gt;LabelX9.Name" xml:space="preserve">
+    <value>LabelX9</value>
+  </data>
+  <data name="&gt;&gt;LabelX9.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX9.Parent" xml:space="preserve">
+    <value>Panel2</value>
+  </data>
+  <data name="&gt;&gt;LabelX9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="CheckBoxX_ConvertModel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="CheckBoxX_ConvertModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 23</value>
+  </data>
+  <data name="CheckBoxX_ConvertModel.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX_ConvertModel.Name" xml:space="preserve">
+    <value>CheckBoxX_ConvertModel</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX_ConvertModel.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX_ConvertModel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX_ConvertModel.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="CheckBoxX_ConvertCollision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 41</value>
+  </data>
+  <data name="CheckBoxX_ConvertCollision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 23</value>
+  </data>
+  <data name="CheckBoxX_ConvertCollision.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX_ConvertCollision.Name" xml:space="preserve">
+    <value>CheckBoxX_ConvertCollision</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX_ConvertCollision.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX_ConvertCollision.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxX_ConvertCollision.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="LabelX3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="LabelX3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 23</value>
+  </data>
+  <data name="LabelX3.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="LabelX3.Text" xml:space="preserve">
+    <value>Resize Textures:</value>
+  </data>
+  <data name="&gt;&gt;LabelX3.Name" xml:space="preserve">
+    <value>LabelX3</value>
+  </data>
+  <data name="&gt;&gt;LabelX3.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX3.Parent" xml:space="preserve">
+    <value>Panel4</value>
+  </data>
+  <data name="&gt;&gt;LabelX3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="SwitchButton_ResizeTextures.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 5</value>
+  </data>
+  <data name="SwitchButton_ResizeTextures.OffText" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="SwitchButton_ResizeTextures.OnText" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="SwitchButton_ResizeTextures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="SwitchButton_ResizeTextures.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_ResizeTextures.Name" xml:space="preserve">
+    <value>SwitchButton_ResizeTextures</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_ResizeTextures.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_ResizeTextures.Parent" xml:space="preserve">
+    <value>Panel4</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_ResizeTextures.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="LabelX5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="LabelX5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 23</value>
+  </data>
+  <data name="LabelX5.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="LabelX5.Text" xml:space="preserve">
+    <value>Shading:</value>
+  </data>
+  <data name="&gt;&gt;LabelX5.Name" xml:space="preserve">
+    <value>LabelX5</value>
+  </data>
+  <data name="&gt;&gt;LabelX5.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX5.Parent" xml:space="preserve">
+    <value>Panel5</value>
+  </data>
+  <data name="&gt;&gt;LabelX5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="LabelX6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="LabelX6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="LabelX6.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="LabelX6.Text" xml:space="preserve">
+    <value>Ambient:</value>
+  </data>
+  <data name="&gt;&gt;LabelX6.Name" xml:space="preserve">
+    <value>LabelX6</value>
+  </data>
+  <data name="&gt;&gt;LabelX6.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX6.Parent" xml:space="preserve">
+    <value>Panel5</value>
+  </data>
+  <data name="&gt;&gt;LabelX6.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="LabelX7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 32</value>
+  </data>
+  <data name="LabelX7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 20</value>
+  </data>
+  <data name="LabelX7.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
+  </data>
+  <data name="LabelX7.Text" xml:space="preserve">
+    <value>Diffuse:</value>
+  </data>
+  <data name="&gt;&gt;LabelX7.Name" xml:space="preserve">
+    <value>LabelX7</value>
+  </data>
+  <data name="&gt;&gt;LabelX7.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX7.Parent" xml:space="preserve">
+    <value>Panel5</value>
+  </data>
+  <data name="&gt;&gt;LabelX7.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="SwitchButton_CenterModel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="SwitchButton_CenterModel.OffText" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="SwitchButton_CenterModel.OnText" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="SwitchButton_CenterModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="SwitchButton_CenterModel.TabIndex" type="System.Int32, mscorlib">
+    <value>119</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_CenterModel.Name" xml:space="preserve">
+    <value>SwitchButton_CenterModel</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_CenterModel.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_CenterModel.Parent" xml:space="preserve">
+    <value>Panel2</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_CenterModel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ButtonX_VisualMapPreview.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ButtonX_VisualMapPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="ButtonX_VisualMapPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 40</value>
+  </data>
+  <data name="ButtonX_VisualMapPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="ButtonX_VisualMapPreview.Text" xml:space="preserve">
+    <value>Model Preview</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_VisualMapPreview.Name" xml:space="preserve">
+    <value>ButtonX_VisualMapPreview</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_VisualMapPreview.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_VisualMapPreview.Parent" xml:space="preserve">
+    <value>Panel8</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_VisualMapPreview.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ButtonX_CollisionMapPreview.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ButtonX_CollisionMapPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="ButtonX_CollisionMapPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 40</value>
+  </data>
+  <data name="ButtonX_CollisionMapPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>121</value>
+  </data>
+  <data name="ButtonX_CollisionMapPreview.Text" xml:space="preserve">
+    <value>Collision Preview</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_CollisionMapPreview.Name" xml:space="preserve">
+    <value>ButtonX_CollisionMapPreview</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_CollisionMapPreview.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_CollisionMapPreview.Parent" xml:space="preserve">
+    <value>Panel9</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_CollisionMapPreview.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="SwitchButton_EnableReduceVertices.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="SwitchButton_EnableReduceVertices.OffText" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="SwitchButton_EnableReduceVertices.OnText" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="SwitchButton_EnableReduceVertices.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="SwitchButton_EnableReduceVertices.TabIndex" type="System.Int32, mscorlib">
+    <value>122</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.Name" xml:space="preserve">
+    <value>SwitchButton_EnableReduceVertices</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.Parent" xml:space="preserve">
+    <value>Panel3</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LabelX10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="LabelX10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 23</value>
+  </data>
+  <data name="LabelX10.TabIndex" type="System.Int32, mscorlib">
+    <value>124</value>
+  </data>
+  <data name="LabelX10.Text" xml:space="preserve">
+    <value>Up-Axis:</value>
+  </data>
+  <data name="&gt;&gt;LabelX10.Name" xml:space="preserve">
+    <value>LabelX10</value>
+  </data>
+  <data name="&gt;&gt;LabelX10.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX10.Parent" xml:space="preserve">
+    <value>Panel7</value>
+  </data>
+  <data name="&gt;&gt;LabelX10.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ColorPickerButton_ShadingAmbient.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
+        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ColorPickerButton_ShadingAmbient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 31</value>
+  </data>
+  <data name="ColorPickerButton_ShadingAmbient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 23</value>
+  </data>
+  <data name="ColorPickerButton_ShadingAmbient.TabIndex" type="System.Int32, mscorlib">
+    <value>131</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingAmbient.Name" xml:space="preserve">
+    <value>ColorPickerButton_ShadingAmbient</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingAmbient.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingAmbient.Parent" xml:space="preserve">
+    <value>Panel5</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingAmbient.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ButtonX_GraphicsEditor.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ButtonX_GraphicsEditor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 49</value>
+  </data>
+  <data name="ButtonX_GraphicsEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 40</value>
+  </data>
+  <data name="ButtonX_GraphicsEditor.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
+  </data>
+  <data name="ButtonX_GraphicsEditor.Text" xml:space="preserve">
+    <value>Graphics Editor</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_GraphicsEditor.Name" xml:space="preserve">
+    <value>ButtonX_GraphicsEditor</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_GraphicsEditor.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_GraphicsEditor.Parent" xml:space="preserve">
+    <value>Panel8</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_GraphicsEditor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ComboBox_FogTyp.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ComboBox_FogTyp.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ComboBox_FogTyp.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="ComboBox_FogTyp.Items" xml:space="preserve">
+    <value>Subtle Fog #1</value>
+  </data>
+  <data name="ComboBox_FogTyp.Items1" xml:space="preserve">
+    <value>Subtle Fog #2</value>
+  </data>
+  <data name="ComboBox_FogTyp.Items2" xml:space="preserve">
+    <value>Moderate Fog #1</value>
+  </data>
+  <data name="ComboBox_FogTyp.Items3" xml:space="preserve">
+    <value>Moderate Fog #2</value>
+  </data>
+  <data name="ComboBox_FogTyp.Items4" xml:space="preserve">
+    <value>Moderate Fog #3</value>
+  </data>
+  <data name="ComboBox_FogTyp.Items5" xml:space="preserve">
+    <value>Moderate Fog #4</value>
+  </data>
+  <data name="ComboBox_FogTyp.Items6" xml:space="preserve">
+    <value>Intense Fog</value>
+  </data>
+  <data name="ComboBox_FogTyp.Items7" xml:space="preserve">
+    <value>Very Intense Fog</value>
+  </data>
+  <data name="ComboBox_FogTyp.Items8" xml:space="preserve">
+    <value>Hardcore Fog</value>
+  </data>
+  <data name="ComboBox_FogTyp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="ComboBox_FogTyp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 21</value>
+  </data>
+  <data name="ComboBox_FogTyp.TabIndex" type="System.Int32, mscorlib">
+    <value>134</value>
+  </data>
+  <data name="&gt;&gt;ComboBox_FogTyp.Name" xml:space="preserve">
+    <value>ComboBox_FogTyp</value>
+  </data>
+  <data name="&gt;&gt;ComboBox_FogTyp.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ComboBox_FogTyp.Parent" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;ComboBox_FogTyp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ColorPickerButton_FogColor.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ColorPickerButton_FogColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
+        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ColorPickerButton_FogColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 3</value>
+  </data>
+  <data name="ColorPickerButton_FogColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 23</value>
+  </data>
+  <data name="ColorPickerButton_FogColor.TabIndex" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_FogColor.Name" xml:space="preserve">
+    <value>ColorPickerButton_FogColor</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_FogColor.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_FogColor.Parent" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_FogColor.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Panel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 218</value>
+  </data>
+  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 56</value>
+  </data>
+  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Panel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 93</value>
+  </data>
+  <data name="Panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 55</value>
+  </data>
+  <data name="Panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="&gt;&gt;Panel2.Name" xml:space="preserve">
+    <value>Panel2</value>
+  </data>
+  <data name="&gt;&gt;Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel2.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="Panel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>249, 93</value>
+  </data>
+  <data name="Panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 55</value>
+  </data>
+  <data name="Panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>138</value>
+  </data>
+  <data name="&gt;&gt;Panel3.Name" xml:space="preserve">
+    <value>Panel3</value>
+  </data>
+  <data name="&gt;&gt;Panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel3.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="Panel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LabelX8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="LabelX8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 23</value>
+  </data>
+  <data name="LabelX8.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="LabelX8.Text" xml:space="preserve">
+    <value>Optimize transparency checks:</value>
+  </data>
+  <data name="&gt;&gt;LabelX8.Name" xml:space="preserve">
+    <value>LabelX8</value>
+  </data>
+  <data name="&gt;&gt;LabelX8.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;LabelX8.Parent" xml:space="preserve">
+    <value>Panel4</value>
+  </data>
+  <data name="&gt;&gt;LabelX8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="SwitchButton_OptimizeTransChecks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 34</value>
+  </data>
+  <data name="SwitchButton_OptimizeTransChecks.OffText" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="SwitchButton_OptimizeTransChecks.OnText" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="SwitchButton_OptimizeTransChecks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="SwitchButton_OptimizeTransChecks.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
   <data name="&gt;&gt;SwitchButton_OptimizeTransChecks.Name" xml:space="preserve">
     <value>SwitchButton_OptimizeTransChecks</value>
   </data>
-  <data name="CircularProgress1.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="&gt;&gt;SwitchButton_OptimizeTransChecks.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_OptimizeTransChecks.Parent" xml:space="preserve">
+    <value>Panel4</value>
+  </data>
+  <data name="&gt;&gt;SwitchButton_OptimizeTransChecks.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 154</value>
+  </data>
+  <data name="Panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 58</value>
+  </data>
+  <data name="Panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>139</value>
+  </data>
+  <data name="&gt;&gt;Panel4.Name" xml:space="preserve">
+    <value>Panel4</value>
+  </data>
+  <data name="&gt;&gt;Panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="Panel5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ButtonX1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 3</value>
+  </data>
+  <data name="ButtonX1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 23</value>
+  </data>
+  <data name="ButtonItem_SetupDiffusePosition.Text" xml:space="preserve">
+    <value>Setup diffuse position</value>
+  </data>
+  <data name="ButtonItem_ResetDiffusePosition.Text" xml:space="preserve">
+    <value>Reset diffuse position</value>
+  </data>
+  <data name="ButtonX1.TabIndex" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="ButtonX1.Text" xml:space="preserve">
+    <value>Diffuse Position</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.Name" xml:space="preserve">
+    <value>ButtonX1</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.Parent" xml:space="preserve">
+    <value>Panel5</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ColorPickerButton_ShadingDiffuse.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
+        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ColorPickerButton_ShadingDiffuse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 31</value>
+  </data>
+  <data name="ColorPickerButton_ShadingDiffuse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 23</value>
+  </data>
+  <data name="ColorPickerButton_ShadingDiffuse.TabIndex" type="System.Int32, mscorlib">
+    <value>136</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingDiffuse.Name" xml:space="preserve">
+    <value>ColorPickerButton_ShadingDiffuse</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingDiffuse.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingDiffuse.Parent" xml:space="preserve">
+    <value>Panel5</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_ShadingDiffuse.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Panel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 218</value>
+  </data>
+  <data name="Panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 57</value>
+  </data>
+  <data name="Panel5.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="&gt;&gt;Panel5.Name" xml:space="preserve">
+    <value>Panel5</value>
+  </data>
+  <data name="&gt;&gt;Panel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Panel6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Panel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 93</value>
+  </data>
+  <data name="Panel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 55</value>
+  </data>
+  <data name="Panel6.TabIndex" type="System.Int32, mscorlib">
+    <value>141</value>
+  </data>
+  <data name="&gt;&gt;Panel6.Name" xml:space="preserve">
+    <value>Panel6</value>
+  </data>
+  <data name="&gt;&gt;Panel6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel6.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Panel7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Panel7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Panel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>431, 218</value>
+  </data>
+  <data name="Panel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 56</value>
+  </data>
+  <data name="Panel7.TabIndex" type="System.Int32, mscorlib">
+    <value>142</value>
+  </data>
+  <data name="&gt;&gt;Panel7.Name" xml:space="preserve">
+    <value>Panel7</value>
+  </data>
+  <data name="&gt;&gt;Panel7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel7.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel7.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Panel8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Panel8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Panel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>378, 93</value>
+  </data>
+  <data name="Panel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 92</value>
+  </data>
+  <data name="Panel8.TabIndex" type="System.Int32, mscorlib">
+    <value>143</value>
+  </data>
+  <data name="&gt;&gt;Panel8.Name" xml:space="preserve">
+    <value>Panel8</value>
+  </data>
+  <data name="&gt;&gt;Panel8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel8.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel8.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Panel9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="Panel9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Panel9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 93</value>
+  </data>
+  <data name="Panel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 92</value>
+  </data>
+  <data name="Panel9.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
+  </data>
+  <data name="&gt;&gt;Panel9.Name" xml:space="preserve">
+    <value>Panel9</value>
+  </data>
+  <data name="&gt;&gt;Panel9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel9.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel9.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>539, 285</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2594,1001 +3393,46 @@ It is inviisble.</value>
         +QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ButtonX_VisualMapPreview.Text" xml:space="preserve">
-    <value>Model Preview</value>
-  </data>
-  <data name="&gt;&gt;LabelX6.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="ButtonX_CollisionMapPreview.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;Panel8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertCollision.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel2.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="LabelX1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 23</value>
-  </data>
-  <data name="CheckBoxX_ConvertCollision.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 41</value>
-  </data>
-  <data name="&gt;&gt;Panel8.Name" xml:space="preserve">
-    <value>Panel8</value>
-  </data>
-  <data name="ComboBox_FogTyp.Items" xml:space="preserve">
-    <value>Subtle Fog #1</value>
-  </data>
-  <data name="LabelX6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
-  </data>
-  <data name="ColorPickerButton_ShadingDarkNeu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
-        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="Panel7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;Line3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX7.Parent" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom2.Tooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="CheckBoxX_ConvertModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="SwitchButton_ResizeTextures.OffText" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="&gt;&gt;LabelX20.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="SwitchButton_CenterModel.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 23</value>
-  </data>
-  <data name="NUD_Scaling.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
-  </data>
-  <data name="LabelX2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 23</value>
-  </data>
-  <data name="NUD_Scaling.SuperTooltip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;LabelX20.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="Button_ColEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 40</value>
-  </data>
-  <data name="LabelX5.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX20.Text" xml:space="preserve">
-    <value>Fog:</value>
-  </data>
-  <data name="&gt;&gt;LabelX4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="Panel9.TabIndex" type="System.Int32, mscorlib">
-    <value>144</value>
-  </data>
-  <data name="LabelX1.Text" xml:space="preserve">
-    <value>Visual Map:</value>
-  </data>
-  <data name="&gt;&gt;Panel3.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="Panel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>431, 218</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingDarkNeu.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="LabelX20.TabIndex" type="System.Int32, mscorlib">
-    <value>83</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertModel.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="LabelX_Modelfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 23</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_GraphicsEditor.Name" xml:space="preserve">
-    <value>ButtonX_GraphicsEditor</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadModel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Panel3.Name" xml:space="preserve">
-    <value>Panel3</value>
-  </data>
-  <data name="&gt;&gt;Panel8.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="Panel9.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
-    <value>Gray</value>
-  </data>
-  <data name="SwitchButton_EnableReduceVertices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Modelfile.Name" xml:space="preserve">
-    <value>LabelX_Modelfile</value>
-  </data>
-  <data name="ColorPickerButton_ShadingLight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 31</value>
-  </data>
-  <data name="&gt;&gt;Button_ColEditor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LabelX5.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Button_LoadModel.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
-    <value>Gray</value>
-  </data>
-  <data name="&gt;&gt;SuperTooltip1.Name" xml:space="preserve">
-    <value>SuperTooltip1</value>
-  </data>
-  <data name="CircularProgress1.TabIndex" type="System.Int32, mscorlib">
-    <value>97</value>
-  </data>
-  <data name="&gt;&gt;Panel5.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;LabelX20.Name" xml:space="preserve">
-    <value>LabelX20</value>
-  </data>
-  <data name="&gt;&gt;Line3.Name" xml:space="preserve">
-    <value>Line3</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip8" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="Panel8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Panel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LabelX3.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;Panel4.Name" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadModel.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="LabelX5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX5.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="Panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 58</value>
-  </data>
-  <data name="&gt;&gt;ComboItem1.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="Button_LoadModel.Text" xml:space="preserve">
-    <value>Load ...</value>
-  </data>
-  <data name="Panel3.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="ColorPickerButton_ShadingLight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 23</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="LabelX6.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip6" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ColorPickerButton_FogColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 3</value>
-  </data>
-  <data name="LabelX_Colfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 23</value>
-  </data>
-  <data name="SwitchButton_EnableReduceVertices.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Line2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_FogColor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_UpAxis.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="LabelX6.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;Button_LoadModel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel7.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Button_ConvertModel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_ResizeTextures.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Modelfile.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;Button_LoadCol.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX16.Parent" xml:space="preserve">
-    <value>Panel6</value>
-  </data>
-  <data name="Panel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>451, 93</value>
-  </data>
-  <data name="Button_LoadModel.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;LabelX3.Parent" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="Panel5.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;Panel3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom2.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="LabelX7.TabIndex" type="System.Int32, mscorlib">
-    <value>113</value>
-  </data>
-  <data name="ComboBox_FogTyp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 21</value>
-  </data>
-  <data name="LabelX4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="&gt;&gt;Line2.Name" xml:space="preserve">
-    <value>Line2</value>
-  </data>
-  <data name="Button_LoadModel.SuperTooltip7" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="LabelX16.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_FogColor.Name" xml:space="preserve">
-    <value>ColorPickerButton_FogColor</value>
-  </data>
-  <data name="LabelX9.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX_Colfile.Text" xml:space="preserve">
-    <value>&lt;i&gt;No file loaded!&lt;/i&gt;</value>
-  </data>
-  <data name="SwitchButton_EnableFog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 5</value>
-  </data>
-  <data name="Button_LoadModel.SuperTooltip2" xml:space="preserve">
-    <value>Load a model file.
-
-The Model is all what you can see.</value>
-  </data>
-  <data name="Button_LoadCol.SuperTooltip8" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="Line2.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="SwitchButton_CenterModel.OffText" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="NUD_Scaling.SuperTooltip8" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_VisualMapPreview.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="Panel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>378, 93</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertModel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX8.Parent" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertCollision.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="NUD_Scaling.ButtonClear.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.SuperTooltip2" xml:space="preserve">
-    <value>Set how big your model will be saved.
-You can change this option later in the Area Settings.
-
-Example:
-Scaling = 1 --&gt; Original Modelsize
-Scaling = 500 --&gt; Modelsize * 500</value>
-  </data>
-  <data name="NUD_Scaling.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;CircularProgress1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CircularProgress, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="NUD_Scaling.SuperTooltip6" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="NUD_Scaling.SuperTooltip7" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="Panel6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CircularProgress1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;LabelX16.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxX_ConvertModel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX1.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="ColorPickerButton_ShadingDarkNeu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 31</value>
-  </data>
-  <data name="ColorPickerButton_FogColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 23</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="Panel6.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Line3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>431, 0</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_VisualMapPreview.Parent" xml:space="preserve">
-    <value>Panel8</value>
-  </data>
-  <data name="&gt;&gt;LabelX9.Parent" xml:space="preserve">
-    <value>Panel2</value>
-  </data>
-  <data name="&gt;&gt;Panel7.Name" xml:space="preserve">
-    <value>Panel7</value>
-  </data>
-  <data name="&gt;&gt;LabelX9.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ComboBox_FogTyp.Name" xml:space="preserve">
-    <value>ComboBox_FogTyp</value>
-  </data>
-  <data name="$this.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainModelConverter</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip2" xml:space="preserve">
-    <value>This option is to reduce dublicate vertices.
-As higher the level and as bigger the model, as more space will be saved!</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Colfile.Name" xml:space="preserve">
-    <value>LabelX_Colfile</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_EnableReduceVertices.Name" xml:space="preserve">
-    <value>SwitchButton_EnableReduceVertices</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_FogColor.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;Panel6.Name" xml:space="preserve">
-    <value>Panel6</value>
-  </data>
-  <data name="NUD_Scaling.ButtonDropDown.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;LabelX6.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="Button_LoadCol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 41</value>
-  </data>
-  <data name="ColorPickerButton_FogColor.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="Button_ColEditor.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;ButtonX_GraphicsEditor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="LabelX_Colfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="&gt;&gt;Panel9.Name" xml:space="preserve">
-    <value>Panel9</value>
-  </data>
-  <data name="ColorPickerButton_FogColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
-        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="&gt;&gt;LabelX16.Name" xml:space="preserve">
-    <value>LabelX16</value>
-  </data>
-  <data name="ButtonX_CollisionMapPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Colfile.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="LabelX16.TabIndex" type="System.Int32, mscorlib">
-    <value>73</value>
-  </data>
-  <data name="&gt;&gt;Panel4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="SwitchButton_EnableFog.TabIndex" type="System.Int32, mscorlib">
-    <value>97</value>
-  </data>
-  <data name="Panel4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="NUD_Scaling.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
-    <value>Gray</value>
-  </data>
-  <data name="&gt;&gt;LabelX7.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="CheckBoxX_ConvertModel.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonDropDown.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Panel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 218</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingLight.Name" xml:space="preserve">
-    <value>ColorPickerButton_ShadingLight</value>
-  </data>
-  <data name="Line3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="Button_LoadCol.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="CircularProgress1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 20</value>
-  </data>
-  <data name="Panel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ComboBox_FogTyp.Items3" xml:space="preserve">
-    <value>Moderate Fog #2</value>
-  </data>
-  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_CollisionMapPreview.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="Panel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 93</value>
-  </data>
-  <data name="CheckBoxX_ConvertModel.TabIndex" type="System.Int32, mscorlib">
-    <value>104</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCustom.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ColorPickerButton_ShadingDarkNeu.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="SwitchButton_OptimizeTransChecks.OnText" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="&gt;&gt;Panel6.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 56</value>
-  </data>
-  <data name="&gt;&gt;ComboBoxEx_UpAxis.Parent" xml:space="preserve">
-    <value>Panel7</value>
-  </data>
-  <data name="LabelX8.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="SwitchButton_ResizeTextures.OnText" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="&gt;&gt;Line3.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;Line2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="LabelX9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 23</value>
-  </data>
-  <data name="ButtonX_GraphicsEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 40</value>
-  </data>
-  <data name="Panel7.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
-  </data>
-  <data name="LabelX1.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="SwitchButton_CenterModel.TabIndex" type="System.Int32, mscorlib">
-    <value>119</value>
-  </data>
-  <data name="&gt;&gt;CircularProgress1.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="CheckBoxX_ConvertCollision.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="Line2.TabIndex" type="System.Int32, mscorlib">
-    <value>91</value>
-  </data>
-  <data name="&gt;&gt;LabelX4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;NUD_Scaling.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 218</value>
-  </data>
-  <data name="&gt;&gt;LabelX8.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="LabelX16.Text" xml:space="preserve">
-    <value>Scaling:</value>
-  </data>
-  <data name="LabelX_Colfile.TabIndex" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
-  <data name="ComboBox_FogTyp.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="NUD_Scaling.ButtonFreeText.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Button_LoadCol.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="ButtonX_GraphicsEditor.Text" xml:space="preserve">
-    <value>Graphics Editor</value>
-  </data>
-  <data name="Line2.Text" xml:space="preserve">
-    <value>Line2</value>
-  </data>
-  <data name="ColorPickerButton_ShadingLight.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;SwitchButton_CenterModel.Parent" xml:space="preserve">
-    <value>Panel2</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_CollisionMapPreview.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="Panel9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;Panel5.Name" xml:space="preserve">
-    <value>Panel5</value>
-  </data>
-  <data name="Button_ConvertModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 20</value>
-  </data>
-  <data name="SwitchButton_EnableFog.OffText" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="LabelX_Modelfile.Text" xml:space="preserve">
-    <value>&lt;i&gt;No file loaded!&lt;/i&gt;</value>
-  </data>
-  <data name="Panel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 92</value>
-  </data>
-  <data name="&gt;&gt;LabelX5.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_ResizeTextures.Parent" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="LabelX4.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="Line3.Text" xml:space="preserve">
-    <value>Line3</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;Panel6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SwitchButton_ResizeTextures.TabIndex" type="System.Int32, mscorlib">
-    <value>107</value>
-  </data>
-  <data name="&gt;&gt;NUD_Scaling.Type" xml:space="preserve">
-    <value>DevComponents.Editors.DoubleInput, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="LabelX20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 23</value>
-  </data>
-  <data name="Button_LoadModel.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Button_ConvertModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 40</value>
-  </data>
-  <data name="LabelX7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 32</value>
-  </data>
-  <data name="&gt;&gt;LabelX2.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Panel3.TabIndex" type="System.Int32, mscorlib">
-    <value>138</value>
-  </data>
-  <data name="ComboBox_FogTyp.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ColorPickerButton_FogColor.TabIndex" type="System.Int32, mscorlib">
-    <value>135</value>
-  </data>
-  <data name="LabelX6.Text" xml:space="preserve">
-    <value>Light</value>
-  </data>
-  <data name="LabelX3.TabIndex" type="System.Int32, mscorlib">
-    <value>106</value>
-  </data>
-  <data name="&gt;&gt;LabelX10.Parent" xml:space="preserve">
-    <value>Panel7</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="Panel8.TabIndex" type="System.Int32, mscorlib">
-    <value>143</value>
-  </data>
-  <data name="Line3.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX_Modelfile.TabIndex" type="System.Int32, mscorlib">
-    <value>89</value>
-  </data>
-  <data name="NUD_Scaling.ButtonFreeText.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="Panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 93</value>
-  </data>
-  <data name="LabelX10.Text" xml:space="preserve">
-    <value>Up-Axis:</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_ResizeTextures.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SwitchButton, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;LabelX3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Panel6.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="ComboBox_FogTyp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
-  </data>
-  <data name="SwitchButton_ResizeTextures.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="SwitchButton_CenterModel.OnText" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="Panel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 93</value>
-  </data>
-  <data name="ColorPickerButton_ShadingDarkNeu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 23</value>
-  </data>
-  <data name="&gt;&gt;LabelX4.Name" xml:space="preserve">
-    <value>LabelX4</value>
-  </data>
-  <data name="ColorPickerButton_ShadingDarkNeu.TabIndex" type="System.Int32, mscorlib">
-    <value>136</value>
-  </data>
-  <data name="Panel4.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ButtonX_VisualMapPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="ButtonX_CollisionMapPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 40</value>
-  </data>
-  <data name="ColorPickerButton_FogColor.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX10.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="NUD_Scaling.ButtonFreeText.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>539, 285</value>
-  </data>
-  <data name="&gt;&gt;ComboItem2.Name" xml:space="preserve">
-    <value>ComboItem2</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_VisualMapPreview.Name" xml:space="preserve">
-    <value>ButtonX_VisualMapPreview</value>
-  </data>
-  <data name="Line3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 78</value>
-  </data>
-  <data name="NUD_Scaling.ButtonClear.Tooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Model Converter</value>
   </data>
-  <data name="&gt;&gt;LabelX5.Name" xml:space="preserve">
-    <value>LabelX5</value>
+  <data name="&gt;&gt;SuperTooltip1.Name" xml:space="preserve">
+    <value>SuperTooltip1</value>
   </data>
-  <data name="Button_ConvertModel.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Panel9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;LabelX16.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="Panel7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="ComboBox_FogTyp.Items8" xml:space="preserve">
-    <value>Hardcore Fog</value>
+  <data name="&gt;&gt;SuperTooltip1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.SuperTooltip, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;ComboItem1.Name" xml:space="preserve">
     <value>ComboItem1</value>
   </data>
-  <data name="NUD_Scaling.ButtonClear.Text" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;ComboItem1.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <data name="ComboBox_FogTyp.ItemHeight" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="SwitchButton_EnableReduceVertices.OnText" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="Panel5.TabIndex" type="System.Int32, mscorlib">
-    <value>140</value>
-  </data>
-  <data name="Button_LoadCol.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;SwitchButton_OptimizeTransChecks.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Button_ColEditor.Name" xml:space="preserve">
-    <value>Button_ColEditor</value>
-  </data>
-  <data name="LabelX8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
-  </data>
-  <data name="&gt;&gt;Panel9.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Modelfile.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Button_ConvertModel.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;ComboBox_FogTyp.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="CircularProgress1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="LabelX5.Text" xml:space="preserve">
-    <value>Shading:</value>
-  </data>
-  <data name="Line2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>547, 23</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCalculator.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LabelX9.TabIndex" type="System.Int32, mscorlib">
-    <value>118</value>
-  </data>
-  <data name="ColorPickerButton_ShadingLight.TabIndex" type="System.Int32, mscorlib">
-    <value>131</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_ShadingLight.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;ComboBox_FogTyp.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;SwitchButton_OptimizeTransChecks.Parent" xml:space="preserve">
-    <value>Panel4</value>
-  </data>
-  <data name="NUD_Scaling.ButtonCalculator.DisplayPosition" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ComboBoxEx_UpAxis.TabIndex" type="System.Int32, mscorlib">
-    <value>123</value>
-  </data>
-  <data name="SwitchButton_OptimizeTransChecks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 34</value>
-  </data>
-  <data name="&gt;&gt;LabelX1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="Button_LoadModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 12</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_VisualMapPreview.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="LabelX8.Text" xml:space="preserve">
-    <value>Optimize transparency checks:</value>
-  </data>
-  <data name="ComboBox_FogTyp.Items4" xml:space="preserve">
-    <value>Moderate Fog #3</value>
-  </data>
-  <data name="SuperTooltip1.DefaultTooltipSettings" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LabelX3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="ButtonX_GraphicsEditor.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Button_LoadModel.SuperTooltip3" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ComboItem2.Text" xml:space="preserve">
-    <value>Z</value>
-  </data>
-  <data name="LabelX9.Text" xml:space="preserve">
-    <value>Center Model:</value>
-  </data>
-  <data name="Panel8.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="ComboBox_FogTyp.Items7" xml:space="preserve">
-    <value>Very Intense Fog</value>
-  </data>
-  <data name="&gt;&gt;Panel5.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LabelX_Modelfile.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_GraphicsEditor.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="ButtonX_CollisionMapPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>121</value>
-  </data>
-  <data name="LabelX2.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="ComboBox_FogTyp.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="&gt;&gt;LabelX2.Name" xml:space="preserve">
-    <value>LabelX2</value>
-  </data>
-  <data name="Panel4.TabIndex" type="System.Int32, mscorlib">
-    <value>139</value>
+  <data name="&gt;&gt;ComboItem2.Name" xml:space="preserve">
+    <value>ComboItem2</value>
   </data>
   <data name="&gt;&gt;ComboItem2.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <data name="&gt;&gt;ComboBoxEx_UpAxis.Name" xml:space="preserve">
-    <value>ComboBoxEx_UpAxis</value>
+  <data name="&gt;&gt;ButtonItem_SetupDiffusePosition.Name" xml:space="preserve">
+    <value>ButtonItem_SetupDiffusePosition</value>
   </data>
-  <data name="&gt;&gt;Button_ConvertModel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.33, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  <data name="&gt;&gt;ButtonItem_SetupDiffusePosition.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <data name="ComboBoxEx_UpAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 21</value>
+  <data name="&gt;&gt;ButtonItem_ResetDiffusePosition.Name" xml:space="preserve">
+    <value>ButtonItem_ResetDiffusePosition</value>
   </data>
-  <data name="LabelX1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 12</value>
+  <data name="&gt;&gt;ButtonItem_ResetDiffusePosition.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <data name="Panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainModelConverter</value>
   </data>
-  <data name="LabelX1.TabIndex" type="System.Int32, mscorlib">
-    <value>87</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
-  <data name="LabelX20.SuperTooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Panel5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Button_ConvertModel.TabIndex" type="System.Int32, mscorlib">
-    <value>96</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

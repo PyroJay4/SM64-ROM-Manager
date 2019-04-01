@@ -134,4 +134,9 @@ Public Class Form_AddSpecialItem
     Private Sub IntegerInput1_ValueChanged(sender As Object, e As EventArgs) Handles IntegerInput_Alpha.ValueChanged
         specialData.Alpha = Math.Round(255 / 100 * IntegerInput_Alpha.Value)
     End Sub
+
+    Private Sub Button_Okay_Click(sender As Object, e As EventArgs) Handles Button_Okay.Click, Button_Cancle.Click
+        Close()
+    End Sub
+
 End Class

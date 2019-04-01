@@ -10,7 +10,7 @@ Public Class Settings
     Private Shared ReadOnly Property Instance As SettingsStruc
         Get
             If managerInstance Is Nothing Then
-                managerInstance = New SettingsManager(Of SettingsStruc)(Path.Combine(Application.StartupPath, "Data\Settings.json"), enableAutoSave)
+                managerInstance = New SettingsManager(Of SettingsStruc)(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Data\Settings.json"), enableAutoSave)
             End If
             Return managerInstance.Instance
         End Get
