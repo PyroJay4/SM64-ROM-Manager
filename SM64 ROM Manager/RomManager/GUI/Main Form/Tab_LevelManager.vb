@@ -79,6 +79,7 @@ Public Class Tab_LevelManager
             Return Not MainForm?.LoadingROM AndAlso Not LM_LoadingLevel AndAlso CurrentLevel IsNot Nothing
         End Get
     End Property
+
     Private ReadOnly Property AllowSavingAreaSettings As Boolean
         Get
             Return Not MainForm?.LoadingROM AndAlso Not LM_LoadingLevel AndAlso Not LM_LoadingAreaList AndAlso Not LM_LoadingArea AndAlso CurrentArea IsNot Nothing
@@ -488,7 +489,10 @@ Public Class Tab_LevelManager
 
     Private Sub Button_LM_AddEditSpecial_Click(sender As Object, e As EventArgs) Handles Button_LM_EditSpecial.Click, Button_LM_AddSpecial.Click
         If LM_LoadingLevel Then Return
+        StartAddEditSpecialItem(sender)
+    End Sub
 
+    Private Sub StartAddEditSpecialItem(sender As Object)
         Dim curArea As Levels.LevelArea = CurrentArea
         Dim sb As Levels.SpecialBox
         Dim lvi As ListViewItem

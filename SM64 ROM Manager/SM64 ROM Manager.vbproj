@@ -190,6 +190,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\SixTheteCockpit\PaintingControls\bin\Release\PaintingControls.dll</HintPath>
     </Reference>
+    <Reference Include="Pilz.Reflection.PluginSystem">
+      <HintPath>..\Shared Libs\Pilz.Reflection.PluginSystem.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
@@ -816,10 +819,6 @@
     <ProjectReference Include="..\OpenGLRenderer\OpenGLFactory.RenderingN.vbproj">
       <Project>{5e9f0b0a-f7b8-49a9-80fc-6dfe0d44cc84}</Project>
       <Name>OpenGLFactory.RenderingN</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PatchHelper\PluginCenter.vbproj">
-      <Project>{5044ef07-04a7-45af-aa3a-d261d7123a66}</Project>
-      <Name>PluginCenter</Name>
     </ProjectReference>
     <ProjectReference Include="..\PatchScripts\PatchScripts.vbproj">
       <Project>{c5de39f9-c9aa-48df-bd74-68a057012953}</Project>

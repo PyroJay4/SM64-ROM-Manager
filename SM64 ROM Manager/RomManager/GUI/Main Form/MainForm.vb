@@ -19,6 +19,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports System.Reflection
 Imports Microsoft.Win32
+Imports Pilz.Reflection
 
 Public Class MainForm
 
@@ -123,16 +124,16 @@ Public Class MainForm
 
         CheckCommandLineArgs()
 
-        PluginManager.LoadPlugins()
+        PluginManager.LoadPlugins(Path.Combine(Publics.MyDataPath, "Plugins"))
         AddMyPluginCommands()
 
         SearchForUpdates()
     End Sub
 
     Private Sub AddMyPluginCommands()
-        Dim lastFunc As Plugins.PluginFunction = Nothing
+        Dim lastFunc As PluginSystem.PluginFunction = Nothing
 
-        For Each func As Plugins.PluginFunction In PluginManager.GetAllImplementMethods("pluginmenu")
+        For Each func As PluginSystem.PluginFunction In PluginManager.GetFunctions("pluginmenu")
             Dim btn As New ButtonItem
 
             If lastFunc IsNot func Then
@@ -142,9 +143,10 @@ Public Class MainForm
             btn.Text = func.Params(0)
             btn.Tag = func
 
-            AddHandler btn.Click, Sub(sender As ButtonItem, e As EventArgs)
-                                      CType(sender.Tag, Plugins.PluginFunction).Invoke()
-                                  End Sub
+            AddHandler btn.Click,
+                Sub(sender As ButtonItem, e As EventArgs)
+                    CType(sender.Tag, PluginSystem.PluginFunction).Invoke()
+                End Sub
 
             ButtonItem_Bar_Plugins.SubItems.Add(btn)
             ButtonItem_Bar_Plugins.Visible = True

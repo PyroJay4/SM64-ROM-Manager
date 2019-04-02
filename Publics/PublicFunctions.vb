@@ -2,7 +2,7 @@
 Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
 Imports Microsoft.Win32
-Imports Publics.Plugins
+Imports Pilz.Reflection.PluginSystem
 Imports S3DFileParser
 Imports SM64_ROM_Manager.SettingsManager
 
@@ -59,7 +59,7 @@ Public Module Publics
         Dim dic As New Dictionary(Of String, String)
         p.Invoke(dic)
 
-        Dim convMethod As PluginFunction = p.Plugin.GetImplementMethods("loadermoduleload").FirstOrDefault(Function(n) n.Params(0) = p.Params(0))
+        Dim convMethod As PluginFunction = p.Plugin.GetFunctions("loadermoduleload").FirstOrDefault(Function(n) n.Params(0) = p.Params(0))
 
         Return New File3DLoaderModule(p.Params(0),
                                       CType([Delegate].CreateDelegate(GetType(File3DLoaderModule.LoaderAction), convMethod.Method), File3DLoaderModule.LoaderAction),
@@ -70,7 +70,7 @@ Public Module Publics
         Dim dic As New Dictionary(Of String, String)
         p.Invoke(dic)
 
-        Dim convMethod As PluginFunction = p.Plugin.GetImplementMethods("loadermoduleexport").FirstOrDefault(Function(n) n.Params(0) = p.Params(0))
+        Dim convMethod As PluginFunction = p.Plugin.GetFunctions("loadermoduleexport").FirstOrDefault(Function(n) n.Params(0) = p.Params(0))
 
         Return New File3DLoaderModule(p.Params(0),
                                       CType([Delegate].CreateDelegate(GetType(File3DLoaderModule.ExporterAction), convMethod.Method), File3DLoaderModule.ExporterAction),
@@ -83,7 +83,7 @@ Public Module Publics
 
             allLoaderModules.AddRange(File3DLoaderModule.LoaderModules)
 
-            For Each p In PluginManager.GetAllImplementMethods("loadermoduleimpformats")
+            For Each p In PluginManager.GetFunctions("loadermoduleimpformats")
                 allLoaderModules.Add(GetFileLoaderModuleFromP(p))
             Next
         End If
@@ -97,7 +97,7 @@ Public Module Publics
 
             allExporterModules.AddRange(File3DLoaderModule.ExporterModules)
 
-            For Each p In PluginManager.GetAllImplementMethods("loadermoduleexpformats")
+            For Each p In PluginManager.GetFunctions("loadermoduleexpformats")
                 allExporterModules.Add(GetFileExporterModuleFromP(p))
             Next
         End If

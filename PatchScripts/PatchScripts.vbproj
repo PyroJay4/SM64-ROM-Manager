@@ -141,10 +141,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PatchHelper\PluginCenter.vbproj">
-      <Project>{5044ef07-04a7-45af-aa3a-d261d7123a66}</Project>
-      <Name>PluginCenter</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Publics\Publics.vbproj">
       <Project>{5013D291-0C3D-45AE-B216-792260C246EC}</Project>
       <Name>Publics</Name>

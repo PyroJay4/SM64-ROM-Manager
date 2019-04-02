@@ -18,7 +18,7 @@ Public Module General
 
     Public ReadOnly Property DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
     Public ReadOnly Property ActSelectorDefaultValues As Byte() = New Byte() {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
-    Public ReadOnly Property PluginManager As New Plugins.PluginManager(Path.Combine(MyDataPath, "Plugins"))
+    Public ReadOnly Property PluginManager As New Pilz.Reflection.PluginSystem.PluginManager
 
     Public Declare Sub SetDPIAware Lib "user32.dll" Alias "SetProcessDPIAware" ()
 
