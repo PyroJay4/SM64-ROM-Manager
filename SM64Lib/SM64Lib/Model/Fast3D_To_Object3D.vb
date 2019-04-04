@@ -71,7 +71,7 @@ Namespace Global.SM64Lib.SM64Convert
                         Dim segAddr As Integer = F3D_MOVEMEM.GetSegmentedOffset(cmd)
                         Dim smode As Byte = F3D_MOVEMEM.GetLightValueMode(cmd)
 
-                        If smode = &H88 Then 'Load Shading Light
+                        If smode = &H86 Then 'Load Shading Light (Diffuse) Color
                             If knownShading.ContainsKey(segAddr) Then
                                 curColor = knownShading(segAddr)
                             Else

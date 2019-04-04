@@ -338,9 +338,9 @@ Namespace Global.SM64Lib.SM64Convert
                 defaultColor(17) = Math.Round(s.DiffusePosition.Y * d)
                 defaultColor(18) = Math.Round(s.DiffusePosition.Z * d)
             Else
-                defaultColor(16) = 28
-                defaultColor(17) = 28
-                defaultColor(18) = 28
+                defaultColor(16) = &H49 '= Most SM64E Like ||| Default by Nintendo: &H28
+                defaultColor(17) = &H49
+                defaultColor(18) = &H49
             End If
             defaultColor(19) = 0
             defaultColor(20) = 0
@@ -1087,7 +1087,7 @@ Namespace Global.SM64Lib.SM64Convert
         End Sub
 
         Private Function GetColorData(mt As Material, ByRef darkMult As Single) As Byte()
-            Dim colorData As Byte() = New Byte(15) {}
+            Dim colorData As Byte() = New Byte(8 + 16 - 1) {}
             Dim lr, lg, lb, a As Byte
             Dim dr, dg, db As UShort
             lr = (mt.Color >> 24) And &HFF
@@ -1103,19 +1103,22 @@ Namespace Global.SM64Lib.SM64Convert
             colorData(0) = lr
             colorData(1) = lg
             colorData(2) = lb
-            colorData(3) = a
+            colorData(3) = 0
             colorData(4) = lr
             colorData(5) = lg
             colorData(6) = lb
-            colorData(7) = a
+            colorData(7) = 0
             colorData(8) = dr
             colorData(9) = dg
             colorData(10) = db
-            colorData(11) = a
+            colorData(11) = 0
             colorData(12) = dr
             colorData(13) = dg
             colorData(14) = db
-            colorData(15) = a
+            colorData(15) = 0
+            For i As Integer = 16 To colorData.Length - 1
+                colorData(i) = defaultColor(i)
+            Next
             Return colorData
         End Function
 
@@ -1325,16 +1328,16 @@ Namespace Global.SM64Lib.SM64Convert
         Private Sub ImpCmd03(mat As Material, addOffset As UInteger)
             If mat.Type = MaterialType.ColorSolid OrElse mat.Type = MaterialType.ColorTransparent Then
                 Dim off As UInteger = startSegOffset + mat.TexColOffset
-                ImpF3D($"03 86 00 10 {Hex(curSeg)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
-                off = startSegOffset + mat.TexColOffset + &H8
                 ImpF3D($"03 88 00 10 {Hex(curSeg)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
+                off = startSegOffset + mat.TexColOffset + &H8
+                ImpF3D($"03 86 00 10 {Hex(curSeg)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
             Else
                 Dim off As UInteger = startSegOffset
                 If mat.EnableTextureColor Then off = startSegOffset + addOffset + mat.TexColOffset
-                ImpF3D($"03 86 00 10 {Hex(curSeg)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
+                ImpF3D($"03 88 00 10 {Hex(curSeg)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
                 off = startSegOffset + 8
                 If mat.EnableTextureColor Then off = startSegOffset + addOffset + mat.TexColOffset + &H8
-                ImpF3D($"03 88 00 10 {Hex(curSeg)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
+                ImpF3D($"03 86 00 10 {Hex(curSeg)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
             End If
         End Sub
 
