@@ -22,6 +22,7 @@ Namespace Global.SM64Lib
         Private ReadOnly areaSegBankList As New Dictionary(Of Byte, Dictionary(Of Byte, SegmentedBank))
         Private dicUpdatePatches As New Dictionary(Of String, String)
         Private _ProgramVersion As Version = Nothing
+        Private ReadOnly levelIDsToReset As New List(Of UShort)
 
         'Public ReadOnly Property Settings As New RomManagerSettings
         Public ReadOnly Property LevelInfoData As New Levels.LevelInfoDataTabelList
@@ -331,6 +332,17 @@ Namespace Global.SM64Lib
             Next
 
             fs.Close()
+
+            ResetListedLevelPointers()
+        End Sub
+
+        Private Sub ResetListedLevelPointers()
+            For Each id As UShort In levelIDsToReset.ToArray
+                If Not Levels.Where(Function(n) n.LevelID = id).Any Then
+                    ResetLevelPointer(id)
+                End If
+                levelIDsToReset.Remove(id)
+            Next
         End Sub
 
         ''' <summary>
@@ -398,7 +410,7 @@ Namespace Global.SM64Lib
         ''' <param name="level">The level to remove.</param>
         Public Sub RemoveLevel(level As Levels.Level)
             Levels.Remove(level)
-            ResetLevelPointer(level.LevelID)
+            levelIDsToReset.Add(level.LevelID)
         End Sub
 
         ''' <summary>
@@ -408,7 +420,7 @@ Namespace Global.SM64Lib
         ''' <param name="newLevelID">The new Level ID.</param>
         ''' <param name="EnableActSelector">Activate/Deactivate the Act Selector fot the Level.</param>
         Public Sub ChangeLevelID(level As Levels.Level, newLevelID As UShort, Optional EnableActSelector As Boolean? = Nothing)
-            ResetLevelPointer(level.LevelID)
+            levelIDsToReset.Add(level.LevelID)
             level.LevelID = newLevelID
             If EnableActSelector IsNot Nothing Then level.ActSelector = EnableActSelector
         End Sub
@@ -534,7 +546,7 @@ Namespace Global.SM64Lib
         ''' </summary>
         ''' <param name="info">The Levelinfo where to reset the pointer.</param>
         Public Sub ResetLevelPointer(info As Levels.LevelInfoDataTabelList.Level)
-            Dim fsPointer As New FileStream(Application.StartupPath & "\Data\Other\Original Level Pointers.bin", FileMode.Open, FileAccess.Read)
+            Dim fsPointer As New FileStream(Path.Combine(MyDataPath, "Other\Original Level Pointers.bin"), FileMode.Open, FileAccess.Read)
             Dim fsRom As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
 
             Dim data(&H13) As Byte
@@ -547,6 +559,8 @@ Namespace Global.SM64Lib
             fsPointer.Close()
             fsRom.Close()
         End Sub
+
+#Region "Segmented Banks"
 
         Public Function SetSegBank(BankID As Byte, RomStart As Integer, RomEnd As Integer) As SegmentedBank
             Return SetSegBank(BankID, RomStart, RomEnd, Nothing)
@@ -597,6 +611,8 @@ Namespace Global.SM64Lib
             Next
             Return sb.ToArray
         End Function
+
+#End Region
 
     End Class
 
