@@ -14,8 +14,7 @@ Public Class ApplyPPFDialog
         If Assembly.GetExecutingAssembly = Assembly.GetEntryAssembly Then
             SetDPIAware
 
-            Settings.AutoSave = False
-            Settings.SettingsConfigFilePath = Path.Combine(Application.StartupPath, "Data\Settings.json")
+            Settings.SettingsConfigFilePath = Path.Combine(MyDataPath, "Settings.json")
             StyleManager.Style = eStyle.Metro
             StyleManager.MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
         End If

@@ -37,7 +37,7 @@ Public Class ModelImporter
         InitializeComponent()
 
         If Assembly.GetExecutingAssembly = Assembly.GetEntryAssembly Then
-            Settings.SettingsConfigFilePath = Path.Combine(Application.StartupPath, "Data\Settings.json")
+            Settings.SettingsConfigFilePath = Path.Combine(MyDataPath, "Settings.json")
             StyleManager.Style = eStyle.Metro
             StyleManager.MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
         End If
