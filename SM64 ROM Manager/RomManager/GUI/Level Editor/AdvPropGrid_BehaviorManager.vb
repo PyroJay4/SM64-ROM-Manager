@@ -57,6 +57,18 @@ Namespace LevelEditor
             Dim behavaddrPropSet As New PropertySettings(behaviorPropName)
             behavaddrPropSet.ValueEditor = behavaddreditor
             AdvPropertyGrid1.PropertySettings.Add(behavaddrPropSet)
+
+            'Add Position/Rotation Editors (NumberInputEditor for Increment/Decrement)
+            If Settings.General.IntegerValueMode = 0 Then
+                For Each l As String In {"X", "Y", "Z"}
+                    For Each e As String In {"Position", "Rotation"}
+                        Dim xyzeditor As New PropertyIntegerEditorX With {.ShowUpDownButton = True, .MinValue = Int16.MinValue, .MaxValue = Int16.MaxValue}
+                        Dim xyzPropSet As New PropertySettings(e & l)
+                        xyzPropSet.ValueEditor = xyzeditor
+                        AdvPropertyGrid1.PropertySettings.Add(xyzPropSet)
+                    Next
+                Next
+            End If
         End Sub
 
         Public Sub LoadComboBoxObjComboEntries(objComboList As ObjectComboList)
@@ -164,6 +176,8 @@ Namespace LevelEditor
         End Sub
 
         Private Sub AdvPropertyGrid1_ConvertFromStringToPropertyValue(sender As Object, e As ConvertValueEventArgs) Handles AdvPropertyGrid1.ConvertFromStringToPropertyValue
+            Dim isConverted As Boolean = True
+
             Select Case e.PropertyDescriptor.PropertyType
                 Case GetType(System.Boolean)
                     If e.StringValue = "Yes" Then
@@ -171,73 +185,64 @@ Namespace LevelEditor
                     Else
                         e.TypedValue = False
                     End If
-                    e.IsConverted = True
 
                 Case GetType(System.Byte)
                     e.TypedValue = CByte(ValueFromText(e.StringValue.Trim))
-                    e.IsConverted = True
 
                 Case GetType(System.SByte)
                     e.TypedValue = CSByte(ValueFromText(e.StringValue.Trim))
-                    e.IsConverted = True
 
                 Case GetType(Int16)
                     e.TypedValue = CShort(ValueFromText(e.StringValue.Trim))
-                    e.IsConverted = True
 
                 Case GetType(UInt16)
                     e.TypedValue = CUShort(ValueFromText(e.StringValue.Trim))
-                    e.IsConverted = True
 
                 Case GetType(Int32)
                     e.TypedValue = CInt(ValueFromText(e.StringValue.Trim))
-                    e.IsConverted = True
 
                 Case GetType(UInt32)
                     e.TypedValue = CUInt(ValueFromText(e.StringValue.Trim))
-                    e.IsConverted = True
 
                 Case GetType(System.Single)
                     e.TypedValue = CSng(e.StringValue.Trim)
-                    e.IsConverted = True
 
                 Case GetType(System.Double)
                     e.TypedValue = CDbl(e.StringValue.Trim)
-                    e.IsConverted = True
 
                 Case GetType(System.Decimal)
                     e.TypedValue = CDec(e.StringValue.Trim)
-                    e.IsConverted = True
+
+                Case Else
+                    isConverted = False
 
             End Select
+
+            e.IsConverted = isConverted
         End Sub
 
         Private Sub AdvPropertyGrid1_ConvertPropertyValueToString(sender As Object, e As ConvertValueEventArgs) Handles AdvPropertyGrid1.ConvertPropertyValueToString
-            If e.IsConverted Then Return
-
-            If e.PropertyName.StartsWith(bParamPropName) Then
-                Return
-            End If
-
-            Select Case e.PropertyDescriptor.PropertyType
-                Case GetType(System.Boolean)
-                    If e.TypedValue = True Then
-                        e.StringValue = "Yes"
-                    Else
-                        e.StringValue = "No"
-                    End If
-                    e.IsConverted = True
-
-                Case GetType(System.Byte), GetType(SByte), GetType(Int16), GetType(UInt16), GetType(Int32), GetType(UInt32)
-                    If e.PropertyName = behaviorPropName Then
-                        'e.StringValue = TextFromValue(e.TypedValue, If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1))
-                        'e.IsConverted = True
-                    Else
-                        e.StringValue = TextFromValue(e.TypedValue)
+            If Not e.IsConverted AndAlso Not e.PropertyName.StartsWith(bParamPropName) Then
+                Select Case e.PropertyDescriptor.PropertyType
+                    Case GetType(System.Boolean)
+                        If e.TypedValue = True Then
+                            e.StringValue = "Yes"
+                        Else
+                            e.StringValue = "No"
+                        End If
                         e.IsConverted = True
-                    End If
 
-            End Select
+                    Case GetType(System.Byte), GetType(SByte), GetType(Int16), GetType(UInt16), GetType(Int32), GetType(UInt32)
+                        If e.PropertyName = behaviorPropName Then
+                            'e.StringValue = TextFromValue(e.TypedValue, If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1))
+                            'e.IsConverted = True
+                        Else
+                            e.StringValue = TextFromValue(e.TypedValue)
+                            e.IsConverted = True
+                        End If
+
+                End Select
+            End If
         End Sub
 
         Private Sub AdvPropertyGrid1_PropertiesLoaded(sender As Object, e As EventArgs) Handles AdvPropertyGrid1.PropertiesLoaded

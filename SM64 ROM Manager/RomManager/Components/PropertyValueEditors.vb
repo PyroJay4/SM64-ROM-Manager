@@ -391,4 +391,17 @@ Namespace PropertyValueEditors
 
     End Class
 
+    Friend Class PropertyIntegerEditorX
+        Inherits PropertyIntegerEditor
+
+        Public Overrides Function CreateEditor(propertyDescriptor As PropertyDescriptor, targetObject As Object) As IPropertyValueEditor
+            Dim editor As IPropertyValueEditor = MyBase.CreateEditor(propertyDescriptor, targetObject)
+
+            'Set Horizontal Text Alignment
+            editor.SetValue("InputHorizontalAlignment", eHorizontalAlignment.Left)
+
+            Return editor
+        End Function
+    End Class
+
 End Namespace

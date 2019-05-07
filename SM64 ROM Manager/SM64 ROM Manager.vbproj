@@ -141,9 +141,22 @@
     <Reference Include="Ben.Demystifier, Version=0.1.0.0, Culture=neutral, PublicKeyToken=a6d206e05440431a, processorArchitecture=MSIL">
       <HintPath>..\packages\Ben.Demystifier.0.1.4\lib\net45\Ben.Demystifier.dll</HintPath>
     </Reference>
-    <Reference Include="DevComponents.DotNetBar.Layout, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
-    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
-    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.Design">
+      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Layout, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar.Layout.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar.Schedule.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
     <Reference Include="FastColoredTextBox">
       <HintPath>..\..\..\..\Desktop\FastColoredTextBox-master\FastColoredTextBox\bin\Release\FastColoredTextBox.dll</HintPath>
     </Reference>
@@ -259,6 +272,7 @@
     </Compile>
     <Compile Include="RomManager\GUI\Level Editor\AdvPropGrid_BehaviorManager.vb" />
     <Compile Include="RomManager\GUI\Level Editor\Managed3DObject.vb" />
+    <Compile Include="RomManager\GUI\Level Editor\ManagedColFace.vb" />
     <Compile Include="RomManager\GUI\Level Editor\ManagedInstantWarp.vb" />
     <Compile Include="RomManager\GUI\Level Editor\ManagedWarp.vb" />
     <Compile Include="RomManager\GUI\Level Editor\InformationListsDialog.Designer.vb">
@@ -557,6 +571,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Level Editor\TextureEditor.resx">
       <DependentUpon>TextureEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\MainForm.de.resx">
       <DependentUpon>MainForm.vb</DependentUpon>

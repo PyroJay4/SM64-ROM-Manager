@@ -92,9 +92,6 @@ Namespace LevelEditor
         'Delegates
         Friend Delegate Function RemoveAllObjectsWhereExpression(mobj As Managed3DObject) As Boolean
 
-        'Constants
-        'Friend ReadOnly warpBehavIDs() = {&H13000720, &H13000AFC, &H13001C34, &H1300075C, &H13002F8C, &H13002F88, &H13002F90, &H13002F70, &H13002F74, &H13002F64, &H13002F6C, &H130056A4, &H13002F78, &H13002F94, &H13000780, &H13002F80, &H13002F7C, &H130007A0}
-
 #End Region
 
 #Region "Properties"
@@ -177,15 +174,6 @@ Namespace LevelEditor
 
 #End Region
 
-#Region "Enums"
-
-        'Public Enum ModelDrawMod
-        '    VisualMap
-        '    Collision
-        'End Enum
-
-#End Region
-
 #Region "Initalize"
 
         Public Sub New(rommgr As SM64Lib.RomManager, Level As Level, LevelID As Byte, AreaID As Byte)
@@ -255,8 +243,11 @@ Namespace LevelEditor
         End Sub
         Friend Delegate Sub ProgressControlOnInstanceHandler(enabled As Boolean)
         Friend Sub ProgressControlOnInstance(enabled As Boolean)
-            CircularProgress1.Visible = enabled
-            CircularProgress1.IsRunning = enabled
+            If enabled Then
+                CircularProgress1.Start()
+            Else
+                CircularProgress1.Stop()
+            End If
         End Sub
 
         Friend Sub ButtonItem10_Click(sender As Object, e As EventArgs) Handles ButtonItem3.Click
@@ -1263,6 +1254,14 @@ Namespace LevelEditor
             End Get
         End Property
 
+        Friend Sub ListViewEx_ColFaces_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListViewEx_ColFaces.SelectedIndexChanged
+            Dim selectedIndexes = ListViewEx_ColFaces.SelectedIndices
+            If selectedIndexes.Count > 0 Then
+                ShowColFaceProperties()
+                PanelDockContainer10.DockContainerItem.Selected = True
+            End If
+        End Sub
+
         Friend ReadOnly Property SelectedColFace As Face
             Get
                 If ListViewEx_ColFaces.SelectedIndices.Count = 0 Then Return Nothing
@@ -1978,27 +1977,7 @@ Namespace LevelEditor
 #Region "Warps"
 
         Friend Sub ShowWarpProterties()
-            'If SelectedWarp Is Nothing Then Return
-
             SetObjectsToPropertyGrid(SelectedWarps)
-
-            'loadingWarp = True
-            'Panel_WarpSettings.SuspendLayout()
-
-            ''My Warp-ID
-            'TextBoxX_WarpMyID.Text = TextFromValue(SelectedWarp.WarpID)
-
-            ''Destination Level
-            'ComboBoxEx_WarpToLevel.SelectedIndex = rommgr.LevelInfoData.IndexOf(rommgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = SelectedWarp.DestLevelID))
-
-            ''Destination Area
-            'TextBoxX_WarpToArea.Text = TextFromValue(SelectedWarp.DestAreaID)
-
-            ''Destination Warp-ID
-            'TextBoxX_WarpToID.Text = TextFromValue(SelectedWarp.DestWarpID)
-
-            'Panel_WarpSettings.ResumeLayout()
-            'loadingWarp = False
         End Sub
 
         Friend Sub UpdateWarpListViewItem()
@@ -2317,6 +2296,15 @@ Namespace LevelEditor
         End Sub
 
 #End Region
+
+#End Region
+
+#Region "Collision Faces"
+
+        Private Sub ShowColFaceProperties()
+
+            SetObjectsToPropertyGrid(SelectedColFaces)
+        End Sub
 
 #End Region
 

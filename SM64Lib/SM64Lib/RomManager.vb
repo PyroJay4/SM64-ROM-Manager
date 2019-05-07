@@ -364,7 +364,7 @@ Namespace Global.SM64Lib
         Private Sub SaveGlobalObjectBank(ByRef offset As Integer)
             Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
             Dim bw As New BinaryWriter(fs)
-            Dim seg As SegmentedBank = GlobalObjectBank.WriteToSeg(&H7, 0)
+            Dim seg As SegmentedBank = GlobalObjectBank.WriteToSeg(&H7)
 
             'Set Segmented Bank
             seg.RomStart = offset

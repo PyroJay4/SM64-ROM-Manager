@@ -1664,7 +1664,7 @@
   <data name="ButtonItem37.SuperTooltip4" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <assembly alias="DevComponents.DotNetBar2" name="DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04" />
+  <assembly alias="DevComponents.DotNetBar2" name="DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null" />
   <data name="ButtonItem37.SuperTooltip5" type="DevComponents.DotNetBar.eTooltipColor, DevComponents.DotNetBar2">
     <value>Gray</value>
   </data>

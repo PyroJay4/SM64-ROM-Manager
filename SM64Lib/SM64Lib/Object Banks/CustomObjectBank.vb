@@ -11,7 +11,7 @@ Namespace Global.SM64Lib.ObjectBanks
 
         Public ReadOnly Property Objects As New List(Of CustomObject)
 
-        Public Function WriteToSeg(bankID As Byte, offset As Integer)
+        Public Function WriteToSeg(bankID As Byte)
             Dim segStream As New MemoryStream
             Dim seg As New SegmentedBank(bankID, segStream)
             Dim data As New BinaryStreamData(segStream)

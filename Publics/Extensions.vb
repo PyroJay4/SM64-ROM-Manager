@@ -32,31 +32,3 @@ Namespace Global.System.Windows.Forms
     End Module
 
 End Namespace
-
-Namespace Global.DevComponents.DotNetBar
-
-    Public Module CircularProgressExtensions
-
-        ''' <summary>
-        ''' Makes the CircularProgress visible and set IsRunning to True.
-        ''' </summary>
-        ''' <param name="prog"></param>
-        <Extension>
-        Public Sub Start(prog As CircularProgress)
-            prog.Visible = True
-            prog.IsRunning = True
-        End Sub
-
-        ''' <summary>
-        ''' Makes the CircularProgress invisible and set IsRunning to False.
-        ''' </summary>
-        ''' <param name="prog"></param>
-        <Extension>
-        Public Sub [Stop](prog As CircularProgress)
-            prog.IsRunning = False
-            prog.Visible = False
-        End Sub
-
-    End Module
-
-End Namespace

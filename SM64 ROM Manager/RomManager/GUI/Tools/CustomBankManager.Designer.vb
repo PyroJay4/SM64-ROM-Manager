@@ -131,6 +131,7 @@ Partial Class CustomBankManager
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.ButtonX1)
         Me.Panel1.Controls.Add(Me.ItemListBox1)
@@ -147,7 +148,6 @@ Partial Class CustomBankManager
         Me.Panel2.Controls.Add(Me.ButtonX2)
         Me.Panel2.Controls.Add(Me.LabelX1)
         Me.Panel2.Controls.Add(Me.TextBoxX1)
-        Me.Panel2.Enabled = False
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(225, 52)
@@ -176,7 +176,7 @@ Partial Class CustomBankManager
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "CustomBankManager"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Custom Bank Manager"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0

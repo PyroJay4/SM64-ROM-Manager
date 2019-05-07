@@ -81,8 +81,13 @@ Namespace Global.SM64Lib.Geolayout
 
                 Case NewScriptCreationMode.Object
 
-                    '...
-                    Throw New NotImplementedException
+                    With Geolayoutscript
+                        .Add(New GeolayoutCommand("20 00 0F A0"))
+                        .Add(New GeolayoutCommand("04 00 00 00"))
+                        IndexForGeopointers = 2
+                        .Add(New GeolayoutCommand("05 00 00 00"))
+                        .Add(New GeolayoutCommand("01 00 00 00"))
+                    End With
 
             End Select
         End Sub

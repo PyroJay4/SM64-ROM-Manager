@@ -4,23 +4,34 @@ Imports SM64Lib.ObjectBanks
 
 Public Class CustomBankManager
 
+    'P r i v a t e   M e m b e r s
+
     Private rommgr As RomManager
     Private objBank As CustomObjectBank
     Private curObj As CustomObject = Nothing
 
+    'C o n s t r u c t o r s
+
     Public Sub New(rommgr As RomManager, objBank As CustomObjectBank)
         InitializeComponent()
         UpdateAmbientColors
+        Panel2.Enabled = False
         Me.rommgr = rommgr
         Me.objBank = objBank
     End Sub
 
+    'F e a t u r e s
+
     Private Sub LoadList()
+        ItemListBox1.SuspendLayout()
         ItemListBox1.Items.Clear()
 
         For Each obj As CustomObject In objBank.Objects
             AddItemToList(obj)
         Next
+
+        ItemListBox1.ResumeLayout()
+        ItemListBox1.Refresh()
     End Sub
 
     Private Function AddItemToList(obj As CustomObject) As ButtonItem
@@ -57,23 +68,27 @@ Public Class CustomBankManager
     End Function
 
     Private Function ImportNewModel(obj As CustomObject) As Boolean
-        Dim mdl As New ModelConverterGUI.MainModelConverter
-        mdl.CheckBoxX_ConvertModel.Enabled = False
+        If obj IsNot Nothing Then
+            Dim mdl As New ModelConverterGUI.MainModelConverter
+            mdl.CheckBoxX_ConvertModel.Enabled = False
+            mdl.CheckBoxX_ConvertCollision.Enabled = obj.Model IsNot Nothing
 
-        If mdl.ShowDialog = DialogResult.OK Then
-            obj.Model = mdl.ResModel
-            Return True
-        Else
-            Return False
+            If mdl.ShowDialog = DialogResult.OK Then
+                If obj.Model Is Nothing OrElse (mdl.CheckBoxX_ConvertCollision.Checked AndAlso mdl.CheckBoxX_ConvertModel.Checked) Then
+                    obj.Model = mdl.ResModel
+                ElseIf mdl.CheckBoxX_ConvertCollision.Checked Then
+                    obj.Model.Collision = mdl.ResModel.Collision
+                ElseIf mdl.CheckBoxX_ConvertModel.Checked Then
+                    obj.Model.Fast3DBuffer = mdl.ResModel.Fast3DBuffer
+                End If
+                Return True
+            End If
         End If
+        Return False
     End Function
 
     Private Sub RemoveCollision()
         curObj.Model.Collision = Nothing
-    End Sub
-
-    Private Sub CustomBankManager_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        LoadList()
     End Sub
 
     Private Sub RemoveCurObject()
@@ -87,6 +102,12 @@ Public Class CustomBankManager
 
         Panel2.Enabled = False
         curObj = Nothing
+    End Sub
+
+    'G U I
+
+    Private Sub CustomBankManager_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        LoadList()
     End Sub
 
     Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click
@@ -110,4 +131,7 @@ Public Class CustomBankManager
         End If
     End Sub
 
+    Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
+        CreateCustomObject()
+    End Sub
 End Class

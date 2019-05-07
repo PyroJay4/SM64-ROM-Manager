@@ -64,8 +64,6 @@ Namespace TypeConverters
             Dim objZ As Object = propertyValues("Z")
 
             Return New Vector3(objX, objY, objZ)
-
-            Throw New ArgumentException
         End Function
 
         Public Overrides Function GetProperties(context As ITypeDescriptorContext, value As Object, attributes() As Attribute) As PropertyDescriptorCollection

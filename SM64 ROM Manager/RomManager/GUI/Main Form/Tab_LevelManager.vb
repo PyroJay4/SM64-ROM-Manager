@@ -10,17 +10,29 @@ Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib
 Imports SM64Lib.Levels.Script.Commands
 Imports SM64Lib.Model
+Imports SM64Lib.Script
 
 Public Class Tab_LevelManager
+
+    'P r i v a t e   M e m b e r s
 
     Public Property MainForm As MainForm
     Public Property RomMgr As RomManager
 
-    'Flags
+    'F l a g s
+
     Private LM_LoadingAreaList As Boolean = False
     Private LM_SavingRom As Boolean = False
     Private LM_LoadingArea As Boolean = False
     Private LM_LoadingLevel As Boolean = False
+
+    'C o n s t r c u t o r s
+
+    Public Sub New()
+        InitializeComponent()
+    End Sub
+
+    'P r o p e r t i e s
 
     Private ReadOnly Property OpenAreaEditors As IEnumerable(Of Form_AreaEditor)
         Get
@@ -36,32 +48,27 @@ Public Class Tab_LevelManager
         End Get
     End Property
 
-    Private Function GetAreaEditor(level As Levels.Level)
-        Return OpenAreaEditors.FirstOrDefault(Function(n) n.cLevel Is level)
-    End Function
-
-    Public Sub New()
-        InitializeComponent()
-    End Sub
-
     Private ReadOnly Property CurrentLevel As Levels.Level
         Get
             If ListBoxAdv_LM_Levels.SelectedItem Is Nothing Then Return Nothing
             Return RomMgr.Levels(ListBoxAdv_LM_Levels.SelectedIndex)
         End Get
     End Property
+
     Private ReadOnly Property CurrentLevelID As Byte
         Get
             If ListBoxAdv_LM_Levels.SelectedIndex < 0 Then Return Nothing
             Return RomMgr.Levels(ListBoxAdv_LM_Levels.SelectedIndex).LevelID
         End Get
     End Property
+
     Private ReadOnly Property CurrentLevelIndex As Byte
         Get
             If ListBoxAdv_LM_Levels.SelectedIndex < 0 Then Return Nothing
             Return GetLevelIndexFromID(CurrentLevelID)
         End Get
     End Property
+
     Private ReadOnly Property CurrentArea As Levels.LevelArea
         Get
             Dim cl As Levels.Level = CurrentLevel
@@ -85,6 +92,12 @@ Public Class Tab_LevelManager
             Return Not MainForm?.LoadingROM AndAlso Not LM_LoadingLevel AndAlso Not LM_LoadingAreaList AndAlso Not LM_LoadingArea AndAlso CurrentArea IsNot Nothing
         End Get
     End Property
+
+    'F e a t u r e s   &   G U I
+
+    Private Function GetAreaEditor(level As Levels.Level)
+        Return OpenAreaEditors.FirstOrDefault(Function(n) n.cLevel Is level)
+    End Function
 
     Public Sub LoadListBoxEntries()
         Dim temp_1 As String = MyDataPath & "\Other\Object Bank Data\Bank 0x{0}.txt"
@@ -219,9 +232,11 @@ Public Class Tab_LevelManager
     Private Sub LM_SaveObjectBank0D() Handles ComboBox_LM_OB0x0D.SelectedIndexChanged
         If AllowSavingLevelSettings Then CurrentLevel?.ChangeObjectBank(CType(ComboBox_LM_OB0x0D.SelectedIndex, Levels.ObjectBank0x0D))
     End Sub
+
     Private Sub LM_SaveObjectBank0C() Handles ComboBox_LM_OB0x0C.SelectedIndexChanged
         If AllowSavingLevelSettings Then CurrentLevel?.ChangeObjectBank(CType(ComboBox_LM_OB0x0C.SelectedIndex, Levels.ObjectBank0x0C))
     End Sub
+
     Private Sub LM_SaveObjectBank09() Handles ComboBox_LM_OB0x09.SelectedIndexChanged
         If AllowSavingLevelSettings Then CurrentLevel?.ChangeObjectBank(CType(ComboBox_LM_OB0x09.SelectedIndex, Levels.ObjectBank0x0E))
     End Sub
@@ -234,16 +249,19 @@ Public Class Tab_LevelManager
             End With
         End If
     End Sub
+
     Private Sub LM_SaveActSelector() Handles SwitchButton_LM_ActSelector.ValueChanged
         If AllowSavingLevelSettings Then
             CurrentLevel.ActSelector = SwitchButton_LM_ActSelector.Value
         End If
     End Sub
+
     Private Sub LM_SaveHardcodedCameraSettings() Handles SwitchButton_LM_HardcodedCameraSettings.ValueChanged
         If AllowSavingLevelSettings Then
             CurrentLevel.HardcodedCameraSettings = SwitchButton_LM_HardcodedCameraSettings.Value
         End If
     End Sub
+
     Private Sub LM_SaveGameBackground() Handles ComboBox_LM_LevelBG.SelectedIndexChanged
         If AllowSavingLevelSettings Then
             With CurrentLevel.Background
@@ -253,6 +271,7 @@ Public Class Tab_LevelManager
             End With
         End If
     End Sub
+
     Private Sub ComboBoxEx_LM_BGMode_SelectedIndexChanged() Handles ComboBoxEx_LM_BGMode.SelectedIndexChanged
         Me.SuspendLayout()
 
@@ -443,11 +462,13 @@ Public Class Tab_LevelManager
         End With
         Return lvi
     End Function
+
     Private Function LM_GetNewSpecialBoxListViewItem(sd As Levels.SpecialBox, ItemNumber As Integer) As ListViewItem
         Dim lvi As ListViewItem = Me.LM_GetNewSpecialBoxListViewItem
         LM_UpdateSpecialBoxListViewItem(lvi, sd, ItemNumber)
         Return lvi
     End Function
+
     Private Sub LM_UpdateSpecialBoxListViewItem(lvi As ListViewItem, sd As Levels.SpecialBox, ItemNumber As Integer)
         With lvi
             .Tag = sd
@@ -597,33 +618,42 @@ Public Class Tab_LevelManager
         Dim YVal As Integer = 0
         Dim ZVal As Integer = 0
         Dim Title As String = ""
+        Dim dsp = CurrentLevel.GetDefaultPositionCmd
 
-        ShowX = True : ShowY = True : ShowZ = True
+        If dsp IsNot Nothing Then
+            'Edit all values
+            ShowX = True : ShowY = True : ShowZ = True
 
-        Dim curPos As Vector3 = clDefaultPosition.GetPosition(CurrentLevel.GetDefaultPositionCmd)
+            'Show current values (get from command)
+            Dim curPos As Vector3 = clDefaultPosition.GetPosition(dsp)
+            With curPos
+                XVal = .X
+                YVal = .Y
+                ZVal = .Z
+            End With
 
-        With curPos
-            XVal = .X
-            YVal = .Y
-            ZVal = .Z
-        End With
+            'Set Titel
+            Title = Form_Main_Resources.Text_StartPosition
 
-        Title = Form_Main_Resources.Text_StartPosition
+            'Open Dialog
+            Dim frm As New Form_SetUpPoint(Title, ShowX, ShowY, ShowZ, XVal, YVal, ZVal)
+            If frm.ShowDialog() = DialogResult.OK Then
+                'Get new values
+                XVal = ValueFromText(frm.IntegerInput_X.Value)
+                YVal = ValueFromText(frm.IntegerInput_Y.Value)
+                ZVal = ValueFromText(frm.IntegerInput_Z.Value)
 
-        Dim frm As New Form_SetUpPoint(Title, ShowX, ShowY, ShowZ, XVal, YVal, ZVal)
-        If frm.ShowDialog() <> DialogResult.OK Then Return
+                'Set new values
+                With curPos
+                    .X = XVal
+                    .Y = YVal
+                    .Z = ZVal
+                End With
 
-        XVal = ValueFromText(frm.IntegerInput_X.Value)
-        YVal = ValueFromText(frm.IntegerInput_Y.Value)
-        ZVal = ValueFromText(frm.IntegerInput_Z.Value)
-
-        With curPos
-            .X = XVal
-            .Y = YVal
-            .Z = ZVal
-        End With
-
-        clDefaultPosition.SetPosition(CurrentLevel.GetDefaultPositionCmd, curPos)
+                'Set new values to command
+                clDefaultPosition.SetPosition(dsp, curPos)
+            End If
+        End If
     End Sub
 
     Private Sub ListBoxAdv_LM_Areas_ItemClick(sender As Object, e As EventArgs) Handles ListBoxAdv_LM_Areas.SelectedItemChanged
@@ -806,32 +836,32 @@ Public Class Tab_LevelManager
 
     Private Sub ButtonItem15_Click(sender As Object, e As EventArgs) Handles ButtonItem15.Click
         If CurrentLevel IsNot Nothing Then
-            Dim sd As New ScriptDumper(Of Levels.Script.LevelscriptCommand, Levels.Script.LevelscriptCommandTypes)
-            sd.Script = CurrentLevel.Levelscript
-            sd.ShowDialog()
+            OpenScriptDumper(CurrentLevel.Levelscript)
         End If
     End Sub
 
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
         If CurrentArea IsNot Nothing Then
-            Dim frm As New ScriptDumper(Of Levels.Script.LevelscriptCommand, Levels.Script.LevelscriptCommandTypes)
-            frm.Script = CurrentArea.Levelscript
-            frm.ShowDialog()
+            OpenScriptDumper(CurrentArea.Levelscript)
         End If
     End Sub
 
     Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click
         If CurrentArea IsNot Nothing Then
-            Dim frm As New ScriptDumper(Of Geolayout.Script.GeolayoutCommand, Geolayout.Script.GeolayoutCommandTypes)
-            frm.Script = CurrentArea.Geolayout.Geolayoutscript
-            frm.ShowDialog()
+            OpenScriptDumper(CurrentArea.Geolayout.Geolayoutscript)
         End If
+    End Sub
+
+    Private Sub OpenScriptDumper(Of TCmd, eTypes)(script As BaseCommandCollection(Of TCmd, eTypes))
+        Dim frm As New ScriptDumper(Of TCmd, eTypes)
+        frm.Script = script
+        frm.Show()
     End Sub
 
     Private Sub ButtonX_LM_ScrollTexEditor_Click(sender As Object, e As EventArgs) Handles ButtonX_LM_ScrollTexEditor.Click
         If CurrentArea IsNot Nothing Then
             Dim editor As New ScrollTexEditor(CurrentArea)
-            editor.ShowDialog()
+            editor.Show()
         End If
     End Sub
 
@@ -854,7 +884,7 @@ Public Class Tab_LevelManager
     Private Sub ButtonItem24_Click(sender As Object, e As EventArgs) Handles ButtonItem24.Click
         Dim frm As New ValueInputDialog
         frm.InfoLabel.Text = Form_Main_Resources.Text_NewLength & ":"
-        frm.ValueTextBox.Text = TextFromValue(CurrentLevel.bank0x19.Length)
+        frm.ValueTextBox.Text = TextFromValue(CurrentLevel.Bank0x19.Length)
 
         Dim [continue] As Boolean = True
         Dim minSize As UInteger = RomManagerSettings.DefaultLevelscriptSize
@@ -865,7 +895,7 @@ Public Class Tab_LevelManager
                 If newVal < minSize Then
                     MessageBoxEx.Show(String.Format(Form_Main_Resources.MsgBox_InvalidBankSize, minSize.ToString("X")), Form_Main_Resources.MsgBox_InvalidBankSize_Title, MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
-                    CurrentLevel.bank0x19.Length = newVal
+                    CurrentLevel.Bank0x19.Length = newVal
                     MessageBoxEx.Show(Form_Main_Resources.MsgBox_BankSizeChangedSuccess, Form_Main_Resources.MsgBox_BankSizeChangedSuccess_Title, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     [continue] = False
                 End If
@@ -876,7 +906,11 @@ Public Class Tab_LevelManager
     End Sub
 
     Private Sub ButtonX_LM_LevelsMore_PopupOpen(sender As Object, e As EventArgs) Handles ButtonX_LM_LevelsMore.PopupOpen
-        ButtonItem24.Visible = CurrentLevel?.bank0x19 IsNot Nothing
+        ButtonItem24.Visible = CurrentLevel?.Bank0x19 IsNot Nothing
     End Sub
 
+    Private Sub ButtonX_CustomObjects_Click(sender As Object, e As EventArgs) Handles ButtonX_CustomObjects.Click
+        Dim mgr As New CustomBankManager(RomMgr, CurrentArea.CustomObjects)
+        mgr.Show()
+    End Sub
 End Class
