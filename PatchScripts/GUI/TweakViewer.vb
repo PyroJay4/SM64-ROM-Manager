@@ -162,10 +162,10 @@ Public Class TweakViewer
 
     Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles ButtonX2.Click
         Dim patch As PatchProfile = CType(ItemListBox1.SelectedItem, ButtonItem)?.Tag
-        Dim editor As New TweakProfileEditor
-
-        editor.Titel = patch.Name
-        editor.Description = patch.Description
+        Dim editor As New TweakProfileEditor With {
+            .Titel = patch.Name,
+            .Description = patch.Description
+        }
 
         Flyout1.Close()
 

@@ -24,7 +24,7 @@ Public Class PatchingManager
         xml.Save(patch.FileName)
     End Sub
 
-    Public Function ScriptToXElement(script As PatchScript)
+    Public Function ScriptToXElement(script As PatchScript) As XElement
         Dim references As String = ""
 
         For Each ref As String In script.References
@@ -34,7 +34,7 @@ Public Class PatchingManager
             references &= ref
         Next
 
-        Return <patch name=<%= script.Name %> description=<%= script.Description %> type=<%= CInt(script.Type) %> references=<%= references %>>
+        Return <patch name=<%= script.Name %> description=<%= script.Description %> type=<%= script.Type %> references=<%= references %>>
                    <%= script.Script %>
                </patch>
     End Function

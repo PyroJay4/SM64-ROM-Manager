@@ -537,7 +537,7 @@ Namespace Global.SM64Lib
             Dim fsPointer As New FileStream(Application.StartupPath & "\Data\Other\Original Level Pointers.bin", FileMode.Open, FileAccess.Read)
             Dim fsRom As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
 
-            Dim data(&H14) As Byte
+            Dim data(&H13) As Byte
             fsPointer.Position = info.Pointer - &H2AC094
             fsPointer.Read(data, 0, data.Count)
 
