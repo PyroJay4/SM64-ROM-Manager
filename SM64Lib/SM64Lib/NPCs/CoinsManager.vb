@@ -164,7 +164,7 @@ Namespace NPCs
         ''' Imports Kazes 3D Coins
         ''' </summary>
         Public Sub ImportKazesCoins()
-            Dim ppf As String = Path.Combine(MyDataPath, "Patchs\3D-Coins\Apply 3D Coins.ppf")
+            Dim ppf As String = MyFilePaths("Apply 3D Coins.ppf")
             PatchClass.ApplyPPF(RomManager.RomFile, ppf)
             PatchClass.UpdateChecksum(RomManager.RomFile)
         End Sub
@@ -173,7 +173,7 @@ Namespace NPCs
         ''' Remove 3D Coins [Experimental]
         ''' </summary>
         Public Sub Remove3DCoins()
-            Dim ppf As String = Path.Combine(MyDataPath, "Patchs\3D-Coins\Remove 3D Coins.ppf")
+            Dim ppf As String = MyFilePaths("Remove 3D Coins.ppf")
             PatchClass.ApplyPPF(RomManager.RomFile, ppf)
             PatchClass.UpdateChecksum(RomManager.RomFile)
         End Sub

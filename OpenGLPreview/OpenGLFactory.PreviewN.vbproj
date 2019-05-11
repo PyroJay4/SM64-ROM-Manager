@@ -145,9 +145,9 @@
       <Project>{5e9f0b0a-f7b8-49a9-80fc-6dfe0d44cc84}</Project>
       <Name>OpenGLFactory.RenderingN</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SettingsManager\SettingsManager.vbproj">
+    <ProjectReference Include="..\SettingsManager\SM64 ROM Manager.SettingsManager.vbproj">
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
-      <Name>SettingsManager</Name>
+      <Name>SM64 ROM Manager.SettingsManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
       <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>

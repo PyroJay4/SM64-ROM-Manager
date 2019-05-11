@@ -22,7 +22,6 @@ Partial Class Tab_TextManager
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Tab_TextManager))
         Me.GroupPanel_TM_DialogProps = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
@@ -36,11 +35,8 @@ Partial Class Tab_TextManager
         Me.ComboItem6 = New DevComponents.Editors.ComboItem()
         Me.ComboItem7 = New DevComponents.Editors.ComboItem()
         Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
-        Me.TabStrip_TM_TableSelection = New DevComponents.DotNetBar.TabStrip()
+        Me.TabStrip_TextTable = New DevComponents.DotNetBar.TabStrip()
         Me.LabelX_TM_BytesLeft = New DevComponents.DotNetBar.LabelX()
-        Me.TabItem_TM_Dialogs = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabItem_TM_LevelNames = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabItem_TM_ActNames = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.ListViewEx_TM_TableEntries = New DevComponents.DotNetBar.Controls.ListViewEx()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader13 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -51,7 +47,7 @@ Partial Class Tab_TextManager
         Me.TextBoxX_TM_TextEditor = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.GroupPanel_TM_DialogProps.SuspendLayout()
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabStrip_TM_TableSelection.SuspendLayout()
+        Me.TabStrip_TextTable.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupPanel_TM_DialogProps
@@ -179,23 +175,20 @@ Partial Class Tab_TextManager
         resources.ApplyResources(Me.LabelX18, "LabelX18")
         Me.LabelX18.Name = "LabelX18"
         '
-        'TabStrip_TM_TableSelection
+        'TabStrip_TextTable
         '
-        resources.ApplyResources(Me.TabStrip_TM_TableSelection, "TabStrip_TM_TableSelection")
-        Me.TabStrip_TM_TableSelection.AutoSelectAttachedControl = True
-        Me.TabStrip_TM_TableSelection.CanReorderTabs = False
-        Me.TabStrip_TM_TableSelection.CloseButtonPosition = DevComponents.DotNetBar.eTabCloseButtonPosition.Right
-        Me.TabStrip_TM_TableSelection.CloseButtonVisible = True
-        Me.TabStrip_TM_TableSelection.Controls.Add(Me.LabelX_TM_BytesLeft)
-        Me.TabStrip_TM_TableSelection.Cursor = System.Windows.Forms.Cursors.Default
-        Me.TabStrip_TM_TableSelection.ForeColor = System.Drawing.Color.Black
-        Me.TabStrip_TM_TableSelection.Name = "TabStrip_TM_TableSelection"
-        Me.TabStrip_TM_TableSelection.SelectedTab = Me.TabItem_TM_Dialogs
-        Me.TabStrip_TM_TableSelection.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-        Me.TabStrip_TM_TableSelection.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Top
-        Me.TabStrip_TM_TableSelection.Tabs.Add(Me.TabItem_TM_Dialogs)
-        Me.TabStrip_TM_TableSelection.Tabs.Add(Me.TabItem_TM_LevelNames)
-        Me.TabStrip_TM_TableSelection.Tabs.Add(Me.TabItem_TM_ActNames)
+        resources.ApplyResources(Me.TabStrip_TextTable, "TabStrip_TextTable")
+        Me.TabStrip_TextTable.AutoSelectAttachedControl = True
+        Me.TabStrip_TextTable.CanReorderTabs = False
+        Me.TabStrip_TextTable.CloseButtonPosition = DevComponents.DotNetBar.eTabCloseButtonPosition.Right
+        Me.TabStrip_TextTable.CloseButtonVisible = True
+        Me.TabStrip_TextTable.Controls.Add(Me.LabelX_TM_BytesLeft)
+        Me.TabStrip_TextTable.Cursor = System.Windows.Forms.Cursors.Default
+        Me.TabStrip_TextTable.ForeColor = System.Drawing.Color.Black
+        Me.TabStrip_TextTable.Name = "TabStrip_TextTable"
+        Me.TabStrip_TextTable.SelectedTab = Nothing
+        Me.TabStrip_TextTable.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+        Me.TabStrip_TextTable.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Top
         '
         'LabelX_TM_BytesLeft
         '
@@ -207,21 +200,6 @@ Partial Class Tab_TextManager
         Me.LabelX_TM_BytesLeft.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX_TM_BytesLeft.Name = "LabelX_TM_BytesLeft"
         Me.LabelX_TM_BytesLeft.TextAlignment = System.Drawing.StringAlignment.Far
-        '
-        'TabItem_TM_Dialogs
-        '
-        Me.TabItem_TM_Dialogs.Name = "TabItem_TM_Dialogs"
-        resources.ApplyResources(Me.TabItem_TM_Dialogs, "TabItem_TM_Dialogs")
-        '
-        'TabItem_TM_LevelNames
-        '
-        Me.TabItem_TM_LevelNames.Name = "TabItem_TM_LevelNames"
-        resources.ApplyResources(Me.TabItem_TM_LevelNames, "TabItem_TM_LevelNames")
-        '
-        'TabItem_TM_ActNames
-        '
-        Me.TabItem_TM_ActNames.Name = "TabItem_TM_ActNames"
-        resources.ApplyResources(Me.TabItem_TM_ActNames, "TabItem_TM_ActNames")
         '
         'ListViewEx_TM_TableEntries
         '
@@ -305,7 +283,7 @@ Partial Class Tab_TextManager
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.GroupPanel_TM_DialogProps)
-        Me.Controls.Add(Me.TabStrip_TM_TableSelection)
+        Me.Controls.Add(Me.TabStrip_TextTable)
         Me.Controls.Add(Me.ListViewEx_TM_TableEntries)
         Me.Controls.Add(Me.Line_TM_Green)
         Me.Controls.Add(Me.Line_TM_Warning1)
@@ -314,7 +292,7 @@ Partial Class Tab_TextManager
         Me.Name = "Tab_TextManager"
         Me.GroupPanel_TM_DialogProps.ResumeLayout(False)
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabStrip_TM_TableSelection.ResumeLayout(False)
+        Me.TabStrip_TextTable.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -331,11 +309,8 @@ Partial Class Tab_TextManager
     Friend WithEvents ComboItem6 As DevComponents.Editors.ComboItem
     Friend WithEvents ComboItem7 As DevComponents.Editors.ComboItem
     Friend WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TabStrip_TM_TableSelection As DevComponents.DotNetBar.TabStrip
+    Friend WithEvents TabStrip_TextTable As DevComponents.DotNetBar.TabStrip
     Friend WithEvents LabelX_TM_BytesLeft As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TabItem_TM_Dialogs As DevComponents.DotNetBar.TabItem
-    Friend WithEvents TabItem_TM_LevelNames As DevComponents.DotNetBar.TabItem
-    Friend WithEvents TabItem_TM_ActNames As DevComponents.DotNetBar.TabItem
     Friend WithEvents ListViewEx_TM_TableEntries As DevComponents.DotNetBar.Controls.ListViewEx
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader13 As ColumnHeader

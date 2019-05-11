@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5013D291-0C3D-45AE-B216-792260C246EC}</ProjectGuid>
+    <ProjectGuid>{745E6A23-6957-45F8-9305-88EC5474D077}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Publics</RootNamespace>
-    <AssemblyName>Publics</AssemblyName>
+    <RootNamespace>SM64_ROM_Manager.ModelConverterGUI</RootNamespace>
+    <AssemblyName>SM64 ROM Manager.ModelConverterGUI</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -18,7 +18,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Publics.xml</DocumentationFile>
+    <DocumentationFile>SM64 ROM Manager.ModelConverterGUI.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -27,7 +27,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Publics.xml</DocumentationFile>
+    <DocumentationFile>SM64 ROM Manager.ModelConverterGUI.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -54,20 +54,15 @@
     <Reference Include="EPPlus, Version=4.5.3.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.5.3.1\lib\net40\EPPlus.dll</HintPath>
     </Reference>
-    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
-      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Pilz.Reflection.PluginSystem">
-      <HintPath>..\Shared Libs\Pilz.Reflection.PluginSystem.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -86,33 +81,36 @@
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
+    <Import Include="TextValueConverter" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataTableEx.vb">
-      <SubType>Component</SubType>
+    <Compile Include="CollisionEditor.designer.vb">
+      <DependentUpon>CollisionEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\FilesFilterDialog.Designer.vb">
-      <DependentUpon>FilesFilterDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\FilesFilterDialog.vb">
+    <Compile Include="CollisionEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\StringInputDialog.Designer.vb">
-      <DependentUpon>StringInputDialog.vb</DependentUpon>
+    <Compile Include="DialogSetUpPoint.Designer.vb">
+      <DependentUpon>DialogSetUpPoint.vb</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\StringInputDialog.vb">
+    <Compile Include="DialogSetUpPoint.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Extensions.vb" />
-    <Compile Include="FileDialogFilters.Designer.vb">
+    <Compile Include="Language Resources\MainModelconverter_Resources.de.Designer.vb">
+      <DependentUpon>MainModelconverter_Resources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FileDialogFilters.resx</DependentUpon>
     </Compile>
-    <Compile Include="General.vb" />
-    <Compile Include="IconExtractor.vb" />
-    <Compile Include="ItemListBox.vb">
-      <SubType>Component</SubType>
+    <Compile Include="Language Resources\MainModelconverter_Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainModelconverter_Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MainModelConverter.designer.vb">
+      <DependentUpon>MainModelConverter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainModelConverter.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -129,29 +127,51 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PublicFunctions.vb" />
-    <Compile Include="SwapInts.vb" />
+    <Compile Include="TextureGraphicFormatEditor.Designer.vb">
+      <DependentUpon>TextureGraphicFormatEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TextureGraphicFormatEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dialogs\FilesFilterDialog.de.resx">
-      <DependentUpon>FilesFilterDialog.vb</DependentUpon>
+    <EmbeddedResource Include="CollisionEditor.de.resx">
+      <DependentUpon>CollisionEditor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\FilesFilterDialog.resx">
-      <DependentUpon>FilesFilterDialog.vb</DependentUpon>
+    <EmbeddedResource Include="CollisionEditor.resx">
+      <DependentUpon>CollisionEditor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\StringInputDialog.resx">
-      <DependentUpon>StringInputDialog.vb</DependentUpon>
+    <EmbeddedResource Include="DialogSetUpPoint.resx">
+      <DependentUpon>DialogSetUpPoint.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FileDialogFilters.resx">
+    <EmbeddedResource Include="Language Resources\MainModelconverter_Resources.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainModelconverter_Resources.de.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FileDialogFilters.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Resources\MainModelconverter_Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainModelconverter_Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainModelConverter.de.resx">
+      <DependentUpon>MainModelConverter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainModelConverter.resx">
+      <DependentUpon>MainModelConverter.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextureGraphicFormatEditor.de.resx">
+      <DependentUpon>TextureGraphicFormatEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextureGraphicFormatEditor.resx">
+      <DependentUpon>TextureGraphicFormatEditor.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -168,17 +188,33 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenGLCamera\OpenGLFactory.CameraN.vbproj">
-      <Project>{26ad6422-f5d8-48d3-ac57-398f9c094217}</Project>
-      <Name>OpenGLFactory.CameraN</Name>
+    <ProjectReference Include="..\N64Graphics\N64Graphics.csproj">
+      <Project>{d9258483-950c-46d1-a333-31f32492cd7e}</Project>
+      <Name>N64Graphics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SettingsManager\SettingsManager.vbproj">
+    <ProjectReference Include="..\OpenGLPreview\OpenGLFactory.PreviewN.vbproj">
+      <Project>{d3d19c7a-f7be-44f5-ace4-b0b5260f519f}</Project>
+      <Name>OpenGLFactory.PreviewN</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Publics\SM64 ROM Manager.Publics.vbproj">
+      <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>
+      <Name>SM64 ROM Manager.Publics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SettingsManager\SM64 ROM Manager.SettingsManager.vbproj">
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
-      <Name>SettingsManager</Name>
+      <Name>SM64 ROM Manager.SettingsManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
       <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
       <Name>SimpleFileParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
+      <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
+      <Name>SM64Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextValueConverter\TextValueConverter.vbproj">
+      <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>
+      <Name>TextValueConverter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

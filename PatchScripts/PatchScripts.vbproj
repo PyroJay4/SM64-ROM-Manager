@@ -148,9 +148,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Publics\Publics.vbproj">
+    <ProjectReference Include="..\Publics\SM64 ROM Manager.Publics.vbproj">
       <Project>{5013D291-0C3D-45AE-B216-792260C246EC}</Project>
-      <Name>Publics</Name>
+      <Name>SM64 ROM Manager.Publics</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
       <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>

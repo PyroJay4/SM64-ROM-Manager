@@ -11,7 +11,7 @@ Namespace Global.SM64Lib.Patching
 
 #Region "Other"
         Public Sub ApplyPPF(Romfile As String, PPFFile As String)
-            RunProcess(MyDataPath & "\Tools\ApplyPPF3.exe", String.Format("a ""{0}"" ""{1}""", Romfile, PPFFile))
+            RunProcess(MyFilePaths("ApplyPPF3.exe"), String.Format("a ""{0}"" ""{1}""", Romfile, PPFFile))
         End Sub
 
         Private Function RunProcess(Filename As String, Optional Args As String = "") As Integer
@@ -30,7 +30,7 @@ Namespace Global.SM64Lib.Patching
 
 #Region "Checksum"
         Public Sub UpdateChecksum(Romfile As String)
-            RunProcess(MyDataPath & "\Tools\rn64crc.exe", $"""{Romfile}"" -u")
+            RunProcess(MyFilePaths("rn64crc.exe"), $"""{Romfile}"" -u")
         End Sub
 
         Public Sub RestoreChecksum()

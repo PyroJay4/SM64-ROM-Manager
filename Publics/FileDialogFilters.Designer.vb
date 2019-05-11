@@ -43,7 +43,7 @@ Namespace My.Resources
         Public Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Publics.FileDialogFilters", GetType(FileDialogFilters).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("SM64_ROM_Manager.Publics.FileDialogFilters", GetType(FileDialogFilters).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan

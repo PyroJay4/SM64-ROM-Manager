@@ -13,8 +13,6 @@ Namespace Global.SM64Lib
 
     Public Module General
 
-        Private _MyDataPath As String = String.Empty
-
         Public DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
         Public FileIniParser As New IniParser.FileIniDataParser
         Public StreamIniParser As New IniParser.StreamIniDataParser
@@ -31,12 +29,9 @@ Namespace Global.SM64Lib
             Return value
         End Function
 
-        Public ReadOnly Property MyDataPath As String
+        Friend ReadOnly Property MyFilePaths As IReadOnlyDictionary(Of String, String)
             Get
-                If String.IsNullOrEmpty(_MyDataPath) Then
-                    _MyDataPath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Data")
-                End If
-                Return _MyDataPath
+                Return FilePathsConfiguration.DefaultConfiguration.Files
             End Get
         End Property
 
@@ -94,16 +89,6 @@ Namespace Global.SM64Lib
 
             Return newImage
         End Function
-
-        Public Sub RunSM64TextureFix(ByRef ObjFile As String)
-            Dim uvaObjFile As String = Path.GetDirectoryName(ObjFile) & "\" & Path.GetFileNameWithoutExtension(ObjFile) & "_uva" & Path.GetExtension(ObjFile)
-            If Not File.Exists(uvaObjFile) OrElse File.GetLastWriteTime(uvaObjFile) < File.GetLastWriteTime(ObjFile) Then
-                If File.Exists(uvaObjFile) Then File.Delete(uvaObjFile)
-                Dim pExe As String = MyDataPath & "\Tools\SM64 Texture Fix for Obj-Files.exe"
-                RunExeProcess(pExe, {ObjFile}, Path.GetDirectoryName(ObjFile), True)
-            End If
-            ObjFile = uvaObjFile
-        End Sub
 
         Public Function FindWaterBoxFromSpecialBox(WaterBoxes() As Collision.BoxData, SpecialBoxes As Levels.SpecialBox) As Collision.BoxData
             For Each b In WaterBoxes
@@ -253,20 +238,8 @@ Namespace Global.SM64Lib
         Public Sub UpdateChecksum(Romfile As String)
             Dim proc As New Process
             With proc.StartInfo
-                .FileName = MyDataPath & "\Tools\rn64crc.exe"
+                .FileName = MyFilePaths("rn64crc.exe")
                 .Arguments = String.Format("""{0}"" -u", Romfile)
-                .UseShellExecute = False
-                .CreateNoWindow = True
-            End With
-            proc.Start()
-            proc.WaitForExit()
-        End Sub
-
-        Public Sub RestoreChecksum(Romfile As String)
-            Dim proc As New Process
-            With proc.StartInfo
-                .FileName = MyDataPath & "\Tools\chksum64.exe"
-                .Arguments = String.Format("""{0}""", Romfile)
                 .UseShellExecute = False
                 .CreateNoWindow = True
             End With
@@ -277,7 +250,7 @@ Namespace Global.SM64Lib
         Public Function TrimString(str As String) As String
             Dim str1 As String
             Try
-                str1 = (New Regex("^[ \t]+|[ \t]+$", RegexOptions.IgnoreCase)).Replace(str, "")
+                str1 = New Regex("^[ \t]+|[ \t]+$", RegexOptions.IgnoreCase).Replace(str, "")
             Catch exception As Exception
                 exception.ToString()
                 str1 = str

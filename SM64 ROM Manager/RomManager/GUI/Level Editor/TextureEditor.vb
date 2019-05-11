@@ -2,7 +2,7 @@ Imports System.IO
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Validator
 Imports Microsoft.WindowsAPICodePack.Dialogs
-Imports Publics.My.Resources
+Imports SM64_ROM_Manager.Publics.My.Resources
 Imports S3DFileParser
 Imports SM64Lib
 Imports SM64Lib.Data

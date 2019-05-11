@@ -1,9 +1,19 @@
 ﻿Imports System.IO
 Imports Assimp
+Imports Assimp.Unmanaged
 
-Namespace AssimpLoader
+Namespace AssimpModule
 
     Public Class AssimpLoader
+
+        Public Shared PathToAssimpLib32 As String = "Assimp32.dll"
+        Public Shared PathToAssimpLib64 As String = "Assimp64.dll"
+
+        Friend Shared Sub LoadAssimpLibs()
+            If Not AssimpLibrary.Instance.IsLibraryLoaded Then
+                AssimpLibrary.Instance.LoadLibrary(PathToAssimpLib32, PathToAssimpLib64)
+            End If
+        End Sub
 
         Public Shared Function FromFile(fileName As String, LoadMaterials As Boolean, UpAxis As UpAxis) As Object3D
             Dim LoadedImages As New Dictionary(Of String, Image)

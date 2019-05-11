@@ -44,7 +44,7 @@ Partial Class TweakScriptEditor
         Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonX_CheckForErros = New DevComponents.DotNetBar.ButtonX()
-        Me.ItemListBox1 = New Publics.Controls.ItemListBox()
+        Me.ItemListBox1 = New SM64_ROM_Manager.Publics.Controls.ItemListBox()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -450,7 +450,7 @@ Partial Class TweakScriptEditor
     Friend WithEvents ButtonX2 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonItem3 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ItemListBox1 As Publics.Controls.ItemListBox
+    Friend WithEvents ItemListBox1 As SM64_ROM_Manager.Publics.Controls.ItemListBox
     Private WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Panel3 As Panel
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel

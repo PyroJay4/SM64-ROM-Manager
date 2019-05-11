@@ -811,13 +811,13 @@
       <Project>{e4cec3b1-5778-4d63-8c97-c95153cdc052}</Project>
       <Name>LIBMIO0</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ModelConverterGUI\ModelConverterGUI.vbproj">
+    <ProjectReference Include="..\ModelConverterGUI\SM64 ROM Manager.ModelConverterGUI.vbproj">
       <Project>{745e6a23-6957-45f8-9305-88ec5474d077}</Project>
-      <Name>ModelConverterGUI</Name>
+      <Name>SM64 ROM Manager.ModelConverterGUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ModelImporter\ModelImporterGUI.vbproj">
+    <ProjectReference Include="..\ModelImporter\SM64 ROM Manager.ModelImporterGUI.vbproj">
       <Project>{3f9044f1-1aa1-4d44-b68b-7087c59b818f}</Project>
-      <Name>ModelImporterGUI</Name>
+      <Name>SM64 ROM Manager.ModelImporterGUI</Name>
     </ProjectReference>
     <ProjectReference Include="..\N64Graphics\N64Graphics.csproj">
       <Project>{d9258483-950c-46d1-a333-31f32492cd7e}</Project>
@@ -839,13 +839,13 @@
       <Project>{c5de39f9-c9aa-48df-bd74-68a057012953}</Project>
       <Name>PatchScripts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Publics\Publics.vbproj">
+    <ProjectReference Include="..\Publics\SM64 ROM Manager.Publics.vbproj">
       <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>
-      <Name>Publics</Name>
+      <Name>SM64 ROM Manager.Publics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SettingsManager\SettingsManager.vbproj">
+    <ProjectReference Include="..\SettingsManager\SM64 ROM Manager.SettingsManager.vbproj">
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
-      <Name>SettingsManager</Name>
+      <Name>SM64 ROM Manager.SettingsManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
       <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>

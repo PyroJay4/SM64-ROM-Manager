@@ -7,8 +7,8 @@
     <ProjectGuid>{67593FF7-C1D1-4529-98C4-61CBD0615F08}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LicenseHelper</RootNamespace>
-    <AssemblyName>LicenseHelper</AssemblyName>
+    <RootNamespace>SM64_ROM_Manager.LicenseHelper</RootNamespace>
+    <AssemblyName>SM64 ROM Manager.LicenseHelper</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -11,6 +11,7 @@ Imports System.Runtime.CompilerServices
 Imports OfficeOpenXml
 Imports System.Globalization
 Imports System.Threading
+Imports SM64_ROM_Manager.SettingsManager
 
 Public Module General
 
@@ -38,6 +39,39 @@ Public Module General
             Return _SurfaceData
         End Get
     End Property
+
+    Public Sub SetSM64LibFilePathConfigs()
+        Dim config = SM64Lib.FilePathsConfiguration.DefaultConfiguration
+        config.SetFilePath("rn64crc.exe", Path.Combine(MyDataPath, "Tools\rn64crc.exe"))
+        config.SetFilePath("Apply 3D Coins.ppf", Path.Combine(MyDataPath, "Patchs\3D-Coins\Apply 3D Coins.ppf"))
+        config.SetFilePath("Remove 3D Coins.ppf", Path.Combine(MyDataPath, "Patchs\3D-Coins\Remove 3D Coins.ppf"))
+        config.SetFilePath("ApplyPPF3.exe", Path.Combine(MyDataPath, "Tools\ApplyPPF3.exe"))
+        config.SetFilePath("Level Tabel.json", Path.Combine(MyDataPath, "Other\Level Tabel.json"))
+        config.SetFilePath("Update-Patches.json", Path.Combine(MyDataPath, "Patchs\Update-Patches\Update-Patches.json"))
+        config.SetFilePath("Update Patches Folder", Path.Combine(MyDataPath, "Patchs\Update-Patches"))
+        config.SetFilePath("Text Profiles.json", Path.Combine(MyDataPath, "Text Manager\Profiles.json"))
+        config.SetFilePath("SM64_ROM_Manager.ppf", Path.Combine(MyDataPath, "Patchs\SM64_ROM_Manager.ppf"))
+        config.SetFilePath("sm64extend.exe", Path.Combine(MyDataPath, "Tools\sm64extend.exe"))
+        config.SetFilePath("Original Level Pointers.bin", Path.Combine(MyDataPath, "Other\Original Level Pointers.bin"))
+    End Sub
+
+    Public Sub DoDefaultInitsAfterApplicationStartup()
+        'Load Settings
+        Settings.SettingsConfigFilePath = Path.Combine(MyDataPath, "Settings.json")
+
+        'Set Style
+        SetVisualTheme()
+
+        'Set language
+        SetCurrentLanguageCulture(Settings.General.Language)
+
+        'Set File Path Config
+        SetSM64LibFilePathConfigs()
+
+        'Set paths to Assimp-Libs
+        AssimpModule.AssimpLoader.PathToAssimpLib32 = Path.Combine(MyDataPath, "Lib\Assimp32.dll")
+        AssimpModule.AssimpLoader.PathToAssimpLib64 = Path.Combine(MyDataPath, "Lib\Assimp64.dll")
+    End Sub
 
     Public Sub SetCurrentLanguageCulture(cultureName As String)
         Dim culture As CultureInfo

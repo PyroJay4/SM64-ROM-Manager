@@ -17,7 +17,7 @@ Namespace Global.SM64Lib
 
     Public Class RomManager
 
-        Private textsProfile As Text.Profiles.TextProfile
+        Private textsProfile As Text.Profiles.TextProfileInfo
         Private ReadOnly segBankList As New Dictionary(Of Byte, SegmentedBank)
         Private ReadOnly areaSegBankList As New Dictionary(Of Byte, Dictionary(Of Byte, SegmentedBank))
         Private dicUpdatePatches As New Dictionary(Of String, String)
@@ -29,7 +29,7 @@ Namespace Global.SM64Lib
         Public ReadOnly Property Levels As New Levels.LevelList
         Public Property RomFile As String = ""
         Public ReadOnly Property IsSM64EditorMode As Boolean = False
-        Public ReadOnly Property TextTables As Text.TextTable() = {Nothing, Nothing, Nothing}
+        Public ReadOnly Property TextTables As New List(Of Text.TextTable)
         Public ReadOnly Property MusicList As New MusicList
         Public Property GlobalObjectBank As CustomObjectBank = Nothing
 
@@ -87,7 +87,7 @@ Namespace Global.SM64Lib
         Public Sub New(FileName As String)
             RomFile = FileName
 
-            LevelInfoData.ReadFromFile(MyDataPath & "\Other\Level Tabel.json")
+            LevelInfoData.ReadFromFile(MyFilePaths("Level Tabel.json"))
 
             SetSegBank(&H0, 0, New FileInfo(FileName).Length) 'Bank 0 means the whole ROM.
             SetSegBank(&H15, &H2ABCA0, &H2AC6B0)
@@ -98,7 +98,7 @@ Namespace Global.SM64Lib
         End Sub
 
         Private Sub LoadDictionaryUpdatePatches()
-            Dim jsFile As String = File.ReadAllText(MyDataPath & "\Patchs\Update-Patches\Update-Patches.json")
+            Dim jsFile As String = File.ReadAllText(MyFilePaths("Update-Patches.json"))
             Dim obj As JObject = JObject.Parse(jsFile)
 
             dicUpdatePatches = obj.ToObject(GetType(Dictionary(Of String, String)))
@@ -154,7 +154,7 @@ Namespace Global.SM64Lib
             If Not DontPatchUpdates Then
                 'Patch update-patches
                 For Each kvp As KeyValuePair(Of String, String) In dicUpdatePatches.Where(Function(n) New Version(n.Key) > Me.ProgramVersion).OrderBy(Function(n) n.Key)
-                    PatchClass.ApplyPPF(RomFile, MyDataPath & "\Patchs\Update-Patches\" & kvp.Value)
+                    PatchClass.ApplyPPF(RomFile, Path.Combine(MyFilePaths("Update Patches Folder"), kvp.Value))
                     needUpdateChecksum = True
                 Next
             End If
@@ -163,7 +163,7 @@ Namespace Global.SM64Lib
             WriteVersion(Assembly.GetEntryAssembly.GetName.Version)
 
             'Texts
-            SaveAllTextTables()
+            SaveAllTextTables(needUpdateChecksum,)
 
             'Music
             Dim lastpos As Integer
@@ -177,11 +177,12 @@ Namespace Global.SM64Lib
             'Levels
             SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then
 
-            If needUpdateChecksum Then PatchClass.UpdateChecksum(RomFile)
+            If needUpdateChecksum Then _
+                PatchClass.UpdateChecksum(RomFile)
         End Sub
 
         Private Sub WriteVersion(newVersion As Version)
-            Me.ProgramVersion = newVersion
+            ProgramVersion = newVersion
 
             Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
             fs.Position = &H1201FFC
@@ -215,56 +216,74 @@ Namespace Global.SM64Lib
             Return Me.ProgramVersion
         End Function
 
-        ''' <summary>
-        ''' </summary>
-        ''' <param name="index">0 = Dialogs, 1 = Level Names, 2 = Act Names</param>
-        Private Function GetTextProfile(index As Integer) As Text.Profiles.TextSection
+        Private Sub LoadTextProfilesIfNotLoaded()
             If textsProfile Is Nothing Then
-                textsProfile = JObject.Parse(File.ReadAllText(Path.Combine(MyDataPath, "Text Manager\Profiles.json"))).ToObject(Of Text.Profiles.TextProfile)
+                textsProfile = JObject.Parse(File.ReadAllText(MyFilePaths("Text Profiles.json"))).ToObject(Of Text.Profiles.TextProfileInfo)
             End If
+        End Sub
 
-            Select Case index
-                Case 0
-                    Return textsProfile.Dialogs
-                Case 1
-                    Return textsProfile.Levels
-                Case 2
-                    Return textsProfile.Acts
-            End Select
-
-            Return Nothing
+        Private Function GetTextProfile(name As String) As Text.Profiles.TextSectionInfo
+            LoadTextProfilesIfNotLoaded()
+            Return textsProfile.GetSection(name)
         End Function
 
         ''' <summary>
         ''' Loads the Text Tables.
         ''' </summary>
-        ''' <param name="index">0 = Dialogs, 1 = Level Names, 2 = Act Names</param>
-        Public Sub LoadTextTable(index As Integer, Optional CheckIfAlreadyLoaded As Boolean = True)
-            If CheckIfAlreadyLoaded AndAlso TextTables(index) IsNot Nothing Then Return
+        Public Function LoadTextTable(name As String, Optional CheckIfAlreadyLoaded As Boolean = True) As Text.TextTable
+            Dim table As Text.TextTable = TextTables.FirstOrDefault(Function(n) n.TextSectionInfo.Name = name)
 
-            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Read)
-            Dim prof As Text.Profiles.TextSection = GetTextProfile(index)
+            If table Is Nothing OrElse Not CheckIfAlreadyLoaded Then
+                Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Read)
+                Dim prof As Text.Profiles.TextSectionInfo = GetTextProfile(name)
 
-            Try
-                TextTables(index) = New Text.TextTable(index, prof.Data.DataMaxSize, prof.Data.TableMaxItems)
-                TextTables(index).FromStream(fs, &H2000000, SegmentedBanks.Bank0x2RomStart, prof.Data.TableRomOffset)
-            Catch ex As Exception
-            End Try
+                If table IsNot Nothing Then
+                    TextTables.Remove(table)
+                End If
 
-            fs.Close()
+                Try
+                    table = New Text.TextTable(prof)
+                    TextTables.Add(table)
+                    table.FromStream(fs)
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+
+                fs.Close()
+            End If
+
+            Return table
+        End Function
+
+        ''' <summary>
+        ''' Gets the all known text sections
+        ''' </summary>
+        ''' <returns></returns>
+        Public Function GetTextSectionInfos() As Text.Profiles.TextSectionInfo()
+            LoadTextProfilesIfNotLoaded()
+            Return textsProfile.Sections.ToArray
+        End Function
+
+        ''' <summary>
+        ''' Saves the Text Tables.
+        ''' </summary>
+        ''' <param name="table">The text table to save.</param>
+        Public Sub SaveTextTable(table As Text.TextTable)
+            SaveTextTable(Nothing, table)
         End Sub
 
         ''' <summary>
         ''' Saves the Text Tables.
         ''' </summary>
-        ''' <param name="index">0 = Dialogs, 1 = Level Names, 2 = Act Names</param>
-        Public Sub SaveTextTable(index As Integer)
-            If TextTables(index) Is Nothing Then Return
-
+        ''' <param name="needUpdateChecksum">Outputs if the checksumarea was changed and need to be updated.</param>
+        ''' <param name="table">The text table to save.</param>
+        Public Sub SaveTextTable(ByRef needUpdateChecksum As Boolean, table As Text.TextTable)
             Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
-            Dim prof As Text.Profiles.TextSection = GetTextProfile(index)
+            Dim prof As Text.Profiles.TextSectionInfo = table.TextSectionInfo
 
-            TextTables(index).ToStream(fs, SegmentedBanks.Bank0x2RomStart, &H2000000, ValueFromText(prof.Data.TableRomOffset), ValueFromText(prof.Data.DataRomOffset), ValueFromText(prof.Data.TableRomOffset2))
+            table.ToStream(fs)
+            table.NeedToSave = False
+            needUpdateChecksum = needUpdateChecksum Or (prof.Segmented.BankAddress = &H80245000UI)
 
             fs.Close()
         End Sub
@@ -274,8 +293,19 @@ Namespace Global.SM64Lib
         ''' </summary>
         ''' <param name="IgnoreNeedToSave">If True, everything will be saved even if there are no changes.</param>
         Public Sub SaveAllTextTables(Optional IgnoreNeedToSave As Boolean = False)
-            For i As Integer = 0 To TextTables.Length - 1
-                If IgnoreNeedToSave OrElse TextTables(i)?.NeedToSave Then SaveTextTable(i)
+            SaveAllTextTables(Nothing,)
+        End Sub
+
+        ''' <summary>
+        ''' Saves all Text Tables.
+        ''' </summary>
+        ''' <param name="needUpdateChecksum">Outputs if the checksumarea was changed and need to be updated.</param>
+        ''' <param name="IgnoreNeedToSave">If True, everything will be saved even if there are no changes.</param>
+        Public Sub SaveAllTextTables(ByRef needUpdateChecksum As Boolean, Optional IgnoreNeedToSave As Boolean = False)
+            For Each table As Text.TextTable In TextTables
+                If IgnoreNeedToSave OrElse table.NeedToSave Then
+                    SaveTextTable(needUpdateChecksum, table)
+                End If
             Next
         End Sub
 
@@ -463,9 +493,9 @@ Namespace Global.SM64Lib
             'Patch things
             Dim proc As New Process
             With proc.StartInfo
-                .FileName = MyDataPath & "\Tools\ApplyPPF3.exe"
+                .FileName = MyFilePaths("ApplyPPF3.exe")
                 .UseShellExecute = False
-                .Arguments = String.Format("a ""{0}"" ""{1}""", RomFile, MyDataPath & "\Patchs\SM64_ROM_Manager.ppf")
+                .Arguments = String.Format("a ""{0}"" ""{1}""", RomFile, MyFilePaths("SM64_ROM_Manager.ppf"))
                 .CreateNoWindow = True
             End With
             proc.Start()
@@ -512,7 +542,7 @@ Namespace Global.SM64Lib
             'Extend to 64MB
             Dim proc As New Process
             With proc.StartInfo
-                .FileName = MyDataPath & "\Tools\sm64extend.exe"
+                .FileName = MyFilePaths("sm64extend.exe")
                 .UseShellExecute = False
                 .Arguments = String.Format("-a 16 -f ""{0}"" ""{0}""", RomFile)
                 .CreateNoWindow = True
@@ -546,7 +576,7 @@ Namespace Global.SM64Lib
         ''' </summary>
         ''' <param name="info">The Levelinfo where to reset the pointer.</param>
         Public Sub ResetLevelPointer(info As Levels.LevelInfoDataTabelList.Level)
-            Dim fsPointer As New FileStream(Path.Combine(MyDataPath, "Other\Original Level Pointers.bin"), FileMode.Open, FileAccess.Read)
+            Dim fsPointer As New FileStream(Path.Combine(MyFilePaths("Original Level Pointers.bin")), FileMode.Open, FileAccess.Read)
             Dim fsRom As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
 
             Dim data(&H13) As Byte

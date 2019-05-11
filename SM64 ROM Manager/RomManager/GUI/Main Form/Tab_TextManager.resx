@@ -139,7 +139,7 @@
     <value>LabelX22</value>
   </data>
   <data name="&gt;&gt;LabelX22.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX22.Parent" xml:space="preserve">
     <value>GroupPanel_TM_DialogProps</value>
@@ -163,7 +163,7 @@
     <value>LabelX21</value>
   </data>
   <data name="&gt;&gt;LabelX21.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX21.Parent" xml:space="preserve">
     <value>GroupPanel_TM_DialogProps</value>
@@ -193,7 +193,7 @@
     <value>ComboBoxEx_TM_DialogPosY</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.Parent" xml:space="preserve">
     <value>GroupPanel_TM_DialogProps</value>
@@ -214,7 +214,7 @@
     <value>IntegerInput_TM_DialogSize</value>
   </data>
   <data name="&gt;&gt;IntegerInput_TM_DialogSize.Type" xml:space="preserve">
-    <value>DevComponents.Editors.IntegerInput, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.IntegerInput, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;IntegerInput_TM_DialogSize.Parent" xml:space="preserve">
     <value>GroupPanel_TM_DialogProps</value>
@@ -247,7 +247,7 @@
     <value>ComboBoxEx_TM_DialogPosX</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.Parent" xml:space="preserve">
     <value>GroupPanel_TM_DialogProps</value>
@@ -271,7 +271,7 @@
     <value>LabelX18</value>
   </data>
   <data name="&gt;&gt;LabelX18.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX18.Parent" xml:space="preserve">
     <value>GroupPanel_TM_DialogProps</value>
@@ -295,7 +295,7 @@
     <value>GroupPanel_TM_DialogProps</value>
   </data>
   <data name="&gt;&gt;GroupPanel_TM_DialogProps.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GroupPanel_TM_DialogProps.Parent" xml:space="preserve">
     <value>$this</value>
@@ -303,7 +303,7 @@
   <data name="&gt;&gt;GroupPanel_TM_DialogProps.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="TabStrip_TM_TableSelection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="TabStrip_TextTable.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="LabelX_TM_BytesLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -322,45 +322,36 @@
     <value>LabelX_TM_BytesLeft</value>
   </data>
   <data name="&gt;&gt;LabelX_TM_BytesLeft.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX_TM_BytesLeft.Parent" xml:space="preserve">
-    <value>TabStrip_TM_TableSelection</value>
+    <value>TabStrip_TextTable</value>
   </data>
   <data name="&gt;&gt;LabelX_TM_BytesLeft.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="TabStrip_TM_TableSelection.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="TabStrip_TextTable.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="TabStrip_TM_TableSelection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="TabStrip_TextTable.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
   </data>
-  <data name="TabItem_TM_Dialogs.Text" xml:space="preserve">
-    <value>Dialogs</value>
-  </data>
-  <data name="TabStrip_TM_TableSelection.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="TabStrip_TextTable.Size" type="System.Drawing.Size, System.Drawing">
     <value>416, 23</value>
   </data>
-  <data name="TabStrip_TM_TableSelection.TabIndex" type="System.Int32, mscorlib">
+  <data name="TabStrip_TextTable.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
-  <data name="TabItem_TM_LevelNames.Text" xml:space="preserve">
-    <value>Level Names</value>
+  <data name="&gt;&gt;TabStrip_TextTable.Name" xml:space="preserve">
+    <value>TabStrip_TextTable</value>
   </data>
-  <data name="TabItem_TM_ActNames.Text" xml:space="preserve">
-    <value>Act Names</value>
+  <data name="&gt;&gt;TabStrip_TextTable.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabStrip, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;TabStrip_TM_TableSelection.Name" xml:space="preserve">
-    <value>TabStrip_TM_TableSelection</value>
-  </data>
-  <data name="&gt;&gt;TabStrip_TM_TableSelection.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabStrip, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabStrip_TM_TableSelection.Parent" xml:space="preserve">
+  <data name="&gt;&gt;TabStrip_TextTable.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;TabStrip_TM_TableSelection.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;TabStrip_TextTable.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="ListViewEx_TM_TableEntries.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -403,7 +394,7 @@
     <value>ListViewEx_TM_TableEntries</value>
   </data>
   <data name="&gt;&gt;ListViewEx_TM_TableEntries.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ListViewEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ListViewEx, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ListViewEx_TM_TableEntries.Parent" xml:space="preserve">
     <value>$this</value>
@@ -427,7 +418,7 @@
     <value>Line_TM_Green</value>
   </data>
   <data name="&gt;&gt;Line_TM_Green.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Line_TM_Green.Parent" xml:space="preserve">
     <value>$this</value>
@@ -451,7 +442,7 @@
     <value>Line_TM_Warning1</value>
   </data>
   <data name="&gt;&gt;Line_TM_Warning1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Line_TM_Warning1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -475,7 +466,7 @@
     <value>Line_TM_Warning2</value>
   </data>
   <data name="&gt;&gt;Line_TM_Warning2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Line_TM_Warning2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -511,7 +502,7 @@
     <value>TextBoxX_TM_TextEditor</value>
   </data>
   <data name="&gt;&gt;TextBoxX_TM_TextEditor.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TextBoxX_TM_TextEditor.Parent" xml:space="preserve">
     <value>$this</value>
@@ -532,49 +523,31 @@
     <value>ComboItem10</value>
   </data>
   <data name="&gt;&gt;ComboItem10.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboItem8.Name" xml:space="preserve">
     <value>ComboItem8</value>
   </data>
   <data name="&gt;&gt;ComboItem8.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboItem5.Name" xml:space="preserve">
     <value>ComboItem5</value>
   </data>
   <data name="&gt;&gt;ComboItem5.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboItem6.Name" xml:space="preserve">
     <value>ComboItem6</value>
   </data>
   <data name="&gt;&gt;ComboItem6.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboItem7.Name" xml:space="preserve">
     <value>ComboItem7</value>
   </data>
   <data name="&gt;&gt;ComboItem7.Type" xml:space="preserve">
-    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabItem_TM_Dialogs.Name" xml:space="preserve">
-    <value>TabItem_TM_Dialogs</value>
-  </data>
-  <data name="&gt;&gt;TabItem_TM_Dialogs.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabItem_TM_LevelNames.Name" xml:space="preserve">
-    <value>TabItem_TM_LevelNames</value>
-  </data>
-  <data name="&gt;&gt;TabItem_TM_LevelNames.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;TabItem_TM_ActNames.Name" xml:space="preserve">
-    <value>TabItem_TM_ActNames</value>
-  </data>
-  <data name="&gt;&gt;TabItem_TM_ActNames.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ColumnHeader1.Name" xml:space="preserve">
     <value>ColumnHeader1</value>

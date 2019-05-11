@@ -3,7 +3,7 @@ Imports System.IO
 Imports System.Threading
 Imports S3DFileParser.Exceptions
 
-Namespace Obj
+Namespace ObjModule
 
     Public Class ObjFile
 

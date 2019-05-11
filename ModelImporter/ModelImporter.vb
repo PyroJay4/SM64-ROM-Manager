@@ -1,13 +1,13 @@
 ﻿Imports DevComponents.DotNetBar
 Imports SM64Lib.Model
-Imports Publics
+Imports SM64_ROM_Manager.Publics
 Imports SM64_ROM_Manager.SettingsManager
 Imports TextValueConverter
-Imports ModelConverterGUI
+Imports SM64_ROM_Manager.ModelConverterGUI
 Imports System.IO
 Imports System.Text
 Imports SM64Lib.Geolayout
-Imports ModelImporterGUI.ImporterPresets
+Imports SM64_ROM_Manager.ModelImporterGUI.ImporterPresets
 Imports DevComponents.Editors
 Imports System.Reflection
 
@@ -37,9 +37,7 @@ Public Class ModelImporter
         InitializeComponent()
 
         If Assembly.GetExecutingAssembly = Assembly.GetEntryAssembly Then
-            Settings.SettingsConfigFilePath = Path.Combine(MyDataPath, "Settings.json")
-            StyleManager.Style = eStyle.Metro
-            StyleManager.MetroColorGeneratorParameters = Settings.StyleManager.MetroColorParams
+            DoDefaultInitsAfterApplicationStartup()
         End If
 
         UpdateAmbientColors()

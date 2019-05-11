@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Imports System.Numerics
-Imports S3DFileParser.Obj
+Imports S3DFileParser.ObjModule
 
 Public Class Object3D
 

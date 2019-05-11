@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms
+Imports SM64Lib.Text.Profiles
 
 Namespace Global.SM64Lib.Text
 
@@ -7,14 +8,10 @@ Namespace Global.SM64Lib.Text
         Inherits List(Of TextItem)
 
         Public Property NeedToSave As Boolean = False
-        Public ReadOnly Property Type As TableType = TableType.Dialogs
-        Public ReadOnly Property MaxTextDataSize As Integer = 0
-        Public ReadOnly Property MaxTextItems As Integer = 0
+        Public ReadOnly Property TextSectionInfo As TextSectionInfo
 
-        Public Sub New(Type As TableType, MaxDataSize As Integer, MaxEntries As Integer)
-            Me.Type = Type
-            MaxTextDataSize = MaxDataSize
-            MaxTextItems = MaxEntries
+        Public Sub New(info As TextSectionInfo)
+            TextSectionInfo = info
         End Sub
 
         Public ReadOnly Property BytesCount As Integer
@@ -27,13 +24,17 @@ Namespace Global.SM64Lib.Text
             End Get
         End Property
 
-        Public Sub FromStream(s As Stream, BankRamStart As Integer, BankRomStart As Integer, TableRomStart As Integer)
+        Public Sub FromStream(s As Stream)
             Dim br As New BinaryReader(s)
+            Dim BankRamStart, BankRomStart As UInteger
 
-            If Type = TableType.Dialogs Then
-                s.Position = TableRomStart
+            BankRamStart = TextSectionInfo.Segmented.BankAddress
+            BankRomStart = TextSectionInfo.Segmented.BankStartRom
 
-                For i As Integer = 1 To MaxTextItems
+            If TextSectionInfo.TableType = TextTableType.Dialogs Then
+                s.Position = TextSectionInfo.Data.TableRomOffset
+
+                For i As Integer = 1 To TextSectionInfo.Data.TableMaxItems
                     Dim entryPointer As Integer = SwapInts.SwapInt32(br.ReadInt32) - BankRamStart + BankRomStart
                     Dim lastPos As Integer = s.Position
                     s.Position = entryPointer
@@ -57,9 +58,10 @@ Namespace Global.SM64Lib.Text
                 Next
 
             Else
-                s.Position = TableRomStart
-                For i As Integer = 1 To MaxTextItems
-                    Me.Add(GetTextItem(s, SwapInts.SwapInt32(br.ReadInt32) - BankRamStart + BankRomStart))
+                s.Position = TextSectionInfo.Data.TableRomOffset
+                For i As Integer = 1 To TextSectionInfo.Data.TableMaxItems
+                    Dim addrInROM As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
+                    Me.Add(GetTextItem(s, addrInROM - BankRamStart + BankRomStart))
                 Next
 
             End If
@@ -87,13 +89,17 @@ Namespace Global.SM64Lib.Text
             Return newItem
         End Function
 
-        Public Sub ToStream(s As Stream, BankRomStart As Integer, BankRamStart As Integer, ByVal TableRomOffset As Integer, ByVal DataRomOffset As Integer, Optional TableRomOffset2 As Integer = 0)
+        Public Sub ToStream(s As Stream)
             Dim bw As New BinaryWriter(s)
+            Dim DataRomOffset, lastTableOffset, lastTable2Offset As Integer, BankRomStart, BankRamStart As UInteger
 
-            Dim lastTableOffset As Integer = TableRomOffset
-            Dim lastTable2Offset As Integer = TableRomOffset2
+            lastTableOffset = TextSectionInfo.Data.TableRomOffset
+            lastTable2Offset = TextSectionInfo.Data.TableRomOffset2
+            DataRomOffset = TextSectionInfo.Data.DataRomOffset
+            BankRamStart = TextSectionInfo.Segmented.BankAddress
+            BankRomStart = TextSectionInfo.Segmented.BankStartRom
 
-            If Type = TableType.Dialogs Then
+            If TextSectionInfo.TableType = TextTableType.Dialogs Then
                 For Each textitem As TextItem In Me
                     'Table 1
                     s.Position = lastTableOffset
@@ -110,7 +116,7 @@ Namespace Global.SM64Lib.Text
                     bw.Write(SwapInts.SwapInt16(textitem.VerticalPosition))
                     bw.Write(SwapInts.SwapInt16(textitem.HorizontalPosition))
                     bw.Write(SwapInts.SwapInt16(0))
-                    bw.Write(SwapInts.SwapInt32(DataRomOffset - BankRomStart + BankRamStart))
+                    bw.Write(SwapInts.SwapUInt32(DataRomOffset - BankRomStart + BankRamStart))
                     lastTable2Offset += &H10
 
                     'Text Data
@@ -118,12 +124,11 @@ Namespace Global.SM64Lib.Text
                     WriteTextItem(s, DataRomOffset, textitem.ToByteArray)
                     DataRomOffset += textitem.DataLenght
                 Next
-
             Else
                 For Each textitem As TextItem In Me
                     'Table
                     s.Position = lastTableOffset
-                    bw.Write(SwapInts.SwapInt32(DataRomOffset - BankRomStart + BankRamStart))
+                    bw.Write(SwapInts.SwapUInt32(DataRomOffset - BankRomStart + BankRamStart))
                     lastTableOffset += 4
 
                     'Text Data
@@ -131,7 +136,6 @@ Namespace Global.SM64Lib.Text
                     WriteTextItem(s, DataRomOffset, textitem.ToByteArray)
                     DataRomOffset += textitem.DataLenght
                 Next
-
             End If
         End Sub
 
@@ -141,12 +145,6 @@ Namespace Global.SM64Lib.Text
                 s.WriteByte(b)
             Next
         End Sub
-
-        Public Enum TableType
-            Dialogs
-            Levels
-            Acts
-        End Enum
     End Class
 
 End Namespace

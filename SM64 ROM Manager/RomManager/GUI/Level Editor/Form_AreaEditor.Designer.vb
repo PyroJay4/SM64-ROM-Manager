@@ -3805,7 +3805,7 @@
             '
             'Form_AreaEditor
             '
-            Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
+            Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             Me.BottomLeftCornerSize = 0
             Me.BottomRightCornerSize = 0
             resources.ApplyResources(Me, "$this")

@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.ModelImporterGUI.ModelImporter
+            Me.MainForm = Global.SM64_ROM_Manager.ModelImporterGUI.ModelImporter
         End Sub
     End Class
 End Namespace

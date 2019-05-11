@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3F9044F1-1AA1-4D44-B68B-7087C59B818F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>ModelImporterGUI.My.MyApplication</StartupObject>
-    <RootNamespace>ModelImporterGUI</RootNamespace>
+    <StartupObject>SM64_ROM_Manager.ModelImporterGUI.My.MyApplication</StartupObject>
+    <RootNamespace>SM64_ROM_Manager.ModelImporterGUI</RootNamespace>
     <AssemblyName>SM64 Model Importer</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
@@ -143,21 +143,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModelConverterGUI\ModelConverterGUI.vbproj">
+    <ProjectReference Include="..\ModelConverterGUI\SM64 ROM Manager.ModelConverterGUI.vbproj">
       <Project>{745e6a23-6957-45f8-9305-88ec5474d077}</Project>
-      <Name>ModelConverterGUI</Name>
+      <Name>SM64 ROM Manager.ModelConverterGUI</Name>
     </ProjectReference>
     <ProjectReference Include="..\PatchScripts\PatchScripts.vbproj">
       <Project>{c5de39f9-c9aa-48df-bd74-68a057012953}</Project>
       <Name>PatchScripts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Publics\Publics.vbproj">
+    <ProjectReference Include="..\Publics\SM64 ROM Manager.Publics.vbproj">
       <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>
-      <Name>Publics</Name>
+      <Name>SM64 ROM Manager.Publics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SettingsManager\SettingsManager.vbproj">
+    <ProjectReference Include="..\SettingsManager\SM64 ROM Manager.SettingsManager.vbproj">
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
-      <Name>SettingsManager</Name>
+      <Name>SM64 ROM Manager.SettingsManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
       <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>

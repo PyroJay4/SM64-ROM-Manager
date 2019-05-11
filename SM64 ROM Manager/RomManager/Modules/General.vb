@@ -13,6 +13,7 @@ Imports Microsoft.WindowsAPICodePack.Dialogs.Controls
 Imports SM64_ROM_Manager.LevelEditor
 Imports SM64Lib.Script
 Imports DevComponents.DotNetBar.Metro.ColorTables
+Imports SM64_ROM_Manager.Publics
 
 Friend Module General
 

@@ -3,7 +3,7 @@ Imports System.Reflection
 Imports DevComponents.DotNetBar
 Imports SM64_ROM_Manager.SettingsManager
 Imports ApplyPPF.My.Resources
-Imports Publics
+Imports SM64_ROM_Manager.Publics
 
 Public Class ApplyPPFDialog
 
@@ -21,6 +21,7 @@ Public Class ApplyPPFDialog
 
         InitializeComponent()
     End Sub
+
     Public Sub New(romFile As String, patchFile As String)
         Me.New
         Me.romFile = romFile

@@ -3,7 +3,7 @@ Imports System.IO
 Imports System.Windows.Forms
 Imports DevComponents.Editors
 Imports N64Graphics
-Imports Publics
+Imports SM64_ROM_Manager.Publics
 Imports S3DFileParser
 
 Public Class TextureGraphicFormatEditor

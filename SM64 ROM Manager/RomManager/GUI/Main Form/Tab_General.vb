@@ -1,7 +1,7 @@
 ﻿Imports DevComponents.DotNetBar
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib
-Imports Publics
+Imports SM64_ROM_Manager.Publics
 Imports System.IO
 
 Public Class Tab_General

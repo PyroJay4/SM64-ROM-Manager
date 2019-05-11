@@ -2,7 +2,7 @@
 Imports System.IO
 Imports System.Numerics
 Imports DevComponents.DotNetBar
-Imports ModelConverterGUI
+Imports SM64_ROM_Manager.ModelConverterGUI
 Imports S3DFileParser
 Imports SM64_ROM_Manager.LevelEditor
 Imports SM64_ROM_Manager.My.Resources
@@ -100,7 +100,7 @@ Public Class Tab_LevelManager
     End Function
 
     Public Sub LoadListBoxEntries()
-        Dim temp_1 As String = MyDataPath & "\Other\Object Bank Data\Bank 0x{0}.txt"
+        Dim temp_1 As String = Publics.MyDataPath & "\Other\Object Bank Data\Bank 0x{0}.txt"
         For Each t As String In {"B", "C", "D", "9"}
             SM64Lib.ObjectBankData.Add(FileIniParser.ReadFile(String.Format(temp_1, t)))
         Next

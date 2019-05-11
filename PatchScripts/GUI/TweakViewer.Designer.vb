@@ -44,7 +44,7 @@ Partial Class TweakViewer
         Me.ComboBoxEx_Scripts = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.Flyout1 = New DevComponents.DotNetBar.Controls.Flyout(Me.components)
-        Me.ItemListBox1 = New Publics.Controls.ItemListBox()
+        Me.ItemListBox1 = New SM64_ROM_Manager.Publics.Controls.ItemListBox()
         Me.SuperTooltip1 = New DevComponents.DotNetBar.SuperTooltip()
         Me.TextBoxX1 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
@@ -458,7 +458,7 @@ Partial Class TweakViewer
     Friend WithEvents ComboBoxEx_Scripts As DevComponents.DotNetBar.Controls.ComboBoxEx
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Flyout1 As DevComponents.DotNetBar.Controls.Flyout
-    Friend WithEvents ItemListBox1 As Publics.Controls.ItemListBox
+    Friend WithEvents ItemListBox1 As SM64_ROM_Manager.Publics.Controls.ItemListBox
     Friend WithEvents ButtonX4 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX6 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX

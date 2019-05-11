@@ -66,7 +66,7 @@ Public Class File3DLoaderModule
                                   AddressOf LoadViaSimpleFileParser,
                                   New Dictionary(Of String, String) From {{"obj", "OBJ"}}))
 
-        Publics.LoadAssimpLibs()
+        AssimpModule.AssimpLoader.LoadAssimpLibs()
         Dim exts As New Dictionary(Of String, String)
         For Each fd As Assimp.ExportFormatDescription In AssimpLibrary.Instance.GetExportFormatDescriptions
             If Not exts.ContainsKey(fd.FileExtension) Then exts.Add(fd.FileExtension, fd.FormatId & " - " & fd.Description)
@@ -106,7 +106,7 @@ Public Class File3DLoaderModule
                                  AddressOf ExportViaSimpleFileParser,
                                   New Dictionary(Of String, String) From {{"obj", "OBJ"}}))
 
-        Publics.LoadAssimpLibs()
+        AssimpModule.AssimpLoader.LoadAssimpLibs()
         Dim exts As New Dictionary(Of String, String)
         For Each fd As Assimp.ExportFormatDescription In AssimpLibrary.Instance.GetExportFormatDescriptions
             If Not exts.ContainsKey(fd.FileExtension) Then exts.Add(fd.FileExtension, fd.FormatId & " - " & fd.Description)
@@ -120,25 +120,25 @@ Public Class File3DLoaderModule
     End Function
 
     Private Shared Function LoadViaSimpleFileParser(fileName As String, options As LoaderOptions) As Object3D
-        Return Obj.ObjFile.FromFile(fileName, options.LoadMaterials, options.UpAxis)
+        Return ObjModule.ObjFile.FromFile(fileName, options.LoadMaterials, options.UpAxis)
     End Function
 
     Private Shared Function LoadViaAssimp(fileName As String, options As LoaderOptions) As Object3D
-        Publics.LoadAssimpLibs()
-        Return AssimpLoader.AssimpLoader.FromFile(fileName, options.LoadMaterials, options.UpAxis)
+        AssimpModule.AssimpLoader.LoadAssimpLibs()
+        Return AssimpModule.AssimpLoader.FromFile(fileName, options.LoadMaterials, options.UpAxis)
     End Function
 
     Private Shared Function LoadViaAspose3D(fileName As String, options As LoaderOptions) As Object3D
-        Return Aspose3DLoader.FromFile(fileName, options.LoadMaterials, options.UpAxis)
+        Return Aspose3DModule.Aspose3DLoader.FromFile(fileName, options.LoadMaterials, options.UpAxis)
     End Function
 
     Private Shared Sub ExportViaSimpleFileParser(o As Object3D, fileName As String)
-        Obj.ObjFile.ToFile(fileName, o)
+        ObjModule.ObjFile.ToFile(fileName, o)
     End Sub
 
     Private Shared Sub ExportViaAssimp(o As Object3D, fileName As String)
-        Publics.LoadAssimpLibs()
-        AssimpLoader.AssimpLoader.ToFile(fileName, o)
+        AssimpModule.AssimpLoader.LoadAssimpLibs()
+        AssimpModule.AssimpLoader.ToFile(fileName, o)
     End Sub
 
 End Class

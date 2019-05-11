@@ -2,7 +2,7 @@
 Imports S3DFileParser
 Imports System.Numerics
 Imports System.Windows.Forms
-Imports Extensions
+Imports SM64_ROM_Manager.Extensions
 Imports SM64Lib.Data
 
 Namespace Global.SM64Lib.Model.Collision

@@ -9,12 +9,12 @@ Imports SM64_ROM_Manager.SettingsManager
 Imports OpenGLFactory.PreviewN
 Imports System.Windows.Forms
 Imports System.Drawing
-Imports Publics
+Imports SM64_ROM_Manager.Publics
 Imports SM64Lib.Model.Fast3D
-Imports ModelConverterGUI.My.Resources
+Imports SM64_ROM_Manager.ModelConverterGUI.My.Resources
 Imports System.Deployment.Application
 Imports System.Collections.Specialized
-Imports ModelConverterGUI
+Imports SM64_ROM_Manager.ModelConverterGUI
 
 Public Class MainModelConverter
 

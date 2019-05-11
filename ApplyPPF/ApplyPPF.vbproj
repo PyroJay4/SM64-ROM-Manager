@@ -149,13 +149,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Publics\Publics.vbproj">
+    <ProjectReference Include="..\Publics\SM64 ROM Manager.Publics.vbproj">
       <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>
-      <Name>Publics</Name>
+      <Name>SM64 ROM Manager.Publics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SettingsManager\SettingsManager.vbproj">
+    <ProjectReference Include="..\SettingsManager\SM64 ROM Manager.SettingsManager.vbproj">
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
-      <Name>SettingsManager</Name>
+      <Name>SM64 ROM Manager.SettingsManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
       <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>

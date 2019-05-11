@@ -3,6 +3,7 @@ Imports DevComponents.Editors
 Imports Newtonsoft.Json.Linq
 Imports SM64Lib
 Imports SM64Lib.Data
+Imports SM64_ROM_Manager.Publics
 
 Public Class RGBEditor
 

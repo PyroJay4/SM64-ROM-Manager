@@ -1,7 +1,7 @@
 ﻿Imports System.Globalization
 Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
-Imports Publics
+Imports SM64_ROM_Manager.Publics
 Imports SM64Lib
 Imports SM64Lib.Music
 

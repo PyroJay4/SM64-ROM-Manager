@@ -3,7 +3,7 @@ Imports DevComponents.DotNetBar
 Imports nUpdate.Updating
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib
-Imports Publics
+Imports SM64_ROM_Manager.Publics
 Imports System.Collections.Specialized
 Imports System.Threading
 Imports System.Globalization
@@ -46,8 +46,8 @@ Public Class MainForm
     Public Sub New()
         'CheckForIllegalCrossThreadCalls = False
 
-        'Set language
-        SetCurrentLanguageCulture(Settings.General.Language)
+        'Do some default inits
+        DoDefaultInitsAfterApplicationStartup()
 
         'Set DPI Aware
         'SetDPIAware
@@ -79,7 +79,7 @@ Public Class MainForm
         'Set AutoScaleMode
         'AutoScaleMode = Settings.General.AutoScaleMode
 
-        SetVisualTheme()
+        'Set my style
         SetStyleManagerStyle()
 
         'Resume drawing

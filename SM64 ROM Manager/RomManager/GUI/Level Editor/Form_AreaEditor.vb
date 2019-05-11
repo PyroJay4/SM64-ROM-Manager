@@ -15,12 +15,12 @@ Imports OpenGLFactory.CameraN
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Model
-Imports ModelConverterGUI
+Imports SM64_ROM_Manager.ModelConverterGUI
 Imports SimpleHistory
 Imports System.Reflection
 Imports DevComponents.Editors
 Imports SM64_ROM_Manager.PropertyValueEditors
-Imports Publics
+Imports SM64_ROM_Manager.Publics
 Imports DevComponents.AdvTree
 Imports System.Timers
 Imports Newtonsoft.Json.Linq

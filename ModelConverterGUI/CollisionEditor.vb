@@ -1,7 +1,7 @@
 ﻿Imports DevComponents.DotNetBar
 Imports S3DFileParser
 Imports System.Windows.Forms
-Imports Publics
+Imports SM64_ROM_Manager.Publics
 Imports System.Drawing
 Imports SM64Lib
 Imports System.IO
