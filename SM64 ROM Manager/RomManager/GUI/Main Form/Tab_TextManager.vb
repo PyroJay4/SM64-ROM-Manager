@@ -8,6 +8,7 @@ Public Class Tab_TextManager
 
     Public Property MainForm As MainForm
     Public Property RomMgr As RomManager
+    Public Property DialogNamesFilePath As String = Path.Combine(Publics.MyDataPath, "Text Manager\dialogs.txt")
 
     Private TM_LoadingItem As Boolean = False
     Private TM_BytesLeft As Integer = 0
@@ -31,6 +32,44 @@ Public Class Tab_TextManager
         End Get
     End Property
 
+    Public Property LineColorGreen As Color
+        Get
+            Return Line_TM_Green.ForeColor
+        End Get
+        Set(value As Color)
+            Line_TM_Green.ForeColor = value
+        End Set
+    End Property
+
+    Public Property LineColorWarning1 As Color
+        Get
+            Return Line_TM_Warning1.ForeColor
+        End Get
+        Set(value As Color)
+            Line_TM_Warning1.ForeColor = value
+        End Set
+    End Property
+
+    Public Property LineColorWarning2 As Color
+        Get
+            Return Line_TM_Warning2.ForeColor
+        End Get
+        Set(value As Color)
+            Line_TM_Warning2.ForeColor = value
+        End Set
+    End Property
+
+    Private Property StatusText As String
+        Get
+            Return MainForm?.StatusText
+        End Get
+        Set(value As String)
+            If MainForm IsNot Nothing Then
+                MainForm.StatusText = value
+            End If
+        End Set
+    End Property
+
     Private Sub TabStrip1_SelectedTabChanged(sender As Object, e As TabStripTabChangedEventArgs) Handles TabStrip_TextTable.SelectedTabChanged
         Dim curTable As Text.TextTable = RomMgr.LoadTextTable(TabStrip_TextTable.SelectedTab.Tag)
         Dim isDialogs As Boolean = curTable?.TextSectionInfo.TableType = SM64Lib.Text.Profiles.TextTableType.Dialogs
@@ -42,7 +81,14 @@ Public Class Tab_TextManager
         GroupPanel_TM_DialogProps.Visible = isDialogs
         TextBoxX_TM_TextEditor.CharacterCasing = If(isUpperCase, CharacterCasing.Upper, CharacterCasing.Normal)
 
-        TextBoxX_TM_TextEditor.Size = If(isDialogs, New Size(264, 456), New Size(264, 538))
+        Dim elementHight As Integer = ListViewEx_TM_TableEntries.Height + TabStrip_TextTable.Height
+        If isDialogs Then
+            elementHight -= GroupPanel_TM_DialogProps.Height + 4
+        End If
+        TextBoxX_TM_TextEditor.Height = elementHight
+        Line_TM_Green.Height = elementHight - 5
+        Line_TM_Warning1.Height = elementHight - 5
+        Line_TM_Warning2.Height = elementHight - 5
 
         If IsAnyTextItemSelected() Then
             TM_ReloadTable()
@@ -81,10 +127,11 @@ Public Class Tab_TextManager
             tabToSelect = firstTab
         End If
         TabStrip_TextTable.ResumeLayout()
+        TabStrip_TextTable.SelectedTab = Nothing
         TabStrip_TextTable.SelectedTab = tabToSelect
     End Sub
 
-    Friend Sub TM_ReloadTable()
+    Public Sub TM_ReloadTable()
         Dim tableName As String
         Dim textTable As Text.TextTable
         Dim nameList() As String = {}
@@ -96,10 +143,10 @@ Public Class Tab_TextManager
         End If
         tableName = TabStrip_TextTable.SelectedTab?.Tag
 
-        MainForm.StatusText = Form_Main_Resources.Status_LoadingTexts
+        StatusText = Form_Main_Resources.Status_LoadingTexts
         textTable = RomMgr.LoadTextTable(tableName)
 
-        MainForm.StatusText = Form_Main_Resources.Status_CreatingTextList
+        StatusText = Form_Main_Resources.Status_CreatingTextList
         ListViewEx_TM_TableEntries.SuspendLayout()
         ListViewEx_TM_TableEntries.Items.Clear()
 
@@ -121,10 +168,10 @@ Public Class Tab_TextManager
             End If
 
             Dim newItem As New ListViewItem({
-                                            ListViewEx_TM_TableEntries.Items.Count,
-                                            nameEntry,
-                                            textItem.Text.Split({ControlChars.Cr, ControlChars.Lf}).FirstOrDefault
-                                            })
+                                                ListViewEx_TM_TableEntries.Items.Count,
+                                                nameEntry,
+                                                textItem.Text.Split({ControlChars.Cr, ControlChars.Lf}).FirstOrDefault
+                                                })
             ListViewEx_TM_TableEntries.Items.Add(newItem)
         Next
 
@@ -148,10 +195,10 @@ Public Class Tab_TextManager
             item.EnsureVisible()
         End If
 
-        MainForm.StatusText = Form_Main_Resources.Status_CalculatingTextSpace
+        StatusText = Form_Main_Resources.Status_CalculatingTextSpace
         ShowCurTableBytes()
 
-        MainForm.StatusText = ""
+        StatusText = ""
     End Sub
 
     Private Sub TM_CheckComboBoxText(sender As Object, Optional e As EventArgs = Nothing) Handles ComboBoxEx_TM_DialogPosX.TextChanged, ComboBoxEx_TM_DialogPosY.TextChanged
@@ -358,7 +405,7 @@ Public Class Tab_TextManager
     Private Function TM_CreateDialogNameList() As String()
         Dim list() As String = {}
 
-        Dim file_dialogs As String = Path.Combine(Publics.MyDataPath, "Text Manager\dialogs.txt")
+        Dim file_dialogs As String = DialogNamesFilePath
         If File.Exists(file_dialogs) Then
             list = File.ReadAllLines(file_dialogs)
         End If

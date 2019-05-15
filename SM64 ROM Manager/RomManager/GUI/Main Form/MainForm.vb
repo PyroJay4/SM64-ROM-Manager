@@ -124,7 +124,7 @@ Public Class MainForm
 
         CheckCommandLineArgs()
 
-        PluginManager.LoadPlugins(Path.Combine(Publics.MyDataPath, "Plugins"))
+        PluginManager.LoadPlugins(Path.Combine(MyDataPath, "Plugins"))
         AddMyPluginCommands()
 
         SearchForUpdates()
