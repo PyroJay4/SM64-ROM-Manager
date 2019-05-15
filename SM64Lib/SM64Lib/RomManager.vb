@@ -87,7 +87,10 @@ Namespace Global.SM64Lib
         Public Sub New(FileName As String)
             RomFile = FileName
 
-            LevelInfoData.ReadFromFile(MyFilePaths("Level Tabel.json"))
+            Dim levelTableFile As String = MyFilePaths("Level Tabel.json")
+            If File.Exists(levelTableFile) Then
+                LevelInfoData.ReadFromFile(levelTableFile)
+            End If
 
             SetSegBank(&H0, 0, New FileInfo(FileName).Length) 'Bank 0 means the whole ROM.
             SetSegBank(&H15, &H2ABCA0, &H2AC6B0)
@@ -98,10 +101,16 @@ Namespace Global.SM64Lib
         End Sub
 
         Private Sub LoadDictionaryUpdatePatches()
-            Dim jsFile As String = File.ReadAllText(MyFilePaths("Update-Patches.json"))
-            Dim obj As JObject = JObject.Parse(jsFile)
+            Dim udatePatchsFile As String = MyFilePaths("Update-Patches.json")
+            Dim jsFile As String
+            Dim obj As JObject
 
-            dicUpdatePatches = obj.ToObject(GetType(Dictionary(Of String, String)))
+            If File.Exists(udatePatchsFile) Then
+                jsFile = File.ReadAllText(udatePatchsFile)
+                obj = JObject.Parse(jsFile)
+
+                dicUpdatePatches = obj.ToObject(GetType(Dictionary(Of String, String)))
+            End If
         End Sub
 
         ''' <summary>
