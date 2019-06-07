@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Imports DevComponents.DotNetBar
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib

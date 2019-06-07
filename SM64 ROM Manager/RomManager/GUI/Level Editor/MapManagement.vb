@@ -6,12 +6,12 @@ Imports TextValueConverter
 Imports SM64Lib.Levels
 Imports SM64Lib.Levels.Script, SM64Lib.Levels.Script.Commands
 Imports OpenTK.Graphics.OpenGL
-Imports OpenGLFactory.RenderingN
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.RenderingN
 Imports SM64Lib.Geolayout.Script.Commands
 Imports System.ComponentModel
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 Imports SM64Lib.Model.Fast3D.DisplayLists
-Imports OpenGLFactory.CameraN
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Model

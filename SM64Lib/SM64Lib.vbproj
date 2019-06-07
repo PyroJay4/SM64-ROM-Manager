@@ -49,6 +49,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Pilz.Simple3DFileParser">
+      <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -186,14 +189,25 @@
     <Compile Include="SM64Lib\SM64PatchClass.vb" />
     <Compile Include="SM64Lib\Objects\StarManager.vb" />
     <Compile Include="SM64Lib\SwapInts.vb" />
-    <Compile Include="SM64Lib\Text\Profiles\TextDataInfo.vb" />
-    <Compile Include="SM64Lib\Text\TextEncoding.vb" />
+    <Compile Include="SM64Lib\Text\DialogHorizontalPosition.vb" />
+    <Compile Include="SM64Lib\Text\DialogVerticalPosition.vb" />
+    <Compile Include="SM64Lib\Text\Profiles\TextArrayItemInfo.vb" />
+    <Compile Include="SM64Lib\Text\Profiles\TextTableDialogDataInfo.vb" />
+    <Compile Include="SM64Lib\Text\Profiles\TextTableDataInfo.vb" />
+    <Compile Include="SM64Lib\Text\Profiles\TextGroupInfo.vb" />
+    <Compile Include="SM64Lib\Text\M64TextEncoding.vb" />
     <Compile Include="SM64Lib\Text\Profiles\TextProfileInfo.vb" />
-    <Compile Include="SM64Lib\Text\Profiles\TextSectionInfo.vb" />
-    <Compile Include="SM64Lib\Text\Profiles\TextSegmentedInfo.vb" />
+    <Compile Include="SM64Lib\Text\Profiles\TextArrayGroupInfo.vb" />
+    <Compile Include="SM64Lib\Text\Profiles\TextTableGroupInfo.vb" />
+    <Compile Include="SM64Lib\Text\Profiles\TextTableSegmentedInfo.vb" />
+    <Compile Include="SM64Lib\Text\TextArrayGroup.vb" />
+    <Compile Include="SM64Lib\Text\TextArrayItem.vb" />
+    <Compile Include="SM64Lib\Text\TextTableDialogItem.vb" />
+    <Compile Include="SM64Lib\Text\TextTableItem.vb" />
+    <Compile Include="SM64Lib\Text\TextTableGroup.vb" />
     <Compile Include="SM64Lib\Text\TextItem.vb" />
-    <Compile Include="SM64Lib\Text\TextTable.vb" />
     <Compile Include="SM64Lib\Text\Profiles\TextTableType.vb" />
+    <Compile Include="SM64Lib\Text\TextGroup.vb" />
     <Compile Include="SM64Lib\Trajectories\Trajectories.vb" />
     <Compile Include="SM64Lib\Trajectories\Trajectory.vb" />
     <Compile Include="SM64Lib\Trajectories\TrajectoryName.vb" />
@@ -230,10 +244,6 @@
     <ProjectReference Include="..\N64Graphics\N64Graphics.csproj">
       <Project>{d9258483-950c-46d1-a333-31f32492cd7e}</Project>
       <Name>N64Graphics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
-      <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
-      <Name>SimpleFileParser</Name>
     </ProjectReference>
     <ProjectReference Include="..\TextValueConverter\TextValueConverter.vbproj">
       <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>

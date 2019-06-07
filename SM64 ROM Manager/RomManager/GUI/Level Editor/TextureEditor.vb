@@ -3,7 +3,7 @@ Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Validator
 Imports Microsoft.WindowsAPICodePack.Dialogs
 Imports SM64_ROM_Manager.Publics.My.Resources
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 Imports SM64Lib
 Imports SM64Lib.Data
 Imports SM64Lib.SM64Convert

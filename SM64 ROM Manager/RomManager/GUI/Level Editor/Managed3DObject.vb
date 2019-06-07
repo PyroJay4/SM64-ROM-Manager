@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.Numerics
-Imports OpenGLFactory.RenderingN
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.RenderingN
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN
 Imports SM64Lib.General
 Imports SM64Lib.Levels.Script
 Imports SM64Lib.Levels.Script.Commands
@@ -309,7 +310,7 @@ Public Class Managed3DObject
         Dim colorToUse As Color = If(col IsNot Nothing, col, If(IsSelected, Color.Yellow, Color.Red))
 
         If ModelRenderer IsNot Nothing Then
-            Dim md As S3DFileParser.ModelBoundaries = ModelRenderer.Model.GetBoundaries
+            Dim md As Pilz.S3DFileParser.ModelBoundaries = ModelRenderer.Model.GetBoundaries
             ModelRenderer.DrawModel(mode,
                                     New OpenTK.Vector3(Me.Position.X, Me.Position.Y, Me.Position.Z),
                                     New OpenTK.Quaternion(-Me.Rotation.X, Me.Rotation.Y, -Me.Rotation.Z),

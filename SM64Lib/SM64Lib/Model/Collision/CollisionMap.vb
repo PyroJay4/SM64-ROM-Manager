@@ -1,5 +1,5 @@
 ﻿Imports System.IO
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 Imports System.Numerics
 Imports System.Windows.Forms
 Imports SM64_ROM_Manager.Extensions
@@ -133,10 +133,10 @@ Namespace Global.SM64Lib.Model.Collision
             Next
 
             'Add Faces
-            Dim dicVertices As New Dictionary(Of S3DFileParser.Vertex, Vertex)
+            Dim dicVertices As New Dictionary(Of Pilz.S3DFileParser.Vertex, Vertex)
 
-            For Each m As S3DFileParser.Mesh In model.Meshes
-                For Each f As S3DFileParser.Face In m.Faces.OrderBy(Function(n) n.Material)
+            For Each m As Pilz.S3DFileParser.Mesh In model.Meshes
+                For Each f As Pilz.S3DFileParser.Face In m.Faces.OrderBy(Function(n) n.Material)
                     Dim cs As CollisionSettings.Entry = colSettings.GetEntry(dicMatNames(f.Material))
 
                     If Not cs.IsNonSolid Then
@@ -148,7 +148,7 @@ Namespace Global.SM64Lib.Model.Collision
 
                         For i As Integer = 0 To Math.Min(f.Points.Count - 1, 2)
                             Dim v As Vertex
-                            Dim curVert As S3DFileParser.Vertex = f.Points(i).Vertex
+                            Dim curVert As Pilz.S3DFileParser.Vertex = f.Points(i).Vertex
 
                             If dicVertices.ContainsKey(curVert) Then
                                 v = dicVertices(curVert)
@@ -370,7 +370,7 @@ Namespace Global.SM64Lib.Model.Collision
 
             'Vertices
             For Each vert In Mesh.Vertices
-                m.Vertices.Add(New S3DFileParser.Vertex With {
+                m.Vertices.Add(New Pilz.S3DFileParser.Vertex With {
                                .X = vert.X,
                                .Y = vert.Y,
                                .Z = vert.Z

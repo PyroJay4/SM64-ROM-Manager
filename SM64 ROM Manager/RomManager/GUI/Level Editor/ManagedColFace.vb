@@ -1,5 +1,5 @@
 ﻿Imports System.ComponentModel
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 
 Namespace LevelEditor
 

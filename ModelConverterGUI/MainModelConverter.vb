@@ -4,9 +4,9 @@ Imports SM64Lib.Model
 Imports SM64Lib.Levels
 Imports SM64Lib
 Imports System.Numerics
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 Imports SM64_ROM_Manager.SettingsManager
-Imports OpenGLFactory.PreviewN
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.PreviewN
 Imports System.Windows.Forms
 Imports System.Drawing
 Imports SM64_ROM_Manager.Publics
@@ -15,6 +15,7 @@ Imports SM64_ROM_Manager.ModelConverterGUI.My.Resources
 Imports System.Deployment.Application
 Imports System.Collections.Specialized
 Imports SM64_ROM_Manager.ModelConverterGUI
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.RenderingN
 
 Public Class MainModelConverter
 
@@ -423,14 +424,14 @@ Public Class MainModelConverter
 
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX_VisualMapPreview.Click
         If objVisualMap IsNot Nothing Then
-            Dim mp As New ModelPreview(objVisualMap, NUD_Scaling.Value)
+            Dim mp As New ModelPreviewOfficeForm(objVisualMap, NUD_Scaling.Value)
             mp.ShowDialog()
         End If
     End Sub
 
     Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles ButtonX_CollisionMapPreview.Click
         If objCollisionMap IsNot Nothing Then
-            Dim mp As New ModelPreview(objCollisionMap, NUD_Scaling.Value)
+            Dim mp As New ModelPreviewOfficeForm(objCollisionMap, NUD_Scaling.Value)
             mp.ShowDialog()
         End If
     End Sub

@@ -6,12 +6,9 @@ Imports TextValueConverter
 Imports SM64Lib.Levels
 Imports SM64Lib.Levels.Script, SM64Lib.Levels.Script.Commands
 Imports OpenTK.Graphics.OpenGL
-Imports OpenGLFactory.RenderingN
 Imports SM64Lib.Geolayout.Script.Commands
 Imports System.ComponentModel
-Imports S3DFileParser
 Imports SM64Lib.Model.Fast3D.DisplayLists
-Imports OpenGLFactory.CameraN
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Model
@@ -25,6 +22,7 @@ Imports DevComponents.AdvTree
 Imports System.Timers
 Imports Newtonsoft.Json.Linq
 Imports SM64Lib.Data
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN.Camera
 
 Namespace LevelEditor
 
@@ -184,10 +182,10 @@ Namespace LevelEditor
                 my = -(e.Y - rotObj_lastMouseY)
             End If
 
-            Dim CX As Single = Math.Sin(Main.camera.Yaw)
-            Dim CZ As Single = -Math.Cos(Main.camera.Yaw)
-            Dim CX_2 As Single = Math.Sin(Main.camera.Yaw + (Math.PI / 2))
-            Dim CZ_2 As Single = -Math.Cos(Main.camera.Yaw + (Math.PI / 2))
+            Dim CX As Single = Math.Sin(Main.Camera.Yaw)
+            Dim CZ As Single = -Math.Cos(Main.Camera.Yaw)
+            Dim CX_2 As Single = Math.Sin(Main.Camera.Yaw + (Math.PI / 2))
+            Dim CZ_2 As Single = -Math.Cos(Main.Camera.Yaw + (Math.PI / 2))
 
             Dim newX, newZ As Single
             newX = Math.Truncate(savedPos.X - CShort(Math.Truncate(CX * my * speedMult * Main.ObjectMoveSpeed)) - CShort(Math.Truncate(CX_2 * mx * speedMult * Main.ObjectMoveSpeed)))
@@ -297,8 +295,8 @@ Namespace LevelEditor
         End Sub
         Private Sub PictureBox_CamCntrWheel_MouseMove(sender As Object, e As MouseEventArgs)
             If moveCam_InOut_mouseDown Then
-                Main.camera.resetMouseStuff()
-                Main.Camera.updateCameraMatrixWithScrollWheel((e.Y - moveCam_InOut_lastPosY) * -10, Main.ogl.camMtx)
+                Main.Camera.ResetMouseStuff()
+                Main.Camera.UpdateCameraMatrixWithScrollWheel((e.Y - moveCam_InOut_lastPosY) * -10, Main.ogl.camMtx)
                 Main.ogl.savedCamPos = Main.Camera.Position
                 moveCam_InOut_lastPosY = e.Y
                 Main.ogl.Invalidate()
@@ -310,17 +308,17 @@ Namespace LevelEditor
             moveCam_strafe_mouseDown = True
         End Sub
         Private Sub PictureBox_CamMoveCross_MouseUp(sender As Object, e As MouseEventArgs)
-            Main.camera.resetMouseStuff()
+            Main.Camera.ResetMouseStuff()
             moveCam_strafe_mouseDown = False
         End Sub
         Private Sub PictureBox_CamMoveCross_MouseMove(sender As Object, e As MouseEventArgs)
             If moveCam_strafe_mouseDown Then
-                Main.Camera.updateCameraOffsetWithMouse(Main.ogl.savedCamPos, e.X, e.Y, Main.ogl.GLControl.Width, Main.ogl.GLControl.Height, Main.ogl.camMtx)
+                Main.Camera.UpdateCameraOffsetWithMouse(Main.ogl.savedCamPos, e.X, e.Y, Main.ogl.GLControl.Width, Main.ogl.GLControl.Height, Main.ogl.camMtx)
                 Main.ogl.Invalidate()
             End If
         End Sub
 
-        Private Sub Camera_NeedSelectedObject(e As Camera.NeedSelectedObjectEventArgs)
+        Private Sub Camera_NeedSelectedObject(e As NeedSelectedObjectEventArgs)
             If Main.SelectedObject IsNot Nothing Then
                 e.Points = Main.SelectedObjects
             End If

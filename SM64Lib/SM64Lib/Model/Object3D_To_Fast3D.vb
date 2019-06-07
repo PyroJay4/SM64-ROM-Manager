@@ -307,7 +307,7 @@ Namespace Global.SM64Lib.SM64Convert
             Return ((1 << 11) / TXL2WORDS_4b(width))
         End Function
 
-        Private Sub SetLightAndDarkValues(s As S3DFileParser.Shading)
+        Private Sub SetLightAndDarkValues(s As Pilz.S3DFileParser.Shading)
             'Ambient light color
             defaultColor(0) = s.AmbientColor.R
             defaultColor(1) = s.AmbientColor.G
@@ -503,7 +503,7 @@ Namespace Global.SM64Lib.SM64Convert
             Next
         End Sub
 
-        Private Sub ProcessImage(obj As S3DFileParser.Object3D, img As Image, mat As Material)
+        Private Sub ProcessImage(obj As Pilz.S3DFileParser.Object3D, img As Image, mat As Material)
             Dim entry As TextureEntry = Nothing
 
             For Each tex As TextureEntry In textureBank
@@ -596,13 +596,13 @@ Namespace Global.SM64Lib.SM64Convert
             mat.HasPalette = entry.Palette.Any
         End Sub
 
-        Private Sub ProcessObject3DModel(obj As S3DFileParser.Object3D)
+        Private Sub ProcessObject3DModel(obj As Pilz.S3DFileParser.Object3D)
             Dim texFormatSettings As TextureFormatSettings = settings.TextureFormatSettings
 
             'Process Materials
             ProcessObject3DMaterials(obj, texFormatSettings)
 
-            For Each mesh As S3DFileParser.Mesh In obj.Meshes
+            For Each mesh As Pilz.S3DFileParser.Mesh In obj.Meshes
                 Dim curIndexStart As Integer = verts.Count
 
                 'Process Vertices
@@ -627,7 +627,7 @@ Namespace Global.SM64Lib.SM64Convert
                 Next
 
                 'Process UVs
-                For Each tuv As S3DFileParser.UV In mesh.UVs
+                For Each tuv As Pilz.S3DFileParser.UV In mesh.UVs
                     Dim uv As New TexCord With {
                         .U = Round(tuv.U * 32 * 32),
                         .V = Round(-(tuv.V * 32 * 32))
@@ -816,7 +816,7 @@ Namespace Global.SM64Lib.SM64Convert
             Next
         End Sub
 
-        Private Sub ProcessObject3DMaterials(obj As S3DFileParser.Object3D, texFormatSettings As TextureFormatSettings)
+        Private Sub ProcessObject3DMaterials(obj As Pilz.S3DFileParser.Object3D, texFormatSettings As TextureFormatSettings)
             Dim size As Integer = 0
             Dim tasks As New List(Of Task)
 
@@ -834,7 +834,7 @@ Namespace Global.SM64Lib.SM64Convert
             'Next
         End Sub
 
-        Private Sub ProcessObject3DMaterial(obj As S3DFileParser.Object3D, kvp As KeyValuePair(Of String, S3DFileParser.Material), texFormatSettings As TextureFormatSettings)
+        Private Sub ProcessObject3DMaterial(obj As Pilz.S3DFileParser.Object3D, kvp As KeyValuePair(Of String, Pilz.S3DFileParser.Material), texFormatSettings As TextureFormatSettings)
             Dim size As Integer = 0
             Dim curEntry As TextureFormatSettings.Entry = texFormatSettings.GetEntry(kvp.Key)
 
@@ -1470,7 +1470,7 @@ Namespace Global.SM64Lib.SM64Convert
             ImpF3D("BA 00 0E 02 00 00 80 00")
         End Sub
 
-        Private Sub ImportObj(model As S3DFileParser.Object3D)
+        Private Sub ImportObj(model As Pilz.S3DFileParser.Object3D)
             Dim enabledVertexColors As Boolean
             Dim enableForcing As Boolean = settings.ForceDisplaylist <> -1
             Dim importStart As UInteger = 0
@@ -1840,7 +1840,7 @@ Namespace Global.SM64Lib.SM64Convert
                 MergeScrollingTextures()
             End If
 
-            resetVariables()
+            ResetVariables()
             currentPreName = Nothing
         End Sub
 
@@ -1851,7 +1851,7 @@ Namespace Global.SM64Lib.SM64Convert
         ''' <param name="settings">The convert settings.</param>
         ''' <param name="input">The input model.</param>
         ''' <returns></returns>
-        Public Function ConvertModel(s As Stream, settings As ConvertSettings, input As S3DFileParser.Object3D) As ConvertResult
+        Public Function ConvertModel(s As Stream, settings As ConvertSettings, input As Pilz.S3DFileParser.Object3D) As ConvertResult
             Me.settings = settings
             impdata = New BinaryStreamData(s)
 
@@ -1875,12 +1875,12 @@ Namespace Global.SM64Lib.SM64Convert
 
             End With
 
-            resetVariables()
+            ResetVariables()
 
             Return conRes
         End Function
 
-        Public Function ConvertModelAsync(s As Stream, settings As ConvertSettings, input As S3DFileParser.Object3D, texFormatSettings As TextureFormatSettings) As Task(Of ConvertResult)
+        Public Function ConvertModelAsync(s As Stream, settings As ConvertSettings, input As Pilz.S3DFileParser.Object3D, texFormatSettings As TextureFormatSettings) As Task(Of ConvertResult)
             Dim t As New Task(Of ConvertResult)(Function() ConvertModel(s, settings, input))
             t.Start()
             Return t

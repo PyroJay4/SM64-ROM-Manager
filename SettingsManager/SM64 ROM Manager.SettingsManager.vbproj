@@ -44,15 +44,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Design">
-      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Pilz.Drawing.Drawing3D.OpenGLFactory">
+      <HintPath>..\Shared Libs\Pilz.Drawing.Drawing3D.OpenGLFactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Pilz.Simple3DFileParser">
+      <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
     </Reference>
     <Reference Include="SettingsMgr">
       <HintPath>..\..\SettingsMgr\SettingsMgr\bin\Release\SettingsMgr.dll</HintPath>
@@ -79,6 +85,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\HexEditModes.vb" />
+    <Compile Include="Enums\NotificationMode.vb" />
     <Compile Include="Settings.vb" />
     <Compile Include="Settings\SubStruc\AreaEditorSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\FileParserSettingsStruc.vb" />
@@ -123,20 +131,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OpenGLCamera\OpenGLFactory.CameraN.vbproj">
-      <Project>{26AD6422-F5D8-48D3-AC57-398F9C094217}</Project>
-      <Name>OpenGLFactory.CameraN</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OpenGLRenderer\OpenGLFactory.RenderingN.vbproj">
-      <Project>{5E9F0B0A-F7B8-49A9-80FC-6DFE0D44CC84}</Project>
-      <Name>OpenGLFactory.RenderingN</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
-      <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
-      <Name>SimpleFileParser</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -195,11 +195,11 @@
   <data name="MsgBox_RomCanNotBestarted_Title" xml:space="preserve">
     <value>Spiel starten</value>
   </data>
-  <data name="MsgBox_RomChanged_ReloadRom" xml:space="preserve">
-    <value>Die ROM wurde in einem anderen Programm geändert. Um speichern zu können muss die ROM einmal neu geladen werden. Soll sie jetzt neu geladen werden?</value>
+  <data name="MsgBox_RomChanged" xml:space="preserve">
+    <value>Die ROM wurde mithilfe eines externen Programm geändert. Soll die ROM neu geladen werden?&lt;br/&gt;&lt;br/&gt;Warnung:&lt;br/&gt;Hierbei gehen nicht gespeicherte änderungen verloren!</value>
   </data>
-  <data name="MsgBox_RomChanged_ReloadRom_Titel" xml:space="preserve">
-    <value>ROM wurde geändert</value>
+  <data name="MsgBox_RomChanged_Title" xml:space="preserve">
+    <value>Änderung an ROM idendifiziert</value>
   </data>
   <data name="MsgBox_RomRemoved" xml:space="preserve">
     <value>Die in diesem Fenster geöffnete ROM wurde gelöscht.&lt;br/&gt;Das Programm wird sich nun schließen.</value>
@@ -317,5 +317,11 @@
   </data>
   <data name="Text_Water" xml:space="preserve">
     <value>Wasser</value>
+  </data>
+  <data name="WarningBox_RomChanged_ReloadRom" xml:space="preserve">
+    <value>ROM neu laden</value>
+  </data>
+  <data name="WarningBox_RomChanged_Text" xml:space="preserve">
+    <value>Die ROM wurde mithilfe eines externen Programm geändert. Um die ROM neu zu laden, klicke auf 'ROM neu laden'.</value>
   </data>
 </root>

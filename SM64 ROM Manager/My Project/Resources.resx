@@ -148,4 +148,16 @@
   <data name="Psychologie_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Psychologie_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DevelopmentBuild" xml:space="preserve">
+    <value>1</value>
+    <comment>Represents e.g. the Build Number.</comment>
+  </data>
+  <data name="DevelopmentalStage" xml:space="preserve">
+    <value>3</value>
+    <comment>Possible Values:
+0 = Release
+1 = Release Candidate
+2 = Beta
+3 = Alpha</comment>
+  </data>
 </root>

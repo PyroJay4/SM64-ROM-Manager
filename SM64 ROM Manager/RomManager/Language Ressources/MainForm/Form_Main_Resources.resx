@@ -195,11 +195,11 @@
   <data name="MsgBox_RomCanNotBestarted_Title" xml:space="preserve">
     <value>Launch Game</value>
   </data>
-  <data name="MsgBox_RomChanged_ReloadRom" xml:space="preserve">
-    <value>Your ROM file has been changed outside this tool. You need to reload the ROM to be able to save. Reload now?</value>
+  <data name="MsgBox_RomChanged" xml:space="preserve">
+    <value>The ROM was changed by an external programm. Do you want to reload the ROM?&lt;br/&gt;&lt;br/&gt;Warning:&lt;br/&gt;On reload the ROM, all unsaved changes get lost!</value>
   </data>
-  <data name="MsgBox_RomChanged_ReloadRom_Titel" xml:space="preserve">
-    <value>ROM has been changed</value>
+  <data name="MsgBox_RomChanged_Title" xml:space="preserve">
+    <value>Changes on ROM detected</value>
   </data>
   <data name="MsgBox_RomRemoved" xml:space="preserve">
     <value>The ROM that was open in this program has been removed!&lt;br/&gt;This programm will close now.</value>
@@ -317,5 +317,11 @@
   </data>
   <data name="Text_Water" xml:space="preserve">
     <value>Water</value>
+  </data>
+  <data name="WarningBox_RomChanged_ReloadRom" xml:space="preserve">
+    <value>Reload ROM</value>
+  </data>
+  <data name="WarningBox_RomChanged_Text" xml:space="preserve">
+    <value>The ROM was changed by an external programm. To reload the ROM click on 'Reload ROM'.</value>
   </data>
 </root>

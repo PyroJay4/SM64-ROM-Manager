@@ -17,19 +17,18 @@ Namespace Global.SM64Lib
 
     Public Class RomManager
 
-        Private textsProfile As Text.Profiles.TextProfileInfo
         Private ReadOnly segBankList As New Dictionary(Of Byte, SegmentedBank)
         Private ReadOnly areaSegBankList As New Dictionary(Of Byte, Dictionary(Of Byte, SegmentedBank))
         Private dicUpdatePatches As New Dictionary(Of String, String)
         Private _ProgramVersion As Version = Nothing
         Private ReadOnly levelIDsToReset As New List(Of UShort)
+        Private ReadOnly myTextGroups As New List(Of Text.TextGroup)
 
-        'Public ReadOnly Property Settings As New RomManagerSettings
         Public ReadOnly Property LevelInfoData As New Levels.LevelInfoDataTabelList
         Public ReadOnly Property Levels As New Levels.LevelList
         Public Property RomFile As String = ""
         Public ReadOnly Property IsSM64EditorMode As Boolean = False
-        Public ReadOnly Property TextTables As New List(Of Text.TextTable)
+        Public ReadOnly Property TextInfoProfile As Text.Profiles.TextProfileInfo
         Public ReadOnly Property MusicList As New MusicList
         Public Property GlobalObjectBank As CustomObjectBank = Nothing
 
@@ -57,8 +56,14 @@ Namespace Global.SM64Lib
         Public ReadOnly Property NeedToSave As Boolean
             Get
                 Return MusicList.NeedToSave OrElse
-                    TextTables.Where(Function(n) n IsNot Nothing AndAlso n.NeedToSave).Count > 0 OrElse
+                    myTextGroups.Where(Function(n) n IsNot Nothing AndAlso n.NeedToSave).Count > 0 OrElse
                     Levels.NeedToSave
+            End Get
+        End Property
+
+        Public ReadOnly Property TextGroups As Text.TextGroup()
+            Get
+                Return myTextGroups.ToArray
             End Get
         End Property
 
@@ -172,7 +177,7 @@ Namespace Global.SM64Lib
             WriteVersion(Assembly.GetEntryAssembly.GetName.Version)
 
             'Texts
-            SaveAllTextTables(needUpdateChecksum,)
+            SaveAllTextGroups(needUpdateChecksum,)
 
             'Music
             Dim lastpos As Integer
@@ -225,40 +230,56 @@ Namespace Global.SM64Lib
             Return Me.ProgramVersion
         End Function
 
-        Private Sub LoadTextProfilesIfNotLoaded()
-            If textsProfile Is Nothing Then
-                textsProfile = JObject.Parse(File.ReadAllText(MyFilePaths("Text Profiles.json"))).ToObject(Of Text.Profiles.TextProfileInfo)
+        Public Sub LoadTextProfileIfNotLoaded()
+            If TextInfoProfile Is Nothing Then
+                LoadTextProfile()
             End If
         End Sub
 
-        Private Function GetTextProfile(name As String) As Text.Profiles.TextSectionInfo
-            LoadTextProfilesIfNotLoaded()
-            Return textsProfile.GetSection(name)
+        Public Sub LoadTextProfile()
+            _TextInfoProfile = JObject.Parse(File.ReadAllText(MyFilePaths("Text Profiles.json"))).ToObject(Of Text.Profiles.TextProfileInfo)
+        End Sub
+
+        Public Sub SaveTextProfile()
+            File.WriteAllText(MyFilePaths("Text Profiles.json"), JObject.FromObject(TextInfoProfile).ToString)
+        End Sub
+
+        Private Function GetTextProfile(name As String) As Text.Profiles.TextGroupInfo
+            LoadTextProfileIfNotLoaded()
+            Return TextInfoProfile.GetGroup(name)
         End Function
+
+        ''' <summary>
+        ''' Removes all loaded text groups, so they can be re-loaded.
+        ''' </summary>
+        Public Sub ClearTextGroups()
+            myTextGroups.Clear()
+        End Sub
 
         ''' <summary>
         ''' Loads the Text Tables.
         ''' </summary>
-        Public Function LoadTextTable(name As String, Optional CheckIfAlreadyLoaded As Boolean = True) As Text.TextTable
-            Dim table As Text.TextTable = TextTables.FirstOrDefault(Function(n) n.TextSectionInfo.Name = name)
+        Public Function LoadTextGroup(name As String, Optional CheckIfAlreadyLoaded As Boolean = True) As Text.TextGroup
+            Dim table As Text.TextGroup = myTextGroups.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name)
 
             If table Is Nothing OrElse Not CheckIfAlreadyLoaded Then
-                Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Read)
-                Dim prof As Text.Profiles.TextSectionInfo = GetTextProfile(name)
+                Dim data As New BinaryRom(Me, FileAccess.Read)
+                Dim prof As Text.Profiles.TextGroupInfo = GetTextProfile(name)
 
                 If table IsNot Nothing Then
-                    TextTables.Remove(table)
+                    myTextGroups.Remove(table)
                 End If
 
-                Try
-                    table = New Text.TextTable(prof)
-                    TextTables.Add(table)
-                    table.FromStream(fs)
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
+                If TypeOf prof Is Text.Profiles.TextTableGroupInfo Then
+                    table = New Text.TextTableGroup(prof)
+                ElseIf TypeOf prof Is Text.Profiles.TextArrayGroupInfo Then
+                    table = New Text.TextArrayGroup(prof)
+                End If
 
-                fs.Close()
+                myTextGroups.Add(table)
+                table.Read(data)
+
+                data.Close()
             End If
 
             Return table
@@ -268,17 +289,17 @@ Namespace Global.SM64Lib
         ''' Gets the all known text sections
         ''' </summary>
         ''' <returns></returns>
-        Public Function GetTextSectionInfos() As Text.Profiles.TextSectionInfo()
-            LoadTextProfilesIfNotLoaded()
-            Return textsProfile.Sections.ToArray
+        Public Function GetTextGroupInfos() As Text.Profiles.TextGroupInfo()
+            LoadTextProfileIfNotLoaded()
+            Return TextInfoProfile.AllGroups.ToArray
         End Function
 
         ''' <summary>
         ''' Saves the Text Tables.
         ''' </summary>
         ''' <param name="table">The text table to save.</param>
-        Public Sub SaveTextTable(table As Text.TextTable)
-            SaveTextTable(Nothing, table)
+        Public Sub SaveTextGroup(table As Text.TextGroup)
+            SaveTextGroup(Nothing, table)
         End Sub
 
         ''' <summary>
@@ -286,23 +307,32 @@ Namespace Global.SM64Lib
         ''' </summary>
         ''' <param name="needUpdateChecksum">Outputs if the checksumarea was changed and need to be updated.</param>
         ''' <param name="table">The text table to save.</param>
-        Public Sub SaveTextTable(ByRef needUpdateChecksum As Boolean, table As Text.TextTable)
-            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
-            Dim prof As Text.Profiles.TextSectionInfo = table.TextSectionInfo
+        Public Sub SaveTextGroup(ByRef needUpdateChecksum As Boolean, table As Text.TextGroup)
+            Dim data As New BinaryRom(Me, FileAccess.ReadWrite)
+            Dim prof As Text.Profiles.TextGroupInfo = table.TextGroupInfo
 
-            table.ToStream(fs)
+            table.Save(data)
             table.NeedToSave = False
-            needUpdateChecksum = needUpdateChecksum Or (prof.Segmented.BankAddress = &H80245000UI)
 
-            fs.Close()
+            If TypeOf prof Is Text.Profiles.TextTableGroupInfo Then
+                needUpdateChecksum = needUpdateChecksum Or (CType(prof, Text.Profiles.TextTableGroupInfo).Segmented.BankAddress = &H80245000UI)
+            ElseIf TypeOf prof Is Text.Profiles.TextArrayGroupInfo Then
+                For Each t As Text.Profiles.TextArrayItemInfo In CType(prof, Text.Profiles.TextArrayGroupInfo).Texts
+                    'If t.RomAddress > &H20 AndAlso t.RomAddress < &H55555 Then
+                    '    needUpdateChecksum = True
+                    'End If
+                Next
+            End If
+
+            data.Close()
         End Sub
 
         ''' <summary>
         ''' Saves all Text Tables.
         ''' </summary>
         ''' <param name="IgnoreNeedToSave">If True, everything will be saved even if there are no changes.</param>
-        Public Sub SaveAllTextTables(Optional IgnoreNeedToSave As Boolean = False)
-            SaveAllTextTables(Nothing,)
+        Public Sub SaveAllTextGroups(Optional IgnoreNeedToSave As Boolean = False)
+            SaveAllTextGroups(Nothing,)
         End Sub
 
         ''' <summary>
@@ -310,10 +340,10 @@ Namespace Global.SM64Lib
         ''' </summary>
         ''' <param name="needUpdateChecksum">Outputs if the checksumarea was changed and need to be updated.</param>
         ''' <param name="IgnoreNeedToSave">If True, everything will be saved even if there are no changes.</param>
-        Public Sub SaveAllTextTables(ByRef needUpdateChecksum As Boolean, Optional IgnoreNeedToSave As Boolean = False)
-            For Each table As Text.TextTable In TextTables
+        Public Sub SaveAllTextGroups(ByRef needUpdateChecksum As Boolean, Optional IgnoreNeedToSave As Boolean = False)
+            For Each table As Text.TextGroup In myTextGroups
                 If IgnoreNeedToSave OrElse table.NeedToSave Then
-                    SaveTextTable(needUpdateChecksum, table)
+                    SaveTextGroup(needUpdateChecksum, table)
                 End If
             Next
         End Sub

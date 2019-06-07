@@ -3,7 +3,7 @@ Imports System.IO
 Imports System.Numerics
 Imports DevComponents.DotNetBar
 Imports SM64_ROM_Manager.ModelConverterGUI
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 Imports SM64_ROM_Manager.LevelEditor
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64_ROM_Manager.SettingsManager
@@ -13,11 +13,6 @@ Imports SM64Lib.Model
 Imports SM64Lib.Script
 
 Public Class Tab_LevelManager
-
-    'P r i v a t e   M e m b e r s
-
-    Public Property MainForm As MainForm
-    Public Property RomMgr As RomManager
 
     'F l a g s
 
@@ -31,6 +26,12 @@ Public Class Tab_LevelManager
     Public Sub New()
         InitializeComponent()
     End Sub
+
+    'A u t o m a t i c   P r o p e r t i e s
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
+    Public Property MainForm As MainForm
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
+    Public Property RomMgr As RomManager
 
     'P r o p e r t i e s
 

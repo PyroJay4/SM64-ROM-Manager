@@ -11,6 +11,7 @@ Public Class GeneralSettingsStruc
     Public Property AutoScaleMode As Windows.Forms.AutoScaleMode
     Public Property HexEditMode As HexEditModeStruc
     Public Property Language As String
+    Public Property RomChangedNotification As NotificationMode
 
     Public Sub ResetValues()
         AutoUpdates = True
@@ -22,6 +23,7 @@ Public Class GeneralSettingsStruc
         If HexEditMode Is Nothing Then HexEditMode = New HexEditModeStruc
         HexEditMode.ResetValues()
         Language = String.Empty
+        RomChangedNotification = NotificationMode.Popup
     End Sub
 
 End Class

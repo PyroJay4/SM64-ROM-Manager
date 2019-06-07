@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("Pilzinsel64")>
 <Assembly: AssemblyProduct("SM64 ROM Manager")>
-<Assembly: AssemblyCopyright("Copyright © Pilzinsel64 2018")>
+<Assembly: AssemblyCopyright("Copyright © Pilzinsel64 2018 - 2019")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

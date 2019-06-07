@@ -19,7 +19,7 @@ Namespace Global.SM64Lib
         Public Property Fog As Fog = Nothing
         Public Property ResizeTextures As Boolean = True
         Public Property CenterModel As Boolean = False
-        Public ReadOnly Property Shading As New S3DFileParser.Shading
+        Public ReadOnly Property Shading As New Pilz.S3DFileParser.Shading
         Public Property OptimizeTransparencyChecks As Boolean = False
 
         Public Enum ReduceDuplicateVerticesLevel

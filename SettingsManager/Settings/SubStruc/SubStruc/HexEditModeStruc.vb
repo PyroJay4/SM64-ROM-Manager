@@ -9,8 +9,3 @@
     End Sub
 
 End Class
-
-Public Enum HexEditModes
-    BuildInHexEditor
-    CustomHexEditor
-End Enum

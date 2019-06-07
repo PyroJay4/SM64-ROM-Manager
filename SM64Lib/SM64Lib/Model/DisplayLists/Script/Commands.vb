@@ -1,7 +1,6 @@
 ﻿Imports System.Drawing
 Imports System.IO
 Imports System.Numerics
-Imports S3DFileParser
 Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script

@@ -45,15 +45,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Design">
-      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
     <Reference Include="FastColoredTextBox">
       <HintPath>bin\Debug\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Pilz.Simple3DFileParser">
+      <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -151,10 +154,6 @@
     <ProjectReference Include="..\Publics\SM64 ROM Manager.Publics.vbproj">
       <Project>{5013D291-0C3D-45AE-B216-792260C246EC}</Project>
       <Name>SM64 ROM Manager.Publics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
-      <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
-      <Name>SimpleFileParser</Name>
     </ProjectReference>
     <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
       <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>

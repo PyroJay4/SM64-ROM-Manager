@@ -1,5 +1,5 @@
 ﻿Imports DevComponents.DotNetBar
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 Imports System.Windows.Forms
 Imports SM64_ROM_Manager.Publics
 Imports System.Drawing

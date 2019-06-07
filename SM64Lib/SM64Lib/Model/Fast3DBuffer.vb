@@ -2,7 +2,7 @@
 Imports System.IO
 Imports System.Windows.Forms
 Imports N64Graphics
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Model.Collision

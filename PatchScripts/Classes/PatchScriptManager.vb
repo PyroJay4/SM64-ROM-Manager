@@ -5,6 +5,7 @@ Imports System.Text.RegularExpressions
 Imports System.Windows.Forms
 Imports System.Xml
 Imports Microsoft.CSharp
+Imports Pilz.S3DFileParser
 Imports SM64Lib
 
 Public Class PatchingManager
@@ -34,7 +35,7 @@ Public Class PatchingManager
             references &= ref
         Next
 
-        Return <patch name=<%= script.Name %> description=<%= script.Description %> type=<%= script.Type %> references=<%= references %>>
+        Return <patch name=<%= script.Name %> description=<%= script.Description %> type=<%= CInt(script.Type) %> references=<%= references %>>
                    <%= script.Script %>
                </patch>
     End Function
@@ -313,9 +314,9 @@ Public Class PatchingManager
         options.ReferencedAssemblies.Add("System.Xml.Linq.dll")
         options.ReferencedAssemblies.Add("System.IO.dll")
         options.ReferencedAssemblies.Add("System.Drawing.dll")
-        options.ReferencedAssemblies.Add(GetType(S3DFileParser.Object3D).Assembly.Location)
+        options.ReferencedAssemblies.Add(GetType(Object3D).Assembly.Location)
         options.ReferencedAssemblies.Add(GetType(DevComponents.DotNetBar.OfficeForm).Assembly.Location)
-        options.ReferencedAssemblies.Add(GetType(SM64Lib.RomManager).Assembly.Location)
+        options.ReferencedAssemblies.Add(GetType(RomManager).Assembly.Location)
 
         For Each ref As String In script.References
             If Not options.ReferencedAssemblies.Contains(ref) Then

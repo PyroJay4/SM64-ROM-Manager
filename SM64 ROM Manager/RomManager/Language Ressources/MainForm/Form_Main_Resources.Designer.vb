@@ -299,20 +299,20 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Your ROM file has been changed outside this tool. You need to reload the ROM to be able to save. Reload now? ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM was changed by an external programm. Do you want to reload the ROM?&lt;br/&gt;&lt;br/&gt;Warning:&lt;br/&gt;On reload the ROM, all unsaved changes get lost! ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_RomChanged_ReloadRom() As String
+        Friend Shared ReadOnly Property MsgBox_RomChanged() As String
             Get
-                Return ResourceManager.GetString("MsgBox_RomChanged_ReloadRom", resourceCulture)
+                Return ResourceManager.GetString("MsgBox_RomChanged", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die ROM has been changed ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Changes on ROM detected ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_RomChanged_ReloadRom_Titel() As String
+        Friend Shared ReadOnly Property MsgBox_RomChanged_Title() As String
             Get
-                Return ResourceManager.GetString("MsgBox_RomChanged_ReloadRom_Titel", resourceCulture)
+                Return ResourceManager.GetString("MsgBox_RomChanged_Title", resourceCulture)
             End Get
         End Property
         
@@ -664,6 +664,24 @@ Namespace My.Resources
         Friend Shared ReadOnly Property Text_Water() As String
             Get
                 Return ResourceManager.GetString("Text_Water", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Reload ROM ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property WarningBox_RomChanged_ReloadRom() As String
+            Get
+                Return ResourceManager.GetString("WarningBox_RomChanged_ReloadRom", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM was changed by an external programm. To reload the ROM click on &apos;Reload ROM&apos;. ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property WarningBox_RomChanged_Text() As String
+            Get
+                Return ResourceManager.GetString("WarningBox_RomChanged_Text", resourceCulture)
             End Get
         End Property
     End Class

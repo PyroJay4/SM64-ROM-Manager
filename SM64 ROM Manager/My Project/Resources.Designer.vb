@@ -61,6 +61,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die 3 ähnelt.
+        '''</summary>
+        Friend ReadOnly Property DevelopmentalStage() As String
+            Get
+                Return ResourceManager.GetString("DevelopmentalStage", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die 1 ähnelt.
+        '''</summary>
+        Friend ReadOnly Property DevelopmentBuild() As String
+            Get
+                Return ResourceManager.GetString("DevelopmentBuild", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property Kurznachricht_34px() As System.Drawing.Bitmap

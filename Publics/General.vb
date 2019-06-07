@@ -6,12 +6,13 @@ Imports Newtonsoft.Json.Linq
 Imports DevComponents.DotNetBar.Controls
 Imports DevComponents.Editors
 Imports System.Windows.Forms
-Imports S3DFileParser
 Imports System.Runtime.CompilerServices
 Imports OfficeOpenXml
 Imports System.Globalization
 Imports System.Threading
 Imports SM64_ROM_Manager.SettingsManager
+Imports System.Reflection
+Imports Pilz.S3DFileParser
 
 Public Module General
 
@@ -25,7 +26,13 @@ Public Module General
 
     Public ReadOnly Property MyDataPath As String
         Get
-            Return Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Data")
+            Return Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly.Location), "Data")
+        End Get
+    End Property
+
+    Public ReadOnly Property IsDesigneTime As Boolean
+        Get
+            Return System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Designtime
         End Get
     End Property
 

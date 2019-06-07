@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
 Imports DevComponents.DotNetBar
 Imports DevComponents.Editors
 Imports SM64_ROM_Manager.My.Resources
@@ -6,25 +7,38 @@ Imports SM64Lib
 
 Public Class Tab_TextManager
 
+    <Browsable(False), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
     Public Property MainForm As MainForm
+    <Browsable(False), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
     Public Property RomMgr As RomManager
-    Public Property DialogNamesFilePath As String = Path.Combine(Publics.MyDataPath, "Text Manager\dialogs.txt")
+    <Browsable(False), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
+    Public Property DialogNamesFilePath As String
 
     Private TM_LoadingItem As Boolean = False
     Private TM_BytesLeft As Integer = 0
 
     Public Sub New()
         InitializeComponent()
+
+        If Not Publics.IsDesigneTime Then
+            DialogNamesFilePath = Path.Combine(Publics.MyDataPath, "Text Manager\dialogs.txt")
+        End If
     End Sub
 
     Public ReadOnly Property OverLimit As Boolean
         Get
             If RomMgr IsNot Nothing Then
-                For Each tbl As Text.TextTable In RomMgr.TextTables
-                    If tbl IsNot Nothing Then
-                        If CalcTableBytes(tbl).percent > 1 Then
+                For Each tbl As Text.TextGroup In RomMgr.TextGroups
+                    If TypeOf tbl Is Text.TextTableGroup Then
+                        If CalcTableBytes(tbl, Nothing).percent > 1 Then
                             Return True
                         End If
+                    ElseIf TypeOf tbl Is Text.TextArrayGroup Then
+                        For Each item As Text.TextArrayItem In CType(tbl, Text.TextArrayGroup)
+                            If CalcTableBytes(Nothing, item).percent > 1 Then
+                                Return True
+                            End If
+                        Next
                     End If
                 Next
             End If
@@ -71,9 +85,13 @@ Public Class Tab_TextManager
     End Property
 
     Private Sub TabStrip1_SelectedTabChanged(sender As Object, e As TabStripTabChangedEventArgs) Handles TabStrip_TextTable.SelectedTabChanged
-        Dim curTable As Text.TextTable = RomMgr.LoadTextTable(TabStrip_TextTable.SelectedTab.Tag)
-        Dim isDialogs As Boolean = curTable?.TextSectionInfo.TableType = SM64Lib.Text.Profiles.TextTableType.Dialogs
-        Dim isUpperCase As Boolean = {"Acts", "Levels"}.Contains(curTable?.TextSectionInfo.Name)
+        Dim curTable As Text.TextGroup = RomMgr.LoadTextGroup(TabStrip_TextTable.SelectedTab.Tag)
+        Dim isDialogs As Boolean = False
+        Dim isUpperCase As Boolean = {"Acts", "Levels", "File Menu"}.Contains(curTable?.TextGroupInfo.Name)
+
+        If TypeOf curTable Is Text.TextTableGroup Then
+            isDialogs = CType(curTable, Text.TextTableGroup).TextGroupInfo.TableType = SM64Lib.Text.Profiles.TextTableType.Dialogs
+        End If
 
         Line_TM_Green.Visible = isDialogs
         Line_TM_Warning1.Visible = isDialogs
@@ -102,10 +120,11 @@ Public Class Tab_TextManager
 
         'Clear old ones
         TabStrip_TextTable.SuspendLayout()
+        TabStrip_TextTable.SelectedTabIndex = -1
         TabStrip_TextTable.Tabs.Clear()
 
         'Create & Add new Tabs
-        For Each info As Text.Profiles.TextSectionInfo In RomMgr.GetTextSectionInfos
+        For Each info As Text.Profiles.TextGroupInfo In RomMgr.GetTextGroupInfos
             Dim tab As New TabItem With {
                 .Text = info.Name,
                 .Tag = info.Name
@@ -133,7 +152,7 @@ Public Class Tab_TextManager
 
     Public Sub TM_ReloadTable()
         Dim tableName As String
-        Dim textTable As Text.TextTable
+        Dim textTable As Text.TextGroup
         Dim nameList() As String = {}
         Dim col1 As ColumnHeader = ListViewEx_TM_TableEntries.Columns(1)
         Dim col2 As ColumnHeader = ListViewEx_TM_TableEntries.Columns(2)
@@ -144,7 +163,7 @@ Public Class Tab_TextManager
         tableName = TabStrip_TextTable.SelectedTab?.Tag
 
         StatusText = Form_Main_Resources.Status_LoadingTexts
-        textTable = RomMgr.LoadTextTable(tableName)
+        textTable = RomMgr.LoadTextGroup(tableName)
 
         StatusText = Form_Main_Resources.Status_CreatingTextList
         ListViewEx_TM_TableEntries.SuspendLayout()
@@ -168,10 +187,10 @@ Public Class Tab_TextManager
             End If
 
             Dim newItem As New ListViewItem({
-                                                ListViewEx_TM_TableEntries.Items.Count,
-                                                nameEntry,
-                                                textItem.Text.Split({ControlChars.Cr, ControlChars.Lf}).FirstOrDefault
-                                                })
+                                            ListViewEx_TM_TableEntries.Items.Count,
+                                            nameEntry,
+                                            textItem.Text.Split({ControlChars.Cr, ControlChars.Lf}).FirstOrDefault
+                                            })
             ListViewEx_TM_TableEntries.Items.Add(newItem)
         Next
 
@@ -181,7 +200,7 @@ Public Class Tab_TextManager
                 col1.Width = col1.Tag
                 col1.Tag = Nothing
             End If
-        Else
+        ElseIf col1.Width > 0 Then
             col1.Tag = col1.Width
             col1.Width = 0
             col2.Width += col1.Tag
@@ -202,7 +221,7 @@ Public Class Tab_TextManager
     End Sub
 
     Private Sub TM_CheckComboBoxText(sender As Object, Optional e As EventArgs = Nothing) Handles ComboBoxEx_TM_DialogPosX.TextChanged, ComboBoxEx_TM_DialogPosY.TextChanged
-        Dim t As Type = If(sender Is ComboBoxEx_TM_DialogPosX, GetType(Text.TextItem.VPos), GetType(Text.TextItem.HPos))
+        Dim t As Type = If(sender Is ComboBoxEx_TM_DialogPosX, GetType(Text.DialogVerticalPosition), GetType(Text.DialogHorizontalPosition))
         Dim values() As Int16 = [Enum].GetValues(t)
         Dim names() As String = [Enum].GetNames(t)
 
@@ -210,12 +229,12 @@ Public Class Tab_TextManager
         Dim selVal As Int16 = TM_GetValueFromComboBox(selTextTrim, t)
 
         If Not TM_LoadingItem Then
-            Dim titem As Text.TextItem = TM_GetSelectedTextItem()
+            Dim titem As Text.TextTableDialogItem = TryCast(TM_GetSelectedTextItem(), Text.TextTableDialogItem)
             If titem IsNot Nothing Then
                 If selVal > 0 Then
                     Select Case t
-                        Case GetType(Text.TextItem.VPos) : titem.VerticalPosition = selVal
-                        Case GetType(Text.TextItem.HPos) : titem.HorizontalPosition = selVal
+                        Case GetType(Text.DialogVerticalPosition) : titem.VerticalPosition = selVal
+                        Case GetType(Text.DialogHorizontalPosition) : titem.HorizontalPosition = selVal
                     End Select
                     GetCurrentTextTable.NeedToSave = True
                 End If
@@ -240,15 +259,15 @@ Public Class Tab_TextManager
         Return ValueFromText(selText, Int16.MinValue)
     End Function
 
-    Private Function GetCurrentTextTable() As Text.TextTable
-        Return RomMgr.TextTables?.FirstOrDefault(Function(n) n.TextSectionInfo.Name = TabStrip_TextTable.SelectedTab.Tag)
+    Private Function GetCurrentTextTable() As Text.TextGroup
+        Return RomMgr.TextGroups?.FirstOrDefault(Function(n) n.TextGroupInfo.Name = TabStrip_TextTable.SelectedTab.Tag)
     End Function
 
     Private Function GetCurrentTextItem() As Text.TextItem
         Return GetCurrentTextItem(GetCurrentTextTable)
     End Function
 
-    Private Function GetCurrentTextItem(table As Text.TextTable) As Text.TextItem
+    Private Function GetCurrentTextItem(table As Text.TextGroup) As Text.TextItem
         If IsAnyTextItemSelected() Then
             Return table(ListViewEx_TM_TableEntries.SelectedIndices(0))
         Else
@@ -264,31 +283,36 @@ Public Class Tab_TextManager
         If IsAnyTextItemSelected() Then
             TM_LoadingItem = True
 
-            Dim curTable As Text.TextTable = GetCurrentTextTable()
+            Dim curTable As Text.TextGroup = GetCurrentTextTable()
             Dim curItem As Text.TextItem = GetCurrentTextItem(curTable)
-            Dim isDialogs As Boolean = curTable.TextSectionInfo.TableType = SM64Lib.Text.Profiles.TextTableType.Dialogs
+            Dim curTableItem As Text.TextTableItem = TryCast(curItem, Text.TextTableItem)
+            Dim isDialogs As Boolean = False
 
-            With curItem
-                TextBoxX_TM_TextEditor.Text = .Text
+            If curTableItem IsNot Nothing Then
+                isDialogs = curTableItem.TextGroupInfo.TableType = SM64Lib.Text.Profiles.TextTableType.Dialogs
+            End If
 
-                If isDialogs Then
-                    IntegerInput_TM_DialogSize.Value = .LinesPerSite
+            TextBoxX_TM_TextEditor.Text = curItem.Text
 
-                    Dim vIndex As Integer = Array.IndexOf([Enum].GetValues(GetType(Text.TextItem.VPos)), .VerticalPosition)
-                    If vIndex >= 0 Then
-                        ComboBoxEx_TM_DialogPosX.SelectedIndex = vIndex
-                    Else
-                        ComboBoxEx_TM_DialogPosX.Text = TextFromValue(.VerticalPosition)
-                    End If
+            If isDialogs Then
+                Dim curTableDialogItem As Text.TextTableDialogItem = curTableItem
 
-                    Dim hIndex As Integer = Array.IndexOf([Enum].GetValues(GetType(Text.TextItem.HPos)), .HorizontalPosition)
-                    If hIndex >= 0 Then
-                        ComboBoxEx_TM_DialogPosY.SelectedIndex = hIndex
-                    Else
-                        ComboBoxEx_TM_DialogPosY.Text = TextFromValue(.HorizontalPosition)
-                    End If
+                IntegerInput_TM_DialogSize.Value = curTableDialogItem.LinesPerSite
+
+                Dim vIndex As Integer = Array.IndexOf([Enum].GetValues(GetType(Text.DialogVerticalPosition)), curTableDialogItem.VerticalPosition)
+                If vIndex >= 0 Then
+                    ComboBoxEx_TM_DialogPosX.SelectedIndex = vIndex
+                Else
+                    ComboBoxEx_TM_DialogPosX.Text = TextFromValue(curTableDialogItem.VerticalPosition)
                 End If
-            End With
+
+                Dim hIndex As Integer = Array.IndexOf([Enum].GetValues(GetType(Text.DialogHorizontalPosition)), curTableDialogItem.HorizontalPosition)
+                If hIndex >= 0 Then
+                    ComboBoxEx_TM_DialogPosY.SelectedIndex = hIndex
+                Else
+                    ComboBoxEx_TM_DialogPosY.Text = TextFromValue(curTableDialogItem.HorizontalPosition)
+                End If
+            End If
 
             TM_LoadingItem = False
         End If
@@ -338,10 +362,12 @@ Public Class Tab_TextManager
 
     Private Sub IntegerInput_TM_DialogSize_ValueChanged(sender As IntegerInput, e As EventArgs) Handles IntegerInput_TM_DialogSize.ValueChanged
         If Not TM_LoadingItem Then
-            Dim titem As Text.TextItem = TM_GetSelectedTextItem()
-            titem.LinesPerSite = sender.Value
-            TM_EditSelectedListViewItem(titem)
-            GetCurrentTextTable.NeedToSave = True
+            Dim titem As Text.TextTableDialogItem = TryCast(TM_GetSelectedTextItem(), Text.TextTableDialogItem)
+            If titem IsNot Nothing Then
+                titem.LinesPerSite = sender.Value
+                TM_EditSelectedListViewItem(titem)
+                GetCurrentTextTable.NeedToSave = True
+            End If
         End If
     End Sub
 
@@ -418,10 +444,11 @@ Public Class Tab_TextManager
     End Function
 
     Private Sub ShowCurTableBytes()
-        Dim curTable As Text.TextTable = GetCurrentTextTable()
+        Dim curGroup As Text.TextGroup = GetCurrentTextTable()
+        Dim curTextITem As Text.TextItem = GetCurrentTextItem()
 
-        If curTable IsNot Nothing Then
-            Dim res = CalcTableBytes(curTable)
+        If curGroup IsNot Nothing Then
+            Dim res = CalcTableBytes(curGroup, curTextITem)
 
             TM_BytesLeft = res.left
 
@@ -434,13 +461,30 @@ Public Class Tab_TextManager
         End If
     End Sub
 
-    Private Function CalcTableBytes(curTable As Text.TextTable) As (used As Integer, max As Integer, left As Integer, percent As Single)
+    Private Function CalcTableBytes(curTable As Text.TextGroup, curTextItem As Text.TextItem) As (used As Integer, max As Integer, left As Integer, percent As Single)
         If curTable IsNot Nothing Then
-            Dim max As Integer = curTable.TextSectionInfo.Data.DataMaxSize
-            Dim used As Integer = curTable.BytesCount
+            Dim max As Integer = 0
+            Dim used As Integer = 0
+            Dim percent As Single
+            Dim left As Integer
 
-            Dim percent As Single = used / max
-            Dim left As Integer = max - used
+            If TypeOf curTable Is Text.TextTableGroup Then
+                Dim curGroupCast As Text.TextTableGroup = curTable
+                max = curGroupCast.TextGroupInfo.Data.DataMaxSize
+                used = curGroupCast.DataLength
+            ElseIf TypeOf curTable Is Text.TextArrayGroup Then
+                Dim curTextItemCast As Text.TextArrayItem = curTextItem
+                max = curTextItemCast.ItemInfo.MaxLength
+                used = curTextItemCast.Data.Length
+            End If
+
+            If max > 0 Then
+                percent = used / max
+                left = max - used
+            Else
+                percent = 0
+                left = max
+            End If
 
             Return (used, max, left, percent)
         End If

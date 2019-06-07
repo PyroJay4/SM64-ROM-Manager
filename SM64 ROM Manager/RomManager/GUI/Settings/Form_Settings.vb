@@ -3,9 +3,9 @@ Imports SM64_ROM_Manager.SettingsManager
 Imports TextValueConverter
 Imports SM64_ROM_Manager.Publics
 Imports DevComponents.Editors
-Imports S3DFileParser
 Imports System.Globalization
 Imports System.IO
+Imports Pilz.S3DFileParser
 
 Public Class Form_Settings
 
@@ -33,7 +33,7 @@ Public Class Form_Settings
 
         For Each f As String In Directory.GetDirectories(MyDataPath & "\Lang")
             Dim name As String = Path.GetFileName(f)
-            Dim cult As New CultureInfo(Name)
+            Dim cult As New CultureInfo(name)
             If cult IsNot Nothing Then
                 ComboBoxEx_Language.Items.Add(New ComboItem With {.Text = cult.NativeName, .Tag = cult})
             End If
@@ -97,6 +97,15 @@ Public Class Form_Settings
                 ComboBoxEx_AutoScaleMode.SelectedIndex = 2
         End Select
 
+        Select Case Settings.General.RomChangedNotification
+            Case NotificationMode.Off
+                ComboBoxEx_NotifyOnRomChanges.SelectedIndex = 0
+            Case NotificationMode.Infobox
+                ComboBoxEx_NotifyOnRomChanges.SelectedIndex = 1
+            Case NotificationMode.Popup
+                ComboBoxEx_NotifyOnRomChanges.SelectedIndex = 2
+        End Select
+
         finishedLoading = True
     End Sub
 
@@ -134,6 +143,15 @@ Public Class Form_Settings
                 Settings.General.AutoScaleMode = AutoScaleMode.Dpi
             Case 2
                 Settings.General.AutoScaleMode = AutoScaleMode.Font
+        End Select
+
+        Select Case ComboBoxEx_NotifyOnRomChanges.SelectedIndex
+            Case 0
+                Settings.General.RomChangedNotification = NotificationMode.Off
+            Case 1
+                Settings.General.RomChangedNotification = NotificationMode.Infobox
+            Case 2
+                Settings.General.RomChangedNotification = NotificationMode.Popup
         End Select
 
         Dim selLangItem As ComboItem = ComboBoxEx_Language.SelectedItem
@@ -186,7 +204,7 @@ Public Class Form_Settings
         End If
     End Sub
 
-    Private Sub ComboBoxEx_Language_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_Language.SelectedIndexChanged
+    Private Sub ComboBoxEx_Language_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_Language.SelectedIndexChanged, ComboBoxEx_NotifyOnRomChanges.SelectedIndexChanged
         EanbleRestartWarning()
     End Sub
 

@@ -1,30 +1,9 @@
-﻿Imports System.IO
-Imports DevComponents.DotNetBar
-Imports DevComponents.DotNetBar.Controls
-Imports OpenTK
-Imports TextValueConverter
-Imports SM64Lib.Levels
-Imports SM64Lib.Levels.Script, SM64Lib.Levels.Script.Commands
+﻿Imports OpenTK
 Imports OpenTK.Graphics.OpenGL
-Imports OpenGLFactory.RenderingN
-Imports SM64Lib.Geolayout.Script.Commands
-Imports System.ComponentModel
-Imports S3DFileParser
-Imports SM64Lib.Model.Fast3D.DisplayLists
-Imports OpenGLFactory.CameraN
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.RenderingN
+Imports Pilz.S3DFileParser
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN
 Imports SM64_ROM_Manager.SettingsManager
-Imports SM64Lib.Geolayout
-Imports SM64Lib.Model
-Imports SM64_ROM_Manager.ModelConverterGUI
-Imports SimpleHistory
-Imports System.Reflection
-Imports DevComponents.Editors
-Imports SM64_ROM_Manager.PropertyValueEditors
-Imports SM64_ROM_Manager.Publics
-Imports DevComponents.AdvTree
-Imports System.Timers
-Imports Newtonsoft.Json.Linq
-Imports SM64Lib.Data
 
 Namespace LevelEditor
 
@@ -89,7 +68,7 @@ Namespace LevelEditor
         Friend Property FaceDrawMode As RenderMode
             Get
                 Dim val As RenderMode = RenderMode.None
-                If main.ButtonItem_DrawOutline.Checked Then val = val Or RenderMode.Outline
+                If Main.ButtonItem_DrawOutline.Checked Then val = val Or RenderMode.Outline
                 If Main.ButtonItem_DrawFill.Checked Then val = val Or RenderMode.Fill
                 Return val
             End Get
@@ -118,7 +97,7 @@ Namespace LevelEditor
             GLControl1.Enabled = False
 
             UpdateProjMatrix()
-            Camera.updateMatrix(camMtx)
+            Camera.UpdateMatrix(camMtx)
         End Sub
 
         Public Sub Invalidate()
@@ -143,13 +122,13 @@ Namespace LevelEditor
 
         Public Sub UpdateOrbitCamera()
             If Camera.IsOrbitCamera() Then
-                Camera.updateOrbitCamera(camMtx)
+                Camera.UpdateOrbitCamera(camMtx)
             End If
         End Sub
 
         Public Sub SetCameraMode(mode As CameraMode, look As LookDirection)
             Camera.SetCameraMode(mode, camMtx)
-            Camera.setCameraMode_LookDirection(look, camMtx)
+            Camera.SetCameraMode_LookDirection(look, camMtx)
             'camera.updateMatrix(camMtx)
             Invalidate()
         End Sub
@@ -190,9 +169,9 @@ Namespace LevelEditor
 
             Select Case CurrentModelDrawMod
                 Case ModelDrawMod.Collision
-                    If maps.rndrCollisionMap IsNot Nothing Then maps.rndrCollisionMap?.DrawModel(FaceDrawMode)
+                    If Maps.rndrCollisionMap IsNot Nothing Then Maps.rndrCollisionMap?.DrawModel(FaceDrawMode)
                 Case ModelDrawMod.VisualMap
-                    If maps.rndrVisualMap IsNot Nothing Then maps.rndrVisualMap?.DrawModel(FaceDrawMode)
+                    If Maps.rndrVisualMap IsNot Nothing Then Maps.rndrVisualMap?.DrawModel(FaceDrawMode)
             End Select
 
             DrawAllObjects()
@@ -210,8 +189,8 @@ Namespace LevelEditor
 
             DrawAllObjects(, False)
 
-            If maps.rndrVisualMap IsNot Nothing Then
-                maps.rndrVisualMap?.DrawModel(RenderMode.Fill)
+            If Maps.rndrVisualMap IsNot Nothing Then
+                Maps.rndrVisualMap?.DrawModel(RenderMode.Fill)
             End If
 
             Dim img As Image = TakeScreenshotOfGL()
@@ -249,8 +228,8 @@ Namespace LevelEditor
         End Sub
 
         Private Sub glControl1_Wheel(sender As Object, e As MouseEventArgs) Handles GLControl1.MouseWheel
-            Camera.resetMouseStuff()
-            Camera.updateCameraMatrixWithScrollWheel(e.Delta * (If(Main.IsShiftPressed, 3.5F, 1.5F)), camMtx)
+            Camera.ResetMouseStuff()
+            Camera.UpdateCameraMatrixWithScrollWheel(e.Delta * (If(Main.IsShiftPressed, 3.5F, 1.5F)), camMtx)
             savedCamPos = Camera.Position
             GLControl1.Invalidate()
         End Sub
@@ -266,16 +245,16 @@ Namespace LevelEditor
         End Sub
 
         Private Sub glControl1_MouseUp(ByVal sender As Object, ByVal e As EventArgs) Handles GLControl1.MouseUp, GLControl1.MouseLeave
-            Camera.resetMouseStuff()
+            Camera.ResetMouseStuff()
             isMouseDown = False
         End Sub
 
         Private Sub glControl1_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles GLControl1.MouseMove
             If isMouseDown AndAlso e.Button = MouseButtons.Left Then
                 If Main.IsShiftPressed Then
-                    Camera.updateCameraOffsetWithMouse(savedCamPos, e.X, e.Y, GLControl1.Width, GLControl1.Height, camMtx)
+                    Camera.UpdateCameraOffsetWithMouse(savedCamPos, e.X, e.Y, GLControl1.Width, GLControl1.Height, camMtx)
                 Else
-                    Camera.updateCameraMatrixWithMouse(e.X, e.Y, camMtx)
+                    Camera.UpdateCameraMatrixWithMouse(e.X, e.Y, camMtx)
                 End If
                 GLControl1.Invalidate()
             End If
@@ -297,7 +276,7 @@ Namespace LevelEditor
         End Sub
 
         Private Sub MoveCameraViaWASDQE()
-            Dim moveSpeed As Integer = Convert.ToInt32(Math.Round(If(Main.IsShiftPressed, 60, 30) * (Camera.camSpeedMultiplier), 0))
+            Dim moveSpeed As Integer = Convert.ToInt32(Math.Round(If(Main.IsShiftPressed, 60, 30) * (Camera.CamSpeedMultiplier), 0))
             Dim allowCamMove As Boolean = Not (isMouseDown AndAlso Main.IsShiftPressed)
 
             For Each k As Keys In Main.pressedKeys
@@ -307,24 +286,24 @@ Namespace LevelEditor
                     Select Case k
                         Case Keys.W
                             'camera.Move(moveSpeed, moveSpeed, camMtx)
-                            Camera.updateCameraMatrixWithScrollWheel(moveSpeed, camMtx)
+                            Camera.UpdateCameraMatrixWithScrollWheel(moveSpeed, camMtx)
                             savedCamPos = Camera.Position
                         Case Keys.S
                             'camera.Move(-moveSpeed, -moveSpeed, camMtx)
-                            Camera.updateCameraMatrixWithScrollWheel(-moveSpeed, camMtx)
+                            Camera.UpdateCameraMatrixWithScrollWheel(-moveSpeed, camMtx)
                             savedCamPos = Camera.Position
                         Case Keys.A
                             'camera.Move(-moveSpeed, 0, camMtx)
-                            Camera.updateCameraOffsetDirectly(-moveSpeed, 0, camMtx)
+                            Camera.UpdateCameraOffsetDirectly(-moveSpeed, 0, camMtx)
                         Case Keys.D
                             'camera.Move(moveSpeed, 0, camMtx)
-                            Camera.updateCameraOffsetDirectly(moveSpeed, 0, camMtx)
+                            Camera.UpdateCameraOffsetDirectly(moveSpeed, 0, camMtx)
                         Case Keys.E
                             'camera.Move(0, -moveSpeed, camMtx)
-                            Camera.updateCameraOffsetDirectly(0, -moveSpeed, camMtx)
+                            Camera.UpdateCameraOffsetDirectly(0, -moveSpeed, camMtx)
                         Case Keys.Q
                             'camera.Move(0, moveSpeed, camMtx)
-                            Camera.updateCameraOffsetDirectly(0, moveSpeed, camMtx)
+                            Camera.UpdateCameraOffsetDirectly(0, moveSpeed, camMtx)
                     End Select
 
                     'savedCamPos = camera.Position

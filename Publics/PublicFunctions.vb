@@ -3,7 +3,7 @@ Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
 Imports Microsoft.Win32
 Imports Pilz.Reflection.PluginSystem
-Imports S3DFileParser
+Imports Pilz.S3DFileParser
 Imports SM64_ROM_Manager.SettingsManager
 
 Public Module Publics

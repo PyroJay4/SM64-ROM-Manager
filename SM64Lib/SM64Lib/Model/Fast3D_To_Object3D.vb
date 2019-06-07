@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.IO
-Imports S3DFileParser
+Imports Pilz
+Imports Pilz.S3DFileParser
 Imports SM64Lib.Data
 Imports SM64Lib.Model.Fast3D.DisplayLists
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script

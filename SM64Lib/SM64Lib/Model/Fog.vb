@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports S3DFileParser
 Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 

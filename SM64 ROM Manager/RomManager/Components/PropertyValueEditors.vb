@@ -404,4 +404,84 @@ Namespace PropertyValueEditors
         End Function
     End Class
 
+    Friend Class TextEncodingEditor
+        Inherits PropertyValueEditor
+
+        Public Property DropDownWidth As Integer = 30
+        Public Property AllowedContent As String()
+
+        Public Sub New(allowedContent As String())
+            Me.AllowedContent = allowedContent
+        End Sub
+
+        Public Overrides Function CreateEditor(propertyDescriptor As PropertyDescriptor, targetObject As Object) As IPropertyValueEditor
+            Dim editor As New ComboBoxEditor
+
+            editor.Style = eDotNetBarStyle.StyleManagerControlled
+            editor.DrawMode = DrawMode.OwnerDrawFixed
+            editor.DropDownStyle = ComboBoxStyle.DropDownList
+            editor.FormattingEnabled = True
+            editor.IntegralHeight = True
+            editor.Items.AddRange(AllowedContent)
+            editor.DropDownWidth = DropDownWidth
+
+            Return editor
+        End Function
+
+        Friend Class ComboBoxEditor
+            Inherits ComboBoxEx
+            Implements IPropertyValueEditor
+
+            Public Property EditorFont As Font Implements IPropertyValueEditor.EditorFont
+                Get
+                    Return Font
+                End Get
+                Set(value As Font)
+                    Font = value
+                End Set
+            End Property
+
+            Public ReadOnly Property IsEditorFocused As Boolean Implements IPropertyValueEditor.IsEditorFocused
+                Get
+                    Return Focused
+                End Get
+            End Property
+
+            Public Property EditValue As Object Implements IPropertyValueEditor.EditValue
+                Get
+                    If SelectedIndex > -1 Then
+                        Return SelectedItem
+                    Else
+                        Return Nothing
+                    End If
+                End Get
+                Set(value As Object)
+                    SelectedItem = value
+                End Set
+            End Property
+
+            Public Event EditValueChanged As EventHandler Implements IPropertyValueEditor.EditValueChanged
+
+            Public Sub FocusEditor() Implements IPropertyValueEditor.FocusEditor
+                Focus()
+            End Sub
+
+            Protected Overrides Sub OnSelectedIndexChanged(e As EventArgs)
+                OnEditSelectedValueChanged(e)
+                MyBase.OnSelectedIndexChanged(e)
+            End Sub
+
+            Protected Overrides Sub OnSelectedItemChanged(e As EventArgs)
+                OnEditSelectedValueChanged(e)
+                MyBase.OnSelectedItemChanged(e)
+            End Sub
+
+            Private Sub OnEditSelectedValueChanged(ByVal e As EventArgs)
+                RaiseEvent EditValueChanged(Me, e)
+            End Sub
+
+        End Class
+
+    End Class
+
 End Namespace

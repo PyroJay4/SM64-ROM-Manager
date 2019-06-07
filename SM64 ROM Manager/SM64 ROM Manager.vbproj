@@ -142,20 +142,20 @@
       <HintPath>..\packages\Ben.Demystifier.0.1.4\lib\net45\Ben.Demystifier.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar.Design">
-      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar.Layout, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar.Layout.dll</HintPath>
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Layout.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar.Schedule.dll</HintPath>
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Schedule.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
     <Reference Include="FastColoredTextBox">
       <HintPath>..\..\..\..\Desktop\FastColoredTextBox-master\FastColoredTextBox\bin\Release\FastColoredTextBox.dll</HintPath>
@@ -203,8 +203,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\SixTheteCockpit\PaintingControls\bin\Release\PaintingControls.dll</HintPath>
     </Reference>
+    <Reference Include="Pilz.Drawing.Drawing3D.OpenGLFactory">
+      <HintPath>..\Shared Libs\Pilz.Drawing.Drawing3D.OpenGLFactory.dll</HintPath>
+    </Reference>
     <Reference Include="Pilz.Reflection.PluginSystem">
       <HintPath>..\Shared Libs\Pilz.Reflection.PluginSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Pilz.Simple3DFileParser">
+      <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
@@ -291,6 +297,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Level Editor\OtherTexturesJsonClasses.vb" />
+    <Compile Include="RomManager\GUI\Main Form\Text Manager\MinimalAdvPropertyGridManager.vb" />
+    <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditorExtensions.vb" />
+    <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.Designer.vb">
+      <DependentUpon>TextProfileEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RomManager\GUI\Tools\CustomBankManager.Designer.vb">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
     </Compile>
@@ -446,6 +460,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Star_Position_Editor_Ressources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RomManager\Language Ressources\Text Profile Editor\TextProfileEditorLangRes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextProfileEditorLangRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="RomManager\Modules\BehaviorInfoList\BehaviorInfo.vb" />
     <Compile Include="RomManager\Modules\BehaviorInfoList\BehaviorInfoList.vb" />
     <Compile Include="RomManager\Modules\Extensions.vb" />
@@ -575,6 +594,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\MainForm.de.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.resx">
+      <DependentUpon>TextProfileEditor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\CustomBankManager.resx">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
@@ -750,6 +772,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Star_Position_Editor_Ressources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\Language Ressources\Text Profile Editor\TextProfileEditorLangRes.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextProfileEditorLangRes.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest">
@@ -823,18 +850,6 @@
       <Project>{d9258483-950c-46d1-a333-31f32492cd7e}</Project>
       <Name>N64Graphics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OpenGLCamera\OpenGLFactory.CameraN.vbproj">
-      <Project>{26ad6422-f5d8-48d3-ac57-398f9c094217}</Project>
-      <Name>OpenGLFactory.CameraN</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OpenGLPreview\OpenGLFactory.PreviewN.vbproj">
-      <Project>{d3d19c7a-f7be-44f5-ace4-b0b5260f519f}</Project>
-      <Name>OpenGLFactory.PreviewN</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OpenGLRenderer\OpenGLFactory.RenderingN.vbproj">
-      <Project>{5e9f0b0a-f7b8-49a9-80fc-6dfe0d44cc84}</Project>
-      <Name>OpenGLFactory.RenderingN</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PatchScripts\PatchScripts.vbproj">
       <Project>{c5de39f9-c9aa-48df-bd74-68a057012953}</Project>
       <Name>PatchScripts</Name>
@@ -846,10 +861,6 @@
     <ProjectReference Include="..\SettingsManager\SM64 ROM Manager.SettingsManager.vbproj">
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
       <Name>SM64 ROM Manager.SettingsManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SimpleFileParser\SimpleFileParser.vbproj">
-      <Project>{ac955819-7910-450c-940c-7c1989483d4b}</Project>
-      <Name>SimpleFileParser</Name>
     </ProjectReference>
     <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
       <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>

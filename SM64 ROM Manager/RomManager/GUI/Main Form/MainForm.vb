@@ -20,6 +20,7 @@ Imports Newtonsoft.Json.Linq
 Imports System.Reflection
 Imports Microsoft.Win32
 Imports Pilz.Reflection
+Imports TaskDialog = DevComponents.DotNetBar.TaskDialog
 
 Public Class MainForm
 
@@ -31,6 +32,7 @@ Public Class MainForm
     Friend LoadingROM As Boolean = False
     Friend savingRom As Boolean = False
     Friend hasRomChanged As Byte = 0
+    Private WithEvents WarningBox_RomChanged As WarningBox
 
     Friend Property StatusText As String
         Get
@@ -62,7 +64,11 @@ Public Class MainForm
         ClientSize = New Size(712, 689)
 
         'Updates
-        updateManager = New UpdateManager(New Uri("http://pilzinsel64.square7.ch/Updates/SM64_ROM_Manager_New/updates.json"), "<RSAKeyValue><Modulus>w5WpraTgIe2QlQGkvrJDcdrtRkb1AQ0iDMO0JMsCd7rPoUYw7cu7YnRreeadU5jBiit4G82oB/TOtT+quJPDBixxKjof9gKVqrxeKtMYU/3vwRQg0+Y77GFD6tMLNlJwrk1NzgS3FN2Zlpl9LplgeQr9g5RSKMyu+VJ5OTZOHZAyHpvMnPSD9V1Kpyj/WFf2ADf9PL3Z4vEJfcmoFdGY6i4hq4IAIe5o5lYGB5zC/QOfDuAHEO+oGbOkFs65BeHDZWkLnzBOYPI4rnHZpU9E/ChcJVerNln45D9XGElDVXy7AIdy417mefjqnPaqMgm/22aTUW3f1Jsy3kcUhe1/f5eE/PHQoFvLPjcezY5mPUkW5JT1Y+2tIROvXh5zejyb+/2ctyVLSqLhG6wh4UNFd60Be4mV2NJ+Acn9IagdvMW3AvUmbSgQK4Jmq2OP656XkrdDi2vGibdMOB2Nt+O/q5+GpbzrEAnX+t9ikxmT568PpfjGBVvh+DmQxhiEaKT28HKWuDwLOdq6bnnnw6LlqF0odHqf2L09uXULJQo9W8zMoA5lyNbgHTfrj1ik9X4xheZkqmwJWIyYrRsPsyLN6Eani4vqVeVgBfJxdon45x5tPqYhadHoIHWU8WxnIGBnDAmaBZ/6lQpfTmbo3c8T2WuNjQAarzmnFKHP6GqP9X7JFhGQklTI5LFNsz6IjFRoHl/R5bUi6GJddoFitKXT4XjaJw+zR4Vp6W37wLjbe/r7Wd+vBST3YxTELQ+zQ3lxOb3Ht+0psinyaqqWVG8jh69axesPDIXvqDmZsYTlbm8YWyHeViX6xDo1+gYCZkFnCqdpXaB2B2a/bnvV1DKRDWCUi122BzCkUQg104F2ncnTnwrEwGXBQzVcZkkCtNhoiQRbOz+kJZz3tdmF+IPdhsdevpB4XwVbb/aTCkx2T68LOrGCuaKZ8EmHzTEbX2thSs7q3+ImfxCC9pubzCgwQEiS4MD/k+BMfDt7JQEPSP8EvBDxLLJ8Ls34/GnX5DSkUwMC3a/DUoZ0FgV8aIJEPSequjB/HtVQaR9t8j8ynr9FpsxGS0Qa0UZLt5ACG76Z4wgnLdrPKJMD0hcscmdiy4ov3a3AkuvkvIeGDwWFRMFrwq4F+5+i5AvC+f+jjwRjCckOEUsUrgcycsLXDMKjD0VGRLQIr+qegB1I7Wrl15ctvS+z3YIgx+SrGNbrEzLKxV5Habe/HKZrQ2t8JzflurHJByifFQ/Szp0BkoOXkVmkuczAw0a/DglU2um1Ic8cXAuNIWP0PbYpvVDUnChZrFMVO5QFMAdI8Ei9LHbjlTNdegXtHXIGJS9uXdf8285rlHsyVkCHbtFyZRsQSkuDuQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", New CultureInfo("en"), New UpdateVersion(Application.ProductVersion))
+        Dim updateVersion As New UpdateVersion(Application.ProductVersion) With {
+            .DevelopmentalStage = CInt(DevelopmentalStage),
+            .DevelopmentBuild = DevelopmentalStage
+        }
+        updateManager = New UpdateManager(New Uri("http://pilzinsel64.square7.ch/Updates/SM64_ROM_Manager_New/updates.json"), "<RSAKeyValue><Modulus>w5WpraTgIe2QlQGkvrJDcdrtRkb1AQ0iDMO0JMsCd7rPoUYw7cu7YnRreeadU5jBiit4G82oB/TOtT+quJPDBixxKjof9gKVqrxeKtMYU/3vwRQg0+Y77GFD6tMLNlJwrk1NzgS3FN2Zlpl9LplgeQr9g5RSKMyu+VJ5OTZOHZAyHpvMnPSD9V1Kpyj/WFf2ADf9PL3Z4vEJfcmoFdGY6i4hq4IAIe5o5lYGB5zC/QOfDuAHEO+oGbOkFs65BeHDZWkLnzBOYPI4rnHZpU9E/ChcJVerNln45D9XGElDVXy7AIdy417mefjqnPaqMgm/22aTUW3f1Jsy3kcUhe1/f5eE/PHQoFvLPjcezY5mPUkW5JT1Y+2tIROvXh5zejyb+/2ctyVLSqLhG6wh4UNFd60Be4mV2NJ+Acn9IagdvMW3AvUmbSgQK4Jmq2OP656XkrdDi2vGibdMOB2Nt+O/q5+GpbzrEAnX+t9ikxmT568PpfjGBVvh+DmQxhiEaKT28HKWuDwLOdq6bnnnw6LlqF0odHqf2L09uXULJQo9W8zMoA5lyNbgHTfrj1ik9X4xheZkqmwJWIyYrRsPsyLN6Eani4vqVeVgBfJxdon45x5tPqYhadHoIHWU8WxnIGBnDAmaBZ/6lQpfTmbo3c8T2WuNjQAarzmnFKHP6GqP9X7JFhGQklTI5LFNsz6IjFRoHl/R5bUi6GJddoFitKXT4XjaJw+zR4Vp6W37wLjbe/r7Wd+vBST3YxTELQ+zQ3lxOb3Ht+0psinyaqqWVG8jh69axesPDIXvqDmZsYTlbm8YWyHeViX6xDo1+gYCZkFnCqdpXaB2B2a/bnvV1DKRDWCUi122BzCkUQg104F2ncnTnwrEwGXBQzVcZkkCtNhoiQRbOz+kJZz3tdmF+IPdhsdevpB4XwVbb/aTCkx2T68LOrGCuaKZ8EmHzTEbX2thSs7q3+ImfxCC9pubzCgwQEiS4MD/k+BMfDt7JQEPSP8EvBDxLLJ8Ls34/GnX5DSkUwMC3a/DUoZ0FgV8aIJEPSequjB/HtVQaR9t8j8ynr9FpsxGS0Qa0UZLt5ACG76Z4wgnLdrPKJMD0hcscmdiy4ov3a3AkuvkvIeGDwWFRMFrwq4F+5+i5AvC+f+jjwRjCckOEUsUrgcycsLXDMKjD0VGRLQIr+qegB1I7Wrl15ctvS+z3YIgx+SrGNbrEzLKxV5Habe/HKZrQ2t8JzflurHJByifFQ/Szp0BkoOXkVmkuczAw0a/DglU2um1Ic8cXAuNIWP0PbYpvVDUnChZrFMVO5QFMAdI8Ei9LHbjlTNdegXtHXIGJS9uXdf8285rlHsyVkCHbtFyZRsQSkuDuQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", New CultureInfo("en"), updateVersion)
         updateManager.CloseHostApplication = True
         updateManager.RestartHostApplication = True
         updateManager.InstallAsAdmin = Settings.General.UseAdminRightsForUpdates
@@ -180,7 +186,29 @@ Public Class MainForm
 
     Friend Sub RefreshAppTitel()
         Dim appversion As New Version(Application.ProductVersion)
-        Me.Text = $"{Application.ProductName} (v{appversion.ToString(If(appversion.Revision <> 0, 4, If(appversion.Build <> 0, 3, 2)))} - Beta){If(rommgr?.RomFile <> "", $" - ""{Path.GetFileName(rommgr?.RomFile)}""", "")}"
+        Dim romPathExt As String = If(rommgr?.RomFile <> "", $" - ""{Path.GetFileName(rommgr?.RomFile)}""", "")
+        Dim versionText As String = $"v{appversion.ToString(If(appversion.Revision <> 0, 4, If(appversion.Build <> 0, 3, 2)))}"
+
+        If Not String.IsNullOrEmpty(DevelopmentalStage) Then
+            Dim addDevelopmentalNumber As Boolean = True
+
+            Select Case DevelopmentalStage
+                Case 0
+                    versionText &= " Alpha"
+                Case 1
+                    versionText &= " Beta"
+                Case 2
+                    versionText &= " RC"
+                Case 3
+                    addDevelopmentalNumber = False
+            End Select
+
+            If addDevelopmentalNumber Then
+                versionText &= " " & DevelopmentBuild
+            End If
+        End If
+
+        Text = $"{Application.ProductName} ({versionText}){romPathExt}"
     End Sub
 
     Private Sub TabControl_Main_SelectedIndexChanged(sender As TabControl, e As TabStripTabChangedEventArgs) Handles TabControl1.SelectedTabChanged
@@ -337,6 +365,10 @@ Public Class MainForm
     Private Sub ButtonItem16_Click(sender As Object, e As EventArgs) Handles ButtonItem16.Click
         Dim frm As New Form_CoinsSettings(rommgr)
         frm.Show(Me)
+    End Sub
+
+    Private Sub MainForm_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        CheckRomChanged()
     End Sub
 
 #Region "General"
@@ -621,14 +653,94 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub MainForm_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+    Private Sub ButtonItem19_Click(sender As Object, e As EventArgs) Handles ButtonItem19.Click
+        If rommgr IsNot Nothing Then
+            rommgr.LoadTextProfileIfNotLoaded()
+
+            Dim editor As New TextProfileEditor With {
+                .ProfileInfo = rommgr.TextInfoProfile
+            }
+
+            editor.ShowDialog()
+
+            If editor.HasSaved Then
+                rommgr.ClearTextGroups()
+                tabTextManager.TM_ReloadTableList()
+            End If
+        End If
+    End Sub
+
+#End Region
+
+#Region "Reload ROM after Changes"
+
+    Private Sub WarningBox_RomChanged_CloseClick(sender As Object, e As EventArgs)
+        WarningBox_RomChanged.Visible = False
+        TabControl1.Top -= WarningBox_RomChanged.Height
+        'Height -= WarningBox_RomChanged.Height
+        TabControl1.Height += WarningBox_RomChanged.Height
+    End Sub
+
+    Private Sub WarningBox_RomChanged_OptionsClick(sender As Object, e As EventArgs)
+        'Reload ROM
+        ReloadRom()
+
+        'Close WarningBox
+        WarningBox_RomChanged_CloseClick(sender, e)
+    End Sub
+
+    Private Sub CheckRomChanged()
         If hasRomChanged = 1 Then
-            'If MessageBoxEx.Show(Form_Main_Resources.MsgBox_RomChanged_ReloadRom, Form_Main_Resources.MsgBox_RomChanged_ReloadRom_Titel, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-            '    OpenROMFile(rommgr.RomFile)
-            '    hasRomChanged = 0
-            'Else
-            '    hasRomChanged = 2
-            'End If
+            NotifyRomChangesAvailable()
+        End If
+    End Sub
+
+    Private Sub ReloadRom()
+        OpenROMFile(rommgr.RomFile)
+    End Sub
+
+    Private Sub NotifyRomChangesAvailable()
+        Dim notifyMode As NotificationMode = Settings.General.RomChangedNotification
+        Dim showWarningBox As Boolean = notifyMode = NotificationMode.Infobox
+
+        'Show popup
+        If notifyMode = NotificationMode.Popup Then
+            Dim tdinfo As New TaskDialogInfo With {
+                .Title = Form_Main_Resources.MsgBox_RomChanged_Title,
+                .Header = Form_Main_Resources.MsgBox_RomChanged_Title,
+                .TaskDialogIcon = eTaskDialogIcon.Information,
+                .Text = Form_Main_Resources.MsgBox_RomChanged,
+                .DialogButtons = eTaskDialogButton.Yes Or eTaskDialogButton.No
+            }
+            Select Case TaskDialog.Show(tdinfo)
+                Case eTaskDialogResult.Yes
+                    ReloadRom()
+                Case Else
+                    showWarningBox = True
+            End Select
+        End If
+
+        'Add WarningBox
+        If showWarningBox AndAlso WarningBox_RomChanged Is Nothing Then
+            WarningBox_RomChanged = New WarningBox With {
+                .Text = Form_Main_Resources.WarningBox_RomChanged_Text,
+                .OptionsText = Form_Main_Resources.WarningBox_RomChanged_ReloadRom,
+                .Dock = DockStyle.Top,
+                .CloseButtonVisible = False
+            }
+            AddHandler WarningBox_RomChanged.OptionsClick, AddressOf WarningBox_RomChanged_OptionsClick
+            AddHandler WarningBox_RomChanged.CloseClick, AddressOf WarningBox_RomChanged_CloseClick
+            Panel1.Controls.Add(WarningBox_RomChanged)
+        End If
+
+        'Set Warningbox Size
+        If WarningBox_RomChanged IsNot Nothing AndAlso showWarningBox Then
+            hasRomChanged = 2
+            WarningBox_RomChanged.BringToFront()
+            'Height += WarningBox_RomChanged.Height
+            TabControl1.Top += WarningBox_RomChanged.Height
+            TabControl1.Height -= WarningBox_RomChanged.Height
+            WarningBox_RomChanged.Visible = True
         End If
     End Sub
 
