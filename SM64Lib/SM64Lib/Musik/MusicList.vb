@@ -92,7 +92,7 @@ Namespace Global.SM64Lib.Music
                 s.Position = &HEE2B0
                 s.Write(CUInt(If(EnableMusicHack, &HBD00, &H6D00)))
                 s.Position = &HD48B4
-                s.Write(CUInt(&H3C02807C)) 'If(EnableMusicHack, &H3C02803D, &H3C02807C)
+                s.Write(CUInt(If(EnableMusicHack, &H3C02803D, &H3C02807C))) '&H3C02807C
                 s.Position = &HD48B8
                 s.Write(CUInt(If(EnableMusicHack, &H34420000, &H34420000)))
             End If
