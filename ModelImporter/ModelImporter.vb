@@ -44,10 +44,19 @@ Public Class ModelImporter
         Panel1.BackColor = BackColor
 
         ComboBoxEx1.Items.Clear()
-        Dim layers As String() = [Enum].GetNames(GetType(Geolayer))
-        ComboBoxEx1.Items.Add("Don't force")
-        ComboBoxEx1.Items.AddRange(layers)
-        ComboBoxEx1.SelectedIndex = Array.IndexOf(layers, [Enum].GetName(GetType(Geolayer), &H4)) + 1
+        'Dim layers As String() = [Enum].GetNames(GetType(Geolayer))
+        'ComboBoxEx1.Items.Add("Don't force")
+        'ComboBoxEx1.Items.AddRange(layers)
+        ComboBoxEx1.Items.AddRange(
+            {
+            New ComboItem With {.Text = "Don't force", .Tag = -1},
+            New ComboItem With {.Text = "1 - Solid", .Tag = 1},
+            New ComboItem With {.Text = "2 - Solid Foreground", .Tag = 2},
+            New ComboItem With {.Text = "4 - Alpha", .Tag = 4},
+            New ComboItem With {.Text = "5 - Transparent", .Tag = 5},
+            New ComboItem With {.Text = "6 - Transparent Foreground", .Tag = 6}
+            })
+        ComboBoxEx1.SelectedIndex = 5
         ComboBoxEx1.UpdateAmbientColors
     End Sub
 
@@ -78,9 +87,10 @@ Public Class ModelImporter
     Private Sub ButtonX_ConvertMdl_Click(sender As Object, e As EventArgs) Handles ButtonX_ConvertMdl.Click
         Dim frm As New MainModelConverter
 
-        If ComboBoxEx1.SelectedIndex > 0 Then
-            frm.ForceDisplaylist = [Enum].GetValues(GetType(Geolayer))(ComboBoxEx1.SelectedIndex - 1)
-        End If
+        frm.ForceDisplaylist = CType(ComboBoxEx1.SelectedItem, ComboItem).Tag
+        'If ComboBoxEx1.SelectedIndex > 0 Then
+        '    frm.ForceDisplaylist = [Enum].GetValues(GetType(Geolayer))(ComboBoxEx1.SelectedIndex - 1)
+        'End If
 
         If frm.ShowDialog = DialogResult.OK Then
             mdl = frm.ResModel

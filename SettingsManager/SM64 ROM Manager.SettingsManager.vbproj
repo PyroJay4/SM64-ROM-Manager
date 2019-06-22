@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Settings\SettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\GeneralSettingsStruc.vb" />
+    <Compile Include="Settings\SubStruc\ModelConverterSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\RecentFilesSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\StyleManagerSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\HexEditModeStruc.vb" />

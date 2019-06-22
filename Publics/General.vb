@@ -16,7 +16,7 @@ Imports Pilz.S3DFileParser
 
 Public Module General
 
-    Private _SurfaceData As ExcelWorkbook = Nothing
+    Private _OtherData As ExcelWorkbook = Nothing
 
     Public ReadOnly Property DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
     Public ReadOnly Property ActSelectorDefaultValues As Byte() = New Byte() {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
@@ -38,12 +38,15 @@ Public Module General
 
     Public ReadOnly Property SurfaceData As ExcelWorkbook
         Get
-            If _SurfaceData Is Nothing Then
-                Dim tableFile As String = MyDataPath & "\Other\Surface Data.xlsx"
-                Dim pgk As New ExcelPackage(New FileInfo(tableFile))
-                _SurfaceData = pgk.Workbook
-            End If
-            Return _SurfaceData
+            Static _SurfaceData As New ExcelPackage(New FileInfo(MyDataPath & "\Other\Surface Data.xlsx"))
+            Return _SurfaceData.Workbook
+        End Get
+    End Property
+
+    Public ReadOnly Property OtherData As ExcelWorkbook
+        Get
+            Static _OtherData As New ExcelPackage(New FileInfo(MyDataPath & "\Other\Other Data.xlsx"))
+            Return _OtherData.Workbook
         End Get
     End Property
 

@@ -2,7 +2,6 @@
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 Imports OpenTK
-Imports TextValueConverter
 Imports SM64Lib.Levels
 Imports SM64Lib.Levels.Script, SM64Lib.Levels.Script.Commands
 Imports OpenTK.Graphics.OpenGL
@@ -1480,14 +1479,21 @@ Namespace LevelEditor
 #End Region
 
 #Region "Render Settings"
+
         Friend Sub SomeButtonItems_Click(sender As Object, e As EventArgs) Handles ButtonItem_ViewColMap.Click, ButtonItem_ViewVisualMap.Click, ButtonItem_DrawOutline.Click, ButtonItem_DrawFill.Click, ButtonItem_DrawObjects.Click, ButtonItem_DrawBackfaces.Click
             'Application.DoEvents()
             ogl?.Invalidate()
         End Sub
+
         Friend Sub ButtonItem_DrawBackfaces_CheckChanged(sender As Object, e As EventArgs) Handles ButtonItem_DrawBackfaces.CheckedChanged
-            If sender.Checked Then GL.Disable(EnableCap.CullFace) Else GL.Enable(EnableCap.CullFace)
+            If sender.Checked Then
+                GL.Disable(EnableCap.CullFace)
+            Else
+                GL.Enable(EnableCap.CullFace)
+            End If
         End Sub
-        Friend Sub ViewModeButtonItems_CheckChanged(sender As Object, e As EventArgs) Handles ButtonItem_ViewVisualMap.CheckedChanged, ButtonItem_ViewColMap.CheckedChanged, ButtonItem_ViewColMap.CheckedChanged, ButtonItem_ViewVisualMap.CheckedChanged
+
+        Friend Sub ViewModeButtonItems_CheckChanged(sender As Object, e As EventArgs) Handles ButtonItem_ViewVisualMap.CheckedChanged, ButtonItem_ViewColMap.CheckedChanged
             If sender.Checked Then
                 For Each btn As CheckBoxItem In {ButtonItem_ViewVisualMap, ButtonItem_ViewColMap}
                     If btn IsNot sender Then btn.Checked = False
@@ -1499,6 +1505,7 @@ Namespace LevelEditor
                 ogl?.Invalidate()
             End If
         End Sub
+
 #End Region
 
 #Region "Level"

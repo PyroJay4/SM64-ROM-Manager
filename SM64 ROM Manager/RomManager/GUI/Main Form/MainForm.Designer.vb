@@ -78,6 +78,7 @@ Partial Class MainForm
         Me.ButtonItem30 = New DevComponents.DotNetBar.ButtonItem()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.LabelItem1 = New DevComponents.DotNetBar.LabelItem()
+        Me.LabelItem_OtherInfoText = New DevComponents.DotNetBar.LabelItem()
         Me.RibbonControl1 = New DevComponents.DotNetBar.RibbonControl()
         Me.Panel1.SuspendLayout()
         CType(Me.TabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -168,9 +169,7 @@ Partial Class MainForm
         Me.tabTextManager.LineColorGreen = System.Drawing.Color.YellowGreen
         Me.tabTextManager.LineColorWarning1 = System.Drawing.Color.Orange
         Me.tabTextManager.LineColorWarning2 = System.Drawing.Color.Red
-        Me.tabTextManager.MainForm = Nothing
         Me.tabTextManager.Name = "tabTextManager"
-        Me.tabTextManager.RomMgr = Nothing
         '
         'TabItem_TextManager
         '
@@ -226,9 +225,7 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.tabLevelManager, "tabLevelManager")
         Me.tabLevelManager.BackColor = System.Drawing.Color.White
-        Me.tabLevelManager.MainForm = Nothing
         Me.tabLevelManager.Name = "tabLevelManager"
-        Me.tabLevelManager.RomMgr = Nothing
         '
         'TabItem_LevelManager
         '
@@ -512,7 +509,7 @@ Partial Class MainForm
         Me.Bar1.BarType = DevComponents.DotNetBar.eBarType.StatusBar
         resources.ApplyResources(Me.Bar1, "Bar1")
         Me.Bar1.IsMaximized = False
-        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem1})
+        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem1, Me.LabelItem_OtherInfoText})
         Me.Bar1.Name = "Bar1"
         Me.Bar1.Stretch = True
         Me.Bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -521,6 +518,11 @@ Partial Class MainForm
         'LabelItem1
         '
         Me.LabelItem1.Name = "LabelItem1"
+        '
+        'LabelItem_OtherInfoText
+        '
+        Me.LabelItem_OtherInfoText.Name = "LabelItem_OtherInfoText"
+        Me.LabelItem_OtherInfoText.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
         '
         'RibbonControl1
         '
@@ -560,7 +562,6 @@ Partial Class MainForm
         Me.Controls.Add(Me.RibbonControl1)
         Me.Controls.Add(Me.Bar1)
         Me.Controls.Add(Me.Panel1)
-        Me.EnableGlass = False
         Me.MaximizeBox = False
         Me.Name = "MainForm"
         Me.TopLeftCornerSize = 0
@@ -616,6 +617,7 @@ Partial Class MainForm
     Friend WithEvents ButtonItem29 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem30 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents LabelItem1 As DevComponents.DotNetBar.LabelItem
+    Friend WithEvents LabelItem_OtherInfoText As DevComponents.DotNetBar.LabelItem
     Friend WithEvents TabControlPanel1 As DevComponents.DotNetBar.TabControlPanel
     Friend WithEvents TabItem_General As DevComponents.DotNetBar.TabItem
     Friend WithEvents TabControlPanel2 As DevComponents.DotNetBar.TabControlPanel

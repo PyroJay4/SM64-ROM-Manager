@@ -48,8 +48,11 @@ Public Class Managed3DObject
         End Get
         Set
             Dim oc As ObjectCombo = myObjectCombos.FirstOrDefault(Function(n) n.Name = Value)
-            ModelID = oc.ModelID
-            BehaviorID = oc.BehaviorAddress
+
+            If oc IsNot Nothing Then
+                ModelID = oc.ModelID
+                BehaviorID = oc.BehaviorAddress
+            End If
 
             'Enable this object if it isn't enabled
             If Not AnyActs Then AllActs = True

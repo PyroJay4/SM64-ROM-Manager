@@ -186,7 +186,7 @@ Namespace Global.SM64Lib
 
             'Global Object Bank
             'SaveGlobalObjectBank(lastpos)
-            HexRoundUp2(lastpos)
+            'HexRoundUp2(lastpos)
 
             'Levels
             SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then
@@ -219,11 +219,6 @@ Namespace Global.SM64Lib
             Dim revision As Byte = fs.ReadByte
 
             fs.Close()
-
-            If major = 1 AndAlso minor = 0 AndAlso build = 0 AndAlso revision = 0 Then
-                major = 0
-                minor = 3
-            End If
 
             ProgramVersion = New Version(major, minor, build, revision)
 

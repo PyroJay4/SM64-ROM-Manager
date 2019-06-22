@@ -34,6 +34,10 @@ Partial Class Form_Settings
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.TabControl2 = New DevComponents.DotNetBar.TabControl()
         Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.ComboBoxEx_UpdateLevel = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.ComboItem12 = New DevComponents.Editors.ComboItem()
+        Me.ComboItem13 = New DevComponents.Editors.ComboItem()
+        Me.ComboItem14 = New DevComponents.Editors.ComboItem()
         Me.ComboBoxEx_NotifyOnRomChanges = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.ComboItem4 = New DevComponents.Editors.ComboItem()
         Me.ComboItem5 = New DevComponents.Editors.ComboItem()
@@ -53,6 +57,7 @@ Partial Class Form_Settings
         Me.ComboItem2 = New DevComponents.Editors.ComboItem()
         Me.ComboItem3 = New DevComponents.Editors.ComboItem()
         Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
         Me.TabItem1 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel4 = New DevComponents.DotNetBar.TabControlPanel()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
@@ -79,6 +84,10 @@ Partial Class Form_Settings
         Me.TabItem4 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.SymbolBox1 = New DevComponents.DotNetBar.Controls.SymbolBox()
         Me.SuperTooltip1 = New DevComponents.DotNetBar.SuperTooltip()
+        Me.TabItem6 = New DevComponents.DotNetBar.TabItem(Me.components)
+        Me.TabControlPanel5 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.LabelX14 = New DevComponents.DotNetBar.LabelX()
+        Me.SwitchButton_UseLegacyCollisionDescriptions = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl2.SuspendLayout()
         Me.TabControlPanel1.SuspendLayout()
@@ -86,6 +95,7 @@ Partial Class Form_Settings
         Me.TabControlPanel3.SuspendLayout()
         Me.TabControlPanel2.SuspendLayout()
         Me.TabControlPanel_LoaderModules.SuspendLayout()
+        Me.TabControlPanel5.SuspendLayout()
         Me.SuspendLayout()
         '
         'ComboBox_DefaultValueType
@@ -98,19 +108,17 @@ Partial Class Form_Settings
         Me.ComboBox_DefaultValueType.Items.AddRange(New Object() {resources.GetString("ComboBox_DefaultValueType.Items"), resources.GetString("ComboBox_DefaultValueType.Items1"), resources.GetString("ComboBox_DefaultValueType.Items2"), resources.GetString("ComboBox_DefaultValueType.Items3")})
         Me.ComboBox_DefaultValueType.Name = "ComboBox_DefaultValueType"
         Me.ComboBox_DefaultValueType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBox_DefaultValueType, CType(resources.GetObject("ComboBox_DefaultValueType.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX3
         '
-        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX3, CType(resources.GetObject("LabelX3.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'SwitchButton_SearchUpdates
         '
@@ -124,7 +132,6 @@ Partial Class Form_Settings
         Me.SwitchButton_SearchUpdates.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
         Me.SwitchButton_SearchUpdates.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
         Me.SwitchButton_SearchUpdates.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.SwitchButton_SearchUpdates, CType(resources.GetObject("SwitchButton_SearchUpdates.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.SwitchButton_SearchUpdates.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.SwitchButton_SearchUpdates.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.SwitchButton_SearchUpdates.SwitchWidth = 15
@@ -133,15 +140,14 @@ Partial Class Form_Settings
         '
         'LabelX1
         '
-        resources.ApplyResources(Me.LabelX1, "LabelX1")
         Me.LabelX1.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX1, "LabelX1")
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX1, CType(resources.GetObject("LabelX1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboBox_AreaEditor_DefaultWindowMode
         '
@@ -153,19 +159,17 @@ Partial Class Form_Settings
         Me.ComboBox_AreaEditor_DefaultWindowMode.Items.AddRange(New Object() {resources.GetString("ComboBox_AreaEditor_DefaultWindowMode.Items"), resources.GetString("ComboBox_AreaEditor_DefaultWindowMode.Items1")})
         Me.ComboBox_AreaEditor_DefaultWindowMode.Name = "ComboBox_AreaEditor_DefaultWindowMode"
         Me.ComboBox_AreaEditor_DefaultWindowMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBox_AreaEditor_DefaultWindowMode, CType(resources.GetObject("ComboBox_AreaEditor_DefaultWindowMode.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX7
         '
-        resources.ApplyResources(Me.LabelX7, "LabelX7")
         Me.LabelX7.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX7, "LabelX7")
         Me.LabelX7.Name = "LabelX7"
         Me.LabelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX7, CType(resources.GetObject("LabelX7.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboBox_AreaEditor_DefaultCameraMode
         '
@@ -177,46 +181,45 @@ Partial Class Form_Settings
         Me.ComboBox_AreaEditor_DefaultCameraMode.Items.AddRange(New Object() {resources.GetString("ComboBox_AreaEditor_DefaultCameraMode.Items"), resources.GetString("ComboBox_AreaEditor_DefaultCameraMode.Items1")})
         Me.ComboBox_AreaEditor_DefaultCameraMode.Name = "ComboBox_AreaEditor_DefaultCameraMode"
         Me.ComboBox_AreaEditor_DefaultCameraMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBox_AreaEditor_DefaultCameraMode, CType(resources.GetObject("ComboBox_AreaEditor_DefaultCameraMode.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX6
         '
-        resources.ApplyResources(Me.LabelX6, "LabelX6")
         Me.LabelX6.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX6, "LabelX6")
         Me.LabelX6.Name = "LabelX6"
         Me.LabelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX6, CType(resources.GetObject("LabelX6.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'TabControl2
         '
-        resources.ApplyResources(Me.TabControl2, "TabControl2")
         Me.TabControl2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControl2.CanReorderTabs = False
+        Me.TabControl2.Controls.Add(Me.TabControlPanel5)
         Me.TabControl2.Controls.Add(Me.TabControlPanel1)
-        Me.TabControl2.Controls.Add(Me.TabControlPanel4)
         Me.TabControl2.Controls.Add(Me.TabControlPanel3)
         Me.TabControl2.Controls.Add(Me.TabControlPanel2)
+        Me.TabControl2.Controls.Add(Me.TabControlPanel4)
         Me.TabControl2.Controls.Add(Me.TabControlPanel_LoaderModules)
+        resources.ApplyResources(Me.TabControl2, "TabControl2")
         Me.TabControl2.ForeColor = System.Drawing.Color.Black
         Me.TabControl2.Name = "TabControl2"
         Me.TabControl2.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.TabControl2.SelectedTabIndex = 0
         Me.TabControl2.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabControl2, CType(resources.GetObject("TabControl2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TabControl2.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
         Me.TabControl2.Tabs.Add(Me.TabItem1)
         Me.TabControl2.Tabs.Add(Me.TabItem3)
         Me.TabControl2.Tabs.Add(Me.TabItem2)
         Me.TabControl2.Tabs.Add(Me.TabItem4)
         Me.TabControl2.Tabs.Add(Me.TabItem5)
+        Me.TabControl2.Tabs.Add(Me.TabItem6)
         '
         'TabControlPanel1
         '
-        resources.ApplyResources(Me.TabControlPanel1, "TabControlPanel1")
+        Me.TabControlPanel1.Controls.Add(Me.ComboBoxEx_UpdateLevel)
         Me.TabControlPanel1.Controls.Add(Me.ComboBoxEx_NotifyOnRomChanges)
         Me.TabControlPanel1.Controls.Add(Me.ComboBoxEx_Language)
         Me.TabControlPanel1.Controls.Add(Me.LabelX12)
@@ -226,11 +229,13 @@ Partial Class Form_Settings
         Me.TabControlPanel1.Controls.Add(Me.ButtonX4)
         Me.TabControlPanel1.Controls.Add(Me.ComboBoxEx1)
         Me.TabControlPanel1.Controls.Add(Me.LabelX10)
+        Me.TabControlPanel1.Controls.Add(Me.LabelX13)
         Me.TabControlPanel1.Controls.Add(Me.LabelX1)
         Me.TabControlPanel1.Controls.Add(Me.SwitchButton_SearchUpdates)
         Me.TabControlPanel1.Controls.Add(Me.LabelX3)
         Me.TabControlPanel1.Controls.Add(Me.ComboBox_DefaultValueType)
         Me.TabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel1, "TabControlPanel1")
         Me.TabControlPanel1.Name = "TabControlPanel1"
         Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -239,8 +244,30 @@ Partial Class Form_Settings
         Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel1.Style.GradientAngle = 90
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabControlPanel1, CType(resources.GetObject("TabControlPanel1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TabControlPanel1.TabItem = Me.TabItem1
+        '
+        'ComboBoxEx_UpdateLevel
+        '
+        resources.ApplyResources(Me.ComboBoxEx_UpdateLevel, "ComboBoxEx_UpdateLevel")
+        Me.ComboBoxEx_UpdateLevel.DisplayMember = "Text"
+        Me.ComboBoxEx_UpdateLevel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ComboBoxEx_UpdateLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEx_UpdateLevel.FormattingEnabled = True
+        Me.ComboBoxEx_UpdateLevel.Items.AddRange(New Object() {Me.ComboItem12, Me.ComboItem13, Me.ComboItem14})
+        Me.ComboBoxEx_UpdateLevel.Name = "ComboBoxEx_UpdateLevel"
+        Me.ComboBoxEx_UpdateLevel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'ComboItem12
+        '
+        resources.ApplyResources(Me.ComboItem12, "ComboItem12")
+        '
+        'ComboItem13
+        '
+        resources.ApplyResources(Me.ComboItem13, "ComboItem13")
+        '
+        'ComboItem14
+        '
+        resources.ApplyResources(Me.ComboItem14, "ComboItem14")
         '
         'ComboBoxEx_NotifyOnRomChanges
         '
@@ -252,7 +279,6 @@ Partial Class Form_Settings
         Me.ComboBoxEx_NotifyOnRomChanges.Items.AddRange(New Object() {Me.ComboItem4, Me.ComboItem5, Me.ComboItem11})
         Me.ComboBoxEx_NotifyOnRomChanges.Name = "ComboBoxEx_NotifyOnRomChanges"
         Me.ComboBoxEx_NotifyOnRomChanges.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBoxEx_NotifyOnRomChanges, CType(resources.GetObject("ComboBoxEx_NotifyOnRomChanges.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboItem4
         '
@@ -276,7 +302,6 @@ Partial Class Form_Settings
         Me.ComboBoxEx_Language.Items.AddRange(New Object() {Me.ComboItem_AutoLang})
         Me.ComboBoxEx_Language.Name = "ComboBoxEx_Language"
         Me.ComboBoxEx_Language.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBoxEx_Language, CType(resources.GetObject("ComboBoxEx_Language.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboItem_AutoLang
         '
@@ -284,27 +309,25 @@ Partial Class Form_Settings
         '
         'LabelX12
         '
-        resources.ApplyResources(Me.LabelX12, "LabelX12")
         Me.LabelX12.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX12, "LabelX12")
         Me.LabelX12.Name = "LabelX12"
         Me.LabelX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX12, CType(resources.GetObject("LabelX12.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX11
         '
-        resources.ApplyResources(Me.LabelX11, "LabelX11")
         Me.LabelX11.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX11, "LabelX11")
         Me.LabelX11.Name = "LabelX11"
         Me.LabelX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX11, CType(resources.GetObject("LabelX11.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboBoxEx_AutoScaleMode
         '
@@ -316,7 +339,6 @@ Partial Class Form_Settings
         Me.ComboBoxEx_AutoScaleMode.Items.AddRange(New Object() {Me.ComboItem6, Me.ComboItem9, Me.ComboItem10})
         Me.ComboBoxEx_AutoScaleMode.Name = "ComboBoxEx_AutoScaleMode"
         Me.ComboBoxEx_AutoScaleMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBoxEx_AutoScaleMode, CType(resources.GetObject("ComboBoxEx_AutoScaleMode.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboItem6
         '
@@ -332,24 +354,22 @@ Partial Class Form_Settings
         '
         'LabelX5
         '
-        resources.ApplyResources(Me.LabelX5, "LabelX5")
         Me.LabelX5.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX5, "LabelX5")
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX5, CType(resources.GetObject("LabelX5.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ButtonX4
         '
-        resources.ApplyResources(Me.ButtonX4, "ButtonX4")
         Me.ButtonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX4, "ButtonX4")
         Me.ButtonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX4.Name = "ButtonX4"
         Me.ButtonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX4, CType(resources.GetObject("ButtonX4.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboBoxEx1
         '
@@ -361,7 +381,6 @@ Partial Class Form_Settings
         Me.ComboBoxEx1.Items.AddRange(New Object() {Me.ComboItem1, Me.ComboItem2, Me.ComboItem3})
         Me.ComboBoxEx1.Name = "ComboBoxEx1"
         Me.ComboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBoxEx1, CType(resources.GetObject("ComboBoxEx1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboItem1
         '
@@ -377,26 +396,34 @@ Partial Class Form_Settings
         '
         'LabelX10
         '
-        resources.ApplyResources(Me.LabelX10, "LabelX10")
         Me.LabelX10.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX10, "LabelX10")
         Me.LabelX10.Name = "LabelX10"
         Me.LabelX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX10, CType(resources.GetObject("LabelX10.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
+        '
+        'LabelX13
+        '
+        Me.LabelX13.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX13, "LabelX13")
+        Me.LabelX13.Name = "LabelX13"
+        Me.LabelX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
         '
         'TabItem1
         '
         Me.TabItem1.AttachedControl = Me.TabControlPanel1
         Me.TabItem1.Name = "TabItem1"
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabItem1, CType(resources.GetObject("TabItem1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         resources.ApplyResources(Me.TabItem1, "TabItem1")
         '
         'TabControlPanel4
         '
-        resources.ApplyResources(Me.TabControlPanel4, "TabControlPanel4")
         Me.TabControlPanel4.Controls.Add(Me.LabelX9)
         Me.TabControlPanel4.Controls.Add(Me.ButtonX2)
         Me.TabControlPanel4.Controls.Add(Me.TextBoxX_HexEditorCustomPath)
@@ -406,6 +433,7 @@ Partial Class Form_Settings
         Me.TabControlPanel4.Controls.Add(Me.ComboBoxEx_HexEditorMode)
         Me.TabControlPanel4.Controls.Add(Me.LabelX4)
         Me.TabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel4, "TabControlPanel4")
         Me.TabControlPanel4.Name = "TabControlPanel4"
         Me.TabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -414,30 +442,27 @@ Partial Class Form_Settings
         Me.TabControlPanel4.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel4.Style.GradientAngle = 90
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabControlPanel4, CType(resources.GetObject("TabControlPanel4.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TabControlPanel4.TabItem = Me.TabItem5
         '
         'LabelX9
         '
-        resources.ApplyResources(Me.LabelX9, "LabelX9")
         Me.LabelX9.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX9, "LabelX9")
         Me.LabelX9.Name = "LabelX9"
         Me.LabelX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX9, CType(resources.GetObject("LabelX9.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ButtonX2
         '
-        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
         Me.ButtonX2.Name = "ButtonX2"
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX2, CType(resources.GetObject("ButtonX2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX2.Symbol = "58055"
         Me.ButtonX2.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
         Me.ButtonX2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -452,29 +477,19 @@ Partial Class Form_Settings
         '
         Me.TextBoxX_HexEditorCustomPath.Border.Class = "TextBoxBorder"
         Me.TextBoxX_HexEditorCustomPath.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX_HexEditorCustomPath.ButtonCustom.DisplayPosition = CType(resources.GetObject("TextBoxX_HexEditorCustomPath.ButtonCustom.DisplayPosition"), Integer)
-        Me.TextBoxX_HexEditorCustomPath.ButtonCustom.Image = CType(resources.GetObject("TextBoxX_HexEditorCustomPath.ButtonCustom.Image"), System.Drawing.Image)
-        Me.TextBoxX_HexEditorCustomPath.ButtonCustom.Text = resources.GetString("TextBoxX_HexEditorCustomPath.ButtonCustom.Text")
-        Me.TextBoxX_HexEditorCustomPath.ButtonCustom.Tooltip = resources.GetString("TextBoxX_HexEditorCustomPath.ButtonCustom.Tooltip")
-        Me.TextBoxX_HexEditorCustomPath.ButtonCustom2.DisplayPosition = CType(resources.GetObject("TextBoxX_HexEditorCustomPath.ButtonCustom2.DisplayPosition"), Integer)
-        Me.TextBoxX_HexEditorCustomPath.ButtonCustom2.Image = CType(resources.GetObject("TextBoxX_HexEditorCustomPath.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.TextBoxX_HexEditorCustomPath.ButtonCustom2.Text = resources.GetString("TextBoxX_HexEditorCustomPath.ButtonCustom2.Text")
-        Me.TextBoxX_HexEditorCustomPath.ButtonCustom2.Tooltip = resources.GetString("TextBoxX_HexEditorCustomPath.ButtonCustom2.Tooltip")
         Me.TextBoxX_HexEditorCustomPath.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_HexEditorCustomPath.ForeColor = System.Drawing.Color.Black
         Me.TextBoxX_HexEditorCustomPath.Name = "TextBoxX_HexEditorCustomPath"
         Me.TextBoxX_HexEditorCustomPath.PreventEnterBeep = True
-        Me.SuperTooltip1.SetSuperTooltip(Me.TextBoxX_HexEditorCustomPath, CType(resources.GetObject("TextBoxX_HexEditorCustomPath.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ButtonX5
         '
-        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX5.FocusCuesEnabled = False
         Me.ButtonX5.Name = "ButtonX5"
         Me.ButtonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX5, CType(resources.GetObject("ButtonX5.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX5.Symbol = "58055"
         Me.ButtonX5.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
         Me.ButtonX5.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -489,29 +504,19 @@ Partial Class Form_Settings
         '
         Me.TextBoxX_EmulatorPatch.Border.Class = "TextBoxBorder"
         Me.TextBoxX_EmulatorPatch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX_EmulatorPatch.ButtonCustom.DisplayPosition = CType(resources.GetObject("TextBoxX_EmulatorPatch.ButtonCustom.DisplayPosition"), Integer)
-        Me.TextBoxX_EmulatorPatch.ButtonCustom.Image = CType(resources.GetObject("TextBoxX_EmulatorPatch.ButtonCustom.Image"), System.Drawing.Image)
-        Me.TextBoxX_EmulatorPatch.ButtonCustom.Text = resources.GetString("TextBoxX_EmulatorPatch.ButtonCustom.Text")
-        Me.TextBoxX_EmulatorPatch.ButtonCustom.Tooltip = resources.GetString("TextBoxX_EmulatorPatch.ButtonCustom.Tooltip")
-        Me.TextBoxX_EmulatorPatch.ButtonCustom2.DisplayPosition = CType(resources.GetObject("TextBoxX_EmulatorPatch.ButtonCustom2.DisplayPosition"), Integer)
-        Me.TextBoxX_EmulatorPatch.ButtonCustom2.Image = CType(resources.GetObject("TextBoxX_EmulatorPatch.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.TextBoxX_EmulatorPatch.ButtonCustom2.Text = resources.GetString("TextBoxX_EmulatorPatch.ButtonCustom2.Text")
-        Me.TextBoxX_EmulatorPatch.ButtonCustom2.Tooltip = resources.GetString("TextBoxX_EmulatorPatch.ButtonCustom2.Tooltip")
         Me.TextBoxX_EmulatorPatch.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_EmulatorPatch.ForeColor = System.Drawing.Color.Black
         Me.TextBoxX_EmulatorPatch.Name = "TextBoxX_EmulatorPatch"
         Me.TextBoxX_EmulatorPatch.PreventEnterBeep = True
-        Me.SuperTooltip1.SetSuperTooltip(Me.TextBoxX_EmulatorPatch, CType(resources.GetObject("TextBoxX_EmulatorPatch.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ButtonX3
         '
-        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX3.FocusCuesEnabled = False
         Me.ButtonX3.Name = "ButtonX3"
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX3, CType(resources.GetObject("ButtonX3.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX3.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         '
         'ComboBoxEx_HexEditorMode
@@ -524,7 +529,6 @@ Partial Class Form_Settings
         Me.ComboBoxEx_HexEditorMode.Items.AddRange(New Object() {Me.ComboItem7, Me.ComboItem8})
         Me.ComboBoxEx_HexEditorMode.Name = "ComboBoxEx_HexEditorMode"
         Me.ComboBoxEx_HexEditorMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBoxEx_HexEditorMode, CType(resources.GetObject("ComboBoxEx_HexEditorMode.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboItem7
         '
@@ -536,28 +540,26 @@ Partial Class Form_Settings
         '
         'LabelX4
         '
-        resources.ApplyResources(Me.LabelX4, "LabelX4")
         Me.LabelX4.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX4, "LabelX4")
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX4, CType(resources.GetObject("LabelX4.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'TabItem5
         '
         Me.TabItem5.AttachedControl = Me.TabControlPanel4
         Me.TabItem5.Name = "TabItem5"
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabItem5, CType(resources.GetObject("TabItem5.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         resources.ApplyResources(Me.TabItem5, "TabItem5")
         '
         'TabControlPanel3
         '
-        resources.ApplyResources(Me.TabControlPanel3, "TabControlPanel3")
         Me.TabControlPanel3.Controls.Add(Me.ButtonX1)
         Me.TabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel3, "TabControlPanel3")
         Me.TabControlPanel3.Name = "TabControlPanel3"
         Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -566,34 +568,31 @@ Partial Class Form_Settings
         Me.TabControlPanel3.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel3.Style.GradientAngle = 90
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabControlPanel3, CType(resources.GetObject("TabControlPanel3.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TabControlPanel3.TabItem = Me.TabItem3
         '
         'ButtonX1
         '
-        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX1.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.Name = "ButtonX1"
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX1, CType(resources.GetObject("ButtonX1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'TabItem3
         '
         Me.TabItem3.AttachedControl = Me.TabControlPanel3
         Me.TabItem3.Name = "TabItem3"
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabItem3, CType(resources.GetObject("TabItem3.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         resources.ApplyResources(Me.TabItem3, "TabItem3")
         '
         'TabControlPanel2
         '
-        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
         Me.TabControlPanel2.Controls.Add(Me.LabelX6)
         Me.TabControlPanel2.Controls.Add(Me.ComboBox_AreaEditor_DefaultCameraMode)
         Me.TabControlPanel2.Controls.Add(Me.ComboBox_AreaEditor_DefaultWindowMode)
         Me.TabControlPanel2.Controls.Add(Me.LabelX7)
         Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
         Me.TabControlPanel2.Name = "TabControlPanel2"
         Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -602,24 +601,22 @@ Partial Class Form_Settings
         Me.TabControlPanel2.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel2.Style.GradientAngle = 90
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabControlPanel2, CType(resources.GetObject("TabControlPanel2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TabControlPanel2.TabItem = Me.TabItem2
         '
         'TabItem2
         '
         Me.TabItem2.AttachedControl = Me.TabControlPanel2
         Me.TabItem2.Name = "TabItem2"
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabItem2, CType(resources.GetObject("TabItem2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         resources.ApplyResources(Me.TabItem2, "TabItem2")
         '
         'TabControlPanel_LoaderModules
         '
-        resources.ApplyResources(Me.TabControlPanel_LoaderModules, "TabControlPanel_LoaderModules")
         Me.TabControlPanel_LoaderModules.Controls.Add(Me.ComboBoxEx_ExporterModule)
         Me.TabControlPanel_LoaderModules.Controls.Add(Me.LabelX8)
         Me.TabControlPanel_LoaderModules.Controls.Add(Me.ComboBoxEx_LoaderModule)
         Me.TabControlPanel_LoaderModules.Controls.Add(Me.LabelX2)
         Me.TabControlPanel_LoaderModules.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel_LoaderModules, "TabControlPanel_LoaderModules")
         Me.TabControlPanel_LoaderModules.Name = "TabControlPanel_LoaderModules"
         Me.TabControlPanel_LoaderModules.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel_LoaderModules.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -628,7 +625,6 @@ Partial Class Form_Settings
         Me.TabControlPanel_LoaderModules.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
         Me.TabControlPanel_LoaderModules.Style.GradientAngle = 90
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabControlPanel_LoaderModules, CType(resources.GetObject("TabControlPanel_LoaderModules.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TabControlPanel_LoaderModules.TabItem = Me.TabItem4
         '
         'ComboBoxEx_ExporterModule
@@ -640,19 +636,17 @@ Partial Class Form_Settings
         Me.ComboBoxEx_ExporterModule.FormattingEnabled = True
         Me.ComboBoxEx_ExporterModule.Name = "ComboBoxEx_ExporterModule"
         Me.ComboBoxEx_ExporterModule.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBoxEx_ExporterModule, CType(resources.GetObject("ComboBoxEx_ExporterModule.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX8
         '
-        resources.ApplyResources(Me.LabelX8, "LabelX8")
         Me.LabelX8.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX8, "LabelX8")
         Me.LabelX8.Name = "LabelX8"
         Me.LabelX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX8, CType(resources.GetObject("LabelX8.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ComboBoxEx_LoaderModule
         '
@@ -663,25 +657,22 @@ Partial Class Form_Settings
         Me.ComboBoxEx_LoaderModule.FormattingEnabled = True
         Me.ComboBoxEx_LoaderModule.Name = "ComboBoxEx_LoaderModule"
         Me.ComboBoxEx_LoaderModule.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBoxEx_LoaderModule, CType(resources.GetObject("ComboBoxEx_LoaderModule.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX2
         '
-        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX2, CType(resources.GetObject("LabelX2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'TabItem4
         '
         Me.TabItem4.AttachedControl = Me.TabControlPanel_LoaderModules
         Me.TabItem4.Name = "TabItem4"
-        Me.SuperTooltip1.SetSuperTooltip(Me.TabItem4, CType(resources.GetObject("TabItem4.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         resources.ApplyResources(Me.TabItem4, "TabItem4")
         '
         'SymbolBox1
@@ -693,7 +684,6 @@ Partial Class Form_Settings
         '
         Me.SymbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.SymbolBox1.Name = "SymbolBox1"
-        Me.SuperTooltip1.SetSuperTooltip(Me.SymbolBox1, CType(resources.GetObject("SymbolBox1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.SymbolBox1.Symbol = ""
         Me.SymbolBox1.SymbolColor = System.Drawing.Color.Goldenrod
         '
@@ -702,20 +692,66 @@ Partial Class Form_Settings
         resources.ApplyResources(Me.SuperTooltip1, "SuperTooltip1")
         Me.SuperTooltip1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         '
+        'TabItem6
+        '
+        Me.TabItem6.AttachedControl = Me.TabControlPanel5
+        Me.TabItem6.Name = "TabItem6"
+        resources.ApplyResources(Me.TabItem6, "TabItem6")
+        '
+        'TabControlPanel5
+        '
+        Me.TabControlPanel5.Controls.Add(Me.LabelX14)
+        Me.TabControlPanel5.Controls.Add(Me.SwitchButton_UseLegacyCollisionDescriptions)
+        Me.TabControlPanel5.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel5, "TabControlPanel5")
+        Me.TabControlPanel5.Name = "TabControlPanel5"
+        Me.TabControlPanel5.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel5.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.TabControlPanel5.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+        Me.TabControlPanel5.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+        Me.TabControlPanel5.Style.GradientAngle = 90
+        Me.TabControlPanel5.TabItem = Me.TabItem6
+        '
+        'LabelX14
+        '
+        Me.LabelX14.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX14, "LabelX14")
+        Me.LabelX14.Name = "LabelX14"
+        Me.LabelX14.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
+        '
+        'SwitchButton_UseLegacyCollisionDescriptions
+        '
+        resources.ApplyResources(Me.SwitchButton_UseLegacyCollisionDescriptions, "SwitchButton_UseLegacyCollisionDescriptions")
+        '
+        '
+        '
+        Me.SwitchButton_UseLegacyCollisionDescriptions.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.SwitchButton_UseLegacyCollisionDescriptions.Name = "SwitchButton_UseLegacyCollisionDescriptions"
+        Me.SwitchButton_UseLegacyCollisionDescriptions.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.SwitchButton_UseLegacyCollisionDescriptions.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.SwitchButton_UseLegacyCollisionDescriptions.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.SwitchButton_UseLegacyCollisionDescriptions.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SwitchButton_UseLegacyCollisionDescriptions.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.SwitchButton_UseLegacyCollisionDescriptions.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.SwitchButton_UseLegacyCollisionDescriptions.SwitchWidth = 15
+        '
         'Form_Settings
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.SymbolBox1)
         Me.Controls.Add(Me.TabControl2)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Form_Settings"
         Me.ShowIcon = False
-        Me.SuperTooltip1.SetSuperTooltip(Me, CType(resources.GetObject("$this.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -725,6 +761,7 @@ Partial Class Form_Settings
         Me.TabControlPanel3.ResumeLayout(False)
         Me.TabControlPanel2.ResumeLayout(False)
         Me.TabControlPanel_LoaderModules.ResumeLayout(False)
+        Me.TabControlPanel5.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -783,4 +820,13 @@ Partial Class Form_Settings
     Friend WithEvents ComboItem4 As DevComponents.Editors.ComboItem
     Friend WithEvents ComboItem5 As DevComponents.Editors.ComboItem
     Friend WithEvents ComboItem11 As DevComponents.Editors.ComboItem
+    Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents ComboBoxEx_UpdateLevel As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents ComboItem12 As DevComponents.Editors.ComboItem
+    Friend WithEvents ComboItem13 As DevComponents.Editors.ComboItem
+    Friend WithEvents ComboItem14 As DevComponents.Editors.ComboItem
+    Friend WithEvents TabControlPanel5 As DevComponents.DotNetBar.TabControlPanel
+    Friend WithEvents LabelX14 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents SwitchButton_UseLegacyCollisionDescriptions As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents TabItem6 As DevComponents.DotNetBar.TabItem
 End Class

@@ -292,7 +292,7 @@ Namespace Global.SM64Lib.SM64Convert
                     End If
 
                 Catch ex As Exception
-                    'MsgBox(ex.Message)
+                    MsgBox(ex.Message)
                 End Try
             End If
         End Sub

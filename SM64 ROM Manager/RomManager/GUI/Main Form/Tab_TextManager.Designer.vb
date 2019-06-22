@@ -36,7 +36,6 @@ Partial Class Tab_TextManager
         Me.ComboItem7 = New DevComponents.Editors.ComboItem()
         Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
         Me.TabStrip_TextTable = New DevComponents.DotNetBar.TabStrip()
-        Me.LabelX_TM_BytesLeft = New DevComponents.DotNetBar.LabelX()
         Me.ListViewEx_TM_TableEntries = New DevComponents.DotNetBar.Controls.ListViewEx()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader13 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -47,7 +46,6 @@ Partial Class Tab_TextManager
         Me.TextBoxX_TM_TextEditor = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.GroupPanel_TM_DialogProps.SuspendLayout()
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabStrip_TextTable.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupPanel_TM_DialogProps
@@ -182,24 +180,12 @@ Partial Class Tab_TextManager
         Me.TabStrip_TextTable.CanReorderTabs = False
         Me.TabStrip_TextTable.CloseButtonPosition = DevComponents.DotNetBar.eTabCloseButtonPosition.Right
         Me.TabStrip_TextTable.CloseButtonVisible = True
-        Me.TabStrip_TextTable.Controls.Add(Me.LabelX_TM_BytesLeft)
         Me.TabStrip_TextTable.Cursor = System.Windows.Forms.Cursors.Default
         Me.TabStrip_TextTable.ForeColor = System.Drawing.Color.Black
         Me.TabStrip_TextTable.Name = "TabStrip_TextTable"
         Me.TabStrip_TextTable.SelectedTab = Nothing
         Me.TabStrip_TextTable.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
         Me.TabStrip_TextTable.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Top
-        '
-        'LabelX_TM_BytesLeft
-        '
-        resources.ApplyResources(Me.LabelX_TM_BytesLeft, "LabelX_TM_BytesLeft")
-        Me.LabelX_TM_BytesLeft.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX_TM_BytesLeft.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX_TM_BytesLeft.Name = "LabelX_TM_BytesLeft"
-        Me.LabelX_TM_BytesLeft.TextAlignment = System.Drawing.StringAlignment.Far
         '
         'ListViewEx_TM_TableEntries
         '
@@ -292,7 +278,6 @@ Partial Class Tab_TextManager
         Me.Name = "Tab_TextManager"
         Me.GroupPanel_TM_DialogProps.ResumeLayout(False)
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabStrip_TextTable.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -310,7 +295,6 @@ Partial Class Tab_TextManager
     Friend WithEvents ComboItem7 As DevComponents.Editors.ComboItem
     Friend WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TabStrip_TextTable As DevComponents.DotNetBar.TabStrip
-    Friend WithEvents LabelX_TM_BytesLeft As DevComponents.DotNetBar.LabelX
     Friend WithEvents ListViewEx_TM_TableEntries As DevComponents.DotNetBar.Controls.ListViewEx
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader13 As ColumnHeader

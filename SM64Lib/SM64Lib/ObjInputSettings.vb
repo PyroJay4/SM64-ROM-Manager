@@ -13,7 +13,7 @@ Namespace Global.SM64Lib
 
     Public Class ObjInputSettings
 
-        Public Property ForceDisplaylist As Geolayout.Geolayer = -1
+        Public Property ForceDisplaylist As SByte = -1
         Public Property Scaling As Double = 500.0
         Public Property ReduceDupVertLevel = ReduceDuplicateVerticesLevel.Level1
         Public Property Fog As Fog = Nothing

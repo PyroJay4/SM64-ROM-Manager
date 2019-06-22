@@ -7,15 +7,15 @@ Imports SM64Lib
 
 Public Class Tab_TextManager
 
-    <Browsable(False), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
-    Public Property MainForm As MainForm
+    Private TM_LoadingItem As Boolean = False
+    Private TM_BytesLeft As Integer = 0
+
     <Browsable(False), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
     Public Property RomMgr As RomManager
     <Browsable(False), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
     Public Property DialogNamesFilePath As String
-
-    Private TM_LoadingItem As Boolean = False
-    Private TM_BytesLeft As Integer = 0
+    <Browsable(False), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
+    Public Property MainForm As MainForm = Nothing
 
     Public Sub New()
         InitializeComponent()
@@ -452,11 +452,11 @@ Public Class Tab_TextManager
 
             TM_BytesLeft = res.left
 
-            LabelX_TM_BytesLeft.Text = String.Format(Form_Main_Resources.Text_UsedOfMaxLeft, res.used, res.max, res.left)
+            MainForm.OtherInfoLabel.Text = String.Format(Form_Main_Resources.Text_UsedOfMaxLeft, res.used, res.max, res.left)
             If res.percent > 1 Then
-                LabelX_TM_BytesLeft.ForeColor = Color.Red
+                MainForm.OtherInfoLabel.ForeColor = Color.Red
             Else
-                LabelX_TM_BytesLeft.ForeColor = Color.Green
+                MainForm.OtherInfoLabel.ForeColor = Color.Green
             End If
         End If
     End Sub
@@ -489,5 +489,4 @@ Public Class Tab_TextManager
             Return (used, max, left, percent)
         End If
     End Function
-
 End Class

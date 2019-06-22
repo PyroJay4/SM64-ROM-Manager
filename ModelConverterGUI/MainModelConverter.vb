@@ -21,7 +21,7 @@ Public Class MainModelConverter
 
     Private DResult As DialogResult = DialogResult.None
     Public Property ResModel As ObjectModel = Nothing
-    Public Property ForceDisplaylist As Geolayout.Geolayer = -1
+    Public Property ForceDisplaylist As SByte = -1
     Private objSettings As New ObjInputSettings
 
     Private objVisualMap As Object3D = Nothing
@@ -425,14 +425,14 @@ Public Class MainModelConverter
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX_VisualMapPreview.Click
         If objVisualMap IsNot Nothing Then
             Dim mp As New ModelPreviewOfficeForm(objVisualMap, NUD_Scaling.Value)
-            mp.ShowDialog()
+            mp.Show()
         End If
     End Sub
 
     Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles ButtonX_CollisionMapPreview.Click
         If objCollisionMap IsNot Nothing Then
             Dim mp As New ModelPreviewOfficeForm(objCollisionMap, NUD_Scaling.Value)
-            mp.ShowDialog()
+            mp.Show()
         End If
     End Sub
 

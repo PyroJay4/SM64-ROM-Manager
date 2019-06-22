@@ -39,9 +39,15 @@ Public Class TextureGraphicFormatEditor
     End Sub
 
     Private Sub LoadDisplayListTypes()
-        For Each name As String In [Enum].GetNames(GetType(SM64Lib.Model.Fast3D.TextureFormatSettings.SelectDisplaylistMode))
-            ComboBoxEx_SelectDisplaylist.Items.Add(name)
-        Next
+        ComboBoxEx_SelectDisplaylist.Items.AddRange(
+            {
+            New ComboItem With {.Text = "Automatic", .Tag = -1},
+            New ComboItem With {.Text = "1 - Solid", .Tag = 1},
+            New ComboItem With {.Text = "2 - Solid Foreground", .Tag = 2},
+            New ComboItem With {.Text = "4 - Alpha", .Tag = 4},
+            New ComboItem With {.Text = "5 - Transparent", .Tag = 5},
+            New ComboItem With {.Text = "6 - Transparent Foreground", .Tag = 6}
+            })
         ComboBoxEx_SelectDisplaylist.SelectedIndex = 0
     End Sub
 
@@ -141,11 +147,16 @@ Public Class TextureGraphicFormatEditor
             End If
 
             CheckBoxX_EnableTextureAnimation.Checked = curEntry.IsScrollingTexture
-            ComboBoxEx_SelectDisplaylist.SelectedIndex = CByte(curEntry.SelectDisplaylistMode)
             CheckBoxX_EnableMirror.Checked = curEntry.EnableMirror
             CheckBoxX_EnableClamp.Checked = curEntry.EnableClamp
             CheckBoxX_EnableCrystalEffect.Checked = curEntry.EnableCrystalEffect
             ComboBoxEx_RotateFlip.SelectedItem = GetRotateFlipComboItem(curEntry.RotateFlip)
+
+            For Each item As ComboItem In ComboBoxEx_SelectDisplaylist.Items
+                If item.Tag = curEntry.SelectDisplaylistMode Then
+                    ComboBoxEx_SelectDisplaylist.SelectedItem = item
+                End If
+            Next
 
             Dim enTexTools As Boolean = Not colorImages.Contains(curItem.ImageIndex)
             CheckBoxX_EnableTextureAnimation.Enabled = enTexTools
@@ -197,7 +208,7 @@ Public Class TextureGraphicFormatEditor
                 Dim curEntry As SM64Lib.Model.Fast3D.TextureFormatSettings.Entry = TextureFormatSettings.GetEntry(mat.Key)
                 curEntry.IsScrollingTexture = CheckBoxX_EnableTextureAnimation.Checked
                 curEntry.TextureFormat = id
-                curEntry.SelectDisplaylistMode = ComboBoxEx_SelectDisplaylist.SelectedIndex
+                curEntry.SelectDisplaylistMode = CType(ComboBoxEx_SelectDisplaylist.SelectedItem, ComboItem).Tag
                 curEntry.EnableMirror = CheckBoxX_EnableMirror.Checked
                 curEntry.EnableClamp = CheckBoxX_EnableClamp.Checked
                 curEntry.EnableCrystalEffect = CheckBoxX_EnableCrystalEffect.Checked

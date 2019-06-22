@@ -47,6 +47,7 @@ Public Class Form_Settings
         ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex = Settings.AreaEditor.DefaultCameraMode
         ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = If(Settings.AreaEditor.DefaultWindowMode = FormWindowState.Maximized, 1, 0)
         TextBoxX_HexEditorCustomPath.Text = Settings.General.HexEditMode.CustomPath
+        SwitchButton_UseLegacyCollisionDescriptions.Value = Settings.ModelConverter.UseLegacyCollisionDescriptions
 
         Dim curLoaderModule As File3DLoaderModule = GetLoaderModuleFromID(Settings.FileParser.FileLoaderModule)
         For Each item As ComboItem In ComboBoxEx_LoaderModule.Items
@@ -106,6 +107,15 @@ Public Class Form_Settings
                 ComboBoxEx_NotifyOnRomChanges.SelectedIndex = 2
         End Select
 
+        Select Case True
+            Case Settings.General.IncludeAlphaVersions
+                ComboBoxEx_UpdateLevel.SelectedIndex = 2
+            Case Settings.General.IncludeBetaVersions
+                ComboBoxEx_UpdateLevel.SelectedIndex = 1
+            Case Else
+                ComboBoxEx_UpdateLevel.SelectedIndex = 0
+        End Select
+
         finishedLoading = True
     End Sub
 
@@ -117,6 +127,7 @@ Public Class Form_Settings
         Settings.AreaEditor.DefaultWindowMode = If(ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = 1, FormWindowState.Maximized, FormWindowState.Normal)
         Settings.FileParser.FileLoaderModule = GetLoaderIDFromModule(CType(ComboBoxEx_LoaderModule.SelectedItem, ComboItem).Tag)
         Settings.FileParser.FileExporterModule = GetExporterIDFromModule(CType(ComboBoxEx_ExporterModule.SelectedItem, ComboItem).Tag)
+        Settings.ModelConverter.UseLegacyCollisionDescriptions = SwitchButton_UseLegacyCollisionDescriptions.Value
 
         Select Case ComboBoxEx1.SelectedIndex
             Case 0
@@ -152,6 +163,18 @@ Public Class Form_Settings
                 Settings.General.RomChangedNotification = NotificationMode.Infobox
             Case 2
                 Settings.General.RomChangedNotification = NotificationMode.Popup
+        End Select
+
+        Select Case ComboBoxEx_UpdateLevel.SelectedIndex
+            Case 0
+                Settings.General.IncludeBetaVersions = False
+                Settings.General.IncludeAlphaVersions = False
+            Case 1
+                Settings.General.IncludeBetaVersions = True
+                Settings.General.IncludeAlphaVersions = False
+            Case 2
+                Settings.General.IncludeBetaVersions = True
+                Settings.General.IncludeAlphaVersions = True
         End Select
 
         Dim selLangItem As ComboItem = ComboBoxEx_Language.SelectedItem
@@ -204,7 +227,7 @@ Public Class Form_Settings
         End If
     End Sub
 
-    Private Sub ComboBoxEx_Language_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_Language.SelectedIndexChanged, ComboBoxEx_NotifyOnRomChanges.SelectedIndexChanged
+    Private Sub ComboBoxEx_Language_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_Language.SelectedIndexChanged, ComboBoxEx_NotifyOnRomChanges.SelectedIndexChanged, ComboBoxEx_UpdateLevel.SelectedIndexChanged, SwitchButton_UseLegacyCollisionDescriptions.ValueChanged
         EanbleRestartWarning()
     End Sub
 
