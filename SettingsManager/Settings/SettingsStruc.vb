@@ -11,6 +11,7 @@ Public Class SettingsStruc
     Public Property StyleManager As StyleManagerSettingsStruc
     Public Property FileParser As FileParserSettingsStruc
     Public Property RecentFiles As RecentFilesSettingsStruc
+    Public Property ModelConverter As ModelConverterSettingsStruc
 
     Public Overrides Sub ResetValues()
         If AreaEditor Is Nothing Then AreaEditor = New AreaEditorSettingsStruc
@@ -23,6 +24,8 @@ Public Class SettingsStruc
         FileParser.ResetValues()
         If RecentFiles Is Nothing Then RecentFiles = New RecentFilesSettingsStruc
         RecentFiles.ResetValues()
+        If ModelConverter Is Nothing Then ModelConverter = New ModelConverterSettingsStruc
+        ModelConverter.ResetValues()
     End Sub
 
 End Class

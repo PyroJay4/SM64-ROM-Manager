@@ -34,9 +34,13 @@ Public Class CustomBankManager
         ItemListBox1.Refresh()
     End Sub
 
+    Private Function TextForButtonItem(obj As CustomObject) As String
+        Return $"Model-ID: {TextFromValue(obj.ModelID)} - Rom: {TextFromValue(obj.ModelBankOffset)}"
+    End Function
+
     Private Function AddItemToList(obj As CustomObject) As ButtonItem
         Dim item As New ButtonItem With {
-            .Text = obj.ModelBankOffset,
+            .Text = TextForButtonItem(obj),
             .Tag = obj
         }
 
@@ -58,6 +62,7 @@ Public Class CustomBankManager
         Dim item As ButtonItem
 
         If ImportNewModel(obj) Then
+            objBank.Objects.Add(obj)
             item = AddItemToList(obj)
             item.RaiseClick()
         End If
@@ -84,6 +89,7 @@ Public Class CustomBankManager
                 Return True
             End If
         End If
+
         Return False
     End Function
 
@@ -94,14 +100,38 @@ Public Class CustomBankManager
     Private Sub RemoveCurObject()
         objBank.Objects.Remove(curObj)
 
-        For Each item As ButtonItem In ItemListBox1.Items.AsParallel
+        Dim itr As New List(Of BaseItem)
+        For Each item As ButtonItem In ItemListBox1.Items
             If item.Tag Is curObj Then
-                ItemListBox1.Items.Remove(item)
+                itr.Add(item)
             End If
+        Next
+        For Each item In itr
+            ItemListBox1.Items.Remove(item)
         Next
 
         Panel2.Enabled = False
         curObj = Nothing
+    End Sub
+
+    Private Sub UpdateButtonItems()
+        Dim selItem As ButtonItem = ItemListBox1.SelectedItem
+        Dim updateItem =
+            Sub(btn As ButtonItem)
+                If btn IsNot Nothing Then
+                    btn.Text = TextForButtonItem(btn.Tag)
+                End If
+            End Sub
+
+        If selItem IsNot Nothing Then
+            updateItem(selItem)
+        Else
+            For Each btn As ButtonItem In ItemListBox1.Items
+                updateItem(btn)
+            Next
+        End If
+
+        ItemListBox1.Refresh()
     End Sub
 
     'G U I
@@ -117,6 +147,7 @@ Public Class CustomBankManager
     Private Sub TextBoxX1_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX1.TextChanged
         Try
             curObj.ModelID = ValueFromText(TextBoxX1.Text)
+            UpdateButtonItems()
         Catch ex As Exception
         End Try
     End Sub
@@ -134,4 +165,5 @@ Public Class CustomBankManager
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
         CreateCustomObject()
     End Sub
+
 End Class

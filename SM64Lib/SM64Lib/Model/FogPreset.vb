@@ -2,7 +2,7 @@
 Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 
-Namespace Global.SM64Lib.Model
+Namespace Model
 
     Public Enum FogPreset
         SubtleFog1 = 0

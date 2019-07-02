@@ -2,7 +2,7 @@
 Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 
-Namespace Global.SM64Lib.Model
+Namespace Model
 
     Public Class Fog
         Public Property Color As Drawing.Color = Drawing.Color.White

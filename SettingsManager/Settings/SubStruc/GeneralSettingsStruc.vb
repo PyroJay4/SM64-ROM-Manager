@@ -4,6 +4,8 @@ Imports SettingsMgr
 Public Class GeneralSettingsStruc
 
     Public Property AutoUpdates As Boolean
+    Public Property IncludeBetaVersions As Boolean
+    Public Property IncludeAlphaVersions As Boolean
     Public Property UseAdminRightsForUpdates As Boolean
     Public Property IntegerValueMode As Integer
     Public Property EmulatorPath As String
@@ -15,6 +17,8 @@ Public Class GeneralSettingsStruc
 
     Public Sub ResetValues()
         AutoUpdates = True
+        IncludeBetaVersions = False
+        IncludeAlphaVersions = False
         UseAdminRightsForUpdates = False
         IntegerValueMode = 0
         EmulatorPath = ""

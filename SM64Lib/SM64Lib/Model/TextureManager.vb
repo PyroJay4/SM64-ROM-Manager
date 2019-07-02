@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing
 
-Namespace Global.SM64Lib.Model.Fast3D
+Namespace Model.Fast3D
 
     Public Class TextureManager
 

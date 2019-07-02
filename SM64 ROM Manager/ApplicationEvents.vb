@@ -16,17 +16,17 @@ Namespace My
         End Sub
 
         Private Sub OnErrorMessage(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
-            If Debugger.IsAttached Then Return
-
-            Dim exception As Exception =
+            If Not Debugger.IsAttached Then
+                Dim exception As Exception =
                 e.Exception.Demystify
 
-            Dim frm As New Form_ErrorDialog
-            frm.ErrorText = exception.Message & vbNewLine & vbNewLine & exception.StackTrace
+                Dim frm As New Form_ErrorDialog
+                frm.ErrorText = exception.Message & vbNewLine & vbNewLine & exception.StackTrace
 
-            frm.ShowDialog()
+                frm.ShowDialog()
 
-            e.ExitApplication = frm.ExitApplicaiton
+                e.ExitApplication = frm.ExitApplicaiton
+            End If
         End Sub
 
     End Class

@@ -400,6 +400,7 @@ Partial Class Tab_LevelManager
         resources.ApplyResources(Me.ButtonX_CustomObjects, "ButtonX_CustomObjects")
         Me.ButtonX_CustomObjects.Name = "ButtonX_CustomObjects"
         Me.ButtonX_CustomObjects.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX_CustomObjects.Visible = True
         '
         'ButtonX_LM_ScrollTexEditor
         '

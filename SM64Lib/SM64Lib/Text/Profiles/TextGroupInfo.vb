@@ -5,6 +5,9 @@ Namespace Global.SM64Lib.Text.Profiles
 
     Public MustInherit Class TextGroupInfo
 
+        Public Const ENCODING_STRING_M64 As String = "m64"
+        Public Const ENCODING_STRING_ASCII As String = "ascii"
+
         <JsonProperty("Encoding")>
         Private myTextEncoding As String
 
@@ -14,9 +17,9 @@ Namespace Global.SM64Lib.Text.Profiles
         Public ReadOnly Property Encoding As System.Text.Encoding
             Get
                 Select Case myTextEncoding
-                    Case "ascii"
+                    Case ENCODING_STRING_ASCII
                         Return System.Text.Encoding.ASCII
-                    Case "m64"
+                    Case ENCODING_STRING_M64
                         Return M64TextEncoding.M64Text
                     Case Else
                         Return Nothing
@@ -30,7 +33,7 @@ Namespace Global.SM64Lib.Text.Profiles
                 Return myTextEncoding
             End Get
             Set(value As String)
-                If {"m64", "ascii"}.Contains(value) Then
+                If {ENCODING_STRING_M64, ENCODING_STRING_ASCII}.Contains(value) Then
                     myTextEncoding = value
                 End If
             End Set

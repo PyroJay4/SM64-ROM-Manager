@@ -1,7 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.IO
 
-Namespace Global.SM64Lib.Model.Fast3D
+Namespace Model.Fast3D
 
     Public Class TextureFormatSettings
 
@@ -56,7 +56,7 @@ Namespace Global.SM64Lib.Model.Fast3D
             Public Property MaterialName As String = ""
             Public Property TextureFormat As String = ""
             Public Property IsScrollingTexture As Boolean = False
-            Public Property SelectDisplaylistMode As SelectDisplaylistMode = SelectDisplaylistMode.Automatic
+            Public Property SelectDisplaylistMode As SByte = -1
             Public Property FaceCullingMode As FaceCullingMode = FaceCullingMode.Back
             Public Property EnableMirror As Boolean = False
             Public Property EnableClamp As Boolean = False
@@ -64,7 +64,7 @@ Namespace Global.SM64Lib.Model.Fast3D
             Public Property RotateFlip As RotateFlipType = RotateFlipType.RotateNoneFlipNone
 
             Public Overloads Function ToString() As String
-                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{CByte(SelectDisplaylistMode)};{CByte(FaceCullingMode)};{EnableMirror.ToString};{EnableClamp.ToString};{EnableCrystalEffect.ToString};{CInt(RotateFlip)}"
+                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{SelectDisplaylistMode};{CByte(FaceCullingMode)};{EnableMirror.ToString};{EnableClamp.ToString};{EnableCrystalEffect.ToString};{CInt(RotateFlip)}"
             End Function
 
             Public Sub FromString(str As String)
@@ -72,7 +72,10 @@ Namespace Global.SM64Lib.Model.Fast3D
                 MaterialName = parts(0)
                 TextureFormat = parts(1)
                 If parts.Length > 2 Then IsScrollingTexture = Convert.ToBoolean(parts(2))
-                If parts.Length > 3 Then SelectDisplaylistMode = Convert.ToByte(parts(3))
+                If parts.Length > 3 Then
+                    SelectDisplaylistMode = Convert.ToSByte(parts(3))
+                    If SelectDisplaylistMode = 0 Then SelectDisplaylistMode = -1
+                End If
                 If parts.Length > 4 Then FaceCullingMode = Convert.ToByte(parts(4))
                 If parts.Length > 5 Then
                     EnableMirror = Convert.ToBoolean(parts(5))
@@ -83,13 +86,6 @@ Namespace Global.SM64Lib.Model.Fast3D
             End Sub
 
         End Class
-
-        Public Enum SelectDisplaylistMode As Byte
-            Automatic
-            Solid
-            Alpha
-            Transparent
-        End Enum
 
         Public Enum FaceCullingMode
             None

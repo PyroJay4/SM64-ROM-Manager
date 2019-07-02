@@ -7,6 +7,7 @@ Imports SM64Lib
 Imports System.IO
 Imports DevComponents.Editors
 Imports OfficeOpenXml
+Imports SM64_ROM_Manager.SettingsManager
 
 Public Class CollisionEditor
 
@@ -85,9 +86,9 @@ Public Class CollisionEditor
 
     Private Async Function LoadFloorTypes() As Task
         If Not terrainTypesComboItems.Any Then
-            CircularProgress1.Start
+            CircularProgress1.Start()
             Await Task.Run(AddressOf WaitForFloorTypes)
-            CircularProgress1.Stop
+            CircularProgress1.Stop()
         End If
 
         ComboBox_ColType.Items.Clear()
@@ -118,29 +119,60 @@ Public Class CollisionEditor
         Dim ws As ExcelWorksheet
 
         loadingTerrainTypesComboItems = True
-        ws = SurfaceData.Worksheets("Terrain Hexes")
+
+        'Set the worksheet to load
+        If Settings.ModelConverter.UseLegacyCollisionDescriptions Then
+            ws = OtherData.Worksheets("Editor Collision")
+        Else
+            ws = SurfaceData.Worksheets("Terrain Hexes")
+        End If
 
         If ws.Cells.Rows > 0 Then
             For i As Integer = 2 To ws.Cells.Rows
-                If ws.Cells(i, 1).Style.Fill.BackgroundColor.Rgb = "" Then
-                    Dim typeDec As String = ws.Cells(i, 1).Value
-                    Dim title As String = ws.Cells(i, 3).Value
+                If Settings.ModelConverter.UseLegacyCollisionDescriptions Then
+                    Dim typeHex As String = ws.Cells(i, 1).Value
+                    Dim title As String = ws.Cells(i, 2).Value
                     Dim typeByte As Byte
 
-                    If Not String.IsNullOrEmpty(typeDec) AndAlso Not String.IsNullOrEmpty(title) Then
-                        If Byte.TryParse(typeDec, typeByte) Then
-                            Dim item As New ComboItem
-                            Dim desc As String
-                            Dim notes As String
+                    If Not String.IsNullOrEmpty(typeHex) AndAlso Not String.IsNullOrEmpty(title) Then
+                        Dim item As New ComboItem
 
-                            desc = ws.Cells(i, 5).Value
-                            notes = ws.Cells(i, 7).Value
+                        'Convert hex string to byte
+                        typeByte = "&H" & typeHex
 
-                            item.Text = $"{typeByte.ToString("X2")}: {title}"
-                            item.Tag = {typeByte, title, desc, notes}
+                        'Set infos to the item
+                        item.Text = $"{typeByte.ToString("X2")}: {title}"
+                        item.Tag = {typeByte, title, String.Empty, String.Empty}
 
-                            If item IsNot Nothing Then
-                                terrainTypesComboItems.Add(item)
+                        'Add item to list
+                        If item IsNot Nothing Then
+                            terrainTypesComboItems.Add(item)
+                        End If
+                    End If
+                Else
+                    If ws.Cells(i, 1).Style.Fill.BackgroundColor.Rgb = "" Then
+                        Dim typeDec As String = ws.Cells(i, 1).Value
+                        Dim title As String = ws.Cells(i, 3).Value
+                        Dim typeByte As Byte
+
+                        If Not String.IsNullOrEmpty(typeDec) AndAlso Not String.IsNullOrEmpty(title) Then
+                            If Byte.TryParse(typeDec, typeByte) Then
+                                Dim item As New ComboItem
+                                Dim desc As String
+                                Dim notes As String
+
+                                'Get description & notes (will be displayed in tooltip)
+                                desc = ws.Cells(i, 5).Value
+                                notes = ws.Cells(i, 7).Value
+
+                                'Set infos to the item
+                                item.Text = $"{typeByte.ToString("X2")}: {title}"
+                                item.Tag = {typeByte, title, desc, notes}
+
+                                'Add item to list
+                                If item IsNot Nothing Then
+                                    terrainTypesComboItems.Add(item)
+                                End If
                             End If
                         End If
                     End If

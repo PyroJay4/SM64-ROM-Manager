@@ -8,7 +8,7 @@ Imports SM64Lib.Geolayout
 Imports SM64Lib.Model.Collision
 Imports SM64Lib.Model.Fast3D.DisplayLists
 
-Namespace Global.SM64Lib.Model.Fast3D
+Namespace Model.Fast3D
 
     Public Class Fast3DBuffer
         Inherits MemoryStream

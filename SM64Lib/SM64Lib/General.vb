@@ -13,12 +13,12 @@ Namespace Global.SM64Lib
 
     Public Module General
 
-        Public DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
-        Public FileIniParser As New IniParser.FileIniDataParser
-        Public StreamIniParser As New IniParser.StreamIniDataParser
-        Public ObjectBankData As New List(Of IniData)
-        Public ActSelectorDefaultValues As Byte() = {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
-        Public PatchClass As New SM64PatchClass
+        Public ReadOnly Property DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
+        Public ReadOnly Property ActSelectorDefaultValues As Byte() = {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
+        Public ReadOnly Property FileIniParser As New IniParser.FileIniDataParser
+        Public ReadOnly Property StreamIniParser As New IniParser.StreamIniDataParser
+        Public ReadOnly Property ObjectBankData As New List(Of IniData)
+        Public ReadOnly Property PatchClass As New SM64PatchClass
 
         Public Function KeepInInt16Range(value As Double) As Short
             If value > Short.MaxValue Then
@@ -42,9 +42,11 @@ Namespace Global.SM64Lib
                 Next
             Next
         End Sub
+
         Public Function CopyBitmap(src As Bitmap) As Bitmap
             Return CopyBitmap(src, src.PixelFormat)
         End Function
+
         Public Function CopyBitmap(src As Bitmap, pixelFormat As Imaging.PixelFormat) As Bitmap
             Dim dest As New Bitmap(src.Width, src.Height, pixelFormat)
             CopyBitmap(src, dest)
@@ -88,67 +90,6 @@ Namespace Global.SM64Lib
             'frm.Dispose()
 
             Return newImage
-        End Function
-
-        Public Function FindWaterBoxFromSpecialBox(WaterBoxes() As Collision.BoxData, SpecialBoxes As Levels.SpecialBox) As Collision.BoxData
-            For Each b In WaterBoxes
-                If b.X1 = SpecialBoxes.X1 And b.X2 = SpecialBoxes.X2 And b.Z1 = SpecialBoxes.Z1 And b.Z2 = SpecialBoxes.Z2 Then Return b
-            Next
-            Return Nothing
-        End Function
-
-        Public Sub ClearFakeROM(FakeROMFile As String, StartOffset As Integer, EndOffset As Integer)
-            Dim bwFakeROM As New BinaryWriter(New FileStream(FakeROMFile, FileMode.Open, FileAccess.Write))
-            bwFakeROM.BaseStream.Position = StartOffset
-            For i As Integer = StartOffset To EndOffset - 1
-                bwFakeROM.Write(CByte(&H1))
-            Next
-            bwFakeROM.BaseStream.Close()
-        End Sub
-
-        Public Function GetDigitOfByte(value As Byte, digit As Byte) As Byte
-            Dim chars() As Char = Hex(value).ToCharArray
-            Select Case digit
-                Case 0 '0x15 --> 1
-                    Return CInt("&H" & If(chars.Count = 2, chars(0), 0))
-                Case 1 '0x15 --> 5
-                    Return CInt("&H" & chars(If(chars.Count = 2, 1, 0)))
-                Case Else
-                    Return 0
-            End Select
-        End Function
-
-        Public Function RunExeProcess(PathToExe As String, ExeArgs() As String, WorkingDirectory As String, CheckForSpaces As Boolean) As Integer
-            Dim pExe As New Process
-            With pExe.StartInfo
-                .UseShellExecute = False
-                .CreateNoWindow = True
-                .FileName = PathToExe
-                .WorkingDirectory = WorkingDirectory
-                For Each a As String In ExeArgs
-                    If .Arguments IsNot "" Then .Arguments &= " "
-                    If CheckForSpaces Then
-                        If a.Contains(" ") Then .Arguments &= """"
-                        .Arguments &= a
-                        If a.Contains(" ") Then .Arguments &= """"
-                    Else : .Arguments &= a
-                    End If
-                Next
-                .RedirectStandardOutput = True
-            End With
-
-            pExe.Start()
-
-            Dim OldOutput As String = Nothing
-            Do Until pExe.HasExited
-                Dim NewOutput As String = pExe.StandardOutput.ReadToEnd
-                If Not (NewOutput = OldOutput) Then
-                    OldOutput = NewOutput
-                    Console.Write(NewOutput)
-                End If
-            Loop
-
-            Return pExe.ExitCode
         End Function
 
         Public Function CompareTwoByteArrays(arr1() As Byte, arr2() As Byte, Optional size As UInteger = 0) As Boolean
@@ -235,29 +176,6 @@ Namespace Global.SM64Lib
             End Select
         End Function
 
-        Public Sub UpdateChecksum(Romfile As String)
-            Dim proc As New Process
-            With proc.StartInfo
-                .FileName = MyFilePaths("rn64crc.exe")
-                .Arguments = String.Format("""{0}"" -u", Romfile)
-                .UseShellExecute = False
-                .CreateNoWindow = True
-            End With
-            proc.Start()
-            proc.WaitForExit()
-        End Sub
-
-        Public Function TrimString(str As String) As String
-            Dim str1 As String
-            Try
-                str1 = New Regex("^[ \t]+|[ \t]+$", RegexOptions.IgnoreCase).Replace(str, "")
-            Catch exception As Exception
-                exception.ToString()
-                str1 = str
-            End Try
-            Return str1
-        End Function
-
         Public Function HexRoundUp1(ByVal value As Integer) As Integer
             Do While value Mod &H10 <> 0
                 value += 1
@@ -325,89 +243,6 @@ Namespace Global.SM64Lib
             End Select
 
             Return If(EndAddr, Geolayout.BackgroundPointers.OceanEnd, Geolayout.BackgroundPointers.OceanStart)
-        End Function
-        Public Function GetBackgroundIDOfAddress(StartAddr As Integer) As Geolayout.BackgroundIDs
-            Select Case StartAddr
-                Case Geolayout.BackgroundPointers.AboveCloudsStart : Return Geolayout.BackgroundIDs.AboveClouds
-                Case Geolayout.BackgroundPointers.BelowCloudsStart : Return Geolayout.BackgroundIDs.BelowClouds
-                Case Geolayout.BackgroundPointers.CavernStart : Return Geolayout.BackgroundIDs.Cavern
-                Case Geolayout.BackgroundPointers.DesertStart : Return Geolayout.BackgroundIDs.Desert
-                Case Geolayout.BackgroundPointers.FlamingSkyStart : Return Geolayout.BackgroundIDs.FlamingSky
-                Case Geolayout.BackgroundPointers.HauntedForestStart : Return Geolayout.BackgroundIDs.HauntedForest
-                Case Geolayout.BackgroundPointers.OceanStart : Return Geolayout.BackgroundIDs.Ocean
-                Case Geolayout.BackgroundPointers.PurpleCloudsStart : Return Geolayout.BackgroundIDs.PurpleClouds
-                Case Geolayout.BackgroundPointers.SnowyMountainsStart : Return Geolayout.BackgroundIDs.SnowyMountains
-                Case Geolayout.BackgroundPointers.UnderwaterCityStart : Return Geolayout.BackgroundIDs.UnderwaterCity
-                Case Else : Return Geolayout.BackgroundIDs.Custom
-            End Select
-        End Function
-        Public Function GetBackgroundIDOfIndex(Index As Integer) As Geolayout.BackgroundIDs
-            Select Case Index
-                Case 1 : Return Geolayout.BackgroundIDs.HauntedForest
-                Case 2 : Return Geolayout.BackgroundIDs.SnowyMountains
-                Case 3 : Return Geolayout.BackgroundIDs.Desert
-                Case 4 : Return Geolayout.BackgroundIDs.Ocean
-                Case 5 : Return Geolayout.BackgroundIDs.UnderwaterCity
-                Case 6 : Return Geolayout.BackgroundIDs.BelowClouds
-                Case 7 : Return Geolayout.BackgroundIDs.AboveClouds
-                Case 8 : Return Geolayout.BackgroundIDs.Cavern
-                Case 9 : Return Geolayout.BackgroundIDs.FlamingSky
-                Case 10 : Return Geolayout.BackgroundIDs.PurpleClouds
-                Case 11 : Return Geolayout.BackgroundIDs.Custom
-                Case Else : Return Geolayout.BackgroundIDs.Ocean
-            End Select
-        End Function
-        Public Function GetBackgroundIndexOfID(ID As Geolayout.BackgroundIDs) As Integer
-            Select Case ID
-                Case Geolayout.BackgroundIDs.HauntedForest : Return 1
-                Case Geolayout.BackgroundIDs.SnowyMountains : Return 2
-                Case Geolayout.BackgroundIDs.Desert : Return 3
-                Case Geolayout.BackgroundIDs.Ocean : Return 4
-                Case Geolayout.BackgroundIDs.UnderwaterCity : Return 5
-                Case Geolayout.BackgroundIDs.BelowClouds : Return 6
-                Case Geolayout.BackgroundIDs.AboveClouds : Return 7
-                Case Geolayout.BackgroundIDs.Cavern : Return 8
-                Case Geolayout.BackgroundIDs.FlamingSky : Return 9
-                Case Geolayout.BackgroundIDs.PurpleClouds : Return 10
-                Case Geolayout.BackgroundIDs.Custom : Return 11
-                Case Else : Return Geolayout.BackgroundIDs.Ocean : Return 0
-            End Select
-        End Function
-        Public Function GetEnvironmentTypeOfIndex(Index As Integer) As Geolayout.EnvironmentEffects
-            Select Case Index
-                Case 0 : Return Geolayout.EnvironmentEffects.NoEffect
-                Case 1 : Return Geolayout.EnvironmentEffects.Snow
-                Case 2 : Return Geolayout.EnvironmentEffects.Bllizard
-                Case 3 : Return Geolayout.EnvironmentEffects.BetaFlower
-                Case 4 : Return Geolayout.EnvironmentEffects.Lava
-                Case 5 : Return Geolayout.EnvironmentEffects.WaterRelated1
-                Case 6 : Return Geolayout.EnvironmentEffects.WaterRelated2
-                Case Else : Return Geolayout.EnvironmentEffects.NoEffect
-            End Select
-        End Function
-        Public Function GetEnvironmentIndexOfType(Type As Geolayout.EnvironmentEffects) As Integer
-            Select Case Type
-                Case Geolayout.EnvironmentEffects.NoEffect : Return 0
-                Case Geolayout.EnvironmentEffects.Snow : Return 1
-                Case Geolayout.EnvironmentEffects.Bllizard : Return 2
-                Case Geolayout.EnvironmentEffects.BetaFlower : Return 3
-                Case Geolayout.EnvironmentEffects.Lava : Return 4
-                Case Geolayout.EnvironmentEffects.WaterRelated1 : Return 5
-                Case Geolayout.EnvironmentEffects.WaterRelated2 : Return 6
-                Case Else : Return 0
-            End Select
-        End Function
-        Public Function GetCameraPresetTypeOfIndex(Index As Integer) As Geolayout.CameraPresets
-            Return CType(Index + 1, Geolayout.CameraPresets)
-        End Function
-        Public Function GetCameraPresetIndexOfType(Type As Geolayout.CameraPresets) As Integer
-            Return CInt(Type) - 1
-        End Function
-        Public Function GetAreaBGIndexOfID(ID As Levels.AreaBGs) As Integer
-            Return CInt(ID)
-        End Function
-        Public Function GetAreaBGIDOfIndex(Index As Integer) As Levels.AreaBGs
-            Return CType(Index, Levels.AreaBGs)
         End Function
 
         Public Class Bits

@@ -276,7 +276,7 @@ Namespace LevelEditor
         End Sub
 
         Private Sub MoveCameraViaWASDQE()
-            Dim moveSpeed As Integer = Convert.ToInt32(Math.Round(If(Main.IsShiftPressed, 60, 30) * (Camera.CamSpeedMultiplier), 0))
+            Dim moveSpeed As Integer = Convert.ToInt32(Math.Round(If(Main.IsShiftPressed, 60, 30) * Camera.CamSpeedMultiplier, 0))
             Dim allowCamMove As Boolean = Not (isMouseDown AndAlso Main.IsShiftPressed)
 
             For Each k As Keys In Main.pressedKeys

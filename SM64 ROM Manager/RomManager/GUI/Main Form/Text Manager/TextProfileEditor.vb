@@ -73,7 +73,7 @@ Public Class TextProfileEditor
 
             Dim piEncodingString As New PropertySettings(NameOf(TextGroupInfo.EncodingString)) With {
                 .DisplayName = "Encoding",
-                .ValueEditor = New PropertyValueEditors.TextEncodingEditor({"m64", "ascii"})
+                .ValueEditor = New PropertyValueEditors.TextEncodingEditor({TextGroupInfo.ENCODING_STRING_M64, TextGroupInfo.ENCODING_STRING_ASCII})
             }
             AdvPropertyGrid1.PropertySettings.Add(piEncodingString)
 
@@ -162,13 +162,13 @@ Public Class TextProfileEditor
     End Function
 
     Private Sub AddArrayGroupInfo()
-        Dim tg As New TextArrayGroupInfo With {.Name = "New Array Group", .EncodingString = "m64"}
+        Dim tg As New TextArrayGroupInfo With {.Name = "New Array Group", .EncodingString = TextGroupInfo.ENCODING_STRING_M64}
         ProfileInfo.TextArrayGroups.Add(tg)
         AddGroupInfo(tg)
     End Sub
 
     Private Sub AddTableGroupInfo()
-        Dim tg As New TextTableGroupInfo With {.Name = "New Table Group", .EncodingString = "m64"}
+        Dim tg As New TextTableGroupInfo With {.Name = "New Table Group", .EncodingString = TextGroupInfo.ENCODING_STRING_M64}
         ProfileInfo.TextTableGroups.Add(tg)
         AddGroupInfo(tg)
     End Sub

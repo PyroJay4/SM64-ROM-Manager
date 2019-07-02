@@ -7,7 +7,7 @@ Imports SM64Lib.Model.Fast3D.DisplayLists
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
 
-Namespace Global.SM64Lib.SM64Convert
+Namespace SM64Convert
 
     Public Class Fast3DParser
 
@@ -292,7 +292,7 @@ Namespace Global.SM64Lib.SM64Convert
                     End If
 
                 Catch ex As Exception
-                    'MsgBox(ex.Message)
+                    MsgBox(ex.Message)
                 End Try
             End If
         End Sub

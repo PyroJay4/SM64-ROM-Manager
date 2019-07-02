@@ -18,8 +18,8 @@ Namespace Global.SM64Lib.Data
 
         Protected Overrides Function GetBaseStream() As Stream
             If RomManager IsNot Nothing Then
-                Dim s As Stream = RomManager.GetStream(FileAccess.Read)
-                SegBank.ReadDataIfNull(s)
+                Dim s As BinaryRom = RomManager.GetBinaryRom(FileAccess.Read)
+                SegBank.ReadDataIfNull(s.BaseStream)
                 s.Close()
             End If
             Return SegBank.Data

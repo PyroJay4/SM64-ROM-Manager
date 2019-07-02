@@ -44,15 +44,15 @@ Namespace Global.SM64Lib.Patching
 #Region "SM64PatchClass"
 
         Public Sub Open(Romfile As String, OnlyRead As Boolean)
-            Open(New FileStream(Romfile, FileMode.Open, If(OnlyRead, FileAccess.Read, FileAccess.ReadWrite)))
+            Open(New BinaryFile(Romfile, FileMode.Open, If(OnlyRead, FileAccess.Read, FileAccess.ReadWrite)))
         End Sub
 
         Public Sub Open(data As BinaryData)
             Me.data = data
         End Sub
 
-        Public Sub Open(fs As Stream)
-            data = New BinaryStreamData(fs)
+        Public Sub Open(s As Stream)
+            data = New BinaryStreamData(s)
         End Sub
 
         Public Sub Close()

@@ -20,7 +20,7 @@
       </requestedPrivileges>
       <applicationRequestMinimum>
         <defaultAssemblyRequest permissionSetReference="Custom" />
-        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <PermissionSet ID="Custom" SameSite="site" Unrestricted="true" />
       </applicationRequestMinimum>
     </security>
   </trustInfo>
@@ -45,16 +45,13 @@
        DPI-Werte skaliert wird. WPF-Anwendungen (Windows Presentation Foundation) sind automatisch mit DPI-Werten kompatibel und müssen sich nicht  
        anmelden. Für Windows Forms-Anwendungen für .NET Framework 4.6, die sich für diese Einstellung anmelden, muss 
        auch die Einstellung "'EnableWindowsFormsHighDpiAutoResizing" in der "app.config" auf "true" festgelegt werden. -->
-  
   <application xmlns="urn:schemas-microsoft-com:asm.v3">
     <windowsSettings>
       <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true/pm</dpiAware>
       <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2</dpiAwareness>
     </windowsSettings>
   </application>
-  
   <!-- Designs für allgemeine Windows-Steuerelemente und -Dialogfelder (Windows XP und höher) aktivieren -->
-  
   <!--<dependency>
     <dependentAssembly>
       <assemblyIdentity
@@ -67,5 +64,4 @@
         />
     </dependentAssembly>
   </dependency>-->
-  
 </assembly>

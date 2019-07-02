@@ -63,13 +63,10 @@ Public Class PatchingManager
             Select Case element.Name
                 Case "name"
                     patch.Name = element.Value
-
                 Case "description"
                     patch.Description = element.Value
-
                 Case "patch"
                     patch.Scripts.Add(XElementToScript(element))
-
             End Select
         Next
 
@@ -314,9 +311,15 @@ Public Class PatchingManager
         options.ReferencedAssemblies.Add("System.Xml.Linq.dll")
         options.ReferencedAssemblies.Add("System.IO.dll")
         options.ReferencedAssemblies.Add("System.Drawing.dll")
+
         options.ReferencedAssemblies.Add(GetType(Object3D).Assembly.Location)
         options.ReferencedAssemblies.Add(GetType(DevComponents.DotNetBar.OfficeForm).Assembly.Location)
         options.ReferencedAssemblies.Add(GetType(RomManager).Assembly.Location)
+
+        'Alternative???
+        'For Each asm As Assembly In AppDomain.CurrentDomain.GetAssemblies
+        '    options.ReferencedAssemblies.Add(asm.Location)
+        'Next
 
         For Each ref As String In script.References
             If Not options.ReferencedAssemblies.Contains(ref) Then

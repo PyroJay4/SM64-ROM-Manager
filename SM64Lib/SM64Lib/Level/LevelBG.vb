@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.IO
 Imports N64Graphics
+Imports SM64Lib.Data
 
 Namespace Global.SM64Lib.Levels
 

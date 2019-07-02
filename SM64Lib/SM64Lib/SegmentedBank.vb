@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports SM64Lib.Data
 
 Namespace Global.SM64Lib
 
@@ -173,6 +174,10 @@ Namespace Global.SM64Lib
                 WriteData(fs)
                 fs.Close()
             End If
+        End Sub
+
+        Public Sub WriteData(data As BinaryData)
+            WriteData(data.BaseStream)
         End Sub
 
         Public Sub WriteData(s As Stream)

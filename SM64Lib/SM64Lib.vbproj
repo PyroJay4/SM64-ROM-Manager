@@ -100,6 +100,7 @@
     <Compile Include="SM64Lib\Behavior\Script\Behaviorscript.vb" />
     <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommand.vb" />
     <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommandCollection.vb" />
+    <Compile Include="SM64Lib\Data\BinaryFile.vb" />
     <Compile Include="SM64Lib\FilePathsConfiguration.vb" />
     <Compile Include="SM64Lib\General.vb" />
     <Compile Include="SM64Lib\Geolayout\BackgroundIDs.vb" />
@@ -131,7 +132,7 @@
     <Compile Include="SM64Lib\Model\DisplayLists\DisplayListCollection.vb" />
     <Compile Include="SM64Lib\Model\Fog.vb" />
     <Compile Include="SM64Lib\Model\FogPreset.vb" />
-    <Compile Include="SM64Lib\Model\TextureLoadedInfos.vb" />
+    <Compile Include="SM64Lib\SM64Convert\TextureLoadedInfos.vb" />
     <Compile Include="SM64Lib\NPCs\CoinsManager.vb" />
     <Compile Include="SM64Lib\Object Banks\CustomObject.vb" />
     <Compile Include="SM64Lib\Objects\StarNames.vb" />
@@ -168,8 +169,8 @@
     <Compile Include="SM64Lib\Model\DisplayLists\Script\Commands.vb" />
     <Compile Include="SM64Lib\Model\Fast3DBuffer.vb" />
     <Compile Include="SM64Lib\Model\ObjectModel.vb" />
-    <Compile Include="SM64Lib\Model\Fast3D_To_Object3D.vb" />
-    <Compile Include="SM64Lib\Model\Object3D_To_Fast3D.vb" />
+    <Compile Include="SM64Lib\SM64Convert\Fast3DParser.vb" />
+    <Compile Include="SM64Lib\SM64Convert\Fast3DWriter.vb" />
     <Compile Include="SM64Lib\Model\TextureManager.vb" />
     <Compile Include="SM64Lib\Musik\MusicList.vb" />
     <Compile Include="SM64Lib\Musik\MusicSequence.vb" />

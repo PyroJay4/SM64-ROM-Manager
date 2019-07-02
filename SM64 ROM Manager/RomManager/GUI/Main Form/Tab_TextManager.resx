@@ -306,30 +306,6 @@
   <data name="TabStrip_TextTable.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="LabelX_TM_BytesLeft.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="LabelX_TM_BytesLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>206, 0</value>
-  </data>
-  <data name="LabelX_TM_BytesLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 23</value>
-  </data>
-  <data name="LabelX_TM_BytesLeft.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;LabelX_TM_BytesLeft.Name" xml:space="preserve">
-    <value>LabelX_TM_BytesLeft</value>
-  </data>
-  <data name="&gt;&gt;LabelX_TM_BytesLeft.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;LabelX_TM_BytesLeft.Parent" xml:space="preserve">
-    <value>TabStrip_TextTable</value>
-  </data>
-  <data name="&gt;&gt;LabelX_TM_BytesLeft.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="TabStrip_TextTable.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>

@@ -77,6 +77,12 @@ Public Class Settings
         End Get
     End Property
 
+    Public Shared ReadOnly Property ModelConverter As ModelConverterSettingsStruc
+        Get
+            Return Instance.ModelConverter
+        End Get
+    End Property
+
 #End Region
 
 End Class

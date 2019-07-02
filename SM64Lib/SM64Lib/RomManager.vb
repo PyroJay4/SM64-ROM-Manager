@@ -12,10 +12,18 @@ Imports SM64Lib.Levels.Script
 Imports SM64Lib.ObjectBanks
 Imports SM64Lib.Data
 Imports SM64Lib.RomStruc
+Imports System.ComponentModel
 
 Namespace Global.SM64Lib
 
     Public Class RomManager
+
+        'E v e n t s
+
+        Public Event BeforeRomSave(sender As RomManager, e As CancelEventArgs)
+        Public Event AfterRomSave(sender As RomManager, e As EventArgs)
+
+        'F i e l d s
 
         Private ReadOnly segBankList As New Dictionary(Of Byte, SegmentedBank)
         Private ReadOnly areaSegBankList As New Dictionary(Of Byte, Dictionary(Of Byte, SegmentedBank))
@@ -23,6 +31,8 @@ Namespace Global.SM64Lib
         Private _ProgramVersion As Version = Nothing
         Private ReadOnly levelIDsToReset As New List(Of UShort)
         Private ReadOnly myTextGroups As New List(Of Text.TextGroup)
+
+        'P r o p e r t i e s
 
         Public ReadOnly Property LevelInfoData As New Levels.LevelInfoDataTabelList
         Public ReadOnly Property Levels As New Levels.LevelList
@@ -77,13 +87,7 @@ Namespace Global.SM64Lib
             End Get
         End Property
 
-        ''' <summary>
-        ''' Gets if Update Patches are avaiable for this ROM.
-        ''' </summary>
-        ''' <returns></returns>
-        Public Function AreRomUpdatesAvaiable() As Boolean
-            Return dicUpdatePatches.Where(Function(n) New Version(n.Key) > Me.ProgramVersion).Count > 0
-        End Function
+        'C o n s t r u c t o r s
 
         ''' <summary>
         ''' Creates a new instance with input ROM.
@@ -105,6 +109,28 @@ Namespace Global.SM64Lib
             LoadDictionaryUpdatePatches()
         End Sub
 
+        'R a i s e   E v e n t s
+
+        Private Function RaiseBeforeRomSave() As Boolean
+            Dim e As New CancelEventArgs
+            RaiseEvent BeforeRomSave(Me, e)
+            Return e.Cancel
+        End Function
+
+        Private Sub RaiseAfterRomSave()
+            RaiseEvent AfterRomSave(Me, New EventArgs)
+        End Sub
+
+        'F e a t u r e s
+
+        ''' <summary>
+        ''' Gets if Update Patches are avaiable for this ROM.
+        ''' </summary>
+        ''' <returns></returns>
+        Public Function AreRomUpdatesAvaiable() As Boolean
+            Return dicUpdatePatches.Where(Function(n) New Version(n.Key) > Me.ProgramVersion).Count > 0
+        End Function
+
         Private Sub LoadDictionaryUpdatePatches()
             Dim udatePatchsFile As String = MyFilePaths("Update-Patches.json")
             Dim jsFile As String
@@ -124,29 +150,23 @@ Namespace Global.SM64Lib
         ''' <returns></returns>
         Public Property GameName As String
             Get
-                Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Read)
-                Dim br As New BinaryReader(fs)
+                Dim fs As New BinaryRom(Me, FileAccess.Read)
                 fs.Position = &H20
-                GameName = Encoding.ASCII.GetString(br.ReadBytes(&H14)).Trim
+                GameName = Encoding.ASCII.GetString(fs.Read(&H14)).Trim
                 fs.Close()
             End Get
             Set(value As String)
-                Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Write)
-                Dim bw As New BinaryWriter(fs)
+                Dim fs As New BinaryRom(Me, FileAccess.Write)
                 fs.Position = &H20
                 For Each b As Byte In Encoding.ASCII.GetBytes(value)
-                    bw.Write(b)
+                    fs.Write(b)
                 Next
                 Do While fs.Position < &H34
-                    bw.Write(CByte(&H20))
+                    fs.WriteByte(&H20)
                 Loop
                 fs.Close()
             End Set
         End Property
-
-        Friend Function GetStream(access As FileAccess) As Stream
-            Return New FileStream(RomFile, FileMode.Open, access)
-        End Function
 
         ''' <summary>
         ''' Gets a new instance of BinaryRom, a BinaryData object.
@@ -163,42 +183,46 @@ Namespace Global.SM64Lib
         ''' <param name="IgnoreNeedToSave">If True, everything will be saved even if there are no changes.</param>
         ''' <param name="DontPatchUpdates">If True, Update Patches will be ignored.</param>
         Public Sub SaveRom(Optional IgnoreNeedToSave As Boolean = False, Optional DontPatchUpdates As Boolean = False)
-            Dim needUpdateChecksum As Boolean = MusicList.NeedToSaveMusicHackSettings
+            If Not RaiseBeforeRomSave() Then
+                Dim needUpdateChecksum As Boolean = MusicList.NeedToSaveMusicHackSettings
 
-            If Not DontPatchUpdates Then
-                'Patch update-patches
-                For Each kvp As KeyValuePair(Of String, String) In dicUpdatePatches.Where(Function(n) New Version(n.Key) > Me.ProgramVersion).OrderBy(Function(n) n.Key)
-                    PatchClass.ApplyPPF(RomFile, Path.Combine(MyFilePaths("Update Patches Folder"), kvp.Value))
-                    needUpdateChecksum = True
-                Next
+                If Not DontPatchUpdates Then
+                    'Patch update-patches
+                    For Each kvp As KeyValuePair(Of String, String) In dicUpdatePatches.Where(Function(n) New Version(n.Key) > Me.ProgramVersion).OrderBy(Function(n) n.Key)
+                        PatchClass.ApplyPPF(RomFile, Path.Combine(MyFilePaths("Update Patches Folder"), kvp.Value))
+                        needUpdateChecksum = True
+                    Next
+                End If
+
+                'Write Version
+                WriteVersion(Assembly.GetEntryAssembly.GetName.Version)
+
+                'Texts
+                SaveAllTextGroups(needUpdateChecksum,)
+
+                'Music
+                Dim lastpos As Integer
+                MusicList.Write(RomFile, lastpos)
+                HexRoundUp2(lastpos)
+
+                'Global Object Bank
+                'SaveGlobalObjectBank(lastpos)
+                'HexRoundUp2(lastpos)
+
+                'Levels
+                SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then
+
+                If needUpdateChecksum Then _
+                    PatchClass.UpdateChecksum(RomFile)
+
+                RaiseAfterRomSave()
             End If
-
-            'Write Version
-            WriteVersion(Assembly.GetEntryAssembly.GetName.Version)
-
-            'Texts
-            SaveAllTextGroups(needUpdateChecksum,)
-
-            'Music
-            Dim lastpos As Integer
-            MusicList.Write(RomFile, lastpos)
-            HexRoundUp2(lastpos)
-
-            'Global Object Bank
-            'SaveGlobalObjectBank(lastpos)
-            HexRoundUp2(lastpos)
-
-            'Levels
-            SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then
-
-            If needUpdateChecksum Then _
-                PatchClass.UpdateChecksum(RomFile)
         End Sub
 
         Private Sub WriteVersion(newVersion As Version)
             ProgramVersion = newVersion
 
-            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
+            Dim fs As New BinaryRom(Me, FileAccess.ReadWrite)
             fs.Position = &H1201FFC
 
             fs.WriteByte(ProgramVersion.Major)
@@ -210,7 +234,7 @@ Namespace Global.SM64Lib
         End Sub
 
         Private Function LoadVersion() As Version
-            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Read)
+            Dim fs As New BinaryRom(Me, FileAccess.Read)
             fs.Position = &H1201FFC
 
             Dim major As Byte = fs.ReadByte
@@ -220,14 +244,9 @@ Namespace Global.SM64Lib
 
             fs.Close()
 
-            If major = 1 AndAlso minor = 0 AndAlso build = 0 AndAlso revision = 0 Then
-                major = 0
-                minor = 3
-            End If
-
             ProgramVersion = New Version(major, minor, build, revision)
 
-            Return Me.ProgramVersion
+            Return ProgramVersion
         End Function
 
         Public Sub LoadTextProfileIfNotLoaded()
@@ -390,17 +409,17 @@ Namespace Global.SM64Lib
         Public Sub SaveLevels(Optional StartAddress As Integer = -1)
             Dim curOff As UInteger = StartAddress
 
-            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
-            fs.Position = curOff
+            Dim binRom As New BinaryRom(Me, FileAccess.ReadWrite)
+            binRom.Position = curOff
 
             For Each lvl As Levels.Level In Levels
                 Dim res As Levels.LevelManager.LevelSaveResult
-                res = SM64Lib.Levels.LevelManager.SaveRomManagerLevel(lvl, Me, fs, curOff)
+                res = SM64Lib.Levels.LevelManager.SaveRomManagerLevel(lvl, Me, binRom, curOff)
                 lvl.LastRomOffset = res.Bank0x19.RomStart
                 HexRoundUp2(curOff)
             Next
 
-            fs.Close()
+            binRom.Close()
 
             ResetListedLevelPointers()
         End Sub
@@ -418,14 +437,13 @@ Namespace Global.SM64Lib
         ''' Loads the global object bank, if avaiable (WIP)
         ''' </summary>
         Public Sub LoadGlobalObjectBank()
-            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Read)
-            Dim br As New BinaryReader(fs)
+            Dim fs As New BinaryRom(Me, FileAccess.Read)
 
             'Read Bank Addres & Length from Rom
             fs.Position = &H120FFF0
             Dim seg As New SegmentedBank(&H7)
-            seg.RomStart = SwapInts.SwapInt32(br.ReadInt32)
-            seg.RomEnd = SwapInts.SwapInt32(br.ReadInt32)
+            seg.RomStart = fs.ReadInt32
+            seg.RomEnd = fs.ReadInt32
 
             If seg.RomStart <> &H1010101 AndAlso seg.RomStart > -1 Then
                 'Set Segmented Bank
@@ -443,8 +461,7 @@ Namespace Global.SM64Lib
         End Sub
 
         Private Sub SaveGlobalObjectBank(ByRef offset As Integer)
-            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
-            Dim bw As New BinaryWriter(fs)
+            Dim fs As New BinaryRom(Me, FileAccess.ReadWrite)
             Dim seg As SegmentedBank = GlobalObjectBank.WriteToSeg(&H7)
 
             'Set Segmented Bank
@@ -452,13 +469,13 @@ Namespace Global.SM64Lib
             SetSegBank(seg)
 
             'Write Segmented Bank
-            seg.WriteData(fs)
+            seg.WriteData(fs.BaseStream)
             offset = fs.Position
 
             'Write Bank Address & Length to Rom
             fs.Position = &H120FFF0
-            bw.Write(SwapInts.SwapInt32(seg.RomStart))
-            bw.Write(SwapInts.SwapInt32(seg.RomEnd))
+            fs.Write(seg.RomStart)
+            fs.Write(seg.RomEnd)
 
             fs.Close()
         End Sub
@@ -518,12 +535,12 @@ Namespace Global.SM64Lib
                 PrepairROM()
             End If
 
-            Dim br As New BinaryReader(New FileStream(RomFile, FileMode.Open, FileAccess.Read))
-            br.BaseStream.Position = &H1200000
-            Dim tCheckData = SwapInts.SwapInt64(br.ReadInt64)
-            br.BaseStream.Close()
+            Dim br As New BinaryRom(Me, FileAccess.Read)
+            br.Position = &H1200000
+            Dim tCheckData = br.ReadInt64
+            br.Close()
 
-            _IsSM64EditorMode = ({&H800800001900001C, &H800800000E0000C4}).Contains(tCheckData)
+            _IsSM64EditorMode = {&H800800001900001C, &H800800000E0000C4}.Contains(tCheckData)
 
             Return True
         End Function
@@ -540,7 +557,7 @@ Namespace Global.SM64Lib
             proc.Start()
             proc.WaitForExit()
 
-            Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
+            Dim fs As New BinaryRom(Me, FileAccess.ReadWrite)
 
             'Write Custom Background Pointer
             fs.Position = &H1202500
@@ -593,7 +610,7 @@ Namespace Global.SM64Lib
                 If IsSecondTry Then
                     Throw New Exception("Your ROM is invalid, it isn't possible to extend it.")
                 Else
-                    Dim fs As New FileStream(RomFile, FileMode.Open, FileAccess.Write)
+                    Dim fs As New BinaryRom(Me, FileAccess.Write)
                     fs.Position = &H10
                     For Each b As String In ("63 5A 2B FF 8B 02 23 26").Split(" ") : fs.WriteByte("&H" & b) : Next
                     fs.Close()
@@ -615,15 +632,15 @@ Namespace Global.SM64Lib
         ''' </summary>
         ''' <param name="info">The Levelinfo where to reset the pointer.</param>
         Public Sub ResetLevelPointer(info As Levels.LevelInfoDataTabelList.Level)
-            Dim fsPointer As New FileStream(Path.Combine(MyFilePaths("Original Level Pointers.bin")), FileMode.Open, FileAccess.Read)
-            Dim fsRom As New FileStream(RomFile, FileMode.Open, FileAccess.ReadWrite)
+            Dim fsPointer As New BinaryFile(Path.Combine(MyFilePaths("Original Level Pointers.bin")), FileMode.Open, FileAccess.Read)
+            Dim fsRom As New BinaryRom(Me, FileAccess.ReadWrite)
 
             Dim data(&H13) As Byte
             fsPointer.Position = info.Pointer - &H2AC094
             fsPointer.Read(data, 0, data.Count)
 
             fsRom.Position = info.Pointer
-            fsRom.Write(data, 0, data.Count)
+            fsRom.Write(data)
 
             fsPointer.Close()
             fsRom.Close()
