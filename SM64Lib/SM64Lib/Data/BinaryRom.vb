@@ -7,7 +7,7 @@ Namespace Global.SM64Lib.Data
 
 
         Public Sub New(rommgr As RomManager, romAccess As FileAccess)
-            MyBase.New(rommgr.RomFile, FileMode.Create, romAccess)
+            MyBase.New(rommgr.RomFile, FileMode.Open, romAccess)
             SetRomManager(rommgr)
         End Sub
 

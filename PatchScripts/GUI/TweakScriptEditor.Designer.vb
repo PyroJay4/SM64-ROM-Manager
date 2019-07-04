@@ -37,6 +37,9 @@ Partial Class TweakScriptEditor
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.ButtonX_ShowObjectCatalog = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonX_RunScript = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonItem_RunInTestMode = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
@@ -67,12 +70,9 @@ Partial Class TweakScriptEditor
         Me.TextBoxX_ScriptDescription.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TextBoxX_ScriptDescription.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_ScriptDescription.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxX_ScriptDescription.Location = New System.Drawing.Point(12, 96)
-        Me.TextBoxX_ScriptDescription.Multiline = True
+        resources.ApplyResources(Me.TextBoxX_ScriptDescription, "TextBoxX_ScriptDescription")
         Me.TextBoxX_ScriptDescription.Name = "TextBoxX_ScriptDescription"
         Me.TextBoxX_ScriptDescription.PreventEnterBeep = True
-        Me.TextBoxX_ScriptDescription.Size = New System.Drawing.Size(379, 204)
-        Me.TextBoxX_ScriptDescription.TabIndex = 7
         '
         'LabelX2
         '
@@ -80,11 +80,8 @@ Partial Class TweakScriptEditor
         '
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Location = New System.Drawing.Point(12, 67)
+        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(379, 23)
-        Me.LabelX2.TabIndex = 6
-        Me.LabelX2.Text = "Description:"
         '
         'TextBoxX_ScriptName
         '
@@ -96,11 +93,9 @@ Partial Class TweakScriptEditor
         Me.TextBoxX_ScriptName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TextBoxX_ScriptName.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_ScriptName.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxX_ScriptName.Location = New System.Drawing.Point(12, 41)
+        resources.ApplyResources(Me.TextBoxX_ScriptName, "TextBoxX_ScriptName")
         Me.TextBoxX_ScriptName.Name = "TextBoxX_ScriptName"
         Me.TextBoxX_ScriptName.PreventEnterBeep = True
-        Me.TextBoxX_ScriptName.Size = New System.Drawing.Size(379, 20)
-        Me.TextBoxX_ScriptName.TabIndex = 5
         '
         'LabelX1
         '
@@ -108,11 +103,8 @@ Partial Class TweakScriptEditor
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Location = New System.Drawing.Point(12, 12)
+        resources.ApplyResources(Me.LabelX1, "LabelX1")
         Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(379, 23)
-        Me.LabelX1.TabIndex = 4
-        Me.LabelX1.Text = "Name:"
         '
         'LabelX3
         '
@@ -120,11 +112,8 @@ Partial Class TweakScriptEditor
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Location = New System.Drawing.Point(12, 306)
+        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.Size = New System.Drawing.Size(379, 23)
-        Me.LabelX3.TabIndex = 8
-        Me.LabelX3.Text = "Type:"
         '
         'CheckBoxX_TweakScript
         '
@@ -137,12 +126,9 @@ Partial Class TweakScriptEditor
         Me.CheckBoxX_TweakScript.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBoxX_TweakScript.CheckValue = "Y"
         Me.CheckBoxX_TweakScript.FocusCuesEnabled = False
-        Me.CheckBoxX_TweakScript.Location = New System.Drawing.Point(0, 0)
+        resources.ApplyResources(Me.CheckBoxX_TweakScript, "CheckBoxX_TweakScript")
         Me.CheckBoxX_TweakScript.Name = "CheckBoxX_TweakScript"
-        Me.CheckBoxX_TweakScript.Size = New System.Drawing.Size(108, 23)
         Me.CheckBoxX_TweakScript.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.CheckBoxX_TweakScript.TabIndex = 9
-        Me.CheckBoxX_TweakScript.Text = "Tweak Script"
         '
         'Panel1
         '
@@ -150,10 +136,8 @@ Partial Class TweakScriptEditor
         Me.Panel1.Controls.Add(Me.CheckBoxX_CSharpScript)
         Me.Panel1.Controls.Add(Me.CheckBoxX_VBScript)
         Me.Panel1.Controls.Add(Me.CheckBoxX_TweakScript)
-        Me.Panel1.Location = New System.Drawing.Point(12, 335)
+        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(379, 23)
-        Me.Panel1.TabIndex = 10
         '
         'CheckBoxX_CSharpScript
         '
@@ -163,12 +147,9 @@ Partial Class TweakScriptEditor
         Me.CheckBoxX_CSharpScript.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CheckBoxX_CSharpScript.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
         Me.CheckBoxX_CSharpScript.FocusCuesEnabled = False
-        Me.CheckBoxX_CSharpScript.Location = New System.Drawing.Point(161, 0)
+        resources.ApplyResources(Me.CheckBoxX_CSharpScript, "CheckBoxX_CSharpScript")
         Me.CheckBoxX_CSharpScript.Name = "CheckBoxX_CSharpScript"
-        Me.CheckBoxX_CSharpScript.Size = New System.Drawing.Size(41, 23)
         Me.CheckBoxX_CSharpScript.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.CheckBoxX_CSharpScript.TabIndex = 11
-        Me.CheckBoxX_CSharpScript.Text = "C#"
         '
         'CheckBoxX_VBScript
         '
@@ -178,55 +159,65 @@ Partial Class TweakScriptEditor
         Me.CheckBoxX_VBScript.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CheckBoxX_VBScript.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
         Me.CheckBoxX_VBScript.FocusCuesEnabled = False
-        Me.CheckBoxX_VBScript.Location = New System.Drawing.Point(114, 0)
+        resources.ApplyResources(Me.CheckBoxX_VBScript, "CheckBoxX_VBScript")
         Me.CheckBoxX_VBScript.Name = "CheckBoxX_VBScript"
-        Me.CheckBoxX_VBScript.Size = New System.Drawing.Size(41, 23)
         Me.CheckBoxX_VBScript.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.CheckBoxX_VBScript.TabIndex = 10
-        Me.CheckBoxX_VBScript.Text = "VB"
         '
         'Panel2
         '
-        Me.Panel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.Location = New System.Drawing.Point(397, 41)
+        resources.ApplyResources(Me.Panel2, "Panel2")
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(639, 608)
-        Me.Panel2.TabIndex = 11
         '
         'LabelX4
         '
-        Me.LabelX4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.LabelX4, "LabelX4")
         '
         '
         '
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX4.Location = New System.Drawing.Point(397, 12)
         Me.LabelX4.Name = "LabelX4"
-        Me.LabelX4.Size = New System.Drawing.Size(301, 23)
-        Me.LabelX4.TabIndex = 12
-        Me.LabelX4.Text = "Code:"
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel1.AutoSize = True
+        resources.ApplyResources(Me.TableLayoutPanel1, "TableLayoutPanel1")
         Me.TableLayoutPanel1.BackColor = System.Drawing.Color.Transparent
-        Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonX_ShowObjectCatalog, 4, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonX_RunScript, 3, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonX1, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonX2, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonX_CheckForErros, 2, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(736, 9)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(300, 29)
-        Me.TableLayoutPanel1.TabIndex = 13
+        '
+        'ButtonX_ShowObjectCatalog
+        '
+        Me.ButtonX_ShowObjectCatalog.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX_ShowObjectCatalog.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX_ShowObjectCatalog.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX_ShowObjectCatalog, "ButtonX_ShowObjectCatalog")
+        Me.ButtonX_ShowObjectCatalog.Name = "ButtonX_ShowObjectCatalog"
+        Me.ButtonX_ShowObjectCatalog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'ButtonX_RunScript
+        '
+        Me.ButtonX_RunScript.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX_RunScript.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX_RunScript.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX_RunScript, "ButtonX_RunScript")
+        Me.ButtonX_RunScript.Name = "ButtonX_RunScript"
+        Me.ButtonX_RunScript.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX_RunScript.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_RunInTestMode})
+        Me.ButtonX_RunScript.Symbol = "57399"
+        Me.ButtonX_RunScript.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.ButtonX_RunScript.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonX_RunScript.SymbolSize = 12.0!
+        '
+        'ButtonItem_RunInTestMode
+        '
+        Me.ButtonItem_RunInTestMode.AutoCheckOnClick = True
+        Me.ButtonItem_RunInTestMode.Checked = True
+        Me.ButtonItem_RunInTestMode.GlobalItem = False
+        Me.ButtonItem_RunInTestMode.Name = "ButtonItem_RunInTestMode"
+        resources.ApplyResources(Me.ButtonItem_RunInTestMode, "ButtonItem_RunInTestMode")
         '
         'ButtonX1
         '
@@ -234,25 +225,22 @@ Partial Class TweakScriptEditor
         Me.ButtonX1.AutoExpandOnClick = True
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX1.FocusCuesEnabled = False
-        Me.ButtonX1.Location = New System.Drawing.Point(3, 3)
+        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Size = New System.Drawing.Size(111, 23)
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem2})
-        Me.ButtonX1.TabIndex = 0
-        Me.ButtonX1.Text = "New Template"
         '
         'ButtonItem1
         '
         Me.ButtonItem1.GlobalItem = False
         Me.ButtonItem1.Name = "ButtonItem1"
-        Me.ButtonItem1.Text = "VB"
+        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
         '
         'ButtonItem2
         '
         Me.ButtonItem2.GlobalItem = False
         Me.ButtonItem2.Name = "ButtonItem2"
-        Me.ButtonItem2.Text = "C#"
+        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
         '
         'ButtonX2
         '
@@ -260,37 +248,31 @@ Partial Class TweakScriptEditor
         Me.ButtonX2.AutoExpandOnClick = True
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
-        Me.ButtonX2.Location = New System.Drawing.Point(120, 3)
+        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.Name = "ButtonX2"
-        Me.ButtonX2.Size = New System.Drawing.Size(75, 23)
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX2.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem3, Me.ButtonItem4})
-        Me.ButtonX2.TabIndex = 1
-        Me.ButtonX2.Text = "File"
         '
         'ButtonItem3
         '
         Me.ButtonItem3.GlobalItem = False
         Me.ButtonItem3.Name = "ButtonItem3"
-        Me.ButtonItem3.Text = "Save to File ..."
+        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
         '
         'ButtonItem4
         '
         Me.ButtonItem4.GlobalItem = False
         Me.ButtonItem4.Name = "ButtonItem4"
-        Me.ButtonItem4.Text = "Load from File ..."
+        resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
         '
         'ButtonX_CheckForErros
         '
         Me.ButtonX_CheckForErros.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_CheckForErros.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_CheckForErros.FocusCuesEnabled = False
-        Me.ButtonX_CheckForErros.Location = New System.Drawing.Point(201, 3)
+        resources.ApplyResources(Me.ButtonX_CheckForErros, "ButtonX_CheckForErros")
         Me.ButtonX_CheckForErros.Name = "ButtonX_CheckForErros"
-        Me.ButtonX_CheckForErros.Size = New System.Drawing.Size(96, 23)
         Me.ButtonX_CheckForErros.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_CheckForErros.TabIndex = 2
-        Me.ButtonX_CheckForErros.Text = "Check for Errors"
         '
         'ItemListBox1
         '
@@ -303,13 +285,10 @@ Partial Class TweakScriptEditor
         Me.ItemListBox1.DragDropSupport = True
         Me.ItemListBox1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
         Me.ItemListBox1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.ItemListBox1.Location = New System.Drawing.Point(0, 29)
+        resources.ApplyResources(Me.ItemListBox1, "ItemListBox1")
         Me.ItemListBox1.Name = "ItemListBox1"
         Me.ItemListBox1.ReserveLeftSpace = False
-        Me.ItemListBox1.Size = New System.Drawing.Size(379, 256)
         Me.ItemListBox1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ItemListBox1.TabIndex = 15
-        Me.ItemListBox1.Text = "ItemListBox1"
         '
         'LabelX5
         '
@@ -317,11 +296,8 @@ Partial Class TweakScriptEditor
         '
         '
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX5.Location = New System.Drawing.Point(0, 0)
+        resources.ApplyResources(Me.LabelX5, "LabelX5")
         Me.LabelX5.Name = "LabelX5"
-        Me.LabelX5.Size = New System.Drawing.Size(177, 23)
-        Me.LabelX5.TabIndex = 16
-        Me.LabelX5.Text = "Additional References:"
         '
         'Panel3
         '
@@ -329,58 +305,42 @@ Partial Class TweakScriptEditor
         Me.Panel3.Controls.Add(Me.TableLayoutPanel2)
         Me.Panel3.Controls.Add(Me.LabelX5)
         Me.Panel3.Controls.Add(Me.ItemListBox1)
-        Me.Panel3.Location = New System.Drawing.Point(12, 364)
+        resources.ApplyResources(Me.Panel3, "Panel3")
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(379, 285)
-        Me.Panel3.TabIndex = 17
         '
         'TableLayoutPanel2
         '
-        Me.TableLayoutPanel2.AutoSize = True
-        Me.TableLayoutPanel2.ColumnCount = 3
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26.0!))
+        resources.ApplyResources(Me.TableLayoutPanel2, "TableLayoutPanel2")
         Me.TableLayoutPanel2.Controls.Add(Me.ButtonX3, 1, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.ButtonX4, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.TextBoxX_ReferenceName, 0, 0)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(115, -1)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 1
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(264, 26)
-        Me.TableLayoutPanel2.TabIndex = 17
         '
         'ButtonX3
         '
         Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX3.FocusCuesEnabled = False
-        Me.ButtonX3.Location = New System.Drawing.Point(215, 3)
+        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.Name = "ButtonX3"
-        Me.ButtonX3.Size = New System.Drawing.Size(20, 20)
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX3.Symbol = "57669"
         Me.ButtonX3.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX3.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX3.SymbolSize = 12.0!
-        Me.ButtonX3.TabIndex = 48
         '
         'ButtonX4
         '
         Me.ButtonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        resources.ApplyResources(Me.ButtonX4, "ButtonX4")
         Me.ButtonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX4.FocusCuesEnabled = False
-        Me.ButtonX4.Location = New System.Drawing.Point(241, 3)
         Me.ButtonX4.Name = "ButtonX4"
-        Me.ButtonX4.Size = New System.Drawing.Size(20, 20)
         Me.ButtonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX4.Symbol = "57676"
         Me.ButtonX4.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonX4.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX4.SymbolSize = 12.0!
-        Me.ButtonX4.TabIndex = 49
         '
         'TextBoxX_ReferenceName
         '
@@ -392,18 +352,14 @@ Partial Class TweakScriptEditor
         Me.TextBoxX_ReferenceName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TextBoxX_ReferenceName.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_ReferenceName.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxX_ReferenceName.Location = New System.Drawing.Point(3, 3)
+        resources.ApplyResources(Me.TextBoxX_ReferenceName, "TextBoxX_ReferenceName")
         Me.TextBoxX_ReferenceName.Name = "TextBoxX_ReferenceName"
         Me.TextBoxX_ReferenceName.PreventEnterBeep = True
-        Me.TextBoxX_ReferenceName.Size = New System.Drawing.Size(206, 20)
-        Me.TextBoxX_ReferenceName.TabIndex = 18
-        Me.TextBoxX_ReferenceName.WatermarkText = "E.g. System.Windows.Forms.dll"
         '
         'TweakScriptEditor
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1048, 661)
         Me.Controls.Add(Me.TextBoxX_ScriptName)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.TableLayoutPanel1)
@@ -414,12 +370,7 @@ Partial Class TweakScriptEditor
         Me.Controls.Add(Me.TextBoxX_ScriptDescription)
         Me.Controls.Add(Me.LabelX2)
         Me.Controls.Add(Me.LabelX1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "TweakScriptEditor"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Tweak Script Editor"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         Me.Panel1.ResumeLayout(False)
@@ -458,4 +409,7 @@ Partial Class TweakScriptEditor
     Friend WithEvents ButtonX3 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX4 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX_CheckForErros As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents ButtonX_RunScript As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents ButtonItem_RunInTestMode As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonX_ShowObjectCatalog As DevComponents.DotNetBar.ButtonX
 End Class

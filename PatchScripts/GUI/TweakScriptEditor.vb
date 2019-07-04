@@ -210,7 +210,7 @@ using SM64Lib;
 class Script
 {
 
-    static void Main(IReadOnlyDictionary<string, object> params)
+    static void Main(IReadOnlyDictionary<string, object> pars)
     {
     
     
