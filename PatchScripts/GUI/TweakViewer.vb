@@ -9,23 +9,23 @@ Imports SM64_ROM_Manager.Publics
 
 Public Class TweakViewer
 
+    'F i e l d s
+
     Private myPatchs As New List(Of PatchProfile)
     Private rommgr As SM64Lib.RomManager
 
-    Public Sub New(rommgr As SM64Lib.RomManager)
+    'C o n s t r u c t o r
 
-        ' Dieser Aufruf ist für den Designer erforderlich.
+    Public Sub New(rommgr As SM64Lib.RomManager)
         InitializeComponent()
 
-        ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
         UpdateAmbientColors()
         Panel1.UpdateAmbientColors
         Flyout1.BackColor = BackColor
         Me.rommgr = rommgr
-
     End Sub
 
-#Region "Functions"
+    'F e a t u r e s
 
     Private Sub LoadTweaks()
         CircularProgress1.Visible = True
@@ -133,7 +133,96 @@ Public Class TweakViewer
         Return CType(ComboBoxEx_Scripts.SelectedItem, ComboItem)?.Tag
     End Function
 
-#End Region
+    Private Sub AddNewScript(name As String, patch As PatchProfile)
+        Dim script As New PatchScript
+        script.Name = name
+        patch.Scripts.Add(script)
+
+        Dim comboItem As New ComboItem
+        comboItem.Text = script.Name
+        comboItem.Tag = script
+        ComboBoxEx_Scripts.Items.Add(comboItem)
+        ComboBoxEx_Scripts.SelectedItem = comboItem
+    End Sub
+
+    Private Sub AddNewPatch(name As String, description As String, firstScriptName As String)
+        Dim patch As New PatchProfile With {
+            .Name = name,
+            .Description = description
+        }
+
+        Dim script As New PatchScript With {
+            .Name = firstScriptName
+        }
+        patch.Scripts.Add(script)
+
+        Dim btnItem As ButtonItem = GetButtonItemFromPatch(patch)
+        ItemListBox1.Items.Add(btnItem)
+
+        SaveSinglePatch(patch)
+        ItemListBox1.SelectedItem = btnItem
+        ItemListBox1.Refresh()
+        ItemListBox1.EnsureVisible(btnItem)
+    End Sub
+
+    Private Function GetButtonItemFromPatch(patch As PatchProfile) As ButtonItem
+        Dim btnItem As New ButtonItem With {
+            .Text = patch.Name,
+            .Tag = patch
+        }
+
+        AddHandler btnItem.MouseUp, AddressOf ItemListBox1_ItemMouseClick
+
+        Return btnItem
+    End Function
+
+    Private Function EnsureFileNameIsNotUsed(fileName As String) As String
+        Dim newFileName As String = fileName
+
+        If File.Exists(fileName) Then
+            Dim ende As Boolean = False
+            Dim count As Integer = 0
+            Dim dir As String = Path.GetDirectoryName(fileName)
+            Dim name As String = Path.GetFileNameWithoutExtension(fileName)
+            Dim ext As String = Path.GetExtension(fileName)
+
+            Do Until ende
+                newFileName = Path.Combine(dir, name & count & ext)
+                If Not File.Exists(newFileName) Then ende = True
+            Loop
+        End If
+
+        Return newFileName
+    End Function
+
+    Private Sub EditPatch(patch As PatchProfile)
+        Dim editor As New TweakProfileEditor With {
+            .Titel = patch.Name,
+            .Description = patch.Description
+        }
+
+        If editor.ShowDialog(Me) = DialogResult.OK Then
+            Dim oldName As String = patch.Name
+            Dim oldDescription As String = patch.Description
+
+            patch.Name = editor.Titel.Trim
+            patch.Description = editor.Description.Trim
+
+            If oldName <> patch.Name Then
+                'Rename File
+                Dim newFileName As String = Path.Combine(Path.GetDirectoryName(patch.FileName), editor.Titel & Path.GetExtension(patch.FileName))
+                newFileName = EnsureFileNameIsNotUsed(newFileName)
+                File.Move(patch.FileName, newFileName)
+                patch.FileName = newFileName
+
+                'Update Title in ListBox
+                ItemListBox1.SelectedItem.Text = patch.Name
+                ItemListBox1.Refresh()
+            End If
+        End If
+    End Sub
+
+    'G u i
 
     Private Sub TweakViewer_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         LoadTweaks()
@@ -162,58 +251,19 @@ Public Class TweakViewer
 
     Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles ButtonX2.Click
         Dim patch As PatchProfile = CType(ItemListBox1.SelectedItem, ButtonItem)?.Tag
-        Dim editor As New TweakProfileEditor With {
-            .Titel = patch.Name,
-            .Description = patch.Description
-        }
 
+        'Close Flyout
         Flyout1.Close()
 
-        If editor.ShowDialog(Me) = DialogResult.OK Then
-            Dim oldName As String = patch.Name
-            Dim oldDescription As String = patch.Description
+        'Edit the Patch
+        EditPatch(patch)
 
-            patch.Name = editor.Titel.Trim
-            patch.Description = editor.Description.Trim
+        'Save Patch
+        SaveSinglePatch(patch)
 
-            If oldName <> patch.Name Then
-                'Rename File
-                Dim newFileName As String = Path.Combine(Path.GetDirectoryName(patch.FileName), editor.Titel & Path.GetExtension(patch.FileName))
-                newFileName = EnsureFileNameIsNotUsed(newFileName)
-                File.Move(patch.FileName, newFileName)
-                patch.FileName = newFileName
-
-                'Update Title in ListBox
-                ItemListBox1.SelectedItem.Text = patch.Name
-                ItemListBox1.Refresh()
-            End If
-
-            'Save Patch
-            SaveSinglePatch(patch)
-
-            'Update Tweak Infos
-            ItemListBox1_SelectedItemChanged()
-        End If
+        'Update Tweak Infos
+        ItemListBox1_SelectedItemChanged()
     End Sub
-
-    Private Function EnsureFileNameIsNotUsed(fileName As String) As String
-        Dim newFileName As String = fileName
-
-        If File.Exists(fileName) Then
-            Dim ende As Boolean = False
-            Dim count As Integer = 0
-            Dim dir As String = Path.GetDirectoryName(fileName)
-            Dim name As String = Path.GetFileNameWithoutExtension(fileName)
-            Dim ext As String = Path.GetExtension(fileName)
-
-            Do Until ende
-                newFileName = Path.Combine(dir, name & count & ext)
-                If Not File.Exists(newFileName) Then ende = True
-            Loop
-        End If
-
-        Return newFileName
-    End Function
 
     Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click
         Flyout1.Close()
@@ -233,38 +283,19 @@ Public Class TweakViewer
     End Sub
 
     Private Sub ButtonX_AddNew_Click(sender As Object, e As EventArgs) Handles ButtonX_AddNew.Click
-        Dim patch As New PatchProfile
-        patch.Name = "New Profile"
+        Dim frm As New TweakProfileEditor With {
+            .Titel = "New Profile",
+            .Description = String.Empty
+        }
 
-        Dim script As New PatchScript
-        script.Name = "New Script"
-        patch.Scripts.Add(script)
-
-        Dim btnItem As New ButtonItem
-        btnItem.Text = patch.Name
-        btnItem.Tag = patch
-        AddHandler btnItem.MouseUp, AddressOf ItemListBox1_ItemMouseClick
-        ItemListBox1.Items.Add(btnItem)
-
-        SaveSinglePatch(patch)
-        ItemListBox1.SelectedItem = btnItem
-        ItemListBox1.EnsureVisible(btnItem)
-        ItemListBox1.Refresh()
+        If frm.ShowDialog = DialogResult.OK Then
+            AddNewPatch(frm.Titel, frm.Description, "New Script")
+        End If
     End Sub
 
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
         Dim patch As PatchProfile = GetSelectedPatch()
-
-        Dim script As New PatchScript
-        script.Name = "New Script"
-        patch.Scripts.Add(script)
-
-        Dim comboItem As New ComboItem
-        comboItem.Text = script.Name
-        comboItem.Tag = script
-        ComboBoxEx_Scripts.Items.Add(comboItem)
-        ComboBoxEx_Scripts.SelectedItem = comboItem
-
+        AddNewScript("New Script", patch)
         SaveSinglePatch(patch)
     End Sub
 

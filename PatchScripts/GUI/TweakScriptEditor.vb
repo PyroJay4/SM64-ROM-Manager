@@ -7,6 +7,8 @@ Imports PatchScripts
 
 Public Class TweakScriptEditor
 
+    'F i e l d s
+
     Private WithEvents CodeEditor As FastColoredTextBox
     Private script As PatchScript
     Private ntsScript As Boolean = False
@@ -14,12 +16,17 @@ Public Class TweakScriptEditor
     Private ntsName As Boolean = False
     Private ntsType As Boolean = False
     Private ntsReferences As Boolean = False
+    Private runInTestMode As Boolean = True
+
+    'P r o p e r t i e s
 
     Public ReadOnly Property NeedToSave As Boolean
         Get
             Return ntsScript OrElse ntsDescription OrElse ntsName OrElse ntsType OrElse ntsReferences
         End Get
     End Property
+
+    'C o n s t r u c t o r s
 
     Public Sub New(script As PatchScript)
         Me.SuspendLayout()
@@ -38,85 +45,12 @@ Public Class TweakScriptEditor
         Me.ResumeLayout(False)
     End Sub
 
-    Private Sub TweakScriptEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadAllData()
-    End Sub
+    'F e a t u r e s
 
-    Private Sub CheckBoxX1_CheckedChanged(sender As CheckBoxX, e As EventArgs) Handles CheckBoxX_TweakScript.CheckedChanged
-        If sender.Checked AndAlso CodeEditor IsNot Nothing Then
-            CodeEditor.Language = Language.Custom
-            script.Type = ScriptType.TweakScript
-            ntsType = True
-        End If
-        Panel3.Visible = Not sender.Checked
-        ButtonX_CheckForErros.Enabled = Not sender.Checked
-    End Sub
-    Private Sub CheckBoxX2_CheckedChanged(sender As CheckBoxX, e As EventArgs) Handles CheckBoxX_VBScript.CheckedChanged
-        If sender.Checked AndAlso CodeEditor IsNot Nothing Then
-            CodeEditor.Language = Language.VB
-            script.Type = ScriptType.VisualBasic
-            ntsType = True
-        End If
-    End Sub
-    Private Sub CheckBoxX3_CheckedChanged(sender As CheckBoxX, e As EventArgs) Handles CheckBoxX_CSharpScript.CheckedChanged
-        If sender.Checked AndAlso CodeEditor IsNot Nothing Then
-            CodeEditor.Language = Language.CSharp
-            script.Type = ScriptType.CSharp
-            ntsType = True
-        End If
-    End Sub
-
-    Private Sub CodeEditor_MouseClick(sender As Object, e As MouseEventArgs) Handles CodeEditor.MouseClick, TextBoxX_ReferenceName.MouseClick, TextBoxX_ScriptDescription.MouseClick, TextBoxX_ScriptName.MouseClick
-        'If e.Button = MouseButtons.Right Then
-        '    ButtonItem5.Popup(Cursor.Position)
-        'End If
-    End Sub
-    Private Sub CodeEditor_GotFocus(sender As Object, e As EventArgs) Handles CodeEditor.GotFocus, TextBoxX_ReferenceName.GotFocus, TextBoxX_ScriptDescription.GotFocus, TextBoxX_ScriptName.GotFocus
-        'ButtonItem5.Tag = sender
-    End Sub
-
-    Private Sub TweakScriptEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If True Then
-            If Not {CloseReason.ApplicationExitCall, CloseReason.WindowsShutDown, CloseReason.TaskManagerClosing}.Contains(e.CloseReason) Then
-                Select Case MessageBoxEx.Show("Do you want to save changes?", "Save", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                    Case DialogResult.Yes
-                        SaveAllData()
-                    Case DialogResult.Cancel
-                        e.Cancel = True
-                End Select
-            End If
-        End If
-    End Sub
-
-    Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click
-        Dim txt As String = TextBoxX_ReferenceName.Text.Trim
-
-        If Not String.IsNullOrEmpty(txt) Then
-            script.References.Add(txt)
-            ItemListBox1.Items.Add(New ButtonItem With {.Text = txt})
-        End If
-
-        ItemListBox1.Refresh()
-    End Sub
-
-    Private Sub ItemListBox1_SelectedItemChanged(sender As Object, e As EventArgs) Handles ItemListBox1.SelectedItemChanged
-        Dim btnItem As ButtonItem = ItemListBox1.SelectedItem
-
-        If btnItem IsNot Nothing Then
-            TextBoxX_ReferenceName.Text = btnItem.Text
-        End If
-    End Sub
-
-    Private Sub ButtonX4_Click(sender As Object, e As EventArgs) Handles ButtonX4.Click
-        Dim selIndex As Integer = ItemListBox1.SelectedIndex
-
-        If selIndex > -1 Then
-            ItemListBox1.Items.RemoveAt(selIndex)
-            script.References.RemoveAt(selIndex)
-            ntsReferences = True
-        End If
-
-        ItemListBox1.Refresh()
+    Private Sub ChangeCurScriptType(lang As Language, typ As ScriptType)
+        CodeEditor.Language = lang
+        script.Type = typ
+        ntsType = True
     End Sub
 
     Private Sub LoadReferences()
@@ -126,6 +60,21 @@ Public Class TweakScriptEditor
         Next
 
         ItemListBox1.Refresh()
+    End Sub
+
+    Private Sub AddReference(txt As String)
+        If Not String.IsNullOrEmpty(txt) Then
+            script.References.Add(txt)
+            ItemListBox1.Items.Add(New ButtonItem With {.Text = txt})
+        End If
+    End Sub
+
+    Private Sub RemoveReference(index As Integer)
+        If index > -1 Then
+            ItemListBox1.Items.RemoveAt(index)
+            script.References.RemoveAt(index)
+            ntsReferences = True
+        End If
     End Sub
 
     Private Sub LoadAllData()
@@ -169,38 +118,12 @@ Public Class TweakScriptEditor
         End If
     End Sub
 
-    Private Sub ButtonItem7_Click(sender As Object, e As EventArgs)
-        If TypeOf sender.Parent.Tag Is FastColoredTextBox Then
-            sender.Parent.Tag.Redo()
-        End If
-    End Sub
-
-    Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
-        CheckBoxX_VBScript.Checked = True
-        CodeEditor.Text =
-"Imports Microsoft.VisualBasic
-Imports System
-Imports System.Collections.Generic
-Imports System.IO
-Imports System.Linq
-Imports System.Windows.Forms
-Imports SM64Lib
-
-Module Script
-
-    Sub Main(params as IReadOnlyDictionary(Of String, Object))
-        
-        
-        
-    End Sub
-
-End Module
-"
-    End Sub
-    Private Sub ButtonItem2_Click(sender As Object, e As EventArgs) Handles ButtonItem2.Click
-        CheckBoxX_CSharpScript.Checked = True
-        CodeEditor.Text =
-"using System;
+    Private Sub LoadDefaultScript(typ As ScriptType)
+        Select Case typ
+            Case ScriptType.CSharp
+                CheckBoxX_CSharpScript.Checked = True
+                CodeEditor.Text =
+        "using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -212,16 +135,34 @@ class Script
 
     static void Main(IReadOnlyDictionary<string, object> pars)
     {
-    
-    
-    
+        
     }
 
 }
 "
+            Case ScriptType.VisualBasic
+                CheckBoxX_VBScript.Checked = True
+                CodeEditor.Text =
+        "Imports Microsoft.VisualBasic
+Imports System
+Imports System.Collections.Generic
+Imports System.IO
+Imports System.Linq
+Imports System.Windows.Forms
+Imports SM64Lib
+
+Module Script
+
+    Sub Main(params as IReadOnlyDictionary(Of String, Object))
+        
     End Sub
 
-    Private Sub ButtonItem3_Click(sender As Object, e As EventArgs) Handles ButtonItem3.Click
+End Module
+"
+        End Select
+    End Sub
+
+    Private Sub SaveToFile()
         Dim sfd As New SaveFileDialog
         sfd.Filter = "Textfile (*.txt)|*.txt|VB code file (*.vb)|*.vb|C# code file(*.cs)|*.cs"
 
@@ -239,7 +180,7 @@ class Script
         End If
     End Sub
 
-    Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem4.Click
+    Private Sub LoadFromFile()
         Dim ofd As New OpenFileDialog
         ofd.Filter = "Alls supported files (*.txt, *.vb, *.cs)|*.txt;*.vb;*.cs|Textfile (*.txt)|*.txt|VB code file (*.vb)|*.vb|C# code file(*.cs)|*.cs"
 
@@ -249,15 +190,15 @@ class Script
                     CheckBoxX_VBScript.Checked = True
                 Case ".cs"
                     CheckBoxX_CSharpScript.Checked = True
+                Case Else
+                    CheckBoxX_TweakScript.Checked = True
             End Select
 
             CodeEditor.Text = IO.File.ReadAllText(ofd.FileName)
         End If
     End Sub
 
-    Private Sub ButtonX5_Click(sender As Object, e As EventArgs) Handles ButtonX_CheckForErros.Click
-        SaveAllData()
-
+    Private Sub TestScript()
         Dim mgr As New PatchingManager
         Dim res As CompilerResults = mgr.CompileScript(script)
 
@@ -296,14 +237,107 @@ class Script
         TaskDialog.Show("Compiler Result", icon, title, msg, eTaskDialogButton.Ok)
     End Sub
 
-    Private Sub CodeEditor_TextChanged(sender As Object, e As TextChangedEventArgs) Handles CodeEditor.TextChanged
-        ntsScript = True
+    Private Sub RunScript()
+        Dim mgr As New PatchingManager
+
+
     End Sub
-    Private Sub TextBoxX_ScriptName_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX_ScriptName.TextChanged
+
+    'G u i
+
+    Private Sub TweakScriptEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LoadAllData()
+    End Sub
+
+    Private Sub CheckBoxX_ScriptChange_CheckedChanged(sender As CheckBoxX, e As EventArgs) Handles CheckBoxX_TweakScript.CheckedChanged, CheckBoxX_CSharpScript.CheckedChanged, CheckBoxX_VBScript.CheckedChanged
+        If sender.Checked AndAlso CodeEditor IsNot Nothing Then
+            If sender Is CheckBoxX_TweakScript Then
+                ChangeCurScriptType(Language.Custom, ScriptType.TweakScript)
+            ElseIf sender Is CheckBoxX_CSharpScript Then
+                ChangeCurScriptType(Language.CSharp, ScriptType.CSharp)
+            ElseIf sender Is CheckBoxX_VBScript Then
+                ChangeCurScriptType(Language.VB, ScriptType.VisualBasic)
+            End If
+        End If
+
+        If sender Is CheckBoxX_TweakScript Then
+            Panel3.Visible = Not sender.Checked
+            ButtonX_CheckForErros.Enabled = Not sender.Checked
+        End If
+    End Sub
+
+    Private Sub TweakScriptEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If Not {CloseReason.ApplicationExitCall, CloseReason.WindowsShutDown, CloseReason.TaskManagerClosing}.Contains(e.CloseReason) Then
+            Select Case MessageBoxEx.Show("Do you want to save changes?", "Save", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+                Case DialogResult.Yes
+                    SaveAllData()
+                Case DialogResult.Cancel
+                    e.Cancel = True
+            End Select
+        End If
+    End Sub
+
+    Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click
+        Dim txt As String = TextBoxX_ReferenceName.Text.Trim
+        AddReference(txt)
+        ItemListBox1.Refresh()
+    End Sub
+
+    Private Sub ItemListBox1_SelectedItemChanged(sender As Object, e As EventArgs) Handles ItemListBox1.SelectedItemChanged
+        Dim btnItem As ButtonItem = ItemListBox1.SelectedItem
+
+        If btnItem IsNot Nothing Then
+            TextBoxX_ReferenceName.Text = btnItem.Text
+        End If
+    End Sub
+
+    Private Sub ButtonX4_Click(sender As Object, e As EventArgs) Handles ButtonX4.Click
+        Dim selIndex As Integer = ItemListBox1.SelectedIndex
+        RemoveReference(selIndex)
+        ItemListBox1.Refresh()
+    End Sub
+
+    Private Sub ButtonItem7_Click(sender As Object, e As EventArgs)
+        If TypeOf sender.Parent.Tag Is FastColoredTextBox Then
+            sender.Parent.Tag.Redo()
+        End If
+    End Sub
+
+    Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
+        LoadDefaultScript(ScriptType.VisualBasic)
+    End Sub
+
+    Private Sub ButtonItem2_Click(sender As Object, e As EventArgs) Handles ButtonItem2.Click
+        LoadDefaultScript(ScriptType.CSharp)
+    End Sub
+
+    Private Sub ButtonItem3_Click(sender As Object, e As EventArgs) Handles ButtonItem3.Click
+        SaveToFile()
+    End Sub
+
+    Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem4.Click
+        LoadFromFile()
+    End Sub
+
+    Private Sub ButtonX5_Click(sender As Object, e As EventArgs) Handles ButtonX_CheckForErros.Click
+        SaveAllData()
+        TestScript()
+    End Sub
+
+    Private Sub AnyTextChanged(sender As Object, e As EventArgs) Handles TextBoxX_ScriptName.TextChanged, TextBoxX_ScriptDescription.TextChanged, CodeEditor.TextChanged
         ntsName = True
     End Sub
-    Private Sub TextBoxX_ScriptDescription_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX_ScriptDescription.TextChanged
-        ntsDescription = True
+
+    Private Sub ButtonItem_RunInTestMode_CheckedChanged(sender As ButtonItem, e As EventArgs) Handles ButtonItem_RunInTestMode.CheckedChanged
+        runInTestMode = sender.Checked
+    End Sub
+
+    Private Sub ButtonX_RunScript_Click(sender As Object, e As EventArgs) Handles ButtonX_RunScript.Click
+        RunScript()
+    End Sub
+
+    Private Sub ButtonX_ShowObjectCatalog_Click(sender As Object, e As EventArgs) Handles ButtonX_ShowObjectCatalog.Click
+
     End Sub
 
 End Class
