@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{E5FF17DD-6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main Modules", "Main Modules", "{7442F677-68AE-432D-A3C0-C7AC0610D11B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other Modules", "Other Modules", "{16E5FB82-EA15-40DF-9D44-8961A2EFF978}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Patching Modules", "Patching Modules", "{16E5FB82-EA15-40DF-9D44-8961A2EFF978}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Importing Modules", "Importing Modules", "{D5310749-7F03-4FED-AD1A-8EBC03D718E1}"
 EndProject
