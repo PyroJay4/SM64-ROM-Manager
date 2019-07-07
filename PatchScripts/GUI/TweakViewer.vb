@@ -314,7 +314,7 @@ Public Class TweakViewer
         Dim script As PatchScript = GetSelectedScript()
 
         If script IsNot Nothing Then
-            Dim editor As New TweakScriptEditor(script)
+            Dim editor As New TweakScriptEditor(script, rommgr)
             Flyout1.Close()
             editor.ShowDialog(Me)
 
@@ -338,14 +338,25 @@ Public Class TweakViewer
         Dim script As PatchScript = GetSelectedScript()
 
         If script IsNot Nothing Then
-            Try
-                Dim mgr As New PatchingManager
-                mgr.Patch(script, rommgr, "", Me, New Dictionary(Of String, Object) From {{"romfile", rommgr.RomFile}, {"rommgr", rommgr}})
-                MessageBoxEx.Show(Me, "Patched successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Catch ex As Exception
-                MessageBoxEx.Show(Me, "Error at executing the script. It probably has errors.", "Script Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+            'Try
+            '    Dim mgr As New PatchingManager
+            '    mgr.Patch(script, rommgr, "", Me, New Dictionary(Of String, Object) From {{"romfile", rommgr.RomFile}, {"rommgr", rommgr}})
+            '    MessageBoxEx.Show(Me, "Patched successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'Catch ex As Exception
+            '    MessageBoxEx.Show(Me, "Error at executing the script. It probably has errors.", "Script Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'End Try
+            PatchScript(Me, script, rommgr)
         End If
+    End Sub
+
+    Friend Shared Sub PatchScript(owner As IWin32Window, script As PatchScript, rommgr As SM64Lib.RomManager)
+        Try
+            Dim mgr As New PatchingManager
+            mgr.Patch(script, rommgr, "", owner, New Dictionary(Of String, Object) From {{"romfile", rommgr.RomFile}, {"rommgr", rommgr}})
+            MessageBoxEx.Show(owner, "Patched successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBoxEx.Show(owner, "Error at executing the script. It probably has errors.", "Script Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub ItemListBox1_ItemMouseClick(sender As Object, e As EventArgs)

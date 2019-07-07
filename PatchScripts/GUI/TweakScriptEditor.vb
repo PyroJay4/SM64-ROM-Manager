@@ -1,9 +1,11 @@
 Imports System.CodeDom.Compiler
+Imports System.IO
 Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 Imports FastColoredTextBoxNS
 Imports PatchScripts
+Imports SM64Lib
 
 Public Class TweakScriptEditor
 
@@ -11,6 +13,8 @@ Public Class TweakScriptEditor
 
     Private WithEvents CodeEditor As FastColoredTextBox
     Private script As PatchScript
+    Private tempScript As New PatchScript
+    Private rommgr As RomManager
     Private ntsScript As Boolean = False
     Private ntsDescription As Boolean = False
     Private ntsName As Boolean = False
@@ -28,7 +32,13 @@ Public Class TweakScriptEditor
 
     'C o n s t r u c t o r s
 
-    Public Sub New(script As PatchScript)
+    Public Sub New(script As PatchScript, rommgr As RomManager)
+        Me.rommgr = rommgr
+        Me.script = script
+
+        'Create Temp Script
+        CopyScript(script, tempScript)
+
         Me.SuspendLayout()
 
         InitializeComponent()
@@ -39,22 +49,32 @@ Public Class TweakScriptEditor
         CodeEditor.BorderStyle = BorderStyle.FixedSingle
         Panel2.Controls.Add(CodeEditor)
 
-        Me.script = script
-
         UpdateAmbientColors
         Me.ResumeLayout(False)
     End Sub
 
     'F e a t u r e s
 
+    Private Sub CopyScript(source As PatchScript, dest As PatchScript)
+        dest.Description = source.Description
+        dest.Name = source.Name
+        dest.Script = source.Script
+        dest.Type = source.Type
+
+        dest.References.Clear()
+        For Each ref As String In source.References
+            dest.References.Add(ref)
+        Next
+    End Sub
+
     Private Sub ChangeCurScriptType(lang As Language, typ As ScriptType)
         CodeEditor.Language = lang
-        script.Type = typ
+        tempScript.Type = typ
         ntsType = True
     End Sub
 
     Private Sub LoadReferences()
-        For Each ref As String In script.References
+        For Each ref As String In tempScript.References
             ItemListBox1.Items.Add(New ButtonItem With {.Text = ref})
             ntsReferences = True
         Next
@@ -64,7 +84,7 @@ Public Class TweakScriptEditor
 
     Private Sub AddReference(txt As String)
         If Not String.IsNullOrEmpty(txt) Then
-            script.References.Add(txt)
+            tempScript.References.Add(txt)
             ItemListBox1.Items.Add(New ButtonItem With {.Text = txt})
         End If
     End Sub
@@ -72,16 +92,16 @@ Public Class TweakScriptEditor
     Private Sub RemoveReference(index As Integer)
         If index > -1 Then
             ItemListBox1.Items.RemoveAt(index)
-            script.References.RemoveAt(index)
+            tempScript.References.RemoveAt(index)
             ntsReferences = True
         End If
     End Sub
 
     Private Sub LoadAllData()
-        TextBoxX_ScriptName.Text = script.Name
-        TextBoxX_ScriptDescription.Text = script.Description
+        TextBoxX_ScriptName.Text = tempScript.Name
+        TextBoxX_ScriptDescription.Text = tempScript.Description
 
-        Select Case script.Type
+        Select Case tempScript.Type
             Case ScriptType.TweakScript
                 CheckBoxX_TweakScript.Checked = True
             Case ScriptType.VisualBasic
@@ -90,7 +110,7 @@ Public Class TweakScriptEditor
                 CheckBoxX_CSharpScript.Checked = True
         End Select
 
-        CodeEditor.Text = script.Script
+        CodeEditor.Text = tempScript.Script
 
         ntsScript = False
         ntsName = False
@@ -101,21 +121,14 @@ Public Class TweakScriptEditor
     End Sub
 
     Private Sub SaveAllData()
-        script.Name = TextBoxX_ScriptName.Text.Trim
-        script.Description = TextBoxX_ScriptDescription.Text
+        SaveTempScript()
+        CopyScript(tempScript, script)
+    End Sub
 
-        Select Case True
-            Case CheckBoxX_TweakScript.Checked
-                script.Type = ScriptType.TweakScript
-            Case CheckBoxX_VBScript.Checked
-                script.Type = ScriptType.VisualBasic
-            Case CheckBoxX_CSharpScript.Checked
-                script.Type = ScriptType.CSharp
-        End Select
-
-        If ntsScript Then
-            script.Script = CodeEditor.Text
-        End If
+    Private Sub SaveTempScript()
+        tempScript.Name = TextBoxX_ScriptName.Text.Trim
+        tempScript.Description = TextBoxX_ScriptDescription.Text
+        tempScript.Script = CodeEditor.Text
     End Sub
 
     Private Sub LoadDefaultScript(typ As ScriptType)
@@ -200,7 +213,7 @@ End Module
 
     Private Sub TestScript()
         Dim mgr As New PatchingManager
-        Dim res As CompilerResults = mgr.CompileScript(script)
+        Dim res As CompilerResults = mgr.CompileScript(tempScript)
 
         Dim msg As String = ""
         Dim icon As eTaskDialogIcon
@@ -238,9 +251,23 @@ End Module
     End Sub
 
     Private Sub RunScript()
-        Dim mgr As New PatchingManager
+        Dim myRommgr As RomManager
 
+        If runInTestMode Then
+            'Use copy of cur rom file
+            Dim copyFile As String = Path.Combine(Path.GetDirectoryName(rommgr.RomFile), Path.GetFileNameWithoutExtension(rommgr.RomFile) & ".temp" & Path.GetExtension(rommgr.RomFile))
+            File.Copy(rommgr.RomFile, copyFile, True)
+            myRommgr = New RomManager(copyFile)
+        Else
+            'Use current rom file
+            myRommgr = rommgr
+        End If
 
+        'Save temp script
+        SaveTempScript()
+
+        'Patch
+        TweakViewer.PatchScript(Me, tempScript, myRommgr)
     End Sub
 
     'G u i
@@ -337,7 +364,12 @@ End Module
     End Sub
 
     Private Sub ButtonX_ShowObjectCatalog_Click(sender As Object, e As EventArgs) Handles ButtonX_ShowObjectCatalog.Click
-
+        Static frm As ObjectCatalog
+        If frm Is Nothing Then
+            frm = New ObjectCatalog
+            AddHandler frm.FormClosing, Sub() frm = Nothing
+        End If
+        frm.Show()
     End Sub
 
 End Class

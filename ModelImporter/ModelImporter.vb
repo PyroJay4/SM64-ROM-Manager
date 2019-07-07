@@ -281,7 +281,7 @@ Public Class ModelImporter
     Private Sub EditScript(ByRef script As PatchScripts.PatchScript)
         If script Is Nothing Then script = New PatchScripts.PatchScript
 
-        Dim editor As New PatchScripts.TweakScriptEditor(script)
+        Dim editor As New PatchScripts.TweakScriptEditor(script, rommgr)
         If editor.ShowDialog(Me) = DialogResult.OK Then
             If editor.NeedToSave Then
                 SaveProfile(SelectedProfile)
