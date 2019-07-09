@@ -55,6 +55,9 @@
     <Reference Include="FastColoredTextBox">
       <HintPath>bin\Debug\FastColoredTextBox.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Pilz.Simple3DFileParser">
       <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
     </Reference>
@@ -81,6 +84,10 @@
     <Import Include="TextValueConverter" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\SerializedAssemblyLoader.vb" />
+    <Compile Include="Classes\SerializedAssemblyMember.vb" />
+    <Compile Include="Classes\SerializedAssemblyMemberParam.vb" />
+    <Compile Include="Classes\SerializedAssemblyMemberType.vb" />
     <Compile Include="GUI\InputDialog.Designer.vb" />
     <Compile Include="GUI\InputDialog.vb">
       <SubType>Form</SubType>
@@ -90,6 +97,11 @@
     </Compile>
     <Compile Include="GUI\ObjectCatalog.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ReflectionSymbols.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReflectionSymbols.resx</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -130,6 +142,11 @@
   <ItemGroup>
     <EmbeddedResource Include="GUI\ObjectCatalog.resx">
       <DependentUpon>ObjectCatalog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ReflectionSymbols.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReflectionSymbols.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TweakScriptEditor.de.resx">
       <DependentUpon>TweakScriptEditor.vb</DependentUpon>
@@ -175,6 +192,40 @@
       <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>
       <Name>TextValueConverter</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Class.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delegate.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Event.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Field.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Interface.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Methode.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Module.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Namespace.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Property.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Structure.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Enum.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

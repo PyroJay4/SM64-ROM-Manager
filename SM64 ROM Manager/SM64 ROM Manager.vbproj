@@ -185,13 +185,13 @@
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nUpdate.Internal, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\nUpdate.ProvideTAP.3.3.1\lib\net40\nUpdate.Internal.dll</HintPath>
+    <Reference Include="nUpdate.Internal, Version=3.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\nUpdate.ProvideTAP.3.4.1\lib\net40\nUpdate.Internal.dll</HintPath>
     </Reference>
-    <Reference Include="nUpdate.ProvideTAP, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\nUpdate.ProvideTAP.3.3.1\lib\net40\nUpdate.ProvideTAP.dll</HintPath>
+    <Reference Include="nUpdate.ProvideTAP, Version=3.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\nUpdate.ProvideTAP.3.4.1\lib\net40\nUpdate.ProvideTAP.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.3.0.1\lib\net20\OpenTK.dll</HintPath>
