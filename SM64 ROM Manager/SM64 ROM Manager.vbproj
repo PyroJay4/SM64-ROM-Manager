@@ -157,8 +157,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
-    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
-      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
+    <Reference Include="FastColoredTextBox">
+      <HintPath>..\..\..\..\Desktop\FastColoredTextBox-master\FastColoredTextBox\bin\Release\FastColoredTextBox.dll</HintPath>
     </Reference>
     <Reference Include="HexEditExample">
       <HintPath>..\Shared Libs\HexEditExample.dll</HintPath>
@@ -200,7 +200,8 @@
       <HintPath>..\packages\OpenTK.GLControl.3.0.1\lib\net20\OpenTK.GLControl.dll</HintPath>
     </Reference>
     <Reference Include="PaintingControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PaintingControls.1.0.0\lib\net45\PaintingControls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SixTheteCockpit\PaintingControls\bin\Release\PaintingControls.dll</HintPath>
     </Reference>
     <Reference Include="Pilz.Drawing.Drawing3D.OpenGLFactory">
       <HintPath>..\Shared Libs\Pilz.Drawing.Drawing3D.OpenGLFactory.dll</HintPath>
