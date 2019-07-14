@@ -6,8 +6,8 @@ Namespace Global.SM64Lib.Text
         Inherits TextTableItem
 
         Public Property LinesPerSite As Integer = 4
-        Public Property HorizontalPosition As DialogVerticalPosition = DialogVerticalPosition.Centred
-        Public Property VerticalPosition As DialogHorizontalPosition = DialogHorizontalPosition.Middle
+        Public Property VerticalPosition As DialogVerticalPosition = DialogVerticalPosition.Centred
+        Public Property HorizontalPosition As DialogHorizontalPosition = DialogHorizontalPosition.Middle
         Public Property UnknownValue As Byte = 0
 
         Public Sub New(bytes As Byte(), info As TextTableGroupInfo)

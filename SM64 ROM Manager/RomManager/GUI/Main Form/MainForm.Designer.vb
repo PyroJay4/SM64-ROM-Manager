@@ -137,9 +137,7 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.tabGeneral, "tabGeneral")
         Me.tabGeneral.BackColor = System.Drawing.Color.White
-        Me.tabGeneral.MainForm = Nothing
         Me.tabGeneral.Name = "tabGeneral"
-        Me.tabGeneral.RomMgr = Nothing
         '
         'TabItem_General
         '
@@ -166,9 +164,6 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.tabTextManager, "tabTextManager")
         Me.tabTextManager.BackColor = System.Drawing.Color.White
-        Me.tabTextManager.LineColorGreen = System.Drawing.Color.YellowGreen
-        Me.tabTextManager.LineColorWarning1 = System.Drawing.Color.Orange
-        Me.tabTextManager.LineColorWarning2 = System.Drawing.Color.Red
         Me.tabTextManager.Name = "tabTextManager"
         '
         'TabItem_TextManager
@@ -196,9 +191,7 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.tabMusicManager, "tabMusicManager")
         Me.tabMusicManager.BackColor = System.Drawing.Color.White
-        Me.tabMusicManager.MainForm = Nothing
         Me.tabMusicManager.Name = "tabMusicManager"
-        Me.tabMusicManager.RomMgr = Nothing
         '
         'TabItem_MusicManager
         '

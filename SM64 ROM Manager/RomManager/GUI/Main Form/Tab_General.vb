@@ -6,17 +6,28 @@ Imports System.IO
 
 Public Class Tab_General
 
-    Public Property MainForm As MainForm
-    Public Property RomMgr As RomManager
+    'F i e l d s
 
-    Public Sub New()
-        InitializeComponent()
+    Public WithEvents Controller As MainController
+
+    'C o n t r o l l e r   E v e n t s
+
+    Private Sub Controller_RomLoading() Handles Controller.RomLoading
+        TextBoxX_G_GameName.ReadOnly = True
+        TextBoxX_G_GameName.Text = Controller.GetGameNAme
+        TextBoxX_G_GameName.ReadOnly = False
+        LabelX_G_Filesize.Text = String.Format("{0} Megabyte", CInt(Controller.GetRomFileSize))
     End Sub
+
+    Private Sub Controller_RomLoaded() Handles Controller.RomLoaded
+        LabelX_G_Filename.Text = Path.GetFileName(Controller.Romfile)
+    End Sub
+
+    'G u i
 
     Private Sub Button_G_SaveGameName_Click(sender As Object, e As EventArgs) Handles Button_G_SaveGameName.Click
         Try
-            TextBoxX_G_GameName.Text = TextBoxX_G_GameName.Text.Trim
-            RomMgr.GameName = TextBoxX_G_GameName.Text
+            Controller.SetGameName(TextBoxX_G_GameName.Text)
         Catch ex As Exception
             MessageBoxEx.Show(Form_Main_Resources.MsgBox_GameNameHasInvalidChars, Global_Ressources.Text_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

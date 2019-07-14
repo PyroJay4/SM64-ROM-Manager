@@ -279,8 +279,17 @@ Namespace Global.SM64Lib
         ''' Loads the Text Tables.
         ''' </summary>
         Public Function LoadTextGroup(name As String, Optional CheckIfAlreadyLoaded As Boolean = True) As Text.TextGroup
-            Dim table As Text.TextGroup = myTextGroups.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name)
+            Return LoadTextGroup(myTextGroups.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name), name, CheckIfAlreadyLoaded)
+        End Function
 
+        ''' <summary>
+        ''' Loads the Text Tables.
+        ''' </summary>
+        Public Function LoadTextGroup(index As Integer, Optional CheckIfAlreadyLoaded As Boolean = True) As Text.TextGroup
+            Return LoadTextGroup(myTextGroups.ElementAtOrDefault(index), TextInfoProfile.AllGroups.ElementAtOrDefault(index)?.Name, CheckIfAlreadyLoaded)
+        End Function
+
+        Private Function LoadTextGroup(table As Text.TextGroup, name As String, Optional CheckIfAlreadyLoaded As Boolean = True) As Text.TextGroup
             If table Is Nothing OrElse Not CheckIfAlreadyLoaded Then
                 Dim data As New BinaryRom(Me, FileAccess.Read)
                 Dim prof As Text.Profiles.TextGroupInfo = GetTextProfile(name)

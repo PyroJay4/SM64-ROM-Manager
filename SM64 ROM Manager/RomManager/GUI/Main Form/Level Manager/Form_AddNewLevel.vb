@@ -4,7 +4,7 @@ Imports SM64Lib
 
 Public Class LevelSelectorDialog
 
-    Public rommgr As RomManager = Nothing
+    Private rommgr As RomManager = Nothing
     Private FinishedLoading As Boolean = False
     Private lidtable As New Levels.LevelInfoDataTabelList
 

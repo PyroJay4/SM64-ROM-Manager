@@ -141,24 +141,25 @@
     <Reference Include="Ben.Demystifier, Version=0.1.0.0, Culture=neutral, PublicKeyToken=a6d206e05440431a, processorArchitecture=MSIL">
       <HintPath>..\packages\Ben.Demystifier.0.1.4\lib\net45\Ben.Demystifier.dll</HintPath>
     </Reference>
-    <Reference Include="DevComponents.DotNetBar.Design">
-      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
+    <Reference Include="DevComponents.DotNetBar.Design, Version=14.0.0.3, Culture=neutral, PublicKeyToken=2c9ff1fddc42653c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevComponents.DotNetBar.Layout, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+    <Reference Include="DevComponents.DotNetBar.Layout, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Layout.dll</HintPath>
+      <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Layout.dll</HintPath>
     </Reference>
-    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Schedule.dll</HintPath>
+      <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Schedule.dll</HintPath>
     </Reference>
-    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
+      <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
-    <Reference Include="FastColoredTextBox">
-      <HintPath>..\..\..\..\Desktop\FastColoredTextBox-master\FastColoredTextBox\bin\Release\FastColoredTextBox.dll</HintPath>
+    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
     </Reference>
     <Reference Include="HexEditExample">
       <HintPath>..\Shared Libs\HexEditExample.dll</HintPath>
@@ -201,7 +202,7 @@
     </Reference>
     <Reference Include="PaintingControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\SixTheteCockpit\PaintingControls\bin\Release\PaintingControls.dll</HintPath>
+      <HintPath>..\Shared Libs\PaintingControls.dll</HintPath>
     </Reference>
     <Reference Include="Pilz.Drawing.Drawing3D.OpenGLFactory">
       <HintPath>..\Shared Libs\Pilz.Drawing.Drawing3D.OpenGLFactory.dll</HintPath>
@@ -270,6 +271,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyIcons.resx</DependentUpon>
     </Compile>
+    <Compile Include="RomManager\EventArgs\LevelAreaEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\LevelAreaBackgroundModeChangedEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\LevelBackgroundImageChangedEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\LevelBackgroundModeChangedEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\SpecialItemEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\LevelEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\TextItemEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\RomChangesAvaiableEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\OtherStatusInfosChangedEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\MusicSequenceEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\StatusTextChangedEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\RomManagerChangedEventArgs.vb" />
     <Compile Include="RomManager\GUI\Coins Settings\Coins Settings.Designer.vb">
       <DependentUpon>Coins Settings.vb</DependentUpon>
     </Compile>
@@ -297,6 +310,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Level Editor\OtherTexturesJsonClasses.vb" />
+    <Compile Include="RomManager\Controllers\MainController.vb" />
     <Compile Include="RomManager\GUI\Main Form\Text Manager\MinimalAdvPropertyGridManager.vb" />
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditorExtensions.vb" />
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.Designer.vb">

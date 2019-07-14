@@ -176,6 +176,12 @@ Namespace LevelEditor
 #Region "Initalize"
 
         Public Sub New(rommgr As SM64Lib.RomManager, Level As Level, LevelID As Byte, AreaID As Byte)
+            'Setup some level variables
+            cLevel = Level
+            Me.rommgr = rommgr
+            areaIdToLoad = AreaID
+            Me.levelID = LevelID
+
             'Initialize Components
             InitializeComponent()
 
@@ -211,12 +217,6 @@ Namespace LevelEditor
 
             'Bring CircularProgress to front
             Me.CircularProgress1.BringToFront()
-
-            'Setup some level variables
-            cLevel = Level
-            Me.rommgr = rommgr
-            areaIdToLoad = AreaID
-            Me.levelID = LevelID
 
             'Init Object Properties Helper
             PropertyTree = AdvPropertyGrid1.PropertyTree

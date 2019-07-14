@@ -19,7 +19,7 @@ Friend Module SerializedAssemblyLoader
                 Dim mTypeChar As Char = objMemberName(0)
                 Dim mType As SerializedAssemblyMemberType = -1
                 Dim name As String = objMemberName.Substring(2)
-                Dim path As String
+                Dim path As String = ""
                 Dim paramTypes As New List(Of String)
 
                 Select Case mTypeChar
