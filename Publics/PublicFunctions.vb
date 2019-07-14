@@ -149,8 +149,6 @@ Public Module Publics
         Return loaderModule.Name
     End Function
 
-
-
     Public Sub AddRecentFile(ByRef collection As StringCollection, fileName As String)
         If collection.Contains(fileName) Then
             collection.Remove(fileName)

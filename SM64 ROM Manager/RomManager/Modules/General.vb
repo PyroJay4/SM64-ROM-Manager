@@ -171,6 +171,20 @@ Friend Module General
         Return cb
     End Function
 
+    Friend Sub LaunchRom(rommgr As RomManager)
+        If rommgr?.RomFile <> "" Then
+            Try
+                If Not String.IsNullOrEmpty(Settings.General.EmulatorPath) Then
+                    Process.Start(Settings.General.EmulatorPath, rommgr.RomFile)
+                Else
+                    Process.Start(rommgr.RomFile)
+                End If
+            Catch ex As Exception
+                MessageBoxEx.Show(Form_Main_Resources.MsgBox_RomCanNotBestarted, Form_Main_Resources.MsgBox_RomCanNotBestarted_Title, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
     Friend Sub SaveRom(rommgr As RomManager)
         If rommgr IsNot Nothing Then
             Dim dontpatchupdates As Boolean
@@ -211,20 +225,6 @@ Friend Module General
             rommgr.SaveRom(, dontpatchupdates)
 
             RomWatcher.EnableRaisingEvents = True
-        End If
-    End Sub
-
-    Friend Sub LaunchRom(rommgr As RomManager)
-        If rommgr?.RomFile <> "" Then
-            Try
-                If Settings.General.EmulatorPath <> "" Then
-                    Process.Start(Settings.General.EmulatorPath, rommgr.RomFile)
-                Else
-                    Process.Start(rommgr.RomFile)
-                End If
-            Catch ex As Exception
-                MessageBoxEx.Show(Form_Main_Resources.MsgBox_RomCanNotBestarted, Form_Main_Resources.MsgBox_RomCanNotBestarted_Title, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
         End If
     End Sub
 

@@ -13,7 +13,7 @@ Public Class Form_SM64TextConverter
         InitializeComponent()
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
-        'StyleManager.UpdateAmbientColors(Me)
+        StyleManager.UpdateAmbientColors(Me)
 
     End Sub
 
@@ -25,21 +25,31 @@ Public Class Form_SM64TextConverter
         Select Case ComboBoxEx_Mode.SelectedIndex
             Case 0
                 TextBoxX_Output.Text = ""
-                If TextBoxX_Input.Text = "" Then Return
-                Try
-                    For Each b As Byte In M64TextEncoding.M64Text.GetBytes(TextBoxX_Input.Text.Trim)
-                        If TextBoxX_Output.Text <> "" Then TextBoxX_Output.Text &= " "
-                        Dim hexstring As String = Hex(b)
-                        If hexstring.Count = 1 Then hexstring = "0" & hexstring
-                        TextBoxX_Output.Text &= hexstring
-                    Next
-                Catch ex As Exception
-                    If Not RaisedClick Then
-                        MessageBoxEx.Show("Eror error at converting from Text to Hexadecimal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                End Try
+
+                If Not String.IsNullOrEmpty(TextBoxX_Input.Text) Then
+                    Try
+                        For Each b As Byte In M64TextEncoding.M64Text.GetBytes(TextBoxX_Input.Text.Trim)
+                            If Not String.IsNullOrEmpty(TextBoxX_Output.Text) Then
+                                TextBoxX_Output.Text &= " "
+                            End If
+
+                            Dim hexstring As String = Hex(b)
+
+                            If hexstring.Count = 1 Then
+                                hexstring = "0" & hexstring
+                            End If
+
+                            TextBoxX_Output.Text &= hexstring
+                        Next
+                    Catch ex As Exception
+                        If Not RaisedClick Then
+                            MessageBoxEx.Show("Eror error at converting from Text to Hexadecimal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End If
+                    End Try
+                End If
             Case 1
                 Dim byteList As New List(Of Byte)
+
                 For Each b As String In TextBoxX_Input.Text.Trim.Split(" ")
                     If b = "" Then Continue For
                     Try
@@ -47,6 +57,7 @@ Public Class Form_SM64TextConverter
                     Catch ex As Exception
                     End Try
                 Next
+
                 Try
                     TextBoxX_Output.Text = M64TextEncoding.M64Text.GetString(byteList.ToArray)
                 Catch ex As Exception
@@ -55,6 +66,7 @@ Public Class Form_SM64TextConverter
                     End If
                 End Try
         End Select
+
         RaisedClick = False
     End Sub
 

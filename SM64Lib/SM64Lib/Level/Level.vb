@@ -299,24 +299,6 @@ AddCmds:'Add new commands
             Return output
         End Function
 
-        Shared Sub GetLevelIDList(Romfile As String, Optional LevelCount As Integer = 30)
-            Dim fs As New FileStream(Romfile, FileMode.Open, FileAccess.ReadWrite)
-            GetLevelIDList(fs)
-            fs.Close()
-        End Sub
-
-        Shared Function GetLevelIDList(ByRef fs As FileStream, Optional LevelCount As Integer = 30) As Byte()
-            Dim br As New BinaryReader(fs)
-            Dim tlist As New List(Of Byte)
-            Console.WriteLine("Warning! Die Methode 'GetLevelIDList()' in der Klasse 'Level' wurde noch nicht getestet.")
-            fs.Position = &H1202E50
-            For i As Integer = 0 To LevelCount - 1
-                fs.Position = GetLevelIDFromIndex(i)
-                tlist.Add(br.ReadByte)
-            Next
-            Return tlist.ToArray
-        End Function
-
     End Class
 
 End Namespace
