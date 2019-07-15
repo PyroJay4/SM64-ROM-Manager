@@ -277,6 +277,7 @@
     <Compile Include="RomManager\EventArgs\LevelAreaBackgroundModeChangedEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelBackgroundImageChangedEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelBackgroundModeChangedEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\EnabledEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\SpecialItemEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\TextItemEventArgs.vb" />

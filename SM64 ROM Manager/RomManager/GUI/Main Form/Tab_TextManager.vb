@@ -139,7 +139,7 @@ Public Class Tab_TextManager
         Controller.StatusText = Form_Main_Resources.Status_CalculatingTextSpace
         ShowCurTableBytes()
 
-        Controller.StatusText = ""
+        Controller.StatusText = String.Empty
     End Sub
 
     Private Sub UpdateListViewItem(index As Integer, Optional refresh As Boolean = True)
@@ -195,7 +195,7 @@ Public Class Tab_TextManager
     End Function
 
     Private Sub SaveItemText()
-        If Not TM_LoadingItem Then
+        If Not TM_LoadingItem AndAlso Not Controller.IsChangingTab Then
             Dim selIndicies = GetSelectedIndicies()
             Dim text As String = TextBoxX_TM_TextEditor.Text
 
@@ -204,7 +204,7 @@ Public Class Tab_TextManager
     End Sub
 
     Private Sub SaveItemDialogData()
-        If Not TM_LoadingItem Then
+        If Not TM_LoadingItem AndAlso Not Controller.IsChangingTab Then
             Dim selIndicies = GetSelectedIndicies()
             Dim vPos As Text.DialogVerticalPosition = GetValueFromComboBox(ComboBoxEx_TM_DialogPosX.Text.Trim, GetType(Text.DialogVerticalPosition))
             Dim hPos As Text.DialogHorizontalPosition = GetValueFromComboBox(ComboBoxEx_TM_DialogPosY.Text.Trim, GetType(Text.DialogHorizontalPosition))

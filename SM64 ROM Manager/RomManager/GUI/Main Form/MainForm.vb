@@ -28,6 +28,7 @@ Public Class MainForm
     Private WithEvents Controller As New MainController(Me)
     Private WithEvents WarningBox_RomChanged As WarningBox
     Private finishedLoading As Boolean = False
+    Private changingTab As Boolean = False
 
     Public Sub New()
         'CheckForIllegalCrossThreadCalls = False
@@ -99,6 +100,10 @@ Public Class MainForm
 
     Private Sub Controller_RomChangesAvaiable(e As RomChangesAvaiableEventArgs) Handles Controller.RomChangesAvailable
         NotifyRomChangesAvailable(e.Mute)
+    End Sub
+
+    Private Sub Controller_RequestIsChangingTab(e As EnabledEventArgs) Handles Controller.RequestIsChangingTab
+        e.Enabled = changingTab
     End Sub
 
     'R o m   C h a n g e s   N o t i f i c a t i o n
@@ -278,6 +283,8 @@ Public Class MainForm
     End Sub
 
     Private Sub TabControl_Main_SelectedIndexChanged(sender As TabControl, e As TabStripTabChangedEventArgs) Handles TabControl1.SelectedTabChanged
+        changingTab = False
+
         If e IsNot Nothing Then
             Select Case True
                 Case e.NewTab Is TabItem_TextManager
@@ -342,8 +349,10 @@ Public Class MainForm
     End Sub
 
     Private Sub SuperTabControl_Main_SelectedTabChanging(sender As Object, e As TabStripTabChangingEventArgs) Handles TabControl1.SelectedTabChanging
-        If FinishedLoading Then
-            If Not Controller.HasRomManager AndAlso e.NewTab IsNot TabControl1 Then
+        changingTab = True
+
+        If finishedLoading Then
+            If Not Controller.HasRomManager AndAlso e.NewTab IsNot TabItem_General Then
                 e.Cancel = True
                 ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
             End If

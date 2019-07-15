@@ -52,6 +52,7 @@ Public Class MainController
     Public Event RequestReloadTextManagerLists()
     Public Event RequestReloadTextManagerLineColors()
     Public Event TextItemChanged(e As TextItemEventArgs)
+    Public Event RequestIsChangingTab(e As EnabledEventArgs)
     Public Event LevelSpecialItemAdded(e As SpecialItemEventArgs)
     Public Event LevelSpecialItemRemoved(e As SpecialItemEventArgs)
     Public Event LevelSpecialItemChanged(e As SpecialItemEventArgs)
@@ -246,7 +247,7 @@ Public Class MainController
     Public Function OpenRom() As Boolean
         Dim ret As Boolean = False
         Dim ofd_SM64RM_LoadROM As New OpenFileDialog With {
-            .Filter = ""
+            .Filter = "SM64 ROMs (*.z64)|*.z64"
         }
 
         Dim lastFiles As StringCollection = Settings.RecentFiles.RecentROMs
@@ -558,6 +559,12 @@ Public Class MainController
 
     Public Function GetRomFileSize() As Double
         Return New FileInfo(romManager.RomFile).Length / 1024 / 1024
+    End Function
+
+    Public Function IsChangingTab()
+        Dim e As New EnabledEventArgs(False)
+        RaiseEvent RequestIsChangingTab(e)
+        Return e.Enabled
     End Function
 
     'L e v e l   M a n a g e r
