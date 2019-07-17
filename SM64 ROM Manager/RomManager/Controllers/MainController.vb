@@ -1051,10 +1051,12 @@ Public Class MainController
         End If
     End Sub
 
-    Public Function GetLevelSettings(levelIndex As Integer) As (objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, areasCount As Byte)
+    Public Function GetLevelSettings(levelIndex As Integer) As (objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, bgImage As Image, bgOriginal As BackgroundIDs, areasCount As Byte)
         Dim lvl As Level = GetLevelAndArea(levelIndex).level
         Dim defPosCmd As LevelscriptCommand = lvl.GetDefaultPositionCmd
         Dim bgMode As Byte
+        Dim bgImage As Image = Nothing
+        Dim bgOriginal As BackgroundIDs
         Dim defPosAreaID As Byte
         Dim defPosYRot As Short
 
@@ -1062,18 +1064,21 @@ Public Class MainController
 
         If Not lvl.Background.Enabled Then
             bgMode = 2
-        ElseIf lvl.Background.HasImage Then
+            bgOriginal = lvl.Background.ID
+        ElseIf lvl.Background.IsCustom Then
             bgMode = 1
+            bgImage = lvl.Background.GetImage
         Else
             bgMode = 0
         End If
+        bgOriginal = lvl.Background.ID
 
         If defPosCmd IsNot Nothing Then
             defPosAreaID = clDefaultPosition.GetAreaID(defPosCmd)
             defPosYRot = clDefaultPosition.GetRotation(defPosCmd)
         End If
 
-        Return (lvl.ObjectBank0x0C, lvl.ObjectBank0x0D, lvl.ObjectBank0x0E, lvl.ActSelector, lvl.HardcodedCameraSettings, defPosCmd IsNot Nothing, defPosAreaID, defPosYRot, bgMode, lvl.Areas.Count)
+        Return (lvl.ObjectBank0x0C, lvl.ObjectBank0x0D, lvl.ObjectBank0x0E, lvl.ActSelector, lvl.HardcodedCameraSettings, defPosCmd IsNot Nothing, defPosAreaID, defPosYRot, bgMode, bgImage, bgOriginal, lvl.Areas.Count)
     End Function
 
     Public Sub ChangeLevelID(levelIndex As Integer)

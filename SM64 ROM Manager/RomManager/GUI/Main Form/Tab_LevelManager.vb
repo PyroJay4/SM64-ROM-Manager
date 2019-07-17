@@ -239,7 +239,7 @@ Public Class Tab_LevelManager
         lvi.SubItems(7).Text = If(sd.boxType = SpecialBoxType.Water, If(sd.invisibleWater, Form_Main_Resources.Text_Invisible, sd.waterType.ToString), "-")
     End Sub
 
-    Public Sub LoadListBoxEntries()
+    Friend Sub LoadListBoxEntries()
         Controller.LoadObjectBankData()
 
         Dim load =
@@ -282,6 +282,7 @@ Public Class Tab_LevelManager
     Private Sub UpdateLevelItemInList(levelIndex As Integer, levelID As UShort)
         Dim item As ButtonItem = ListBoxAdv_LM_Levels.Items(levelIndex)
         item.Text = Controller.GetLevelName(levelID)
+        ListBoxAdv_LM_Levels.Refresh()
     End Sub
 
     Private Sub LoadAreaList(selectAreaIndex As Integer)
@@ -354,8 +355,8 @@ Public Class Tab_LevelManager
                                         NUD_LM_DefaultPositionYRotation.Value,
                                         SwitchButton_LM_ActSelector.Value,
                                         SwitchButton_LM_HardcodedCameraSettings.Value,
-                                        ComboBox_LM_OB0x0D.SelectedIndex,
                                         ComboBox_LM_OB0x0C.SelectedIndex,
+                                        ComboBox_LM_OB0x0D.SelectedIndex,
                                         ComboBox_LM_OB0x09.SelectedIndex,
                                         SwitchButton_LM_ShowMsgEnabled.Value,
                                         ValueFromText(TextBoxX_LM_ShowMsgID.Text))
@@ -504,8 +505,13 @@ Public Class Tab_LevelManager
 
             'Load Level Bachground
             ComboBoxEx_LM_BGMode.SelectedIndex = info.bgMode
+            UpdateBackgroundControlsVisible(info.bgMode)
+            ComboBox_LM_LevelBG.SelectedIndex = GetBackgroundIndexOfID(info.bgOriginal)
+            If info.bgMode = 1 Then
+                PictureBox_BGImage.Image = info.bgImage
+            End If
 
-            Button_LM_AddArea.Enabled = Not (info.areasCount = 8)
+            Button_LM_AddArea.Enabled = info.areasCount <> 8
             Controller.StatusText = String.Empty
             LM_LoadingLevel = False
             LoadAreaList(0)
@@ -513,6 +519,12 @@ Public Class Tab_LevelManager
             TabControl_LM_Area.Enabled = True
             ButtonX_LM_LevelsMore.Enabled = True
         End If
+    End Sub
+
+    Private Sub UpdateBackgroundControlsVisible(bgMode As Integer)
+        ComboBox_LM_LevelBG.Visible = bgMode = 0
+        Button_LM_LoadLevelBG.Visible = bgMode = 1
+        PictureBox_BGImage.Visible = bgMode = 1
     End Sub
 
     Private Sub Button_LM_AddNewLevel_Click() Handles Button_LM_AddNewLevel.Click
@@ -539,7 +551,9 @@ Public Class Tab_LevelManager
 
     Private Sub ComboBoxEx_LM_BGMode_SelectedIndexChanged() Handles ComboBoxEx_LM_BGMode.SelectedIndexChanged
         If AllowSavingLevelSettings Then
-            Controller.SetLevelBackgroundMode(CurrentLevelIndex, ComboBoxEx_LM_BGMode.SelectedIndex)
+            Dim curMode As Integer = ComboBoxEx_LM_BGMode.SelectedIndex
+            Controller.SetLevelBackgroundMode(CurrentLevelIndex, curMode)
+            UpdateBackgroundControlsVisible(curMode)
         End If
     End Sub
 
