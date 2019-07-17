@@ -255,7 +255,7 @@ Public Class MainForm
         Bar2.Refresh()
     End Sub
 
-    Friend Sub RefreshAppTitel()
+    Private Sub RefreshAppTitel()
         Dim appversion As New Version(Application.ProductVersion)
         Dim romPathExt As String = If(Controller.Romfile <> "", $" - ""{Path.GetFileName(Controller.Romfile)}""", "")
         Dim versionText As String = $"v{appversion.ToString(If(appversion.Revision <> 0, 4, If(appversion.Build <> 0, 3, 2)))}"

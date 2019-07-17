@@ -104,7 +104,10 @@ Public Class Form_SM64TextConverter
     End Sub
 
     Private Sub ButtonItem5_Click_1(sender As Object, e As EventArgs) Handles ButtonItem_Remove.Click
-        activeTextBox.Text = activeTextBox.Text.Replace(activeTextBox.SelectedText, "")
+        Dim str As String = activeTextBox.SelectedText
+        If Not String.IsNullOrEmpty(str) Then
+            activeTextBox.Text = activeTextBox.Text.Replace(str, String.Empty)
+        End If
     End Sub
 
     Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem_SelectAll.Click
