@@ -903,13 +903,15 @@ Public Class MainController
         End If
     End Sub
 
-    Public Sub SaveLevelAreaSettings(levelIndex As Integer, areaIndex As Integer, terrainTypes As TerrainTypes, musicID As Byte, environmentEffects As EnvironmentEffects, cameraPrset As CameraPresets, enable2DCamera As Boolean)
+    Public Sub SaveLevelAreaSettings(levelIndex As Integer, areaIndex As Integer, terrainTypes As TerrainTypes, musicID As Byte, environmentEffects As EnvironmentEffects, cameraPrset As CameraPresets, enable2DCamera As Boolean, enableShowMsg As Boolean, showMsgDialogID As Byte)
         Dim area As LevelArea = GetLevelAndArea(levelIndex, areaIndex).area
         area.TerrainType = terrainTypes
         area.BGMusic = musicID
         area.Geolayout.EnvironmentEffect = environmentEffects
         area.Geolayout.CameraPreset = cameraPrset
         area.Enable2DCamera = enable2DCamera
+        area.ShowMessage.Enabled = enableShowMsg
+        area.ShowMessage.DialogID = showMsgDialogID
     End Sub
 
     Public Sub ImportLevelAreaModel(levelIndex As Integer, areaIndex As Integer, importVisualMap As Boolean, importCollision As Boolean)

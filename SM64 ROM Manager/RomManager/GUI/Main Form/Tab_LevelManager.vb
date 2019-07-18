@@ -400,7 +400,9 @@ Public Class Tab_LevelManager
                                              ComboBox_LM_Music.SelectedIndex,
                                              GetEnvironmentTypeOfIndex(ComboBox_LM_EnvironmentEffects.SelectedIndex),
                                              GetCameraPresetTypeOfIndex(ComboBox_LM_CameraPreset.SelectedIndex),
-                                             CheckBoxX_LM_Enable2DCamera.Value)
+                                             CheckBoxX_LM_Enable2DCamera.Value,
+                                             SwitchButton_LM_ShowMsgEnabled.Value,
+                                             ValueFromText(TextBoxX_LM_ShowMsgID.Text))
         End If
     End Sub
 
@@ -453,13 +455,12 @@ Public Class Tab_LevelManager
                     ComboBoxEx_LM_AreaBG.SelectedIndex = 1
                     ColorPickerButton_LM_BackgroundColor.SelectedColor = infos.bgColor
             End Select
-            ComboBoxEx_LM_AreaBG_SelectedIndexChanged()
+            UpdateAreaBackgroundControlsVisible(infos.bgType)
 
             'Load Show Message
             SwitchButton_LM_ShowMsgEnabled.Value = infos.enableShowMsg
-            If infos.enableShowMsg Then
-                TextBoxX_LM_ShowMsgID.Text = TextFromValue(infos.showMsgDialogID)
-            End If
+            TextBoxX_LM_ShowMsgID.Text = TextFromValue(infos.showMsgDialogID)
+            UpdateShowMsgControlsVisible(infos.enableShowMsg)
 
             UpdateSpecialItemsList()
 
@@ -527,6 +528,15 @@ Public Class Tab_LevelManager
         PictureBox_BGImage.Visible = bgMode = 1
     End Sub
 
+    Private Sub UpdateAreaBackgroundControlsVisible(bgMode As Integer)
+        ColorPickerButton_LM_BackgroundColor.Visible = bgMode = 1
+    End Sub
+
+    Private Sub UpdateShowMsgControlsVisible(enable As Boolean)
+        TextBoxX_LM_ShowMsgID.Visible = enable
+        LabelX9.Visible = enable
+    End Sub
+
     Private Sub Button_LM_AddNewLevel_Click() Handles Button_LM_AddNewLevel.Click
         Controller.AddNewLevel()
     End Sub
@@ -559,7 +569,9 @@ Public Class Tab_LevelManager
 
     Private Sub ComboBoxEx_LM_AreaBG_SelectedIndexChanged() Handles ComboBoxEx_LM_AreaBG.SelectedIndexChanged
         If AllowSavingAreaSettings Then
-            Controller.SetLevelAreaBackgroundType(CurrentLevelIndex, CurrentAreaIndex, ComboBoxEx_LM_AreaBG.SelectedIndex)
+            Dim bgMode As Integer = ComboBoxEx_LM_AreaBG.SelectedIndex
+            Controller.SetLevelAreaBackgroundType(CurrentLevelIndex, CurrentAreaIndex, bgMode)
+            UpdateAreaBackgroundControlsVisible(bgMode)
         End If
     End Sub
 
@@ -696,14 +708,12 @@ Public Class Tab_LevelManager
 
     Private Sub SwitchButton_LM_ShowMsgEnabled_ValueChanged(sender As Object, e As EventArgs) Handles SwitchButton_LM_ShowMsgEnabled.ValueChanged
         Dim enabled As Boolean = SwitchButton_LM_ShowMsgEnabled.Value
-        TextBoxX_LM_ShowMsgID.Visible = enabled
-        LabelX9.Visible = enabled
-
-        SaveLevelSettings()
+        UpdateShowMsgControlsVisible(enabled)
+        SaveAreaSettings()
     End Sub
 
     Private Sub TextBoxX_LM_ShowMsgID_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX_LM_ShowMsgID.TextChanged
-        SaveLevelSettings()
+        SaveAreaSettings()
     End Sub
 
     Private Sub ButtonItem15_Click(sender As Object, e As EventArgs) Handles ButtonItem15.Click
