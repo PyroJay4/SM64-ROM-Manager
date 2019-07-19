@@ -44,6 +44,7 @@ Public Class Tab_TextManager
         Dim oldSelected As String = TabStrip_TextTable.SelectedTab?.Tag
         Dim tabToSelect As TabItem = Nothing
         Dim firstTab As TabItem = Nothing
+        Dim groupNames As String() = Controller.GetTextGroupInfoNames
 
         'Clear old ones
         TabStrip_TextTable.SuspendLayout()
@@ -52,10 +53,10 @@ Public Class Tab_TextManager
 
         'Create & Add new Tabs
         For i As Integer = 0 To Controller.GetTextGroupInfosCount - 1
-            Dim info = Controller.GetTextGroupInfos(i)
+            Dim info = Controller.GetTextGroupInfos(groupNames(i))
             Dim tab As New TabItem With {
                 .Text = info.name,
-                .Tag = i
+                .Tag = info.name
             }
 
             TabStrip_TextTable.Tabs.Add(tab)
@@ -80,7 +81,7 @@ Public Class Tab_TextManager
     End Sub
 
     Public Sub LoadTableEntries()
-        Dim tableIndex As Integer
+        Dim tableName As String
         Dim nameList() As String = {}
         Dim col1 As ColumnHeader = ListViewEx_TM_TableEntries.Columns(1)
         Dim col2 As ColumnHeader = ListViewEx_TM_TableEntries.Columns(2)
@@ -88,20 +89,20 @@ Public Class Tab_TextManager
         If TabStrip_TextTable.Tabs.Count = 0 Then
             LoadTabStripItems()
         End If
-        tableIndex = TabStrip_TextTable.SelectedTab?.Tag
+        tableName = TabStrip_TextTable.SelectedTab?.Tag
 
         Controller.StatusText = Form_Main_Resources.Status_LoadingTexts
-        Controller.LoadTextGroup(tableIndex)
+        Controller.LoadTextGroup(tableName)
 
         Controller.StatusText = Form_Main_Resources.Status_CreatingTextList
         ListViewEx_TM_TableEntries.SuspendLayout()
         ListViewEx_TM_TableEntries.Items.Clear()
 
-        Dim infos = Controller.GetTextGroupInfos(tableIndex).name
-        nameList = Controller.GetTextNameList(tableIndex)
+        Dim infos = Controller.GetTextGroupInfos(tableName).name
+        nameList = Controller.GetTextNameList(tableName)
 
-        For i As Integer = 0 To Controller.GetTextGroupEntriesCount(tableIndex) - 1
-            Dim itemInfos = Controller.GetTextItemInfos(tableIndex, i)
+        For i As Integer = 0 To Controller.GetTextGroupEntriesCount(tableName) - 1
+            Dim itemInfos = Controller.GetTextItemInfos(tableName, i)
             Dim nameEntry As String = String.Empty
 
             If nameList.Count > i Then
@@ -144,7 +145,7 @@ Public Class Tab_TextManager
 
     Private Sub UpdateListViewItem(index As Integer, Optional refresh As Boolean = True)
         Dim lvi As ListViewItem = ListViewEx_TM_TableEntries.Items(index)
-        Dim infos = Controller.GetTextItemInfos(GetSelectedIndicies.groupIndex, index)
+        Dim infos = Controller.GetTextItemInfos(GetSelectedIndicies.tableName, index)
 
         lvi.SubItems(2).Text = infos.text
 
@@ -159,8 +160,8 @@ Public Class Tab_TextManager
         ListViewEx_TM_TableEntries.Refresh()
     End Sub
 
-    Private Sub SetGuiForTextTable(groupIndex As Integer)
-        Dim groupInfo = Controller.GetTextGroupInfos(groupIndex)
+    Private Sub SetGuiForTextTable(tableName As String)
+        Dim groupInfo = Controller.GetTextGroupInfos(tableName)
         Dim isUpperCase As Boolean = {"Acts", "Levels", "File Menu"}.Contains(groupInfo.name)
 
         Line_TM_Green.Visible = groupInfo.isDialogGroup
@@ -183,15 +184,15 @@ Public Class Tab_TextManager
         End If
     End Sub
 
-    Private Function GetSelectedIndicies() As (groupIndex As Integer, tableIndex As Integer)
-        Dim groupIndex As Integer = TabStrip_TextTable.SelectedTabIndex
+    Private Function GetSelectedIndicies() As (tableName As String, tableIndex As Integer)
+        Dim tableName As String = TabStrip_TextTable.SelectedTab?.Tag
         Dim tableIndex As Integer = 0
 
         If ListViewEx_TM_TableEntries.SelectedIndices.Count > 0 Then
             tableIndex = ListViewEx_TM_TableEntries.SelectedIndices(0)
         End If
 
-        Return (groupIndex, tableIndex)
+        Return (tableName, tableIndex)
     End Function
 
     Private Sub SaveItemText()
@@ -199,7 +200,7 @@ Public Class Tab_TextManager
             Dim selIndicies = GetSelectedIndicies()
             Dim text As String = TextBoxX_TM_TextEditor.Text
 
-            Controller.SetTextItemText(selIndicies.groupIndex, selIndicies.tableIndex, text)
+            Controller.SetTextItemText(selIndicies.tableName, selIndicies.tableIndex, text)
         End If
     End Sub
 
@@ -210,7 +211,7 @@ Public Class Tab_TextManager
             Dim hPos As Text.DialogHorizontalPosition = GetValueFromComboBox(ComboBoxEx_TM_DialogPosY.Text.Trim, GetType(Text.DialogHorizontalPosition))
             Dim linesPerSite = IntegerInput_TM_DialogSize.Value
 
-            Controller.SetTextItemDialogData(selIndicies.groupIndex, selIndicies.tableIndex, vPos, hPos, linesPerSite)
+            Controller.SetTextItemDialogData(selIndicies.tableName, selIndicies.tableIndex, vPos, hPos, linesPerSite)
         End If
     End Sub
 
@@ -227,8 +228,8 @@ Public Class Tab_TextManager
     Private Sub ShowCurTableBytes()
         Dim selIndicies = GetSelectedIndicies()
 
-        If selIndicies.groupIndex >= 0 Then
-            Dim res = Controller.CalcTextSpaceBytesCount(selIndicies.groupIndex, selIndicies.tableIndex)
+        If Not String.IsNullOrEmpty(selIndicies.tableName) Then
+            Dim res = Controller.CalcTextSpaceBytesCount(selIndicies.tableName, selIndicies.tableIndex)
 
             TM_BytesLeft = res.left
 
@@ -250,11 +251,11 @@ Public Class Tab_TextManager
 
     Private Sub ShowTextItemData()
         Dim selectedIndicies = GetSelectedIndicies()
-        If selectedIndicies.groupIndex > -1 AndAlso selectedIndicies.tableIndex > -1 Then
+        If Not String.IsNullOrEmpty(selectedIndicies.tableName) AndAlso selectedIndicies.tableIndex > -1 Then
             TM_LoadingItem = True
 
-            Dim groupInfo = Controller.GetTextGroupInfos(selectedIndicies.groupIndex)
-            Dim itemInfo = Controller.GetTextItemInfos(selectedIndicies.groupIndex, selectedIndicies.tableIndex)
+            Dim groupInfo = Controller.GetTextGroupInfos(selectedIndicies.tableName)
+            Dim itemInfo = Controller.GetTextItemInfos(selectedIndicies.tableName, selectedIndicies.tableIndex)
 
             TextBoxX_TM_TextEditor.Text = itemInfo.text
 
@@ -281,7 +282,7 @@ Public Class Tab_TextManager
     End Sub
 
     Private Sub TabStrip1_SelectedTabChanged(sender As Object, e As TabStripTabChangedEventArgs) Handles TabStrip_TextTable.SelectedTabChanged
-        SetGuiForTextTable(TabStrip_TextTable.SelectedTabIndex)
+        SetGuiForTextTable(TabStrip_TextTable.SelectedTab?.Tag)
     End Sub
 
     Private Sub TM_CheckComboBoxText(sender As Object, Optional e As EventArgs = Nothing) Handles ComboBoxEx_TM_DialogPosX.TextChanged, ComboBoxEx_TM_DialogPosY.TextChanged

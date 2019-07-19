@@ -282,15 +282,6 @@ Namespace Global.SM64Lib
             Return LoadTextGroup(myTextGroups.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name), name, CheckIfAlreadyLoaded)
         End Function
 
-        ''' <summary>
-        ''' Loads the Text Tables.
-        ''' </summary>
-        Public Function LoadTextGroup(index As Integer, Optional CheckIfAlreadyLoaded As Boolean = True) As Text.TextGroup
-            LoadTextProfileIfNotLoaded()
-
-            Return LoadTextGroup(myTextGroups.ElementAtOrDefault(index), TextInfoProfile.AllGroups.ElementAtOrDefault(index)?.Name, CheckIfAlreadyLoaded)
-        End Function
-
         Private Function LoadTextGroup(table As Text.TextGroup, name As String, Optional CheckIfAlreadyLoaded As Boolean = True) As Text.TextGroup
             LoadTextProfileIfNotLoaded()
 

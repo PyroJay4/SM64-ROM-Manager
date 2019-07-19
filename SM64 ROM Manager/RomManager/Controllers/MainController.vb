@@ -1137,6 +1137,10 @@ Public Class MainController
 
     'T e x t   M a n a g e r
 
+    Private Function GetTextGroup(name As String) As TextGroup
+        Return romManager?.TextGroups?.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name)
+    End Function
+
     Public Sub SendRequestReloadTextManagerLists()
         RaiseEvent RequestReloadTextManagerLists()
     End Sub
@@ -1167,9 +1171,9 @@ Public Class MainController
         Return False
     End Function
 
-    Public Function CalcTextSpaceBytesCount(groupIndex As Integer, itemIndex As Integer) As (used As Integer, max As Integer, left As Integer, percent As Single)
-        If groupIndex >= 0 Then
-            Dim curTable As TextGroup = romManager.LoadTextGroup(groupIndex)
+    Public Function CalcTextSpaceBytesCount(tableName As String, itemIndex As Integer) As (used As Integer, max As Integer, left As Integer, percent As Single)
+        If Not String.IsNullOrEmpty(tableName) Then
+            Dim curTable As TextGroup = romManager.LoadTextGroup(tableName)
             Dim curTextItem As TextItem = curTable.ElementAtOrDefault(itemIndex)
 
             Dim max As Integer = 0
@@ -1203,8 +1207,12 @@ Public Class MainController
         Return romManager.GetTextGroupInfos.Length
     End Function
 
-    Public Function GetTextGroupInfos(index As Integer) As (name As String, encoding As String, isDialogGroup As Boolean, isTableGroup As Boolean, isArrayGroup As Boolean)
-        Dim info As TextGroupInfo = romManager.GetTextGroupInfos.ElementAtOrDefault(index)
+    Public Function GetTextGroupInfoNames() As String()
+        Return romManager.GetTextGroupInfos.Select(Function(n) n.Name).ToArray
+    End Function
+
+    Public Function GetTextGroupInfos(tableName As String) As (name As String, encoding As String, isDialogGroup As Boolean, isTableGroup As Boolean, isArrayGroup As Boolean)
+        Dim info As TextGroupInfo = romManager.GetTextGroupInfos.FirstOrDefault(Function(n) n.Name = tableName)
         If info IsNot Nothing Then
             Dim isTable As Boolean = TypeOf info Is TextTableGroupInfo
             Dim isArray As Boolean = TypeOf info Is TextArrayGroupInfo
@@ -1215,16 +1223,16 @@ Public Class MainController
         End If
     End Function
 
-    Public Sub LoadTextGroup(tableIndex As Integer)
-        romManager.LoadTextGroup(tableIndex)
+    Public Sub LoadTextGroup(tableName As String)
+        romManager.LoadTextGroup(tableName)
     End Sub
 
-    Public Function GetTextGroupEntriesCount(tableIndex As Integer) As Integer
-        Return romManager.LoadTextGroup(tableIndex)?.Count
+    Public Function GetTextGroupEntriesCount(tableName As String) As Integer
+        Return romManager.LoadTextGroup(tableName)?.Count
     End Function
 
-    Public Function GetTextItemInfos(tableIndex As Integer, itemIndex As Integer) As (text As String, horizontalPosition As DialogHorizontalPosition, verticalPosition As DialogVerticalPosition, linesPerSite As Integer)
-        Dim item As TextItem = romManager.LoadTextGroup(tableIndex)?.ElementAtOrDefault(itemIndex)
+    Public Function GetTextItemInfos(tableName As String, itemIndex As Integer) As (text As String, horizontalPosition As DialogHorizontalPosition, verticalPosition As DialogVerticalPosition, linesPerSite As Integer)
+        Dim item As TextItem = romManager.LoadTextGroup(tableName)?.ElementAtOrDefault(itemIndex)
         Dim hPos As DialogHorizontalPosition = Nothing
         Dim vPos As DialogVerticalPosition = Nothing
         Dim lines As Integer = Nothing
@@ -1241,11 +1249,10 @@ Public Class MainController
         Return (item.Text, hPos, vPos, lines)
     End Function
 
-    Public Function GetTextNameList(tableIndex As Integer) As String()
+    Public Function GetTextNameList(tableName As String) As String()
         Dim nameList() As String = {}
-        Dim table As TextGroupInfo = romManager.GetTextGroupInfos(tableIndex)
 
-        Select Case table.Name
+        Select Case tableName
             Case "Dialogs"
                 nameList = CreateDialogNameList()
             Case "Levels"
@@ -1329,19 +1336,19 @@ Public Class MainController
         Return list
     End Function
 
-    Public Sub SetTextItemText(groupIndex As Integer, tableIndex As Integer, text As String)
-        Dim group As TextGroup = romManager.TextGroups(groupIndex)
-        Dim item As TextTableDialogItem = group(tableIndex)
+    Public Sub SetTextItemText(tableName As String, tableIndex As Integer, text As String)
+        Dim group As TextGroup = GetTextGroup(tableName)
+        Dim item As TextItem = group(tableIndex)
 
         item.Text = text.TrimEnd
 
         group.NeedToSave = True
 
-        RaiseEvent TextItemChanged(New TextItemEventArgs(groupIndex, tableIndex))
+        RaiseEvent TextItemChanged(New TextItemEventArgs(tableName, tableIndex))
     End Sub
 
-    Public Sub SetTextItemDialogData(groupIndex As Integer, tableIndex As Integer, vPos As DialogVerticalPosition, hPos As DialogHorizontalPosition, linesPerSite As Integer)
-        Dim group As TextGroup = romManager.TextGroups(groupIndex)
+    Public Sub SetTextItemDialogData(tableName As String, tableIndex As Integer, vPos As DialogVerticalPosition, hPos As DialogHorizontalPosition, linesPerSite As Integer)
+        Dim group As TextGroup = GetTextGroup(tableName)
         Dim item As TextTableDialogItem = group(tableIndex)
 
         item.VerticalPosition = vPos
@@ -1350,7 +1357,7 @@ Public Class MainController
 
         group.NeedToSave = True
 
-        RaiseEvent TextItemChanged(New TextItemEventArgs(groupIndex, tableIndex))
+        RaiseEvent TextItemChanged(New TextItemEventArgs(tableIndex, tableIndex))
     End Sub
 
     'M u s i c   M a n a g e r
