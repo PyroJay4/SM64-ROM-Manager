@@ -951,7 +951,7 @@ Public Class MainController
     Public Sub RemoveLevelSpecialBox(levelIndex As Integer, areaIndex As Integer, sbIndex As Integer)
         Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
         lvl.area.SpecialBoxes.RemoveAt(sbIndex)
-        RaiseEvent LevelSpecialItemRemoved(New SpecialItemEventArgs(levelIndex, areaIndex, sbIndex))
+        RaiseEvent LevelSpecialItemRemoved(New SpecialItemEventArgs(sbIndex, levelIndex, areaIndex))
     End Sub
 
     Public Function DoesCameraPresetProvide2DCamera(preset As CameraPresets) As Boolean
@@ -1155,12 +1155,12 @@ Public Class MainController
                 Dim tbl As TextGroup = romManager.TextGroups(itbl)
 
                 If TypeOf tbl Is TextTableGroup Then
-                    If CalcTextSpaceBytesCount(itbl, Nothing).percent > 1 Then
+                    If CalcTextSpaceBytesCount(tbl.TextGroupInfo.Name, Nothing).percent > 1 Then
                         Return True
                     End If
                 ElseIf TypeOf tbl Is TextArrayGroup Then
                     For iItem = 0 To CType(tbl, TextArrayGroup).Count - 1
-                        If CalcTextSpaceBytesCount(Nothing, iItem).percent > 1 Then
+                        If CalcTextSpaceBytesCount(tbl.TextGroupInfo.Name, iItem).percent > 1 Then
                             Return True
                         End If
                     Next

@@ -58,7 +58,14 @@ Friend Module General
     End Sub
 
     Public Sub OpenHexEditor(ByRef buffer As Byte())
-        Select Case Settings.General.HexEditMode.Mode
+        Dim mode As HexEditModes = Settings.General.HexEditMode.Mode
+        Dim exeFile As String = Settings.General.HexEditMode.CustomPath
+
+        If mode = HexEditModes.CustomHexEditor AndAlso Not File.Exists(exeFile) Then
+            mode = HexEditModes.BuildInHexEditor
+        End If
+
+        Select Case mode
             Case HexEditModes.BuildInHexEditor
                 Dim editor As New HexEditor(buffer)
                 editor.ShowDialog()
@@ -76,7 +83,7 @@ Friend Module General
 
                 'Start Hex Editor and wait while running
                 Dim p As New Process
-                p.StartInfo.FileName = Settings.General.HexEditMode.CustomPath
+                p.StartInfo.FileName = exeFile
                 p.StartInfo.Arguments = $"""{tempFile}"""
                 p.Start()
                 p.WaitForExit()
