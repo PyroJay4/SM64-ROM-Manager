@@ -153,11 +153,11 @@
     <comment>Represents e.g. the Build Number.</comment>
   </data>
   <data name="DevelopmentalStage" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
     <comment>Possible Values:
-0 = Release
-1 = Release Candidate
-2 = Beta
-3 = Alpha</comment>
+0 = Alpha
+1 = Beta
+2 = Release Candidate
+3 = Release</comment>
   </data>
 </root>
