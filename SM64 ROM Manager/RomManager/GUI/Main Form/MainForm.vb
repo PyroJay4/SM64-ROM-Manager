@@ -264,13 +264,13 @@ Public Class MainForm
             Dim addDevelopmentalNumber As Boolean = True
 
             Select Case DevelopmentalStage
-                Case 0
-                    versionText &= " Alpha"
-                Case 1
-                    versionText &= " Beta"
-                Case 2
-                    versionText &= " RC"
                 Case 3
+                    versionText &= " Alpha"
+                Case 2
+                    versionText &= " Beta"
+                Case 1
+                    versionText &= " RC"
+                Case 0
                     addDevelopmentalNumber = False
             End Select
 
