@@ -719,11 +719,11 @@ Namespace SM64Convert
 
                     ' Modify UV cordinates based on material.
                     tanew.U = ta.U * CSng(mat.TexWidth / 32.0)
-                    tanew.V = ta.V * CSng(mat.TexHeight / 32.0)
+                    tanew.V = ta.V * CSng(mat.TexHeight / 32.0) - &H20
                     tbnew.U = tb.U * CSng(mat.TexWidth / 32.0)
-                    tbnew.V = tb.V * CSng(mat.TexHeight / 32.0)
+                    tbnew.V = tb.V * CSng(mat.TexHeight / 32.0) - &H20
                     tcnew.U = tc.U * CSng(mat.TexWidth / 32.0)
-                    tcnew.V = tc.V * CSng(mat.TexHeight / 32.0)
+                    tcnew.V = tc.V * CSng(mat.TexHeight / 32.0) - &H20
 
                     'Fix UVs to reduce number of (large) faces with broken textures
                     FixUVs(tanew, tbnew, tcnew, mat.TexWidth, mat.TexHeight)
