@@ -682,136 +682,83 @@ Namespace SM64Convert
                     Dim tanew As New TexCord
                     Dim na As Normal = Nothing
                     Dim vca As VertexColor = Nothing
-                    With face.Points(0)
-                        If .Vertex IsNot Nothing Then va = verts(curIndexStart + mesh.Vertices.IndexOf(.Vertex))
-                        If .UV IsNot Nothing Then ta = uvs(curIndexStart + mesh.UVs.IndexOf(.UV))
-                        If .Normal IsNot Nothing Then na = norms(curIndexStart + mesh.Normals.IndexOf(.Normal))
-                        If .VertexColor IsNot Nothing Then vca = vertexColors(curIndexStart + mesh.VertexColors.IndexOf(.VertexColor))
-                    End With
 
                     Dim vb As Vertex = Nothing
                     Dim tb As TexCord = Nothing
                     Dim tbnew As New TexCord
                     Dim nb As Normal = Nothing
                     Dim vcb As VertexColor = Nothing
-                    With face.Points(1)
-                        If .Vertex IsNot Nothing Then vb = verts(curIndexStart + mesh.Vertices.IndexOf(.Vertex))
-                        If .UV IsNot Nothing Then tb = uvs(curIndexStart + mesh.UVs.IndexOf(.UV))
-                        If .Normal IsNot Nothing Then nb = norms(curIndexStart + mesh.Normals.IndexOf(.Normal))
-                        If .VertexColor IsNot Nothing Then vcb = vertexColors(curIndexStart + mesh.VertexColors.IndexOf(.VertexColor))
-                    End With
 
                     Dim vc As Vertex = Nothing
                     Dim tc As TexCord = Nothing
                     Dim tcnew As New TexCord
                     Dim nc As Normal = Nothing
                     Dim vcc As VertexColor = Nothing
-                    With face.Points(2)
-                        If .Vertex IsNot Nothing Then vc = verts(curIndexStart + mesh.Vertices.IndexOf(.Vertex))
-                        If .UV IsNot Nothing Then tc = uvs(curIndexStart + mesh.UVs.IndexOf(.UV))
-                        If .Normal IsNot Nothing Then nc = norms(curIndexStart + mesh.Normals.IndexOf(.Normal))
-                        If .VertexColor IsNot Nothing Then vcc = vertexColors(curIndexStart + mesh.VertexColors.IndexOf(.VertexColor))
-                    End With
+
+                    Dim getVals =
+                        Sub(point As Pilz.S3DFileParser.Point, ByRef vert As Vertex, ByRef t As TexCord, ByRef normal As Normal, ByRef vertcol As VertexColor)
+                            With point
+                                If .Vertex IsNot Nothing Then vert = verts(curIndexStart + mesh.Vertices.IndexOf(.Vertex))
+                                If .UV IsNot Nothing Then t = uvs(curIndexStart + mesh.UVs.IndexOf(.UV))
+                                If .Normal IsNot Nothing Then normal = norms(curIndexStart + mesh.Normals.IndexOf(.Normal))
+                                If .VertexColor IsNot Nothing Then vertcol = vertexColors(curIndexStart + mesh.VertexColors.IndexOf(.VertexColor))
+                            End With
+                        End Sub
+                    getVals(face.Points(0), va, ta, na, vca)
+                    getVals(face.Points(1), vb, tb, nb, vcb)
+                    getVals(face.Points(2), vc, tc, nc, vcc)
 
                     Dim fa As New FinalVertexData
                     Dim fb As New FinalVertexData
                     Dim fc As New FinalVertexData
 
                     ' Modify UV cordinates based on material.
-                    tanew.U = ta.U * CSng(mat.TexWidth / 32.0)
-                    tanew.V = ta.V * CSng(mat.TexHeight / 32.0) - &H20
-                    tbnew.U = tb.U * CSng(mat.TexWidth / 32.0)
-                    tbnew.V = tb.V * CSng(mat.TexHeight / 32.0) - &H20
-                    tcnew.U = tc.U * CSng(mat.TexWidth / 32.0)
-                    tcnew.V = tc.V * CSng(mat.TexHeight / 32.0) - &H20
+                    Dim modifyUVCordinates =
+                        Sub(tnew As TexCord, t As TexCord)
+                            tnew.U = t.U * CSng(mat.TexWidth / 32.0)
+                            tnew.V = t.V * CSng(mat.TexHeight / 32.0) - &H20
+                        End Sub
+                    modifyUVCordinates(tanew, ta)
+                    modifyUVCordinates(tbnew, tb)
+                    modifyUVCordinates(tcnew, tc)
 
                     'Fix UVs to reduce number of (large) faces with broken textures
                     FixUVs(tanew, tbnew, tcnew, mat.TexWidth, mat.TexHeight)
 
                     ' Vertex Structure: xxxxyyyyzzzz0000uuuuvvvvrrggbbaa
-                    fa.Data(0) = (va.X >> 8) And &HFF
-                    fa.Data(1) = va.X And &HFF
-                    fa.Data(2) = (va.Y >> 8) And &HFF
-                    fa.Data(3) = va.Y And &HFF
-                    fa.Data(4) = (va.Z >> 8) And &HFF
-                    fa.Data(5) = va.Z And &HFF
-                    fa.Data(6) = 0
-                    fa.Data(7) = 0
-                    fa.Data(8) = (tanew.U >> 8) And &HFF
-                    fa.Data(9) = tanew.U And &HFF
-                    fa.Data(10) = (tanew.V >> 8) And &HFF
-                    fa.Data(11) = tanew.V And &HFF
-                    If vca IsNot Nothing Then
-                        fa.Data(12) = vca.R
-                        fa.Data(13) = vca.G
-                        fa.Data(14) = vca.B
-                        fa.Data(15) = vca.A
-                        fa.EnableVertexColor = True
-                        mat.HasTextureAlpha = mat.HasTextureAlpha OrElse fa.EnableVertexAlpha
-                        mat.HasTransparency = mat.HasTransparency OrElse fa.EnableVertexTransparent
-                    Else
-                        fa.Data(12) = na.A
-                        fa.Data(13) = na.B
-                        fa.Data(14) = na.C
-                        fa.Data(15) = na.D
-                        fa.EnableVertexColor = False
-                    End If
-
-                    fb.Data(0) = (vb.X >> 8) And &HFF
-                    fb.Data(1) = vb.X And &HFF
-                    fb.Data(2) = (vb.Y >> 8) And &HFF
-                    fb.Data(3) = vb.Y And &HFF
-                    fb.Data(4) = (vb.Z >> 8) And &HFF
-                    fb.Data(5) = vb.Z And &HFF
-                    fb.Data(6) = 0
-                    fb.Data(7) = 0
-                    fb.Data(8) = (tbnew.U >> 8) And &HFF
-                    fb.Data(9) = tbnew.U And &HFF
-                    fb.Data(10) = (tbnew.V >> 8) And &HFF
-                    fb.Data(11) = tbnew.V And &HFF
-                    If vcb IsNot Nothing Then
-                        fb.Data(12) = vcb.R
-                        fb.Data(13) = vcb.G
-                        fb.Data(14) = vcb.B
-                        fb.Data(15) = vcb.A
-                        fb.EnableVertexColor = True
-                        mat.HasTextureAlpha = mat.HasTextureAlpha OrElse fb.EnableVertexAlpha
-                        mat.HasTransparency = mat.HasTransparency OrElse fb.EnableVertexTransparent
-                    Else
-                        fb.Data(12) = nb.A
-                        fb.Data(13) = nb.B
-                        fb.Data(14) = nb.C
-                        fb.Data(15) = nb.D
-                        fb.EnableVertexColor = False
-                    End If
-
-                    fc.Data(0) = (vc.X >> 8) And &HFF
-                    fc.Data(1) = vc.X And &HFF
-                    fc.Data(2) = (vc.Y >> 8) And &HFF
-                    fc.Data(3) = vc.Y And &HFF
-                    fc.Data(4) = (vc.Z >> 8) And &HFF
-                    fc.Data(5) = vc.Z And &HFF
-                    fc.Data(6) = 0
-                    fc.Data(7) = 0
-                    fc.Data(8) = (tcnew.U >> 8) And &HFF
-                    fc.Data(9) = tcnew.U And &HFF
-                    fc.Data(10) = (tcnew.V >> 8) And &HFF
-                    fc.Data(11) = tcnew.V And &HFF
-                    If vcc IsNot Nothing Then
-                        fc.Data(12) = vcc.R
-                        fc.Data(13) = vcc.G
-                        fc.Data(14) = vcc.B
-                        fc.Data(15) = vcc.A
-                        fc.EnableVertexColor = True
-                        mat.HasTextureAlpha = mat.HasTextureAlpha OrElse fc.EnableVertexAlpha
-                        mat.HasTransparency = mat.HasTransparency OrElse fc.EnableVertexTransparent
-                    Else
-                        fc.Data(12) = nc.A
-                        fc.Data(13) = nc.B
-                        fc.Data(14) = nc.C
-                        fc.Data(15) = If(mat.TexType = N64Codec.RGBA16, mat.Opacity, nc.D)
-                        fc.EnableVertexColor = False
-                    End If
+                    Dim buildVertexStructure =
+                        Sub(final As FinalVertexData, vert As Vertex, vertcol As VertexColor, tnew As TexCord, normal As Normal)
+                            final.Data(0) = (vert.X >> 8) And &HFF
+                            final.Data(1) = vert.X And &HFF
+                            final.Data(2) = (vert.Y >> 8) And &HFF
+                            final.Data(3) = vert.Y And &HFF
+                            final.Data(4) = (vert.Z >> 8) And &HFF
+                            final.Data(5) = vert.Z And &HFF
+                            final.Data(6) = 0
+                            final.Data(7) = 0
+                            final.Data(8) = (tnew.U >> 8) And &HFF
+                            final.Data(9) = tnew.U And &HFF
+                            final.Data(10) = (tnew.V >> 8) And &HFF
+                            final.Data(11) = tnew.V And &HFF
+                            If vertcol IsNot Nothing Then
+                                final.Data(12) = vertcol.R
+                                final.Data(13) = vertcol.G
+                                final.Data(14) = vertcol.B
+                                final.Data(15) = vertcol.A
+                                final.EnableVertexColor = True
+                                mat.HasTextureAlpha = mat.HasTextureAlpha OrElse final.EnableVertexAlpha
+                                mat.HasTransparency = mat.HasTransparency OrElse final.EnableVertexTransparent
+                            Else
+                                final.Data(12) = normal.A
+                                final.Data(13) = normal.B
+                                final.Data(14) = normal.C
+                                final.Data(15) = normal.D
+                                final.EnableVertexColor = False
+                            End If
+                        End Sub
+                    buildVertexStructure(fa, va, vca, tanew, na)
+                    buildVertexStructure(fb, vb, vcb, tbnew, nb)
+                    buildVertexStructure(fc, vc, vcc, tcnew, nc)
 
                     finalVertData.AddRange({fa, fb, fc})
 
