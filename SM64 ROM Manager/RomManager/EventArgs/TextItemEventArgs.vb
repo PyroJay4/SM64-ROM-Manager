@@ -5,11 +5,11 @@ Namespace EventArguments
     Public Class TextItemEventArgs
         Inherits EventArgs
 
-        Public ReadOnly Property GroupIndex As Integer
+        Public ReadOnly Property TableName As String
         Public ReadOnly Property ItemIndex As Integer
 
-        Public Sub New(groupIndex As Integer, itemIndex As Integer)
-            Me.GroupIndex = groupIndex
+        Public Sub New(tableName As String, itemIndex As Integer)
+            Me.TableName = tableName
             Me.ItemIndex = itemIndex
         End Sub
 

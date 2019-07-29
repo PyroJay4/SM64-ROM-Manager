@@ -70,7 +70,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die 1 ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die 4 ähnelt.
         '''</summary>
         Friend ReadOnly Property DevelopmentBuild() As String
             Get

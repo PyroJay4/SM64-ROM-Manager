@@ -391,17 +391,82 @@ Namespace PropertyValueEditors
 
     End Class
 
+    'Friend Class PropertyIntegerEditorX
+    '    Inherits PropertyIntegerEditor
+
+    '    Public Overrides Function CreateEditor(propertyDescriptor As PropertyDescriptor, targetObject As Object) As IPropertyValueEditor
+    '        Dim editor As IPropertyValueEditor = MyBase.CreateEditor(propertyDescriptor, targetObject)
+
+    '        'Set Horizontal Text Alignment
+    '        editor.SetValue("InputHorizontalAlignment", eHorizontalAlignment.Left)
+
+    '        Return editor
+    '    End Function
+    'End Class
+
     Friend Class PropertyIntegerEditorX
-        Inherits PropertyIntegerEditor
+        Inherits PropertyValueEditor
+
+        Public Property MaxValue As Integer = Integer.MaxValue
+        Public Property MinValue As Integer = Integer.MinValue
+        Public Property ShowUpDownButton As Boolean = False
 
         Public Overrides Function CreateEditor(propertyDescriptor As PropertyDescriptor, targetObject As Object) As IPropertyValueEditor
-            Dim editor As IPropertyValueEditor = MyBase.CreateEditor(propertyDescriptor, targetObject)
+            Dim editor As New IntegerEditorX With {.MaxValue = MaxValue, .MinValue = MinValue, .ShowUpDown = ShowUpDownButton}
 
-            'Set Horizontal Text Alignment
-            editor.SetValue("InputHorizontalAlignment", eHorizontalAlignment.Left)
+            editor.InputHorizontalAlignment = eHorizontalAlignment.Left
+            editor.SetValue("AutoBorderSize", 1)
+            editor.Height = 14
+            editor.BackgroundStyle.Class = ""
+            editor.BackColor = Color.Transparent
+            editor.AllowEmptyState = False
 
             Return editor
         End Function
+
+        Private Class IntegerEditorX
+            Inherits IntegerInput
+            Implements IPropertyValueEditor
+
+            Public Event EditValueChanged As EventHandler Implements IPropertyValueEditor.EditValueChanged
+
+            Private isSettingValue As Boolean = False
+
+            Public Property EditorFont As Font Implements IPropertyValueEditor.EditorFont
+                Get
+                    Return Font
+                End Get
+                Set(value As Font)
+                    Font = value
+                End Set
+            End Property
+
+            Public ReadOnly Property IsEditorFocused As Boolean Implements IPropertyValueEditor.IsEditorFocused
+                Get
+                    Return Focused
+                End Get
+            End Property
+
+            Public Property EditValue As Object Implements IPropertyValueEditor.EditValue
+                Get
+                    Return CShort(Value)
+                End Get
+                Set(value As Object)
+                    isSettingValue = True
+                    Me.Value = value
+                    isSettingValue = False
+                End Set
+            End Property
+
+            Public Sub FocusEditor() Implements IPropertyValueEditor.FocusEditor
+                Focus()
+            End Sub
+
+            Protected Overrides Sub OnValueChanged(e As EventArgs)
+                MyBase.OnValueChanged(e)
+                If Not isSettingValue Then RaiseEvent EditValueChanged(Me, e)
+            End Sub
+        End Class
     End Class
 
     Friend Class TextEncodingEditor

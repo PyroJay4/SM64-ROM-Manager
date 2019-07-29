@@ -59,16 +59,14 @@ Namespace LevelEditor
             AdvPropertyGrid1.PropertySettings.Add(behavaddrPropSet)
 
             'Add Position/Rotation Editors (NumberInputEditor for Increment/Decrement)
-            If Settings.General.IntegerValueMode = 0 Then
-                For Each l As String In {"X", "Y", "Z"}
-                    For Each e As String In {"Position", "Rotation"}
-                        Dim xyzeditor As New PropertyIntegerEditorX With {.ShowUpDownButton = True, .MinValue = Int16.MinValue, .MaxValue = Int16.MaxValue}
-                        Dim xyzPropSet As New PropertySettings(e & l)
-                        xyzPropSet.ValueEditor = xyzeditor
-                        AdvPropertyGrid1.PropertySettings.Add(xyzPropSet)
-                    Next
+            For Each l As String In {"X", "Y", "Z"}
+                For Each e As String In {"Position", "Rotation"}
+                    Dim xyzeditor As New PropertyIntegerEditorX With {.ShowUpDownButton = True, .MinValue = Int16.MinValue, .MaxValue = Int16.MaxValue}
+                    Dim xyzPropSet As New PropertySettings(e & l)
+                    xyzPropSet.ValueEditor = xyzeditor
+                    AdvPropertyGrid1.PropertySettings.Add(xyzPropSet)
                 Next
-            End If
+            Next
         End Sub
 
         Public Sub LoadComboBoxObjComboEntries(objComboList As ObjectComboList)
@@ -236,6 +234,9 @@ Namespace LevelEditor
                         If e.PropertyName = behaviorPropName Then
                             'e.StringValue = TextFromValue(e.TypedValue, If(Settings.General.IntegerValueMode >= 1, Settings.General.IntegerValueMode, 1))
                             'e.IsConverted = True
+                        ElseIf e.PropertyName Like "Position?" OrElse e.PropertyName Like "Rotation?" Then
+                            e.StringValue = e.TypedValue
+                            e.IsConverted = True
                         Else
                             e.StringValue = TextFromValue(e.TypedValue)
                             e.IsConverted = True

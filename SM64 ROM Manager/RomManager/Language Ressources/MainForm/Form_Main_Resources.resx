@@ -118,52 +118,52 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_OpenRom" xml:space="preserve">
-    <value>Open ROM ...</value>
+    <value>Open ROM...</value>
   </data>
   <data name="Exception_RomWasUsedBySM64E" xml:space="preserve">
-    <value>This ROM was used by the SM64 Editor and isn't compatible with the SM64 ROM Manager.</value>
+    <value>This ROM was modified by SM64 Editor and isn't compatible with SM64 ROM Manager.</value>
   </data>
   <data name="MsgBox_BankSizeChangedSuccess" xml:space="preserve">
-    <value>Size of Bank 0x19 changed successfully!</value>
+    <value>Successfully changed the size of Bank 0x19.</value>
   </data>
   <data name="MsgBox_BankSizeChangedSuccess_Title" xml:space="preserve">
     <value>Size changed</value>
   </data>
   <data name="MsgBox_ConvertToMidi_Failed" xml:space="preserve">
-    <value>An error happend at converting .m64 to .midi!</value>
+    <value>An error happened while converting .m64 to .midi!</value>
   </data>
   <data name="MsgBox_ConvertToMidi_Failed_Titel" xml:space="preserve">
     <value>M64 to MIDI failed</value>
   </data>
   <data name="MsgBox_ConvertToMidi_Succes" xml:space="preserve">
-    <value>M64 successfully converted to MIDI</value>
+    <value>Successfully converted M64 to MIDI</value>
   </data>
   <data name="MsgBox_ConvertToMidi_Succes_Titel" xml:space="preserve">
     <value>M64 to MIDI success</value>
   </data>
   <data name="MsgBox_ErrorSavingSequence" xml:space="preserve">
-    <value>An Error happend at saving sequence.</value>
+    <value>An error occurred while saving the sequence.</value>
   </data>
   <data name="MsgBox_ExportToMidi_Failed" xml:space="preserve">
-    <value>An error happend at exporting sequence as MIDI.</value>
+    <value>An error occurred while exporting the sequence as MIDI.</value>
   </data>
   <data name="MsgBox_ExportToMidi_Failed_Titel" xml:space="preserve">
     <value>Export to MIDI</value>
   </data>
   <data name="MsgBox_GameNameHasInvalidChars" xml:space="preserve">
-    <value>The Game Name probably contains invalid chars.</value>
+    <value>The game name probably contains invalid characters.</value>
   </data>
   <data name="MsgBox_InvalidBankSize" xml:space="preserve">
-    <value>This size is too small. The minimum size is {0}.</value>
+    <value>The size is too small. The minimum size is {0}.</value>
   </data>
   <data name="MsgBox_InvalidBankSize_Title" xml:space="preserve">
-    <value>Invalid Size</value>
+    <value>Invalid size</value>
   </data>
   <data name="MsgBox_InvalidBgImageSize" xml:space="preserve">
-    <value>This Image has not a valid Size.&lt;br/&gt;The &lt;b&gt;recommed&lt;/b&gt; Size is 248x248.</value>
+    <value>This image does not have a valid size.&lt;br/&gt;The &lt;b&gt;recommended&lt;/b&gt;size is 248x248.</value>
   </data>
   <data name="MsgBox_InvalidBgImageSize_Title" xml:space="preserve">
-    <value>Invalid Size</value>
+    <value>Invalid size</value>
   </data>
   <data name="MsgBox_LimitSequenceCountReached" xml:space="preserve">
     <value>The limit of possible music sequences in the original game is 127. Do you want to add more anyway?</value>
@@ -172,118 +172,118 @@
     <value>Limit reached</value>
   </data>
   <data name="MsgBox_MaxCountAreasReached" xml:space="preserve">
-    <value>The maximum count of Areas per Level is 8.</value>
+    <value>The maximum amount of areas per Level is 8.</value>
   </data>
   <data name="MsgBox_MaxCountAreasReached_Title" xml:space="preserve">
     <value>Maximum reached</value>
   </data>
   <data name="MsgBox_MaxSequenceCountReached" xml:space="preserve">
-    <value>The maximum count of possible music sequences reached! It is not possible to add any more.</value>
+    <value>The maximum amount of possible music sequences has been reached! It is not possible to add any more.</value>
   </data>
   <data name="MsgBox_MaxSequenceCountReached_Title" xml:space="preserve">
     <value>Maximum reached</value>
   </data>
   <data name="MsgBox_PrepaireRom" xml:space="preserve">
-    <value>This ROM will be prepaired now to load it.</value>
+    <value>The ROM will be prepared for use with SM64 ROM Manager.</value>
   </data>
   <data name="MsgBox_PrepaireRom_Title" xml:space="preserve">
-    <value>Prepaire ROM</value>
+    <value>Prepare ROM</value>
   </data>
   <data name="MsgBox_RomCanNotBestarted" xml:space="preserve">
-    <value>The ROM can't be started. Make sure you selected the correct path to the emulator.</value>
+    <value>The ROM can't be started. Make sure the path to the emulator is correct.</value>
   </data>
   <data name="MsgBox_RomCanNotBestarted_Title" xml:space="preserve">
     <value>Launch Game</value>
   </data>
   <data name="MsgBox_RomChanged" xml:space="preserve">
-    <value>The ROM was changed by an external programm. Do you want to reload the ROM?&lt;br/&gt;&lt;br/&gt;Warning:&lt;br/&gt;On reload the ROM, all unsaved changes get lost!</value>
+    <value>The ROM was changed by an external program. Do you want to reload the ROM?&lt;br/&gt;&lt;br/&gt;Warning:&lt;br/&gt;When reloading the ROM, all unsaved changes will be lost!</value>
   </data>
   <data name="MsgBox_RomChanged_Title" xml:space="preserve">
-    <value>Changes on ROM detected</value>
+    <value>ROM changes detected</value>
   </data>
   <data name="MsgBox_RomRemoved" xml:space="preserve">
-    <value>The ROM that was open in this program has been removed!&lt;br/&gt;This programm will close now.</value>
+    <value>The opened ROM has been deleted.&lt;br/&gt;The program will close now.</value>
   </data>
   <data name="MsgBox_RomRemoved_Titel" xml:space="preserve">
-    <value>ROM has been removed</value>
+    <value>ROM deleted</value>
   </data>
   <data name="MsgBox_TextsOverLimit" xml:space="preserve">
-    <value>Your texts needs more space then allowed! Please reduce them before saving ROM.</value>
+    <value>Your text exceeds the character limit! Please reduce it before saving ROM.</value>
   </data>
   <data name="MsgBox_TextsOverLimit_Title" xml:space="preserve">
-    <value>Over Limit</value>
+    <value>Character limit exceeded</value>
   </data>
   <data name="MsgBox_UnknownErrorAtLoadingRom" xml:space="preserve">
-    <value>A unknown error happend at loading ROM.</value>
+    <value>An unknown error occurred while loading the ROM.</value>
   </data>
   <data name="MsgBox_UnknownErrorAtLoadingRom_Titel" xml:space="preserve">
-    <value>Loading ROM</value>
+    <value>Load ROM</value>
   </data>
   <data name="MsgBox_UnsavedChanges" xml:space="preserve">
-    <value>If there are unsaved changes left, you will lose them all.&lt;br/&gt;Do you want to save before closing?</value>
+    <value>There are unsaved changes to the ROM.&lt;br/&gt;Do you want to save before closing?</value>
   </data>
   <data name="MsgBox_UnsavedChanges_Title" xml:space="preserve">
     <value>Unsaved changes</value>
   </data>
   <data name="MsgBox_UpdatePatchesAvaiable" xml:space="preserve">
-    <value>There are update-patches avaibale for this ROM providing code improvements and new features.&lt;br/&gt;It is &lt;u&gt;heightly recommend&lt;/u&gt; to patch them.&lt;br/&gt;&lt;br/&gt;Do you want to patch them now?</value>
+    <value>There are updated patches available for this ROM, which provide improvements and/or new features.&lt;br/&gt;It is &lt;u&gt;heighly recommended&lt;/u&gt; to patch them.&lt;br/&gt;&lt;br/&gt;Do you want to patch them now?</value>
   </data>
   <data name="MsgBox_UpdatePatchesAvaiable_Title" xml:space="preserve">
-    <value>Update-Patches avaiable</value>
+    <value>New patches available</value>
   </data>
   <data name="Notify_ShouldLoadRomFirst" xml:space="preserve">
     <value>You should load a ROM first.</value>
   </data>
   <data name="Status_CalculatingTextSpace" xml:space="preserve">
-    <value>Calculating space ...</value>
+    <value>Calculating space...</value>
   </data>
   <data name="Status_Checking" xml:space="preserve">
-    <value>Checking ROM ...</value>
+    <value>Checking ROM...</value>
   </data>
   <data name="Status_CreatingNewSequence" xml:space="preserve">
-    <value>Creating new Sequence ...</value>
+    <value>Creating new sequence...</value>
   </data>
   <data name="Status_CreatingTextList" xml:space="preserve">
-    <value>Creating Text List ...</value>
+    <value>Creating text list...</value>
   </data>
   <data name="Status_ExportingModel" xml:space="preserve">
-    <value>Exporting Model Map ...</value>
+    <value>Exporting Model Map...</value>
   </data>
   <data name="Status_ExportingSequence" xml:space="preserve">
-    <value>Exporting Sequence ...</value>
+    <value>Exporting Sequence...</value>
   </data>
   <data name="Status_ImportingSequence" xml:space="preserve">
     <value>Importing Sequence</value>
   </data>
   <data name="Status_LoadingLevel" xml:space="preserve">
-    <value>Loading Level ...</value>
+    <value>Loading Level...</value>
   </data>
   <data name="Status_LoadingModel" xml:space="preserve">
-    <value>Loading Model Map ...</value>
+    <value>Loading Model Map...</value>
   </data>
   <data name="Status_LoadingMusic" xml:space="preserve">
-    <value>Loading Music ...</value>
+    <value>Loading Music...</value>
   </data>
   <data name="Status_LoadingRom" xml:space="preserve">
-    <value>Loading ROM ...</value>
+    <value>Loading ROM...</value>
   </data>
   <data name="Status_LoadingTexts" xml:space="preserve">
-    <value>Loading Texts from ROM ...</value>
+    <value>Loading text from ROM...</value>
   </data>
   <data name="Status_Ready" xml:space="preserve">
     <value>Ready</value>
   </data>
   <data name="Status_SavingRom" xml:space="preserve">
-    <value>Saving ROM ...</value>
+    <value>Saving ROM...</value>
   </data>
   <data name="Status_StartingUp" xml:space="preserve">
-    <value>Starting up ...</value>
+    <value>Starting up...</value>
   </data>
   <data name="Text_Area" xml:space="preserve">
     <value>Area</value>
   </data>
   <data name="Text_ChangeReplacingLevel" xml:space="preserve">
-    <value>Change Replacing Level</value>
+    <value>Change level to overwrite</value>
   </data>
   <data name="Text_Disabled" xml:space="preserve">
     <value>Disabled</value>
@@ -322,6 +322,6 @@
     <value>Reload ROM</value>
   </data>
   <data name="WarningBox_RomChanged_Text" xml:space="preserve">
-    <value>The ROM was changed by an external programm. To reload the ROM click on 'Reload ROM'.</value>
+    <value>The ROM was changed by an external program. To reload the ROM click on 'Reload ROM'.</value>
   </data>
 </root>

@@ -52,6 +52,7 @@ Public Class MainController
     Public Event RequestReloadTextManagerLists()
     Public Event RequestReloadTextManagerLineColors()
     Public Event TextItemChanged(e As TextItemEventArgs)
+    Public Event RequestIsChangingTab(e As EnabledEventArgs)
     Public Event LevelSpecialItemAdded(e As SpecialItemEventArgs)
     Public Event LevelSpecialItemRemoved(e As SpecialItemEventArgs)
     Public Event LevelSpecialItemChanged(e As SpecialItemEventArgs)
@@ -141,14 +142,14 @@ Public Class MainController
         'Updates
         Dim updateVersion As New UpdateVersion(Application.ProductVersion) With {
             .DevelopmentalStage = CInt(DevelopmentalStage),
-            .DevelopmentBuild = DevelopmentalStage
+            .DevelopmentBuild = DevelopmentBuild
         }
 
         updateManager = New UpdateManager(New Uri("http://pilzinsel64.square7.ch/Updates/SM64_ROM_Manager_New/updates.json"), "<RSAKeyValue><Modulus>w5WpraTgIe2QlQGkvrJDcdrtRkb1AQ0iDMO0JMsCd7rPoUYw7cu7YnRreeadU5jBiit4G82oB/TOtT+quJPDBixxKjof9gKVqrxeKtMYU/3vwRQg0+Y77GFD6tMLNlJwrk1NzgS3FN2Zlpl9LplgeQr9g5RSKMyu+VJ5OTZOHZAyHpvMnPSD9V1Kpyj/WFf2ADf9PL3Z4vEJfcmoFdGY6i4hq4IAIe5o5lYGB5zC/QOfDuAHEO+oGbOkFs65BeHDZWkLnzBOYPI4rnHZpU9E/ChcJVerNln45D9XGElDVXy7AIdy417mefjqnPaqMgm/22aTUW3f1Jsy3kcUhe1/f5eE/PHQoFvLPjcezY5mPUkW5JT1Y+2tIROvXh5zejyb+/2ctyVLSqLhG6wh4UNFd60Be4mV2NJ+Acn9IagdvMW3AvUmbSgQK4Jmq2OP656XkrdDi2vGibdMOB2Nt+O/q5+GpbzrEAnX+t9ikxmT568PpfjGBVvh+DmQxhiEaKT28HKWuDwLOdq6bnnnw6LlqF0odHqf2L09uXULJQo9W8zMoA5lyNbgHTfrj1ik9X4xheZkqmwJWIyYrRsPsyLN6Eani4vqVeVgBfJxdon45x5tPqYhadHoIHWU8WxnIGBnDAmaBZ/6lQpfTmbo3c8T2WuNjQAarzmnFKHP6GqP9X7JFhGQklTI5LFNsz6IjFRoHl/R5bUi6GJddoFitKXT4XjaJw+zR4Vp6W37wLjbe/r7Wd+vBST3YxTELQ+zQ3lxOb3Ht+0psinyaqqWVG8jh69axesPDIXvqDmZsYTlbm8YWyHeViX6xDo1+gYCZkFnCqdpXaB2B2a/bnvV1DKRDWCUi122BzCkUQg104F2ncnTnwrEwGXBQzVcZkkCtNhoiQRbOz+kJZz3tdmF+IPdhsdevpB4XwVbb/aTCkx2T68LOrGCuaKZ8EmHzTEbX2thSs7q3+ImfxCC9pubzCgwQEiS4MD/k+BMfDt7JQEPSP8EvBDxLLJ8Ls34/GnX5DSkUwMC3a/DUoZ0FgV8aIJEPSequjB/HtVQaR9t8j8ynr9FpsxGS0Qa0UZLt5ACG76Z4wgnLdrPKJMD0hcscmdiy4ov3a3AkuvkvIeGDwWFRMFrwq4F+5+i5AvC+f+jjwRjCckOEUsUrgcycsLXDMKjD0VGRLQIr+qegB1I7Wrl15ctvS+z3YIgx+SrGNbrEzLKxV5Habe/HKZrQ2t8JzflurHJByifFQ/Szp0BkoOXkVmkuczAw0a/DglU2um1Ic8cXAuNIWP0PbYpvVDUnChZrFMVO5QFMAdI8Ei9LHbjlTNdegXtHXIGJS9uXdf8285rlHsyVkCHbtFyZRsQSkuDuQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", New CultureInfo("en"), updateVersion) With {
             .HostApplicationOptions = nUpdate.Shared.Core.HostApplicationOptions.CloseAndRestart,
             .InstallAsAdmin = Settings.General.UseAdminRightsForUpdates,
-            .IncludeBeta = Settings.General.IncludeBetaVersions,
-            .IncludeAlpha = Settings.General.IncludeAlphaVersions
+            .IncludeBeta = Settings.General.IncludeBetaVersions Or (DevelopmentalStage >= 2),
+            .IncludeAlpha = Settings.General.IncludeAlphaVersions Or DevelopmentalStage = 3
         }
 
         'Enable Auto-Save for Settings
@@ -246,7 +247,7 @@ Public Class MainController
     Public Function OpenRom() As Boolean
         Dim ret As Boolean = False
         Dim ofd_SM64RM_LoadROM As New OpenFileDialog With {
-            .Filter = ""
+            .Filter = "SM64 ROMs (*.z64)|*.z64"
         }
 
         Dim lastFiles As StringCollection = Settings.RecentFiles.RecentROMs
@@ -367,7 +368,9 @@ Public Class MainController
 
     Public Sub UpdateChecksum()
         If romManager IsNot Nothing Then
+            StatusText = "Calculating checksum ..."
             PatchClass.UpdateChecksum(romManager.RomFile)
+            StatusText = String.Empty
         End If
     End Sub
 
@@ -558,6 +561,12 @@ Public Class MainController
 
     Public Function GetRomFileSize() As Double
         Return New FileInfo(romManager.RomFile).Length / 1024 / 1024
+    End Function
+
+    Public Function IsChangingTab()
+        Dim e As New EnabledEventArgs(False)
+        RaiseEvent RequestIsChangingTab(e)
+        Return e.Enabled
     End Function
 
     'L e v e l   M a n a g e r
@@ -896,13 +905,15 @@ Public Class MainController
         End If
     End Sub
 
-    Public Sub SaveLevelAreaSettings(levelIndex As Integer, areaIndex As Integer, terrainTypes As TerrainTypes, musicID As Byte, environmentEffects As EnvironmentEffects, cameraPrset As CameraPresets, enable2DCamera As Boolean)
+    Public Sub SaveLevelAreaSettings(levelIndex As Integer, areaIndex As Integer, terrainTypes As TerrainTypes, musicID As Byte, environmentEffects As EnvironmentEffects, cameraPrset As CameraPresets, enable2DCamera As Boolean, enableShowMsg As Boolean, showMsgDialogID As Byte)
         Dim area As LevelArea = GetLevelAndArea(levelIndex, areaIndex).area
         area.TerrainType = terrainTypes
         area.BGMusic = musicID
         area.Geolayout.EnvironmentEffect = environmentEffects
         area.Geolayout.CameraPreset = cameraPrset
         area.Enable2DCamera = enable2DCamera
+        area.ShowMessage.Enabled = enableShowMsg
+        area.ShowMessage.DialogID = showMsgDialogID
     End Sub
 
     Public Sub ImportLevelAreaModel(levelIndex As Integer, areaIndex As Integer, importVisualMap As Boolean, importCollision As Boolean)
@@ -942,7 +953,7 @@ Public Class MainController
     Public Sub RemoveLevelSpecialBox(levelIndex As Integer, areaIndex As Integer, sbIndex As Integer)
         Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
         lvl.area.SpecialBoxes.RemoveAt(sbIndex)
-        RaiseEvent LevelSpecialItemRemoved(New SpecialItemEventArgs(levelIndex, areaIndex, sbIndex))
+        RaiseEvent LevelSpecialItemRemoved(New SpecialItemEventArgs(sbIndex, levelIndex, areaIndex))
     End Sub
 
     Public Function DoesCameraPresetProvide2DCamera(preset As CameraPresets) As Boolean
@@ -1044,10 +1055,12 @@ Public Class MainController
         End If
     End Sub
 
-    Public Function GetLevelSettings(levelIndex As Integer) As (objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, areasCount As Byte)
+    Public Function GetLevelSettings(levelIndex As Integer) As (objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, bgImage As Image, bgOriginal As BackgroundIDs, areasCount As Byte)
         Dim lvl As Level = GetLevelAndArea(levelIndex).level
         Dim defPosCmd As LevelscriptCommand = lvl.GetDefaultPositionCmd
         Dim bgMode As Byte
+        Dim bgImage As Image = Nothing
+        Dim bgOriginal As BackgroundIDs
         Dim defPosAreaID As Byte
         Dim defPosYRot As Short
 
@@ -1055,18 +1068,21 @@ Public Class MainController
 
         If Not lvl.Background.Enabled Then
             bgMode = 2
-        ElseIf lvl.Background.HasImage Then
+            bgOriginal = lvl.Background.ID
+        ElseIf lvl.Background.IsCustom Then
             bgMode = 1
+            bgImage = lvl.Background.GetImage
         Else
             bgMode = 0
         End If
+        bgOriginal = lvl.Background.ID
 
         If defPosCmd IsNot Nothing Then
             defPosAreaID = clDefaultPosition.GetAreaID(defPosCmd)
             defPosYRot = clDefaultPosition.GetRotation(defPosCmd)
         End If
 
-        Return (lvl.ObjectBank0x0C, lvl.ObjectBank0x0D, lvl.ObjectBank0x0E, lvl.ActSelector, lvl.HardcodedCameraSettings, defPosCmd IsNot Nothing, defPosAreaID, defPosYRot, bgMode, lvl.Areas.Count)
+        Return (lvl.ObjectBank0x0C, lvl.ObjectBank0x0D, lvl.ObjectBank0x0E, lvl.ActSelector, lvl.HardcodedCameraSettings, defPosCmd IsNot Nothing, defPosAreaID, defPosYRot, bgMode, bgImage, bgOriginal, lvl.Areas.Count)
     End Function
 
     Public Sub ChangeLevelID(levelIndex As Integer)
@@ -1123,6 +1139,10 @@ Public Class MainController
 
     'T e x t   M a n a g e r
 
+    Private Function GetTextGroup(name As String) As TextGroup
+        Return romManager?.TextGroups?.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name)
+    End Function
+
     Public Sub SendRequestReloadTextManagerLists()
         RaiseEvent RequestReloadTextManagerLists()
     End Sub
@@ -1137,12 +1157,12 @@ Public Class MainController
                 Dim tbl As TextGroup = romManager.TextGroups(itbl)
 
                 If TypeOf tbl Is TextTableGroup Then
-                    If CalcTextSpaceBytesCount(itbl, Nothing).percent > 1 Then
+                    If CalcTextSpaceBytesCount(tbl.TextGroupInfo.Name, Nothing).percent > 1 Then
                         Return True
                     End If
                 ElseIf TypeOf tbl Is TextArrayGroup Then
                     For iItem = 0 To CType(tbl, TextArrayGroup).Count - 1
-                        If CalcTextSpaceBytesCount(Nothing, iItem).percent > 1 Then
+                        If CalcTextSpaceBytesCount(tbl.TextGroupInfo.Name, iItem).percent > 1 Then
                             Return True
                         End If
                     Next
@@ -1153,9 +1173,9 @@ Public Class MainController
         Return False
     End Function
 
-    Public Function CalcTextSpaceBytesCount(groupIndex As Integer, itemIndex As Integer) As (used As Integer, max As Integer, left As Integer, percent As Single)
-        If groupIndex >= 0 Then
-            Dim curTable As TextGroup = romManager.LoadTextGroup(groupIndex)
+    Public Function CalcTextSpaceBytesCount(tableName As String, itemIndex As Integer) As (used As Integer, max As Integer, left As Integer, percent As Single)
+        If Not String.IsNullOrEmpty(tableName) Then
+            Dim curTable As TextGroup = romManager.LoadTextGroup(tableName)
             Dim curTextItem As TextItem = curTable.ElementAtOrDefault(itemIndex)
 
             Dim max As Integer = 0
@@ -1189,8 +1209,12 @@ Public Class MainController
         Return romManager.GetTextGroupInfos.Length
     End Function
 
-    Public Function GetTextGroupInfos(index As Integer) As (name As String, encoding As String, isDialogGroup As Boolean, isTableGroup As Boolean, isArrayGroup As Boolean)
-        Dim info As TextGroupInfo = romManager.GetTextGroupInfos.ElementAtOrDefault(index)
+    Public Function GetTextGroupInfoNames() As String()
+        Return romManager.GetTextGroupInfos.Select(Function(n) n.Name).ToArray
+    End Function
+
+    Public Function GetTextGroupInfos(tableName As String) As (name As String, encoding As String, isDialogGroup As Boolean, isTableGroup As Boolean, isArrayGroup As Boolean)
+        Dim info As TextGroupInfo = romManager.GetTextGroupInfos.FirstOrDefault(Function(n) n.Name = tableName)
         If info IsNot Nothing Then
             Dim isTable As Boolean = TypeOf info Is TextTableGroupInfo
             Dim isArray As Boolean = TypeOf info Is TextArrayGroupInfo
@@ -1201,16 +1225,16 @@ Public Class MainController
         End If
     End Function
 
-    Public Sub LoadTextGroup(tableIndex As Integer)
-        romManager.LoadTextGroup(tableIndex)
+    Public Sub LoadTextGroup(tableName As String)
+        romManager.LoadTextGroup(tableName)
     End Sub
 
-    Public Function GetTextGroupEntriesCount(tableIndex As Integer) As Integer
-        Return romManager.LoadTextGroup(tableIndex)?.Count
+    Public Function GetTextGroupEntriesCount(tableName As String) As Integer
+        Return romManager.LoadTextGroup(tableName)?.Count
     End Function
 
-    Public Function GetTextItemInfos(tableIndex As Integer, itemIndex As Integer) As (text As String, horizontalPosition As DialogHorizontalPosition, verticalPosition As DialogVerticalPosition, linesPerSite As Integer)
-        Dim item As TextItem = romManager.LoadTextGroup(tableIndex)?.ElementAtOrDefault(itemIndex)
+    Public Function GetTextItemInfos(tableName As String, itemIndex As Integer) As (text As String, horizontalPosition As DialogHorizontalPosition, verticalPosition As DialogVerticalPosition, linesPerSite As Integer)
+        Dim item As TextItem = romManager.LoadTextGroup(tableName)?.ElementAtOrDefault(itemIndex)
         Dim hPos As DialogHorizontalPosition = Nothing
         Dim vPos As DialogVerticalPosition = Nothing
         Dim lines As Integer = Nothing
@@ -1227,11 +1251,10 @@ Public Class MainController
         Return (item.Text, hPos, vPos, lines)
     End Function
 
-    Public Function GetTextNameList(tableIndex As Integer) As String()
+    Public Function GetTextNameList(tableName As String) As String()
         Dim nameList() As String = {}
-        Dim table As TextGroupInfo = romManager.GetTextGroupInfos(tableIndex)
 
-        Select Case table.Name
+        Select Case tableName
             Case "Dialogs"
                 nameList = CreateDialogNameList()
             Case "Levels"
@@ -1315,19 +1338,19 @@ Public Class MainController
         Return list
     End Function
 
-    Public Sub SetTextItemText(groupIndex As Integer, tableIndex As Integer, text As String)
-        Dim group As TextGroup = romManager.TextGroups(groupIndex)
-        Dim item As TextTableDialogItem = group(tableIndex)
+    Public Sub SetTextItemText(tableName As String, tableIndex As Integer, text As String)
+        Dim group As TextGroup = GetTextGroup(tableName)
+        Dim item As TextItem = group(tableIndex)
 
         item.Text = text.TrimEnd
 
         group.NeedToSave = True
 
-        RaiseEvent TextItemChanged(New TextItemEventArgs(groupIndex, tableIndex))
+        RaiseEvent TextItemChanged(New TextItemEventArgs(tableName, tableIndex))
     End Sub
 
-    Public Sub SetTextItemDialogData(groupIndex As Integer, tableIndex As Integer, vPos As DialogVerticalPosition, hPos As DialogHorizontalPosition, linesPerSite As Integer)
-        Dim group As TextGroup = romManager.TextGroups(groupIndex)
+    Public Sub SetTextItemDialogData(tableName As String, tableIndex As Integer, vPos As DialogVerticalPosition, hPos As DialogHorizontalPosition, linesPerSite As Integer)
+        Dim group As TextGroup = GetTextGroup(tableName)
         Dim item As TextTableDialogItem = group(tableIndex)
 
         item.VerticalPosition = vPos
@@ -1336,7 +1359,7 @@ Public Class MainController
 
         group.NeedToSave = True
 
-        RaiseEvent TextItemChanged(New TextItemEventArgs(groupIndex, tableIndex))
+        RaiseEvent TextItemChanged(New TextItemEventArgs(tableIndex, tableIndex))
     End Sub
 
     'M u s i c   M a n a g e r
