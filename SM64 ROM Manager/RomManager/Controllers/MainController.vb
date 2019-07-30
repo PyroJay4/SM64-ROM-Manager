@@ -52,6 +52,8 @@ Public Class MainController
     Public Event RequestReloadTextManagerLists()
     Public Event RequestReloadTextManagerLineColors()
     Public Event TextItemChanged(e As TextItemEventArgs)
+    Public Event TextItemAdded(e As TextItemEventArgs)
+    Public Event TextItemRemoved(e As TextItemEventArgs)
     Public Event RequestIsChangingTab(e As EnabledEventArgs)
     Public Event LevelSpecialItemAdded(e As SpecialItemEventArgs)
     Public Event LevelSpecialItemRemoved(e As SpecialItemEventArgs)
@@ -1360,6 +1362,32 @@ Public Class MainController
         group.NeedToSave = True
 
         RaiseEvent TextItemChanged(New TextItemEventArgs(tableIndex, tableIndex))
+    End Sub
+
+    Public Sub AddNewTextTableItem(tableName As String)
+        Dim group As TextGroup = GetTextGroup(tableName)
+
+        If TypeOf group Is TextTableGroup Then
+            Dim item As TextItem = Nothing
+
+            If CType(group, TextTableGroup).TextGroupInfo.TableType = TextTableType.Dialogs Then
+                item = New TextTableDialogItem({}, group.TextGroupInfo)
+            Else
+                item = New TextTableItem({}, group.TextGroupInfo)
+            End If
+
+            group.Add(item)
+
+            RaiseEvent TextItemAdded(New TextItemEventArgs(tableName, group.Count - 1))
+        End If
+    End Sub
+
+    Public Sub RemoveTextTableItem(tableName As String, tableIndex As Integer)
+        Dim group As TextGroup = GetTextGroup(tableName)
+
+        group.RemoveAt(tableIndex)
+
+        RaiseEvent TextItemRemoved(New TextItemEventArgs(tableName, tableIndex))
     End Sub
 
     'M u s i c   M a n a g e r

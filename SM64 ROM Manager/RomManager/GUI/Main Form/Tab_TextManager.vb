@@ -19,6 +19,7 @@ Public Class Tab_TextManager
     Public Sub New()
         InitializeComponent()
         BackColor = Color.White
+        Bar_AddRemoveItems.Anchor = AnchorStyles.Top Or AnchorStyles.Right
     End Sub
 
     'C o n t r o l l e r   E v e n t s
@@ -38,7 +39,19 @@ Public Class Tab_TextManager
         Line_TM_Warning2.ForeColor = Color.Red
     End Sub
 
+    Private Sub Controller_TextItemAdded(e As TextItemEventArgs) Handles Controller.TextItemAdded
+        AddTextListViewItem(e.TableName, e.ItemIndex, {})
+    End Sub
+
+    Public Sub Controller_TextItemRemoved(e As TextItemEventArgs) Handles Controller.TextItemRemoved
+        RemoveTextItem(e.ItemIndex)
+    End Sub
+
     'G u i
+
+    Private Sub RemoveTextItem(tableIndex As Integer)
+        ListViewEx_TM_TableEntries.Items.RemoveAt(tableIndex)
+    End Sub
 
     Private Sub LoadTabStripItems()
         Dim oldSelected As String = TabStrip_TextTable.SelectedTab?.Tag
@@ -102,19 +115,7 @@ Public Class Tab_TextManager
         nameList = Controller.GetTextNameList(tableName)
 
         For i As Integer = 0 To Controller.GetTextGroupEntriesCount(tableName) - 1
-            Dim itemInfos = Controller.GetTextItemInfos(tableName, i)
-            Dim nameEntry As String = String.Empty
-
-            If nameList.Count > i Then
-                nameEntry = nameList(i)
-            End If
-
-            Dim newItem As New ListViewItem({
-                                            i + 1,
-                                            nameEntry,
-                                            itemInfos.text.Split({ControlChars.Cr, ControlChars.Lf}).FirstOrDefault
-                                            })
-            ListViewEx_TM_TableEntries.Items.Add(newItem)
+            AddTextListViewItem(tableName, i, nameList)
         Next
 
         If nameList.Any Then
@@ -143,6 +144,22 @@ Public Class Tab_TextManager
         Controller.StatusText = String.Empty
     End Sub
 
+    Private Sub AddTextListViewItem(tableName As String, tableIndex As Integer, nameList As String())
+        Dim itemInfos = Controller.GetTextItemInfos(tableName, tableIndex)
+        Dim nameEntry As String = String.Empty
+
+        If nameList.Count > tableIndex Then
+            nameEntry = nameList(tableIndex)
+        End If
+
+        Dim newItem As New ListViewItem({
+                                        tableIndex + 1,
+                                        nameEntry,
+                                        itemInfos.text.Split({ControlChars.Cr, ControlChars.Lf}).FirstOrDefault
+                                        })
+        ListViewEx_TM_TableEntries.Items.Add(newItem)
+    End Sub
+
     Private Sub UpdateListViewItem(index As Integer, Optional refresh As Boolean = True)
         Dim lvi As ListViewItem = ListViewEx_TM_TableEntries.Items(index)
         Dim infos = Controller.GetTextItemInfos(GetSelectedIndicies.tableName, index)
@@ -163,6 +180,7 @@ Public Class Tab_TextManager
     Private Sub SetGuiForTextTable(tableName As String)
         Dim groupInfo = Controller.GetTextGroupInfos(tableName)
         Dim isUpperCase As Boolean = {"Acts", "Levels", "File Menu"}.Contains(groupInfo.name)
+        Dim isPreDefined As Boolean = {"Acts", "Levels", "File Menu", "Dialogs", "Ending", "Credits"}.Contains(groupInfo.name)
 
         Line_TM_Green.Visible = groupInfo.isDialogGroup
         Line_TM_Warning1.Visible = groupInfo.isDialogGroup
@@ -178,6 +196,13 @@ Public Class Tab_TextManager
         Line_TM_Green.Height = elementHight - 5
         Line_TM_Warning1.Height = elementHight - 5
         Line_TM_Warning2.Height = elementHight - 5
+
+        Bar_AddRemoveItems.Visible = Not isPreDefined
+        If isPreDefined OrElse Not groupInfo.isTableGroup Then
+            TabStrip_TextTable.Width = TextBoxX_TM_TextEditor.Location.X - 6
+        Else
+            TabStrip_TextTable.Width = Bar_AddRemoveItems.Location.X - 6
+        End If
 
         If IsAnyTextItemSelected() Then
             LoadTableEntries()
@@ -282,7 +307,7 @@ Public Class Tab_TextManager
     End Sub
 
     Private Sub TabStrip1_SelectedTabChanged(sender As Object, e As TabStripTabChangedEventArgs) Handles TabStrip_TextTable.SelectedTabChanged
-        SetGuiForTextTable(TabStrip_TextTable.SelectedTab?.Tag)
+        SetGuiForTextTable(GetSelectedIndicies.tableName)
     End Sub
 
     Private Sub TM_CheckComboBoxText(sender As Object, Optional e As EventArgs = Nothing) Handles ComboBoxEx_TM_DialogPosX.TextChanged, ComboBoxEx_TM_DialogPosY.TextChanged
@@ -301,6 +326,15 @@ Public Class Tab_TextManager
         If IsAnyTextItemSelected() Then
             ShowTextItemData()
         End If
+    End Sub
+
+    Private Sub ButtonItem_AddTextItem_Click(sender As Object, e As EventArgs) Handles ButtonItem_AddTextItem.Click
+        Controller.AddNewTextTableItem(GetSelectedIndicies.tableName)
+    End Sub
+
+    Private Sub ButtonItem_RemoveTextItem_Click(sender As Object, e As EventArgs) Handles ButtonItem_RemoveTextItem.Click
+        Dim index = GetSelectedIndicies()
+        Controller.RemoveTextTableItem(index.tableName, index.tableIndex)
     End Sub
 
 End Class
