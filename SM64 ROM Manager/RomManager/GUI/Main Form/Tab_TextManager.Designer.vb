@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Tab_TextManager
     Inherits System.Windows.Forms.UserControl
 
     'UserControl überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Tab_TextManager
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Tab_TextManager))
         Me.GroupPanel_TM_DialogProps = New DevComponents.DotNetBar.Controls.GroupPanel()
@@ -44,8 +44,12 @@ Partial Class Tab_TextManager
         Me.Line_TM_Warning1 = New DevComponents.DotNetBar.Controls.Line()
         Me.Line_TM_Warning2 = New DevComponents.DotNetBar.Controls.Line()
         Me.TextBoxX_TM_TextEditor = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.Bar_AddRemoveItems = New DevComponents.DotNetBar.Bar()
+        Me.ButtonItem_AddTextItem = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_RemoveTextItem = New DevComponents.DotNetBar.ButtonItem()
         Me.GroupPanel_TM_DialogProps.SuspendLayout()
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Bar_AddRemoveItems, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupPanel_TM_DialogProps
@@ -264,10 +268,42 @@ Partial Class Tab_TextManager
         Me.TextBoxX_TM_TextEditor.PreventEnterBeep = True
         Me.TextBoxX_TM_TextEditor.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
         '
+        'Bar_AddRemoveItems
+        '
+        Me.Bar_AddRemoveItems.AntiAlias = True
+        resources.ApplyResources(Me.Bar_AddRemoveItems, "Bar_AddRemoveItems")
+        Me.Bar_AddRemoveItems.IsMaximized = False
+        Me.Bar_AddRemoveItems.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddTextItem, Me.ButtonItem_RemoveTextItem})
+        Me.Bar_AddRemoveItems.Name = "Bar_AddRemoveItems"
+        Me.Bar_AddRemoveItems.Stretch = True
+        Me.Bar_AddRemoveItems.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Bar_AddRemoveItems.TabStop = False
+        '
+        'ButtonItem_AddTextItem
+        '
+        Me.ButtonItem_AddTextItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_AddTextItem.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
+        Me.ButtonItem_AddTextItem.Name = "ButtonItem_AddTextItem"
+        Me.ButtonItem_AddTextItem.Symbol = "57669"
+        Me.ButtonItem_AddTextItem.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.ButtonItem_AddTextItem.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonItem_AddTextItem.SymbolSize = 12.0!
+        '
+        'ButtonItem_RemoveTextItem
+        '
+        Me.ButtonItem_RemoveTextItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_RemoveTextItem.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
+        Me.ButtonItem_RemoveTextItem.Name = "ButtonItem_RemoveTextItem"
+        Me.ButtonItem_RemoveTextItem.Symbol = "57676"
+        Me.ButtonItem_RemoveTextItem.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ButtonItem_RemoveTextItem.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonItem_RemoveTextItem.SymbolSize = 12.0!
+        '
         'Tab_TextManager
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Bar_AddRemoveItems)
         Me.Controls.Add(Me.GroupPanel_TM_DialogProps)
         Me.Controls.Add(Me.TabStrip_TextTable)
         Me.Controls.Add(Me.ListViewEx_TM_TableEntries)
@@ -278,6 +314,7 @@ Partial Class Tab_TextManager
         Me.Name = "Tab_TextManager"
         Me.GroupPanel_TM_DialogProps.ResumeLayout(False)
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Bar_AddRemoveItems, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -303,4 +340,7 @@ Partial Class Tab_TextManager
     Friend WithEvents Line_TM_Warning1 As DevComponents.DotNetBar.Controls.Line
     Friend WithEvents Line_TM_Warning2 As DevComponents.DotNetBar.Controls.Line
     Friend WithEvents TextBoxX_TM_TextEditor As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents Bar_AddRemoveItems As DevComponents.DotNetBar.Bar
+    Friend WithEvents ButtonItem_AddTextItem As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_RemoveTextItem As DevComponents.DotNetBar.ButtonItem
 End Class
