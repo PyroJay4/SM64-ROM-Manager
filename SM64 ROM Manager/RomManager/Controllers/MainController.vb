@@ -1427,7 +1427,7 @@ Public Class MainController
                         fs.Write(curMusic.BinaryData, 0, curMusic.BinaryData.Length)
                         fs.Close()
                     Catch ex As Exception
-                        MessageBoxEx.Show(Form_Main_Resources.MsgBox_ErrorSavingSequence, Global_Ressources.Text_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBoxEx.Show(Form_Main_Resources.MsgBox_ErrorSavingSequence, Global_Resources.Text_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
 
                 Case 2 '.midi

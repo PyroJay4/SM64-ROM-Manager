@@ -38,7 +38,6 @@ Partial Class ApplyPPFDialog
         '
         'Panel1
         '
-        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Controls.Add(Me.CheckBoxX1)
         Me.Panel1.Controls.Add(Me.LabelX4)
         Me.Panel1.Controls.Add(Me.LabelX3)
@@ -48,55 +47,58 @@ Partial Class ApplyPPFDialog
         Me.Panel1.Controls.Add(Me.ButtonX1)
         Me.Panel1.Controls.Add(Me.LabelX2)
         Me.Panel1.Controls.Add(Me.LabelX1)
+        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
         '
         'CheckBoxX1
         '
-        resources.ApplyResources(Me.CheckBoxX1, "CheckBoxX1")
         '
         '
         '
         Me.CheckBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CheckBoxX1.FocusCuesEnabled = False
+        resources.ApplyResources(Me.CheckBoxX1, "CheckBoxX1")
         Me.CheckBoxX1.Name = "CheckBoxX1"
         Me.CheckBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX4
         '
-        resources.ApplyResources(Me.LabelX4, "LabelX4")
         '
         '
         '
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX4, "LabelX4")
         Me.LabelX4.Name = "LabelX4"
         '
         'LabelX3
         '
-        resources.ApplyResources(Me.LabelX3, "LabelX3")
         '
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.Name = "LabelX3"
         '
         'CircularProgress1
         '
-        resources.ApplyResources(Me.CircularProgress1, "CircularProgress1")
         '
         '
         '
         Me.CircularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CircularProgress1.FocusCuesEnabled = False
+        resources.ApplyResources(Me.CircularProgress1, "CircularProgress1")
         Me.CircularProgress1.Name = "CircularProgress1"
         Me.CircularProgress1.ProgressColor = System.Drawing.Color.Empty
+        Me.CircularProgress1.SetVisibleStateOnStart = True
+        Me.CircularProgress1.SetVisibleStateOnStop = True
         Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         '
         'ButtonX3
         '
-        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX3.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.Name = "ButtonX3"
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX3.Symbol = "58055"
@@ -106,10 +108,10 @@ Partial Class ApplyPPFDialog
         '
         'ButtonX2
         '
-        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.Name = "ButtonX2"
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX2.Symbol = "58055"
@@ -119,39 +121,36 @@ Partial Class ApplyPPFDialog
         '
         'ButtonX1
         '
-        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.FocusCuesEnabled = False
         Me.ButtonX1.Name = "ButtonX1"
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX2
         '
-        resources.ApplyResources(Me.LabelX2, "LabelX2")
         '
         '
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.Name = "LabelX2"
         '
         'LabelX1
         '
-        resources.ApplyResources(Me.LabelX1, "LabelX1")
         '
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX1, "LabelX1")
         Me.LabelX1.Name = "LabelX1"
         '
         'ApplyPPFDialog
         '
         resources.ApplyResources(Me, "$this")
-        Me.StartPosition = FormStartPosition.CenterScreen
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "ApplyPPFDialog"

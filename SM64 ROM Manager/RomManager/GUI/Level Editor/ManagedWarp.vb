@@ -30,27 +30,27 @@ Public Class ManagedWarp
 
     <DisplayName("Warp ID")>
     <Category("Source")>
-    <Description("The ID of this Warp.")>
+    <Description("The source ID of the warp.")>
     Public Property WarpID As Byte
 
     <DisplayName("Dest. Level")>
     <Category("Destination")>
-    <Description("The Level where the player should came out.")>
+    <Description("The level where the player should be warped to.")>
     Public Property DestLevelID As Levels
 
     <DisplayName("Dest. Area ID")>
     <Category("Destination")>
-    <Description("The Area where the player should came out.")>
+    <Description("The area where the player should be warped to.")>
     Public Property DestAreaID As Byte
 
     <DisplayName("Dest. Warp ID")>
     <Category("Destination")>
-    <Description("The Warp where the player should came out.")>
+    <Description("The warp ID that the player should be warped to.")>
     Public Property DestWarpID As Byte
 
     <DisplayName("Create Checkpoint")>
     <Category("Destination")>
-    <Description("The game will create a checkpoint when entering this warp. When the player re-enter this level after he died he will start on this warp.")>
+    <Description("The warp will act as a checkpoint when this is enabled. When the player re-enters this level after dying, Mario will start at this warp.")>
     Public Property CreateCheckpoint As Boolean
 
     Public Sub New(cmd As LevelscriptCommand)

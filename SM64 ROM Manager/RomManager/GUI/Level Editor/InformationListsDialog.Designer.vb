@@ -164,26 +164,26 @@ Namespace LevelEditor
             '
             'ButtonItem_Add
             '
-            Me.ButtonItem_Add.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Hinzufügen_16px
+            Me.ButtonItem_Add.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Add_16px
             Me.ButtonItem_Add.Name = "ButtonItem_Add"
             resources.ApplyResources(Me.ButtonItem_Add, "ButtonItem_Add")
             '
             'ButtonItem_Remove
             '
-            Me.ButtonItem_Remove.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Löschen_16px
+            Me.ButtonItem_Remove.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Remove_16px
             Me.ButtonItem_Remove.Name = "ButtonItem_Remove"
             resources.ApplyResources(Me.ButtonItem_Remove, "ButtonItem_Remove")
             '
             'ButtonItem_SaveAll
             '
-            Me.ButtonItem_SaveAll.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Alle_Speichern_16px1
+            Me.ButtonItem_SaveAll.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.SaveAll_16px1
             Me.ButtonItem_SaveAll.ImageFixedSize = New System.Drawing.Size(16, 16)
             Me.ButtonItem_SaveAll.Name = "ButtonItem_SaveAll"
             resources.ApplyResources(Me.ButtonItem_SaveAll, "ButtonItem_SaveAll")
             '
             'ButtonItem_ReloadList
             '
-            Me.ButtonItem_ReloadList.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Aktualisieren_16px
+            Me.ButtonItem_ReloadList.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Refresh_16px
             Me.ButtonItem_ReloadList.Name = "ButtonItem_ReloadList"
             resources.ApplyResources(Me.ButtonItem_ReloadList, "ButtonItem_ReloadList")
             '

@@ -172,9 +172,9 @@
     <Compile Include="SM64Lib\SM64Convert\Fast3DParser.vb" />
     <Compile Include="SM64Lib\SM64Convert\Fast3DWriter.vb" />
     <Compile Include="SM64Lib\Model\TextureManager.vb" />
-    <Compile Include="SM64Lib\Musik\MusicList.vb" />
-    <Compile Include="SM64Lib\Musik\MusicSequence.vb" />
-    <Compile Include="SM64Lib\Musik\InstrumentSetList.vb" />
+    <Compile Include="SM64Lib\Music\MusicList.vb" />
+    <Compile Include="SM64Lib\Music\MusicSequence.vb" />
+    <Compile Include="SM64Lib\Music\InstrumentSetList.vb" />
     <Compile Include="SM64Lib\Object Banks\CustomObjectBank.vb" />
     <Compile Include="SM64Lib\Objects\ItemBoxContents\ItemBoxContentEntry.vb" />
     <Compile Include="SM64Lib\Objects\ItemBoxContents\ItemBoxContentManager.vb" />

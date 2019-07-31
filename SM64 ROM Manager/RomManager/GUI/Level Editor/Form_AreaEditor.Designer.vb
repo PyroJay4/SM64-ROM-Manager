@@ -66,7 +66,7 @@
             Me.ButtonX_KeepOnButtom = New DevComponents.DotNetBar.ButtonX()
             Me.ButtonX_KeepOnTop = New DevComponents.DotNetBar.ButtonX()
             Me.ButtonX_KeepOnGround = New DevComponents.DotNetBar.ButtonX()
-            Me.ButtonX_DropToButtom = New DevComponents.DotNetBar.ButtonX()
+            Me.ButtonX_DropToBottom = New DevComponents.DotNetBar.ButtonX()
             Me.ButtonX_DropToTop = New DevComponents.DotNetBar.ButtonX()
             Me.ButtonX_DropToGround = New DevComponents.DotNetBar.ButtonX()
             Me.PanelEx2 = New DevComponents.DotNetBar.PanelEx()
@@ -183,7 +183,7 @@
             Me.ItemContainer14 = New DevComponents.DotNetBar.ItemContainer()
             Me.ButtonItem_DropToGround = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItem_DropToTop = New DevComponents.DotNetBar.ButtonItem()
-            Me.ButtonItem_DropToButtom = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItem_DropToBottom = New DevComponents.DotNetBar.ButtonItem()
             Me.ItemContainer15 = New DevComponents.DotNetBar.ItemContainer()
             Me.ButtonItem_KeepOnGround = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItem_KeepOnTop = New DevComponents.DotNetBar.ButtonItem()
@@ -451,6 +451,8 @@
             Me.CircularProgress1.BackgroundStyle.BorderTopWidth = 2
             Me.CircularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.CircularProgress1.Name = "CircularProgress1"
+            Me.CircularProgress1.SetVisibleStateOnStart = True
+            Me.CircularProgress1.SetVisibleStateOnStop = True
             Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
             '
             'ComboItem1
@@ -728,7 +730,7 @@
             Me.PanelEx3.Controls.Add(Me.ButtonX_KeepOnButtom)
             Me.PanelEx3.Controls.Add(Me.ButtonX_KeepOnTop)
             Me.PanelEx3.Controls.Add(Me.ButtonX_KeepOnGround)
-            Me.PanelEx3.Controls.Add(Me.ButtonX_DropToButtom)
+            Me.PanelEx3.Controls.Add(Me.ButtonX_DropToBottom)
             Me.PanelEx3.Controls.Add(Me.ButtonX_DropToTop)
             Me.PanelEx3.Controls.Add(Me.ButtonX_DropToGround)
             Me.PanelEx3.DisabledBackColor = System.Drawing.Color.Empty
@@ -780,14 +782,14 @@
             Me.ButtonX_KeepOnGround.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
             Me.ButtonX_KeepOnGround.SymbolSize = 12.0!
             '
-            'ButtonX_DropToButtom
+            'ButtonX_DropToBottom
             '
-            Me.ButtonX_DropToButtom.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonX_DropToButtom.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonX_DropToButtom.FocusCuesEnabled = False
-            resources.ApplyResources(Me.ButtonX_DropToButtom, "ButtonX_DropToButtom")
-            Me.ButtonX_DropToButtom.Name = "ButtonX_DropToButtom"
-            Me.ButtonX_DropToButtom.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonX_DropToBottom.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonX_DropToBottom.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonX_DropToBottom.FocusCuesEnabled = False
+            resources.ApplyResources(Me.ButtonX_DropToBottom, "ButtonX_DropToBottom")
+            Me.ButtonX_DropToBottom.Name = "ButtonX_DropToBottom"
+            Me.ButtonX_DropToBottom.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             '
             'ButtonX_DropToTop
             '
@@ -1619,13 +1621,13 @@
             'ButtonItem_ChangeObjectCombo
             '
             Me.ButtonItem_ChangeObjectCombo.BeginGroup = True
-            Me.ButtonItem_ChangeObjectCombo.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Zusammen_ziehen_16px1
+            Me.ButtonItem_ChangeObjectCombo.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Shrink_16px1
             Me.ButtonItem_ChangeObjectCombo.Name = "ButtonItem_ChangeObjectCombo"
             resources.ApplyResources(Me.ButtonItem_ChangeObjectCombo, "ButtonItem_ChangeObjectCombo")
             '
             'ButtonItem30
             '
-            Me.ButtonItem30.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Psychologie_16px
+            Me.ButtonItem30.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Psychology_16px
             Me.ButtonItem30.Name = "ButtonItem30"
             resources.ApplyResources(Me.ButtonItem30, "ButtonItem30")
             '
@@ -1843,7 +1845,7 @@
             'ButtonItem35
             '
             Me.ButtonItem35.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem35.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Bild_Bearbeiten_32px
+            Me.ButtonItem35.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.EditPicture_32px
             Me.ButtonItem35.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem35.Name = "ButtonItem35"
             Me.ButtonItem35.SubItemsExpandWidth = 14
@@ -1947,7 +1949,7 @@
             Me.ItemContainer14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.ItemContainer14.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
             Me.ItemContainer14.Name = "ItemContainer14"
-            Me.ItemContainer14.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_DropToGround, Me.ButtonItem_DropToTop, Me.ButtonItem_DropToButtom})
+            Me.ItemContainer14.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_DropToGround, Me.ButtonItem_DropToTop, Me.ButtonItem_DropToBottom})
             '
             '
             '
@@ -1967,10 +1969,10 @@
             Me.ButtonItem_DropToTop.Name = "ButtonItem_DropToTop"
             resources.ApplyResources(Me.ButtonItem_DropToTop, "ButtonItem_DropToTop")
             '
-            'ButtonItem_DropToButtom
+            'ButtonItem_DropToBottom
             '
-            Me.ButtonItem_DropToButtom.Name = "ButtonItem_DropToButtom"
-            resources.ApplyResources(Me.ButtonItem_DropToButtom, "ButtonItem_DropToButtom")
+            Me.ButtonItem_DropToBottom.Name = "ButtonItem_DropToBottom"
+            resources.ApplyResources(Me.ButtonItem_DropToBottom, "ButtonItem_DropToBottom")
             '
             'ItemContainer15
             '
@@ -2154,7 +2156,7 @@
             'ButtonItem31
             '
             Me.ButtonItem31.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem31.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Zusammen_ziehen_32px
+            Me.ButtonItem31.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Shrink_32px
             Me.ButtonItem31.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem31.Name = "ButtonItem31"
             Me.ButtonItem31.SubItemsExpandWidth = 14
@@ -2163,7 +2165,7 @@
             'ButtonItem32
             '
             Me.ButtonItem32.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem32.Image = Global.SM64_ROM_Manager.My.Resources.Resources.Psychologie_32px
+            Me.ButtonItem32.Image = Global.SM64_ROM_Manager.My.Resources.Resources.Psychology_32px
             Me.ButtonItem32.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem32.Name = "ButtonItem32"
             Me.ButtonItem32.SubItemsExpandWidth = 14
@@ -2361,7 +2363,7 @@
             'ButtonItem36
             '
             Me.ButtonItem36.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem36.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Bild_Bearbeiten_32px
+            Me.ButtonItem36.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.EditPicture_32px
             Me.ButtonItem36.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem36.Name = "ButtonItem36"
             Me.ButtonItem36.SubItemsExpandWidth = 14
@@ -2581,7 +2583,7 @@
             'ButtonItem34
             '
             Me.ButtonItem34.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem34.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Bild_Bearbeiten_32px
+            Me.ButtonItem34.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.EditPicture_32px
             Me.ButtonItem34.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem34.Name = "ButtonItem34"
             Me.ButtonItem34.SubItemsExpandWidth = 14
@@ -3805,10 +3807,10 @@
             '
             'Form_AreaEditor
             '
+            resources.ApplyResources(Me, "$this")
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             Me.BottomLeftCornerSize = 0
             Me.BottomRightCornerSize = 0
-            resources.ApplyResources(Me, "$this")
             Me.Controls.Add(Me.ContextMenuBar1)
             Me.Controls.Add(Me.DockSite3)
             Me.Controls.Add(Me.DockSite9)
@@ -3819,7 +3821,6 @@
             Me.Controls.Add(Me.DockSite6)
             Me.Controls.Add(Me.DockSite8)
             Me.Controls.Add(Me.RibbonControl1)
-            Me.EnableGlass = False
             Me.KeyPreview = True
             Me.Name = "Form_AreaEditor"
             Me.TopLeftCornerSize = 0
@@ -3963,7 +3964,7 @@
         Friend WithEvents ButtonX_KeepOnButtom As DevComponents.DotNetBar.ButtonX
         Friend WithEvents ButtonX_KeepOnTop As DevComponents.DotNetBar.ButtonX
         Friend WithEvents ButtonX_KeepOnGround As DevComponents.DotNetBar.ButtonX
-        Friend WithEvents ButtonX_DropToButtom As DevComponents.DotNetBar.ButtonX
+        Friend WithEvents ButtonX_DropToBottom As DevComponents.DotNetBar.ButtonX
         Friend WithEvents ButtonX_DropToTop As DevComponents.DotNetBar.ButtonX
         Friend WithEvents ButtonX_DropToGround As DevComponents.DotNetBar.ButtonX
         Friend WithEvents ColumnHeader15 As ColumnHeader
@@ -4061,7 +4062,7 @@
         Friend WithEvents ItemContainer14 As DevComponents.DotNetBar.ItemContainer
         Friend WithEvents ButtonItem_DropToGround As DevComponents.DotNetBar.ButtonItem
         Friend WithEvents ButtonItem_DropToTop As DevComponents.DotNetBar.ButtonItem
-        Friend WithEvents ButtonItem_DropToButtom As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents ButtonItem_DropToBottom As DevComponents.DotNetBar.ButtonItem
         Friend WithEvents ItemContainer15 As DevComponents.DotNetBar.ItemContainer
         Friend WithEvents ButtonItem_KeepOnGround As DevComponents.DotNetBar.ButtonItem
         Friend WithEvents ButtonItem_KeepOnTop As DevComponents.DotNetBar.ButtonItem

@@ -43,7 +43,7 @@ Public Class Form_SetUpPoint
         CurrentYPosition += 3
 
         Button_Okay.Location = New Point(Button_Okay.Location.X, CurrentYPosition)
-        Button_Cancle.Location = New Point(Button_Cancle.Location.X, CurrentYPosition)
+        Button_Cancel.Location = New Point(Button_Cancel.Location.X, CurrentYPosition)
 
         Me.Size = New Size(Me.Size.Width, CurrentWith)
     End Sub

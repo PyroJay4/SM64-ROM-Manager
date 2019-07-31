@@ -335,7 +335,7 @@ Namespace LevelEditor
             StoreObjectHistoryPoint(SelectedObjects, "Position")
             DropObjectsToGround(1)
         End Sub
-        Friend Sub ButtonX_DropToButtom_Click(sender As Object, e As EventArgs) Handles ButtonX_DropToButtom.Click, ButtonItem_DropToButtom.Click
+        Friend Sub ButtonX_DropToBottom_Click(sender As Object, e As EventArgs) Handles ButtonX_DropToBottom.Click, ButtonItem_DropToBottom.Click
             StoreObjectHistoryPoint(SelectedObjects, "Position")
             DropObjectsToGround(2)
         End Sub
@@ -351,7 +351,7 @@ Namespace LevelEditor
                 ElseIf ({ButtonX_KeepOnTop, ButtonItem_KeepOnTop}).Contains(sender) Then
                     ButtonX_DropToTop.PerformClick()
                 ElseIf ({ButtonX_KeepOnButtom, ButtonItem_KeepOnButtom}).Contains(sender) Then
-                    ButtonX_DropToButtom.PerformClick()
+                    ButtonX_DropToBottom.PerformClick()
                 End If
             End If
         End Sub
