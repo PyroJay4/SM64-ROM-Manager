@@ -127,11 +127,11 @@
   <data name="RotateObjectCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RotateObjectCross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Kurznachricht_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Kurznachricht_34px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SMS_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SMS_34px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Psychologie_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Psychologie_34px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Psychology_34px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Psychology_34px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MoveObjectWheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MoveObjectWheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,14 +139,14 @@
   <data name="MoveCameraCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MoveCameraCross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Psychologie_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Psychologie_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Psychology_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Psychology_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MoveCameraWheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MoveCameraWheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Psychologie_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Psychologie_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Psychology_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Psychology_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DevelopmentBuild" xml:space="preserve">
     <value>4</value>

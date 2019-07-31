@@ -23,7 +23,7 @@ Partial Class Form_AddSpecialItem
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_AddSpecialItem))
-        Me.Button_Cancle = New DevComponents.DotNetBar.ButtonX()
+        Me.Button_Cancel = New DevComponents.DotNetBar.ButtonX()
         Me.Button_Okay = New DevComponents.DotNetBar.ButtonX()
         Me.GroupBox_Type = New System.Windows.Forms.GroupBox()
         Me.CheckBoxX_Mist = New DevComponents.DotNetBar.Controls.CheckBoxX()
@@ -49,18 +49,18 @@ Partial Class Form_AddSpecialItem
         CType(Me.IntegerInput_Scale, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Button_Cancle
+        'Button_Cancel
         '
-        Me.Button_Cancle.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.Button_Cancle.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.Button_Cancle.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Button_Cancle.FocusCuesEnabled = False
-        Me.Button_Cancle.Location = New System.Drawing.Point(74, 142)
-        Me.Button_Cancle.Name = "Button_Cancle"
-        Me.Button_Cancle.Size = New System.Drawing.Size(56, 23)
-        Me.Button_Cancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Button_Cancle.TabIndex = 103
-        Me.Button_Cancle.Text = "Cancle"
+        Me.Button_Cancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.Button_Cancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Button_Cancel.FocusCuesEnabled = False
+        Me.Button_Cancel.Location = New System.Drawing.Point(74, 142)
+        Me.Button_Cancel.Name = "Button_Cancel"
+        Me.Button_Cancel.Size = New System.Drawing.Size(56, 23)
+        Me.Button_Cancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Button_Cancel.TabIndex = 103
+        Me.Button_Cancel.Text = "Cancel"
         '
         'Button_Okay
         '
@@ -333,11 +333,9 @@ Partial Class Form_AddSpecialItem
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(406, 177)
         Me.Controls.Add(Me.GroupBox_Type)
-        Me.Controls.Add(Me.Button_Cancle)
+        Me.Controls.Add(Me.Button_Cancel)
         Me.Controls.Add(Me.Button_Okay)
         Me.Controls.Add(Me.GroupBox_Box)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -356,7 +354,7 @@ Partial Class Form_AddSpecialItem
 
     End Sub
 
-    Friend WithEvents Button_Cancle As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents Button_Cancel As DevComponents.DotNetBar.ButtonX
     Friend WithEvents Button_Okay As DevComponents.DotNetBar.ButtonX
     Friend WithEvents GroupBox_Type As GroupBox
     Friend WithEvents CheckBoxX_Water As DevComponents.DotNetBar.Controls.CheckBoxX

@@ -416,35 +416,35 @@
     <Compile Include="RomManager\GUI\Tools\TrajectoryEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\Coins Properties\LangResCoinsManager.de.Designer.vb">
+    <Compile Include="RomManager\Language Resources\Coins Properties\LangResCoinsManager.de.Designer.vb">
       <DependentUpon>LangResCoinsManager.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\Coins Properties\LangResCoinsManager.Designer.vb">
+    <Compile Include="RomManager\Language Resources\Coins Properties\LangResCoinsManager.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LangResCoinsManager.resx</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\MainForm\Form_Main_Resources.de.Designer.vb">
+    <Compile Include="RomManager\Language Resources\MainForm\Form_Main_Resources.de.Designer.vb">
       <DependentUpon>Form_Main_Resources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\MainForm\Form_Main_Resources.Designer.vb">
+    <Compile Include="RomManager\Language Resources\MainForm\Form_Main_Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Form_Main_Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\Global\Global_Ressources.de.Designer.vb">
-      <DependentUpon>Global_Ressources.de.resx</DependentUpon>
+    <Compile Include="RomManager\Language Resources\Global\Global_Resources.de.Designer.vb">
+      <DependentUpon>Global_Resources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\Global\Global_Ressources.Designer.vb">
+    <Compile Include="RomManager\Language Resources\Global\Global_Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Global_Ressources.resx</DependentUpon>
+      <DependentUpon>Global_Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RomManager\GUI\Level Editor\AreaEditorHistoryFunctions.vb" />
     <Compile Include="RomManager\GUI\Level Editor\Form_AreaEditor.Designer.vb">
@@ -467,17 +467,17 @@
     <Compile Include="RomManager\GUI\Script\ScriptDumper.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\Star Position Editor\Star_Position_Editor_Ressources.de.Designer.vb">
-      <DependentUpon>Star_Position_Editor_Ressources.de.resx</DependentUpon>
+    <Compile Include="RomManager\Language Resources\Star Position Editor\Star_Position_Editor_Resources.de.Designer.vb">
+      <DependentUpon>Star_Position_Editor_Resources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\Star Position Editor\Star_Position_Editor_Ressources.Designer.vb">
+    <Compile Include="RomManager\Language Resources\Star Position Editor\Star_Position_Editor_Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Star_Position_Editor_Ressources.resx</DependentUpon>
+      <DependentUpon>Star_Position_Editor_Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\Language Ressources\Text Profile Editor\TextProfileEditorLangRes.Designer.vb">
+    <Compile Include="RomManager\Language Resources\Text Profile Editor\TextProfileEditorLangRes.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TextProfileEditorLangRes.resx</DependentUpon>
@@ -499,10 +499,10 @@
     <Compile Include="RomManager\GUI\Settings\Form_Stylemanager.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.designer.vb">
+    <Compile Include="RomManager\GUI\Other\Form_ErrorDialog.designer.vb">
       <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.vb">
+    <Compile Include="RomManager\GUI\Other\Form_ErrorDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.Designer.vb">
@@ -512,10 +512,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Components\LM Custom ListViewItems.vb" />
-    <Compile Include="RomManager\GUI\Sonstiges\Form_About.Designer.vb">
+    <Compile Include="RomManager\GUI\Other\Form_About.Designer.vb">
       <DependentUpon>Form_About.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_About.vb">
+    <Compile Include="RomManager\GUI\Other\Form_About.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Settings\Form_Settings.Designer.vb">
@@ -569,10 +569,10 @@
     <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SetUpPoint.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.Designer.vb">
+    <Compile Include="RomManager\GUI\Other\Form_SM64TextConverter.Designer.vb">
       <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.vb">
+    <Compile Include="RomManager\GUI\Other\Form_SM64TextConverter.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Modules\General.vb" />
@@ -660,13 +660,13 @@
     <EmbeddedResource Include="RomManager\GUI\Settings\Form_Stylemanager.de.resx">
       <DependentUpon>Form_Stylemanager.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_About.de.resx">
+    <EmbeddedResource Include="RomManager\GUI\Other\Form_About.de.resx">
       <DependentUpon>Form_About.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.de.resx">
+    <EmbeddedResource Include="RomManager\GUI\Other\Form_ErrorDialog.de.resx">
       <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.de.resx">
+    <EmbeddedResource Include="RomManager\GUI\Other\Form_SM64TextConverter.de.resx">
       <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\HexEditor.resx">
@@ -696,32 +696,32 @@
     <EmbeddedResource Include="RomManager\GUI\Tools\TrajectoryEditor.resx">
       <DependentUpon>TrajectoryEditor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\Coins Properties\LangResCoinsManager.de.resx">
+    <EmbeddedResource Include="RomManager\Language Resources\Coins Properties\LangResCoinsManager.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LangResCoinsManager.de.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\Coins Properties\LangResCoinsManager.resx">
+    <EmbeddedResource Include="RomManager\Language Resources\Coins Properties\LangResCoinsManager.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LangResCoinsManager.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\Global\Global_Ressources.de.resx">
+    <EmbeddedResource Include="RomManager\Language Resources\Global\Global_Resources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Global_Ressources.de.Designer.vb</LastGenOutput>
+      <LastGenOutput>Global_Resources.de.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\Global\Global_Ressources.resx">
+    <EmbeddedResource Include="RomManager\Language Resources\Global\Global_Resources.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Global_Ressources.Designer.vb</LastGenOutput>
+      <LastGenOutput>Global_Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\MainForm\Form_Main_Resources.de.resx">
+    <EmbeddedResource Include="RomManager\Language Resources\MainForm\Form_Main_Resources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Form_Main_Resources.de.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\MainForm\Form_Main_Resources.resx">
+    <EmbeddedResource Include="RomManager\Language Resources\MainForm\Form_Main_Resources.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Form_Main_Resources.Designer.vb</LastGenOutput>
@@ -742,13 +742,13 @@
     <EmbeddedResource Include="RomManager\GUI\Settings\Form_Stylemanager.resx">
       <DependentUpon>Form_Stylemanager.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_ErrorDialog.resx">
+    <EmbeddedResource Include="RomManager\GUI\Other\Form_ErrorDialog.resx">
       <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.resx">
       <DependentUpon>Form_SelectImportModelFormat.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_About.resx">
+    <EmbeddedResource Include="RomManager\GUI\Other\Form_About.resx">
       <DependentUpon>Form_About.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -773,23 +773,23 @@
     <EmbeddedResource Include="RomManager\GUI\Settings\Form_Settings.resx">
       <DependentUpon>Form_Settings.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Sonstiges\Form_SM64TextConverter.resx">
+    <EmbeddedResource Include="RomManager\GUI\Other\Form_SM64TextConverter.resx">
       <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Update\UpdateDialog.resx">
       <DependentUpon>UpdateDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\Star Position Editor\Star_Position_Editor_Ressources.de.resx">
+    <EmbeddedResource Include="RomManager\Language Resources\Star Position Editor\Star_Position_Editor_Resources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Star_Position_Editor_Ressources.de.Designer.vb</LastGenOutput>
+      <LastGenOutput>Star_Position_Editor_Resources.de.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\Star Position Editor\Star_Position_Editor_Ressources.resx">
+    <EmbeddedResource Include="RomManager\Language Resources\Star Position Editor\Star_Position_Editor_Resources.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Star_Position_Editor_Ressources.Designer.vb</LastGenOutput>
+      <LastGenOutput>Star_Position_Editor_Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\Language Ressources\Text Profile Editor\TextProfileEditorLangRes.resx">
+    <EmbeddedResource Include="RomManager\Language Resources\Text Profile Editor\TextProfileEditorLangRes.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TextProfileEditorLangRes.Designer.vb</LastGenOutput>
@@ -822,28 +822,28 @@
     <None Include="Resources\MoveCameraWheel.png" />
     <None Include="Resources\RotateObjectWheel.png" />
     <None Include="Resources\RotateObjectCross.png" />
-    <None Include="Resources\Löschen_16px.png" />
-    <None Include="Resources\Hinzufügen_16px.png" />
-    <None Include="Resources\Bearbeiten_16px.png" />
-    <None Include="Resources\Zusammen_ziehen_16px.png" />
-    <None Include="Resources\Kurznachricht_34px.png" />
-    <None Include="Resources\Psychologie_16px.png" />
-    <None Include="Resources\Psychologie_34px.png" />
-    <None Include="Resources\Kurznachricht_34px1.png" />
-    <None Include="Resources\Psychologie_16px1.png" />
-    <None Include="Resources\Psychologie_34px1.png" />
-    <None Include="Resources\Zusammen_ziehen_16px1.png" />
-    <None Include="Resources\Zusammen_ziehen_16px2.png" />
-    <None Include="Resources\Alle_Speichern_16px.png" />
-    <None Include="Resources\Alle_Speichern_16px1.png" />
-    <None Include="Resources\Aktualisieren_16px.png" />
-    <None Include="Resources\Zusammen_ziehen_32px.png" />
-    <None Include="Resources\Psychologie_32px.png" />
-    <None Include="Resources\Speichern_16px.png" />
-    <None Include="Resources\Speichern_20px.png" />
-    <None Include="Resources\Speichern_18px.png" />
-    <None Include="Resources\Speichern_19px.png" />
-    <None Include="Resources\Bild_Bearbeiten_32px.png" />
+    <None Include="Resources\Remove_16px.png" />
+    <None Include="Resources\Add_16px.png" />
+    <None Include="Resources\Edit_16px.png" />
+    <None Include="Resources\Shrink_16px.png" />
+    <None Include="Resources\SMS_34px.png" />
+    <None Include="Resources\Psychology_16px.png" />
+    <None Include="Resources\Psychology_34px.png" />
+    <None Include="Resources\SMS_34px1.png" />
+    <None Include="Resources\Psychology_16px1.png" />
+    <None Include="Resources\Psychology_34px1.png" />
+    <None Include="Resources\Shrink_16px1.png" />
+    <None Include="Resources\Shrink_16px2.png" />
+    <None Include="Resources\SaveAll_16px.png" />
+    <None Include="Resources\SaveAll_16px1.png" />
+    <None Include="Resources\Refresh_16px.png" />
+    <None Include="Resources\Shrink_32px.png" />
+    <None Include="Resources\Psychology_32px.png" />
+    <None Include="Resources\Save_16px.png" />
+    <None Include="Resources\Save_20px.png" />
+    <None Include="Resources\Save_18px.png" />
+    <None Include="Resources\Save_19px.png" />
+    <None Include="Resources\EditPicture_32px.png" />
     <Content Include="RomManager\Others\RomMap.txt" />
   </ItemGroup>
   <ItemGroup>

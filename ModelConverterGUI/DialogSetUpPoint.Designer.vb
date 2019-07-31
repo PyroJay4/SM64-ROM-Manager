@@ -153,9 +153,9 @@ Partial Class DialogSetUpPoint
         Me.Button_Cancle.Size = New System.Drawing.Size(56, 23)
         Me.Button_Cancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Button_Cancle.TabIndex = 96
-        Me.Button_Cancle.Text = "Cancle"
+        Me.Button_Cancle.Text = "Cancel"
         '
-        'Form_SetUpPoint
+        'DialogSetUpPoint
         '
         Me.AcceptButton = Me.Button_Okay
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -170,13 +170,11 @@ Partial Class DialogSetUpPoint
         Me.Controls.Add(Me.LabelX_X)
         Me.Controls.Add(Me.IntegerInput_X)
         Me.Controls.Add(Me.Button_Okay)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "Form_SetUpPoint"
+        Me.Name = "DialogSetUpPoint"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Point"

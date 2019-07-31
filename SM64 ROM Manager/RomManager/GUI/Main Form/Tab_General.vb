@@ -29,7 +29,7 @@ Public Class Tab_General
         Try
             Controller.SetGameName(TextBoxX_G_GameName.Text)
         Catch ex As Exception
-            MessageBoxEx.Show(Form_Main_Resources.MsgBox_GameNameHasInvalidChars, Global_Ressources.Text_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBoxEx.Show(Form_Main_Resources.MsgBox_GameNameHasInvalidChars, Global_Resources.Text_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         Button_G_SaveGameName.Enabled = False
     End Sub

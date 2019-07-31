@@ -41,7 +41,7 @@ Public Class Managed3DObject
 
     <DisplayName("Object Combo")>
     <Category("Object Combo")>
-    <Description("Indicated the Combo of Model ID and Behvior ID.")>
+    <Description("Indicates the combination of Model ID and Behavior ID.")>
     Public Property ObjectCombo As String
         Get
             Return myObjectCombos.GetObjectComboOfObject(Me).Name
@@ -61,37 +61,37 @@ Public Class Managed3DObject
 
     <DisplayName("Act 1")>
     <Category("Acts")>
-    <Description("If Yes, the Object will be visible if you select Star 1.")>
+    <Description("If set to yes, the object will be visible if you select star 1.")>
     Public Property Act1 As Boolean
 
     <DisplayName("Act 2")>
     <Category("Acts")>
-    <Description("If Yes, the Object will be visible if you select Star 2.")>
+    <Description("If set to yes, the object will be visible if you select star 2.")>
     Public Property Act2 As Boolean
 
     <DisplayName("Act 3")>
     <Category("Acts")>
-    <Description("If Yes, the Object will be visible if you select Star 3.")>
+    <Description("If set to yes, the object will be visible if you select star 3.")>
     Public Property Act3 As Boolean
 
     <DisplayName("Act 4")>
     <Category("Acts")>
-    <Description("If Yes, the Object will be visible if you select Star 4.")>
+    <Description("If set to yes, the object will be visible if you select star 4.")>
     Public Property Act4 As Boolean
 
     <DisplayName("Act 5")>
     <Category("Acts")>
-    <Description("If Yes, the Object will be visible if you select Star 5.")>
+    <Description("If set to yes, the object will be visible if you select star 5.")>
     Public Property Act5 As Boolean
 
     <DisplayName("Act 6")>
     <Category("Acts")>
-    <Description("If Yes, the Object will be visible if you select Star 6.")>
+    <Description("If set to yes, the object will be visible if you select star 6.")>
     Public Property Act6 As Boolean
 
     <DisplayName("All Acts")>
     <Category("Acts")>
-    <Description("If Yes, the Object will be visible always.")>
+    <Description("If set to yes, the object will always be visible.")>
     Public Property AllActs As Boolean
         Get
             Return Act1 AndAlso Act2 AndAlso Act3 AndAlso Act4 AndAlso Act5 AndAlso Not Act6
@@ -115,32 +115,32 @@ Public Class Managed3DObject
 
     <DisplayName("Model ID")>
     <Category("Model")>
-    <Description("Indicates what Model the Object have.")>
+    <Description("Indicates what model the object has.")>
     Public Property ModelID As Byte
 
     <DisplayName("Behavior Address")>
     <Category("Behavior")>
-    <Description("Indicates the Behavior of the Object.")>
+    <Description("Indicates what behavior the object has.")>
     Public Property BehaviorID As UInteger
 
     <DisplayName("Behavior Param 1")>
     <Category("Behavior")>
-    <Description("The first parameter for the Behavior.")>
+    <Description("The first parameter for the behavior.")>
     Public Property BParam1 As Byte
 
     <DisplayName("Behavior Param 2")>
     <Category("Behavior")>
-    <Description("The second parameter for the Behavior.")>
+    <Description("The second parameter for the behavior.")>
     Public Property BParam2 As Byte
 
     <DisplayName("Behavior Param 3")>
     <Category("Behavior")>
-    <Description("The third parameter for the Behavior.")>
+    <Description("The third parameter for the nehavior.")>
     Public Property BParam3 As Byte
 
     <DisplayName("Behavior Param 4")>
     <Category("Behavior")>
-    <Description("The fourth parameter for the Behavior.")>
+    <Description("The fourth parameter for the behavior.")>
     Public Property BParam4 As Byte
 
     <Browsable(False)>
@@ -162,7 +162,7 @@ Public Class Managed3DObject
 
     <DisplayName("X Position")>
     <Category("Position")>
-    <Description("The position on the X axis.")>
+    <Description("The position on the X-axis.")>
     Public Property PositionX As Int16
         Get
             Return Position.X
@@ -174,7 +174,7 @@ Public Class Managed3DObject
 
     <DisplayName("Y Position")>
     <Category("Position")>
-    <Description("The position on the Y axis.")>
+    <Description("The position on the Y-axis.")>
     Public Property PositionY As Int16
         Get
             Return Position.Y
@@ -186,7 +186,7 @@ Public Class Managed3DObject
 
     <DisplayName("Z Position")>
     <Category("Position")>
-    <Description("The position on the Z axis.")>
+    <Description("The position on the Z-axis.")>
     Public Property PositionZ As Int16
         Get
             Return Position.Z
@@ -198,7 +198,7 @@ Public Class Managed3DObject
 
     <DisplayName("X Rotation")>
     <Category("Rotation")>
-    <Description("The rotation on the X axis.")>
+    <Description("The rotation on the X-axis.")>
     Public Property RotationX As Int16
         Get
             Return Rotation.X
@@ -210,7 +210,7 @@ Public Class Managed3DObject
 
     <DisplayName("Y Rotation")>
     <Category("Rotation")>
-    <Description("The rotation on the Y axis.")>
+    <Description("The rotation on the Y-axis.")>
     Public Property RotationY As Int16
         Get
             Return Rotation.Y
@@ -222,7 +222,7 @@ Public Class Managed3DObject
 
     <DisplayName("Z Rotation")>
     <Category("Rotation")>
-    <Description("The rotation on the Z axis.")>
+    <Description("The rotation on the Z-axis.")>
     Public Property RotationZ As Int16
         Get
             Return Rotation.Z

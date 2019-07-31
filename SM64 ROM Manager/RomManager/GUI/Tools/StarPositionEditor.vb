@@ -29,7 +29,7 @@ Public Class StarPositionEditor
         curStar.Position = GetPosition()
         curStar.SavePosition(rommgr)
         PatchClass.UpdateChecksum(rommgr.RomFile)
-        MessageBoxEx.Show(Star_Position_Editor_Ressources.MsgBox_Done, Star_Position_Editor_Ressources.MsgBox_Done_Title, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBoxEx.Show(Star_Position_Editor_Resources.MsgBox_Done, Star_Position_Editor_Resources.MsgBox_Done_Title, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
 #Region "Funktionen"

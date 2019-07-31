@@ -101,8 +101,6 @@ Partial Class Form_ErrorDialog
         Me.Controls.Add(Me.ButtonX1)
         Me.Controls.Add(Me.LabelX1)
         Me.Controls.Add(Me.TextBoxX1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False

@@ -30,7 +30,7 @@ Partial Class Form_SetUpPoint
         Me.IntegerInput_Y = New DevComponents.Editors.IntegerInput()
         Me.LabelX_Z = New DevComponents.DotNetBar.LabelX()
         Me.IntegerInput_Z = New DevComponents.Editors.IntegerInput()
-        Me.Button_Cancle = New DevComponents.DotNetBar.ButtonX()
+        Me.Button_Cancel = New DevComponents.DotNetBar.ButtonX()
         CType(Me.IntegerInput_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IntegerInput_Y, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IntegerInput_Z, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,27 +142,27 @@ Partial Class Form_SetUpPoint
         Me.IntegerInput_Z.TabIndex = 94
         Me.IntegerInput_Z.Visible = False
         '
-        'Button_Cancle
+        'Button_Cancel
         '
-        Me.Button_Cancle.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.Button_Cancle.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.Button_Cancle.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Button_Cancle.FocusCuesEnabled = False
-        Me.Button_Cancle.Location = New System.Drawing.Point(80, 90)
-        Me.Button_Cancle.Name = "Button_Cancle"
-        Me.Button_Cancle.Size = New System.Drawing.Size(56, 23)
-        Me.Button_Cancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Button_Cancle.TabIndex = 96
-        Me.Button_Cancle.Text = "Cancle"
+        Me.Button_Cancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.Button_Cancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Button_Cancel.FocusCuesEnabled = False
+        Me.Button_Cancel.Location = New System.Drawing.Point(80, 90)
+        Me.Button_Cancel.Name = "Button_Cancel"
+        Me.Button_Cancel.Size = New System.Drawing.Size(56, 23)
+        Me.Button_Cancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Button_Cancel.TabIndex = 96
+        Me.Button_Cancel.Text = "Cancel"
         '
         'Form_SetUpPoint
         '
         Me.AcceptButton = Me.Button_Okay
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.Button_Cancle
+        Me.CancelButton = Me.Button_Cancel
         Me.ClientSize = New System.Drawing.Size(148, 125)
-        Me.Controls.Add(Me.Button_Cancle)
+        Me.Controls.Add(Me.Button_Cancel)
         Me.Controls.Add(Me.LabelX_Z)
         Me.Controls.Add(Me.IntegerInput_Z)
         Me.Controls.Add(Me.LabelX_Y)
@@ -170,8 +170,6 @@ Partial Class Form_SetUpPoint
         Me.Controls.Add(Me.LabelX_X)
         Me.Controls.Add(Me.IntegerInput_X)
         Me.Controls.Add(Me.Button_Okay)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -196,5 +194,5 @@ Partial Class Form_SetUpPoint
     Friend WithEvents IntegerInput_Y As DevComponents.Editors.IntegerInput
     Friend WithEvents LabelX_Z As DevComponents.DotNetBar.LabelX
     Friend WithEvents IntegerInput_Z As DevComponents.Editors.IntegerInput
-    Friend WithEvents Button_Cancle As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents Button_Cancel As DevComponents.DotNetBar.ButtonX
 End Class
