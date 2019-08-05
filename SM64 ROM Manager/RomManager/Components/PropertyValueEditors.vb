@@ -420,6 +420,7 @@ Namespace PropertyValueEditors
             editor.BackgroundStyle.Class = ""
             editor.BackColor = Color.Transparent
             editor.AllowEmptyState = False
+            editor.FreeTextEntryToggleKey = Keys.E
 
             Return editor
         End Function
