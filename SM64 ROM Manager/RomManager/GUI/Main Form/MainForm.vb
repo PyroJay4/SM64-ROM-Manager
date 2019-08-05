@@ -227,8 +227,7 @@ Public Class MainForm
         PluginManager.LoadPlugins(Path.Combine(MyDataPath, "Plugins"))
         AddMyPluginCommands()
 
-        If Await Controller.CanAccessUpdateServer Then _
-            Controller.SearchForUpdates(True)
+        Await Controller.SearchForUpdates(True)
     End Sub
 
     Private Sub AddMyPluginCommands()
@@ -345,8 +344,10 @@ Public Class MainForm
         Controller.OpenStyleManager()
     End Sub
 
-    Private Sub ButtonItem29_Click(sender As Object, e As EventArgs) Handles ButtonItem29.Click
-        Controller.SearchForUpdates(False)
+    Private Async Sub ButtonItem29_Click(sender As Object, e As EventArgs) Handles ButtonItem29.Click
+        If Not Await Controller.SearchForUpdates(False) Then
+            ShowToadnotifiaction(Me, "The update server is not available.", eToastGlowColor.Red)
+        End If
     End Sub
 
     Private Sub SuperTabControl_Main_SelectedTabChanging(sender As Object, e As TabStripTabChangingEventArgs) Handles TabControl1.SelectedTabChanging

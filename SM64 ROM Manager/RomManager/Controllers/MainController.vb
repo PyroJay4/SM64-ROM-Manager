@@ -166,6 +166,12 @@ Public Class MainController
         UpdateRomDate()
     End Sub
 
+    Private Async Function CanAccessUpdateServer() As Task(Of Boolean)
+        Dim ping As New Ping
+        Dim result As PingReply = Await ping.SendTaskAsync("pilzinsel64.square7.ch")
+        Return result.Status = IPStatus.Success
+    End Function
+
     'M a i n   F e a t u r e s
 
     Public Sub UpdateRomDate()
@@ -176,17 +182,16 @@ Public Class MainController
         RaiseEvent OtherStatusInfosChanged(New OtherStatusInfosChangedEventArgs(text, foreColor))
     End Sub
 
-    Public Async Function CanAccessUpdateServer() As Task(Of Boolean)
-        Dim ping As New Ping
-        Dim result As PingReply = Await ping.SendTaskAsync("pilzinsel64.square7.ch")
-        Return result.Status = IPStatus.Success
+    Public Async Function SearchForUpdates(searchHidden As Boolean) As Task(Of Boolean)
+        If Await CanAccessUpdateServer() Then
+            Dim ui As New UpdaterUI(updateManager, SynchronizationContext.Current, True)
+            ui.UseHiddenSearch = searchHidden
+            ui.ShowUserInterface()
+            Return True
+        Else
+            Return False
+        End If
     End Function
-
-    Public Sub SearchForUpdates(searchHidden As Boolean)
-        Dim ui As New UpdaterUI(updateManager, SynchronizationContext.Current, True)
-        ui.UseHiddenSearch = searchHidden
-        ui.ShowUserInterface()
-    End Sub
 
     Public Sub CheckCommandLineArgs()
         Dim fileToOpen As String = Nothing
