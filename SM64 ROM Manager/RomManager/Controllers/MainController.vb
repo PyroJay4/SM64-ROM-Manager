@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports DevComponents.DotNetBar.Controls
 Imports nUpdate.Updating
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib
@@ -8,7 +7,6 @@ Imports SM64_ROM_Manager.My.Resources
 Imports SM64_ROM_Manager.EventArguments
 Imports System.Threading
 Imports DevComponents.DotNetBar
-Imports Pilz.Reflection
 Imports SM64Lib.Exceptions
 Imports System.Globalization
 Imports PatchScripts
@@ -16,7 +14,6 @@ Imports Microsoft.WindowsAPICodePack.Dialogs
 Imports Microsoft.WindowsAPICodePack.Dialogs.Controls
 Imports System.Collections.Specialized
 Imports SM64Lib.Music
-Imports SM64Lib.Data
 Imports SM64Lib.Levels
 Imports SM64Lib.Text.Profiles
 Imports SM64Lib.Text
@@ -162,7 +159,7 @@ Public Class MainController
     'P r i v a t e   F e a u t u r e s
 
     Private Sub SetRomMgr(rommgr As RomManager)
-        Me.romManager = rommgr
+        romManager = rommgr
         UpdateRomDate()
     End Sub
 
