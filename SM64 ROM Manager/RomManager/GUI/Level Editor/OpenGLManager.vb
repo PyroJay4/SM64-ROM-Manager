@@ -150,10 +150,6 @@ Namespace LevelEditor
             GL.Enable(EnableCap.AlphaTest)
             GL.AlphaFunc(AlphaFunction.Gequal, 0.5F)
 
-            'GL.Light(LightName.Light0, LightParameter.Ambient, New Graphics.Color4(Color.DarkGray.R, Color.DarkGray.G, Color.DarkGray.B, Color.DarkGray.A))
-            'GL.Enable(EnableCap.Lighting)
-            'GL.Enable(EnableCap.Light0)
-
             GL.Enable(EnableCap.CullFace)
         End Sub
 
