@@ -72,7 +72,7 @@ Namespace LevelEditor
         End Property
 
         Friend Sub ReleaseBuffers()
-            For Each kvp As KeyValuePair(Of Byte, Renderer) In Main.objectModels
+            For Each kvp As KeyValuePair(Of Byte, Renderer) In Main.ObjectModels
                 kvp.Value.ReleaseBuffers()
             Next
 
@@ -81,18 +81,18 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub CheckAndLoadNew()
-            ogl.MakeCurrent()
+            Ogl.MakeCurrent()
             Dim loadAreaIDs As Boolean = False
 
-            If Main.cArea Is Nothing Then
+            If Main.CArea Is Nothing Then
                 loadAreaIDs = True
             End If
 
-            If Main.cLevel.Areas.Count <> Main.ComboBoxItem_Area.Items.Count Then
+            If Main.CLevel.Areas.Count <> Main.ComboBoxItem_Area.Items.Count Then
                 loadAreaIDs = True
             Else
                 For Each ci As ComboItem In Main.ComboBoxItem_Area.Items
-                    If Not Main.cLevel.Areas.Contains(ci.Tag) Then
+                    If Not Main.CLevel.Areas.Contains(ci.Tag) Then
                         loadAreaIDs = True
                     End If
                 Next
@@ -102,32 +102,32 @@ Namespace LevelEditor
                 Main.LoadAreaIDs()
             Else
                 Dim loadAreaMdl As Boolean = False
-                If hashCollisionMap <> Main.cArea.AreaModel.Collision.GetHashCode Then
+                If hashCollisionMap <> Main.CArea.AreaModel.Collision.GetHashCode Then
                     hashCollisionMap = 0
                     cCollisionMap = Nothing
-                    If ogl.CurrentModelDrawMod = ModelDrawMod.Collision Then
+                    If Ogl.CurrentModelDrawMod = ModelDrawMod.Collision Then
                         loadAreaMdl = True
                     End If
                 End If
-                If hashVisualMap <> Main.cArea.AreaModel.Fast3DBuffer.GetBuffer.GetHashCode Then
+                If hashVisualMap <> Main.CArea.AreaModel.Fast3DBuffer.GetBuffer.GetHashCode Then
                     hashVisualMap = 0
                     cVisualMap = Nothing
-                    If ogl.CurrentModelDrawMod = ModelDrawMod.VisualMap Then
+                    If Ogl.CurrentModelDrawMod = ModelDrawMod.VisualMap Then
                         loadAreaMdl = True
                     End If
                 End If
                 If loadAreaMdl Then
-                    maps.LoadAreaModel()
+                    Maps.LoadAreaModel()
                 End If
             End If
         End Sub
 
         Friend Sub LoadAreaModel()
-            LoadAreaModel(ogl.CurrentModelDrawMod)
+            LoadAreaModel(Ogl.CurrentModelDrawMod)
         End Sub
 
         Friend Sub LoadAreaModel(modelMode As ModelDrawMod)
-            If Main.cArea IsNot Nothing Then
+            If Main.CArea IsNot Nothing Then
                 Main.ProgressControl(True)
 
                 Select Case modelMode
@@ -153,7 +153,7 @@ Namespace LevelEditor
                             rndrVisualMap.RenderModel()
                         End If
                 End Select
-                ogl.Invalidate()
+                Ogl.Invalidate()
 
                 Main.ProgressControl(False)
 
@@ -162,13 +162,13 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub LoadAreaCollisionAsObject3D()
-            hashCollisionMap = Main.cArea.AreaModel.Collision.GetHashCode
-            cCollisionMap = AwaitOnUI(Main.cArea.AreaModel.Collision.ToObject3DAsync)
+            hashCollisionMap = Main.CArea.AreaModel.Collision.GetHashCode
+            cCollisionMap = AwaitOnUI(Main.CArea.AreaModel.Collision.ToObject3DAsync)
         End Sub
 
         Friend Sub LoadAreaVisualMapAsObject3D()
-            hashVisualMap = Main.cArea.AreaModel.Fast3DBuffer.GetBuffer.GetHashCode
-            cVisualMap = AwaitOnUI(LoadAreaVisualMapAsObject3DAsync(Main.rommgr, Main.cArea))
+            hashVisualMap = Main.CArea.AreaModel.Fast3DBuffer.GetBuffer.GetHashCode
+            cVisualMap = AwaitOnUI(LoadAreaVisualMapAsObject3DAsync(Main.Rommgr, Main.CArea))
         End Sub
 
         Public Sub LoadCollisionLists()
@@ -178,7 +178,7 @@ Namespace LevelEditor
             Main.ListViewEx_ColFaces.Items.Clear()
             Main.ListViewEx_CollVertices.Items.Clear()
 
-            If Main.cArea.AreaModel.Collision IsNot Nothing Then
+            If Main.CArea.AreaModel.Collision IsNot Nothing Then
                 Dim vertCounter As Integer = 0
                 Dim faceCounter As Integer = 0
 
@@ -218,21 +218,21 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub ButtonItem_ExportCollision_Click(sender As Object, e As EventArgs)
-            If Main.cArea.AreaModel.Collision IsNot Nothing Then
+            If Main.CArea.AreaModel.Collision IsNot Nothing Then
                 LoadAreaModel(ModelDrawMod.Collision)
                 ExportModel(rndrCollisionMap.Model, Settings.FileParser.FileExporterModule)
             End If
         End Sub
 
         Friend Sub ButtonItem_ExportVisualMap_Click(sender As Object, e As EventArgs)
-            If Main.cArea.AreaModel.Fast3DBuffer IsNot Nothing Then
+            If Main.CArea.AreaModel.Fast3DBuffer IsNot Nothing Then
                 LoadAreaModel(ModelDrawMod.VisualMap)
                 ExportModel(rndrVisualMap.Model, Settings.FileParser.FileExporterModule)
             End If
         End Sub
 
         Friend Sub UpdateTexturesOfCurrentModel(snapshot As Dictionary(Of Material, Image))
-            If cVisualMap IsNot Nothing AndAlso maps.rndrVisualMap IsNot Nothing Then
+            If cVisualMap IsNot Nothing AndAlso Maps.rndrVisualMap IsNot Nothing Then
                 For Each kvp In snapshot
                     If kvp.Value IsNot kvp.Key.Image Then
                         rndrVisualMap.UpdateTexture(kvp.Value, kvp.Key.Image)
@@ -262,7 +262,7 @@ Namespace LevelEditor
             frm.CheckBoxX_ConvertModel.Checked = convertModel
             frm.CheckBoxX_ConvertCollision.Checked = convertCollision
 
-            With Main.cArea
+            With Main.CArea
                 If frm.ShowDialog() <> DialogResult.OK Then
                     Ogl.MakeCurrent()
                     Return
@@ -278,7 +278,7 @@ Namespace LevelEditor
 
                     hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrVisualMap", "cVisualMap", "rndrCollisionMap", "cCollisionMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
                     Dim os As New ObjectState
-                    os.Object = Main.cArea
+                    os.Object = Main.CArea
                     os.ValueToPatch = .AreaModel
                     os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
                     os.MemberType = ObjectValueType.Property
@@ -294,7 +294,7 @@ Namespace LevelEditor
 
                     hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrCollisionMap", "cCollisionMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
                     Dim os As New ObjectState
-                    os.Object = Main.cArea.AreaModel
+                    os.Object = Main.CArea.AreaModel
                     os.ValueToPatch = .AreaModel.Collision
                     os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
                     os.MemberType = ObjectValueType.Property
@@ -309,7 +309,7 @@ Namespace LevelEditor
 
                     hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrVisualMap", "cVisualMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
                     Dim os As New ObjectState
-                    os.Object = Main.cArea.AreaModel
+                    os.Object = Main.CArea.AreaModel
                     os.ValueToPatch = .AreaModel.Fast3DBuffer
                     os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
                     os.MemberType = ObjectValueType.Property
@@ -332,7 +332,7 @@ Namespace LevelEditor
                 End If
             End With
 
-            Main.cArea.SetSegmentedBanks(Main.rommgr)
+            Main.CArea.SetSegmentedBanks(Main.Rommgr)
             LoadAreaModel()
 
             Main.ResumeLayout()
