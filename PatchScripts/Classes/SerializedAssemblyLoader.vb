@@ -7,7 +7,7 @@ Friend Module SerializedAssemblyLoader
 
     Public Function LoadAsmXml(asm As Assembly) As IEnumerable(Of SerializedAssemblyMember)
         Dim doc = XDocument.Load(Path.ChangeExtension(asm.Location, ".xml"))
-        Dim objMembers As JArray = JObject.FromObject(JsonConvert.SerializeXNode(doc))("doc")("members")("member")
+        Dim objMembers As JArray = JObject.Parse(JsonConvert.SerializeXNode(doc))("doc")("members")("member")
         Dim members As New List(Of SerializedAssemblyMember)
 
         For Each objMember As JObject In objMembers

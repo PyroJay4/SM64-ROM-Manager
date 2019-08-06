@@ -1101,10 +1101,11 @@ Public Class MainController
 
         If lvl IsNot Nothing Then
             Dim selLevel As LevelInfoDataTabelList.Level = OpenLevelSelectDialog()
-            romManager.ChangeLevelID(lvl, selLevel.ID, selLevel.Type)
+            If selLevel IsNot Nothing Then
+                romManager.ChangeLevelID(lvl, selLevel.ID, selLevel.Type)
+                RaiseEvent LevelIDChanged(New LevelEventArgs(levelIndex, lvl.LevelID))
+            End If
         End If
-
-        RaiseEvent LevelIDChanged(New LevelEventArgs(levelIndex, lvl.LevelID))
     End Sub
 
     Public Sub ImportLevel()
