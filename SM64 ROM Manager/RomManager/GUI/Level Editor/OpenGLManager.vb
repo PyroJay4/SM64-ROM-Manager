@@ -4,6 +4,7 @@ Imports Pilz.Drawing.Drawing3D.OpenGLFactory.RenderingN
 Imports Pilz.S3DFileParser
 Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN
 Imports SM64_ROM_Manager.SettingsManager
+Imports SM64Lib.Levels
 
 Namespace LevelEditor
 
@@ -156,7 +157,7 @@ Namespace LevelEditor
             GL.Enable(EnableCap.CullFace)
         End Sub
 
-        Private Sub glControl1_Paint(sender As Object, e As PaintEventArgs) Handles GLControl1.Paint
+        Private Sub GlControl1_Paint(sender As Object, e As PaintEventArgs) Handles GLControl1.Paint
             MoveCameraViaWASDQE()
 
             GL.ClearColor(If(Settings.StyleManager.AlwaysKeepBlueColors, Color.CornflowerBlue, Main.BackColor))
@@ -167,11 +168,17 @@ Namespace LevelEditor
             GL.MatrixMode(MatrixMode.Modelview)
             GL.LoadMatrix(camMtx)
 
+            'DrawSpecialBoxes()
+
             Select Case CurrentModelDrawMod
                 Case ModelDrawMod.Collision
-                    If Maps.rndrCollisionMap IsNot Nothing Then Maps.rndrCollisionMap?.DrawModel(FaceDrawMode)
+                    If Maps.rndrCollisionMap IsNot Nothing Then
+                        Maps.rndrCollisionMap?.DrawModel(FaceDrawMode)
+                    End If
                 Case ModelDrawMod.VisualMap
-                    If Maps.rndrVisualMap IsNot Nothing Then Maps.rndrVisualMap?.DrawModel(FaceDrawMode)
+                    If Maps.rndrVisualMap IsNot Nothing Then
+                        Maps.rndrVisualMap?.DrawModel(FaceDrawMode)
+                    End If
             End Select
 
             DrawAllObjects()
@@ -261,12 +268,12 @@ Namespace LevelEditor
         End Sub
 
         Private Sub ModelPreview_KeyDown(sender As Object, e As KeyEventArgs) Handles GLControl1.KeyDown
-            If Not Main.pressedKeys.Contains(e.KeyCode) Then Main.pressedKeys.Add(e.KeyCode)
+            If Not Main.PressedKeys.Contains(e.KeyCode) Then Main.PressedKeys.Add(e.KeyCode)
         End Sub
 
         Private Sub ModelPreview_KeyUp(sender As Object, e As KeyEventArgs)
-            Main.lastKeyLeaveTimer = Date.Now
-            If Main.pressedKeys.Contains(e.KeyCode) Then Main.pressedKeys.Remove(e.KeyCode)
+            Main.LastKeyLeaveTimer = Date.Now
+            If Main.PressedKeys.Contains(e.KeyCode) Then Main.PressedKeys.Remove(e.KeyCode)
         End Sub
 
         Private Sub CompositionTarget_Rendering(sender As Object, e As EventArgs)
@@ -279,7 +286,7 @@ Namespace LevelEditor
             Dim moveSpeed As Integer = Convert.ToInt32(Math.Round(If(Main.IsShiftPressed, 60, 30) * Camera.CamSpeedMultiplier, 0))
             Dim allowCamMove As Boolean = Not (isMouseDown AndAlso Main.IsShiftPressed)
 
-            For Each k As Keys In Main.pressedKeys
+            For Each k As Keys In Main.PressedKeys
                 If allowCamMove Then
                     'camera.resetMouseStuff()
 
@@ -340,7 +347,7 @@ Namespace LevelEditor
                     Dim newIndex As Integer = pixval '(CInt(pixels(2)) << 8) Or pixels(3)
 
                     If Main.IsStrgPressed Then
-                        Main.ToogleObjectSelection(Main.managedObjects(newIndex))
+                        Main.ToogleObjectSelection(Main.ManagedObjects(newIndex))
                     Else
                         Main.SelectItemAtIndexInList(Main.ListViewEx_Objects, newIndex, True)
                     End If
@@ -362,14 +369,17 @@ Namespace LevelEditor
 
         Friend Sub DrawAllObjects(Optional drawPicking As Boolean = False, Optional DrawBoundingBox As Boolean = True)
             Dim index As Integer = 0
-            For Each n As Managed3DObject In Main.managedObjects
+
+            For Each n As Managed3DObject In Main.ManagedObjects
                 Dim objModel As Renderer
                 Dim col As Color?
 
-                If Main.DrawObjectModels AndAlso Main.objectModels.ContainsKey(n.ModelID) Then
-                    objModel = Main.objectModels(n.ModelID)
-                Else objModel = Nothing
+                If Main.DrawObjectModels AndAlso Main.ObjectModels.ContainsKey(n.ModelID) Then
+                    objModel = Main.ObjectModels(n.ModelID)
+                Else
+                    objModel = Nothing
                 End If
+
                 If objModel IsNot Nothing AndAlso Not objModel.HasRendered Then
                     objModel.RenderModel()
                 End If
@@ -384,6 +394,46 @@ Namespace LevelEditor
 
                 index += 1
             Next
+        End Sub
+
+        Friend Sub DrawSpecialBoxes()
+            For Each sp As ManagedSpecialBox In Main.ManagedSpecialBoxes
+                Dim rndr As Renderer = Nothing
+
+                If Main.SpecialBoxRenderers.ContainsKey(sp) Then
+                    rndr = Main.SpecialBoxRenderers(sp)
+                Else
+                    Dim spm As New Object3D
+                    GetModelFromSpecialBox(sp.SpecialBox, spm)
+                    rndr = New Renderer(spm)
+                    Main.SpecialBoxRenderers.Add(sp, rndr)
+                    rndr.RenderModel()
+                End If
+
+                rndr?.DrawModel(FaceDrawMode)
+            Next
+        End Sub
+
+        Private Sub GetModelFromSpecialBox(sp As SpecialBox, obj As Object3D)
+            Dim mat As New Material With {.Color = Color.Blue, .Opacity = 0.25!}
+            Dim m As New Mesh
+            Dim uv As New UV
+            Dim p1 As New Point With {.Vertex = New Vertex With {.X = sp.X1, .Z = sp.Z1, .Y = sp.Y}}
+            Dim p2 As New Point With {.Vertex = New Vertex With {.X = sp.X1, .Z = sp.Z2, .Y = sp.Y}}
+            Dim p3 As New Point With {.Vertex = New Vertex With {.X = sp.X2, .Z = sp.Z2, .Y = sp.Y}}
+            Dim p4 As New Point With {.Vertex = New Vertex With {.X = sp.X2, .Z = sp.Z1, .Y = sp.Y}}
+            Dim f1 As New Face With {.Material = mat}
+            Dim f2 As New Face With {.Material = mat}
+
+            f1.Points.AddRange({p1, p2, p3})
+            f2.Points.AddRange({p1, p3, p4})
+
+            obj.Materials.Add(String.Empty, mat)
+            m.Vertices.AddRange({p1.Vertex, p2.Vertex, p3.Vertex, p4.Vertex})
+            m.UVs.Add(uv)
+            m.Faces.AddRange({f1, f2})
+
+            obj.Meshes.Add(m)
         End Sub
 
     End Class

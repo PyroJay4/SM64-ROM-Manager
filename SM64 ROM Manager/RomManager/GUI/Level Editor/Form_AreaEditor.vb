@@ -38,21 +38,23 @@ Namespace LevelEditor
 
 #Region "Declerations"
 
-        Friend cLevel As Level = Nothing
-        Friend lastKeyLeaveTimer As Date = Date.Now
-        Friend pressedKeys As New List(Of Keys)
-        Friend selectedList As ListViewEx = ListViewEx_Objects
-        Friend areaIdToLoad As Byte = 1
-        Friend levelID As Byte = 0
-        Friend origObjPos As New List(Of Numerics.Vector3)
-        Friend rommgr As SM64Lib.RomManager = Nothing
-        Friend managedObjects As New List(Of Managed3DObject)
-        Friend managedWarps As New List(Of IManagedLevelscriptCommand)
-        Friend objectModels As New Dictionary(Of Byte, Renderer)
-        Friend myObjectCombos As New ObjectComboList
-        Friend objectModelsToParse As New Dictionary(Of Byte, Object)
-        Friend myLevelsList As New List(Of String)
-        Friend knownModelIDs As New List(Of Byte)
+        Friend Property CLevel As Level = Nothing
+        Friend Property LastKeyLeaveTimer As Date = Date.Now
+        Friend ReadOnly Property PressedKeys As New List(Of Keys)
+        Friend Property SelectedList As ListViewEx = ListViewEx_Objects
+        Friend Property AreaIdToLoad As Byte = 1
+        Friend Property LevelID As Byte = 0
+        Friend ReadOnly Property OrigObjPos As New List(Of Numerics.Vector3)
+        Friend Property Rommgr As SM64Lib.RomManager = Nothing
+        Friend ReadOnly Property ManagedObjects As New List(Of Managed3DObject)
+        Friend ReadOnly Property ManagedWarps As New List(Of IManagedLevelscriptCommand)
+        Friend ReadOnly Property ManagedSpecialBoxes As New List(Of ManagedSpecialBox)
+        Friend ReadOnly Property ObjectModels As New Dictionary(Of Byte, Renderer)
+        Friend ReadOnly Property SpecialBoxRenderers As New Dictionary(Of ManagedSpecialBox, Renderer)
+        Friend ReadOnly Property MyObjectCombos As New ObjectComboList
+        Friend ReadOnly Property ObjectModelsToParse As New Dictionary(Of Byte, Object)
+        Friend ReadOnly Property MyLevelsList As New List(Of String)
+        Friend ReadOnly Property KnownModelIDs As New List(Of Byte)
 
         'Modules
         Friend objectControlling As ObjectControlling
@@ -95,13 +97,13 @@ Namespace LevelEditor
 
 #Region "Properties"
 
-        Friend ReadOnly Property cArea As LevelArea
+        Friend ReadOnly Property CArea As LevelArea
             Get
                 Dim index As Integer = ComboBoxItem_Area.SelectedIndex
                 If index < 0 Then
                     Return Nothing
                 Else
-                    Return cLevel.Areas(ComboBoxItem_Area.SelectedIndex)
+                    Return CLevel.Areas(ComboBoxItem_Area.SelectedIndex)
                 End If
             End Get
         End Property
@@ -1360,6 +1362,15 @@ Namespace LevelEditor
             End If
         End Sub
 
+        Friend Sub LoadSpecailBoxList()
+            ManagedSpecialBoxes.Clear()
+
+            For Each sp As SpecialBox In CArea.SpecialBoxes
+                Dim msp As New ManagedSpecialBox(sp)
+                ManagedSpecialBoxes.Add(msp)
+            Next
+        End Sub
+
 #End Region
 
 #Region "Area"
@@ -1385,6 +1396,7 @@ Namespace LevelEditor
 
                 LoadObjectLists()
                 LoadWarpsLists()
+                LoadSpecailBoxList()
 
                 If Settings.AreaEditor.DefaultCameraMode = CameraMode.ORBIT Then
                     ButtonItem_CamOrbit.RaiseClick()

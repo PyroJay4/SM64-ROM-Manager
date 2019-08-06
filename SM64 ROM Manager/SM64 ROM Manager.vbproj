@@ -294,6 +294,7 @@
     <Compile Include="RomManager\GUI\Level Editor\Managed3DObject.vb" />
     <Compile Include="RomManager\GUI\Level Editor\ManagedColFace.vb" />
     <Compile Include="RomManager\GUI\Level Editor\ManagedInstantWarp.vb" />
+    <Compile Include="RomManager\GUI\Level Editor\ManagedSpecialBox.vb" />
     <Compile Include="RomManager\GUI\Level Editor\ManagedWarp.vb" />
     <Compile Include="RomManager\GUI\Level Editor\InformationListsDialog.Designer.vb">
       <DependentUpon>InformationListsDialog.vb</DependentUpon>
