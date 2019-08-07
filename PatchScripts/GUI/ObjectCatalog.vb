@@ -57,6 +57,45 @@ Public Class ObjectCatalog
             End Sub)
     End Sub
 
+    Private Function GetMemberInfo(mi As MemberInfo) As String
+        Dim fullPath As String = String.Empty
+        Dim text As String = String.Empty
+
+        Select Case mi.MemberType
+            Case MemberTypes.TypeInfo, MemberTypes.NestedType
+                Dim t As Type = mi
+                fullPath = t.FullName
+            Case MemberTypes.Method, MemberTypes.Constructor, MemberTypes.Property, MemberTypes.Field, MemberTypes.Event
+                fullPath = mi.DeclaringType.FullName & "." & mi.Name
+        End Select
+
+        If Not String.IsNullOrEmpty(fullPath) AndAlso fullPath.Contains("."c) Then
+            Dim path As String = fullPath.Remove(fullPath.LastIndexOf("."c))
+            Dim name As String = fullPath.Substring(fullPath.LastIndexOf("."c) + 1)
+            Dim foundSam As SerializedAssemblyMember = Nothing
+
+            For Each sam As SerializedAssemblyMember In AsmXmls
+                If foundSam Is Nothing AndAlso sam.Name = name AndAlso sam.Path = path Then
+                    foundSam = sam
+                End If
+            Next
+
+            If foundSam IsNot Nothing Then
+                text =
+$"{name} : {foundSam.Type}
+in {path}
+
+{foundSam.Description}"
+            Else
+                text =
+$"{name}
+in {path}"
+            End If
+        End If
+
+        Return text
+    End Function
+
     Private Function GetNode(text As String, tag As Object) As Node
         Dim n As New Node With {
             .Text = text,
@@ -156,7 +195,11 @@ Public Class ObjectCatalog
     End Sub
 
     Private Sub AdvTree1_AfterNodeSelect(sender As Object, e As AdvTreeNodeEventArgs) Handles AdvTree1.AfterNodeSelect
-
+        If e.Node?.Tag IsNot Nothing Then
+            LabelX_MemberInfo.Text = GetMemberInfo(e.Node.Tag)
+        Else
+            LabelX_MemberInfo.Text = String.Empty
+        End If
     End Sub
 
 End Class

@@ -33,6 +33,7 @@ Partial Class ObjectCatalog
         Me.TableLayoutPanel_2 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel_1 = New System.Windows.Forms.TableLayoutPanel()
         Me.CircularProgress1 = New DevComponents.DotNetBar.Controls.CircularProgress()
+        Me.LabelX_MemberInfo = New DevComponents.DotNetBar.LabelX()
         CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel_2.SuspendLayout()
         Me.TableLayoutPanel_1.SuspendLayout()
@@ -49,9 +50,10 @@ Partial Class ObjectCatalog
         Me.ListViewEx1.DisabledBackColor = System.Drawing.Color.Empty
         Me.ListViewEx1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListViewEx1.ForeColor = System.Drawing.Color.Black
+        Me.ListViewEx1.HideSelection = False
         Me.ListViewEx1.Location = New System.Drawing.Point(400, 3)
         Me.ListViewEx1.Name = "ListViewEx1"
-        Me.ListViewEx1.Size = New System.Drawing.Size(391, 388)
+        Me.ListViewEx1.Size = New System.Drawing.Size(391, 358)
         Me.ListViewEx1.TabIndex = 0
         Me.ListViewEx1.UseCompatibleStateImageBehavior = False
         '
@@ -75,7 +77,7 @@ Partial Class ObjectCatalog
         Me.AdvTree1.NodesConnector = Me.NodeConnector1
         Me.AdvTree1.NodeStyle = Me.ElementStyle1
         Me.AdvTree1.PathSeparator = ";"
-        Me.AdvTree1.Size = New System.Drawing.Size(391, 388)
+        Me.AdvTree1.Size = New System.Drawing.Size(391, 358)
         Me.AdvTree1.Styles.Add(Me.ElementStyle1)
         Me.AdvTree1.TabIndex = 1
         Me.AdvTree1.Text = "AdvTree1"
@@ -115,7 +117,7 @@ Partial Class ObjectCatalog
         Me.TableLayoutPanel_2.Name = "TableLayoutPanel_2"
         Me.TableLayoutPanel_2.RowCount = 1
         Me.TableLayoutPanel_2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel_2.Size = New System.Drawing.Size(794, 394)
+        Me.TableLayoutPanel_2.Size = New System.Drawing.Size(794, 364)
         Me.TableLayoutPanel_2.TabIndex = 2
         '
         'TableLayoutPanel_1
@@ -124,12 +126,13 @@ Partial Class ObjectCatalog
         Me.TableLayoutPanel_1.ColumnCount = 1
         Me.TableLayoutPanel_1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel_1.Controls.Add(Me.TableLayoutPanel_2, 0, 0)
+        Me.TableLayoutPanel_1.Controls.Add(Me.LabelX_MemberInfo, 0, 1)
         Me.TableLayoutPanel_1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel_1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel_1.Name = "TableLayoutPanel_1"
         Me.TableLayoutPanel_1.RowCount = 2
         Me.TableLayoutPanel_1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel_1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.TableLayoutPanel_1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
         Me.TableLayoutPanel_1.Size = New System.Drawing.Size(800, 450)
         Me.TableLayoutPanel_1.TabIndex = 3
         Me.TableLayoutPanel_1.Visible = False
@@ -148,6 +151,19 @@ Partial Class ObjectCatalog
         Me.CircularProgress1.Size = New System.Drawing.Size(75, 75)
         Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         Me.CircularProgress1.TabIndex = 5
+        '
+        'LabelX_MemberInfo
+        '
+        '
+        '
+        '
+        Me.LabelX_MemberInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX_MemberInfo.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LabelX_MemberInfo.Location = New System.Drawing.Point(3, 373)
+        Me.LabelX_MemberInfo.Name = "LabelX_MemberInfo"
+        Me.LabelX_MemberInfo.Size = New System.Drawing.Size(794, 74)
+        Me.LabelX_MemberInfo.TabIndex = 3
+        Me.LabelX_MemberInfo.TextLineAlignment = System.Drawing.StringAlignment.Near
         '
         'ObjectCatalog
         '
@@ -178,4 +194,5 @@ Partial Class ObjectCatalog
     Friend WithEvents TableLayoutPanel_1 As Windows.Forms.TableLayoutPanel
     Friend WithEvents ImageList_RefSymbols As Windows.Forms.ImageList
     Friend WithEvents CircularProgress1 As DevComponents.DotNetBar.Controls.CircularProgress
+    Friend WithEvents LabelX_MemberInfo As DevComponents.DotNetBar.LabelX
 End Class
