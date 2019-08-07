@@ -4,12 +4,14 @@ Imports DevComponents.DotNetBar
 Imports Microsoft.Win32
 Imports Pilz.Reflection.PluginSystem
 Imports Pilz.S3DFileParser
+Imports RegistryUtils
 Imports SM64_ROM_Manager.SettingsManager
 
 Public Module Publics
 
     Private allLoaderModules As List(Of File3DLoaderModule) = Nothing
     Private allExporterModules As List(Of File3DLoaderModule) = Nothing
+    Private WithEvents regKeyMonitor_WatchWindowsTheme As RegistryMonitor = Nothing
 
     Public Sub SetVisualTheme()
         Dim setTheme = Nothing
@@ -19,13 +21,22 @@ Public Module Publics
             If CStr(curVers.GetValue("ProductName", "-")).StartsWith("Windows 10") Then
                 Dim keyPersonalize As RegistryKey = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", False)
                 Dim useapptheme As Integer = keyPersonalize.GetValue("AppsUseLightTheme", 1)
+
                 Select Case useapptheme
                     Case 0
                         setTheme = StyleManagerSettingsStruc.VisualThemeDark
                     Case 1
                         setTheme = StyleManagerSettingsStruc.VisualThemeLight
                 End Select
+
+                If regKeyMonitor_WatchWindowsTheme Is Nothing Then
+                    regKeyMonitor_WatchWindowsTheme = New RegistryMonitor(keyPersonalize)
+                    regKeyMonitor_WatchWindowsTheme.Start()
+                End If
             End If
+        ElseIf regKeyMonitor_WatchWindowsTheme IsNot Nothing Then
+            regKeyMonitor_WatchWindowsTheme.Stop()
+            regKeyMonitor_WatchWindowsTheme = Nothing
         End If
 
         If setTheme Is Nothing Then
@@ -34,6 +45,14 @@ Public Module Publics
 
         StyleManager.Style = eStyle.Metro
         StyleManager.MetroColorGeneratorParameters = setTheme
+
+        For Each frm As Form In Application.OpenForms
+            StyleManager.UpdateAmbientColors(frm)
+        Next
+    End Sub
+
+    Private Sub regKeyMonitor_WatchWindowsTheme_RegChanged() Handles regKeyMonitor_WatchWindowsTheme.RegChanged
+        SetVisualTheme()
     End Sub
 
     Public Sub ExportModel(model As Object3D, modul As String)
