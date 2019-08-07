@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports DevComponents.DotNetBar.Controls
 Imports nUpdate.Updating
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib
@@ -8,7 +7,6 @@ Imports SM64_ROM_Manager.My.Resources
 Imports SM64_ROM_Manager.EventArguments
 Imports System.Threading
 Imports DevComponents.DotNetBar
-Imports Pilz.Reflection
 Imports SM64Lib.Exceptions
 Imports System.Globalization
 Imports PatchScripts
@@ -16,7 +14,6 @@ Imports Microsoft.WindowsAPICodePack.Dialogs
 Imports Microsoft.WindowsAPICodePack.Dialogs.Controls
 Imports System.Collections.Specialized
 Imports SM64Lib.Music
-Imports SM64Lib.Data
 Imports SM64Lib.Levels
 Imports SM64Lib.Text.Profiles
 Imports SM64Lib.Text
@@ -30,6 +27,7 @@ Imports SM64Lib.Script
 Imports SM64Lib.ObjectBanks
 Imports Pilz.S3DFileParser
 Imports SM64Lib.Levels.Script
+Imports System.Net.NetworkInformation
 
 Public Class MainController
 
@@ -149,7 +147,7 @@ Public Class MainController
 
         updateManager = New UpdateManager(New Uri("http://pilzinsel64.square7.ch/Updates/SM64_ROM_Manager_New/updates.json"), "<RSAKeyValue><Modulus>w5WpraTgIe2QlQGkvrJDcdrtRkb1AQ0iDMO0JMsCd7rPoUYw7cu7YnRreeadU5jBiit4G82oB/TOtT+quJPDBixxKjof9gKVqrxeKtMYU/3vwRQg0+Y77GFD6tMLNlJwrk1NzgS3FN2Zlpl9LplgeQr9g5RSKMyu+VJ5OTZOHZAyHpvMnPSD9V1Kpyj/WFf2ADf9PL3Z4vEJfcmoFdGY6i4hq4IAIe5o5lYGB5zC/QOfDuAHEO+oGbOkFs65BeHDZWkLnzBOYPI4rnHZpU9E/ChcJVerNln45D9XGElDVXy7AIdy417mefjqnPaqMgm/22aTUW3f1Jsy3kcUhe1/f5eE/PHQoFvLPjcezY5mPUkW5JT1Y+2tIROvXh5zejyb+/2ctyVLSqLhG6wh4UNFd60Be4mV2NJ+Acn9IagdvMW3AvUmbSgQK4Jmq2OP656XkrdDi2vGibdMOB2Nt+O/q5+GpbzrEAnX+t9ikxmT568PpfjGBVvh+DmQxhiEaKT28HKWuDwLOdq6bnnnw6LlqF0odHqf2L09uXULJQo9W8zMoA5lyNbgHTfrj1ik9X4xheZkqmwJWIyYrRsPsyLN6Eani4vqVeVgBfJxdon45x5tPqYhadHoIHWU8WxnIGBnDAmaBZ/6lQpfTmbo3c8T2WuNjQAarzmnFKHP6GqP9X7JFhGQklTI5LFNsz6IjFRoHl/R5bUi6GJddoFitKXT4XjaJw+zR4Vp6W37wLjbe/r7Wd+vBST3YxTELQ+zQ3lxOb3Ht+0psinyaqqWVG8jh69axesPDIXvqDmZsYTlbm8YWyHeViX6xDo1+gYCZkFnCqdpXaB2B2a/bnvV1DKRDWCUi122BzCkUQg104F2ncnTnwrEwGXBQzVcZkkCtNhoiQRbOz+kJZz3tdmF+IPdhsdevpB4XwVbb/aTCkx2T68LOrGCuaKZ8EmHzTEbX2thSs7q3+ImfxCC9pubzCgwQEiS4MD/k+BMfDt7JQEPSP8EvBDxLLJ8Ls34/GnX5DSkUwMC3a/DUoZ0FgV8aIJEPSequjB/HtVQaR9t8j8ynr9FpsxGS0Qa0UZLt5ACG76Z4wgnLdrPKJMD0hcscmdiy4ov3a3AkuvkvIeGDwWFRMFrwq4F+5+i5AvC+f+jjwRjCckOEUsUrgcycsLXDMKjD0VGRLQIr+qegB1I7Wrl15ctvS+z3YIgx+SrGNbrEzLKxV5Habe/HKZrQ2t8JzflurHJByifFQ/Szp0BkoOXkVmkuczAw0a/DglU2um1Ic8cXAuNIWP0PbYpvVDUnChZrFMVO5QFMAdI8Ei9LHbjlTNdegXtHXIGJS9uXdf8285rlHsyVkCHbtFyZRsQSkuDuQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", New CultureInfo("en"), updateVersion) With {
             .HostApplicationOptions = nUpdate.Shared.Core.HostApplicationOptions.CloseAndRestart,
-            .InstallAsAdmin = Settings.General.UseAdminRightsForUpdates,
+            .RunInstallerAsAdmin = Settings.General.UseAdminRightsForUpdates,
             .IncludeBeta = Settings.General.IncludeBetaVersions Or (DevelopmentalStage >= 2),
             .IncludeAlpha = Settings.General.IncludeAlphaVersions Or DevelopmentalStage = 3
         }
@@ -161,9 +159,15 @@ Public Class MainController
     'P r i v a t e   F e a u t u r e s
 
     Private Sub SetRomMgr(rommgr As RomManager)
-        Me.romManager = rommgr
+        romManager = rommgr
         UpdateRomDate()
     End Sub
+
+    Private Async Function CanAccessUpdateServer() As Task(Of Boolean)
+        Dim ping As New Ping
+        Dim result As PingReply = Await ping.SendTaskAsync("pilzinsel64.square7.ch")
+        Return result.Status = IPStatus.Success
+    End Function
 
     'M a i n   F e a t u r e s
 
@@ -175,11 +179,16 @@ Public Class MainController
         RaiseEvent OtherStatusInfosChanged(New OtherStatusInfosChangedEventArgs(text, foreColor))
     End Sub
 
-    Public Sub SearchForUpdates(searchHidden As Boolean)
-        Dim ui As New UpdaterUI(updateManager, SynchronizationContext.Current, True)
-        ui.UseHiddenSearch = searchHidden
-        ui.ShowUserInterface()
-    End Sub
+    Public Async Function SearchForUpdates(searchHidden As Boolean) As Task(Of Boolean)
+        If Await CanAccessUpdateServer() Then
+            Dim ui As New UpdaterUI(updateManager, SynchronizationContext.Current, True)
+            ui.UseHiddenSearch = searchHidden
+            ui.ShowUserInterface()
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
     Public Sub CheckCommandLineArgs()
         Dim fileToOpen As String = Nothing
@@ -1092,10 +1101,11 @@ Public Class MainController
 
         If lvl IsNot Nothing Then
             Dim selLevel As LevelInfoDataTabelList.Level = OpenLevelSelectDialog()
-            romManager.ChangeLevelID(lvl, selLevel.ID, selLevel.Type)
+            If selLevel IsNot Nothing Then
+                romManager.ChangeLevelID(lvl, selLevel.ID, selLevel.Type)
+                RaiseEvent LevelIDChanged(New LevelEventArgs(levelIndex, lvl.LevelID))
+            End If
         End If
-
-        RaiseEvent LevelIDChanged(New LevelEventArgs(levelIndex, lvl.LevelID))
     End Sub
 
     Public Sub ImportLevel()
@@ -1427,7 +1437,7 @@ Public Class MainController
                         fs.Write(curMusic.BinaryData, 0, curMusic.BinaryData.Length)
                         fs.Close()
                     Catch ex As Exception
-                        MessageBoxEx.Show(Form_Main_Resources.MsgBox_ErrorSavingSequence, Global_Ressources.Text_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBoxEx.Show(Form_Main_Resources.MsgBox_ErrorSavingSequence, Global_Resources.Text_Error, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
 
                 Case 2 '.midi

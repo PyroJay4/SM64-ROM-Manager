@@ -23,7 +23,7 @@ Partial Class Form_SetUpRGBA
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_SetUpRGBA))
-        Me.Button_Cancle = New System.Windows.Forms.Button()
+        Me.Button_Cancel = New System.Windows.Forms.Button()
         Me.Button_Okay = New System.Windows.Forms.Button()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -38,15 +38,15 @@ Partial Class Form_SetUpRGBA
         CType(Me.NumericUpDown_FogRed, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Button_Cancle
+        'Button_Cancel
         '
-        Me.Button_Cancle.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Button_Cancle.Location = New System.Drawing.Point(80, 226)
-        Me.Button_Cancle.Name = "Button_Cancle"
-        Me.Button_Cancle.Size = New System.Drawing.Size(56, 23)
-        Me.Button_Cancle.TabIndex = 98
-        Me.Button_Cancle.Text = "Cancle"
-        Me.Button_Cancle.UseVisualStyleBackColor = True
+        Me.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Button_Cancel.Location = New System.Drawing.Point(80, 226)
+        Me.Button_Cancel.Name = "Button_Cancel"
+        Me.Button_Cancel.Size = New System.Drawing.Size(56, 23)
+        Me.Button_Cancel.TabIndex = 98
+        Me.Button_Cancel.Text = "Cancel"
+        Me.Button_Cancel.UseVisualStyleBackColor = True
         '
         'Button_Okay
         '
@@ -130,10 +130,8 @@ Partial Class Form_SetUpRGBA
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(156, 256)
         Me.Controls.Add(Me.GroupBox5)
-        Me.Controls.Add(Me.Button_Cancle)
+        Me.Controls.Add(Me.Button_Cancel)
         Me.Controls.Add(Me.Button_Okay)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -153,7 +151,7 @@ Partial Class Form_SetUpRGBA
 
     End Sub
 
-    Friend WithEvents Button_Cancle As Button
+    Friend WithEvents Button_Cancel As Button
     Friend WithEvents Button_Okay As Button
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents Label22 As Label

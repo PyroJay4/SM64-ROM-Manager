@@ -250,7 +250,7 @@
     <value>0</value>
   </data>
   <data name="LabelX18.Text" xml:space="preserve">
-    <value>Dialog-Position:</value>
+    <value>Dialog Position:</value>
   </data>
   <data name="&gt;&gt;LabelX18.Name" xml:space="preserve">
     <value>LabelX18</value>
@@ -472,7 +472,7 @@
     <value>16</value>
   </data>
   <data name="TextBoxX_TM_TextEditor.WatermarkText" xml:space="preserve">
-    <value>Empty! Write down a text ...</value>
+    <value>Empty message/text</value>
   </data>
   <data name="&gt;&gt;TextBoxX_TM_TextEditor.Name" xml:space="preserve">
     <value>TextBoxX_TM_TextEditor</value>

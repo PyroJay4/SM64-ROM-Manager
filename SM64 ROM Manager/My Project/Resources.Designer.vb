@@ -70,21 +70,11 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die 4 ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die 5 ähnelt.
         '''</summary>
         Friend ReadOnly Property DevelopmentBuild() As String
             Get
                 Return ResourceManager.GetString("DevelopmentBuild", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property Kurznachricht_34px() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Kurznachricht_34px", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         
@@ -131,9 +121,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Psychologie_16px() As System.Drawing.Bitmap
+        Friend ReadOnly Property Psychology_16px() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Psychologie_16px", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Psychology_16px", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -141,9 +131,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Psychologie_32px() As System.Drawing.Bitmap
+        Friend ReadOnly Property Psychology_32px() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Psychologie_32px", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Psychology_32px", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -151,9 +141,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Psychologie_34px() As System.Drawing.Bitmap
+        Friend ReadOnly Property Psychology_34px() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Psychologie_34px", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Psychology_34px", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -174,6 +164,16 @@ Namespace My.Resources
         Friend ReadOnly Property RotateObjectWheel() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("RotateObjectWheel", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property SMS_34px() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SMS_34px", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

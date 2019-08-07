@@ -394,23 +394,3 @@ Public Module General
     End Class
 
 End Module
-
-Public Module VersionInfo
-    Public ReadOnly Property AppVersion As String
-        Get
-            Return Application.ProductVersion
-        End Get
-    End Property
-    Public Const IsBetaVersion As Boolean = False
-    Public ReadOnly Property IsRegistred As Boolean
-        Get
-            Return True
-        End Get
-    End Property
-    Public Sub RegisterKey()
-
-    End Sub
-    Public Sub RemoveKey()
-
-    End Sub
-End Module

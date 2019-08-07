@@ -57,8 +57,6 @@ Partial Class MainForm
         Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem15 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem16 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem32 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem18 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem22 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
@@ -137,6 +135,7 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.tabGeneral, "tabGeneral")
         Me.tabGeneral.BackColor = System.Drawing.Color.White
+        Me.tabGeneral.Controller = Nothing
         Me.tabGeneral.Name = "tabGeneral"
         '
         'TabItem_General
@@ -164,6 +163,7 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.tabTextManager, "tabTextManager")
         Me.tabTextManager.BackColor = System.Drawing.Color.White
+        Me.tabTextManager.Controller = Nothing
         Me.tabTextManager.Name = "tabTextManager"
         '
         'TabItem_TextManager
@@ -191,6 +191,7 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.tabMusicManager, "tabMusicManager")
         Me.tabMusicManager.BackColor = System.Drawing.Color.White
+        Me.tabMusicManager.Controller = Nothing
         Me.tabMusicManager.Name = "tabMusicManager"
         '
         'TabItem_MusicManager
@@ -218,6 +219,7 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.tabLevelManager, "tabLevelManager")
         Me.tabLevelManager.BackColor = System.Drawing.Color.White
+        Me.tabLevelManager.Controller = Nothing
         Me.tabLevelManager.Name = "tabLevelManager"
         '
         'TabItem_LevelManager
@@ -288,7 +290,7 @@ Partial Class MainForm
         '
         Me.ButtonItem7.BeginGroup = True
         Me.ButtonItem7.Name = "ButtonItem7"
-        Me.ButtonItem7.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem2, Me.ButtonItem8, Me.ButtonItem10, Me.ButtonItem11, Me.LabelItem3, Me.ButtonItem_ModelImporter, Me.ButtonItem17, Me.ButtonItem_TrajectoryEditor, Me.ButtonItem14, Me.ButtonItem13, Me.ButtonItem15, Me.ButtonItem16, Me.ButtonItem32, Me.ButtonItem18})
+        Me.ButtonItem7.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem2, Me.ButtonItem8, Me.ButtonItem10, Me.ButtonItem11, Me.LabelItem3, Me.ButtonItem_ModelImporter, Me.ButtonItem17, Me.ButtonItem_TrajectoryEditor, Me.ButtonItem14, Me.ButtonItem13, Me.ButtonItem15, Me.ButtonItem16})
         resources.ApplyResources(Me.ButtonItem7, "ButtonItem7")
         '
         'LabelItem2
@@ -362,18 +364,6 @@ Partial Class MainForm
         '
         Me.ButtonItem16.Name = "ButtonItem16"
         resources.ApplyResources(Me.ButtonItem16, "ButtonItem16")
-        '
-        'ButtonItem32
-        '
-        Me.ButtonItem32.Enabled = False
-        Me.ButtonItem32.Name = "ButtonItem32"
-        resources.ApplyResources(Me.ButtonItem32, "ButtonItem32")
-        '
-        'ButtonItem18
-        '
-        Me.ButtonItem18.Enabled = False
-        Me.ButtonItem18.Name = "ButtonItem18"
-        resources.ApplyResources(Me.ButtonItem18, "ButtonItem18")
         '
         'ButtonItem22
         '
@@ -514,8 +504,8 @@ Partial Class MainForm
         '
         'LabelItem_OtherInfoText
         '
-        Me.LabelItem_OtherInfoText.Name = "LabelItem_OtherInfoText"
         Me.LabelItem_OtherInfoText.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
+        Me.LabelItem_OtherInfoText.Name = "LabelItem_OtherInfoText"
         '
         'RibbonControl1
         '
@@ -592,9 +582,7 @@ Partial Class MainForm
     Friend WithEvents ButtonItem_ModelImporter As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem17 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_TrajectoryEditor As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem32 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem14 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem18 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem22 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem

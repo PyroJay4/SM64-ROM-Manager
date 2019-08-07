@@ -426,12 +426,6 @@
   <data name="ButtonItem16.Text" xml:space="preserve">
     <value>Coin Properties</value>
   </data>
-  <data name="ButtonItem32.Text" xml:space="preserve">
-    <value>Script Editor</value>
-  </data>
-  <data name="ButtonItem18.Text" xml:space="preserve">
-    <value>MOP Manager</value>
-  </data>
   <data name="ButtonItem7.Text" xml:space="preserve">
     <value>Modules</value>
   </data>
@@ -2634,18 +2628,6 @@
   <data name="&gt;&gt;ButtonItem16.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;ButtonItem32.Name" xml:space="preserve">
-    <value>ButtonItem32</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem32.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem18.Name" xml:space="preserve">
-    <value>ButtonItem18</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem18.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;ButtonItem22.Name" xml:space="preserve">
     <value>ButtonItem22</value>
   </data>
@@ -2752,6 +2734,12 @@
     <value>LabelItem1</value>
   </data>
   <data name="&gt;&gt;LabelItem1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;LabelItem_OtherInfoText.Name" xml:space="preserve">
+    <value>LabelItem_OtherInfoText</value>
+  </data>
+  <data name="&gt;&gt;LabelItem_OtherInfoText.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.LabelItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -43,7 +43,7 @@ Partial Class Tab_MusicManager
         Me.GroupPanel9 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.ButtonX_MS_RemoveSequence = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX_MS_AddSequence = New DevComponents.DotNetBar.ButtonX()
-        Me.ListBoxAdv_MS_MusicSequences = New Publics.Controls.ItemListBox()
+        Me.ListBoxAdv_MS_MusicSequences = New SM64_ROM_Manager.Publics.Controls.ItemListBox()
         Me.GroupPanel12.SuspendLayout()
         Me.GroupBox_MS_SeqProperties.SuspendLayout()
         Me.GroupBox_MS_SelectedSequence.SuspendLayout()

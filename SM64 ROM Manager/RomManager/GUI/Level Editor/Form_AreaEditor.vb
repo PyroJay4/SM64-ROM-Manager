@@ -38,21 +38,23 @@ Namespace LevelEditor
 
 #Region "Declerations"
 
-        Friend cLevel As Level = Nothing
-        Friend lastKeyLeaveTimer As Date = Date.Now
-        Friend pressedKeys As New List(Of Keys)
-        Friend selectedList As ListViewEx = ListViewEx_Objects
-        Friend areaIdToLoad As Byte = 1
-        Friend levelID As Byte = 0
-        Friend origObjPos As New List(Of Numerics.Vector3)
-        Friend rommgr As SM64Lib.RomManager = Nothing
-        Friend managedObjects As New List(Of Managed3DObject)
-        Friend managedWarps As New List(Of IManagedLevelscriptCommand)
-        Friend objectModels As New Dictionary(Of Byte, Renderer)
-        Friend myObjectCombos As New ObjectComboList
-        Friend objectModelsToParse As New Dictionary(Of Byte, Object)
-        Friend myLevelsList As New List(Of String)
-        Friend knownModelIDs As New List(Of Byte)
+        Friend Property CLevel As Level = Nothing
+        Friend Property LastKeyLeaveTimer As Date = Date.Now
+        Friend ReadOnly Property PressedKeys As New List(Of Keys)
+        Friend Property SelectedList As ListViewEx = ListViewEx_Objects
+        Friend Property AreaIdToLoad As Byte = 1
+        Friend Property LevelID As Byte = 0
+        Friend ReadOnly Property OrigObjPos As New List(Of Numerics.Vector3)
+        Friend Property Rommgr As SM64Lib.RomManager = Nothing
+        Friend ReadOnly Property ManagedObjects As New List(Of Managed3DObject)
+        Friend ReadOnly Property ManagedWarps As New List(Of IManagedLevelscriptCommand)
+        Friend ReadOnly Property ManagedSpecialBoxes As New List(Of ManagedSpecialBox)
+        Friend ReadOnly Property ObjectModels As New Dictionary(Of Byte, Renderer)
+        Friend ReadOnly Property SpecialBoxRenderers As New Dictionary(Of ManagedSpecialBox, Renderer)
+        Friend ReadOnly Property MyObjectCombos As New ObjectComboList
+        Friend ReadOnly Property ObjectModelsToParse As New Dictionary(Of Byte, Object)
+        Friend ReadOnly Property MyLevelsList As New List(Of String)
+        Friend ReadOnly Property KnownModelIDs As New List(Of Byte)
 
         'Modules
         Friend objectControlling As ObjectControlling
@@ -95,13 +97,13 @@ Namespace LevelEditor
 
 #Region "Properties"
 
-        Friend ReadOnly Property cArea As LevelArea
+        Friend ReadOnly Property CArea As LevelArea
             Get
                 Dim index As Integer = ComboBoxItem_Area.SelectedIndex
                 If index < 0 Then
                     Return Nothing
                 Else
-                    Return cLevel.Areas(ComboBoxItem_Area.SelectedIndex)
+                    Return CLevel.Areas(ComboBoxItem_Area.SelectedIndex)
                 End If
             End Get
         End Property
@@ -335,7 +337,7 @@ Namespace LevelEditor
             StoreObjectHistoryPoint(SelectedObjects, "Position")
             DropObjectsToGround(1)
         End Sub
-        Friend Sub ButtonX_DropToButtom_Click(sender As Object, e As EventArgs) Handles ButtonX_DropToButtom.Click, ButtonItem_DropToButtom.Click
+        Friend Sub ButtonX_DropToBottom_Click(sender As Object, e As EventArgs) Handles ButtonX_DropToBottom.Click, ButtonItem_DropToBottom.Click
             StoreObjectHistoryPoint(SelectedObjects, "Position")
             DropObjectsToGround(2)
         End Sub
@@ -351,7 +353,7 @@ Namespace LevelEditor
                 ElseIf ({ButtonX_KeepOnTop, ButtonItem_KeepOnTop}).Contains(sender) Then
                     ButtonX_DropToTop.PerformClick()
                 ElseIf ({ButtonX_KeepOnButtom, ButtonItem_KeepOnButtom}).Contains(sender) Then
-                    ButtonX_DropToButtom.PerformClick()
+                    ButtonX_DropToBottom.PerformClick()
                 End If
             End If
         End Sub
@@ -924,28 +926,11 @@ Namespace LevelEditor
                     ogl.SaveScreenshot(sfd.FileName)
                 End If
 
-            Else MessageBoxEx.Show("Please select the Visual Map and try again.", "Not Visual Map selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                'MessageBoxEx.Show("Please select the Visual Map and try again.", "Not Visual Map selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                ShowToadnotifiaction(Panel_GLControl, "Please select the Visual Map and try again.", eToastGlowColor.Red)
             End If
         End Sub
-
-        'Friend Function TakeScreenshotOfGL() As Image
-        '    'Create new Bitmap
-        '    Dim bmp As New Bitmap(GlControl1.Width, GlControl1.Height)
-
-        '    'Lock Bits & Get Bitmap Data
-        '    Dim bmpdata As Imaging.BitmapData = bmp.LockBits(New Rectangle(0, 0, GlControl1.Size.Width, GlControl1.Size.Height), Imaging.ImageLockMode.WriteOnly, Imaging.PixelFormat.Format24bppRgb)
-
-        '    'Get Screenshot
-        '    GL.ReadPixels(0, 0, GlControl1.Size.Width, GlControl1.Size.Height, PixelFormat.Bgr, PixelType.UnsignedByte, bmpdata.Scan0)
-
-        '    'Unlook Bits
-        '    bmp.UnlockBits(bmpdata)
-
-        '    'Rotate at Y
-        '    bmp.RotateFlip(RotateFlipType.RotateNoneFlipY)
-
-        '    Return bmp
-        'End Function
 
 #End Region
 
@@ -1377,6 +1362,15 @@ Namespace LevelEditor
             End If
         End Sub
 
+        Friend Sub LoadSpecailBoxList()
+            ManagedSpecialBoxes.Clear()
+
+            For Each sp As SpecialBox In CArea.SpecialBoxes
+                Dim msp As New ManagedSpecialBox(sp)
+                ManagedSpecialBoxes.Add(msp)
+            Next
+        End Sub
+
 #End Region
 
 #Region "Area"
@@ -1384,17 +1378,6 @@ Namespace LevelEditor
         Friend Sub SwitchCurrentArea()
             If Not isLoadingAreaIDs Then
 
-                'If backupCurrentAreaIndex > -1 Then
-                '    Dim hp As New HistoryPoint
-                '    Dim os As New ObjectState
-                '    os.Object = ComboBoxItem_Area
-                '    os.ValueToPatch = backupCurrentAreaIndex
-                '    os.MemberName = "SelectedIndex"
-                '    os.MemberType = ObjectValueType.Property
-                '    os.MemberFlags = BindingFlags.Public Or BindingFlags.Instance
-                '    hp.States.Add(os)
-                '    history.Store(hp)
-                'End If
                 If Not dicHistories.ContainsKey(cArea) Then
                     Dim hs As New HistoryStack
                     dicHistories.Add(cArea, hs)
@@ -1413,6 +1396,7 @@ Namespace LevelEditor
 
                 LoadObjectLists()
                 LoadWarpsLists()
+                LoadSpecailBoxList()
 
                 If Settings.AreaEditor.DefaultCameraMode = CameraMode.ORBIT Then
                     ButtonItem_CamOrbit.RaiseClick()
@@ -1440,7 +1424,8 @@ Namespace LevelEditor
                 ReamingIDs.Remove(a.AreaID)
             Next
             If ReamingIDs.Count = 0 Then
-                MessageBoxEx.Show("The maximum count of Areas per Level is 8.", "Maximum reached", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                'MessageBoxEx.Show("The maximum count of Areas per Level is 8.", "Maximum reached", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                ShowToadnotifiaction(Panel_GLControl, "The maximum count of Areas per Level is 8.", eToastGlowColor.Red)
                 ButtonItem_AddArea.Enabled = False
                 Return
             End If
@@ -1651,7 +1636,8 @@ Namespace LevelEditor
             Next
 
             If exists Then
-                MessageBoxEx.Show("There already exists at least one object combo with the same Model ID and the same Behavior Address.", "Duplicate Object Combos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                'MessageBoxEx.Show("There already exists at least one object combo with the same Model ID and the same Behavior Address.", "Duplicate Object Combos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                ShowToadnotifiaction(Panel_GLControl, "There already exists at least one object combo with the same Model ID and the same Behavior Address.", eToastGlowColor.Green, 12000)
             Else
                 Dim dialog As New StringInputDialog
                 dialog.Titel = "New Object Combo Name"
@@ -1662,7 +1648,8 @@ Namespace LevelEditor
                     combo.Name = dialog.Value.Trim
                     ObjectCombosCustom.Add(combo)
                     SaveObjectCombos()
-                    MessageBoxEx.Show("Object Combo has been added successfully.<br/>The Object Combo will appear in the object combo list after you re-opend the Level Editor.", "Object Combo added successfully", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    'MessageBoxEx.Show("Object Combo has been added successfully.<br/>The Object Combo will appear in the object combo list after you re-opend the Level Editor.", "Object Combo added successfully", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    ShowToadnotifiaction(Panel_GLControl, "Object Combo has been added successfully.<br/>The Object Combo will appear in the object combo list after you re-opend the Level Editor.", eToastGlowColor.Green, 12000)
                 End If
             End If
         End Sub
@@ -2151,7 +2138,8 @@ Namespace LevelEditor
 
         Friend Sub AddWarps(count As Integer, type As LevelscriptCommandTypes)
             If CalculateWarpCountInLevel() >= Byte.MaxValue Then
-                MessageBoxEx.Show("Maximum of Warps per Level reached. It is not possible to add more Warps.", "Maximum reached", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                'MessageBoxEx.Show("Maximum of Warps per Level reached. It is not possible to add more Warps.", "Maximum reached", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                ShowToadnotifiaction(Panel_GLControl, "Maximum of Warps per Level reached. It is not possible to add more Warps.", eToastGlowColor.Red)
             Else
                 Dim newWarp As LevelscriptCommand = Nothing
                 Dim newManagedWarp As IManagedLevelscriptCommand = Nothing
@@ -2293,6 +2281,10 @@ Namespace LevelEditor
                     PatchClass.SetPauseMenuWarp(lid, aid, wid)
                     PatchClass.Close()
                     PatchClass.UpdateChecksum(rommgr.RomFile)
+
+                    ShowToadnotifiaction(Panel_GLControl, "Pause Menu Warp setted successfully", eToastGlowColor.Green)
+                Else
+                    ShowToadnotifiaction(Panel_GLControl, "Error at setting Pause Menu Warp", eToastGlowColor.Red)
                 End If
             End If
         End Sub

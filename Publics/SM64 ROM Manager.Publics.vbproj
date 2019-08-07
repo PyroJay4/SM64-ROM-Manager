@@ -68,6 +68,9 @@
       <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="RegistryMonitor">
+      <HintPath>..\Shared Libs\RegistryMonitor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />

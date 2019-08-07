@@ -28,7 +28,7 @@ Partial Class Tab_LevelManager
         Me.Button_LM_AddArea = New DevComponents.DotNetBar.ButtonX()
         Me.Button_LM_AreaEditor = New DevComponents.DotNetBar.ButtonX()
         Me.Button_LM_RemoveArea = New DevComponents.DotNetBar.ButtonItem()
-        Me.ListBoxAdv_LM_Areas = New Publics.Controls.ItemListBox()
+        Me.ListBoxAdv_LM_Areas = New SM64_ROM_Manager.Publics.Controls.ItemListBox()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.ButtonX_LM_LevelsMore = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonItem20 = New DevComponents.DotNetBar.ButtonItem()
@@ -38,7 +38,7 @@ Partial Class Tab_LevelManager
         Me.ButtonItem15 = New DevComponents.DotNetBar.ButtonItem()
         Me.Button_LM_AddNewLevel = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonItem26 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ListBoxAdv_LM_Levels = New Publics.Controls.ItemListBox()
+        Me.ListBoxAdv_LM_Levels = New SM64_ROM_Manager.Publics.Controls.ItemListBox()
         Me.TabControl_LM_Area = New DevComponents.DotNetBar.TabControl()
         Me.TabControlPanel5 = New DevComponents.DotNetBar.TabControlPanel()
         Me.ButtonX_CustomObjects = New DevComponents.DotNetBar.ButtonX()
@@ -358,9 +358,9 @@ Partial Class Tab_LevelManager
         resources.ApplyResources(Me.TabControl_LM_Area, "TabControl_LM_Area")
         Me.TabControl_LM_Area.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControl_LM_Area.CanReorderTabs = False
+        Me.TabControl_LM_Area.Controls.Add(Me.TabControlPanel6)
         Me.TabControl_LM_Area.Controls.Add(Me.TabControlPanel5)
         Me.TabControl_LM_Area.Controls.Add(Me.TabControlPanel4)
-        Me.TabControl_LM_Area.Controls.Add(Me.TabControlPanel6)
         Me.TabControl_LM_Area.ForeColor = System.Drawing.Color.Black
         Me.TabControl_LM_Area.Name = "TabControl_LM_Area"
         Me.TabControl_LM_Area.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
@@ -400,7 +400,6 @@ Partial Class Tab_LevelManager
         resources.ApplyResources(Me.ButtonX_CustomObjects, "ButtonX_CustomObjects")
         Me.ButtonX_CustomObjects.Name = "ButtonX_CustomObjects"
         Me.ButtonX_CustomObjects.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_CustomObjects.Visible = True
         '
         'ButtonX_LM_ScrollTexEditor
         '

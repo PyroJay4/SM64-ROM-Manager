@@ -29,27 +29,27 @@ Public Class ManagedInstantWarp
     End Property
 
     <DisplayName("Collision Type")>
-    <Description("The Collision Type to use." & vbNewLine & "Basicly only collision types from 0x1B to 0x1E area allowed.")>
+    <Description("The collision type to use." & vbNewLine & "Only collision types from the areas 0x1B to 0x1E are allowed.")>
     <Category("Collision")>
     Public Property CollisionType As Byte = &H1B
 
     <DisplayName("Dest. Area ID")>
-    <Description("The Area where the player should came out.")>
+    <Description("The area where the player should be warped to.")>
     <Category("Destination")>
     Public Property DestAreaID As Byte = 0
 
-    <DisplayName("Amount on X Axis")>
-    <Description("Teleports Mario by this amount on the X axis.")>
+    <DisplayName("Amount on X-axis")>
+    <Description("Teleports Mario by the specified amount on the X-axis.")>
     <Category("Location")>
     Public Property AmountOnXAxis As Int16 = 0
 
-    <DisplayName("Amount on Y Axis")>
-    <Description("Teleports Mario by this amount on the y axis.")>
+    <DisplayName("Amount on Y-axis")>
+    <Description("Teleports Mario by the specified amount on the Y-axis.")>
     <Category("Location")>
     Public Property AmountOnYAxis As Int16 = 0
 
-    <DisplayName("Amount on Z Axis")>
-    <Description("Teleports Mario by this amount on the z axis.")>
+    <DisplayName("Amount on Z-axis")>
+    <Description("Teleports Mario by the specified amount on the Z-axis.")>
     <Category("Location")>
     Public Property AmountOnZAxis As Int16 = 0
 

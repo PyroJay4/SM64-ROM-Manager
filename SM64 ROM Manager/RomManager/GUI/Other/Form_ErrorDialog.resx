@@ -129,7 +129,19 @@
     <value>0</value>
   </data>
   <data name="LabelX1.Text" xml:space="preserve">
-    <value>&lt;div align="center"&gt;&lt;b&gt;&lt;font size="14"&gt;An unknown error happened!&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;</value>
+    <value>&lt;div align="center"&gt;&lt;b&gt;&lt;font size="14"&gt;An unknown error occurred&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="&gt;&gt;LabelX1.Name" xml:space="preserve">
+    <value>LabelX1</value>
+  </data>
+  <data name="&gt;&gt;LabelX1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;LabelX1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LabelX1.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="TextBoxX1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 41</value>
@@ -150,6 +162,18 @@
   <data name="TextBoxX1.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="&gt;&gt;TextBoxX1.Name" xml:space="preserve">
+    <value>TextBoxX1</value>
+  </data>
+  <data name="&gt;&gt;TextBoxX1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;TextBoxX1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TextBoxX1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="ButtonX2.Location" type="System.Drawing.Point, System.Drawing">
     <value>181, 279</value>
   </data>
@@ -161,6 +185,18 @@
   </data>
   <data name="ButtonX2.Text" xml:space="preserve">
     <value>Continue</value>
+  </data>
+  <data name="&gt;&gt;ButtonX2.Name" xml:space="preserve">
+    <value>ButtonX2</value>
+  </data>
+  <data name="&gt;&gt;ButtonX2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonX2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ButtonX2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="ButtonX1.Location" type="System.Drawing.Point, System.Drawing">
     <value>277, 279</value>
@@ -174,6 +210,18 @@
   <data name="ButtonX1.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="&gt;&gt;ButtonX1.Name" xml:space="preserve">
+    <value>ButtonX1</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ButtonX1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="ButtonX3.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 279</value>
   </data>
@@ -186,9 +234,21 @@
   <data name="ButtonX3.Text" xml:space="preserve">
     <value>Copy Text</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;ButtonX3.Name" xml:space="preserve">
+    <value>ButtonX3</value>
   </data>
+  <data name="&gt;&gt;ButtonX3.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonX3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ButtonX3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>379, 314</value>
   </data>
@@ -197,5 +257,11 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Critical Error</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form_ErrorDialog</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
