@@ -267,5 +267,8 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/
 
-# Custom Ignores
+# Ignore update project
 SM64 ROM Manager Update.nupdproj
+
+# Include Data-Folder in Debug
+![Dd]ebug/Data/*
