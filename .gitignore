@@ -12,7 +12,6 @@
 
 # Build results
 # [Dd]ebug/
-[Dd]ebug/*
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -272,4 +271,6 @@ __pycache__/
 SM64 ROM Manager Update.nupdproj
 
 # Include Data-Folder in Debug
+[Dd]ebug/*
 ![Dd]ebug/Data/
+![Dd]ebug/Data/*
