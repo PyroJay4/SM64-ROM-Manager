@@ -5,7 +5,7 @@ Namespace EventArguments
     Public Class RomChangesAvaiableEventArgs
         Inherits EventArgs
 
-        Public ReadOnly Property Mute As Boolean = False
+        Public Property Mute As Boolean = False
 
     End Class
 

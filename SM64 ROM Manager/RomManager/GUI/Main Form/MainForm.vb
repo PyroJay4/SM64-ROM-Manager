@@ -113,7 +113,7 @@ Public Class MainForm
         Dim showWarningBox As Boolean = notifyMode = NotificationMode.Infobox
 
         'Show popup
-        If notifyMode = NotificationMode.Popup Then
+        If notifyMode = NotificationMode.Popup AndAlso mute = False Then
             Dim tdinfo As New TaskDialogInfo With {
                 .Title = Form_Main_Resources.MsgBox_RomChanged_Title,
                 .Header = Form_Main_Resources.MsgBox_RomChanged_Title,
@@ -124,12 +124,14 @@ Public Class MainForm
             Select Case TaskDialog.Show(tdinfo)
                 Case eTaskDialogResult.Yes
                     Controller.ReloadRom()
+                    Return
                 Case Else
                     showWarningBox = True
+                    mute = True
             End Select
         End If
 
-        'Add WarningBox
+        'Create WarningBox
         If showWarningBox AndAlso WarningBox_RomChanged Is Nothing Then
             WarningBox_RomChanged = New WarningBox With {
                 .Text = Form_Main_Resources.WarningBox_RomChanged_Text,
@@ -139,17 +141,20 @@ Public Class MainForm
             }
             AddHandler WarningBox_RomChanged.OptionsClick, AddressOf WarningBox_RomChanged_OptionsClick
             AddHandler WarningBox_RomChanged.CloseClick, AddressOf WarningBox_RomChanged_CloseClick
-            Panel1.Controls.Add(WarningBox_RomChanged)
+
         End If
 
-        'Set Warningbox Size
+        'Set Warningbox size and add it
         If WarningBox_RomChanged IsNot Nothing AndAlso showWarningBox Then
-            mute = True
-            WarningBox_RomChanged.BringToFront()
             'Height += WarningBox_RomChanged.Height
+            If Not Panel1.Controls.Contains(WarningBox_RomChanged) Then
+                Panel1.Controls.Add(WarningBox_RomChanged)
+            End If
+
             TabControl1.Top += WarningBox_RomChanged.Height
             TabControl1.Height -= WarningBox_RomChanged.Height
             WarningBox_RomChanged.Visible = True
+            WarningBox_RomChanged.BringToFront()
         End If
     End Sub
 
