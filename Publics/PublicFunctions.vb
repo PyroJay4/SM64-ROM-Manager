@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Specialized
 Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
+Imports DevComponents.DotNetBar.Metro.ColorTables
 Imports Microsoft.Win32
 Imports Pilz.Reflection.PluginSystem
 Imports Pilz.S3DFileParser
@@ -14,7 +15,7 @@ Public Module Publics
     Private WithEvents regKeyMonitor_WatchWindowsTheme As RegistryMonitor = Nothing
 
     Public Sub SetVisualTheme()
-        Dim setTheme = Nothing
+        Dim setTheme As MetroColorGeneratorParameters? = Nothing
 
         If Settings.StyleManager.UseWindows10Style Then
             Dim curVers As RegistryKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\Microsoft\Windows NT\CurrentVersion", False)
