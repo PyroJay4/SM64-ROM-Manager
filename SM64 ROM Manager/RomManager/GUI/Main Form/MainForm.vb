@@ -113,7 +113,7 @@ Public Class MainForm
         Dim showWarningBox As Boolean = notifyMode = NotificationMode.Infobox
 
         'Show popup
-        If notifyMode = NotificationMode.Popup AndAlso mute = False Then
+        If notifyMode = NotificationMode.Popup AndAlso Not mute Then
             Dim tdinfo As New TaskDialogInfo With {
                 .Title = Form_Main_Resources.MsgBox_RomChanged_Title,
                 .Header = Form_Main_Resources.MsgBox_RomChanged_Title,
@@ -124,7 +124,7 @@ Public Class MainForm
             Select Case TaskDialog.Show(tdinfo)
                 Case eTaskDialogResult.Yes
                     Controller.ReloadRom()
-                    Return
+                    showWarningBox = False
                 Case Else
                     showWarningBox = True
                     mute = True
@@ -141,7 +141,6 @@ Public Class MainForm
             }
             AddHandler WarningBox_RomChanged.OptionsClick, AddressOf WarningBox_RomChanged_OptionsClick
             AddHandler WarningBox_RomChanged.CloseClick, AddressOf WarningBox_RomChanged_CloseClick
-
         End If
 
         'Set Warningbox size and add it
