@@ -1425,7 +1425,7 @@ Namespace LevelEditor
             Next
             If ReamingIDs.Count = 0 Then
                 'MessageBoxEx.Show("The maximum count of Areas per Level is 8.", "Maximum reached", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                ShowToadnotifiaction(Panel_GLControl, "The maximum count of Areas per Level is 8.", eToastGlowColor.Red)
+                ShowToadnotifiaction(Panel_GLControl, "The maximum amount of areas per level is 8.", eToastGlowColor.Red)
                 ButtonItem_AddArea.Enabled = False
                 Return
             End If
@@ -1637,7 +1637,7 @@ Namespace LevelEditor
 
             If exists Then
                 'MessageBoxEx.Show("There already exists at least one object combo with the same Model ID and the same Behavior Address.", "Duplicate Object Combos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                ShowToadnotifiaction(Panel_GLControl, "There already exists at least one object combo with the same Model ID and the same Behavior Address.", eToastGlowColor.Green, 12000)
+                ShowToadnotifiaction(Panel_GLControl, "An object combo with the same Model ID and Behavior Address already exists!", eToastGlowColor.Green, 12000)
             Else
                 Dim dialog As New StringInputDialog
                 dialog.Titel = "New Object Combo Name"
@@ -1649,7 +1649,7 @@ Namespace LevelEditor
                     ObjectCombosCustom.Add(combo)
                     SaveObjectCombos()
                     'MessageBoxEx.Show("Object Combo has been added successfully.<br/>The Object Combo will appear in the object combo list after you re-opend the Level Editor.", "Object Combo added successfully", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    ShowToadnotifiaction(Panel_GLControl, "Object Combo has been added successfully.<br/>The Object Combo will appear in the object combo list after you re-opend the Level Editor.", eToastGlowColor.Green, 12000)
+                    ShowToadnotifiaction(Panel_GLControl, "Object Combo has been added successfully.<br/>The Object Combo will appear in the Object Combo list after you re-open the Level Editor.", eToastGlowColor.Green, 12000)
                 End If
             End If
         End Sub
@@ -2139,7 +2139,7 @@ Namespace LevelEditor
         Friend Sub AddWarps(count As Integer, type As LevelscriptCommandTypes)
             If CalculateWarpCountInLevel() >= Byte.MaxValue Then
                 'MessageBoxEx.Show("Maximum of Warps per Level reached. It is not possible to add more Warps.", "Maximum reached", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                ShowToadnotifiaction(Panel_GLControl, "Maximum of Warps per Level reached. It is not possible to add more Warps.", eToastGlowColor.Red)
+                ShowToadnotifiaction(Panel_GLControl, "Maximum amount of warps per Level reached. It is not possible to add more warps.", eToastGlowColor.Red)
             Else
                 Dim newWarp As LevelscriptCommand = Nothing
                 Dim newManagedWarp As IManagedLevelscriptCommand = Nothing
@@ -2284,7 +2284,7 @@ Namespace LevelEditor
 
                     ShowToadnotifiaction(Panel_GLControl, "Pause Menu Warp setted successfully", eToastGlowColor.Green)
                 Else
-                    ShowToadnotifiaction(Panel_GLControl, "Error at setting Pause Menu Warp", eToastGlowColor.Red)
+                    ShowToadnotifiaction(Panel_GLControl, "An error occurred while setting Pause Menu Warp", eToastGlowColor.Red)
                 End If
             End If
         End Sub

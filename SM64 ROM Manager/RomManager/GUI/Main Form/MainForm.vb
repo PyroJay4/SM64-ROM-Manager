@@ -346,7 +346,7 @@ Public Class MainForm
 
     Private Async Sub ButtonItem29_Click(sender As Object, e As EventArgs) Handles ButtonItem29.Click
         If Not Await Controller.SearchForUpdates(False) Then
-            ShowToadnotifiaction(Me, "The update server is not available.", eToastGlowColor.Red)
+            ShowToadnotifiaction(Me, "Cannot connect to the update server.", eToastGlowColor.Red)
         End If
     End Sub
 
