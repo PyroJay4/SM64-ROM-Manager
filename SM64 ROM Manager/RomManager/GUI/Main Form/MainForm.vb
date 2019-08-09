@@ -145,7 +145,6 @@ Public Class MainForm
 
         'Set Warningbox size and add it
         If WarningBox_RomChanged IsNot Nothing AndAlso showWarningBox Then
-            'Height += WarningBox_RomChanged.Height
             If Not Panel1.Controls.Contains(WarningBox_RomChanged) Then
                 Panel1.Controls.Add(WarningBox_RomChanged)
             End If
@@ -160,7 +159,6 @@ Public Class MainForm
     Private Sub WarningBox_RomChanged_CloseClick(sender As Object, e As EventArgs)
         WarningBox_RomChanged.Visible = False
         TabControl1.Top -= WarningBox_RomChanged.Height
-        'Height -= WarningBox_RomChanged.Height
         TabControl1.Height += WarningBox_RomChanged.Height
     End Sub
 
