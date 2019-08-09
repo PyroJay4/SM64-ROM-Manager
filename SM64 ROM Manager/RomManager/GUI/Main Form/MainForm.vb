@@ -113,7 +113,7 @@ Public Class MainForm
         Dim showWarningBox As Boolean = notifyMode = NotificationMode.Infobox
 
         'Show popup
-        If notifyMode = NotificationMode.Popup Then
+        If notifyMode = NotificationMode.Popup AndAlso Not mute Then
             Dim tdinfo As New TaskDialogInfo With {
                 .Title = Form_Main_Resources.MsgBox_RomChanged_Title,
                 .Header = Form_Main_Resources.MsgBox_RomChanged_Title,
@@ -124,12 +124,14 @@ Public Class MainForm
             Select Case TaskDialog.Show(tdinfo)
                 Case eTaskDialogResult.Yes
                     Controller.ReloadRom()
+                    showWarningBox = False
                 Case Else
                     showWarningBox = True
+                    mute = True
             End Select
         End If
 
-        'Add WarningBox
+        'Create WarningBox
         If showWarningBox AndAlso WarningBox_RomChanged Is Nothing Then
             WarningBox_RomChanged = New WarningBox With {
                 .Text = Form_Main_Resources.WarningBox_RomChanged_Text,
@@ -139,24 +141,24 @@ Public Class MainForm
             }
             AddHandler WarningBox_RomChanged.OptionsClick, AddressOf WarningBox_RomChanged_OptionsClick
             AddHandler WarningBox_RomChanged.CloseClick, AddressOf WarningBox_RomChanged_CloseClick
-            Panel1.Controls.Add(WarningBox_RomChanged)
         End If
 
-        'Set Warningbox Size
+        'Set Warningbox size and add it
         If WarningBox_RomChanged IsNot Nothing AndAlso showWarningBox Then
-            mute = True
-            WarningBox_RomChanged.BringToFront()
-            'Height += WarningBox_RomChanged.Height
+            If Not Panel1.Controls.Contains(WarningBox_RomChanged) Then
+                Panel1.Controls.Add(WarningBox_RomChanged)
+            End If
+
             TabControl1.Top += WarningBox_RomChanged.Height
             TabControl1.Height -= WarningBox_RomChanged.Height
             WarningBox_RomChanged.Visible = True
+            WarningBox_RomChanged.BringToFront()
         End If
     End Sub
 
     Private Sub WarningBox_RomChanged_CloseClick(sender As Object, e As EventArgs)
         WarningBox_RomChanged.Visible = False
         TabControl1.Top -= WarningBox_RomChanged.Height
-        'Height -= WarningBox_RomChanged.Height
         TabControl1.Height += WarningBox_RomChanged.Height
     End Sub
 
@@ -224,7 +226,7 @@ Public Class MainForm
 
         Controller.CheckCommandLineArgs()
 
-        PluginManager.LoadPlugins(Path.Combine(MyDataPath, "Plugins"))
+        Controller.LoadPlugins()
         AddMyPluginCommands()
 
         Await Controller.SearchForUpdates(True)
@@ -346,7 +348,7 @@ Public Class MainForm
 
     Private Async Sub ButtonItem29_Click(sender As Object, e As EventArgs) Handles ButtonItem29.Click
         If Not Await Controller.SearchForUpdates(False) Then
-            ShowToadnotifiaction(Me, "The update server is not available.", eToastGlowColor.Red)
+            ShowToadnotifiaction(Me, "Cannot connect to the update server.", eToastGlowColor.Red)
         End If
     End Sub
 

@@ -171,6 +171,14 @@ Public Class MainController
 
     'M a i n   F e a t u r e s
 
+    Public Sub LoadPlugins()
+        Dim pluginsPath As String = Path.Combine(MyDataPath, "Plugins")
+
+        If Directory.Exists(pluginsPath) Then
+            PluginManager.LoadPlugins(pluginsPath)
+        End If
+    End Sub
+
     Public Sub UpdateRomDate()
         lastRomChangedDate = Date.Now
     End Sub

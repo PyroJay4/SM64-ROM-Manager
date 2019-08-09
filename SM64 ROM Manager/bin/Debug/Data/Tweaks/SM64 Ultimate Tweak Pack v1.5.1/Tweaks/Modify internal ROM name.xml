@@ -1,0 +1,5 @@
+<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>Modifies the internal ROM name, this will give your save files a unique filename.</description><patch>//Erase existing name
+20: [fill, 20, 14]
+
+//Write new name
+20: [string, "Internal ROM name", 14]</patch></m64tweak>
