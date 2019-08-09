@@ -1,0 +1,1 @@
+<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>Removes the dialogue after defeating a Boo.</description><patch>3F330: A7 20 00 74</patch></m64tweak>

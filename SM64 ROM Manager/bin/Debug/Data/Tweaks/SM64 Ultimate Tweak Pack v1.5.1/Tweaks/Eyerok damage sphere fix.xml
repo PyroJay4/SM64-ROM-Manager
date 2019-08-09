@@ -1,0 +1,2 @@
+<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>Fixs the normal damage sphere issue of the Eyerok boss.</description><patch>8434C: 00 00 00 00
+97B74: 10 00 00 05</patch></m64tweak>

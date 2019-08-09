@@ -1,0 +1,5 @@
+<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>Disables the Giant Mario Head and Hand in screen which displays the Giant Mario Head and the title in the background. </description><patch>//Disable Hand
+31518: 00 00 00 00
+
+//Disable Head Model
+31524: 00 00 00 00</patch></m64tweak>

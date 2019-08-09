@@ -1,0 +1,4 @@
+<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>Modify the number of coins required for the 100 Coin Star to appear.</description><patch>8BB3: [8, "Coins required"] 8BB4: 10 20
+8BBF: [copy, 8BB3, 8BB4]
+
+</patch></m64tweak>
