@@ -226,7 +226,7 @@ Public Class MainForm
 
         Controller.CheckCommandLineArgs()
 
-        PluginManager.LoadPlugins(Path.Combine(MyDataPath, "Plugins"))
+        Controller.LoadPlugins()
         AddMyPluginCommands()
 
         Await Controller.SearchForUpdates(True)
