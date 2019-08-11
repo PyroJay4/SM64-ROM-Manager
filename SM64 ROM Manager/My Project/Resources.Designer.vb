@@ -61,7 +61,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die 3 ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die 2 ähnelt.
         '''</summary>
         Friend ReadOnly Property DevelopmentalStage() As String
             Get
@@ -70,7 +70,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die 6 ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die 1 ähnelt.
         '''</summary>
         Friend ReadOnly Property DevelopmentBuild() As String
             Get
