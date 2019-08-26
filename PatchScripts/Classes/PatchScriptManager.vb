@@ -211,7 +211,7 @@ Public Class PatchingManager
                                             End Select
 
                                             Dim input As New InputDialog(inputType, rommgr)
-                                            input.Text = parts(1).Trim.Trim(""""c, "["c, "]"c)
+                                            input.Text = parts.ElementAtOrDefault(1)?.Trim?.Trim(""""c, "["c, "]"c)
                                             If input.ShowDialog(owner) = DialogResult.OK Then
                                                 If inputType = InputDialog.InputValueType.String Then
                                                     Dim barr As Byte() = System.Text.Encoding.ASCII.GetBytes(input.ReturnValue)

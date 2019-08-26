@@ -13,12 +13,10 @@ Friend Class InputDialog
     Public Property ValueType As InputValueType = InputValueType.Byte
 
     Public Sub New(valType As InputValueType, rommgr As RomManager)
-
-        ' Dieser Aufruf ist für den Designer erforderlich.
         InitializeComponent()
 
-        ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
         ValueType = valType
+        Me.rommgr = rommgr
 
         Select Case valType
             Case InputValueType.Byte, InputValueType.UInt16, InputValueType.UInt32
@@ -51,6 +49,8 @@ Friend Class InputDialog
                 End If
 
         End Select
+
+        UpdateAmbientColors
     End Sub
 
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click

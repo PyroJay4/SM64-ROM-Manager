@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<m64tweak name="Set Start Level" description="" version="1.0.0.0">
+  <patch name="Set Start Level" description="" type="0" references="">//set start level:
+6d58: 24 05 [level] //addiu a1, r0, $XXXX
+6d78: AF A5 00 2C //sw a1, $002c (SP)
+//XXXX is the level id
+</patch>
+</m64tweak>
