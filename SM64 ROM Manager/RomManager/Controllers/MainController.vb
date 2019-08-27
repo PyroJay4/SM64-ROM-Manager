@@ -29,6 +29,7 @@ Imports Pilz.S3DFileParser
 Imports SM64Lib.Levels.Script
 Imports System.Net.NetworkInformation
 Imports System.Net
+Imports System.Reflection
 
 Public Class MainController
 
@@ -75,7 +76,7 @@ Public Class MainController
 
     Private ReadOnly mainForm As MainForm
     Private ReadOnly updateManager As UpdateManager = Nothing
-    Private romManager As RomManager = Nothing
+    Private WithEvents RomManager As RomManager = Nothing
     Private _StatusText As String = String.Empty
     Private loadRecentROM As Boolean = False
     Private loadingROM As Boolean = False
@@ -94,7 +95,7 @@ Public Class MainController
 
     Public ReadOnly Property Romfile As String
         Get
-            Return romManager?.RomFile
+            Return RomManager?.RomFile
         End Get
     End Property
 
@@ -111,18 +112,18 @@ Public Class MainController
 
     Public ReadOnly Property HasRomManager As Boolean
         Get
-            Return romManager IsNot Nothing
+            Return RomManager IsNot Nothing
         End Get
     End Property
 
     Public Property EnableMusicHack As Boolean
         Get
-            Return romManager.MusicList.EnableMusicHack
+            Return RomManager.MusicList.EnableMusicHack
         End Get
         Set(value As Boolean)
-            If value <> romManager.MusicList.EnableMusicHack Then
-                romManager.MusicList.EnableMusicHack = value
-                romManager.MusicList.NeedToSaveMusicHackSettings = True
+            If value <> RomManager.MusicList.EnableMusicHack Then
+                RomManager.MusicList.EnableMusicHack = value
+                RomManager.MusicList.NeedToSaveMusicHackSettings = True
             End If
         End Set
     End Property
@@ -143,25 +144,37 @@ Public Class MainController
 
         'Updates
         Dim updateVersion As New UpdateVersion(Application.ProductVersion) With {
-            .DevelopmentalStage = CInt(DevelopmentalStage),
+            .DevelopmentalStage = CInt(DevelopmentStage),
             .DevelopmentBuild = DevelopmentBuild
         }
 
         updateManager = New UpdateManager(New Uri(UPDATE_URL), "<RSAKeyValue><Modulus>w5WpraTgIe2QlQGkvrJDcdrtRkb1AQ0iDMO0JMsCd7rPoUYw7cu7YnRreeadU5jBiit4G82oB/TOtT+quJPDBixxKjof9gKVqrxeKtMYU/3vwRQg0+Y77GFD6tMLNlJwrk1NzgS3FN2Zlpl9LplgeQr9g5RSKMyu+VJ5OTZOHZAyHpvMnPSD9V1Kpyj/WFf2ADf9PL3Z4vEJfcmoFdGY6i4hq4IAIe5o5lYGB5zC/QOfDuAHEO+oGbOkFs65BeHDZWkLnzBOYPI4rnHZpU9E/ChcJVerNln45D9XGElDVXy7AIdy417mefjqnPaqMgm/22aTUW3f1Jsy3kcUhe1/f5eE/PHQoFvLPjcezY5mPUkW5JT1Y+2tIROvXh5zejyb+/2ctyVLSqLhG6wh4UNFd60Be4mV2NJ+Acn9IagdvMW3AvUmbSgQK4Jmq2OP656XkrdDi2vGibdMOB2Nt+O/q5+GpbzrEAnX+t9ikxmT568PpfjGBVvh+DmQxhiEaKT28HKWuDwLOdq6bnnnw6LlqF0odHqf2L09uXULJQo9W8zMoA5lyNbgHTfrj1ik9X4xheZkqmwJWIyYrRsPsyLN6Eani4vqVeVgBfJxdon45x5tPqYhadHoIHWU8WxnIGBnDAmaBZ/6lQpfTmbo3c8T2WuNjQAarzmnFKHP6GqP9X7JFhGQklTI5LFNsz6IjFRoHl/R5bUi6GJddoFitKXT4XjaJw+zR4Vp6W37wLjbe/r7Wd+vBST3YxTELQ+zQ3lxOb3Ht+0psinyaqqWVG8jh69axesPDIXvqDmZsYTlbm8YWyHeViX6xDo1+gYCZkFnCqdpXaB2B2a/bnvV1DKRDWCUi122BzCkUQg104F2ncnTnwrEwGXBQzVcZkkCtNhoiQRbOz+kJZz3tdmF+IPdhsdevpB4XwVbb/aTCkx2T68LOrGCuaKZ8EmHzTEbX2thSs7q3+ImfxCC9pubzCgwQEiS4MD/k+BMfDt7JQEPSP8EvBDxLLJ8Ls34/GnX5DSkUwMC3a/DUoZ0FgV8aIJEPSequjB/HtVQaR9t8j8ynr9FpsxGS0Qa0UZLt5ACG76Z4wgnLdrPKJMD0hcscmdiy4ov3a3AkuvkvIeGDwWFRMFrwq4F+5+i5AvC+f+jjwRjCckOEUsUrgcycsLXDMKjD0VGRLQIr+qegB1I7Wrl15ctvS+z3YIgx+SrGNbrEzLKxV5Habe/HKZrQ2t8JzflurHJByifFQ/Szp0BkoOXkVmkuczAw0a/DglU2um1Ic8cXAuNIWP0PbYpvVDUnChZrFMVO5QFMAdI8Ei9LHbjlTNdegXtHXIGJS9uXdf8285rlHsyVkCHbtFyZRsQSkuDuQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", New CultureInfo("en"), updateVersion) With {
             .HostApplicationOptions = nUpdate.Shared.Core.HostApplicationOptions.CloseAndRestart,
             .RunInstallerAsAdmin = Settings.General.UseAdminRightsForUpdates,
-            .IncludeBeta = Settings.General.IncludeBetaVersions Or (DevelopmentalStage >= 2),
-            .IncludeAlpha = Settings.General.IncludeAlphaVersions Or DevelopmentalStage = 3
+            .IncludeBeta = Settings.General.IncludeBetaVersions Or (DevelopmentStage >= 2),
+            .IncludeAlpha = Settings.General.IncludeAlphaVersions Or DevelopmentStage = 3
         }
 
         'Enable Auto-Save for Settings
         Settings.AutoSave = True
     End Sub
 
+    'R o m   M a n a g e r   E v e n t s
+
+    Private Sub RomManager_WritingNewRomVersion(sender As RomManager, e As RomVersionEventArgs) Handles RomManager.WritingNewProgramVersion
+        Dim v As RomVersion = e.RomVersion
+
+        v.Version = Assembly.GetEntryAssembly.GetName.Version
+        v.DevelopmentStage = DevelopmentStage
+        v.DevelopmentBuild = DevelopmentBuild
+
+        e.RomVersion = v
+    End Sub
+
     'P r i v a t e   F e a u t u r e s
 
     Private Sub SetRomMgr(rommgr As RomManager)
-        romManager = rommgr
+        RomManager = rommgr
         UpdateRomDate()
     End Sub
 
@@ -240,7 +253,7 @@ Public Class MainController
     End Function
 
     Public Sub LaunchRom()
-        General.LaunchRom(romManager)
+        General.LaunchRom(RomManager)
     End Sub
 
     Public Function AllowSavingRom() As Boolean
@@ -257,7 +270,7 @@ Public Class MainController
             StatusText = Form_Main_Resources.Status_SavingRom
             savingRom = True
 
-            General.SaveRom(romManager)
+            General.SaveRom(RomManager)
 
             savingRom = False
             StatusText = String.Empty
@@ -269,10 +282,10 @@ Public Class MainController
     End Function
 
     Public Function DoesRomManagerNeedToSave() As Boolean
-        If romManager Is Nothing Then
+        If RomManager Is Nothing Then
             Return False
         Else
-            Return romManager.NeedToSave
+            Return RomManager.NeedToSave
         End If
     End Function
 
@@ -358,12 +371,12 @@ Public Class MainController
         'rommgr.LoadGlobalObjectBank()
 
         'Load Levels
-        romManager.LoadLevels()
+        RomManager.LoadLevels()
         RaiseEvent RomLevelsLoaded()
 
         'Load Music
         StatusText = Form_Main_Resources.Status_LoadingMusic
-        romManager.LoadMusic()
+        RomManager.LoadMusic()
         RaiseEvent RomMusicLoaded()
         StatusText = String.Empty
 
@@ -373,8 +386,8 @@ Public Class MainController
     End Sub
 
     Private Sub CreateRomWatcherForCurrentRom()
-        If romManager IsNot Nothing Then
-            General.RomWatcher = New FileSystemWatcher(Path.GetDirectoryName(romManager.RomFile), Path.GetFileName(romManager.RomFile)) With {.EnableRaisingEvents = True, .SynchronizingObject = mainForm}
+        If RomManager IsNot Nothing Then
+            General.RomWatcher = New FileSystemWatcher(Path.GetDirectoryName(RomManager.RomFile), Path.GetFileName(RomManager.RomFile)) With {.EnableRaisingEvents = True, .SynchronizingObject = mainForm}
             hasRomChanged = 0
         Else
             General.RomWatcher = Nothing
@@ -395,13 +408,13 @@ Public Class MainController
     End Sub
 
     Public Sub ReloadRom()
-        OpenRom(romManager.RomFile)
+        OpenRom(RomManager.RomFile)
     End Sub
 
     Public Sub UpdateChecksum()
-        If romManager IsNot Nothing Then
+        If RomManager IsNot Nothing Then
             StatusText = "Calculating checksum ..."
-            PatchClass.UpdateChecksum(romManager.RomFile)
+            PatchClass.UpdateChecksum(RomManager.RomFile)
             StatusText = String.Empty
         End If
     End Sub
@@ -445,34 +458,34 @@ Public Class MainController
     End Sub
 
     Public Function GetCurrentRomManager() As RomManager
-        Return romManager
+        Return RomManager
     End Function
 
     'T o o l s
 
     Public Sub OpenTweakViewer()
-        Dim tweaks As New TweakViewer(romManager)
+        Dim tweaks As New TweakViewer(RomManager)
         tweaks.Show()
     End Sub
 
     Public Sub OpenModelImporter()
         Dim frm As New ModelImporterGUI.ModelImporter
-        frm.RomFile = romManager?.RomFile
+        frm.RomFile = RomManager?.RomFile
         frm.Show()
     End Sub
 
     Public Sub OpenTrajectoryEditor()
-        Dim editor As New TrajectoryEditor(romManager)
+        Dim editor As New TrajectoryEditor(RomManager)
         editor.ShowDialog(mainForm)
     End Sub
 
     Public Sub OpenRgbEditor()
-        Dim editor As New RGBEditor(romManager)
+        Dim editor As New RGBEditor(RomManager)
         editor.Show()
     End Sub
 
     Public Sub OpenCoinsEditor()
-        Dim frm As New Form_CoinsSettings(romManager)
+        Dim frm As New Form_CoinsSettings(RomManager)
         frm.Show(mainForm)
     End Sub
 
@@ -496,7 +509,7 @@ Public Class MainController
     End Sub
 
     Public Sub OpenApplyPPFDialog()
-        Dim patcher As New ApplyPPF.ApplyPPFDialog(romManager?.RomFile, String.Empty)
+        Dim patcher As New ApplyPPF.ApplyPPFDialog(RomManager?.RomFile, String.Empty)
         patcher.ShowDialog(mainForm)
     End Sub
 
@@ -504,7 +517,7 @@ Public Class MainController
         Dim ibce As ItemBoxContentEditor = GetFirstOpenForm(Of ItemBoxContentEditor)()
 
         If ibce Is Nothing Then
-            ibce = New ItemBoxContentEditor(romManager)
+            ibce = New ItemBoxContentEditor(RomManager)
         End If
 
         ibce.Show()
@@ -514,24 +527,24 @@ Public Class MainController
         Dim spo As StarPositionEditor = GetFirstOpenForm(Of StarPositionEditor)()
 
         If spo Is Nothing Then
-            spo = New StarPositionEditor(romManager)
+            spo = New StarPositionEditor(RomManager)
         End If
 
         spo.Show()
     End Sub
 
     Public Sub OpenTextProfileEditor()
-        If romManager IsNot Nothing Then
-            romManager.LoadTextProfileIfNotLoaded()
+        If RomManager IsNot Nothing Then
+            RomManager.LoadTextProfileIfNotLoaded()
 
             Dim editor As New TextProfileEditor With {
-                .ProfileInfo = romManager.TextInfoProfile
+                .ProfileInfo = RomManager.TextInfoProfile
             }
 
             editor.ShowDialog()
 
             If editor.HasSaved Then
-                romManager.ClearTextGroups()
+                RomManager.ClearTextGroups()
                 SendRequestReloadTextManagerLists()
             End If
         End If
@@ -544,12 +557,12 @@ Public Class MainController
     End Sub
 
     Private Sub OpenCustomBankManager(customBank As CustomObjectBank)
-        Dim mgr As New CustomBankManager(romManager, customBank)
+        Dim mgr As New CustomBankManager(RomManager, customBank)
         mgr.Show()
     End Sub
 
     Private Function OpenLevelSelectDialog() As LevelInfoDataTabelList.Level
-        Dim frm As New LevelSelectorDialog(romManager)
+        Dim frm As New LevelSelectorDialog(RomManager)
 
         If frm.ShowDialog = DialogResult.OK Then
             Return frm.SelectedLevel
@@ -561,21 +574,21 @@ Public Class MainController
     'R o m   W a t c h e r
 
     Private Sub RomWatcher_Changed(sender As Object, e As FileSystemEventArgs) Handles RomWatcher.Changed
-        If romManager IsNot Nothing AndAlso romManager.RomFile = e.FullPath AndAlso hasRomChanged <> 2 Then
+        If RomManager IsNot Nothing AndAlso RomManager.RomFile = e.FullPath AndAlso hasRomChanged <> 2 Then
             hasRomChanged = 1
             RaiseEvent RomFileChanged()
         End If
     End Sub
 
     Private Sub RomWatcher_Renamed(sender As Object, e As RenamedEventArgs) Handles RomWatcher.Renamed
-        If romManager IsNot Nothing AndAlso e.OldFullPath = romManager.RomFile Then
-            romManager.RomFile = e.FullPath
+        If RomManager IsNot Nothing AndAlso e.OldFullPath = RomManager.RomFile Then
+            RomManager.RomFile = e.FullPath
             RaiseEvent RomFileRenamed()
         End If
     End Sub
 
     Private Sub RomWatcher_Deleted(sender As Object, e As FileSystemEventArgs) Handles RomWatcher.Deleted
-        If romManager IsNot Nothing AndAlso e.FullPath = romManager.RomFile Then
+        If RomManager IsNot Nothing AndAlso e.FullPath = RomManager.RomFile Then
             RaiseEvent RomFileDeleted()
         End If
     End Sub
@@ -584,15 +597,15 @@ Public Class MainController
 
     Public Sub SetGameName(name As String)
         name = name.Trim
-        romManager.GameName = name
+        RomManager.GameName = name
     End Sub
 
     Public Function GetGameNAme() As String
-        Return romManager.GameName
+        Return RomManager.GameName
     End Function
 
     Public Function GetRomFileSize() As Double
-        Return New FileInfo(romManager.RomFile).Length / 1024 / 1024
+        Return New FileInfo(RomManager.RomFile).Length / 1024 / 1024
     End Function
 
     Public Function IsChangingTab()
@@ -604,7 +617,7 @@ Public Class MainController
     'L e v e l   M a n a g e r
 
     Private Function GetLevelAndArea(levelIndex As Integer, Optional areaIndex As Integer = -1) As (level As Level, area As LevelArea)
-        Dim lvl As Level = romManager.Levels.ElementAtOrDefault(levelIndex)
+        Dim lvl As Level = RomManager.Levels.ElementAtOrDefault(levelIndex)
         Dim area As LevelArea = lvl?.Areas?.ElementAtOrDefault(areaIndex)
         Return (lvl, area)
     End Function
@@ -629,12 +642,12 @@ Public Class MainController
 
     Public Sub OpenAreaEditor(levelIndex As Integer, areaIndex As Integer)
         If levelIndex >= 0 Then
-            Dim curLvl As Level = romManager.Levels(levelIndex)
+            Dim curLvl As Level = RomManager.Levels(levelIndex)
             Dim openAreaEditor As Form_AreaEditor = GetAreaEditor(curLvl)
 
             If openAreaEditor Is Nothing Then
                 Dim curArea As LevelArea = curLvl.Areas.ElementAtOrDefault(areaIndex)
-                Dim frm As New Form_AreaEditor(romManager, curLvl, curLvl.LevelID, curArea?.AreaID)
+                Dim frm As New Form_AreaEditor(RomManager, curLvl, curLvl.LevelID, curArea?.AreaID)
                 frm.Show()
             Else
                 openAreaEditor.BringToFront()
@@ -650,7 +663,7 @@ Public Class MainController
         Dim YVal As Integer = 0
         Dim ZVal As Integer = 0
         Dim Title As String = ""
-        Dim dsp = romManager.Levels(levelIndex).GetDefaultPositionCmd
+        Dim dsp = RomManager.Levels(levelIndex).GetDefaultPositionCmd
 
         If dsp IsNot Nothing Then
             'Edit all values
@@ -764,29 +777,29 @@ Public Class MainController
     End Sub
 
     Public Function GetLevelsCount() As Integer
-        Return romManager.Levels.Count
+        Return RomManager.Levels.Count
     End Function
 
     Public Function GetUsedLevelIDs() As IEnumerable(Of UShort)
-        Return romManager.Levels.Select(Function(n) n.LevelID)
+        Return RomManager.Levels.Select(Function(n) n.LevelID)
     End Function
 
     Public Function GetLevelName(levelID As UShort) As String
-        Return romManager.LevelInfoData.FirstOrDefault(Function(n) n.ID = levelID).Name
+        Return RomManager.LevelInfoData.FirstOrDefault(Function(n) n.ID = levelID).Name
     End Function
 
     Public Function GetUsedLevelAreaIDs(levelIndex As UShort) As Byte()
-        Return romManager.Levels.ElementAtOrDefault(levelIndex)?.Areas?.Select(Function(n) n.AreaID).ToArray
+        Return RomManager.Levels.ElementAtOrDefault(levelIndex)?.Areas?.Select(Function(n) n.AreaID).ToArray
     End Function
 
     Public Sub AddNewLevel()
         Dim selLvl As LevelInfoDataTabelList.Level = OpenLevelSelectDialog()
 
         If selLvl IsNot Nothing Then
-            Dim lvl As Level = romManager.AddLevel(selLvl.ID)
-            romManager.Levels.Last.ActSelector = selLvl.Type = LevelInfoDataTabelList.LevelTypes.Level
+            Dim lvl As Level = RomManager.AddLevel(selLvl.ID)
+            RomManager.Levels.Last.ActSelector = selLvl.Type = LevelInfoDataTabelList.LevelTypes.Level
 
-            RaiseEvent LevelAdded(New LevelEventArgs(romManager.Levels.IndexOf(lvl), lvl.LevelID))
+            RaiseEvent LevelAdded(New LevelEventArgs(RomManager.Levels.IndexOf(lvl), lvl.LevelID))
         End If
     End Sub
 
@@ -973,7 +986,7 @@ Public Class MainController
                 area.ScrollingTextures.AddRange(area.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
             End If
 
-            area.SetSegmentedBanks(romManager)
+            area.SetSegmentedBanks(RomManager)
         End If
     End Sub
 
@@ -1044,7 +1057,7 @@ Public Class MainController
 
         If lvl.area IsNot Nothing Then
             StatusText = Form_Main_Resources.Status_LoadingModel
-            Dim mdl As Object3D = Await LoadAreaVisualMapAsObject3DAsync(romManager, lvl.area)
+            Dim mdl As Object3D = Await LoadAreaVisualMapAsObject3DAsync(RomManager, lvl.area)
 
             ExportLevelModel(levelIndex, areaIndex, mdl)
         End If
@@ -1071,7 +1084,7 @@ Public Class MainController
         Dim area As LevelArea = GetLevelAndArea(levelIndex, areaIndex).area
 
         'Set Area Segmented Banks
-        area.SetSegmentedBanks(romManager)
+        area.SetSegmentedBanks(RomManager)
 
         'Get Area Settings
         Return (area.TerrainType, area.BGMusic, area.Geolayout.CameraPreset, area.Geolayout.EnvironmentEffect, area.Enable2DCamera, area.Background.Type, area.Background.Color, area.ShowMessage.Enabled, area.ShowMessage.DialogID)
@@ -1081,7 +1094,7 @@ Public Class MainController
         If MessageBoxEx.Show("You are going to remove the selected level. Continue?", "Remove Area", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             Dim infos = GetLevelAndArea(levelIndex)
             If infos.level IsNot Nothing Then
-                romManager.RemoveLevel(infos.level)
+                RomManager.RemoveLevel(infos.level)
                 RaiseEvent LevelRemoved(New LevelEventArgs(levelIndex, infos.level.LevelID))
             End If
         End If
@@ -1096,7 +1109,7 @@ Public Class MainController
         Dim defPosAreaID As Byte
         Dim defPosYRot As Short
 
-        lvl.SetSegmentedBanks(romManager)
+        lvl.SetSegmentedBanks(RomManager)
 
         If Not lvl.Background.Enabled Then
             bgMode = 2
@@ -1123,7 +1136,7 @@ Public Class MainController
         If lvl IsNot Nothing Then
             Dim selLevel As LevelInfoDataTabelList.Level = OpenLevelSelectDialog()
             If selLevel IsNot Nothing Then
-                romManager.ChangeLevelID(lvl, selLevel.ID, selLevel.Type)
+                RomManager.ChangeLevelID(lvl, selLevel.ID, selLevel.Type)
                 RaiseEvent LevelIDChanged(New LevelEventArgs(levelIndex, lvl.LevelID))
             End If
         End If
@@ -1132,11 +1145,11 @@ Public Class MainController
     Public Sub ImportLevel()
         Dim ofd As New OpenFileDialog With {.Filter = "SM64 ROMs (*.z64)|*.z64"}
         If ofd.ShowDialog = DialogResult.OK Then
-            Dim frm As New ImportLevelDialog(romManager)
+            Dim frm As New ImportLevelDialog(RomManager)
             If frm.LoadROM(ofd.FileName) Then
                 If frm.ShowDialog = DialogResult.OK Then
-                    Dim lvl As Level = romManager.Levels.Last
-                    RaiseEvent LevelAdded(New LevelEventArgs(romManager.Levels.IndexOf(lvl), lvl.LevelID))
+                    Dim lvl As Level = RomManager.Levels.Last
+                    RaiseEvent LevelAdded(New LevelEventArgs(RomManager.Levels.IndexOf(lvl), lvl.LevelID))
                 End If
             End If
         End If
@@ -1173,7 +1186,7 @@ Public Class MainController
     'T e x t   M a n a g e r
 
     Private Function GetTextGroup(name As String) As TextGroup
-        Return romManager?.TextGroups?.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name)
+        Return RomManager?.TextGroups?.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name)
     End Function
 
     Public Sub SendRequestReloadTextManagerLists()
@@ -1185,9 +1198,9 @@ Public Class MainController
     End Sub
 
     Public Function IsTextOverLimit() As Boolean
-        If romManager IsNot Nothing Then
-            For itbl As Integer = 0 To romManager.TextGroups.Length - 1
-                Dim tbl As TextGroup = romManager.TextGroups(itbl)
+        If RomManager IsNot Nothing Then
+            For itbl As Integer = 0 To RomManager.TextGroups.Length - 1
+                Dim tbl As TextGroup = RomManager.TextGroups(itbl)
 
                 If TypeOf tbl Is TextTableGroup Then
                     If CalcTextSpaceBytesCount(tbl.TextGroupInfo.Name, Nothing).percent > 1 Then
@@ -1208,7 +1221,7 @@ Public Class MainController
 
     Public Function CalcTextSpaceBytesCount(tableName As String, itemIndex As Integer) As (used As Integer, max As Integer, left As Integer, percent As Single)
         If Not String.IsNullOrEmpty(tableName) Then
-            Dim curTable As TextGroup = romManager.LoadTextGroup(tableName)
+            Dim curTable As TextGroup = RomManager.LoadTextGroup(tableName)
             Dim curTextItem As TextItem = curTable.ElementAtOrDefault(itemIndex)
 
             Dim max As Integer = 0
@@ -1239,15 +1252,15 @@ Public Class MainController
     End Function
 
     Public Function GetTextGroupInfosCount() As Integer
-        Return romManager.GetTextGroupInfos.Length
+        Return RomManager.GetTextGroupInfos.Length
     End Function
 
     Public Function GetTextGroupInfoNames() As String()
-        Return romManager.GetTextGroupInfos.Select(Function(n) n.Name).ToArray
+        Return RomManager.GetTextGroupInfos.Select(Function(n) n.Name).ToArray
     End Function
 
     Public Function GetTextGroupInfos(tableName As String) As (name As String, encoding As String, isDialogGroup As Boolean, isTableGroup As Boolean, isArrayGroup As Boolean)
-        Dim info As TextGroupInfo = romManager.GetTextGroupInfos.FirstOrDefault(Function(n) n.Name = tableName)
+        Dim info As TextGroupInfo = RomManager.GetTextGroupInfos.FirstOrDefault(Function(n) n.Name = tableName)
         If info IsNot Nothing Then
             Dim isTable As Boolean = TypeOf info Is TextTableGroupInfo
             Dim isArray As Boolean = TypeOf info Is TextArrayGroupInfo
@@ -1259,15 +1272,15 @@ Public Class MainController
     End Function
 
     Public Sub LoadTextGroup(tableName As String)
-        romManager.LoadTextGroup(tableName)
+        RomManager.LoadTextGroup(tableName)
     End Sub
 
     Public Function GetTextGroupEntriesCount(tableName As String) As Integer
-        Return romManager.LoadTextGroup(tableName)?.Count
+        Return RomManager.LoadTextGroup(tableName)?.Count
     End Function
 
     Public Function GetTextItemInfos(tableName As String, itemIndex As Integer) As (text As String, horizontalPosition As DialogHorizontalPosition, verticalPosition As DialogVerticalPosition, linesPerSite As Integer)
-        Dim item As TextItem = romManager.LoadTextGroup(tableName)?.ElementAtOrDefault(itemIndex)
+        Dim item As TextItem = RomManager.LoadTextGroup(tableName)?.ElementAtOrDefault(itemIndex)
         Dim hPos As DialogHorizontalPosition = Nothing
         Dim vPos As DialogVerticalPosition = Nothing
         Dim lines As Integer = Nothing
@@ -1308,7 +1321,7 @@ Public Class MainController
             Select Case lvlnumber
                 Case Is <= 15
                     Dim lvltxt As String = lvlnumber
-                    Dim name As String = romManager.LevelInfoData.FirstOrDefault(Function(n) n.Number = lvltxt)?.Name
+                    Dim name As String = RomManager.LevelInfoData.FirstOrDefault(Function(n) n.Number = lvltxt)?.Name
                     item = String.Format("Level {0}{1}", lvlnumber.ToString("00"), If(name IsNot Nothing, ": " & lvltxt, ""))
                 Case 16
                     item = String.Format("Bowser 1")
@@ -1494,7 +1507,7 @@ Public Class MainController
 
         If res.hasExitedWithOK Then
             StatusText = Form_Main_Resources.Status_ImportingSequence
-            Dim curMusic As MusicSequence = romManager.MusicList(index)
+            Dim curMusic As MusicSequence = RomManager.MusicList(index)
 
             ImportMusicFileToSequence(curMusic, res.fileName, res.filterIndex)
 
@@ -1505,7 +1518,7 @@ Public Class MainController
     End Sub
 
     Public Sub AddNewMusicSequence()
-        Select Case romManager?.MusicList.Count
+        Select Case RomManager?.MusicList.Count
             Case 127
                 If MessageBoxEx.Show(Form_Main_Resources.MsgBox_LimitSequenceCountReached, Form_Main_Resources.MsgBox_LimitSequenceCountReached_Title, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.No Then
                     Return
@@ -1521,11 +1534,11 @@ Public Class MainController
 
             StatusText = Form_Main_Resources.Status_CreatingNewSequence
             curMusic = New MusicSequence
-            romManager.MusicList.Add(curMusic)
+            RomManager.MusicList.Add(curMusic)
 
             ImportMusicFileToSequence(curMusic, res.fileName, res.filterIndex)
 
-            RaiseEvent MusicSequenceAdded(New MusicSequenceEventArgs(romManager.MusicList.IndexOf(curMusic), curMusic))
+            RaiseEvent MusicSequenceAdded(New MusicSequenceEventArgs(RomManager.MusicList.IndexOf(curMusic), curMusic))
         End If
 
         StatusText = String.Empty
@@ -1545,8 +1558,8 @@ Public Class MainController
         sequence.InstrumentSets.Sets.Clear()
         sequence.InstrumentSets.Sets.Add(37)
 
-        romManager.MusicList.NeedToSaveSequences = True
-        romManager.MusicList.NeedToSaveSequenceNames = True
+        RomManager.MusicList.NeedToSaveSequences = True
+        RomManager.MusicList.NeedToSaveSequenceNames = True
     End Sub
 
     Public Sub RemoveMusicSequence(index As Integer)
@@ -1554,13 +1567,13 @@ Public Class MainController
             Dim sequence As MusicSequence = GetMusicSequenceByIndex(index)
 
             'Remove sequence
-            romManager.MusicList.RemoveAt(index)
+            RomManager.MusicList.RemoveAt(index)
 
             'Fix Music in Levels
-            For Each lvl As Level In romManager.Levels
+            For Each lvl As Level In RomManager.Levels
                 For Each a As LevelArea In lvl.Areas
                     If a.BGMusic = index Then
-                        Do While a.BGMusic >= romManager.MusicList.Count
+                        Do While a.BGMusic >= RomManager.MusicList.Count
                             a.BGMusic -= 1
                         Loop
                     ElseIf a.BGMusic > index Then
@@ -1574,13 +1587,13 @@ Public Class MainController
     End Sub
 
     Public Function GetMusicSequenceByIndex(index As Integer) As MusicSequence
-        Return romManager.MusicList.ElementAtOrDefault(index)
+        Return RomManager.MusicList.ElementAtOrDefault(index)
     End Function
 
     Public Sub EditMusicSequenceInHexEditor(index As Integer)
         Dim sequence As MusicSequence = GetMusicSequenceByIndex(index)
         OpenHexEditor(sequence.BinaryData)
-        romManager.MusicList.NeedToSaveSequences = True
+        RomManager.MusicList.NeedToSaveSequences = True
         RaiseEvent MusicSequenceChanged(New MusicSequenceEventArgs(index, sequence))
     End Sub
 
@@ -1591,7 +1604,7 @@ Public Class MainController
         If Not String.IsNullOrEmpty(name) AndAlso sequence IsNot Nothing Then
             sequence.Name = name
 
-            romManager.MusicList.NeedToSaveSequenceNames = True
+            RomManager.MusicList.NeedToSaveSequenceNames = True
 
             RaiseEvent MusicSequenceChanged(New MusicSequenceEventArgs(index, sequence))
         End If
@@ -1604,14 +1617,14 @@ Public Class MainController
             sequence.InstrumentSets.Sets.Clear()
             sequence.InstrumentSets.Sets.Add(instSet)
 
-            romManager.MusicList.NeedToSaveNInsts = True
+            RomManager.MusicList.NeedToSaveNInsts = True
 
             RaiseEvent MusicSequenceChanged(New MusicSequenceEventArgs(index, sequence))
         End If
     End Sub
 
     Public Function GetMusicSeuenceCount() As Integer
-        Return romManager.MusicList.Count
+        Return RomManager.MusicList.Count
     End Function
 
     Public Function GetMusicSequenceInfos(index As Integer) As (name As String, instSet As Byte, length As Integer)

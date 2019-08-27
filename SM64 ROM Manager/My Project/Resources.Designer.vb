@@ -61,20 +61,20 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die 2 ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die 1 ähnelt.
         '''</summary>
-        Friend ReadOnly Property DevelopmentalStage() As String
+        Friend ReadOnly Property DevelopmentBuild() As String
             Get
-                Return ResourceManager.GetString("DevelopmentalStage", resourceCulture)
+                Return ResourceManager.GetString("DevelopmentBuild", resourceCulture)
             End Get
         End Property
         
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die 1 ähnelt.
         '''</summary>
-        Friend ReadOnly Property DevelopmentBuild() As String
+        Friend ReadOnly Property DevelopmentStage() As String
             Get
-                Return ResourceManager.GetString("DevelopmentBuild", resourceCulture)
+                Return ResourceManager.GetString("DevelopmentStage", resourceCulture)
             End Get
         End Property
         

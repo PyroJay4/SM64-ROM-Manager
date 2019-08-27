@@ -1,9 +1,15 @@
 {
-  "0.3.4.0": "0.3.4.0.ppf",
-  "0.3.6.0": "0.3.6.0.ppf",
-  "0.4.0.0": "0.4.0.0.ppf",
-  "0.4.1.0": "0.4.1.0.ppf",
-  "0.4.3.0": "0.4.3.0.ppf",
-  "0.5.4.0": "0.5.4.0.ppf",
-  "0.5.6.0": "0.5.6.0.ppf"
+  "1.0.0.0 rc1":
+  {
+    "Filename": "1.0.0.0.ppf",
+    "Version": "1.0.0.0",
+    "DevelopmentStage": 1,
+    "DevelopmentBuild": 1
+  }
 }
+
+//DevelopmentStage - Possible Values:
+//0 = Release
+//1 = Release Candidate
+//2 = Beta
+//3 = Alpha

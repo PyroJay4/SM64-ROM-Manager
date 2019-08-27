@@ -132,6 +132,8 @@
     <Compile Include="SM64Lib\Model\DisplayLists\DisplayListCollection.vb" />
     <Compile Include="SM64Lib\Model\Fog.vb" />
     <Compile Include="SM64Lib\Model\FogPreset.vb" />
+    <Compile Include="SM64Lib\RomVersion.vb" />
+    <Compile Include="SM64Lib\RomVersionEventArgs.vb" />
     <Compile Include="SM64Lib\SM64Convert\TextureLoadedInfos.vb" />
     <Compile Include="SM64Lib\NPCs\CoinsManager.vb" />
     <Compile Include="SM64Lib\Object Banks\CustomObject.vb" />
