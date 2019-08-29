@@ -1415,7 +1415,8 @@ Namespace LevelEditor
         End Sub
         Friend Sub ButtonItem_ImportModel_Click(sender As Object, e As EventArgs) Handles ButtonItem_ImportModel.Click, ButtonItem_ImportCollision.Click, ButtonItem_ImportVisualMap.Click, ButtonItem85.Click
             maps.ImportAreaModel(sender Is ButtonItem_ImportModel OrElse sender Is ButtonItem_ImportVisualMap,
-                                 sender Is ButtonItem_ImportModel OrElse sender Is ButtonItem_ImportCollision OrElse sender Is ButtonItem85)
+                                 sender Is ButtonItem_ImportModel OrElse sender Is ButtonItem_ImportCollision OrElse sender Is ButtonItem85,
+                                 GetKeyForConvertAreaModel(Rommgr.GameName, CLevel.LevelID, CArea.AreaID))
         End Sub
 
         Friend Sub ButtonItem_AddArea_Click(sender As Object, e As EventArgs) Handles ButtonItem_AddArea.Click
@@ -1430,20 +1431,16 @@ Namespace LevelEditor
                 Return
             End If
 
-            Dim tArea As New LevelArea(ReamingIDs(0))
-            Dim frm As New MainModelConverter
-            frm.CheckBoxX_ConvertCollision.Enabled = False
-            frm.CheckBoxX_ConvertModel.Enabled = False
-            If frm.ShowDialog <> DialogResult.OK Then Return
+            Dim newAreaID As Byte = ReamingIDs(0)
+            Dim tArea As New LevelArea(newAreaID)
+            Dim res = GetModelViaModelConverter(False, False,,,, GetKeyForConvertAreaModel(Rommgr.GameName, CLevel.LevelID, newAreaID))
 
-            tArea.AreaModel = frm.ResModel
-
-            'StoreHistoryPoint(New ObjectAction(Nothing, AreaEditorHistoryFunctions.Methodes("RemoveArea"), AreaEditorHistoryFunctions.Methodes("AddArea"), {cLevel, tArea}, {cLevel, tArea}),
-            '                  New ObjectAction(Me, "LoadAreaIDs", "LoadAreaIDs", {}, {}, BindingFlags.NonPublic Or BindingFlags.Instance, BindingFlags.NonPublic Or BindingFlags.Instance))
-
-            cLevel.Areas.Add(tArea)
-            areaIdToLoad = tArea.AreaID
-            LoadAreaIDs()
+            If res IsNot Nothing Then
+                tArea.AreaModel = res?.mdl
+                CLevel.Areas.Add(tArea)
+                AreaIdToLoad = tArea.AreaID
+                LoadAreaIDs()
+            End If
         End Sub
 
         Friend Sub ButtonItem_RemoveArea_Click(sender As Object, e As EventArgs) Handles ButtonItem_RemoveArea.Click

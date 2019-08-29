@@ -99,6 +99,10 @@ Friend Module General
         End Select
     End Sub
 
+    Public Function GetKeyForConvertAreaModel(romGameName As String, curLevelID As Short, curAreaID As Byte) As String
+        Return $"{romGameName} l{curLevelID.ToString("X2")} a{curAreaID.ToString("X")}"
+    End Function
+
     Public Sub LoadBehaviorInfosIfEmpty()
         If Not hasLoadedBehaviorInfos Then
             LoadBehaviorInfos()

@@ -32,6 +32,7 @@ Namespace Global.SM64Lib
         Private myProgramVersion As New RomVersion
         Private ReadOnly levelIDsToReset As New List(Of UShort)
         Private ReadOnly myTextGroups As New List(Of Text.TextGroup)
+        Private myGameName As String = Nothing
 
         'P r o p e r t i e s
 
@@ -157,10 +158,13 @@ Namespace Global.SM64Lib
         ''' <returns></returns>
         Public Property GameName As String
             Get
-                Dim fs As New BinaryRom(Me, FileAccess.Read)
-                fs.Position = &H20
-                GameName = Encoding.ASCII.GetString(fs.Read(&H14)).Trim
-                fs.Close()
+                If myGameName Is Nothing Then
+                    Dim fs As New BinaryRom(Me, FileAccess.Read)
+                    fs.Position = &H20
+                    myGameName = Encoding.ASCII.GetString(fs.Read(&H14)).Trim
+                    fs.Close()
+                End If
+                Return myGameName
             End Get
             Set(value As String)
                 Dim fs As New BinaryRom(Me, FileAccess.Write)
@@ -172,6 +176,7 @@ Namespace Global.SM64Lib
                     fs.WriteByte(&H20)
                 Loop
                 fs.Close()
+                myGameName = value
             End Set
         End Property
 

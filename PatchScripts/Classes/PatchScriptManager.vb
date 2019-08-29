@@ -99,11 +99,11 @@ Public Class PatchingManager
         Return script
     End Function
 
-    Public Sub Patch(script As PatchScript, assemblyPath As String, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
-        Patch(script, Nothing, "", owner, params)
+    Public Sub Patch(script As PatchScript, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
+        Patch(script, Nothing, owner, params)
     End Sub
 
-    Public Sub Patch(script As PatchScript, rommgr As RomManager, assemblyPath As String, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
+    Public Sub Patch(script As PatchScript, rommgr As RomManager, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
         If script Is Nothing Then
             Throw New ArgumentNullException(NameOf(script))
         End If

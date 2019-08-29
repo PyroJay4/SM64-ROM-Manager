@@ -100,6 +100,7 @@
     <Compile Include="SM64Lib\Behavior\Script\Behaviorscript.vb" />
     <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommand.vb" />
     <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommandCollection.vb" />
+    <Compile Include="SM64Lib\Configuration\RomConfig.vb" />
     <Compile Include="SM64Lib\Data\BinaryFile.vb" />
     <Compile Include="SM64Lib\FilePathsConfiguration.vb" />
     <Compile Include="SM64Lib\General.vb" />
@@ -138,7 +139,7 @@
     <Compile Include="SM64Lib\NPCs\CoinsManager.vb" />
     <Compile Include="SM64Lib\Object Banks\CustomObject.vb" />
     <Compile Include="SM64Lib\Objects\StarNames.vb" />
-    <Compile Include="SM64Lib\ObjInputSettings.vb" />
+    <Compile Include="SM64Lib\Model\ObjectInputSettings.vb" />
     <Compile Include="SM64Lib\RGBColor.vb" />
     <Compile Include="SM64Lib\RomManagerSettings.vb" />
     <Compile Include="SM64Lib\Data\BinaryData.vb" />

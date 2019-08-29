@@ -37,7 +37,8 @@ Public Class TweakViewer
         myPatchs.Clear()
 
         For Each f As String In Directory.GetFiles(pathTweaks, "*.xml", SearchOption.AllDirectories)
-            myPatchs.Add(mgr.Read(f))
+            Dim p As PatchProfile = mgr.Read(f)
+            myPatchs.Add(p)
         Next
         myPatchs = myPatchs.OrderBy(Function(n) n.Name).ToList
 
@@ -335,24 +336,18 @@ Public Class TweakViewer
     End Sub
 
     Private Sub ButtonX8_Click(sender As Object, e As EventArgs) Handles ButtonX8.Click
+        Dim profile As PatchProfile = GetSelectedPatch()
         Dim script As PatchScript = GetSelectedScript()
 
         If script IsNot Nothing Then
-            'Try
-            '    Dim mgr As New PatchingManager
-            '    mgr.Patch(script, rommgr, "", Me, New Dictionary(Of String, Object) From {{"romfile", rommgr.RomFile}, {"rommgr", rommgr}})
-            '    MessageBoxEx.Show(Me, "Patched successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            'Catch ex As Exception
-            '    MessageBoxEx.Show(Me, "Error at executing the script. It probably has errors.", "Script Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'End Try
-            PatchScript(Me, script, rommgr)
+            PatchScript(Me, script, profile, rommgr)
         End If
     End Sub
 
-    Friend Shared Sub PatchScript(owner As IWin32Window, script As PatchScript, rommgr As SM64Lib.RomManager)
+    Friend Shared Sub PatchScript(owner As IWin32Window, script As PatchScript, profile As PatchProfile, rommgr As SM64Lib.RomManager)
         Try
             Dim mgr As New PatchingManager
-            mgr.Patch(script, rommgr, "", owner, New Dictionary(Of String, Object) From {{"romfile", rommgr.RomFile}, {"rommgr", rommgr}})
+            mgr.Patch(script, rommgr, owner, New Dictionary(Of String, Object) From {{"romfile", rommgr.RomFile}, {"rommgr", rommgr}, {"profilepath", profile?.FileName}})
             MessageBoxEx.Show(owner, "Patched successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBoxEx.Show(owner, "Error at executing the script. It probably has errors.", "Script Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -374,7 +369,7 @@ Public Class TweakViewer
     End Sub
 
     Private Sub LabelX_Description_MouseEnter(sender As Object, e As EventArgs) Handles LabelX_Description.TextChanged
-        SuperTooltip1.SetSuperTooltip(sender, New SuperTooltipInfo("", "", sender.Text, Nothing, Nothing, eTooltipColor.System, False, False, Nothing))
+        SuperTooltip1.SetSuperTooltip(sender, New SuperTooltipInfo(String.Empty, String.Empty, sender.Text, Nothing, Nothing, eTooltipColor.System, False, False, Nothing))
     End Sub
 
     Private Sub Flyout1_FlyoutShown(sender As Object, e As EventArgs) Handles Flyout1.FlyoutShown

@@ -6,7 +6,7 @@
         Return LongFromText(Text, DefaultValue, useIVM)
     End Function
 
-    Public Function LongFromText(Text As String, Optional DefaultValue As Long = 0, Optional useIVM As Integer = -1) As Long
+    Public Function LongFromText(Text As String, Optional DefaultValue As Long = 0, Optional useIVM As Long = -1) As Long
         Try
             Dim IVM As Integer = If(IVM > -1, IVM, GetIntegerValueMode())
             Select Case True
@@ -44,15 +44,16 @@
     End Function
 
     Public Function TextFromValue(Value As Long, Optional IVM As Integer = -1, Optional charCount As Integer = 0) As String
-        'If Value = 0 Then Return "0"
-        If IVM = -1 Then IVM = GetIntegerValueMode()
-        Select Case IVM
+        If IVM = -1 Then
+            IVM = GetIntegerValueMode()
+        End If
 
+        Select Case IVM
             Case 0 : Return Value.ToString(GetCharCountAsZeroString(charCount))
             Case 1 : Return "0x" & Value.ToString("X" & If(charCount > 0, charCount.ToString, ""))
             Case 2 : Return "&H" & Value.ToString("X" & If(charCount > 0, charCount.ToString, ""))
             Case 3 : Return "$" & Value.ToString("X" & If(charCount > 0, charCount.ToString, ""))
-            Case Else : Return ""
+            Case Else : Return String.Empty
         End Select
     End Function
 

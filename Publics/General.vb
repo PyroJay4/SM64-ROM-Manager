@@ -16,8 +16,6 @@ Imports Pilz.S3DFileParser
 
 Public Module General
 
-    Private _OtherData As ExcelWorkbook = Nothing
-
     Public ReadOnly Property DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
     Public ReadOnly Property ActSelectorDefaultValues As Byte() = New Byte() {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
     Public ReadOnly Property PluginManager As New Pilz.Reflection.PluginSystem.PluginManager
@@ -132,41 +130,7 @@ Public Module General
         Return $"All supported files|{combiFormats}|{splittedFormats}"
     End Function
 
-    'Public Function GetExtensionFilter(modul As LoaderModule) As String
-    '    Dim combiFormats As String = ""
-    '    Dim splittedFormats As String = ""
-
-    '    Dim ids As Dictionary(Of String, String) = S3DFileParser.Publics.GetAllFileFormatIDs(modul)
-    '    Dim descriptions As Dictionary(Of String, String) = S3DFileParser.Publics.GetAllFileFormatDescriptions(modul)
-
-    '    For Each ext As String In S3DFileParser.Publics.GetAllowedFileExtensions(modul)
-    '        Dim desc As String = ""
-
-    '        If descriptions.ContainsKey(ext.Substring(1)) Then desc = descriptions(ext.Substring(1))
-
-    '        If combiFormats <> "" Then
-    '            combiFormats &= ";"
-    '        End If
-    '        combiFormats &= "*" & ext
-
-    '        If splittedFormats <> "" Then
-    '            splittedFormats &= "|"
-    '        End If
-
-    '        If desc = "" Then
-    '            If ids.ContainsKey(ext.Substring(1)) Then desc = ids(ext.Substring(1))
-    '        End If
-    '        If desc = "" Then
-    '            desc = $"{ext.Substring(1)} Files"
-    '        End If
-
-    '        splittedFormats &= $"{desc} (*{ext})|*{ext}"
-    '    Next
-
-    '    Return $"All supported files|{combiFormats}|{splittedFormats}"
-    'End Function
-
-    Public Function keepDegreesWithin360(value As Short) As Short
+    Public Function KeepDegreesWithin360(value As Short) As Short
         If value < 0 Then
             Return 360 + (value Mod -360)
         Else

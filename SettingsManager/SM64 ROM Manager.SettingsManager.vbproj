@@ -107,6 +107,7 @@
     <Compile Include="Settings\SubStruc\ModelConverterSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\RecentFilesSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\StyleManagerSettingsStruc.vb" />
+    <Compile Include="Settings\SubStruc\SubStruc\GuiInputSettings.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\HexEditModeStruc.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +131,11 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
+      <Project>{50BE8215-8945-4A29-908A-36E1102A540C}</Project>
+      <Name>SM64Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

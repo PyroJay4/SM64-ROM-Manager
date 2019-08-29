@@ -7,6 +7,7 @@ Imports Pilz.Reflection.PluginSystem
 Imports Pilz.S3DFileParser
 Imports RegistryUtils
 Imports SM64_ROM_Manager.SettingsManager
+Imports SM64Lib.Model
 
 Public Module Publics
 
@@ -52,7 +53,7 @@ Public Module Publics
         Next
     End Sub
 
-    Private Sub regKeyMonitor_WatchWindowsTheme_RegChanged() Handles regKeyMonitor_WatchWindowsTheme.RegChanged
+    Private Sub RegKeyMonitor_WatchWindowsTheme_RegChanged() Handles regKeyMonitor_WatchWindowsTheme.RegChanged
         SetVisualTheme()
     End Sub
 
@@ -189,6 +190,30 @@ Public Module Publics
         For Each f As String In toRemove
             collection.Remove(f)
         Next
+    End Sub
+
+    Public Function GetObjectInputSettings(key As String) As GuiInputSettings
+        Dim input As GuiInputSettings = Nothing
+
+        If Not String.IsNullOrEmpty(key) Then
+            For Each kvp In Settings.ModelConverter.InputSettings
+                If input Is Nothing AndAlso kvp.Key = key Then
+                    input = kvp.Value
+                End If
+            Next
+        End If
+
+        Return input
+    End Function
+
+    Public Function GetObjectInputSettingsOrDefault(key As String) As GuiInputSettings
+        Return If(GetObjectInputSettings(key), New GuiInputSettings)
+    End Function
+
+    Public Sub StoreObjectInputSettings(key As String, inputSettings As GuiInputSettings)
+        If Not String.IsNullOrEmpty(key) AndAlso Not Settings.ModelConverter.InputSettings.ContainsKey(key) Then
+            Settings.ModelConverter.InputSettings.Add(key, inputSettings)
+        End If
     End Sub
 
 End Module

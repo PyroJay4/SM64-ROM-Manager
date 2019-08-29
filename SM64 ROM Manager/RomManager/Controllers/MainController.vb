@@ -814,15 +814,14 @@ Public Class MainController
 
         'Convert a model
         If ReamingIDs.Count > 0 Then
-            Dim frm As New MainModelConverter
-            frm.CheckBoxX_ConvertCollision.Enabled = False
-            frm.CheckBoxX_ConvertModel.Enabled = False
+            Dim areaID As Byte = ReamingIDs(0)
+            Dim res = GetModelViaModelConverter(False, False,,,, GetKeyForConvertAreaModel(RomManager.GameName, curLevel.LevelID, areaID))
 
-            If frm.ShowDialog = DialogResult.OK Then
+            If res IsNot Nothing Then
                 'Create new area
-                Dim tArea As New LevelArea(ReamingIDs(0))
-                tArea.AreaModel = frm.ResModel
-                tArea.ScrollingTextures.AddRange(frm.ResModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
+                Dim tArea As New LevelArea(areaID)
+                tArea.AreaModel = res?.mdl
+                tArea.ScrollingTextures.AddRange(res?.mdl.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
 
                 'Add area to level
                 curLevel.Areas.Add(tArea)
@@ -962,26 +961,24 @@ Public Class MainController
     End Sub
 
     Public Sub ImportLevelAreaModel(levelIndex As Integer, areaIndex As Integer, importVisualMap As Boolean, importCollision As Boolean)
-        Dim area As LevelArea = GetLevelAndArea(levelIndex, areaIndex).area
+        Dim levelarea = GetLevelAndArea(levelIndex, areaIndex)
+        Dim area As LevelArea = levelarea.area
+        Dim res = GetModelViaModelConverter(,, importVisualMap, importCollision,, GetKeyForConvertAreaModel(RomManager.GameName, levelarea.level.LevelID, area.AreaID))
 
-        Dim frm As New MainModelConverter
-        frm.CheckBoxX_ConvertModel.Checked = importVisualMap
-        frm.CheckBoxX_ConvertCollision.Checked = importCollision
-
-        If frm.ShowDialog = DialogResult.OK Then
-            If frm.CheckBoxX_ConvertCollision.Checked AndAlso frm.CheckBoxX_ConvertModel.Checked Then
+        If res IsNot Nothing Then
+            If res?.hasCollision AndAlso res?.hasVisualMap Then
                 Dim OldAreaModel As ObjectModel = area.AreaModel
-                area.AreaModel = frm.ResModel
-            ElseIf frm.CheckBoxX_ConvertCollision.Checked Then
+                area.AreaModel = res?.mdl
+            ElseIf res?.hasCollision Then
                 Dim OldAreaModel As ObjectModel = area.AreaModel
-                area.AreaModel.Collision = frm.ResModel.Collision
-            ElseIf frm.CheckBoxX_ConvertModel.Checked Then
+                area.AreaModel.Collision = res?.mdl.Collision
+            ElseIf res?.hasVisualMap Then
                 Dim OldAreaModel As ObjectModel = area.AreaModel
-                area.AreaModel = frm.ResModel
+                area.AreaModel = res?.mdl
                 area.AreaModel.Collision = OldAreaModel.Collision
             End If
 
-            If frm.CheckBoxX_ConvertModel.Checked Then
+            If res?.hasVisualMap Then
                 area.ScrollingTextures.Clear()
                 area.ScrollingTextures.AddRange(area.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
             End If
