@@ -1494,39 +1494,23 @@ Namespace SM64Convert
                 Select Case mat.SelectDisplaylist
                     Case -1
                         If mat.HasTransparency Then
-                            createDL(GEOLAYER_SOLID) = True
+                            createDL(GEOLAYER_TRANSPARENT) = True
                         ElseIf mat.HasTextureAlpha Then
                             createDL(GEOLAYER_ALPHA) = True
                         Else
-                            createDL(GEOLAYER_TRANSPARENT) = True
+                            createDL(GEOLAYER_SOLID) = True
                         End If
-                        'If mat.HasTransparency Then
-                        '    createTransDL = True
-                        'ElseIf mat.HasTextureAlpha Then
-                        '    createAlphaDL = True
-                        'Else
-                        '    createSolidDL = True
-                        'End If
                     Case Else
                         createDL(mat.SelectDisplaylist) = True
-                        'Case TextureFormatSettings.SelectDisplaylistMode.Solid
-                        '    createSolidDL = True
-                        'Case TextureFormatSettings.SelectDisplaylistMode.Alpha
-                        '    createAlphaDL = True
-                        'Case TextureFormatSettings.SelectDisplaylistMode.Transparent
-                        '    createTransDL = True
                 End Select
             Next
 
             'Check for forced DL-Type
-            For i As Integer = 0 To createDL.Length - 1
-                createDL(i) = createDL(i) AndAlso (settings.ForceDisplaylist = i)
-            Next
-            'If enableForcing Then
-            '    createSolidDL = createSolidDL AndAlso (settings.ForceDisplaylist = Geolayout.Geolayer.Solid)
-            '    createAlphaDL = createAlphaDL AndAlso (settings.ForceDisplaylist = Geolayout.Geolayer.Alpha)
-            '    createTransDL = createTransDL AndAlso (settings.ForceDisplaylist = Geolayout.Geolayer.Transparent)
-            'End If
+            If enableForcing Then
+                For i As Integer = 0 To createDL.Length - 1
+                    createDL(i) = createDL(i) AndAlso (settings.ForceDisplaylist = i)
+                Next
+            End If
 
             Dim isAutoLayer = Function(l As SByte) l = -1
             Dim isLayerSolid = Function(l As SByte) {1, 2}.Contains(l)
