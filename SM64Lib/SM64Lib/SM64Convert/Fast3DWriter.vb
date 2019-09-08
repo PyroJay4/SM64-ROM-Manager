@@ -1535,567 +1535,286 @@ Namespace SM64Convert
 
             'Create DLs
             For layerID As Integer = 0 To createDL.Length - 1
-                Dim createThisDL As Boolean = createDL(layerID)
-                Dim addPtrGeometry = Sub(layer As SByte) _
+                If createDL(layerID) Then
+                    Dim addPtrGeometry = Sub(layer As SByte) _
                     conRes.PtrGeometry.Add(New Geolayout.Geopointer(layer, CurSegAddress Or impdata.Position))
 
-                Select Case True
-                    Case isLayerSolid(layerID)
-                        addPtrGeometry(layerID)
-                        enabledVertexColors = False
-                        hasCrystalEffectEnabled = False
-                        needToResetCrystalEffectCommands = True
-                        ciEnabled = False
-                        lastMaterial = Nothing
-                        lastN64Codec = MaterialType.None
-                        lastTexType = Nothing
-                        lastCmdFC = ""
+                    Select Case True
+                        Case isLayerSolid(layerID)
+                            addPtrGeometry(layerID)
+                            enabledVertexColors = False
+                            hasCrystalEffectEnabled = False
+                            needToResetCrystalEffectCommands = True
+                            ciEnabled = False
+                            lastMaterial = Nothing
+                            lastN64Codec = MaterialType.None
+                            lastTexType = Nothing
+                            lastCmdFC = ""
 
-                        ImpF3D("E7 00 00 00 00 00 00 00")
-                        ImpF3D("B7 00 00 00 00 00 00 00")
-                        'ImpF3D("BB 00 00 01 FF FF FF FF")
-                        ImpF3D("E8 00 00 00 00 00 00 00")
-                        ImpF3D("E6 00 00 00 00 00 00 00")
-                        If settings.EnableFog Then ImpFogStart(False)
+                            ImpF3D("E7 00 00 00 00 00 00 00")
+                            ImpF3D("B7 00 00 00 00 00 00 00")
+                            'ImpF3D("BB 00 00 01 FF FF FF FF")
+                            ImpF3D("E8 00 00 00 00 00 00 00")
+                            ImpF3D("E6 00 00 00 00 00 00 00")
+                            If settings.EnableFog Then ImpFogStart(False)
 
-                        For i As Integer = 0 To vertexGroups.Count - 1
-                            Dim mp As VertexGroupList = vertexGroups(i)
+                            For i As Integer = 0 To vertexGroups.Count - 1
+                                Dim mp As VertexGroupList = vertexGroups(i)
 
-                            If isAutoLayer(mp.Material.SelectDisplaylist) Then
-                                If (mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency) AndAlso Not enableForcing Then Continue For
-                            ElseIf Not isLayerSolid(mp.Material.SelectDisplaylist) Then
-                                If Not enableForcing Then Continue For
-                            End If
+                                If isAutoLayer(mp.Material.SelectDisplaylist) Then
+                                    If (mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency) AndAlso Not enableForcing Then Continue For
+                                ElseIf Not isLayerSolid(mp.Material.SelectDisplaylist) Then
+                                    If Not enableForcing Then Continue For
+                                End If
 
-                            Dim iscitexture As Boolean = citextypes.Contains(mp.Material.TexType)
-                            Dim waslastcitexture As Boolean = lastMaterial IsNot Nothing AndAlso citextypes.Contains(lastMaterial.TexType)
+                                Dim iscitexture As Boolean = citextypes.Contains(mp.Material.TexType)
+                                Dim waslastcitexture As Boolean = lastMaterial IsNot Nothing AndAlso citextypes.Contains(lastMaterial.TexType)
 
-                            'CI Texture things
-                            If iscitexture AndAlso Not waslastcitexture Then
-                                SetOtherMode_H()
-                                ciEnabled = True
-                            ElseIf Not iscitexture AndAlso waslastcitexture Then
-                                ShiftTMEMBack()
-                            End If
+                                'CI Texture things
+                                If iscitexture AndAlso Not waslastcitexture Then
+                                    SetOtherMode_H()
+                                    ciEnabled = True
+                                ElseIf Not iscitexture AndAlso waslastcitexture Then
+                                    ShiftTMEMBack()
+                                End If
 
-                            'Geomode
-                            If mp.Material.EnableGeoMode Then
-                                ImpF3D("B6 00 00 00 FF FF FF FF")
-                                ImpF3D($"B7 00 00 00 {Hex((mp.Material.GeoMode >> 24) And &HFF)} {Hex((mp.Material.GeoMode >> 16) And &HFF)} {Hex((mp.Material.GeoMode >> 8) And &HFF)} {Hex(mp.Material.GeoMode And &HFF)}")
-                            End If
+                                'Geomode
+                                If mp.Material.EnableGeoMode Then
+                                    ImpF3D("B6 00 00 00 FF FF FF FF")
+                                    ImpF3D($"B7 00 00 00 {Hex((mp.Material.GeoMode >> 24) And &HFF)} {Hex((mp.Material.GeoMode >> 16) And &HFF)} {Hex((mp.Material.GeoMode >> 8) And &HFF)} {Hex(mp.Material.GeoMode And &HFF)}")
+                                End If
 
-                            If lastMaterial IsNot mp.Material Then
-                                lastMaterial = mp.Material
+                                If lastMaterial IsNot mp.Material Then
+                                    lastMaterial = mp.Material
 
-                                AddCmdFC(mp.Material, lastCmdFC)
+                                    AddCmdFC(mp.Material, lastCmdFC)
 
-                                If lastN64Codec <> mp.Material.Type Then
-                                    ImpCmd03(mp.Material, importStart)
-                                    lastN64Codec = mp.Material.Type
-                                Else
-                                    If i > 0 Then
-                                        If vertexGroups(i - 1).Material.EnableTextureColor AndAlso mp.Material.EnableTextureColor Then
-                                            If vertexGroups(i - 1).Material.Color <> mp.Material.Color Then ImpCmd03(mp.Material, importStart)
-                                        ElseIf mp.Material.EnableTextureColor Then
-                                            ImpCmd03(mp.Material, importStart)
-                                        End If
-                                    End If
-                                    If lastN64Codec = MaterialType.ColorSolid AndAlso mp.Material.Type = MaterialType.ColorSolid Then
+                                    If lastN64Codec <> mp.Material.Type Then
                                         ImpCmd03(mp.Material, importStart)
-                                    End If
-                                End If
-
-                                ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
-
-                            End If
-
-                            Dim grpOff As Integer = 0
-                            For ii As Integer = 0 To mp.GroupsCount - 1
-                                ImpTriCmds(mp.Material, mp.FinalVertexGroups(ii), startVerts + (mp.StartIndex + grpOff), enabledVertexColors)
-                                grpOff += mp.FinalVertexGroups(ii).VertexDataCount * &H10
-                            Next
-
-                            If mp.Material.EnableGeoMode Then
-                                If i + 1 < vertexGroups.Count AndAlso vertexGroups(i + 1).Material.EnableGeoMode Then Continue For
-                                ImpF3D("B6 00 00 00 FF FF FF FF")
-                                ImpF3D("B7 00 00 00 00 02 20 05")
-                            End If
-                        Next
-
-                        If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
-                        If settings.EnableFog Then ImpFogEnd()
-                        'ImpF3D("FC FF FF FF FF FE 79 3C")
-                        ImpF3D("BB 00 00 00 FF FF FF FF")
-                        If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
-                        If ciEnabled Then ShiftTMEMBack()
-                        ImpF3D("B8 00 00 00 00 00 00 00")
-
-                        MergeScrollingTextures()
-
-                    Case isLayerAlpha(layerID)
-                        addPtrGeometry(layerID)
-                        enabledVertexColors = False
-                        hasCrystalEffectEnabled = False
-                        needToResetCrystalEffectCommands = True
-                        ciEnabled = False
-                        lastMaterial = Nothing
-                        lastN64Codec = MaterialType.None
-                        lastTexType = Nothing
-                        lastCmdFC = ""
-
-                        ImpF3D("E7 00 00 00 00 00 00 00")
-                        If settings.EnableFog Then ImpF3D("B9 00 02 01 00 00 00 00")
-                        ImpF3D("B7 00 00 00 00 00 00 00")
-                        'ImpF3D("BB 00 00 01 FF FF FF FF")
-                        ImpF3D("E8 00 00 00 00 00 00 00")
-                        ImpF3D("E6 00 00 00 00 00 00 00")
-                        If settings.EnableFog Then ImpFogStart(True)
-
-                        For i As Integer = 0 To vertexGroups.Count - 1
-                            Dim mp As VertexGroupList = vertexGroups(i)
-
-                            If isAutoLayer(mp.Material.SelectDisplaylist) Then
-                                If (Not mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency OrElse mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
-                            ElseIf Not isLayerAlpha(mp.Material.SelectDisplaylist) Then
-                                If Not enableForcing Then Continue For
-                            End If
-
-                            Dim iscitexture As Boolean = citextypes.Contains(mp.Material.TexType)
-                            Dim waslastcitexture As Boolean = lastMaterial IsNot Nothing AndAlso citextypes.Contains(lastMaterial.TexType)
-
-                            'CI Texture things
-                            If iscitexture AndAlso Not waslastcitexture Then
-                                SetOtherMode_H()
-                                ciEnabled = True
-                            ElseIf Not iscitexture AndAlso waslastcitexture Then
-                                ShiftTMEMBack()
-                            End If
-
-                            If mp.Material.EnableGeoMode Then
-                                ImpF3D("B6 00 00 00 FF FF FF FF")
-                                ImpF3D($"B7 00 00 00 {Hex((mp.Material.GeoMode >> 24) And &HFF)} {Hex((mp.Material.GeoMode >> 16) And &HFF)} {Hex((mp.Material.GeoMode >> 8) And &HFF)} {Hex(mp.Material.GeoMode And &HFF)}")
-                            End If
-
-                            If lastMaterial IsNot mp.Material Then
-                                lastMaterial = mp.Material
-
-                                AddCmdFC(mp.Material, lastCmdFC)
-
-                                ImpCmd03(mp.Material, importStart)
-
-                                If lastN64Codec <> mp.Material.Type Then
-                                    lastN64Codec = mp.Material.Type
-                                End If
-
-                                ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
-                            End If
-
-                            Dim grpOff As Integer = 0
-                            For ii As Integer = 0 To mp.GroupsCount - 1
-                                ImpTriCmds(mp.Material, mp.FinalVertexGroups(ii), startVerts + (mp.StartIndex + grpOff), enabledVertexColors)
-                                grpOff += mp.FinalVertexGroups(ii).VertexDataCount * &H10
-                            Next
-                            If mp.Material.EnableGeoMode Then
-                                ImpF3D("B6 00 00 00 FF FF FF FF")
-                                ImpF3D("B7 00 00 00 00 02 20 05")
-                            End If
-                        Next
-
-                        If settings.EnableFog Then ImpFogEnd()
-                        If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
-                        ImpF3D("FC FF FF FF FF FE 79 3C")
-                        ImpF3D("BB 00 00 00 FF FF FF FF")
-                        If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
-                        If ciEnabled Then ShiftTMEMBack()
-                        ImpF3D("B8 00 00 00 00 00 00 00")
-
-                        MergeScrollingTextures()
-
-                    Case isLayerTrans(layerID)
-                        addPtrGeometry(layerID)
-                        Dim resetBF As Boolean = False
-                        Dim lastMat As Material = Nothing
-                        enabledVertexColors = False
-                        hasCrystalEffectEnabled = False
-                        needToResetCrystalEffectCommands = True
-                        ciEnabled = False
-                        lastMaterial = Nothing
-                        lastN64Codec = MaterialType.None
-                        lastTexType = Nothing
-                        lastCmdFC = ""
-
-                        ImpF3D("E7 00 00 00 00 00 00 00")
-                        ImpF3D("B7 00 00 00 00 00 00 00")
-                        'ImpF3D("BB 00 00 01 FF FF FF FF")
-                        ImpF3D("E8 00 00 00 00 00 00 00")
-                        ImpF3D("E6 00 00 00 00 00 00 00")
-
-                        For i As Integer = 0 To vertexGroups.Count - 1
-                            Dim mp As VertexGroupList = vertexGroups(i)
-
-                            If isAutoLayer(mp.Material.SelectDisplaylist) Then
-                                If Not mp.Material.HasTransparency OrElse (mp.EnableVertexColors AndAlso Not mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
-                            ElseIf Not isLayerTrans(mp.Material.SelectDisplaylist) Then
-                                If Not enableForcing Then Continue For
-                            End If
-
-                            Dim iscitexture As Boolean = citextypes.Contains(mp.Material.TexType)
-                            Dim waslastcitexture As Boolean = lastMaterial IsNot Nothing AndAlso citextypes.Contains(lastMaterial.TexType)
-
-                            'CI Texture things
-                            If iscitexture AndAlso Not waslastcitexture Then
-                                SetOtherMode_H()
-                                ciEnabled = True
-                            ElseIf Not iscitexture AndAlso waslastcitexture Then
-                                ShiftTMEMBack()
-                            End If
-
-                            If lastMaterial IsNot mp.Material Then
-                                lastMaterial = mp.Material
-
-                                If lastN64Codec <> mp.Material.Type Then
-                                    If mp.Material.Type = MaterialType.TextureTransparent Then
-                                        If mp.Material.OpacityOrg < &HFF Then
-                                            ImpF3D($"FB 00 00 00 FF FF FF {Hex(mp.Material.OpacityOrg)}")
-                                            resetBF = True
+                                        lastN64Codec = mp.Material.Type
+                                    Else
+                                        If i > 0 Then
+                                            If vertexGroups(i - 1).Material.EnableTextureColor AndAlso mp.Material.EnableTextureColor Then
+                                                If vertexGroups(i - 1).Material.Color <> mp.Material.Color Then ImpCmd03(mp.Material, importStart)
+                                            ElseIf mp.Material.EnableTextureColor Then
+                                                ImpCmd03(mp.Material, importStart)
+                                            End If
                                         End If
-                                    End If
-                                End If
-
-                                AddCmdFC(mp.Material, lastCmdFC)
-
-                                If lastN64Codec <> mp.Material.Type Then
-                                    ImpCmd03(mp.Material, importStart)
-                                    If mp.Material.Type = MaterialType.ColorTransparent Then
-                                        ImpColorCmdFB(mp.Material)
-                                        resetBF = True
-                                    End If
-                                    lastN64Codec = mp.Material.Type
-                                Else
-                                    If i > 0 Then
-                                        If (vertexGroups(i - 1).Material.EnableTextureColor AndAlso mp.Material.EnableTextureColor) Then
-                                            If vertexGroups(i - 1).Material.Color <> mp.Material.Color Then ImpCmd03(mp.Material, importStart)
-                                        ElseIf mp.Material.EnableTextureColor Then
+                                        If lastN64Codec = MaterialType.ColorSolid AndAlso mp.Material.Type = MaterialType.ColorSolid Then
                                             ImpCmd03(mp.Material, importStart)
                                         End If
                                     End If
-                                    If lastN64Codec = MaterialType.ColorTransparent AndAlso mp.Material.Type = MaterialType.ColorTransparent Then
-                                        If mp.Material IsNot lastMat Then
+
+                                    ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
+
+                                End If
+
+                                Dim grpOff As Integer = 0
+                                For ii As Integer = 0 To mp.GroupsCount - 1
+                                    ImpTriCmds(mp.Material, mp.FinalVertexGroups(ii), startVerts + (mp.StartIndex + grpOff), enabledVertexColors)
+                                    grpOff += mp.FinalVertexGroups(ii).VertexDataCount * &H10
+                                Next
+
+                                If mp.Material.EnableGeoMode Then
+                                    If i + 1 < vertexGroups.Count AndAlso vertexGroups(i + 1).Material.EnableGeoMode Then Continue For
+                                    ImpF3D("B6 00 00 00 FF FF FF FF")
+                                    ImpF3D("B7 00 00 00 00 02 20 05")
+                                End If
+                            Next
+
+                            If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
+                            If settings.EnableFog Then ImpFogEnd()
+                            'ImpF3D("FC FF FF FF FF FE 79 3C")
+                            ImpF3D("BB 00 00 00 FF FF FF FF")
+                            If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
+                            If ciEnabled Then ShiftTMEMBack()
+                            ImpF3D("B8 00 00 00 00 00 00 00")
+
+                            MergeScrollingTextures()
+
+                        Case isLayerAlpha(layerID)
+                            addPtrGeometry(layerID)
+                            enabledVertexColors = False
+                            hasCrystalEffectEnabled = False
+                            needToResetCrystalEffectCommands = True
+                            ciEnabled = False
+                            lastMaterial = Nothing
+                            lastN64Codec = MaterialType.None
+                            lastTexType = Nothing
+                            lastCmdFC = ""
+
+                            ImpF3D("E7 00 00 00 00 00 00 00")
+                            If settings.EnableFog Then ImpF3D("B9 00 02 01 00 00 00 00")
+                            ImpF3D("B7 00 00 00 00 00 00 00")
+                            'ImpF3D("BB 00 00 01 FF FF FF FF")
+                            ImpF3D("E8 00 00 00 00 00 00 00")
+                            ImpF3D("E6 00 00 00 00 00 00 00")
+                            If settings.EnableFog Then ImpFogStart(True)
+
+                            For i As Integer = 0 To vertexGroups.Count - 1
+                                Dim mp As VertexGroupList = vertexGroups(i)
+
+                                If isAutoLayer(mp.Material.SelectDisplaylist) Then
+                                    If (Not mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency OrElse mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
+                                ElseIf Not isLayerAlpha(mp.Material.SelectDisplaylist) Then
+                                    If Not enableForcing Then Continue For
+                                End If
+
+                                Dim iscitexture As Boolean = citextypes.Contains(mp.Material.TexType)
+                                Dim waslastcitexture As Boolean = lastMaterial IsNot Nothing AndAlso citextypes.Contains(lastMaterial.TexType)
+
+                                'CI Texture things
+                                If iscitexture AndAlso Not waslastcitexture Then
+                                    SetOtherMode_H()
+                                    ciEnabled = True
+                                ElseIf Not iscitexture AndAlso waslastcitexture Then
+                                    ShiftTMEMBack()
+                                End If
+
+                                If mp.Material.EnableGeoMode Then
+                                    ImpF3D("B6 00 00 00 FF FF FF FF")
+                                    ImpF3D($"B7 00 00 00 {Hex((mp.Material.GeoMode >> 24) And &HFF)} {Hex((mp.Material.GeoMode >> 16) And &HFF)} {Hex((mp.Material.GeoMode >> 8) And &HFF)} {Hex(mp.Material.GeoMode And &HFF)}")
+                                End If
+
+                                If lastMaterial IsNot mp.Material Then
+                                    lastMaterial = mp.Material
+
+                                    AddCmdFC(mp.Material, lastCmdFC)
+
+                                    ImpCmd03(mp.Material, importStart)
+
+                                    If lastN64Codec <> mp.Material.Type Then
+                                        lastN64Codec = mp.Material.Type
+                                    End If
+
+                                    ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
+                                End If
+
+                                Dim grpOff As Integer = 0
+                                For ii As Integer = 0 To mp.GroupsCount - 1
+                                    ImpTriCmds(mp.Material, mp.FinalVertexGroups(ii), startVerts + (mp.StartIndex + grpOff), enabledVertexColors)
+                                    grpOff += mp.FinalVertexGroups(ii).VertexDataCount * &H10
+                                Next
+                                If mp.Material.EnableGeoMode Then
+                                    ImpF3D("B6 00 00 00 FF FF FF FF")
+                                    ImpF3D("B7 00 00 00 00 02 20 05")
+                                End If
+                            Next
+
+                            If settings.EnableFog Then ImpFogEnd()
+                            If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
+                            ImpF3D("FC FF FF FF FF FE 79 3C")
+                            ImpF3D("BB 00 00 00 FF FF FF FF")
+                            If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
+                            If ciEnabled Then ShiftTMEMBack()
+                            ImpF3D("B8 00 00 00 00 00 00 00")
+
+                            MergeScrollingTextures()
+
+                        Case isLayerTrans(layerID)
+                            addPtrGeometry(layerID)
+                            Dim resetBF As Boolean = False
+                            Dim lastMat As Material = Nothing
+                            enabledVertexColors = False
+                            hasCrystalEffectEnabled = False
+                            needToResetCrystalEffectCommands = True
+                            ciEnabled = False
+                            lastMaterial = Nothing
+                            lastN64Codec = MaterialType.None
+                            lastTexType = Nothing
+                            lastCmdFC = ""
+
+                            ImpF3D("E7 00 00 00 00 00 00 00")
+                            ImpF3D("B7 00 00 00 00 00 00 00")
+                            'ImpF3D("BB 00 00 01 FF FF FF FF")
+                            ImpF3D("E8 00 00 00 00 00 00 00")
+                            ImpF3D("E6 00 00 00 00 00 00 00")
+
+                            For i As Integer = 0 To vertexGroups.Count - 1
+                                Dim mp As VertexGroupList = vertexGroups(i)
+
+                                If isAutoLayer(mp.Material.SelectDisplaylist) Then
+                                    If Not mp.Material.HasTransparency OrElse (mp.EnableVertexColors AndAlso Not mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
+                                ElseIf Not isLayerTrans(mp.Material.SelectDisplaylist) Then
+                                    If Not enableForcing Then Continue For
+                                End If
+
+                                Dim iscitexture As Boolean = citextypes.Contains(mp.Material.TexType)
+                                Dim waslastcitexture As Boolean = lastMaterial IsNot Nothing AndAlso citextypes.Contains(lastMaterial.TexType)
+
+                                'CI Texture things
+                                If iscitexture AndAlso Not waslastcitexture Then
+                                    SetOtherMode_H()
+                                    ciEnabled = True
+                                ElseIf Not iscitexture AndAlso waslastcitexture Then
+                                    ShiftTMEMBack()
+                                End If
+
+                                If lastMaterial IsNot mp.Material Then
+                                    lastMaterial = mp.Material
+
+                                    If lastN64Codec <> mp.Material.Type Then
+                                        If mp.Material.Type = MaterialType.TextureTransparent Then
+                                            If mp.Material.OpacityOrg < &HFF Then
+                                                ImpF3D($"FB 00 00 00 FF FF FF {Hex(mp.Material.OpacityOrg)}")
+                                                resetBF = True
+                                            End If
+                                        End If
+                                    End If
+
+                                    AddCmdFC(mp.Material, lastCmdFC)
+
+                                    If lastN64Codec <> mp.Material.Type Then
+                                        ImpCmd03(mp.Material, importStart)
+                                        If mp.Material.Type = MaterialType.ColorTransparent Then
                                             ImpColorCmdFB(mp.Material)
                                             resetBF = True
                                         End If
+                                        lastN64Codec = mp.Material.Type
+                                    Else
+                                        If i > 0 Then
+                                            If (vertexGroups(i - 1).Material.EnableTextureColor AndAlso mp.Material.EnableTextureColor) Then
+                                                If vertexGroups(i - 1).Material.Color <> mp.Material.Color Then ImpCmd03(mp.Material, importStart)
+                                            ElseIf mp.Material.EnableTextureColor Then
+                                                ImpCmd03(mp.Material, importStart)
+                                            End If
+                                        End If
+                                        If lastN64Codec = MaterialType.ColorTransparent AndAlso mp.Material.Type = MaterialType.ColorTransparent Then
+                                            If mp.Material IsNot lastMat Then
+                                                ImpColorCmdFB(mp.Material)
+                                                resetBF = True
+                                            End If
+                                        End If
                                     End If
+
+                                    ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
                                 End If
 
-                                ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
-                            End If
-
-                            Dim grpOff As Integer = 0
-                            For ii As Integer = 0 To mp.GroupsCount - 1
-                                ImpTriCmds(mp.Material, mp.FinalVertexGroups(ii), startVerts + (mp.StartIndex + grpOff), enabledVertexColors)
-                                grpOff += mp.FinalVertexGroups(ii).VertexDataCount * &H10
+                                Dim grpOff As Integer = 0
+                                For ii As Integer = 0 To mp.GroupsCount - 1
+                                    ImpTriCmds(mp.Material, mp.FinalVertexGroups(ii), startVerts + (mp.StartIndex + grpOff), enabledVertexColors)
+                                    grpOff += mp.FinalVertexGroups(ii).VertexDataCount * &H10
+                                Next
+                                lastMat = mp.Material
                             Next
-                            lastMat = mp.Material
-                        Next
 
-                        If resetBF Then ImpF3D("FB 00 00 00 FF FF FF FF")
+                            If resetBF Then ImpF3D("FB 00 00 00 FF FF FF FF")
 
-                        If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
-                        ImpF3D("FC FF FF FF FF FE 79 3C")
-                        ImpF3D("BB 00 00 00 FF FF FF FF")
-                        If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
-                        If ciEnabled Then ShiftTMEMBack()
-                        ImpF3D("B8 00 00 00 00 00 00 00")
+                            If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
+                            ImpF3D("FC FF FF FF FF FE 79 3C")
+                            ImpF3D("BB 00 00 00 FF FF FF FF")
+                            If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
+                            If ciEnabled Then ShiftTMEMBack()
+                            ImpF3D("B8 00 00 00 00 00 00 00")
 
-                        MergeScrollingTextures()
-                End Select
+                            MergeScrollingTextures()
+                    End Select
+                End If
             Next
-
-            ''Create Solid DL
-            'If createSolidDL Then
-            '    conRes.PtrGeometry.Add(New Geolayout.Geopointer(Geolayout.Geolayer.Solid, CurSegAddress Or impdata.Position))
-            '    enabledVertexColors = False
-            '    hasCrystalEffectEnabled = False
-            '    needToResetCrystalEffectCommands = True
-            '    ciEnabled = False
-            '    lastMaterial = Nothing
-            '    lastN64Codec = MaterialType.None
-            '    lastTexType = Nothing
-            '    lastCmdFC = ""
-
-            '    ImpF3D("E7 00 00 00 00 00 00 00")
-            '    ImpF3D("B7 00 00 00 00 00 00 00")
-            '    'ImpF3D("BB 00 00 01 FF FF FF FF")
-            '    ImpF3D("E8 00 00 00 00 00 00 00")
-            '    ImpF3D("E6 00 00 00 00 00 00 00")
-            '    If settings.EnableFog Then ImpFogStart(False)
-
-            '    For i As Integer = 0 To vertexGroups.Count - 1
-            '        Dim mp As VertexGroupList = vertexGroups(i)
-
-            '        If mp.Material.SelectDisplaylist = TextureFormatSettings.SelectDisplaylistMode.Automatic Then
-            '            If (mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency) AndAlso Not enableForcing Then Continue For
-            '        ElseIf mp.Material.SelectDisplaylist <> TextureFormatSettings.SelectDisplaylistMode.Solid Then
-            '            If Not enableForcing Then Continue For
-            '        End If
-
-            '        Dim iscitexture As Boolean = citextypes.Contains(mp.Material.TexType)
-            '        Dim waslastcitexture As Boolean = lastMaterial IsNot Nothing AndAlso citextypes.Contains(lastMaterial.TexType)
-
-            '        'CI Texture things
-            '        If iscitexture AndAlso Not waslastcitexture Then
-            '            SetOtherMode_H()
-            '            ciEnabled = True
-            '        ElseIf Not iscitexture AndAlso waslastcitexture Then
-            '            ShiftTMEMBack()
-            '        End If
-
-            '        'Geomode
-            '        If mp.Material.EnableGeoMode Then
-            '            ImpF3D("B6 00 00 00 FF FF FF FF")
-            '            ImpF3D($"B7 00 00 00 {Hex((mp.Material.GeoMode >> 24) And &HFF)} {Hex((mp.Material.GeoMode >> 16) And &HFF)} {Hex((mp.Material.GeoMode >> 8) And &HFF)} {Hex(mp.Material.GeoMode And &HFF)}")
-            '        End If
-
-            '        If lastMaterial IsNot mp.Material Then
-            '            lastMaterial = mp.Material
-
-            '            AddCmdFC(mp.Material, lastCmdFC)
-
-            '            If lastN64Codec <> mp.Material.Type Then
-            '                ImpCmd03(mp.Material, importStart)
-            '                lastN64Codec = mp.Material.Type
-            '            Else
-            '                If i > 0 Then
-            '                    If vertexGroups(i - 1).Material.EnableTextureColor AndAlso mp.Material.EnableTextureColor Then
-            '                        If vertexGroups(i - 1).Material.Color <> mp.Material.Color Then ImpCmd03(mp.Material, importStart)
-            '                    ElseIf mp.Material.EnableTextureColor Then
-            '                        ImpCmd03(mp.Material, importStart)
-            '                    End If
-            '                End If
-            '                If lastN64Codec = MaterialType.ColorSolid AndAlso mp.Material.Type = MaterialType.ColorSolid Then
-            '                    ImpCmd03(mp.Material, importStart)
-            '                End If
-            '            End If
-
-            '            ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
-
-            '        End If
-
-            '        Dim grpOff As Integer = 0
-            '        For ii As Integer = 0 To mp.GroupsCount - 1
-            '            ImpTriCmds(mp.Material, mp.FinalVertexGroups(ii), startVerts + (mp.StartIndex + grpOff), enabledVertexColors)
-            '            grpOff += mp.FinalVertexGroups(ii).VertexDataCount * &H10
-            '        Next
-
-            '        If mp.Material.EnableGeoMode Then
-            '            If i + 1 < vertexGroups.Count AndAlso vertexGroups(i + 1).Material.EnableGeoMode Then Continue For
-            '            ImpF3D("B6 00 00 00 FF FF FF FF")
-            '            ImpF3D("B7 00 00 00 00 02 20 05")
-            '        End If
-            '    Next
-
-            '    If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
-            '    If settings.EnableFog Then ImpFogEnd()
-            '    'ImpF3D("FC FF FF FF FF FE 79 3C")
-            '    ImpF3D("BB 00 00 00 FF FF FF FF")
-            '    If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
-            '    If ciEnabled Then ShiftTMEMBack()
-            '    ImpF3D("B8 00 00 00 00 00 00 00")
-
-            '    MergeScrollingTextures()
-            'End If
-
-            ''Create Alpha DL
-            'If createAlphaDL Then
-            '    conRes.PtrGeometry.Add(New Geolayout.Geopointer(Geolayout.Geolayer.Alpha, CurSegAddress Or impdata.Position))
-            '    enabledVertexColors = False
-            '    hasCrystalEffectEnabled = False
-            '    needToResetCrystalEffectCommands = True
-            '    ciEnabled = False
-            '    lastMaterial = Nothing
-            '    lastN64Codec = MaterialType.None
-            '    lastTexType = Nothing
-            '    lastCmdFC = ""
-
-            '    ImpF3D("E7 00 00 00 00 00 00 00")
-            '    If settings.EnableFog Then ImpF3D("B9 00 02 01 00 00 00 00")
-            '    ImpF3D("B7 00 00 00 00 00 00 00")
-            '    'ImpF3D("BB 00 00 01 FF FF FF FF")
-            '    ImpF3D("E8 00 00 00 00 00 00 00")
-            '    ImpF3D("E6 00 00 00 00 00 00 00")
-            '    If settings.EnableFog Then ImpFogStart(True)
-
-            '    For i As Integer = 0 To vertexGroups.Count - 1
-            '        Dim mp As VertexGroupList = vertexGroups(i)
-
-            '        If mp.Material.SelectDisplaylist = TextureFormatSettings.SelectDisplaylistMode.Automatic Then
-            '            If (Not mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency OrElse mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
-            '        ElseIf mp.Material.SelectDisplaylist <> TextureFormatSettings.SelectDisplaylistMode.Alpha Then
-            '            If Not enableForcing Then Continue For
-            '        End If
-
-            '        Dim iscitexture As Boolean = citextypes.Contains(mp.Material.TexType)
-            '        Dim waslastcitexture As Boolean = lastMaterial IsNot Nothing AndAlso citextypes.Contains(lastMaterial.TexType)
-
-            '        'CI Texture things
-            '        If iscitexture AndAlso Not waslastcitexture Then
-            '            SetOtherMode_H()
-            '            ciEnabled = True
-            '        ElseIf Not iscitexture AndAlso waslastcitexture Then
-            '            ShiftTMEMBack()
-            '        End If
-
-            '        If mp.Material.EnableGeoMode Then
-            '            ImpF3D("B6 00 00 00 FF FF FF FF")
-            '            ImpF3D($"B7 00 00 00 {Hex((mp.Material.GeoMode >> 24) And &HFF)} {Hex((mp.Material.GeoMode >> 16) And &HFF)} {Hex((mp.Material.GeoMode >> 8) And &HFF)} {Hex(mp.Material.GeoMode And &HFF)}")
-            '        End If
-
-            '        If lastMaterial IsNot mp.Material Then
-            '            lastMaterial = mp.Material
-
-            '            AddCmdFC(mp.Material, lastCmdFC)
-
-            '            ImpCmd03(mp.Material, importStart)
-
-            '            If lastN64Codec <> mp.Material.Type Then
-            '                lastN64Codec = mp.Material.Type
-            '            End If
-
-            '            ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
-            '        End If
-
-            '        Dim grpOff As Integer = 0
-            '        For ii As Integer = 0 To mp.GroupsCount - 1
-            '            ImpTriCmds(mp.Material, mp.FinalVertexGroups(ii), startVerts + (mp.StartIndex + grpOff), enabledVertexColors)
-            '            grpOff += mp.FinalVertexGroups(ii).VertexDataCount * &H10
-            '        Next
-            '        If mp.Material.EnableGeoMode Then
-            '            ImpF3D("B6 00 00 00 FF FF FF FF")
-            '            ImpF3D("B7 00 00 00 00 02 20 05")
-            '        End If
-            '    Next
-
-            '    If settings.EnableFog Then ImpFogEnd()
-            '    If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
-            '    ImpF3D("FC FF FF FF FF FE 79 3C")
-            '    ImpF3D("BB 00 00 00 FF FF FF FF")
-            '    If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
-            '    If ciEnabled Then ShiftTMEMBack()
-            '    ImpF3D("B8 00 00 00 00 00 00 00")
-
-            '    MergeScrollingTextures()
-            'End If
-
-            ''Create Trans DL
-            'If createTransDL Then
-            '    conRes.PtrGeometry.Add(New Geolayout.Geopointer(Geolayout.Geolayer.Transparent, CurSegAddress Or impdata.Position))
-            '    Dim resetBF As Boolean = False
-            '    Dim lastMat As Material = Nothing
-            '    enabledVertexColors = False
-            '    hasCrystalEffectEnabled = False
-            '    needToResetCrystalEffectCommands = True
-            '    ciEnabled = False
-            '    lastMaterial = Nothing
-            '    lastN64Codec = MaterialType.None
-            '    lastTexType = Nothing
-            '    lastCmdFC = ""
-
-            '    ImpF3D("E7 00 00 00 00 00 00 00")
-            '    ImpF3D("B7 00 00 00 00 00 00 00")
-            '    'ImpF3D("BB 00 00 01 FF FF FF FF")
-            '    ImpF3D("E8 00 00 00 00 00 00 00")
-            '    ImpF3D("E6 00 00 00 00 00 00 00")
-
-            '    For i As Integer = 0 To vertexGroups.Count - 1
-            '        Dim mp As VertexGroupList = vertexGroups(i)
-
-            '        If mp.Material.SelectDisplaylist = TextureFormatSettings.SelectDisplaylistMode.Automatic Then
-            '            If Not mp.Material.HasTransparency OrElse (mp.EnableVertexColors AndAlso Not mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
-            '        ElseIf mp.Material.SelectDisplaylist <> TextureFormatSettings.SelectDisplaylistMode.Transparent Then
-            '            If Not enableForcing Then Continue For
-            '        End If
-
-            '        Dim iscitexture As Boolean = citextypes.Contains(mp.Material.TexType)
-            '        Dim waslastcitexture As Boolean = lastMaterial IsNot Nothing AndAlso citextypes.Contains(lastMaterial.TexType)
-
-            '        'CI Texture things
-            '        If iscitexture AndAlso Not waslastcitexture Then
-            '            SetOtherMode_H()
-            '            ciEnabled = True
-            '        ElseIf Not iscitexture AndAlso waslastcitexture Then
-            '            ShiftTMEMBack()
-            '        End If
-
-            '        If lastMaterial IsNot mp.Material Then
-            '            lastMaterial = mp.Material
-
-            '            If lastN64Codec <> mp.Material.Type Then
-            '                If mp.Material.Type = MaterialType.TextureTransparent Then
-            '                    If mp.Material.OpacityOrg < &HFF Then
-            '                        ImpF3D($"FB 00 00 00 FF FF FF {Hex(mp.Material.OpacityOrg)}")
-            '                        resetBF = True
-            '                    End If
-            '                End If
-            '            End If
-
-            '            AddCmdFC(mp.Material, lastCmdFC)
-
-            '            If lastN64Codec <> mp.Material.Type Then
-            '                ImpCmd03(mp.Material, importStart)
-            '                If mp.Material.Type = MaterialType.ColorTransparent Then
-            '                    ImpColorCmdFB(mp.Material)
-            '                    resetBF = True
-            '                End If
-            '                lastN64Codec = mp.Material.Type
-            '            Else
-            '                If i > 0 Then
-            '                    If (vertexGroups(i - 1).Material.EnableTextureColor AndAlso mp.Material.EnableTextureColor) Then
-            '                        If vertexGroups(i - 1).Material.Color <> mp.Material.Color Then ImpCmd03(mp.Material, importStart)
-            '                    ElseIf mp.Material.EnableTextureColor Then
-            '                        ImpCmd03(mp.Material, importStart)
-            '                    End If
-            '                End If
-            '                If lastN64Codec = MaterialType.ColorTransparent AndAlso mp.Material.Type = MaterialType.ColorTransparent Then
-            '                    If mp.Material IsNot lastMat Then
-            '                        ImpColorCmdFB(mp.Material)
-            '                        resetBF = True
-            '                    End If
-            '                End If
-            '            End If
-
-            '            ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
-            '        End If
-
-            '        Dim grpOff As Integer = 0
-            '        For ii As Integer = 0 To mp.GroupsCount - 1
-            '            ImpTriCmds(mp.Material, mp.FinalVertexGroups(ii), startVerts + (mp.StartIndex + grpOff), enabledVertexColors)
-            '            grpOff += mp.FinalVertexGroups(ii).VertexDataCount * &H10
-            '        Next
-            '        lastMat = mp.Material
-            '    Next
-
-            '    If resetBF Then ImpF3D("FB 00 00 00 FF FF FF FF")
-
-            '    If enabledVertexColors Then ImpF3D("B7 00 00 00 00 02 00 00")
-            '    ImpF3D("FC FF FF FF FF FE 79 3C")
-            '    ImpF3D("BB 00 00 00 FF FF FF FF")
-            '    If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
-            '    If ciEnabled Then ShiftTMEMBack()
-            '    ImpF3D("B8 00 00 00 00 00 00 00")
-
-            '    MergeScrollingTextures()
-            'End If
 
             ResetVariables()
             currentPreName = Nothing
         End Sub
-
-        'Private Sub CreateSolidDL(ByRef enabledVertexColors As Boolean, ByRef hasCrystalEffectEnabled As Boolean, ByRef needToResetCrystalEffectCommands As Boolean, ByRef ciEnabled As Boolean,
-        '                          ByRef lastMaterial As Material, ByRef lastCmdFC As Boolean, ByRef enableForcing As Boolean, ByRef ciTextypes As N64Codec(), ByRef importStart As UInteger,
-        '                          ByRef needToRevertShiftTMEM As Boolean, ByRef startVerts As UInteger)
-
-
-        'End Sub
 
         ''' <summary>
         ''' Converts a Object3D to an N64 Model and an SM64 Collision.

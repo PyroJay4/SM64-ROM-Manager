@@ -39,10 +39,6 @@ Public Class MainModelConverter
     Public Sub New()
         InitializeComponent()
         UpdateAmbientColors()
-
-        'ColorPickerButton_ShadingAmbient.SelectedColor = Color.FromArgb(&HFF7F7F7F)
-        'ColorPickerButton_ShadingDiffuse.SelectedColor = Color.FromArgb(&HFFFFFFFF)
-        'ColorPickerButton_FogColor.SelectedColor = Color.White
     End Sub
 
     Private Function GetColorFromShadingByte(value As Byte) As Color

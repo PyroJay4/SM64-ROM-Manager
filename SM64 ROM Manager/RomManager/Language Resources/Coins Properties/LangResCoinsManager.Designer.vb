@@ -65,7 +65,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Remove 3D Coins is experimental and can make problems with custom 3D Coins. Sure to continue? ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Remove 3D Coins is experimental and can create problems with custom 3D Coins. Are you sure you want to continue? ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_Experimental3DCoinsRemove() As String
             Get
