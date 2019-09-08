@@ -16,6 +16,6 @@ Let me explain how to get tbe able to compile the source code.
 Now you should be able to compile the source code without problems for private use.
 
 ## Requiements
- - Visual Studio 2017
+ - Visual Studio 2017 or newer
  - .Net Framework 4.5
  - Internet connection (for restoring NuGet packages)
