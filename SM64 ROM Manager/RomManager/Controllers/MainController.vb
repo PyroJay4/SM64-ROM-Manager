@@ -1557,6 +1557,7 @@ Public Class MainController
 
         RomManager.MusicList.NeedToSaveSequences = True
         RomManager.MusicList.NeedToSaveSequenceNames = True
+        RomManager.MusicList.NeedToSaveNInsts = True
     End Sub
 
     Public Sub RemoveMusicSequence(index As Integer)
@@ -1578,6 +1579,10 @@ Public Class MainController
                     End If
                 Next
             Next
+
+            RomManager.MusicList.NeedToSaveSequences = True
+            RomManager.MusicList.NeedToSaveSequenceNames = True
+            RomManager.MusicList.NeedToSaveNInsts = True
 
             RaiseEvent MusicSequenceRemoved(New MusicSequenceEventArgs(index, sequence))
         End If
