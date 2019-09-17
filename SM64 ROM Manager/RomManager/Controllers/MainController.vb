@@ -195,6 +195,18 @@ Public Class MainController
         Return result
     End Function
 
+    Private Sub EnableRomWatcher()
+        RomWatcher.EnableRaisingEvents = True
+    End Sub
+
+    Private Sub DisableRomWatcher()
+        RomWatcher.EnableRaisingEvents = False
+    End Sub
+
+    Private Function IsRomWatcherEnabled() As Boolean
+        Return RomWatcher.EnableRaisingEvents
+    End Function
+
     'M a i n   F e a t u r e s
 
     Public Sub LoadPlugins()
@@ -464,6 +476,15 @@ Public Class MainController
     'T o o l s
 
     Public Sub OpenTweakViewer()
+        Static addedHandlers As Boolean = False
+
+        If Not addedHandlers Then
+            AddHandler TweakViewer.TweakBeforeApply, AddressOf DisableRomWatcher
+            AddHandler TweakViewer.TweakAfterApply, AddressOf EnableRomWatcher
+            AddHandler TweakViewer.TweakFailedApply, AddressOf EnableRomWatcher
+            addedHandlers = True
+        End If
+
         Dim tweaks As New TweakViewer(RomManager)
         tweaks.Show()
     End Sub

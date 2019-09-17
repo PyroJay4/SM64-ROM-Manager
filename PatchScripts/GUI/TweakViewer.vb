@@ -9,6 +9,12 @@ Imports SM64_ROM_Manager.Publics
 
 Public Class TweakViewer
 
+    'E v e n t s
+
+    Public Shared Event TweakBeforeApply()
+    Public Shared Event TweakAfterApply()
+    Public Shared Event TweakFailedApply()
+
     'F i e l d s
 
     Private myPatchs As New List(Of PatchProfile)
@@ -18,7 +24,6 @@ Public Class TweakViewer
 
     Public Sub New(rommgr As SM64Lib.RomManager)
         InitializeComponent()
-
         UpdateAmbientColors()
         Panel1.UpdateAmbientColors
         Flyout1.BackColor = BackColor
@@ -346,10 +351,13 @@ Public Class TweakViewer
 
     Friend Shared Sub PatchScript(owner As IWin32Window, script As PatchScript, profile As PatchProfile, rommgr As SM64Lib.RomManager)
         Try
+            RaiseEvent TweakBeforeApply()
             Dim mgr As New PatchingManager
             mgr.Patch(script, rommgr, owner, New Dictionary(Of String, Object) From {{"romfile", rommgr.RomFile}, {"rommgr", rommgr}, {"profilepath", profile?.FileName}})
+            RaiseEvent TweakAfterApply()
             MessageBoxEx.Show(owner, "Patched successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
+            RaiseEvent TweakFailedApply()
             MessageBoxEx.Show(owner, "Error at executing the script. It probably has errors.", "Script Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
