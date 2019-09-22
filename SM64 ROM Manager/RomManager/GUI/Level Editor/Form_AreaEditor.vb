@@ -169,7 +169,7 @@ Namespace LevelEditor
 
         Friend ReadOnly Property Camera As Camera
             Get
-                Return ogl.Camera
+                Return ogl?.Camera
             End Get
         End Property
 
@@ -1686,6 +1686,13 @@ Namespace LevelEditor
             ButtonX_CamMode.Text = sender.Text
         End Sub
         Friend Sub Slider_CamMoveSpeed_ValueChanged(sender As Object, e As EventArgs) Handles Slider_CamMoveSpeed.ValueChanged
+            Dim camSpeed As Integer = Slider_CamMoveSpeed.Value
+            Dim cam As Camera = Camera
+
+            If cam IsNot Nothing Then
+                cam.CamSpeedMultiplier = camSpeed / 100
+            End If
+
             Slider_CamMoveSpeed.Text = $"Camera Move Speed: {Slider_CamMoveSpeed.Value}%"
         End Sub
         Friend Sub ButtonX_SetObjMoveSpeed(sender As Object, e As EventArgs) Handles ButtonX4.Click, ButtonX3.Click, ButtonX2.Click, ButtonX1.Click
