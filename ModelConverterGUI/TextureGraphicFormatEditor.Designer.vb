@@ -141,6 +141,7 @@ Partial Class TextureGraphicFormatEditor
         Me.ComboBoxEx_SelectDisplaylist.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_SelectDisplaylist.DropDownHeight = 150
         Me.ComboBoxEx_SelectDisplaylist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEx_SelectDisplaylist.DropDownWidth = 170
         Me.ComboBoxEx_SelectDisplaylist.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx_SelectDisplaylist.FormattingEnabled = True
         Me.ComboBoxEx_SelectDisplaylist.Name = "ComboBoxEx_SelectDisplaylist"
@@ -229,8 +230,6 @@ Partial Class TextureGraphicFormatEditor
         Me.Controls.Add(Me.Button_SaveColsettings)
         Me.Controls.Add(Me.ListViewEx1)
         Me.Controls.Add(Me.LabelX48)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "TextureGraphicFormatEditor"

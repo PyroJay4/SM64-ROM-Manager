@@ -74,17 +74,15 @@ Public Class CustomBankManager
 
     Private Function ImportNewModel(obj As CustomObject) As Boolean
         If obj IsNot Nothing Then
-            Dim mdl As New ModelConverterGUI.MainModelConverter
-            mdl.CheckBoxX_ConvertModel.Enabled = False
-            mdl.CheckBoxX_ConvertCollision.Enabled = obj.Model IsNot Nothing
+            Dim resMdl = ModelConverterGUI.GetModelViaModelConverter(False, obj.Model IsNot Nothing)
 
-            If mdl.ShowDialog = DialogResult.OK Then
-                If obj.Model Is Nothing OrElse (mdl.CheckBoxX_ConvertCollision.Checked AndAlso mdl.CheckBoxX_ConvertModel.Checked) Then
-                    obj.Model = mdl.ResModel
-                ElseIf mdl.CheckBoxX_ConvertCollision.Checked Then
-                    obj.Model.Collision = mdl.ResModel.Collision
-                ElseIf mdl.CheckBoxX_ConvertModel.Checked Then
-                    obj.Model.Fast3DBuffer = mdl.ResModel.Fast3DBuffer
+            If resMdl IsNot Nothing Then
+                If obj.Model Is Nothing OrElse (resMdl?.hasCollision AndAlso resMdl?.hasVisualMap) Then
+                    obj.Model = resMdl?.mdl
+                ElseIf resMdl?.hasCollision Then
+                    obj.Model.Collision = obj.Model.Collision
+                ElseIf resMdl?.hasVisualMap Then
+                    obj.Model.Fast3DBuffer = obj.Model.Fast3DBuffer
                 End If
                 Return True
             End If

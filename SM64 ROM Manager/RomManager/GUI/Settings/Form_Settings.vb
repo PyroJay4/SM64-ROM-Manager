@@ -41,6 +41,14 @@ Public Class Form_Settings
     End Sub
 
     Private Sub Form_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LoadMySettings()
+    End Sub
+
+    Private Sub Form_Settings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        SaveMySettings()
+    End Sub
+
+    Private Sub LoadMySettings()
         TextBoxX_EmulatorPatch.Text = Settings.General.EmulatorPath
         SwitchButton_SearchUpdates.Value = Settings.General.AutoUpdates
         ComboBox_DefaultValueType.SelectedIndex = Settings.General.IntegerValueMode
@@ -119,7 +127,7 @@ Public Class Form_Settings
         finishedLoading = True
     End Sub
 
-    Private Sub Form_Settings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+    Private Sub SaveMySettings()
         Settings.General.EmulatorPath = TextBoxX_EmulatorPatch.Text.Trim
         Settings.General.IntegerValueMode = ComboBox_DefaultValueType.SelectedIndex
         Settings.General.AutoUpdates = SwitchButton_SearchUpdates.Value
@@ -206,6 +214,7 @@ Public Class Form_Settings
 
     Private Sub ButtonX4_Click(sender As Object, e As EventArgs) Handles ButtonX4.Click
         Settings.ResetSettings()
+        LoadMySettings()
     End Sub
 
     Private Sub Form_Settings_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
@@ -233,6 +242,11 @@ Public Class Form_Settings
 
     Private Sub EanbleRestartWarning()
         If finishedLoading Then SymbolBox1.Visible = True
+    End Sub
+
+    Private Sub ButtonX6_Click(sender As Object, e As EventArgs) Handles ButtonX6.Click
+        Settings.ModelConverter.InputSettings.Clear()
+        ButtonX6.Enabled = False
     End Sub
 
 End Class

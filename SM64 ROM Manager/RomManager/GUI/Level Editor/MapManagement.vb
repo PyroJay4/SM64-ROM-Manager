@@ -257,85 +257,82 @@ Namespace LevelEditor
             Return dic
         End Function
 
-        Public Sub ImportAreaModel(convertModel As Boolean, convertCollision As Boolean)
-            Dim frm As New MainModelConverter
-            frm.CheckBoxX_ConvertModel.Checked = convertModel
-            frm.CheckBoxX_ConvertCollision.Checked = convertCollision
+        Public Sub ImportAreaModel(convertModel As Boolean, convertCollision As Boolean, inputKey As String)
+            Dim res = GetModelViaModelConverter(,, convertModel, convertCollision,, inputKey)
 
-            With Main.CArea
-                If frm.ShowDialog() <> DialogResult.OK Then
-                    Ogl.MakeCurrent()
-                    Return
-                End If
-
+            If res IsNot Nothing Then
                 Ogl.MakeCurrent()
                 Main.SuspendLayout()
 
-                Dim hp As HistoryPoint = Nothing
-                Dim OldAreaModel As ObjectModel = .AreaModel
+                With Main.CArea
+                    Dim hp As HistoryPoint = Nothing
+                    Dim OldAreaModel As ObjectModel = .AreaModel
 
-                If frm.CheckBoxX_ConvertCollision.Checked AndAlso frm.CheckBoxX_ConvertModel.Checked Then
+                    If res?.hasCollision AndAlso res?.hasVisualMap Then
 
-                    hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrVisualMap", "cVisualMap", "rndrCollisionMap", "cCollisionMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
-                    Dim os As New ObjectState
-                    os.Object = Main.CArea
-                    os.ValueToPatch = .AreaModel
-                    os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
-                    os.MemberType = ObjectValueType.Property
-                    os.MemberName = "AreaModel"
-                    hp.Entries.Add(os)
+                        hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrVisualMap", "cVisualMap", "rndrCollisionMap", "cCollisionMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
+                        Dim os As New ObjectState
+                        os.Object = Main.CArea
+                        os.ValueToPatch = .AreaModel
+                        os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
+                        os.MemberType = ObjectValueType.Property
+                        os.MemberName = "AreaModel"
+                        hp.Entries.Add(os)
 
-                    .AreaModel = frm.ResModel
-                    .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
-                    cVisualMap = Nothing
-                    cCollisionMap = Nothing
+                        .AreaModel = res?.mdl
+                        .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
+                        cVisualMap = Nothing
+                        cCollisionMap = Nothing
 
-                ElseIf frm.CheckBoxX_ConvertCollision.Checked Then
+                    ElseIf res?.hasCollision Then
 
-                    hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrCollisionMap", "cCollisionMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
-                    Dim os As New ObjectState
-                    os.Object = Main.CArea.AreaModel
-                    os.ValueToPatch = .AreaModel.Collision
-                    os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
-                    os.MemberType = ObjectValueType.Property
-                    os.MemberName = "Collision"
-                    hp.Entries.Add(os)
+                        hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrCollisionMap", "cCollisionMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
+                        Dim os As New ObjectState
+                        os.Object = Main.CArea.AreaModel
+                        os.ValueToPatch = .AreaModel.Collision
+                        os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
+                        os.MemberType = ObjectValueType.Property
+                        os.MemberName = "Collision"
+                        hp.Entries.Add(os)
 
-                    .AreaModel.Collision = frm.ResModel.Collision
-                    .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
-                    cCollisionMap = Nothing
+                        .AreaModel.Collision = res?.mdl.Collision
+                        .AreaModel.Collision.SpecialBoxes = OldAreaModel.Collision.SpecialBoxes
+                        cCollisionMap = Nothing
 
-                ElseIf frm.CheckBoxX_ConvertModel.Checked Then
+                    ElseIf res?.hasVisualMap Then
 
-                    hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrVisualMap", "cVisualMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
-                    Dim os As New ObjectState
-                    os.Object = Main.CArea.AreaModel
-                    os.ValueToPatch = .AreaModel.Fast3DBuffer
-                    os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
-                    os.MemberType = ObjectValueType.Property
-                    os.MemberName = "Fast3DBuffer"
-                    hp.Entries.Add(os)
+                        hp = HistoryPoint.FromObject(CObj(Me), ObjectValueType.Field, New MemberWhiteList({"rndrVisualMap", "cVisualMap"}), BindingFlags.Instance Or BindingFlags.NonPublic)
+                        Dim os As New ObjectState
+                        os.Object = Main.CArea.AreaModel
+                        os.ValueToPatch = .AreaModel.Fast3DBuffer
+                        os.MemberFlags = BindingFlags.Instance Or BindingFlags.Public
+                        os.MemberType = ObjectValueType.Property
+                        os.MemberName = "Fast3DBuffer"
+                        hp.Entries.Add(os)
 
-                    .AreaModel = frm.ResModel
-                    .AreaModel.Collision = OldAreaModel.Collision
-                    cVisualMap = Nothing
+                        .AreaModel = res?.mdl
+                        .AreaModel.Collision = OldAreaModel.Collision
+                        cVisualMap = Nothing
 
-                End If
+                    End If
 
-                If frm.CheckBoxX_ConvertModel.Checked Then
-                    .ScrollingTextures.Clear()
-                    .ScrollingTextures.AddRange(.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
-                End If
+                    If res?.hasVisualMap Then
+                        .ScrollingTextures.Clear()
+                        .ScrollingTextures.AddRange(.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
+                    End If
 
-                If hp IsNot Nothing AndAlso hp.Entries.Any Then
-                    Main.history.Store(hp)
-                End If
-            End With
+                    If hp IsNot Nothing AndAlso hp.Entries.Any Then
+                        Main.history.Store(hp)
+                    End If
+                End With
 
-            Main.CArea.SetSegmentedBanks(Main.Rommgr)
-            LoadAreaModel()
+                Main.CArea.SetSegmentedBanks(Main.Rommgr)
+                LoadAreaModel()
 
-            Main.ResumeLayout()
+                Main.ResumeLayout()
+            Else
+                Ogl.MakeCurrent()
+            End If
         End Sub
 
         Friend Sub ReloadCollisionInOpenGL()

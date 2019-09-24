@@ -267,7 +267,7 @@ End Module
         SaveTempScript()
 
         'Patch
-        TweakViewer.PatchScript(Me, tempScript, myRommgr)
+        TweakViewer.PatchScript(Me, tempScript, Nothing, myRommgr)
     End Sub
 
     'G u i

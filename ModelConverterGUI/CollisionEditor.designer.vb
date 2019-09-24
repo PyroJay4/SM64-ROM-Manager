@@ -219,6 +219,7 @@ Partial Class CollisionEditor
         '
         '
         Me.CheckBoxX_IsNonSolid.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX_IsNonSolid.FocusCuesEnabled = False
         Me.CheckBoxX_IsNonSolid.Name = "CheckBoxX_IsNonSolid"
         Me.CheckBoxX_IsNonSolid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
@@ -231,6 +232,8 @@ Partial Class CollisionEditor
         '
         Me.CircularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CircularProgress1.Name = "CircularProgress1"
+        Me.CircularProgress1.SetVisibleStateOnStart = True
+        Me.CircularProgress1.SetVisibleStateOnStop = True
         Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         '
         'CollisionEditor
@@ -244,8 +247,6 @@ Partial Class CollisionEditor
         Me.Controls.Add(Me.ListViewEx1)
         Me.Controls.Add(Me.Button_SaveColsettings)
         Me.Controls.Add(Me.LabelX48)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "CollisionEditor"

@@ -24,7 +24,7 @@ Public Class ModelImporter
         End Get
         Set(value As String)
             _RomFile = value
-            If value <> "" Then
+            If Not String.IsNullOrEmpty(value) Then
                 LabelX1.Text = Path.GetFileName(value)
                 LabelX1.Symbol = ""
             End If
@@ -44,9 +44,6 @@ Public Class ModelImporter
         Panel1.BackColor = BackColor
 
         ComboBoxEx1.Items.Clear()
-        'Dim layers As String() = [Enum].GetNames(GetType(Geolayer))
-        'ComboBoxEx1.Items.Add("Don't force")
-        'ComboBoxEx1.Items.AddRange(layers)
         ComboBoxEx1.Items.AddRange(
             {
             New ComboItem With {.Text = "Don't force", .Tag = -1},
@@ -85,15 +82,10 @@ Public Class ModelImporter
     End Sub
 
     Private Sub ButtonX_ConvertMdl_Click(sender As Object, e As EventArgs) Handles ButtonX_ConvertMdl.Click
-        Dim frm As New MainModelConverter
+        Dim resMdl = GetModelViaModelConverter(,,,, CSByte(CType(ComboBoxEx1.SelectedItem, ComboItem).Tag), SelectedProfile.FileName.GetHashCode)
 
-        frm.ForceDisplaylist = CType(ComboBoxEx1.SelectedItem, ComboItem).Tag
-        'If ComboBoxEx1.SelectedIndex > 0 Then
-        '    frm.ForceDisplaylist = [Enum].GetValues(GetType(Geolayer))(ComboBoxEx1.SelectedIndex - 1)
-        'End If
-
-        If frm.ShowDialog = DialogResult.OK Then
-            mdl = frm.ResModel
+        If resMdl IsNot Nothing Then
+            mdl = resMdl?.mdl
             ButtonX_ConvertMdl.Symbol = ""
             ButtonX_ImportMdl.Enabled = True
         End If
@@ -102,7 +94,9 @@ Public Class ModelImporter
     Private Sub ButtonX_ImportMdl_Click(sender As Object, e As EventArgs) Handles ButtonX_ImportMdl.Click
         ButtonX_ImportMdl.Symbol = ""
 
-        Dim preset As ImporterPreset = SelectedPreset()
+        Dim pap = SelectedProfileAndPreset()
+        Dim profile As ImporterProfile = pap.profile
+        Dim preset As ImporterPreset = pap.preset
         Dim romAddr As Integer = preset.RomAddress 'ValueFromText(TextBoxX_RomAddr.Text)
         Dim bankAddr As Integer = preset.RamAddress 'ValueFromText(TextBoxX_BankAddr.Text)
         Dim maxLength As Integer = preset.MaxLength 'ValueFromText(TextBoxX_MaxLength.Text)
@@ -117,7 +111,8 @@ Public Class ModelImporter
             {"CollisionPointersArray", preset.CollisionPointers.ToArray},
             {"GeoPointersArray", preset.GeometryPointers.ToArray},
             {"ConvertedModelLength", mdl.Length},
-            {"ConvertedModel", mdl}
+            {"ConvertedModel", mdl},
+            {"profilepath", profile.FileName}
         }
 
         If maxLength > 0 AndAlso mdl.Length > maxLength Then
@@ -130,7 +125,7 @@ Public Class ModelImporter
         'Execute Script Before
         If preset.ScriptBefore IsNot Nothing AndAlso Not String.IsNullOrEmpty(preset.ScriptBefore.Script) Then
             WriteOutput("Executing Script ...")
-            pm.Patch(preset.ScriptBefore, "", Me, scriptparams)
+            pm.Patch(preset.ScriptBefore, Me, scriptparams)
         End If
 
         Dim col As Integer = -1
@@ -184,7 +179,7 @@ Public Class ModelImporter
 
         If preset.ScriptAfter IsNot Nothing AndAlso Not String.IsNullOrEmpty(preset.ScriptAfter.Script) Then
             WriteOutput("Executing Script ...")
-            pm.Patch(preset.ScriptAfter, "", Me, scriptparams)
+            pm.Patch(preset.ScriptAfter, Me, scriptparams)
         End If
 
         If col > -1 Then
@@ -241,7 +236,12 @@ Public Class ModelImporter
         Return CType(ComboBoxEx2.SelectedItem, ComboItem)?.Tag
     End Function
     Private Function SelectedPreset() As ImporterPreset
-        Return SelectedProfile()?.Presets.FirstOrDefault
+        Return SelectedProfileAndPreset.preset
+    End Function
+    Private Function SelectedProfileAndPreset() As (profile As ImporterProfile, preset As ImporterPreset)
+        Dim profile As ImporterProfile = SelectedProfile()
+        Dim preset As ImporterPreset = profile?.Presets.FirstOrDefault
+        Return (profile, preset)
     End Function
 
     Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click

@@ -180,6 +180,7 @@ Public Class MainForm
         tabGeneral.ItemPanel_RecentFiles.Items.Add(di_Open)
 
         Dim cindex As Integer = 1
+        MergeRecentFiles(Settings.RecentFiles.RecentROMs)
         For Each r As String In Settings.RecentFiles.RecentROMs
             If File.Exists(r) Then
                 Dim bi As New ButtonItem
@@ -262,10 +263,10 @@ Public Class MainForm
         Dim romPathExt As String = If(Controller.Romfile <> "", $" - ""{Path.GetFileName(Controller.Romfile)}""", "")
         Dim versionText As String = $"v{appversion.ToString(If(appversion.Revision <> 0, 4, If(appversion.Build <> 0, 3, 2)))}"
 
-        If Not String.IsNullOrEmpty(DevelopmentalStage) Then
+        If Not String.IsNullOrEmpty(DevelopmentStage) Then
             Dim addDevelopmentalNumber As Boolean = True
 
-            Select Case DevelopmentalStage
+            Select Case DevelopmentStage
                 Case 3
                     versionText &= " Alpha"
                 Case 2

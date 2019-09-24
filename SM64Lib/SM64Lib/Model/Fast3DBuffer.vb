@@ -20,7 +20,7 @@ Namespace Model.Fast3D
         ''' <summary>
         ''' Creates a Fast3D Model from a Obj File
         ''' </summary>
-        Public Sub FromModel(ObjSettings As ObjInputSettings, model As Object3D, Optional texFormatSettings As TextureFormatSettings = Nothing)
+        Public Sub FromModel(ObjSettings As ObjectInputSettings, model As Object3D, Optional texFormatSettings As TextureFormatSettings = Nothing)
             'Setup Settings
             Dim conSettings As New SM64Convert.Fast3DWriter.ConvertSettings With {
                 .CenterModel = ObjSettings.CenterModel,
@@ -62,7 +62,7 @@ Namespace Model.Fast3D
             Next
         End Sub
 
-        Public Function FromModelAsync(ObjSettings As ObjInputSettings, model As Object3D, Optional texFormatSettings As TextureFormatSettings = Nothing) As Task
+        Public Function FromModelAsync(ObjSettings As ObjectInputSettings, model As Object3D, Optional texFormatSettings As TextureFormatSettings = Nothing) As Task
             Dim t As New Task(Sub() FromModel(ObjSettings, model, texFormatSettings))
             t.Start()
             Return t

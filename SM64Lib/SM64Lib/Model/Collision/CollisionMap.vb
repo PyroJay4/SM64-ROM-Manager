@@ -120,7 +120,7 @@ Namespace Global.SM64Lib.Model.Collision
             Return spBoxes.ToArray
         End Function
 
-        Public Sub FromObject3D(ObjSettings As ObjInputSettings, model As Object3D, Optional colSettings As CollisionSettings = Nothing)
+        Public Sub FromObject3D(ObjSettings As ObjectInputSettings, model As Object3D, Optional colSettings As CollisionSettings = Nothing)
             Dim dicMatNames As New Dictionary(Of Material, String)
 
             'Clear Lists
@@ -170,7 +170,7 @@ Namespace Global.SM64Lib.Model.Collision
             Next
         End Sub
 
-        Public Function FromObject3DAsync(ObjSettings As ObjInputSettings, model As Object3D, Optional colSettings As CollisionSettings = Nothing) As Task
+        Public Function FromObject3DAsync(ObjSettings As ObjectInputSettings, model As Object3D, Optional colSettings As CollisionSettings = Nothing) As Task
             Dim t As New Task(Sub() FromObject3D(ObjSettings, model, colSettings))
             t.Start()
             Return t

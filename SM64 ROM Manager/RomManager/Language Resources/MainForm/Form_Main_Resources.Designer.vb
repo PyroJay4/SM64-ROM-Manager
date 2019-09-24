@@ -65,7 +65,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Open ROM ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Open ROM... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Button_OpenRom() As String
             Get
@@ -74,7 +74,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die This ROM was used by the SM64 Editor and isn&apos;t compatible with the SM64 ROM Manager. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die This ROM was modified by SM64 Editor and isn&apos;t compatible with SM64 ROM Manager. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Exception_RomWasUsedBySM64E() As String
             Get
@@ -83,7 +83,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Size of Bank 0x19 changed successfully! ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Successfully changed the size of Bank 0x19. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_BankSizeChangedSuccess() As String
             Get
@@ -101,7 +101,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die An error happend at converting .m64 to .midi! ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die An error happened while converting .m64 to .midi! ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_ConvertToMidi_Failed() As String
             Get
@@ -119,7 +119,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die M64 successfully converted to MIDI ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Successfully converted M64 to MIDI ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_ConvertToMidi_Succes() As String
             Get
@@ -137,7 +137,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die An Error happend at saving sequence. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die An error occurred while saving the sequence. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_ErrorSavingSequence() As String
             Get
@@ -146,7 +146,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die An error happend at exporting sequence as MIDI. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die An error occurred while exporting the sequence as MIDI. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_ExportToMidi_Failed() As String
             Get
@@ -164,7 +164,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die The Game Name probably contains invalid chars. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The game name probably contains invalid characters. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_GameNameHasInvalidChars() As String
             Get
@@ -173,7 +173,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die This size is too small. The minimum size is {0}. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The size is too small. The minimum size is {0}. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_InvalidBankSize() As String
             Get
@@ -182,7 +182,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Invalid Size ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Invalid size ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_InvalidBankSize_Title() As String
             Get
@@ -191,7 +191,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die This Image has not a valid Size.&lt;br/&gt;The &lt;b&gt;recommed&lt;/b&gt; Size is 248x248. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die This image does not have a valid size.&lt;br/&gt;The &lt;b&gt;recommended&lt;/b&gt;size is 248x248. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_InvalidBgImageSize() As String
             Get
@@ -200,7 +200,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Invalid Size ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Invalid size ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_InvalidBgImageSize_Title() As String
             Get
@@ -227,7 +227,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die The maximum count of Areas per Level is 8. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The maximum amount of areas per Level is 8. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_MaxCountAreasReached() As String
             Get
@@ -245,7 +245,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die The maximum count of possible music sequences reached! It is not possible to add any more. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The maximum amount of possible music sequences has been reached! It is not possible to add any more. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_MaxSequenceCountReached() As String
             Get
@@ -263,7 +263,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die This ROM will be prepaired now to load it. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM will be prepared for use with SM64 ROM Manager. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_PrepaireRom() As String
             Get
@@ -272,7 +272,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Prepaire ROM ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Prepare ROM ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_PrepaireRom_Title() As String
             Get
@@ -281,7 +281,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM can&apos;t be started. Make sure you selected the correct path to the emulator. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM can&apos;t be started. Make sure the path to the emulator is correct. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_RomCanNotBestarted() As String
             Get
@@ -299,7 +299,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM was changed by an external programm. Do you want to reload the ROM?&lt;br/&gt;&lt;br/&gt;Warning:&lt;br/&gt;On reload the ROM, all unsaved changes get lost! ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM was changed by an external program. Do you want to reload the ROM?&lt;br/&gt;&lt;br/&gt;Warning:&lt;br/&gt;When reloading the ROM, all unsaved changes will be lost! ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_RomChanged() As String
             Get
@@ -308,7 +308,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Changes on ROM detected ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die ROM changes detected ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_RomChanged_Title() As String
             Get
@@ -317,7 +317,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM that was open in this program has been removed!&lt;br/&gt;This programm will close now. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The opened ROM has been deleted.&lt;br/&gt;The program will close now. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_RomRemoved() As String
             Get
@@ -326,7 +326,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die ROM has been removed ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die ROM deleted ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_RomRemoved_Titel() As String
             Get
@@ -335,7 +335,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Your texts needs more space then allowed! Please reduce them before saving ROM. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Your text exceeds the character limit! Please reduce it before saving ROM. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_TextsOverLimit() As String
             Get
@@ -344,7 +344,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Over Limit ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Character limit exceeded ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_TextsOverLimit_Title() As String
             Get
@@ -353,7 +353,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die A unknown error happend at loading ROM. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die An unknown error occurred while loading the ROM. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_UnknownErrorAtLoadingRom() As String
             Get
@@ -362,7 +362,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Loading ROM ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Load ROM ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_UnknownErrorAtLoadingRom_Titel() As String
             Get
@@ -371,7 +371,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die If there are unsaved changes left, you will lose them all.&lt;br/&gt;Do you want to save before closing? ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die There are unsaved changes to the ROM.&lt;br/&gt;Do you want to save before closing? ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_UnsavedChanges() As String
             Get
@@ -389,7 +389,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die There are update-patches avaibale for this ROM providing code improvements and new features.&lt;br/&gt;It is &lt;u&gt;heightly recommend&lt;/u&gt; to patch them.&lt;br/&gt;&lt;br/&gt;Do you want to patch them now? ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die There are updated patches available for this ROM, which provide improvements and/or new features.&lt;br/&gt;It is &lt;u&gt;heighly recommended&lt;/u&gt; to patch them.&lt;br/&gt;&lt;br/&gt;Do you want to patch them now? ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_UpdatePatchesAvaiable() As String
             Get
@@ -398,7 +398,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Update-Patches avaiable ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die New patches available ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_UpdatePatchesAvaiable_Title() As String
             Get
@@ -416,7 +416,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Calculating space ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Calculating space... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_CalculatingTextSpace() As String
             Get
@@ -425,7 +425,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Checking ROM ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Checking ROM... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_Checking() As String
             Get
@@ -434,7 +434,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Creating new Sequence ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Creating new sequence... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_CreatingNewSequence() As String
             Get
@@ -443,7 +443,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Creating Text List ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Creating text list... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_CreatingTextList() As String
             Get
@@ -452,7 +452,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Exporting Model Map ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Exporting Model Map... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_ExportingModel() As String
             Get
@@ -461,7 +461,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Exporting Sequence ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Exporting Sequence... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_ExportingSequence() As String
             Get
@@ -479,7 +479,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Loading Level ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Loading Level... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_LoadingLevel() As String
             Get
@@ -488,7 +488,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Loading Model Map ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Loading Model Map... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_LoadingModel() As String
             Get
@@ -497,7 +497,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Loading Music ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Loading Music... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_LoadingMusic() As String
             Get
@@ -506,7 +506,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Loading ROM ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Loading ROM... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_LoadingRom() As String
             Get
@@ -515,7 +515,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Loading Texts from ROM ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Loading text from ROM... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_LoadingTexts() As String
             Get
@@ -533,7 +533,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Saving ROM ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Saving ROM... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_SavingRom() As String
             Get
@@ -542,7 +542,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Starting up ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Starting up... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_StartingUp() As String
             Get
@@ -560,7 +560,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Change Replacing Level ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Change level to overwrite ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Text_ChangeReplacingLevel() As String
             Get
@@ -677,7 +677,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM was changed by an external programm. To reload the ROM click on &apos;Reload ROM&apos;. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The ROM was changed by an external program. To reload the ROM click on &apos;Reload ROM&apos;. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property WarningBox_RomChanged_Text() As String
             Get

@@ -22,15 +22,17 @@ Namespace Global.SM64Lib
 
         Public Event BeforeRomSave(sender As RomManager, e As CancelEventArgs)
         Public Event AfterRomSave(sender As RomManager, e As EventArgs)
+        Public Event WritingNewProgramVersion(sender As RomManager, e As RomVersionEventArgs)
 
         'F i e l d s
 
         Private ReadOnly segBankList As New Dictionary(Of Byte, SegmentedBank)
         Private ReadOnly areaSegBankList As New Dictionary(Of Byte, Dictionary(Of Byte, SegmentedBank))
-        Private dicUpdatePatches As New Dictionary(Of String, String)
-        Private _ProgramVersion As Version = Nothing
+        Private dicUpdatePatches As New Dictionary(Of String, RomVersion)
+        Private myProgramVersion As New RomVersion
         Private ReadOnly levelIDsToReset As New List(Of UShort)
         Private ReadOnly myTextGroups As New List(Of Text.TextGroup)
+        Private myGameName As String = Nothing
 
         'P r o p e r t i e s
 
@@ -46,16 +48,22 @@ Namespace Global.SM64Lib
         ''' Gets or sets the lastly used program version for this ROM.
         ''' </summary>
         ''' <returns></returns>
-        Public Property ProgramVersion As Version
+        Public Property ProgramVersion As RomVersion
             Get
-                If _ProgramVersion Is Nothing Then
-                    Return LoadVersion()
+                Static loadedVersion As Boolean = False
+                Dim ver As RomVersion
+
+                If Not loadedVersion Then
+                    ver = LoadVersion()
+                    loadedVersion = True
                 Else
-                    Return _ProgramVersion
+                    ver = myProgramVersion
                 End If
+
+                Return ver
             End Get
-            Set(value As Version)
-                _ProgramVersion = value
+            Set(value As RomVersion)
+                myProgramVersion = value
             End Set
         End Property
 
@@ -128,7 +136,7 @@ Namespace Global.SM64Lib
         ''' </summary>
         ''' <returns></returns>
         Public Function AreRomUpdatesAvaiable() As Boolean
-            Return dicUpdatePatches.Where(Function(n) New Version(n.Key) > Me.ProgramVersion).Count > 0
+            Return dicUpdatePatches.Where(Function(n) n.Value > ProgramVersion).Count > 0
         End Function
 
         Private Sub LoadDictionaryUpdatePatches()
@@ -140,7 +148,7 @@ Namespace Global.SM64Lib
                 jsFile = File.ReadAllText(udatePatchsFile)
                 obj = JObject.Parse(jsFile)
 
-                dicUpdatePatches = obj.ToObject(GetType(Dictionary(Of String, String)))
+                dicUpdatePatches = obj.ToObject(GetType(Dictionary(Of String, RomVersion)))
             End If
         End Sub
 
@@ -150,10 +158,13 @@ Namespace Global.SM64Lib
         ''' <returns></returns>
         Public Property GameName As String
             Get
-                Dim fs As New BinaryRom(Me, FileAccess.Read)
-                fs.Position = &H20
-                GameName = Encoding.ASCII.GetString(fs.Read(&H14)).Trim
-                fs.Close()
+                If myGameName Is Nothing Then
+                    Dim fs As New BinaryRom(Me, FileAccess.Read)
+                    fs.Position = &H20
+                    myGameName = Encoding.ASCII.GetString(fs.Read(&H14)).Trim
+                    fs.Close()
+                End If
+                Return myGameName
             End Get
             Set(value As String)
                 Dim fs As New BinaryRom(Me, FileAccess.Write)
@@ -165,6 +176,7 @@ Namespace Global.SM64Lib
                     fs.WriteByte(&H20)
                 Loop
                 fs.Close()
+                myGameName = value
             End Set
         End Property
 
@@ -188,14 +200,16 @@ Namespace Global.SM64Lib
 
                 If Not DontPatchUpdates Then
                     'Patch update-patches
-                    For Each kvp As KeyValuePair(Of String, String) In dicUpdatePatches.Where(Function(n) New Version(n.Key) > Me.ProgramVersion).OrderBy(Function(n) n.Key)
-                        PatchClass.ApplyPPF(RomFile, Path.Combine(MyFilePaths("Update Patches Folder"), kvp.Value))
+                    For Each kvp As KeyValuePair(Of String, RomVersion) In dicUpdatePatches.Where(Function(n) n.Value > ProgramVersion).OrderBy(Function(n) n.Key)
+                        PatchClass.ApplyPPF(RomFile, Path.Combine(MyFilePaths("Update Patches Folder"), kvp.Value.Filename))
                         needUpdateChecksum = True
                     Next
                 End If
 
                 'Write Version
-                WriteVersion(Assembly.GetEntryAssembly.GetName.Version)
+                Dim romVerEventArgs As New RomVersionEventArgs(ProgramVersion)
+                RaiseEvent WritingNewProgramVersion(Me, romVerEventArgs)
+                WriteVersion(romVerEventArgs.RomVersion)
 
                 'Texts
                 SaveAllTextGroups(needUpdateChecksum,)
@@ -219,24 +233,26 @@ Namespace Global.SM64Lib
             End If
         End Sub
 
-        Private Sub WriteVersion(newVersion As Version)
-            ProgramVersion = newVersion
+        Private Sub WriteVersion(newVersion As RomVersion)
+            myProgramVersion = newVersion
 
             Dim fs As New BinaryRom(Me, FileAccess.ReadWrite)
-            fs.Position = &H1201FFC
+            fs.Position = &H1201FF8
 
-            fs.WriteByte(ProgramVersion.Major)
-            fs.WriteByte(ProgramVersion.Minor)
-            fs.WriteByte(ProgramVersion.Build)
-            fs.WriteByte(ProgramVersion.Revision)
+            fs.Write((newVersion.DevelopmentStage << 24) Or newVersion.DevelopmentBuild)
+            fs.WriteByte(newVersion.Version.Major)
+            fs.WriteByte(newVersion.Version.Minor)
+            fs.WriteByte(newVersion.Version.Build)
+            fs.WriteByte(newVersion.Version.Revision)
 
             fs.Close()
         End Sub
 
-        Private Function LoadVersion() As Version
+        Private Function LoadVersion() As RomVersion
             Dim fs As New BinaryRom(Me, FileAccess.Read)
-            fs.Position = &H1201FFC
+            fs.Position = &H1201FF8
 
+            Dim devInfo As Integer = fs.ReadInt32
             Dim major As Byte = fs.ReadByte
             Dim minor As Byte = fs.ReadByte
             Dim build As Byte = fs.ReadByte
@@ -244,9 +260,17 @@ Namespace Global.SM64Lib
 
             fs.Close()
 
-            ProgramVersion = New Version(major, minor, build, revision)
+            myProgramVersion.Version = New Version(major, minor, build, revision)
 
-            Return ProgramVersion
+            If devInfo <> &H1010101 Then
+                myProgramVersion.DevelopmentStage = devInfo >> 24
+                myProgramVersion.DevelopmentBuild = devInfo And &HFFFFFF
+            Else
+                myProgramVersion.DevelopmentStage = 3
+                myProgramVersion.DevelopmentBuild = 0
+            End If
+
+            Return myProgramVersion
         End Function
 
         Public Sub LoadTextProfileIfNotLoaded()
@@ -616,7 +640,7 @@ Namespace Global.SM64Lib
                 Else
                     Dim fs As New BinaryRom(Me, FileAccess.Write)
                     fs.Position = &H10
-                    For Each b As String In ("63 5A 2B FF 8B 02 23 26").Split(" ") : fs.WriteByte("&H" & b) : Next
+                    For Each b As String In "63 5A 2B FF 8B 02 23 26".Split(" ") : fs.WriteByte("&H" & b) : Next
                     fs.Close()
                     CreateROM(True)
                 End If

@@ -75,6 +75,11 @@ Public Class Tab_MusicManager
 
     Private Sub RemoveSequenceFromList(index As Integer)
         ListBoxAdv_MS_MusicSequences.Items.RemoveAt(index)
+        ListBoxAdv_MS_MusicSequences.Refresh()
+
+        If index > 0 Then
+            ListBoxAdv_MS_MusicSequences.SelectedItem = ListBoxAdv_MS_MusicSequences.Items(index - 1)
+        End If
     End Sub
 
     Private Sub LoadCurrentSequence(index As Integer)

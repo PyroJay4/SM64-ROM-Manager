@@ -99,11 +99,11 @@ Public Class PatchingManager
         Return script
     End Function
 
-    Public Sub Patch(script As PatchScript, assemblyPath As String, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
-        Patch(script, Nothing, "", owner, params)
+    Public Sub Patch(script As PatchScript, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
+        Patch(script, Nothing, owner, params)
     End Sub
 
-    Public Sub Patch(script As PatchScript, rommgr As RomManager, assemblyPath As String, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
+    Public Sub Patch(script As PatchScript, rommgr As RomManager, owner As IWin32Window, params As IReadOnlyDictionary(Of String, Object))
         If script Is Nothing Then
             Throw New ArgumentNullException(NameOf(script))
         End If
@@ -211,7 +211,7 @@ Public Class PatchingManager
                                             End Select
 
                                             Dim input As New InputDialog(inputType, rommgr)
-                                            input.Text = parts(1).Trim.Trim(""""c, "["c, "]"c)
+                                            input.Text = parts.ElementAtOrDefault(1)?.Trim?.Trim(""""c, "["c, "]"c)
                                             If input.ShowDialog(owner) = DialogResult.OK Then
                                                 If inputType = InputDialog.InputValueType.String Then
                                                     Dim barr As Byte() = System.Text.Encoding.ASCII.GetBytes(input.ReturnValue)

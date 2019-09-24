@@ -20,30 +20,25 @@ Imports Pilz.Drawing.Drawing3D.OpenGLFactory.RenderingN
 Public Class MainModelConverter
 
     Private DResult As DialogResult = DialogResult.None
-    Public Property ResModel As ObjectModel = Nothing
-    Public Property ForceDisplaylist As SByte = -1
-    Private objSettings As New ObjInputSettings
-
+    Private objSettings As New ObjectInputSettings
     Private objVisualMap As Object3D = Nothing
     Private objCollisionMap As Object3D = Nothing
-
     Private curModelFile As String = ""
     Private curCollisionFile As String = ""
     Private curColSettings As Collision.CollisionSettings
-    Private curTexFormatSettings As Fast3D.TextureFormatSettings
+    Private curTexFormatSettings As TextureFormatSettings
     Private centredVisualMap As Boolean = False
     Private centredCollisionMap As Boolean = False
     Private curDiffusePos As Vertex = Nothing
-
     Private isSliderMouseDown As Boolean = False
+
+    Public Property ResModel As ObjectModel = Nothing
+    Public Property ForceDisplaylist As SByte = -1
+    Public Property GuiInputSettings As New GuiInputSettings
 
     Public Sub New()
         InitializeComponent()
         UpdateAmbientColors()
-
-        ColorPickerButton_ShadingAmbient.SelectedColor = Color.FromArgb(&HFF7F7F7F)
-        ColorPickerButton_ShadingDiffuse.SelectedColor = Color.FromArgb(&HFFFFFFFF)
-        ColorPickerButton_FogColor.SelectedColor = Color.White
     End Sub
 
     Private Function GetColorFromShadingByte(value As Byte) As Color
@@ -51,31 +46,62 @@ Public Class MainModelConverter
     End Function
 
     Public Overloads Function ShowDialog() As DialogResult
-        Dim objSettings As New ObjInputSettings
-        Return ShowDialog(objSettings)
+        Return ShowDialog(New GuiInputSettings)
     End Function
 
-    Public Overloads Function ShowDialog(objSettings As ObjInputSettings) As DialogResult
-        If objSettings Is Nothing Then Me.objSettings = New ObjInputSettings
-        Me.objSettings = objSettings
-
-        With Me.objSettings
-            NUD_Scaling.Value = .Scaling
-        End With
+    Public Overloads Function ShowDialog(guiSettings As GuiInputSettings) As DialogResult
+        GuiInputSettings = guiSettings
 
         ComboBoxEx_UpAxis.SelectedIndex = Settings.FileParser.UpAxis
         ComboBox_FogTyp.SelectedIndex = 0
 
         LoadRecentFiles()
+        LoadGuiSettings()
 
-        Return MyBase.ShowDialog
+        Dim res As DialogResult = MyBase.ShowDialog
+        SaveGuiSettings()
+        Return res
     End Function
+
+    Private Sub LoadGuiSettings()
+        NUD_Scaling.Value = GuiInputSettings.Scaling
+        SwitchButton_EnableReduceVertices.Value = GuiInputSettings.ReduceDupVerts
+        SwitchButton_ResizeTextures.Value = GuiInputSettings.ResizeTextures
+        SwitchButton_CenterModel.Value = GuiInputSettings.CenterModel
+
+        ColorPickerButton_ShadingAmbient.SelectedColor = GuiInputSettings.Shading.AmbientColor
+        ColorPickerButton_ShadingDiffuse.SelectedColor = GuiInputSettings.Shading.DiffuseColor
+        curDiffusePos = GuiInputSettings.Shading.DiffusePosition
+
+        Dim isFogNotNothing As Boolean = GuiInputSettings.Fog IsNot Nothing
+        SwitchButton_EnableFog.Value = isFogNotNothing
+        If isFogNotNothing Then
+            ColorPickerButton_FogColor.SelectedColor = GuiInputSettings.Fog.Color
+            ComboBox_FogTyp.SelectedIndex = GuiInputSettings.Fog.Type
+        End If
+    End Sub
+
+    Private Sub SaveGuiSettings()
+        GuiInputSettings.Scaling = NUD_Scaling.Value
+        GuiInputSettings.ReduceDupVerts = SwitchButton_EnableReduceVertices.Value
+        GuiInputSettings.ResizeTextures = SwitchButton_ResizeTextures.Value
+        GuiInputSettings.CenterModel = SwitchButton_CenterModel.Value
+
+        GuiInputSettings.Shading.AmbientColor = ColorPickerButton_ShadingAmbient.SelectedColor
+        GuiInputSettings.Shading.DiffuseColor = ColorPickerButton_ShadingDiffuse.SelectedColor
+        GuiInputSettings.Shading.DiffusePosition = curDiffusePos
+
+        If SwitchButton_EnableFog.Value Then
+            GuiInputSettings.Fog = New Fog With {.Color = ColorPickerButton_FogColor.SelectedColor, .Type = ComboBox_FogTyp.SelectedIndex}
+        Else
+            GuiInputSettings.Fog = Nothing
+        End If
+    End Sub
 
     Private Async Sub Button_ConvertModel_Click(sender As Object, e As EventArgs) Handles Button_ConvertModel.Click
         'Set Convert Settings
         With objSettings
-            .Scaling = 1.0F
-            .ReduceDupVertLevel = If(SwitchButton_EnableReduceVertices.Value, ObjInputSettings.ReduceDuplicateVerticesLevel.Level1, ObjInputSettings.ReduceDuplicateVerticesLevel.Level0) 'CType(ComboBox_ReduceDupVertLevel.SelectedIndex, ObjInputSettings.ReduceDuplicateVerticesLevel)
+            .ReduceDupVertLevel = If(SwitchButton_EnableReduceVertices.Value, ObjectInputSettings.ReduceDuplicateVerticesLevel.Level1, ObjectInputSettings.ReduceDuplicateVerticesLevel.Level0)
             .ResizeTextures = SwitchButton_ResizeTextures.Value
             .CenterModel = SwitchButton_CenterModel.Value
             .ForceDisplaylist = ForceDisplaylist
@@ -86,6 +112,8 @@ Public Class MainModelConverter
 
             If SwitchButton_EnableFog.Value Then
                 .Fog = New Fog With {.Color = ColorPickerButton_FogColor.SelectedColor, .Type = ComboBox_FogTyp.SelectedIndex}
+            Else
+                .Fog = Nothing
             End If
         End With
 
@@ -221,7 +249,9 @@ Public Class MainModelConverter
     End Sub
 
     Private Sub Form_ModelConverter_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If DResult = DialogResult.None Then DResult = DialogResult.Cancel
+        If DResult = DialogResult.None Then
+            DResult = DialogResult.Cancel
+        End If
     End Sub
 
     Private Async Sub Button_LM_LoadModel_Click(sender As Object, e As EventArgs) Handles Button_LoadModel.Click

@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports System.IO
+Imports Newtonsoft.Json.Linq
 
 Namespace Model.Fast3D
 
@@ -9,33 +10,42 @@ Namespace Model.Fast3D
 
         Public Async Function Load(fileName As String) As Task
             If File.Exists(fileName) Then
+                Dim success As Boolean = False
+                Dim streamReader As New StreamReader(fileName)
+                Dim content As String = Await streamReader.ReadToEndAsync
 
-                Dim fs As New FileStream(fileName, FileMode.Open, FileAccess.Read)
-                Dim sr As New StreamReader(fs)
-
+                streamReader.Close()
                 Entries.Clear()
 
-                Do Until sr.EndOfStream
-                    Dim e As New Entry
-                    e.FromString(Await sr.ReadLineAsync)
-                    Entries.Add(e)
-                Loop
+                Try
+                    Entries.AddRange(JArray.Parse(content).ToObject(Of Entry()))
+                    success = True
+                Catch ex As Exception
+                End Try
 
-                fs.Close()
+                If Not success Then
+                    Dim sr As New StringReader(content)
 
+                    Do While sr.Peek > -1
+#Disable Warning BC40008 ' Der Typ oder Member ist veraltet.
+                        Dim e As Entry = Entry.FromString(Await sr.ReadLineAsync)
+#Enable Warning BC40008 ' Der Typ oder Member ist veraltet.
+                        Entries.Add(e)
+                    Loop
+
+                    sr.Close()
+                    sr.Dispose()
+                End If
             End If
         End Function
 
         Public Async Function Save(fileName As String) As Task
-            Dim fs As New FileStream(fileName, FileMode.Create, FileAccess.ReadWrite)
-            Dim sw As New StreamWriter(fs)
+            Dim sw As New StreamWriter(fileName)
 
-            For Each e As Entry In Entries
-                Await sw.WriteLineAsync(e.ToString)
-            Next
-            Await sw.FlushAsync()
+            Await sw.WriteAsync(JArray.FromObject(Entries).ToString)
 
-            fs.Close()
+            sw.Flush()
+            sw.Close()
         End Function
 
         Public Function GetEntry(matName As String) As Entry
@@ -63,27 +73,28 @@ Namespace Model.Fast3D
             Public Property EnableCrystalEffect As Boolean = False
             Public Property RotateFlip As RotateFlipType = RotateFlipType.RotateNoneFlipNone
 
-            Public Overloads Function ToString() As String
-                Return $"{MaterialName};{TextureFormat};{IsScrollingTexture.ToString};{SelectDisplaylistMode};{CByte(FaceCullingMode)};{EnableMirror.ToString};{EnableClamp.ToString};{EnableCrystalEffect.ToString};{CInt(RotateFlip)}"
-            End Function
+            <Obsolete>
+            Public Shared Function FromString(str As String) As Entry
+                Dim newEntry As New Entry
 
-            Public Sub FromString(str As String)
                 Dim parts As String() = str.Split(";")
-                MaterialName = parts(0)
-                TextureFormat = parts(1)
-                If parts.Length > 2 Then IsScrollingTexture = Convert.ToBoolean(parts(2))
+                newEntry.MaterialName = parts(0)
+                newEntry.TextureFormat = parts(1)
+                If parts.Length > 2 Then newEntry.IsScrollingTexture = Convert.ToBoolean(parts(2))
                 If parts.Length > 3 Then
-                    SelectDisplaylistMode = Convert.ToSByte(parts(3))
-                    If SelectDisplaylistMode = 0 Then SelectDisplaylistMode = -1
+                    newEntry.SelectDisplaylistMode = Convert.ToSByte(parts(3))
+                    If newEntry.SelectDisplaylistMode = 0 Then newEntry.SelectDisplaylistMode = -1
                 End If
-                If parts.Length > 4 Then FaceCullingMode = Convert.ToByte(parts(4))
+                If parts.Length > 4 Then newEntry.FaceCullingMode = Convert.ToByte(parts(4))
                 If parts.Length > 5 Then
-                    EnableMirror = Convert.ToBoolean(parts(5))
-                    EnableClamp = Convert.ToBoolean(parts(6))
+                    newEntry.EnableMirror = Convert.ToBoolean(parts(5))
+                    newEntry.EnableClamp = Convert.ToBoolean(parts(6))
                 End If
-                If parts.Length > 7 Then EnableCrystalEffect = Convert.ToBoolean(parts(7))
-                If parts.Length > 8 Then RotateFlip = Convert.ToInt32(parts(8))
-            End Sub
+                If parts.Length > 7 Then newEntry.EnableCrystalEffect = Convert.ToBoolean(parts(7))
+                If parts.Length > 8 Then newEntry.RotateFlip = Convert.ToInt32(parts(8))
+
+                Return newEntry
+            End Function
 
         End Class
 

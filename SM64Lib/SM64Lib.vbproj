@@ -10,7 +10,8 @@
     <AssemblyName>SM64Lib</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,7 +60,7 @@
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
     </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -100,6 +101,7 @@
     <Compile Include="SM64Lib\Behavior\Script\Behaviorscript.vb" />
     <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommand.vb" />
     <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommandCollection.vb" />
+    <Compile Include="SM64Lib\Configuration\RomConfig.vb" />
     <Compile Include="SM64Lib\Data\BinaryFile.vb" />
     <Compile Include="SM64Lib\FilePathsConfiguration.vb" />
     <Compile Include="SM64Lib\General.vb" />
@@ -132,11 +134,13 @@
     <Compile Include="SM64Lib\Model\DisplayLists\DisplayListCollection.vb" />
     <Compile Include="SM64Lib\Model\Fog.vb" />
     <Compile Include="SM64Lib\Model\FogPreset.vb" />
+    <Compile Include="SM64Lib\RomVersion.vb" />
+    <Compile Include="SM64Lib\RomVersionEventArgs.vb" />
     <Compile Include="SM64Lib\SM64Convert\TextureLoadedInfos.vb" />
     <Compile Include="SM64Lib\NPCs\CoinsManager.vb" />
     <Compile Include="SM64Lib\Object Banks\CustomObject.vb" />
     <Compile Include="SM64Lib\Objects\StarNames.vb" />
-    <Compile Include="SM64Lib\ObjInputSettings.vb" />
+    <Compile Include="SM64Lib\Model\ObjectInputSettings.vb" />
     <Compile Include="SM64Lib\RGBColor.vb" />
     <Compile Include="SM64Lib\RomManagerSettings.vb" />
     <Compile Include="SM64Lib\Data\BinaryData.vb" />

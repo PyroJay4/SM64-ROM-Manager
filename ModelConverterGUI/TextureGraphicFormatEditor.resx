@@ -136,7 +136,7 @@
     <value>ListViewEx1</value>
   </data>
   <data name="&gt;&gt;ListViewEx1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ListViewEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ListViewEx, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ListViewEx1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -160,7 +160,7 @@
     <value>LabelX48</value>
   </data>
   <data name="&gt;&gt;LabelX48.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX48.Parent" xml:space="preserve">
     <value>$this</value>
@@ -214,7 +214,7 @@
     <value>Button_SaveColsettings</value>
   </data>
   <data name="&gt;&gt;Button_SaveColsettings.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Button_SaveColsettings.Parent" xml:space="preserve">
     <value>$this</value>
@@ -244,7 +244,7 @@
     <value>ComboBox_ColType</value>
   </data>
   <data name="&gt;&gt;ComboBox_ColType.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboBox_ColType.Parent" xml:space="preserve">
     <value>$this</value>
@@ -271,7 +271,7 @@
     <value>LabelX_CollisionType</value>
   </data>
   <data name="&gt;&gt;LabelX_CollisionType.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX_CollisionType.Parent" xml:space="preserve">
     <value>$this</value>
@@ -298,7 +298,7 @@
     <value>LabelX_MaxPixels</value>
   </data>
   <data name="&gt;&gt;LabelX_MaxPixels.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX_MaxPixels.Parent" xml:space="preserve">
     <value>$this</value>
@@ -322,7 +322,7 @@
     <value>LabelX1</value>
   </data>
   <data name="&gt;&gt;LabelX1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -349,7 +349,7 @@
     <value>CheckBoxX_EnableTextureAnimation</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_EnableTextureAnimation.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_EnableTextureAnimation.Parent" xml:space="preserve">
     <value>$this</value>
@@ -379,7 +379,7 @@
     <value>ComboBoxEx_SelectDisplaylist</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_SelectDisplaylist.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_SelectDisplaylist.Parent" xml:space="preserve">
     <value>$this</value>
@@ -406,7 +406,7 @@
     <value>LabelX2</value>
   </data>
   <data name="&gt;&gt;LabelX2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -433,7 +433,7 @@
     <value>CheckBoxX_EnableMirror</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_EnableMirror.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_EnableMirror.Parent" xml:space="preserve">
     <value>$this</value>
@@ -460,7 +460,7 @@
     <value>CheckBoxX_EnableClamp</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_EnableClamp.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_EnableClamp.Parent" xml:space="preserve">
     <value>$this</value>
@@ -487,7 +487,7 @@
     <value>CheckBoxX_EnableCrystalEffect</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_EnableCrystalEffect.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_EnableCrystalEffect.Parent" xml:space="preserve">
     <value>$this</value>
@@ -514,7 +514,7 @@
     <value>LabelX3</value>
   </data>
   <data name="&gt;&gt;LabelX3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;LabelX3.Parent" xml:space="preserve">
     <value>$this</value>
@@ -541,7 +541,7 @@
     <value>ComboBoxEx_RotateFlip</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_RotateFlip.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_RotateFlip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2425,6 +2425,6 @@
     <value>TextureGraphicFormatEditor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.34, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>DevComponents.DotNetBar.OfficeForm, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

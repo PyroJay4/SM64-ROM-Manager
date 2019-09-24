@@ -33,7 +33,7 @@ Namespace Global.SM64Lib.Model
         Public Sub FromStream(ByRef s As Stream, BankRomStart As Integer, BankRamStart As Integer, Fast3DStart As Integer, Fast3DLength As Integer, DisplayListpointer() As Geopointer, Optional Collisionpointer As Integer = -1)
             FromBinaryData(New BinaryStreamData(s), BankRomStart, BankRamStart, Fast3DStart, Fast3DLength, DisplayListpointer, Collisionpointer)
         End Sub
-        Public Sub FromModel(ObjSettings As ObjInputSettings, vmap As Pilz.S3DFileParser.Object3D, colmap As Pilz.S3DFileParser.Object3D, texFormatSettings As Fast3D.TextureFormatSettings, Optional colSettings As Collision.CollisionSettings = Nothing)
+        Public Sub FromModel(ObjSettings As ObjectInputSettings, vmap As Pilz.S3DFileParser.Object3D, colmap As Pilz.S3DFileParser.Object3D, texFormatSettings As Fast3D.TextureFormatSettings, Optional colSettings As Collision.CollisionSettings = Nothing)
             'Add Collision
             Collision = New Collision.CollisionMap
             Me.Collision.FromObject3D(ObjSettings, colmap, colSettings)
@@ -41,10 +41,10 @@ Namespace Global.SM64Lib.Model
             'Add Fast3DBuffer (replacement for 'Add Displaylists')
             If Fast3DBuffer IsNot Nothing Then Fast3DBuffer.Close()
             Fast3DBuffer = New Fast3D.Fast3DBuffer
-            Me.Fast3DBuffer.FromModel(ObjSettings, vmap, texFormatSettings)
+            Fast3DBuffer.FromModel(ObjSettings, vmap, texFormatSettings)
         End Sub
 
-        Public Function FromModelAsync(ObjSettings As ObjInputSettings, vmap As Pilz.S3DFileParser.Object3D, colmap As Pilz.S3DFileParser.Object3D, Optional texFormatSettings As Fast3D.TextureFormatSettings = Nothing, Optional colSettings As Collision.CollisionSettings = Nothing) As Task
+        Public Function FromModelAsync(ObjSettings As ObjectInputSettings, vmap As Pilz.S3DFileParser.Object3D, colmap As Pilz.S3DFileParser.Object3D, Optional texFormatSettings As Fast3D.TextureFormatSettings = Nothing, Optional colSettings As Collision.CollisionSettings = Nothing) As Task
             Dim t As New Task(Sub() FromModel(ObjSettings, vmap, colmap, texFormatSettings, colSettings))
             t.Start()
             Return t
