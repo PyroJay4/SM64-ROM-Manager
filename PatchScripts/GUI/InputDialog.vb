@@ -101,7 +101,7 @@ Friend Class InputDialog
         If ReturnValue IsNot Nothing Then
             DialogResult = DialogResult.OK
         Else
-            MessageBoxEx.Show("This value is invalid!", "Invalid value", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBoxEx.Show("The value you entered is invalid!", "Invalid value", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
