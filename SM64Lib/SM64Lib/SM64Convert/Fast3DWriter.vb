@@ -736,10 +736,15 @@ Namespace SM64Convert
                             final.Data(5) = vert.Z And &HFF
                             final.Data(6) = 0
                             final.Data(7) = 0
-                            final.Data(8) = (tnew.U >> 8) And &HFF
-                            final.Data(9) = tnew.U And &HFF
-                            final.Data(10) = (tnew.V >> 8) And &HFF
-                            final.Data(11) = tnew.V And &HFF
+
+                            Dim uInt, vInt As Integer
+                            uInt = Math.Round(tnew.U)
+                            vInt = Math.Round(tnew.V)
+                            final.Data(8) = (uInt >> 8) And &HFF
+                            final.Data(9) = uInt And &HFF
+                            final.Data(10) = (vInt >> 8) And &HFF
+                            final.Data(11) = vInt And &HFF
+
                             If vertcol IsNot Nothing Then
                                 final.Data(12) = vertcol.R
                                 final.Data(13) = vertcol.G

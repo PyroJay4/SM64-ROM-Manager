@@ -3,11 +3,14 @@ Imports System.Reflection
 Imports System.Windows.Forms
 Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN
 Imports Pilz.S3DFileParser
+Imports Pilz.UI
 Imports SM64_ROM_Manager.SettingsManager
 
 Public Class ModelPreviewOfficeForm
 
+    Private pc As PaintingControl
     Private modelToRender As Object3D
+    Private poModelInfo As PaintingObject
 
     Private WithEvents ModelPreview As New Pilz.Drawing.Drawing3D.OpenGLFactory.PreviewN.ModelPreview With {
         .FormBorderStyle = FormBorderStyle.None,
@@ -34,16 +37,11 @@ Public Class ModelPreviewOfficeForm
         'AddHandler KeyUp, AddressOf ModelPreview.HandlesOnKeyUp
         'AddHandler KeyDown, AddressOf ModelPreview.HandlesOnKeyDown
 
-        For Each f As FieldInfo In ModelPreview.GetType.GetFields(BindingFlags.Instance Or BindingFlags.Public Or BindingFlags.NonPublic)
-            Console.WriteLine(f.Name)
-        Next
-
         ModelPreview.Camera.SetCameraMode(CameraMode.FLY, ModelPreview.CameraMatrix)
         AddHandler ModelPreview.Camera.NeedSelectedObject, AddressOf Camera_NeedSelectedObject
 
-        'Temporary fix
-        Dim glControl1 As Control = ModelPreview.GetType.GetField("_glControl1", BindingFlags.Instance Or BindingFlags.Public Or BindingFlags.NonPublic).GetValue(ModelPreview)
-        AddHandler glControl1.Paint,
+        'Create Model Infos Panel (Temporary)
+        AddHandler ModelPreview.GLControl.Paint,
             Sub(sender, e)
                 If modelToRender IsNot Nothing Then
                     e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
@@ -51,6 +49,28 @@ Public Class ModelPreviewOfficeForm
                 End If
             End Sub
 
+        'Create Model Infos Panel
+        'poModelInfo = New PaintingObject With {
+        '    .Type = PaintingObjectType.Text,
+        '    .TextFont = New Font(Control.DefaultFont.FontFamily, 10),
+        '    .TextColor = Color.Green,
+        '    .EnableFill = False,
+        '    .EnableOutline = False,
+        '    .Text = GetModelInfoAsString(),
+        '    .HorizontalTextAlignment = StringAlignment.Near,
+        '    .Location = PointF.Empty
+        '}
+        'pc = New PaintingControl With {
+        '    .BackColor = Color.Transparent,
+        '    .VisibleForMouseEvents = False,
+        '    .AutoSingleSelection = False,
+        '    .AutoAreaSelection = False,
+        '    .AutoMoveObjects = False,
+        '    .AutoMultiselection = False,
+        '    .AutoRemoveSelection = False
+        '}
+
+        'Set clear color
         ModelPreview.ClearColor = If(Settings.StyleManager.AlwaysKeepBlueColors, Color.CornflowerBlue, BackColor)
 
         Controls.Add(ModelPreview)
@@ -71,6 +91,12 @@ Public Class ModelPreviewOfficeForm
     Private Sub ModelPreviewOfficeForm_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ModelPreview.RenderModel(ModelPreview.AddModel(modelToRender))
         ModelPreview.UpdateView()
+
+        'Show Model Infos
+        'pc.PaintingObjects.Add(poModelInfo)
+        'ModelPreview.GLControl.Controls.Add(pc)
+        'poModelInfo.FitSizeToText()
+        'pc.Refresh()
     End Sub
 
     Private Function GetModelInfoAsString() As String

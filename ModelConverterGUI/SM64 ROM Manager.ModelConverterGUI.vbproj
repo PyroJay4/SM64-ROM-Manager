@@ -68,6 +68,9 @@
     <Reference Include="Pilz.Simple3DFileParser">
       <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
     </Reference>
+    <Reference Include="Pilz.UI">
+      <HintPath>..\Shared Libs\Pilz.UI.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />

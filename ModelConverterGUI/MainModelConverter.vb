@@ -168,18 +168,10 @@ Public Class MainModelConverter
 
         'Center Model
         If SwitchButton_CenterModel.Value Then
-            If vmap IsNot Nothing Then
-                If Not centredVisualMap Then
-                    vmap.CenterModel()
-                    centredVisualMap = True
-                End If
-            End If
-            If colmap IsNot Nothing AndAlso vmap IsNot colmap Then
-                If Not centredCollisionMap Then
-                    colmap.CenterModel()
-                    centredCollisionMap = True
-                End If
-            End If
+            Dim mapsToCenter As New List(Of Mesh)
+            If vmap IsNot Nothing Then mapsToCenter.AddRange(vmap.Meshes)
+            If colmap IsNot Nothing AndAlso vmap IsNot colmap Then mapsToCenter.AddRange(colmap.Meshes)
+            Mesh.CenterModel(mapsToCenter)
         End If
 
         'Scale Model
