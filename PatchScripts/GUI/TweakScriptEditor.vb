@@ -136,40 +136,42 @@ Public Class TweakScriptEditor
             Case ScriptType.CSharp
                 CheckBoxX_CSharpScript.Checked = True
                 CodeEditor.Text =
-                    "using System;
-                    using System.Collections.Generic;
-                    using System.IO;
-                    using System.Linq;
-                    using System.Windows.Forms;
-                    using SM64Lib;
+                   "using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using SM64Lib;
 
-                    class Script
-                    {
+class Script
+{
 
-                        static void Main(IReadOnlyDictionary<string, object> pars)
-                        {
+    static void Main(IReadOnlyDictionary<string, object> pars)
+    {
         
-                        }
+    }
 
-                    }"
+}
+"
             Case ScriptType.VisualBasic
                 CheckBoxX_VBScript.Checked = True
                 CodeEditor.Text =
-                    "Imports Microsoft.VisualBasic
-                    Imports System
-                    Imports System.Collections.Generic
-                    Imports System.IO
-                    Imports System.Linq
-                    Imports System.Windows.Forms
-                    Imports SM64Lib
+                   "Imports Microsoft.VisualBasic
+Imports System
+Imports System.Collections.Generic
+Imports System.IO
+Imports System.Linq
+Imports System.Windows.Forms
+Imports SM64Lib
 
-                    Module Script
+Module Script
 
-                        Sub Main(params as IReadOnlyDictionary(Of String, Object))
+    Sub Main(params as IReadOnlyDictionary(Of String, Object))
         
-                        End Sub
+    End Sub
 
-                    End Module"
+End Module
+"
         End Select
     End Sub
 
