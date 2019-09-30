@@ -161,6 +161,18 @@ Public Class Tab_LevelManager
         RemoveAreaFromList(e.AreaIndex)
     End Sub
 
+    Private Sub Controller_LevelAreaCustomObjectsCountChanged(e As LevelAreaEventArgs) Handles Controller.LevelAreaCustomObjectsCountChanged
+        If CurrentLevelIndex = e.LevelIndex AndAlso CurrentAreaIndex = e.AreaIndex Then
+            LoadCustomObjectsCount()
+        End If
+    End Sub
+
+    Private Sub Controller_LevelAreaScrollingTextureCountChanged(e As LevelAreaEventArgs) Handles Controller.LevelAreaScrollingTextureCountChanged
+        If CurrentLevelIndex = e.LevelIndex AndAlso CurrentAreaIndex = e.AreaIndex Then
+            LoadScrollTexCount()
+        End If
+    End Sub
+
     'F e a t u r e s   &   G U I
 
     Private Sub LoadSequenceList()
@@ -479,10 +491,22 @@ Public Class Tab_LevelManager
             TextBoxX_LM_ShowMsgID.Text = TextFromValue(infos.showMsgDialogID)
             UpdateShowMsgControlsVisible(infos.enableShowMsg)
 
+            'Model Infos
+            LoadCustomObjectsCount()
+            LoadScrollTexCount()
+
             UpdateSpecialItemsList()
 
             LM_LoadingArea = False
         End If
+    End Sub
+
+    Private Sub LoadCustomObjectsCount()
+        LabelX_Area_CountOfCustomObjects.Text = Controller.GetLevelAreaCustomObjectsCount(CurrentLevelIndex, CurrentAreaIndex)
+    End Sub
+
+    Private Sub LoadScrollTexCount()
+        LabelX_Area_CountOfTexAnimations.Text = Controller.GetLevelAreaScrollingTexturesCount(CurrentLevelIndex, CurrentAreaIndex)
     End Sub
 
     Private Sub LoadLevelSettings(levelIndex As Integer)

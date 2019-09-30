@@ -64,8 +64,8 @@ Partial Class Tab_LevelManager
         Me.TabItem4 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel5 = New DevComponents.DotNetBar.TabControlPanel()
         Me.Line2 = New DevComponents.DotNetBar.Controls.Line()
-        Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX_Area_CountOfCustomObjects = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX_Area_CountOfTexAnimations = New DevComponents.DotNetBar.LabelX()
         Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.ButtonX_CustomObjects = New DevComponents.DotNetBar.ButtonX()
@@ -380,9 +380,9 @@ Partial Class Tab_LevelManager
         resources.ApplyResources(Me.TabControl_LM_Area, "TabControl_LM_Area")
         Me.TabControl_LM_Area.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControl_LM_Area.CanReorderTabs = False
-        Me.TabControl_LM_Area.Controls.Add(Me.TabControlPanel4)
         Me.TabControl_LM_Area.Controls.Add(Me.TabControlPanel5)
         Me.TabControl_LM_Area.Controls.Add(Me.TabControlPanel6)
+        Me.TabControl_LM_Area.Controls.Add(Me.TabControlPanel4)
         Me.TabControl_LM_Area.ForeColor = System.Drawing.Color.Black
         Me.TabControl_LM_Area.Name = "TabControl_LM_Area"
         Me.TabControl_LM_Area.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
@@ -637,8 +637,8 @@ Partial Class Tab_LevelManager
         'TabControlPanel5
         '
         Me.TabControlPanel5.Controls.Add(Me.Line2)
-        Me.TabControlPanel5.Controls.Add(Me.LabelX13)
-        Me.TabControlPanel5.Controls.Add(Me.LabelX12)
+        Me.TabControlPanel5.Controls.Add(Me.LabelX_Area_CountOfCustomObjects)
+        Me.TabControlPanel5.Controls.Add(Me.LabelX_Area_CountOfTexAnimations)
         Me.TabControlPanel5.Controls.Add(Me.LabelX10)
         Me.TabControlPanel5.Controls.Add(Me.LabelX5)
         Me.TabControlPanel5.Controls.Add(Me.ButtonX_CustomObjects)
@@ -664,27 +664,27 @@ Partial Class Tab_LevelManager
         Me.Line2.Name = "Line2"
         Me.Line2.VerticalLine = True
         '
-        'LabelX13
+        'LabelX_Area_CountOfCustomObjects
         '
-        Me.LabelX13.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX13, "LabelX13")
-        Me.LabelX13.Name = "LabelX13"
-        Me.LabelX13.TextAlignment = System.Drawing.StringAlignment.Far
-        '
-        'LabelX12
-        '
-        Me.LabelX12.BackColor = System.Drawing.Color.Transparent
+        Me.LabelX_Area_CountOfCustomObjects.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
-        Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX12, "LabelX12")
-        Me.LabelX12.Name = "LabelX12"
-        Me.LabelX12.TextAlignment = System.Drawing.StringAlignment.Far
+        Me.LabelX_Area_CountOfCustomObjects.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_Area_CountOfCustomObjects, "LabelX_Area_CountOfCustomObjects")
+        Me.LabelX_Area_CountOfCustomObjects.Name = "LabelX_Area_CountOfCustomObjects"
+        Me.LabelX_Area_CountOfCustomObjects.TextAlignment = System.Drawing.StringAlignment.Far
+        '
+        'LabelX_Area_CountOfTexAnimations
+        '
+        Me.LabelX_Area_CountOfTexAnimations.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX_Area_CountOfTexAnimations.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_Area_CountOfTexAnimations, "LabelX_Area_CountOfTexAnimations")
+        Me.LabelX_Area_CountOfTexAnimations.Name = "LabelX_Area_CountOfTexAnimations"
+        Me.LabelX_Area_CountOfTexAnimations.TextAlignment = System.Drawing.StringAlignment.Far
         '
         'LabelX10
         '
@@ -899,8 +899,8 @@ Partial Class Tab_LevelManager
         resources.ApplyResources(Me.TabControl_LM_Level, "TabControl_LM_Level")
         Me.TabControl_LM_Level.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControl_LM_Level.CanReorderTabs = False
-        Me.TabControl_LM_Level.Controls.Add(Me.TabControlPanel2)
         Me.TabControl_LM_Level.Controls.Add(Me.TabControlPanel1)
+        Me.TabControl_LM_Level.Controls.Add(Me.TabControlPanel2)
         Me.TabControl_LM_Level.ForeColor = System.Drawing.Color.Black
         Me.TabControl_LM_Level.Name = "TabControl_LM_Level"
         Me.TabControl_LM_Level.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
@@ -1268,10 +1268,10 @@ Partial Class Tab_LevelManager
     Friend WithEvents ButtonX_CustomObjects As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonItem_EditAreaLevelScript As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem2_EditGeolayoutScript As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX_Area_CountOfTexAnimations As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX10 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Line2 As DevComponents.DotNetBar.Controls.Line
-    Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX_Area_CountOfCustomObjects As DevComponents.DotNetBar.LabelX
     Friend WithEvents TableLayoutPanel_ObjectBankSelectorBoxes As TableLayoutPanel
 End Class

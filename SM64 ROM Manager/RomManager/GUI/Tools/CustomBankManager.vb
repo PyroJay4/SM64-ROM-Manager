@@ -4,6 +4,11 @@ Imports SM64Lib.ObjectBanks
 
 Public Class CustomBankManager
 
+    'E v e n t s
+
+    Public Event ObjectAdded As EventHandler
+    Public Event ObjectRemoved As EventHandler
+
     'P r i v a t e   M e m b e r s
 
     Private rommgr As RomManager
@@ -65,6 +70,7 @@ Public Class CustomBankManager
             objBank.Objects.Add(obj)
             item = AddItemToList(obj)
             item.RaiseClick()
+            RaiseEvent ObjectAdded(Me, New EventArgs)
         End If
     End Sub
 
@@ -110,6 +116,8 @@ Public Class CustomBankManager
 
         Panel2.Enabled = False
         curObj = Nothing
+
+        RaiseEvent ObjectRemoved(Me, New EventArgs)
     End Sub
 
     Private Sub UpdateButtonItems()

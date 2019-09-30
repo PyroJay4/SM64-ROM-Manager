@@ -66,6 +66,8 @@ Public Class MainController
     Public Event LevelBackgroundModeChanged(e As LevelBackgroundModeChangedEventArgs)
     Public Event LevelBackgroundImageChanged(e As LevelBackgroundImageChangedEventArgs)
     Public Event LevelAreaBackgroundModeChanged(e As LevelAreaBackgroundModeChangedEventArgs)
+    Public Event LevelAreaCustomObjectsCountChanged(e As LevelAreaEventArgs)
+    Public Event LevelAreaScrollingTextureCountChanged(e As LevelAreaEventArgs)
 
     'C o n s t a n t s
 
@@ -577,8 +579,13 @@ Public Class MainController
         frm.Show()
     End Sub
 
-    Private Sub OpenCustomBankManager(customBank As CustomObjectBank)
+    Private Sub OpenCustomBankManager(customBank As CustomObjectBank, levelIndex As Integer, areaIndex As Integer, areaID As Byte)
         Dim mgr As New CustomBankManager(RomManager, customBank)
+
+        Dim objectCountChanged = Sub() RaiseEvent LevelAreaCustomObjectsCountChanged(New LevelAreaEventArgs(levelIndex, areaIndex, areaID))
+        AddHandler mgr.ObjectAdded, objectCountChanged
+        AddHandler mgr.ObjectRemoved, objectCountChanged
+
         mgr.Show()
     End Sub
 
@@ -1032,6 +1039,11 @@ Public Class MainController
         If levelIndex > -1 AndAlso areaIndex > -1 Then
             Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
             Dim editor As New ScrollTexEditor(lvl.area)
+
+            Dim scrollTextCountChanged = Sub() RaiseEvent LevelAreaScrollingTextureCountChanged(New LevelAreaEventArgs(levelIndex, areaIndex, lvl.area.AreaID))
+            AddHandler editor.ScrollTexAdded, scrollTextCountChanged
+            AddHandler editor.ScrollTexRemoved, scrollTextCountChanged
+
             editor.Show()
         End If
     End Sub
@@ -1066,7 +1078,7 @@ Public Class MainController
         Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
 
         If lvl.area IsNot Nothing Then
-            OpenCustomBankManager(lvl.area.CustomObjects)
+            OpenCustomBankManager(lvl.area.CustomObjects, levelIndex, areaIndex, lvl.area.AreaID)
         End If
     End Sub
 
@@ -1106,6 +1118,20 @@ Public Class MainController
 
         'Get Area Settings
         Return (area.TerrainType, area.BGMusic, area.Geolayout.CameraPreset, area.Geolayout.EnvironmentEffect, area.Enable2DCamera, area.Background.Type, area.Background.Color, area.ShowMessage.Enabled, area.ShowMessage.DialogID)
+    End Function
+
+    Public Function GetLevelAreaCustomObjectsCount(levelIndex As Integer, areaIndex As Integer) As Integer
+        Dim area As LevelArea = GetLevelAndArea(levelIndex, areaIndex).area
+
+        'Get Model Infos
+        Return If(area.CustomObjects.Objects?.Count, 0)
+    End Function
+
+    Public Function GetLevelAreaScrollingTexturesCount(levelIndex As Integer, areaIndex As Integer) As Integer
+        Dim area As LevelArea = GetLevelAndArea(levelIndex, areaIndex).area
+
+        'Get Model Infos
+        Return area.ScrollingTextures.Count
     End Function
 
     Public Sub RemoveLevel(levelIndex As Integer)
