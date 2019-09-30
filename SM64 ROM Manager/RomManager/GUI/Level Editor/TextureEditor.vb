@@ -7,6 +7,7 @@ Imports Pilz.S3DFileParser
 Imports SM64Lib
 Imports SM64Lib.Data
 Imports SM64Lib.SM64Convert
+Imports SM64_ROM_Manager.SettingsManager
 
 Namespace LevelEditor
 
@@ -23,6 +24,11 @@ Namespace LevelEditor
             InitializeComponent()
             LoadCategories(categories)
             UpdateAmbientColors
+
+            'Set dark background for light theme
+            If Settings.StyleManager.IsWhiteTheme Then
+                BackColor = StyleManagerSettingsStruc.VisualThemeGray.CanvasColor
+            End If
         End Sub
 
         Private ReadOnly Property CurBlock As TextureBlock
@@ -71,12 +77,12 @@ Namespace LevelEditor
         End Sub
 
         Private Sub LoadTexturesFromCategorie(block As TextureBlock)
-            Dim controls As Control() = New Control(FlowLayoutPanel1.Controls.Count - 1) {}
-            FlowLayoutPanel1.Controls.CopyTo(controls, 0)
+            Dim controls As Control() = New Control(FlowLayoutPanel_Textures.Controls.Count - 1) {}
+            FlowLayoutPanel_Textures.Controls.CopyTo(controls, 0)
             For Each c As Control In controls
                 If TypeOf c Is PictureBox Then
                     Highlighter1.SetHighlightColor(c, eHighlightColor.None)
-                    FlowLayoutPanel1.Controls.Remove(c)
+                    FlowLayoutPanel_Textures.Controls.Remove(c)
                 End If
             Next
 
@@ -108,7 +114,7 @@ Namespace LevelEditor
                 AddHandler lbl.MouseLeave, Sub(sender, e) PictureBox_MouseLeave(pb, e)
                 AddHandler lbl.MouseClick, Sub(sender, e) PictureBox_MouseClick(pb, e)
 
-                FlowLayoutPanel1.Controls.Add(pb)
+                FlowLayoutPanel_Textures.Controls.Add(pb)
             Next
         End Sub
 
@@ -158,11 +164,11 @@ Namespace LevelEditor
         End Sub
 
         Private Sub ClearTexturesPanel()
-            Dim controls As Control() = New Control(FlowLayoutPanel1.Controls.Count - 1) {}
-            FlowLayoutPanel1.Controls.CopyTo(controls, 0)
+            Dim controls As Control() = New Control(FlowLayoutPanel_Textures.Controls.Count - 1) {}
+            FlowLayoutPanel_Textures.Controls.CopyTo(controls, 0)
 
             For Each c As Control In controls
-                FlowLayoutPanel1.Controls.Remove(c)
+                FlowLayoutPanel_Textures.Controls.Remove(c)
             Next
         End Sub
 
@@ -329,7 +335,7 @@ Namespace LevelEditor
         End Sub
 
         Private Function SearchPictureBoxByMaterial(mat As Material) As PictureBox
-            For Each c As Control In FlowLayoutPanel1.Controls
+            For Each c As Control In FlowLayoutPanel_Textures.Controls
                 If TypeOf c Is PictureBox AndAlso CType(c?.Tag, Material) Is mat Then
                     Return c
                 End If
