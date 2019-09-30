@@ -126,6 +126,12 @@
   <data name="Button_LM_RemoveArea.Text" xml:space="preserve">
     <value>Löschen</value>
   </data>
+  <data name="ButtonItem_EditAreaLevelScript.Text" xml:space="preserve">
+    <value>Levelscript bearbeiten</value>
+  </data>
+  <data name="ButtonItem2_EditGeolayoutScript.Text" xml:space="preserve">
+    <value>Geolayoutscript bearbeiten</value>
+  </data>
   <data name="ButtonX_LM_LevelsMore.Text" xml:space="preserve">
     <value>Mehr ...</value>
   </data>
@@ -146,6 +152,39 @@
   </data>
   <data name="ButtonItem24.Text" xml:space="preserve">
     <value>Größe von Bank 0x19 ändern</value>
+  </data>
+  <data name="LabelX10.Text" xml:space="preserve">
+    <value>Texturanimationen:</value>
+  </data>
+  <data name="LabelX5.Text" xml:space="preserve">
+    <value>Eigene Objekte:</value>
+  </data>
+  <data name="ButtonX_CustomObjects.Text" xml:space="preserve">
+    <value>Eigene Objekte bearbeiten</value>
+  </data>
+  <data name="ButtonX_LM_ScrollTexEditor.Text" xml:space="preserve">
+    <value>Textureanimationseditor</value>
+  </data>
+  <data name="Button_ImportModel.Text" xml:space="preserve">
+    <value>Modell import.</value>
+  </data>
+  <data name="ButtonItem_ExportModel.Text" xml:space="preserve">
+    <value>Modell export.</value>
+  </data>
+  <data name="TabItem5.Text" xml:space="preserve">
+    <value>Bereichsmodell</value>
+  </data>
+  <data name="ButtonItem9.Text" xml:space="preserve">
+    <value>Visuelles Modell importiere </value>
+  </data>
+  <data name="ButtonItem13.Text" xml:space="preserve">
+    <value>Kollisionsmodell importieren</value>
+  </data>
+  <data name="ButtonItem_ExportVisualMap.Text" xml:space="preserve">
+    <value>Visuelles Modell exportieren</value>
+  </data>
+  <data name="ButtonItem_ExportCollisionMap.Text" xml:space="preserve">
+    <value>Koillisionsmodell exportieren</value>
   </data>
   <data name="LabelX1.Text" xml:space="preserve">
     <value>Bereichshindergrund:</value>
@@ -233,30 +272,6 @@
   </data>
   <data name="TabItem6.Text" xml:space="preserve">
     <value>Spezialboxen</value>
-  </data>
-  <data name="ButtonX_LM_ScrollTexEditor.Text" xml:space="preserve">
-    <value>Textureanimationseditor</value>
-  </data>
-  <data name="Button_ImportModel.Text" xml:space="preserve">
-    <value>Modell import.</value>
-  </data>
-  <data name="ButtonItem_ExportModel.Text" xml:space="preserve">
-    <value>Modell export.</value>
-  </data>
-  <data name="TabItem5.Text" xml:space="preserve">
-    <value>Bereichsmodell</value>
-  </data>
-  <data name="ButtonItem9.Text" xml:space="preserve">
-    <value>Visuelles Modell importiere </value>
-  </data>
-  <data name="ButtonItem13.Text" xml:space="preserve">
-    <value>Kollisionsmodell importieren</value>
-  </data>
-  <data name="ButtonItem_ExportVisualMap.Text" xml:space="preserve">
-    <value>Visuelles Modell exportieren</value>
-  </data>
-  <data name="ButtonItem_ExportCollisionMap.Text" xml:space="preserve">
-    <value>Koillisionsmodell exportieren</value>
   </data>
   <data name="LabelX15.Text" xml:space="preserve">
     <value>Levelhindergrund:</value>

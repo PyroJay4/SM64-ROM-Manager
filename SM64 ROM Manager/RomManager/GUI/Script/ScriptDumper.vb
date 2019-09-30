@@ -107,16 +107,26 @@ Public Class ScriptDumper(Of TCmd, eTypes)
             Clipboard.SetText(TextFromValue(dicCommands(name).RomAddress))
         End If
     End Sub
+
     Private Sub CopyRamAddress()
         Dim name As String = SelectedName
         If Not String.IsNullOrEmpty(name) Then
             Clipboard.SetText(TextFromValue(dicCommands(name).BankAddress))
         End If
     End Sub
+
     Private Sub CopyAsHexArray()
         Dim name As String = SelectedName
         If Not String.IsNullOrEmpty(name) Then
-            Clipboard.SetText(dicCommands(name).ToString)
+            Dim cmd As BaseCommand(Of eTypes) = dicCommands(name)
+            Dim strCmd As String = String.Empty
+
+            For Each b As Byte In cmd.ToArray
+                If Not String.IsNullOrEmpty(strCmd) Then strCmd &= " "
+                strCmd &= b.ToString("X2")
+            Next
+
+            Clipboard.SetText(strCmd)
         End If
     End Sub
 
@@ -133,9 +143,11 @@ Public Class ScriptDumper(Of TCmd, eTypes)
     Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
         CopyRomAddress()
     End Sub
+
     Private Sub ButtonItem2_Click(sender As Object, e As EventArgs) Handles ButtonItem2.Click
         CopyRamAddress()
     End Sub
+
     Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem4.Click
         CopyAsHexArray()
     End Sub

@@ -14,6 +14,7 @@ Imports SM64_ROM_Manager.LevelEditor
 Imports SM64Lib.Script
 Imports DevComponents.DotNetBar.Metro.ColorTables
 Imports SM64_ROM_Manager.Publics
+Imports SM64Lib.Data
 
 Friend Module General
 
@@ -41,20 +42,20 @@ Friend Module General
     End Function
 
     Public Sub OpenHexEditor(cmd As SM64Lib.Script.ICommand)
-        Dim ms As MemoryStream = cmd
+        Dim data As BinaryData = cmd
 
         'Copy content of command to a buffer
-        Dim buffer As Byte() = New Byte(ms.Length - 1) {}
-        ms.Position = 0
-        ms.Read(buffer, 0, buffer.Length)
+        Dim buffer As Byte() = New Byte(data.Length - 1) {}
+        data.Position = 0
+        data.Read(buffer)
 
         'Let edit the buffer
         OpenHexEditor(buffer)
 
         'Copy content of buffer back to command
-        ms.SetLength(buffer.Length)
-        ms.Position = 0
-        ms.Write(buffer, 0, buffer.Length)
+        data.SetLength(buffer.Length)
+        data.Position = 0
+        data.Write(buffer)
     End Sub
 
     Public Sub OpenHexEditor(ByRef buffer As Byte())

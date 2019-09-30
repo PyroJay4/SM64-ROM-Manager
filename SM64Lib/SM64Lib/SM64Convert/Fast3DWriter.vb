@@ -1114,16 +1114,18 @@ Namespace SM64Convert
 
             ImpF3D("B7 00 00 00 00 01 00 00")
         End Sub
+
         Private Sub ImpFogEnd()
             ImpF3D("BA 00 14 02 00 00 00 00")
             ImpF3D("B9 00 03 1D 00 44 30 78")
             ImpF3D("B6 00 00 00 00 01 00 00") 'B6 00 00 00 00 01 02 00 --> Smoothen Shading?
         End Sub
 
-        Private Function getTypeFromMaterial(mat As Material) As Byte
+        Private Function GetTypeFromMaterial(mat As Material) As Byte
             Return getTypeFromTexType(mat.TexType)
         End Function
-        Private Function getTypeFromTexType(texType As N64Codec, Optional advanced As Boolean = False) As Byte
+
+        Private Function GetTypeFromTexType(texType As N64Codec, Optional advanced As Boolean = False) As Byte
             Select Case texType
                 Case N64Codec.CI4 : Return If(advanced, &H50, &H40)
                 Case N64Codec.CI8 : Return If(advanced, &H50, &H48)
@@ -1138,7 +1140,7 @@ Namespace SM64Convert
             End Select
         End Function
 
-        Private Function bytesPerType(type As N64Codec) As Byte
+        Private Function BytesPerType(type As N64Codec) As Byte
             Select Case type
                 Case N64Codec.RGBA16 : Return 2
                 Case N64Codec.RGBA32 : Return 4
@@ -1148,14 +1150,14 @@ Namespace SM64Convert
             End Select
         End Function
 
-        Private Function getTexelIncrement(type As N64Codec) As Byte
+        Private Function GetTexelIncrement(type As N64Codec) As Byte
             Select Case type
                 Case N64Codec.I4, N64Codec.IA4 : Return 3
                 Case N64Codec.IA8, N64Codec.I8 : Return 1
                 Case Else : Return 0
             End Select
         End Function
-        Private Function getTexelShift(type As N64Codec) As Byte
+        Private Function GetTexelShift(type As N64Codec) As Byte
             Select Case type
                 Case N64Codec.I4, N64Codec.IA4, N64Codec.CI4 : Return 2
                 Case N64Codec.IA8, N64Codec.I8, N64Codec.CI8 : Return 1
@@ -1175,6 +1177,7 @@ Namespace SM64Convert
         End Sub
 
         Private Sub ImpCmdF5_Second(mat As Material, texWidth As UInteger, texHeight As UInteger)
+            'Create upper
             Dim type As Byte = getTypeFromTexType(mat.TexType)
             Dim lineScale As Single = 1.0F
             Dim bpt As Byte = bytesPerType(mat.TexType)
@@ -1191,9 +1194,11 @@ Namespace SM64Convert
 
             Dim line As UShort = CUShort(Math.Truncate(texWidth * lineScale)) And &H1FF
             Dim upper As UInteger = ((CUInt(type) << 16) Or (CUInt(line) << 8)) And &HFFFFFF
+
+            'Create lower (shift)
             Dim maskS As Byte = Math.Ceiling(Math.Log(texWidth, 2)) And &HF
             Dim maskT As Byte = Math.Ceiling(Math.Log(texHeight, 2)) And &HF
-            Dim lower As UInteger = ((CUInt(maskT) << 14) Or (CUInt(maskS) << 4)) And &HFFFFFF
+            Dim lower As UInteger = ((CUInt(maskT) << 14) Or (CUInt(maskS) << 4)) And &HFFFFFF '&HFFC3F0 for only shift
 
             If mat.EnableMirror Then
                 lower = lower Or &H40000    'T axis
@@ -1205,10 +1210,11 @@ Namespace SM64Convert
                 lower = lower Or &H200      'S axis
             End If
 
+            'Create Command
             ImpF3D($"F5 {Hex((upper >> 16) And &HFF)} {Hex((upper >> 8) And &HFF)} {Hex(upper And &HFF)} 00 {Hex((lower >> 16) And &HFF)} {Hex((lower >> 8) And &HFF)} {Hex(lower And &HFF)}")
         End Sub
 
-        Private Sub addCmdF3(mat As Material)
+        Private Sub AddCmdF3(mat As Material)
             Dim numTexels As UInteger = ((mat.TexWidth * mat.TexHeight + getTexelIncrement(mat.TexType)) >> getTexelShift(mat.TexType)) - 1
             Dim bpt As Integer = bytesPerType(mat.TexType)
             Dim tl As UInteger
@@ -1231,8 +1237,7 @@ Namespace SM64Convert
             Dim width As UShort = ((mat.TexWidth - 1) << 2) And &HFFF
             Dim height As UShort = ((mat.TexHeight - 1) << 2) And &HFFF
             Dim data As UInteger = (CInt(width) << 12) Or height
-            Dim cmd As String = ""
-            cmd = $"F2 00 00 00 00 {Hex((data >> 16) And &HFF)} {Hex((data >> 8) And &HFF)} {Hex(data And &HFF)}"
+            Dim cmd As String = $"F2 00 00 00 00 {Hex((data >> 16) And &HFF)} {Hex((data >> 8) And &HFF)} {Hex(data And &HFF)}"
             ImpF3D(cmd)
         End Sub
 

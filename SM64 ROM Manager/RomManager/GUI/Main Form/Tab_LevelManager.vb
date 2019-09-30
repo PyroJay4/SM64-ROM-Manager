@@ -22,6 +22,12 @@ Public Class Tab_LevelManager
 
     Public WithEvents Controller As MainController
 
+    'C o n t r o l s
+
+    Private WithEvents ObjectBankSelectorBox_C As New ObjectBankSelectorBox With {.Dock = DockStyle.Fill}
+    Private WithEvents ObjectBankSelectorBox_D As New ObjectBankSelectorBox With {.Dock = DockStyle.Fill}
+    Private WithEvents ObjectBankSelectorBox_9 As New ObjectBankSelectorBox With {.Dock = DockStyle.Fill}
+
     'F l a g s
 
     Private LM_LoadingAreaList As Boolean = False
@@ -71,6 +77,17 @@ Public Class Tab_LevelManager
             End If
         End Get
     End Property
+
+    'C o n s t r u c t o r
+
+    Public Sub New()
+        InitializeComponent()
+
+        'Add ObjectBankSelectorBoxes
+        TableLayoutPanel_ObjectBankSelectorBoxes.Controls.Add(ObjectBankSelectorBox_C, 0, 0)
+        TableLayoutPanel_ObjectBankSelectorBoxes.Controls.Add(ObjectBankSelectorBox_D, 1, 0)
+        TableLayoutPanel_ObjectBankSelectorBoxes.Controls.Add(ObjectBankSelectorBox_9, 2, 0)
+    End Sub
 
     'C o n t r o l l e r   E v e n t s
 
@@ -243,17 +260,17 @@ Public Class Tab_LevelManager
         Controller.LoadObjectBankData()
 
         Dim load =
-            Sub(sb As ComboBoxEx, number As Byte)
-                sb.Items.Clear()
-                sb.Items.Add(Form_Main_Resources.Text_Disabled)
+            Sub(sb As ObjectBankSelectorBox, number As Byte)
+                sb.ComboItems.Clear()
+                sb.ComboItems.Add(Form_Main_Resources.Text_Disabled)
                 For Each s In ObjectBankData(number).Sections
-                    sb.Items.Add(s.SectionName)
+                    sb.ComboItems.Add(s.SectionName)
                 Next
             End Sub
 
-        load(ComboBox_LM_OB0x0C, 1)
-        load(ComboBox_LM_OB0x0D, 2)
-        load(ComboBox_LM_OB0x09, 3)
+        load(ObjectBankSelectorBox_C, 1)
+        load(ObjectBankSelectorBox_D, 2)
+        load(ObjectBankSelectorBox_9, 3)
     End Sub
 
     Private Sub LoadLevelList()
@@ -355,9 +372,9 @@ Public Class Tab_LevelManager
                                         NUD_LM_DefaultPositionYRotation.Value,
                                         SwitchButton_LM_ActSelector.Value,
                                         SwitchButton_LM_HardcodedCameraSettings.Value,
-                                        ComboBox_LM_OB0x0C.SelectedIndex,
-                                        ComboBox_LM_OB0x0D.SelectedIndex,
-                                        ComboBox_LM_OB0x09.SelectedIndex,
+                                        ObjectBankSelectorBox_C.SelectedComboIndex,
+                                        ObjectBankSelectorBox_D.SelectedComboIndex,
+                                        ObjectBankSelectorBox_9.SelectedComboIndex,
                                         SwitchButton_LM_ShowMsgEnabled.Value,
                                         ValueFromText(TextBoxX_LM_ShowMsgID.Text))
         End If
@@ -492,9 +509,9 @@ Public Class Tab_LevelManager
             Dim info = Controller.GetLevelSettings(levelIndex)
 
             'Load Levelsettings
-            ComboBox_LM_OB0x0C.SelectedIndex = info.objBank0x0C
-            ComboBox_LM_OB0x0D.SelectedIndex = info.objBank0x0D
-            ComboBox_LM_OB0x09.SelectedIndex = info.objBank0x0E
+            ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
+            ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
+            ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
             SwitchButton_LM_ActSelector.Value = info.enableActSelector
             SwitchButton_LM_HardcodedCameraSettings.Value = info.enableHardcodedCamera
 
@@ -549,7 +566,7 @@ Public Class Tab_LevelManager
         Controller.RemoveLevelArea(CurrentLevelIndex, CurrentAreaIndex)
     End Sub
 
-    Private Sub Controls_HandleToSaveLevelSettings() Handles ComboBox_LM_OB0x0D.SelectedIndexChanged, ComboBox_LM_OB0x0C.SelectedIndexChanged, ComboBox_LM_OB0x09.SelectedIndexChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, SwitchButton_LM_HardcodedCameraSettings.ValueChanged
+    Private Sub Controls_HandleToSaveLevelSettings() Handles ObjectBankSelectorBox_D.SelectedComboIndexChanged, ObjectBankSelectorBox_C.SelectedComboIndexChanged, ObjectBankSelectorBox_9.SelectedComboIndexChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, SwitchButton_LM_HardcodedCameraSettings.ValueChanged
         SaveLevelSettings()
     End Sub
 
@@ -595,45 +612,45 @@ Public Class Tab_LevelManager
                                         sender Is Button_ImportModel OrElse sender Is ButtonItem13)
     End Sub
 
-    Private Sub LM_UpdateObjectBankList(sender As Object, e As EventArgs) Handles ComboBox_LM_OB0x0C.SelectedIndexChanged, ComboBox_LM_OB0x0D.SelectedIndexChanged, ComboBox_LM_OB0x09.SelectedIndexChanged
+    Private Sub LM_UpdateObjectBankList(sender As Object, e As EventArgs) Handles ObjectBankSelectorBox_C.SelectedComboIndexChanged, ObjectBankSelectorBox_D.SelectedComboIndexChanged, ObjectBankSelectorBox_9.SelectedComboIndexChanged
         Dim Index As Integer = 1
         Dim Text As String = ""
         Dim SelectedIndex As Integer = 0
 
         Select Case sender.GetHashCode
-            Case ComboBox_LM_OB0x0C.GetHashCode
-                SelectedIndex = ComboBox_LM_OB0x0C.SelectedIndex
-                Text = ComboBox_LM_OB0x0C.SelectedItem.ToString
+            Case ObjectBankSelectorBox_C.GetHashCode
+                SelectedIndex = ObjectBankSelectorBox_C.SelectedComboIndex
+                Text = ObjectBankSelectorBox_C.SelectedComboItem.ToString
                 Index = 1
-                ListBoxAdv_LM_ContentOfOB0x0C.Items.Clear()
-            Case ComboBox_LM_OB0x0D.GetHashCode
-                SelectedIndex = ComboBox_LM_OB0x0D.SelectedIndex
-                Text = ComboBox_LM_OB0x0D.SelectedItem.ToString
+                ObjectBankSelectorBox_C.ContentItems.Clear()
+            Case ObjectBankSelectorBox_D.GetHashCode
+                SelectedIndex = ObjectBankSelectorBox_D.SelectedComboIndex
+                Text = ObjectBankSelectorBox_D.SelectedComboItem.ToString
                 Index = 2
-                ListBoxAdv_LM_ContentOfOB0x0D.Items.Clear()
-            Case ComboBox_LM_OB0x09.GetHashCode
-                SelectedIndex = ComboBox_LM_OB0x09.SelectedIndex
-                Text = ComboBox_LM_OB0x09.SelectedItem.ToString
+                ObjectBankSelectorBox_D.ContentItems.Clear()
+            Case ObjectBankSelectorBox_9.GetHashCode
+                SelectedIndex = ObjectBankSelectorBox_9.SelectedComboIndex
+                Text = ObjectBankSelectorBox_9.SelectedComboItem.ToString
                 Index = 3
-                ListBoxAdv_LM_ContentOfOB0x09.Items.Clear()
+                ObjectBankSelectorBox_9.ContentItems.Clear()
         End Select
 
         If SelectedIndex >= 1 Then
             For Each n As String In ObjectBankData(Index).Sections(Text)("List").Split("|")
                 Select Case sender.GetHashCode
-                    Case ComboBox_LM_OB0x0C.GetHashCode
-                        ListBoxAdv_LM_ContentOfOB0x0C.Items.Add(New LabelItem With {.Text = n})
-                    Case ComboBox_LM_OB0x0D.GetHashCode
-                        ListBoxAdv_LM_ContentOfOB0x0D.Items.Add(New LabelItem With {.Text = n})
-                    Case ComboBox_LM_OB0x09.GetHashCode
-                        ListBoxAdv_LM_ContentOfOB0x09.Items.Add(New LabelItem With {.Text = n})
+                    Case ObjectBankSelectorBox_C.GetHashCode
+                        ObjectBankSelectorBox_C.ContentItems.Add(New LabelItem With {.Text = n})
+                    Case ObjectBankSelectorBox_D.GetHashCode
+                        ObjectBankSelectorBox_D.ContentItems.Add(New LabelItem With {.Text = n})
+                    Case ObjectBankSelectorBox_9.GetHashCode
+                        ObjectBankSelectorBox_9.ContentItems.Add(New LabelItem With {.Text = n})
                 End Select
             Next
         End If
 
-        ListBoxAdv_LM_ContentOfOB0x0C.Refresh()
-        ListBoxAdv_LM_ContentOfOB0x0D.Refresh()
-        ListBoxAdv_LM_ContentOfOB0x09.Refresh()
+        ObjectBankSelectorBox_C.Refresh()
+        ObjectBankSelectorBox_D.Refresh()
+        ObjectBankSelectorBox_9.Refresh()
     End Sub
 
     Private Sub Button_LM_AddEditSpecial_Click(sender As Object, e As EventArgs) Handles Button_LM_EditSpecial.Click, Button_LM_AddSpecial.Click
@@ -720,14 +737,6 @@ Public Class Tab_LevelManager
         Controller.OpenScriptDumperWithLevelscript(CurrentLevelIndex)
     End Sub
 
-    Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
-        Controller.OpenScriptDumperWithLevelAreaScript(CurrentLevelIndex, CurrentAreaIndex)
-    End Sub
-
-    Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click
-        Controller.OpenScriptDumperWithLevelAreaGeolayoutScript(CurrentLevelIndex, CurrentAreaIndex)
-    End Sub
-
     Private Sub ButtonX_LM_ScrollTexEditor_Click(sender As Object, e As EventArgs) Handles ButtonX_LM_ScrollTexEditor.Click
         Controller.OpenScrollingTextureEditor(CurrentLevelIndex, CurrentAreaIndex)
     End Sub
@@ -752,6 +761,14 @@ Public Class Tab_LevelManager
 
     Private Sub ButtonX_CustomObjects_Click(sender As Object, e As EventArgs) Handles ButtonX_CustomObjects.Click
         Controller.OpenCustomBankManager(CurrentLevelIndex, CurrentAreaIndex)
+    End Sub
+
+    Private Sub ButtonItem_EditAreaLevelScript_Click(sender As Object, e As EventArgs) Handles ButtonItem_EditAreaLevelScript.Click
+        Controller.OpenScriptDumperWithLevelAreaScript(CurrentLevelIndex, CurrentAreaIndex)
+    End Sub
+
+    Private Sub ButtonItem2_EditGeolayoutScript_Click(sender As Object, e As EventArgs) Handles ButtonItem2_EditGeolayoutScript.Click
+        Controller.OpenScriptDumperWithLevelAreaGeolayoutScript(CurrentLevelIndex, CurrentAreaIndex)
     End Sub
 
 End Class

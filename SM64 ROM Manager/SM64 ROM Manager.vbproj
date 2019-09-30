@@ -313,6 +313,12 @@
     </Compile>
     <Compile Include="RomManager\GUI\Level Editor\OtherTexturesJsonClasses.vb" />
     <Compile Include="RomManager\Controllers\MainController.vb" />
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\ObjectBankSelectorBox.Designer.vb">
+      <DependentUpon>ObjectBankSelectorBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Level Manager\ObjectBankSelectorBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="RomManager\GUI\Main Form\Text Manager\MinimalAdvPropertyGridManager.vb" />
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditorExtensions.vb" />
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.Designer.vb">
@@ -607,6 +613,9 @@
     <EmbeddedResource Include="RomManager\GUI\Level Editor\TextureEditor.resx">
       <DependentUpon>TextureEditor.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\ObjectBankSelectorBox.resx">
+      <DependentUpon>ObjectBankSelectorBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\MainForm.de.resx">
       <DependentUpon>MainForm.vb</DependentUpon>

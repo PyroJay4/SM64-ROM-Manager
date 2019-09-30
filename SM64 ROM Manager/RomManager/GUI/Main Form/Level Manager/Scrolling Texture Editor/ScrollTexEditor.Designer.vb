@@ -36,8 +36,13 @@ Partial Class ScrollTexEditor
         Me.ButtonItem_CM = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem44 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem43 = New DevComponents.DotNetBar.ButtonItem()
+        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         CType(Me.AdvPropertyGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainer1.Panel1.SuspendLayout()
+        Me.SplitContainer1.Panel2.SuspendLayout()
+        Me.SplitContainer1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ListViewEx_LM_ScrollTexList
@@ -50,17 +55,18 @@ Partial Class ScrollTexEditor
         Me.ListViewEx_LM_ScrollTexList.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ListViewEx_LM_ScrollTexList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11, Me.ColumnHeader12, Me.ColumnHeader1, Me.ColumnHeader2})
         Me.ListViewEx_LM_ScrollTexList.DisabledBackColor = System.Drawing.Color.Empty
+        Me.ListViewEx_LM_ScrollTexList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListViewEx_LM_ScrollTexList.FocusCuesEnabled = False
         Me.ListViewEx_LM_ScrollTexList.ForeColor = System.Drawing.Color.Black
         Me.ListViewEx_LM_ScrollTexList.FullRowSelect = True
         Me.ListViewEx_LM_ScrollTexList.GridLines = True
         Me.ListViewEx_LM_ScrollTexList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.ListViewEx_LM_ScrollTexList.HideSelection = False
-        Me.ListViewEx_LM_ScrollTexList.Location = New System.Drawing.Point(12, 12)
+        Me.ListViewEx_LM_ScrollTexList.Location = New System.Drawing.Point(0, 0)
         Me.ListViewEx_LM_ScrollTexList.MultiSelect = False
         Me.ListViewEx_LM_ScrollTexList.Name = "ListViewEx_LM_ScrollTexList"
         Me.ListViewEx_LM_ScrollTexList.ShowGroups = False
-        Me.ListViewEx_LM_ScrollTexList.Size = New System.Drawing.Size(576, 609)
+        Me.ListViewEx_LM_ScrollTexList.Size = New System.Drawing.Size(583, 633)
         Me.ListViewEx_LM_ScrollTexList.TabIndex = 2
         Me.ListViewEx_LM_ScrollTexList.UseCompatibleStateImageBehavior = False
         Me.ListViewEx_LM_ScrollTexList.View = System.Windows.Forms.View.Details
@@ -100,10 +106,11 @@ Partial Class ScrollTexEditor
         '
         'AdvPropertyGrid1
         '
+        Me.AdvPropertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.AdvPropertyGrid1.GridLinesColor = System.Drawing.Color.WhiteSmoke
-        Me.AdvPropertyGrid1.Location = New System.Drawing.Point(594, 12)
+        Me.AdvPropertyGrid1.Location = New System.Drawing.Point(0, 0)
         Me.AdvPropertyGrid1.Name = "AdvPropertyGrid1"
-        Me.AdvPropertyGrid1.Size = New System.Drawing.Size(296, 609)
+        Me.AdvPropertyGrid1.Size = New System.Drawing.Size(315, 633)
         Me.AdvPropertyGrid1.TabIndex = 8
         Me.AdvPropertyGrid1.Text = "AdvPropertyGrid1"
         '
@@ -153,26 +160,46 @@ Partial Class ScrollTexEditor
         Me.ButtonItem43.SymbolSize = 12.0!
         Me.ButtonItem43.Text = "Remove"
         '
+        'SplitContainer1
+        '
+        Me.SplitContainer1.BackColor = System.Drawing.Color.Transparent
+        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer1.Name = "SplitContainer1"
+        '
+        'SplitContainer1.Panel1
+        '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.ListViewEx_LM_ScrollTexList)
+        '
+        'SplitContainer1.Panel2
+        '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.AdvPropertyGrid1)
+        Me.SplitContainer1.Size = New System.Drawing.Size(902, 633)
+        Me.SplitContainer1.SplitterDistance = 583
+        Me.SplitContainer1.TabIndex = 9
+        '
         'ScrollTexEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(902, 633)
         Me.Controls.Add(Me.ContextMenuBar1)
-        Me.Controls.Add(Me.AdvPropertyGrid1)
-        Me.Controls.Add(Me.ListViewEx_LM_ScrollTexList)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
+        Me.Controls.Add(Me.SplitContainer1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "ScrollTexEditor"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Texture Animation Editor"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         CType(Me.AdvPropertyGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer1.Panel1.ResumeLayout(False)
+        Me.SplitContainer1.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -190,4 +217,5 @@ Partial Class ScrollTexEditor
     Friend WithEvents ButtonItem_CM As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem44 As DevComponents.DotNetBar.ButtonItem
     Private WithEvents ButtonItem43 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents SplitContainer1 As SplitContainer
 End Class
