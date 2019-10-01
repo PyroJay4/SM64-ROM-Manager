@@ -120,9 +120,6 @@
   <data name="Button_LM_AddArea.Text" xml:space="preserve">
     <value>Neu</value>
   </data>
-  <data name="GroupBox_LM_Areas.Text" xml:space="preserve">
-    <value>Bereiche</value>
-  </data>
   <data name="Button_LM_RemoveArea.Text" xml:space="preserve">
     <value>Löschen</value>
   </data>
@@ -131,6 +128,21 @@
   </data>
   <data name="ButtonItem2_EditGeolayoutScript.Text" xml:space="preserve">
     <value>Geolayoutscript bearbeiten</value>
+  </data>
+  <data name="GroupBox_LM_Areas.Text" xml:space="preserve">
+    <value>Bereiche</value>
+  </data>
+  <data name="ButtonItem20.Text" xml:space="preserve">
+    <value>Level-ID ändern</value>
+  </data>
+  <data name="ButtonItem24.Text" xml:space="preserve">
+    <value>Größe von Bank 0x19 ändern</value>
+  </data>
+  <data name="ButtonItem19.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="ButtonItem21.Text" xml:space="preserve">
+    <value>ROM-Adresse kopieren</value>
   </data>
   <data name="ButtonX_LM_LevelsMore.Text" xml:space="preserve">
     <value>Mehr ...</value>
@@ -141,50 +153,31 @@
   <data name="GroupPanel1.Text" xml:space="preserve">
     <value>Level</value>
   </data>
-  <data name="ButtonItem20.Text" xml:space="preserve">
-    <value>Level-ID ändern</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TextBoxX_LM_ShowMsgID.ButtonCustom.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="ButtonItem19.Text" xml:space="preserve">
-    <value>Löschen</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TextBoxX_LM_ShowMsgID.ButtonCustom.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <data name="ButtonItem21.Text" xml:space="preserve">
-    <value>ROM-Adresse kopieren</value>
+  <data name="TextBoxX_LM_ShowMsgID.ButtonCustom.Text" xml:space="preserve">
+    <value />
   </data>
-  <data name="ButtonItem24.Text" xml:space="preserve">
-    <value>Größe von Bank 0x19 ändern</value>
+  <data name="TextBoxX_LM_ShowMsgID.ButtonCustom.Tooltip" xml:space="preserve">
+    <value />
   </data>
-  <data name="LabelX10.Text" xml:space="preserve">
-    <value>Texturanimationen:</value>
+  <data name="TextBoxX_LM_ShowMsgID.ButtonCustom2.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="LabelX5.Text" xml:space="preserve">
-    <value>Eigene Objekte:</value>
+  <data name="TextBoxX_LM_ShowMsgID.ButtonCustom2.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <data name="ButtonX_CustomObjects.Text" xml:space="preserve">
-    <value>Eigene Objekte bearbeiten</value>
+  <data name="TextBoxX_LM_ShowMsgID.ButtonCustom2.Text" xml:space="preserve">
+    <value />
   </data>
-  <data name="ButtonX_LM_ScrollTexEditor.Text" xml:space="preserve">
-    <value>Textureanimationseditor</value>
-  </data>
-  <data name="Button_ImportModel.Text" xml:space="preserve">
-    <value>Modell import.</value>
-  </data>
-  <data name="ButtonItem_ExportModel.Text" xml:space="preserve">
-    <value>Modell export.</value>
-  </data>
-  <data name="TabItem5.Text" xml:space="preserve">
-    <value>Bereichsmodell</value>
-  </data>
-  <data name="ButtonItem9.Text" xml:space="preserve">
-    <value>Visuelles Modell importiere </value>
-  </data>
-  <data name="ButtonItem13.Text" xml:space="preserve">
-    <value>Kollisionsmodell importieren</value>
-  </data>
-  <data name="ButtonItem_ExportVisualMap.Text" xml:space="preserve">
-    <value>Visuelles Modell exportieren</value>
-  </data>
-  <data name="ButtonItem_ExportCollisionMap.Text" xml:space="preserve">
-    <value>Koillisionsmodell exportieren</value>
+  <data name="TextBoxX_LM_ShowMsgID.ButtonCustom2.Tooltip" xml:space="preserve">
+    <value />
   </data>
   <data name="LabelX1.Text" xml:space="preserve">
     <value>Bereichshindergrund:</value>
@@ -220,6 +213,39 @@
   </data>
   <data name="TabItem4.Text" xml:space="preserve">
     <value>Bereichseinstellungen:</value>
+  </data>
+  <data name="LabelX10.Text" xml:space="preserve">
+    <value>Texturanimationen:</value>
+  </data>
+  <data name="LabelX5.Text" xml:space="preserve">
+    <value>Eigene Objekte:</value>
+  </data>
+  <data name="ButtonX_CustomObjects.Text" xml:space="preserve">
+    <value>Eigene Objekte bearbeiten</value>
+  </data>
+  <data name="ButtonX_LM_ScrollTexEditor.Text" xml:space="preserve">
+    <value>Textureanimationseditor</value>
+  </data>
+  <data name="ButtonItem9.Text" xml:space="preserve">
+    <value>Visuelles Modell importieren</value>
+  </data>
+  <data name="ButtonItem13.Text" xml:space="preserve">
+    <value>Kollisionsmodell importieren</value>
+  </data>
+  <data name="Button_ImportModel.Text" xml:space="preserve">
+    <value>Modell import.</value>
+  </data>
+  <data name="ButtonItem_ExportVisualMap.Text" xml:space="preserve">
+    <value>Visuelles Modell exportieren</value>
+  </data>
+  <data name="ButtonItem_ExportCollisionMap.Text" xml:space="preserve">
+    <value>Koillisionsmodell exportieren</value>
+  </data>
+  <data name="ButtonItem_ExportModel.Text" xml:space="preserve">
+    <value>Modell export.</value>
+  </data>
+  <data name="TabItem5.Text" xml:space="preserve">
+    <value>Bereichsmodell</value>
   </data>
   <data name="Button_LM_RemoveSpecial.Text" xml:space="preserve">
     <value>Löschen</value>
@@ -273,6 +299,15 @@
   <data name="TabItem6.Text" xml:space="preserve">
     <value>Spezialboxen</value>
   </data>
+  <data name="ComboItem1.Text" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="ComboItem2.Text" xml:space="preserve">
+    <value>Eigen</value>
+  </data>
+  <data name="ComboItem3.Text" xml:space="preserve">
+    <value>Kein</value>
+  </data>
   <data name="LabelX15.Text" xml:space="preserve">
     <value>Levelhindergrund:</value>
   </data>
@@ -299,24 +334,6 @@
   </data>
   <data name="TabItem1.Text" xml:space="preserve">
     <value>Leveleinstellungen</value>
-  </data>
-  <data name="ComboItem1.Text" xml:space="preserve">
-    <value>Original</value>
-  </data>
-  <data name="ComboItem2.Text" xml:space="preserve">
-    <value>Eigen</value>
-  </data>
-  <data name="ComboItem3.Text" xml:space="preserve">
-    <value>Kein</value>
-  </data>
-  <data name="LabelX31.Text" xml:space="preserve">
-    <value>Inhalt von Bank 0x09:</value>
-  </data>
-  <data name="LabelX30.Text" xml:space="preserve">
-    <value>Inhalt von Bank 0x0D:</value>
-  </data>
-  <data name="LabelX29.Text" xml:space="preserve">
-    <value>Inhalt von Bank 0x0C:</value>
   </data>
   <data name="TabItem2.Text" xml:space="preserve">
     <value>Object-Banken</value>

@@ -258,6 +258,18 @@ Friend Module General
         Return obj
     End Function
 
+    Friend Function LoadVisualMapAsObject3D(rommgr As RomManager, mdl As Model.Fast3D.Fast3DBuffer) As Object3D
+        Dim obj As New Object3D
+
+        For Each geop As Geopointer In mdl.DLPointers
+            Dim dl As New DisplayList
+            dl.FromStream(geop, rommgr, Nothing)
+            dl.ToObject3D(obj, rommgr, Nothing)
+        Next
+
+        Return obj
+    End Function
+
     Public Sub ReorderBoxDataPositions(SpecialBox As SpecialBox)
         Dim x1, x2, z1, z2 As Int16
 

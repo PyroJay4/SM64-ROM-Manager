@@ -34,6 +34,7 @@ Namespace Global.SM64Lib.ObjectBanks
                 data.Write(obj.ModelBankOffset)
                 data.Write(obj.Model.Length)
                 data.Write(sr.CollisionPointer And &HFFFFFF)
+                HexRoundUp2(data.Position)
 
                 'Copy new Geopointer(s)
                 obj.Geolayout.Geopointers.Clear()
@@ -45,15 +46,16 @@ Namespace Global.SM64Lib.ObjectBanks
                 data.Position = HexRoundUp1(data.Position + &H30)
             Next
 
+            'Set length of segmented
+            HexRoundUp2(data.Position)
+            seg.Length = data.Position
+
             'Create Levelscript
             For Each obj As CustomObject In Objects
-                lvlScript.Add(New LevelscriptCommand($"22 08 00 {obj.ModelID} {bankID.ToString("X")} {Hex((obj.GeolayoutBankOffset >> 16) And &HFF)} {Hex((obj.GeolayoutBankOffset >> 8) And &HFF)} {Hex(obj.GeolayoutBankOffset And &HFF)}"))
+                lvlScript.Add(New LevelscriptCommand($"22 08 00 {obj.ModelID.ToString("X")} {bankID.ToString("X")} {Hex((obj.GeolayoutBankOffset >> 16) And &HFF)} {Hex((obj.GeolayoutBankOffset >> 8) And &HFF)} {Hex(obj.GeolayoutBankOffset And &HFF)}"))
             Next
             lvlScript.Add(New LevelscriptCommand("07 04 00 00"))
             lvlScript.Write(data, 0)
-
-            HexRoundUp2(data.Position)
-            seg.Length = data.Position
 
             Return seg
         End Function
@@ -67,11 +69,11 @@ Namespace Global.SM64Lib.ObjectBanks
             Dim data As BinaryData
             Dim lvlscript As New Levelscript
 
-            'Read Levelscript
-            lvlscript.Read(rommgr, 0, LevelscriptCommandTypes.JumpBack, New Dictionary(Of Byte, SegmentedBank) From {{seg.BankID, seg}})
-
             s = seg.ReadDataIfNull(rommgr)
             data = New BinaryStreamData(s)
+
+            'Read Levelscript
+            lvlscript.Read(rommgr, seg.BankAddress, LevelscriptCommandTypes.JumpBack, New Dictionary(Of Byte, SegmentedBank) From {{seg.BankID, seg}})
 
             'Parse Levelscript & Load Models
             For Each cmd As LevelscriptCommand In lvlscript
@@ -84,7 +86,7 @@ Namespace Global.SM64Lib.ObjectBanks
                         Dim geoAddr As Integer = clLoadPolygonWithGeo.GetSegAddress(cmd)
                         obj.GeolayoutBankOffset = geoAddr And &HFFFFFF
 
-                        If (geoAddr >> 24) = seg.BankAddress Then
+                        If (geoAddr >> 24) = seg.BankID Then
                             'Load Model Offset & Length
                             data.Position = obj.GeolayoutBankOffset - &H10
                             obj.ModelBankOffset = data.ReadInt32

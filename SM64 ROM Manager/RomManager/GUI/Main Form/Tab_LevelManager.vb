@@ -795,4 +795,7 @@ Public Class Tab_LevelManager
         Controller.OpenScriptDumperWithLevelAreaGeolayoutScript(CurrentLevelIndex, CurrentAreaIndex)
     End Sub
 
+    Private Sub ListBoxAdv_LM_Levels_SelectedIndexChanged(sender As Object, e As ItemRemovedEventArgs)
+
+    End Sub
 End Class

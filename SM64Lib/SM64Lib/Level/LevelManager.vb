@@ -9,6 +9,7 @@ Imports SM64Lib.Geolayout.Script
 Imports SM64Lib.Geolayout.Script.Commands
 Imports SM64Lib.Levels.ScrolTex
 Imports SM64Lib.Data
+Imports SM64Lib.ObjectBanks
 
 Namespace Levels
 
@@ -489,7 +490,9 @@ Namespace Levels
 
                 'Write Object Bank
                 a.CustomObjectsStartOffset = curOff - a.Bank0x0EOffset
-                '...
+                For Each customObj As CustomObject In a.CustomObjects.Objects
+                    '...
+                Next
 
                 a.Bank0xELength = curOff - a.Bank0x0EOffset
             Next

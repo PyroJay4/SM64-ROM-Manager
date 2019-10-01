@@ -382,7 +382,7 @@ Public Class MainController
         RaiseEvent RomLoading()
 
         'Load Global Object Banks
-        'rommgr.LoadGlobalObjectBank()
+        RomManager.LoadGlobalObjectBank()
 
         'Load Levels
         RomManager.LoadLevels()
@@ -474,6 +474,11 @@ Public Class MainController
     Public Function GetCurrentRomManager() As RomManager
         Return RomManager
     End Function
+
+    Public Sub OpenGlobalObjectBankManager()
+        Dim mgr As New CustomBankManager(RomManager, RomManager.GlobalObjectBank)
+        mgr.Show()
+    End Sub
 
     'T o o l s
 

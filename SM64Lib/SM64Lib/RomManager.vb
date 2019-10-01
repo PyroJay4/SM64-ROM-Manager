@@ -42,7 +42,7 @@ Namespace Global.SM64Lib
         Public ReadOnly Property IsSM64EditorMode As Boolean = False
         Public ReadOnly Property TextInfoProfile As Text.Profiles.TextProfileInfo
         Public ReadOnly Property MusicList As New MusicList
-        Public Property GlobalObjectBank As CustomObjectBank = Nothing
+        Public Property GlobalObjectBank As New CustomObjectBank
 
         ''' <summary>
         ''' Gets or sets the lastly used program version for this ROM.
@@ -220,8 +220,8 @@ Namespace Global.SM64Lib
                 HexRoundUp2(lastpos)
 
                 'Global Object Bank
-                'SaveGlobalObjectBank(lastpos)
-                'HexRoundUp2(lastpos)
+                SaveGlobalObjectBank(lastpos)
+                HexRoundUp2(lastpos)
 
                 'Levels
                 SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then

@@ -249,6 +249,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="Z.ExtensionMethods.WithNamespace, Version=2.1.1.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.ExtensionMethods.WithNamespace.2.1.1\lib\net45\Z.ExtensionMethods.WithNamespace.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -263,6 +266,13 @@
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
     <Import Include="TextValueConverter" />
+    <Import Include="Z.Collections.Extensions" />
+    <Import Include="Z.Core.Extensions" />
+    <Import Include="Z.Data.Extensions" />
+    <Import Include="Z.Drawing.Extensions" />
+    <Import Include="Z.IO.Extensions" />
+    <Import Include="Z.Net.Extensions" />
+    <Import Include="Z.Window.Forms.Extensions" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
@@ -622,6 +632,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.resx">
       <DependentUpon>TextProfileEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\CustomBankManager.de.resx">
+      <DependentUpon>CustomBankManager.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\CustomBankManager.resx">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
