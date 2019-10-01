@@ -57,41 +57,6 @@ Namespace Global.SM64Lib
             Return Math.Round(d, MidpointRounding.AwayFromZero)
         End Function
 
-        Public Function ResizeImage(image As Image, size As Size, Optional preserveAspectRatio As Boolean = False) As Image
-            Dim result As New Size
-            Dim clientRectangle As New Rectangle(New Point(0, 0), size)
-
-            If preserveAspectRatio Then
-                Dim val As Single = clientRectangle.Width / size.Width
-                Dim num As Single = Math.Min(val, clientRectangle.Height / size.Height)
-                result.Width = CInt(Math.Truncate(size.Width * num))
-                result.Height = CInt(Math.Truncate(size.Height * num))
-            Else
-                result = size
-            End If
-
-            Dim newImage As Image = New Bitmap(image, result)
-            Using g As Graphics = Graphics.FromImage(newImage)
-                g.SmoothingMode = SmoothingMode.HighQuality
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality
-                g.PageUnit = GraphicsUnit.Pixel
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic
-                g.DrawImage(image, New Rectangle(New Point(0, 0), result))
-                g.Dispose()
-            End Using
-
-            'Dim frm As New Form
-            'Dim pb As New PictureBox
-            'pb.Dock = DockStyle.Fill
-            'frm.Controls.Add(pb)
-            'pb.SizeMode = PictureBoxSizeMode.Zoom
-            'pb.Image = newImage
-            'frm.ShowDialog()
-            'frm.Dispose()
-
-            Return newImage
-        End Function
-
         Public Function CompareTwoByteArrays(arr1() As Byte, arr2() As Byte, Optional size As UInteger = 0) As Boolean
             If arr2.Count <> arr1.Count Then Return False
 

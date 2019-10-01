@@ -8,6 +8,7 @@ Imports System.IO
 Imports DevComponents.Editors
 Imports OfficeOpenXml
 Imports SM64_ROM_Manager.SettingsManager
+Imports SM64Lib.Model.Fast3D
 
 Public Class CollisionEditor
 
@@ -16,6 +17,8 @@ Public Class CollisionEditor
     Private LoadingColItemSettings As Boolean = False
     Private LoadingTextures As Boolean = False
     Private obj3d As Object3D = Nothing
+    Private ReadOnly realTextures As New Dictionary(Of Integer, Image)
+
     Public Property CollisionSettings As Model.Collision.CollisionSettings = Nothing
 
     Public Sub New(obj As Object3D)
@@ -68,10 +71,15 @@ Public Class CollisionEditor
             Dim item As New ListViewItem
             item.Tag = mat
             item.Text = mat.Key
+
             If mat.Value.Image IsNot Nothing Then
-                item.ImageIndex = imgList.Images.Count
-                imgList.Images.Add(mat.Value.Image)
+                Dim imageIndex As Integer = imgList.Images.Count
+                Dim bmp As Image = ResizeImage(mat.Value.Image, imgList.ImageSize, True, True)
+                item.ImageIndex = imageIndex
+                realTextures.Add(item.ImageIndex, mat.Value.Image)
+                imgList.Images.Add(bmp)
             End If
+
             If firstItem Is Nothing Then firstItem = item
             ListViewEx1.Items.Add(item)
         Next
@@ -210,7 +218,15 @@ Public Class CollisionEditor
             TextBoxX_ColParam2.Text = TextFromValue(curEntry.CollisionParam2)
 
             If curItem.ImageIndex > -1 Then
-                PictureBox1.Image = ListViewEx1.LargeImageList.Images(curItem.ImageIndex)
+                Dim realImg As Image
+
+                If realTextures.ContainsKey(curItem.ImageIndex) Then
+                    realImg = realTextures(curItem.ImageIndex)
+                Else
+                    realImg = ListViewEx1.LargeImageList.Images(curItem.ImageIndex)
+                End If
+
+                PictureBox1.Image = realImg
             Else
                 PictureBox1.Image = Nothing
             End If
