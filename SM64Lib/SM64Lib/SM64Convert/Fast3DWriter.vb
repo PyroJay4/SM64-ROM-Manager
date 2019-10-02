@@ -1557,7 +1557,7 @@ Namespace SM64Convert
 
                                 If isAutoLayer(mp.Material.SelectDisplaylist) Then
                                     If (mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency) AndAlso Not enableForcing Then Continue For
-                                ElseIf Not isLayerSolid(mp.Material.SelectDisplaylist) Then
+                                ElseIf Not isLayerSolid(mp.Material.SelectDisplaylist) OrElse mp.Material.SelectDisplaylist <> layerID Then
                                     If Not enableForcing Then Continue For
                                 End If
 
@@ -1650,7 +1650,7 @@ Namespace SM64Convert
 
                                 If isAutoLayer(mp.Material.SelectDisplaylist) Then
                                     If (Not mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency OrElse mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
-                                ElseIf Not isLayerAlpha(mp.Material.SelectDisplaylist) Then
+                                ElseIf Not isLayerAlpha(mp.Material.SelectDisplaylist) OrElse mp.Material.SelectDisplaylist <> layerID Then
                                     If Not enableForcing Then Continue For
                                 End If
 
@@ -1729,7 +1729,7 @@ Namespace SM64Convert
 
                                 If isAutoLayer(mp.Material.SelectDisplaylist) Then
                                     If Not mp.Material.HasTransparency OrElse (mp.EnableVertexColors AndAlso Not mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
-                                ElseIf Not isLayerTrans(mp.Material.SelectDisplaylist) Then
+                                ElseIf Not isLayerTrans(mp.Material.SelectDisplaylist) OrElse mp.Material.SelectDisplaylist <> layerID Then
                                     If Not enableForcing Then Continue For
                                 End If
 
