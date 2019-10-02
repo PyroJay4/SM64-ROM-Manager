@@ -153,7 +153,7 @@ Public Class Tab_TextManager
         End If
 
         Dim newItem As New ListViewItem({
-                                        tableIndex + 1,
+                                        tableIndex,
                                         nameEntry,
                                         itemInfos.text.Split({ControlChars.Cr, ControlChars.Lf}).FirstOrDefault
                                         })
