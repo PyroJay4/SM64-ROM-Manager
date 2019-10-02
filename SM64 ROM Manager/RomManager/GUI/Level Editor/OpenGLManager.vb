@@ -131,11 +131,13 @@ Namespace LevelEditor
             Camera.SetCameraMode(mode, camMtx)
             Camera.SetCameraMode_LookDirection(look, camMtx)
             'camera.updateMatrix(camMtx)
+            Main.objectControlling.WasInOrbitMode = False
             Invalidate()
         End Sub
 
         Public Sub SetCameraMode(mode As CameraMode)
             Camera.SetCameraMode(mode, camMtx)
+            Main.objectControlling.WasInOrbitMode = False
             Invalidate()
         End Sub
 

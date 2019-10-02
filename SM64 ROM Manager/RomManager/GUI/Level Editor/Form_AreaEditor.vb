@@ -1152,6 +1152,7 @@ Namespace LevelEditor
             If Not loadingObj AndAlso SelectedObject IsNot Nothing Then
                 SelectObjects(SelectedObjects)
                 ShowObjectProperties()
+                If objectControlling.WasInOrbitMode Then ogl.SetCameraMode(CameraMode.ORBIT)
             End If
             PanelDockContainer10.DockContainerItem.Selected = True
         End Sub
