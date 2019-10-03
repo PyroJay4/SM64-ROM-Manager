@@ -382,7 +382,7 @@ Public Class MainController
         RaiseEvent RomLoading()
 
         'Load Global Object Banks
-        'RomManager.LoadGlobalObjectBank()
+        RomManager.LoadGlobalObjectBank()
 
         'Load Levels
         RomManager.LoadLevels()

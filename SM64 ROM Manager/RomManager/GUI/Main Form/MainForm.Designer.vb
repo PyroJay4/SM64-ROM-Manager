@@ -368,7 +368,6 @@ Partial Class MainForm
         '
         'ButtonItem18
         '
-        Me.ButtonItem18.Enabled = False
         Me.ButtonItem18.Name = "ButtonItem18"
         resources.ApplyResources(Me.ButtonItem18, "ButtonItem18")
         '
