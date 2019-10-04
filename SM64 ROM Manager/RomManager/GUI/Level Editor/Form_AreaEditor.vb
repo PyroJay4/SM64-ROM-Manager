@@ -455,9 +455,10 @@ Namespace LevelEditor
 
             Dim lvlScriptMain As New Levelscript
             lvlScriptMain.Read(Rommgr, Rommgr.GetSegBank(&H15).BankAddress, LevelscriptCommandTypes.x1E)
-            Await ParseLevelscriptAndLoadModels(lvlScriptMain)
 
+            Await ParseLevelscriptAndLoadModels(lvlScriptMain)
             Await ParseLevelscriptAndLoadModels(CLevel.Levelscript)
+            Await ParseLevelscriptAndLoadModels(Rommgr.GlobalObjectBank.Levelscript)
         End Function
 
         Friend Async Function ParseLevelscriptAndLoadModels(lvlscript As Levelscript) As Task
@@ -564,7 +565,7 @@ Namespace LevelEditor
                         End If
 
                     Case LevelscriptCommandTypes.PaintingWarp
-                    '...
+                        '...
 
                     Case LevelscriptCommandTypes.JumpToSegAddr
                         Dim bankAddr As Integer = clJumpToSegAddr.GetSegJumpAddr(cmd)
