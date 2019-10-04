@@ -39,6 +39,7 @@ Namespace Global.SM64Lib.Levels
         Public Property NeedToSaveLevelscript As Boolean = False
         Public Property NeedToSaveBanks0E As Boolean = False
         Public Property OneBank0xESystemEnabled As Boolean = True
+        Public Property EnableGlobalObjectBank As Boolean = False
 
         'O t h e r   P r o p e r t i e s
 
@@ -177,52 +178,52 @@ Namespace Global.SM64Lib.Levels
             Dim newiniindex As String = GetObjectBankSectionNameOfIndex(BankIndex, NewEntryIndex)
 
             'Remove old commands
-            If OldEntryIndex = -1 Then GoTo AddCmds
+            If OldEntryIndex <> -1 Then
+                For Each cmditem As String In {"cmd22", "cmd06", "cmd1A", "cmd17"}
+                    Dim tKeyValue As String = ObjectBankData(BankIndex)(oldiniindex)(cmditem)
+                    If tKeyValue = String.Empty Then Continue For
 
-            For Each cmditem As String In {"cmd22", "cmd06", "cmd1A", "cmd17"}
-                Dim tKeyValue As String = ObjectBankData(BankIndex)(oldiniindex)(cmditem)
-                If tKeyValue = String.Empty Then Continue For
+                    For Each s As String In tKeyValue.Split("|")
+                        Dim stringBytes() As String = s.Split(" ")
 
-                For Each s As String In tKeyValue.Split("|")
-                    Dim stringBytes() As String = s.Split(" ")
+                        Dim bytesList As New List(Of Byte)
+                        For Each sb As String In stringBytes
+                            If Not sb = String.Empty Then bytesList.Add(CByte("&H" & sb))
+                        Next
 
-                    Dim bytesList As New List(Of Byte)
-                    For Each sb As String In stringBytes
-                        If Not sb = String.Empty Then bytesList.Add(CByte("&H" & sb))
-                    Next
-
-                    For Each cmd In Levelscript.Where(Function(n) CompareTwoByteArrays(n.ToArray, bytesList.ToArray)).ToArray
-                        cmd.Close()
-                        Levelscript.Remove(cmd)
+                        For Each cmd In Levelscript.Where(Function(n) CompareTwoByteArrays(n.ToArray, bytesList.ToArray)).ToArray
+                            cmd.Close()
+                            Levelscript.Remove(cmd)
+                        Next
                     Next
                 Next
-            Next
+            End If
 
-AddCmds:'Add new commands
-            If NewEntryIndex = -1 Then Return
+            'Add new commands
+            If NewEntryIndex <> -1 Then
+                For Each cmditem As String In {"cmd22", "cmd06", "cmd1A", "cmd17"}
+                    Dim tKeyValue As String = ObjectBankData(BankIndex)(newiniindex)(cmditem)
+                    If tKeyValue = String.Empty Then Continue For
 
-            For Each cmditem As String In {"cmd22", "cmd06", "cmd1A", "cmd17"}
-                Dim tKeyValue As String = ObjectBankData(BankIndex)(newiniindex)(cmditem)
-                If tKeyValue = String.Empty Then Continue For
+                    Dim startIndex As Integer = Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1D)
+                    If Not (cmditem.EndsWith("1A") OrElse cmditem.EndsWith("17")) Then
+                        startIndex += 1
+                    End If
 
-                Dim startIndex As Integer = Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1D)
-                If Not (cmditem.EndsWith("1A") OrElse cmditem.EndsWith("17")) Then
-                    startIndex += 1
-                End If
+                    For Each s As String In tKeyValue.Split("|")
+                        Dim stringBytes() As String = s.Split(" ")
 
-                For Each s As String In tKeyValue.Split("|")
-                    Dim stringBytes() As String = s.Split(" ")
+                        Dim bytesList As New List(Of Byte)
+                        For Each sb As String In stringBytes
+                            If Not sb = String.Empty Then bytesList.Add(CByte("&H" & sb))
+                        Next
 
-                    Dim bytesList As New List(Of Byte)
-                    For Each sb As String In stringBytes
-                        If Not sb = String.Empty Then bytesList.Add(CByte("&H" & sb))
+                        Dim cmd As New LevelscriptCommand(bytesList.ToArray)
+                        Levelscript.Insert(startIndex, cmd)
+                        startIndex += 1
                     Next
-
-                    Dim cmd As New LevelscriptCommand(bytesList.ToArray)
-                    Levelscript.Insert(startIndex, cmd)
-                    startIndex += 1
                 Next
-            Next
+            End If
         End Sub
 
         Private Function GetObjectBank(BankIndex As Integer) As Integer

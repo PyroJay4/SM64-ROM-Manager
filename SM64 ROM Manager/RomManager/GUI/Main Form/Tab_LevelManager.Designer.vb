@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Tab_LevelManager
     Inherits System.Windows.Forms.UserControl
 
     'UserControl überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Tab_LevelManager
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Tab_LevelManager))
@@ -116,6 +116,8 @@ Partial Class Tab_LevelManager
         Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
         Me.TableLayoutPanel_ObjectBankSelectorBoxes = New System.Windows.Forms.TableLayoutPanel()
         Me.TabItem2 = New DevComponents.DotNetBar.TabItem(Me.components)
+        Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
+        Me.SwitchButton_EnableGlobalObjectBank = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.GroupBox_LM_Areas.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
         CType(Me.TabControl_LM_Area, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -177,6 +179,7 @@ Partial Class Tab_LevelManager
         resources.ApplyResources(Me.Button_LM_AddArea, "Button_LM_AddArea")
         Me.Button_LM_AddArea.FocusCuesEnabled = False
         Me.Button_LM_AddArea.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
+        resources.ApplyResources(Me.Button_LM_AddArea, "Button_LM_AddArea")
         Me.Button_LM_AddArea.Name = "Button_LM_AddArea"
         Me.Button_LM_AddArea.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Button_LM_AddArea.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ImportArea})
@@ -503,6 +506,18 @@ Partial Class Tab_LevelManager
         Me.SwitchButton_LM_ShowMsgEnabled.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.SwitchButton_LM_ShowMsgEnabled.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.SwitchButton_LM_ShowMsgEnabled.SwitchWidth = 15
+        '
+        'ColorPickerButton_LM_BackgroundColor
+        '
+        Me.ColorPickerButton_LM_BackgroundColor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ColorPickerButton_LM_BackgroundColor.AutoExpandOnClick = True
+        Me.ColorPickerButton_LM_BackgroundColor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ColorPickerButton_LM_BackgroundColor.FocusCuesEnabled = False
+        Me.ColorPickerButton_LM_BackgroundColor.Image = CType(resources.GetObject("ColorPickerButton_LM_BackgroundColor.Image"), System.Drawing.Image)
+        resources.ApplyResources(Me.ColorPickerButton_LM_BackgroundColor, "ColorPickerButton_LM_BackgroundColor")
+        Me.ColorPickerButton_LM_BackgroundColor.Name = "ColorPickerButton_LM_BackgroundColor"
+        Me.ColorPickerButton_LM_BackgroundColor.SelectedColorImageRectangle = New System.Drawing.Rectangle(2, 2, 12, 12)
+        Me.ColorPickerButton_LM_BackgroundColor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX2
         '
@@ -907,8 +922,8 @@ Partial Class Tab_LevelManager
         resources.ApplyResources(Me.TabControl_LM_Level, "TabControl_LM_Level")
         Me.TabControl_LM_Level.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControl_LM_Level.CanReorderTabs = False
-        Me.TabControl_LM_Level.Controls.Add(Me.TabControlPanel1)
         Me.TabControl_LM_Level.Controls.Add(Me.TabControlPanel2)
+        Me.TabControl_LM_Level.Controls.Add(Me.TabControlPanel1)
         Me.TabControl_LM_Level.ForeColor = System.Drawing.Color.Black
         Me.TabControl_LM_Level.Name = "TabControl_LM_Level"
         Me.TabControl_LM_Level.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
@@ -1000,6 +1015,19 @@ Partial Class Tab_LevelManager
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
+        'Button_LM_LoadLevelBG
+        '
+        Me.Button_LM_LoadLevelBG.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.Button_LM_LoadLevelBG.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.Button_LM_LoadLevelBG.FocusCuesEnabled = False
+        resources.ApplyResources(Me.Button_LM_LoadLevelBG, "Button_LM_LoadLevelBG")
+        Me.Button_LM_LoadLevelBG.Name = "Button_LM_LoadLevelBG"
+        Me.Button_LM_LoadLevelBG.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Button_LM_LoadLevelBG.Symbol = "58055"
+        Me.Button_LM_LoadLevelBG.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
+        Me.Button_LM_LoadLevelBG.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.Button_LM_LoadLevelBG.SymbolSize = 12.0!
+        '
         'SwitchButton_LM_ActSelector
         '
         '
@@ -1046,6 +1074,18 @@ Partial Class Tab_LevelManager
         Me.SwitchButton_LM_HardcodedCameraSettings.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.SwitchButton_LM_HardcodedCameraSettings.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.SwitchButton_LM_HardcodedCameraSettings.SwitchWidth = 15
+        '
+        'Button_LM_SetUpStartPosition
+        '
+        Me.Button_LM_SetUpStartPosition.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.Button_LM_SetUpStartPosition.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.Button_LM_SetUpStartPosition.FocusCuesEnabled = False
+        resources.ApplyResources(Me.Button_LM_SetUpStartPosition, "Button_LM_SetUpStartPosition")
+        Me.Button_LM_SetUpStartPosition.Name = "Button_LM_SetUpStartPosition"
+        Me.Button_LM_SetUpStartPosition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Button_LM_SetUpStartPosition.Symbol = ""
+        Me.Button_LM_SetUpStartPosition.SymbolColor = System.Drawing.Color.Gray
+        Me.Button_LM_SetUpStartPosition.SymbolSize = 12.0!
         '
         'LabelX4
         '
@@ -1138,6 +1178,8 @@ Partial Class Tab_LevelManager
         '
         'TabControlPanel2
         '
+        Me.TabControlPanel2.Controls.Add(Me.LabelX12)
+        Me.TabControlPanel2.Controls.Add(Me.SwitchButton_EnableGlobalObjectBank)
         Me.TabControlPanel2.Controls.Add(Me.TableLayoutPanel_ObjectBankSelectorBoxes)
         Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
         resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
@@ -1162,6 +1204,34 @@ Partial Class Tab_LevelManager
         Me.TabItem2.AttachedControl = Me.TabControlPanel2
         Me.TabItem2.Name = "TabItem2"
         resources.ApplyResources(Me.TabItem2, "TabItem2")
+        '
+        'LabelX12
+        '
+        Me.LabelX12.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX12, "LabelX12")
+        Me.LabelX12.Name = "LabelX12"
+        Me.LabelX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'SwitchButton_EnableGlobalObjectBank
+        '
+        '
+        '
+        '
+        Me.SwitchButton_EnableGlobalObjectBank.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.SwitchButton_EnableGlobalObjectBank.FocusCuesEnabled = False
+        resources.ApplyResources(Me.SwitchButton_EnableGlobalObjectBank, "SwitchButton_EnableGlobalObjectBank")
+        Me.SwitchButton_EnableGlobalObjectBank.Name = "SwitchButton_EnableGlobalObjectBank"
+        Me.SwitchButton_EnableGlobalObjectBank.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.SwitchButton_EnableGlobalObjectBank.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.SwitchButton_EnableGlobalObjectBank.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.SwitchButton_EnableGlobalObjectBank.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SwitchButton_EnableGlobalObjectBank.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.SwitchButton_EnableGlobalObjectBank.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.SwitchButton_EnableGlobalObjectBank.SwitchWidth = 15
         '
         'Tab_LevelManager
         '
@@ -1282,5 +1352,7 @@ Partial Class Tab_LevelManager
     Friend WithEvents Line2 As DevComponents.DotNetBar.Controls.Line
     Friend WithEvents LabelX_Area_CountOfCustomObjects As DevComponents.DotNetBar.LabelX
     Friend WithEvents TableLayoutPanel_ObjectBankSelectorBoxes As TableLayoutPanel
+    Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents SwitchButton_EnableGlobalObjectBank As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents ButtonItem_ImportArea As DevComponents.DotNetBar.ButtonItem
 End Class

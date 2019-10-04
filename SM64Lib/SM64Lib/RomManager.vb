@@ -77,7 +77,8 @@ Public Class RomManager
             Return MusicList.NeedToSave OrElse
                     myTextGroups.Where(Function(n) n IsNot Nothing AndAlso n.NeedToSave).Count > 0 OrElse
                     levelIDsToReset.Any OrElse
-                    Levels.NeedToSave
+                    Levels.NeedToSave OrElse
+                    GlobalObjectBank.NeedToSave
         End Get
     End Property
 
@@ -231,8 +232,8 @@ Public Class RomManager
             HexRoundUp2(lastpos)
 
             'Global Object Bank
-            'SaveGlobalObjectBank(lastpos)
-            'HexRoundUp2(lastpos)
+            SaveGlobalObjectBank(lastpos)
+            HexRoundUp2(lastpos)
 
             'Levels
             SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then

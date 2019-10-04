@@ -30,6 +30,10 @@ Public Class CustomBankManager
 
     'F e a t u r e s
 
+    Private Sub SetNeedToSave()
+        objBank.NeedToSave = True
+    End Sub
+
     Private Sub LoadList()
         ItemListBox1.SuspendLayout()
         ItemListBox1.Items.Clear()
@@ -88,6 +92,8 @@ Public Class CustomBankManager
     End Sub
 
     Private Function ImportNewModel(obj As CustomObject, Optional checkVisualMap As Boolean = True, Optional checkCollision As Boolean = True) As Boolean
+        Dim hasImported As Boolean = False
+
         If obj IsNot Nothing Then
             Dim resMdl = ModelConverterGUI.GetModelViaModelConverter(obj.Model IsNot Nothing,
                                                                      True,
@@ -105,11 +111,13 @@ Public Class CustomBankManager
                     obj.Model.Fast3DBuffer = obj.Model.Fast3DBuffer
                     RemoveKnownVisualMap(obj)
                 End If
-                Return True
+
+                SetNeedToSave()
+                hasImported = True
             End If
         End If
 
-        Return False
+        Return hasImported
     End Function
 
     Private Sub RemoveCollision(curObj As CustomObject)
@@ -145,6 +153,7 @@ Public Class CustomBankManager
 
         Panel2.Enabled = False
         curObj = Nothing
+        SetNeedToSave()
 
         RaiseEvent ObjectRemoved(Me, New EventArgs)
     End Sub
@@ -211,6 +220,7 @@ Public Class CustomBankManager
     Private Sub TextBoxX1_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX1.TextChanged
         Try
             curObj.ModelID = ValueFromText(TextBoxX1.Text)
+            SetNeedToSave()
             UpdateButtonItems()
         Catch ex As Exception
         End Try

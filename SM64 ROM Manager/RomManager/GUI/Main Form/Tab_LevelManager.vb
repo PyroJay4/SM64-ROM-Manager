@@ -387,8 +387,7 @@ Public Class Tab_LevelManager
                                         ObjectBankSelectorBox_C.SelectedComboIndex,
                                         ObjectBankSelectorBox_D.SelectedComboIndex,
                                         ObjectBankSelectorBox_9.SelectedComboIndex,
-                                        SwitchButton_LM_ShowMsgEnabled.Value,
-                                        ValueFromText(TextBoxX_LM_ShowMsgID.Text))
+                                        SwitchButton_EnableGlobalObjectBank.Value)
         End If
     End Sub
 
@@ -532,6 +531,7 @@ Public Class Tab_LevelManager
                 ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
                 ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
                 ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
+                SwitchButton_EnableGlobalObjectBank.Value = info.enableGlobalOjectBank
                 SwitchButton_LM_ActSelector.Value = info.enableActSelector
                 SwitchButton_LM_HardcodedCameraSettings.Value = info.enableHardcodedCamera
 
@@ -590,7 +590,7 @@ Public Class Tab_LevelManager
         Controller.RemoveLevelArea(CurrentLevelIndex, CurrentAreaIndex)
     End Sub
 
-    Private Sub Controls_HandleToSaveLevelSettings() Handles ObjectBankSelectorBox_D.SelectedComboIndexChanged, ObjectBankSelectorBox_C.SelectedComboIndexChanged, ObjectBankSelectorBox_9.SelectedComboIndexChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, SwitchButton_LM_HardcodedCameraSettings.ValueChanged
+    Private Sub Controls_HandleToSaveLevelSettings() Handles ObjectBankSelectorBox_D.SelectedComboIndexChanged, ObjectBankSelectorBox_C.SelectedComboIndexChanged, ObjectBankSelectorBox_9.SelectedComboIndexChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, SwitchButton_LM_HardcodedCameraSettings.ValueChanged, SwitchButton_EnableGlobalObjectBank.ValueChanged
         SaveLevelSettings()
     End Sub
 
@@ -799,19 +799,4 @@ Public Class Tab_LevelManager
         Controller.ImportLevelArea(CurrentLevelIndex)
     End Sub
 
-    Private Sub LM_SaveAreaBackgorund(sender As Object, e As EventArgs) Handles ColorPickerButton_LM_BackgroundColor.SelectedColorChanged
-
-    End Sub
-
-    Private Sub LM_LoadCustomBackground(sender As Object, e As EventArgs) Handles Button_LM_LoadLevelBG.Click
-
-    End Sub
-
-    Private Sub Button_LM_AddNewLevel_Click(sender As Object, e As EventArgs) Handles Button_LM_AddNewLevel.Click
-
-    End Sub
-
-    Private Sub Button_LM_AddArea_Click(sender As Object, e As EventArgs) Handles Button_LM_AddArea.Click
-
-    End Sub
 End Class
