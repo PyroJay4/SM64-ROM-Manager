@@ -12,13 +12,16 @@ Namespace Global.SM64Lib.ObjectBanks
         Public ReadOnly Property Objects As New List(Of CustomObject)
         Public ReadOnly Property CurSeg As SegmentedBank = Nothing
         Public Property NeedToSave As Boolean = False
+        Public ReadOnly Property Levelscript As New Levelscript
 
         Public Function WriteToSeg(bankID As Byte)
             Dim segStream As New MemoryStream
             Dim seg As New SegmentedBank(bankID, segStream)
             Dim data As New BinaryStreamData(segStream)
             Dim lvlScriptLength As UInteger
-            Dim lvlScript As New Levelscript
+
+            'Clear the old levelscript
+            Levelscript.Clear()
 
             'Calculate space of Levelscript
             lvlScriptLength = HexRoundUp1(Objects.Count * 8 + 4)
@@ -54,10 +57,10 @@ Namespace Global.SM64Lib.ObjectBanks
 
             'Create Levelscript
             For Each obj As CustomObject In Objects
-                lvlScript.Add(New LevelscriptCommand($"22 08 00 {obj.ModelID.ToString("X")} {bankID.ToString("X")} {Hex((obj.GeolayoutBankOffset >> 16) And &HFF)} {Hex((obj.GeolayoutBankOffset >> 8) And &HFF)} {Hex(obj.GeolayoutBankOffset And &HFF)}"))
+                Levelscript.Add(New LevelscriptCommand($"22 08 00 {obj.ModelID.ToString("X")} {bankID.ToString("X")} {Hex((obj.GeolayoutBankOffset >> 16) And &HFF)} {Hex((obj.GeolayoutBankOffset >> 8) And &HFF)} {Hex(obj.GeolayoutBankOffset And &HFF)}"))
             Next
-            lvlScript.Add(New LevelscriptCommand("07 04 00 00"))
-            lvlScript.Write(data, 0)
+            Levelscript.Add(New LevelscriptCommand("07 04 00 00"))
+            Levelscript.Write(data, 0)
 
             _CurSeg = seg
             _NeedToSave = False
@@ -71,17 +74,17 @@ Namespace Global.SM64Lib.ObjectBanks
         Public Sub ReadFromSeg(rommgr As RomManager, seg As SegmentedBank)
             Dim s As Stream
             Dim data As BinaryData
-            Dim lvlscript As New Levelscript
 
+            Levelscript.Clear()
             _CurSeg = seg
             s = seg.ReadDataIfNull(rommgr)
             data = New BinaryStreamData(s)
 
             'Read Levelscript
-            lvlscript.Read(rommgr, seg.BankAddress, LevelscriptCommandTypes.JumpBack, New Dictionary(Of Byte, SegmentedBank) From {{seg.BankID, seg}})
+            Levelscript.Read(rommgr, seg.BankAddress, LevelscriptCommandTypes.JumpBack, New Dictionary(Of Byte, SegmentedBank) From {{seg.BankID, seg}})
 
             'Parse Levelscript & Load Models
-            For Each cmd As LevelscriptCommand In lvlscript
+            For Each cmd As LevelscriptCommand In Levelscript
                 Select Case cmd.CommandType
                     Case LevelscriptCommandTypes.LoadPolygonWithGeo
                         Dim obj As New CustomObject
