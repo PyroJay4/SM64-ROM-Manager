@@ -153,7 +153,7 @@ Public Class MainModelConverter
 
         'Prepaire Textures
         If vmap IsNot Nothing Then
-            PrepaireTexture(vmap, curTexFormatSettings)
+            PrepaireTexture(vmap, curTexFormatSettings, SwitchButton_ResizeTextures.Value)
         End If
 
         'Set Null Values
@@ -223,11 +223,11 @@ Public Class MainModelConverter
         Return False
     End Function
 
-    Private Sub PrepaireTexture(model As Object3D, texSettings As TextureFormatSettings)
+    Private Sub PrepaireTexture(model As Object3D, texSettings As TextureFormatSettings, fitImageSize As Boolean)
         For Each mat In model.Materials
             If mat.Value.Image IsNot Nothing Then
                 Dim entry = curTexFormatSettings.GetEntry(mat.Key)
-                TextureManager.PrepaireImage(mat.Value.Image, entry.RotateFlip, N64Graphics.N64Graphics.StringCodec(texSettings.GetEntry(mat.Key).TextureFormat))
+                PrepaireImage(mat.Value.Image, entry.RotateFlip, N64Graphics.N64Graphics.StringCodec(texSettings.GetEntry(mat.Key).TextureFormat), fitImageSize)
             End If
         Next
     End Sub

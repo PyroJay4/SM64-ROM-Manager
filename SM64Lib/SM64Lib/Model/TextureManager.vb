@@ -5,24 +5,26 @@ Namespace Model.Fast3D
 
     Public Module TextureManager
 
-        Public Sub PrepaireImage(ByRef bmp As Bitmap, rotateFlipTexture As RotateFlipType, texFormat As N64Graphics.N64Codec)
-            Dim maxPixels As Integer = GetMaxPixls(texFormat)
+        Public Sub PrepaireImage(ByRef bmp As Bitmap, rotateFlipTexture As RotateFlipType, texFormat As N64Graphics.N64Codec, fitImageSize As Boolean)
+            If fitImageSize Then
+                Dim maxPixels As Integer = GetMaxPixls(texFormat)
 
-            'Resize Texture
-            If bmp.Height * bmp.Width > maxPixels Then
-                Dim curPixels As Integer = bmp.Height * bmp.Width
-                Dim verhälltnis As Single = Math.Sqrt(curPixels / maxPixels)
+                'Resize Texture
+                If bmp.Height * bmp.Width > maxPixels Then
+                    Dim curPixels As Integer = bmp.Height * bmp.Width
+                    Dim verhälltnis As Single = Math.Sqrt(curPixels / maxPixels)
 
-                Dim newHeight As Single = bmp.Height / verhälltnis
-                Dim newWidth As Single = bmp.Width / verhälltnis
+                    Dim newHeight As Single = bmp.Height / verhälltnis
+                    Dim newWidth As Single = bmp.Width / verhälltnis
 
-                Dim nhlog As Integer = Math.Truncate(Math.Log(newHeight, 2))
-                Dim nwlog As Integer = Math.Truncate(Math.Log(newWidth, 2))
+                    Dim nhlog As Integer = Math.Truncate(Math.Log(newHeight, 2))
+                    Dim nwlog As Integer = Math.Truncate(Math.Log(newWidth, 2))
 
-                newHeight = Math.Pow(2, nhlog)
-                newWidth = Math.Pow(2, nwlog)
+                    newHeight = Math.Pow(2, nhlog)
+                    newWidth = Math.Pow(2, nwlog)
 
-                bmp = ResizeImage(bmp, New Size(newHeight, newWidth))
+                    bmp = ResizeImage(bmp, New Size(newHeight, newWidth))
+                End If
             End If
 
             RotateFlipImage(bmp, rotateFlipTexture)
@@ -53,7 +55,7 @@ Namespace Model.Fast3D
                 g.SmoothingMode = SmoothingMode.HighQuality
                 g.PixelOffsetMode = PixelOffsetMode.HighQuality
                 g.PageUnit = GraphicsUnit.Pixel
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic
+                'g.InterpolationMode = InterpolationMode.HighQualityBicubic
 
                 Dim pointToDraw As Point
                 If forceSize AndAlso (result.Width / result.Height) <> (size.Width / size.Height) Then

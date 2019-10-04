@@ -1100,10 +1100,10 @@ Namespace LevelEditor
             ElseIf TypeOf iwarp Is ManagedInstantWarp Then
                 Dim warp As ManagedInstantWarp = iwarp
 
-                lvi.SubItems(0).Text = ""
+                lvi.SubItems(0).Text = String.Empty
                 lvi.SubItems(1).Text = ValueFromText(warp.CollisionType)
                 lvi.SubItems(2).Text = ValueFromText(warp.DestAreaID)
-                lvi.SubItems(3).Text = ""
+                lvi.SubItems(3).Text = String.Empty
 
             End If
         End Sub
