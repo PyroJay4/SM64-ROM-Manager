@@ -453,10 +453,10 @@ Namespace LevelEditor
             objectModels.Clear()
 
             Dim lvlScriptMain As New Levelscript
-            lvlScriptMain.Read(rommgr, rommgr.GetSegBank(&H15).BankAddress, LevelscriptCommandTypes.x1E)
+            lvlScriptMain.Read(Rommgr, Rommgr.GetSegBank(&H15).BankAddress, LevelscriptCommandTypes.x1E)
             Await ParseLevelscriptAndLoadModels(lvlScriptMain)
 
-            Await ParseLevelscriptAndLoadModels(cLevel.Levelscript)
+            Await ParseLevelscriptAndLoadModels(CLevel.Levelscript)
         End Function
 
         Friend Async Function ParseLevelscriptAndLoadModels(lvlscript As Levelscript) As Task
@@ -472,13 +472,13 @@ Namespace LevelEditor
                         Dim segID As Byte = segPointer >> 24
 
                         AddObjectCombosToMyObjectCombos(modelID)
-                        If Not knownModelIDs.Contains(modelID) Then knownModelIDs.Add(modelID)
+                        If Not KnownModelIDs.Contains(modelID) Then KnownModelIDs.Add(modelID)
 
-                        Dim seg As SM64Lib.SegmentedBank = rommgr.GetSegBank(segID)
-                        If segID <> 0 AndAlso seg IsNot Nothing AndAlso Not objectModels.ContainsKey(modelID) Then
+                        Dim seg As SM64Lib.SegmentedBank = Rommgr.GetSegBank(segID)
+                        If segID <> 0 AndAlso seg IsNot Nothing AndAlso Not ObjectModels.ContainsKey(modelID) Then
 
                             Dim glscript As New Script.Geolayoutscript
-                            glscript.Read(rommgr, segPointer)
+                            glscript.Read(Rommgr, segPointer)
 
                             Dim mdlScale As Numerics.Vector3 = Numerics.Vector3.One
                             Dim mdlScaleNodeIndex As Integer = -1
@@ -494,8 +494,8 @@ Namespace LevelEditor
                                             Dim dl As New DisplayList
                                             'dl.FromStream(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), rommgr, Nothing)
                                             'dl.ToObject3D(mdl, rommgr, Nothing)
-                                            Await dl.TryFromStreamAsync(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), rommgr, Nothing)
-                                            Await dl.TryToObject3DAsync(mdl, rommgr, Nothing)
+                                            Await dl.TryFromStreamAsync(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), Rommgr, Nothing)
+                                            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
                                         End If
 
                                     Case Script.GeolayoutCommandTypes.LoadDisplaylistWithOffset
@@ -507,8 +507,8 @@ Namespace LevelEditor
                                             Dim geop As New Geopointer(geolayer, segAddr, mdlScale, cgLoadDisplayListWithOffset.GetOffset(gmd))
                                             'dl.FromStream(geop, rommgr, Nothing)
                                             'dl.ToObject3D(mdl, rommgr, Nothing)
-                                            Await dl.TryFromStreamAsync(geop, rommgr, Nothing)
-                                            Await dl.TryToObject3DAsync(mdl, rommgr, Nothing)
+                                            Await dl.TryFromStreamAsync(geop, Rommgr, Nothing)
+                                            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
                                         End If
 
                                     Case Script.GeolayoutCommandTypes.Scale2
@@ -534,7 +534,7 @@ Namespace LevelEditor
                             glscript.Close()
                             If mdl.Meshes.Count > 0 Then
                                 Dim rndr As New Renderer(mdl)
-                                objectModels.Add(modelID, rndr)
+                                ObjectModels.Add(modelID, rndr)
                             End If
 
                         End If
@@ -546,20 +546,20 @@ Namespace LevelEditor
                         Dim segID As Byte = segPointer >> 24
 
                         AddObjectCombosToMyObjectCombos(modelID)
-                        If Not knownModelIDs.Contains(modelID) Then knownModelIDs.Add(modelID)
+                        If Not KnownModelIDs.Contains(modelID) Then KnownModelIDs.Add(modelID)
 
-                        Dim seg As SM64Lib.SegmentedBank = rommgr.GetSegBank(segID)
-                        If segID <> 0 AndAlso seg IsNot Nothing AndAlso Not objectModels.ContainsKey(modelID) Then
+                        Dim seg As SM64Lib.SegmentedBank = Rommgr.GetSegBank(segID)
+                        If segID <> 0 AndAlso seg IsNot Nothing AndAlso Not ObjectModels.ContainsKey(modelID) Then
                             Dim mdl = New Object3D
 
                             Dim dl As New DisplayList
                             'dl.FromStream(New Geopointer(layer, segPointer), rommgr, Nothing)
                             'dl.ToObject3D(mdl, rommgr, Nothing)
-                            Await dl.TryFromStreamAsync(New Geopointer(layer, segPointer), rommgr, Nothing)
-                            Await dl.TryToObject3DAsync(mdl, rommgr, Nothing)
+                            Await dl.TryFromStreamAsync(New Geopointer(layer, segPointer), Rommgr, Nothing)
+                            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
 
                             Dim rndr As New Renderer(mdl)
-                            objectModels.Add(modelID, rndr)
+                            ObjectModels.Add(modelID, rndr)
                         End If
 
                     Case LevelscriptCommandTypes.PaintingWarp
