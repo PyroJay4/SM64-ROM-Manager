@@ -330,34 +330,34 @@ Public Class MainController
             Try
 #End If
 
-            Dim romFileInfo As New FileInfo(Romfile)
-            Dim newrommgr As New RomManager(Romfile)
-            StatusText = Form_Main_Resources.Status_Checking
+                Dim romFileInfo As New FileInfo(Romfile)
+                Dim newrommgr As New RomManager(Romfile)
+                StatusText = Form_Main_Resources.Status_Checking
 
-            If romFileInfo.Length = 8 * 1024 * 1024 Then
-                If MessageBoxEx.Show(Form_Main_Resources.MsgBox_PrepaireRom, Form_Main_Resources.MsgBox_PrepaireRom_Title, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) <> DialogResult.OK Then
-                    Throw New RomCompatiblityException("Rom Length is incompatible!")
+                If romFileInfo.Length = 8 * 1024 * 1024 Then
+                    If MessageBoxEx.Show(Form_Main_Resources.MsgBox_PrepaireRom, Form_Main_Resources.MsgBox_PrepaireRom_Title, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) <> DialogResult.OK Then
+                        Throw New RomCompatiblityException("Rom Length is incompatible!")
+                    End If
                 End If
-            End If
 
-            If Not newrommgr.CheckROM() Then
-                Throw New RomCompatiblityException("Rom Check was false!")
-            ElseIf newrommgr.IsSM64EditorMode Then
-                Throw New RomCompatiblityException(Form_Main_Resources.Exception_RomWasUsedBySM64E)
-            End If
+                If Not newrommgr.CheckROM() Then
+                    Throw New RomCompatiblityException("Rom Check was false!")
+                ElseIf newrommgr.IsSM64EditorMode Then
+                    Throw New RomCompatiblityException(Form_Main_Resources.Exception_RomWasUsedBySM64E)
+                End If
 
-            loadRecentROM = True
+                loadRecentROM = True
 
-            AddRecentFile(Settings.RecentFiles.RecentROMs, Romfile)
-            MergeRecentFiles(Settings.RecentFiles.RecentROMs)
-            RaiseEvent RecentFilesChanged()
+                AddRecentFile(Settings.RecentFiles.RecentROMs, Romfile)
+                MergeRecentFiles(Settings.RecentFiles.RecentROMs)
+                RaiseEvent RecentFilesChanged()
 
-            SetRomMgr(newrommgr)
-            LoadROM(Romfile)
+                SetRomMgr(newrommgr)
+                LoadROM(Romfile)
 
-            CreateRomWatcherForCurrentRom()
+                CreateRomWatcherForCurrentRom()
 
-            success = True
+                success = True
 
 #If Not DEBUG Then
             Catch ex As RomCompatiblityException
@@ -696,7 +696,8 @@ Public Class MainController
         Dim YVal As Integer = 0
         Dim ZVal As Integer = 0
         Dim Title As String = ""
-        Dim dsp = RomManager.Levels(levelIndex).GetDefaultPositionCmd
+        Dim lvl As Level = RomManager.Levels(levelIndex)
+        Dim dsp = lvl.GetDefaultPositionCmd
 
         If dsp IsNot Nothing Then
             'Edit all values
@@ -730,6 +731,8 @@ Public Class MainController
 
                 'Set new values to command
                 clDefaultPosition.SetPosition(dsp, curPos)
+
+                SetLevelscriptNeedToSave(lvl)
             End If
         End If
     End Sub
@@ -741,6 +744,7 @@ Public Class MainController
         Dim method =
             Sub()
                 lvl.area.SpecialBoxes.Add(sb)
+                SetLevelscriptNeedToSave(lvl.level)
                 RaiseEvent LevelSpecialItemAdded(New SpecialItemEventArgs(lvl.area.SpecialBoxes.IndexOf(sb), levelIndex, areaIndex))
             End Sub
 
@@ -753,6 +757,7 @@ Public Class MainController
 
         Dim method =
             Sub()
+                SetLevelscriptNeedToSave(lvl.level)
                 RaiseEvent LevelSpecialItemChanged(New SpecialItemEventArgs(sbIndex, levelIndex, areaIndex))
             End Sub
 
@@ -832,6 +837,9 @@ Public Class MainController
             Dim lvl As Level = RomManager.AddLevel(selLvl.ID)
             RomManager.Levels.Last.ActSelector = selLvl.Type = LevelInfoDataTabelList.LevelTypes.Level
 
+            SetLevelscriptNeedToSave(lvl)
+            SetLevelBank0x0ENeedToSave(lvl)
+
             RaiseEvent LevelAdded(New LevelEventArgs(RomManager.Levels.IndexOf(lvl), lvl.LevelID))
         End If
     End Sub
@@ -859,6 +867,9 @@ Public Class MainController
                 'Add area to level
                 curLevel.Areas.Add(tArea)
 
+                SetLevelscriptNeedToSave(curLevel)
+                SetLevelBank0x0ENeedToSave(curLevel)
+
                 RaiseEvent LevelAreaAdded(New LevelAreaEventArgs(levelIndex, curLevel.Areas.IndexOf(tArea), tArea.AreaID))
             End If
         Else
@@ -876,6 +887,8 @@ Public Class MainController
                 Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
 
                 lvl.level.Areas.RemoveAt(areaIndex)
+                SetLevelscriptNeedToSave(lvl.level)
+                SetLevelBank0x0ENeedToSave(lvl.level)
 
                 RaiseEvent LevelAreaRemoved(New LevelAreaEventArgs(levelIndex, areaIndex, lvl.area.AreaID))
             End If
@@ -895,6 +908,14 @@ Public Class MainController
 
         Return val
     End Function
+
+    Private Sub SetLevelscriptNeedToSave(lvl As Level)
+        lvl.NeedToSaveLevelscript = True
+    End Sub
+
+    Private Sub SetLevelBank0x0ENeedToSave(lvl As Level)
+        lvl.NeedToSaveBanks0E = True
+    End Sub
 
     Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableGlobalObjectBank As Boolean)
         Dim lvl As Level = GetLevelAndArea(levelIndex, -1).level
@@ -916,6 +937,8 @@ Public Class MainController
         lvl.ChangeObjectBank(objBank0x0C)
         lvl.ChangeObjectBank(objBank0x0D)
         lvl.ChangeObjectBank(objBank0x0E)
+
+        SetLevelscriptNeedToSave(lvl)
     End Sub
 
     Public Sub SetLevelBackgroundMode(levelIndex As Integer, mode As Integer)
@@ -934,25 +957,36 @@ Public Class MainController
                 lvl.Background.Enabled = False
                 lvl.Background.IsCustom = False
         End Select
+
+        SetLevelscriptNeedToSave(lvl)
     End Sub
 
     Public Sub SetLevelBackgroundID(levelIndex As Integer, id As BackgroundIDs)
         Dim lvl As Level = GetLevelAndArea(levelIndex, -1).level
+
         lvl.Background.ID = id
         lvl.Background.Enabled = True
         lvl.Background.IsCustom = False
+
+        SetLevelscriptNeedToSave(lvl)
     End Sub
 
     Public Sub SetLevelAreaBackgroundType(levelIndex As Integer, areaIndex As Integer, typ As AreaBGs)
         Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
+
         lvl.area.Background.Type = typ
+
+        SetLevelscriptNeedToSave(lvl.level)
         RaiseEvent LevelAreaBackgroundModeChanged(New LevelAreaBackgroundModeChangedEventArgs(typ, lvl.area.Background.Color))
     End Sub
 
     Public Sub SetLevelAreaBackgroundColor(levelIndex As Integer, areaIndex As Integer, color As Color)
         Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
+
         lvl.area.Background.Type = AreaBGs.Color
         lvl.area.Background.Color = color
+
+        SetLevelscriptNeedToSave(lvl.level)
     End Sub
 
     Public Function GetLevelAreaBackgroundInfo(levelIndex As Integer, areaIndex As Integer) As (typ As AreaBGs, color As Color)
@@ -961,7 +995,8 @@ Public Class MainController
     End Function
 
     Public Sub LoadLevelCustomBackgroundImage(levelIndex As Integer)
-        Dim bg As LevelBG = GetLevelAndArea(levelIndex, -1).level.Background
+        Dim lvl As Level = GetLevelAndArea(levelIndex, -1).level
+        Dim bg As LevelBG = lvl.Background
 
         Dim ofd As New OpenFileDialog
         ofd.Filter = "All supported Image files|*.png;*.jpeg;*.jpg;*.bmp;*.gif"
@@ -978,6 +1013,7 @@ Public Class MainController
                 bg.IsCustom = True
                 bg.Enabled = True
 
+                SetLevelscriptNeedToSave(lvl)
                 RaiseEvent LevelBackgroundImageChanged(New LevelBackgroundImageChangedEventArgs(bg.ID, bg.GetImage))
             End If
 
@@ -986,7 +1022,9 @@ Public Class MainController
     End Sub
 
     Public Sub SaveLevelAreaSettings(levelIndex As Integer, areaIndex As Integer, terrainTypes As TerrainTypes, musicID As Byte, environmentEffects As EnvironmentEffects, cameraPrset As CameraPresets, enable2DCamera As Boolean, enableShowMsg As Boolean, showMsgDialogID As Byte)
-        Dim area As LevelArea = GetLevelAndArea(levelIndex, areaIndex).area
+        Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
+        Dim area As LevelArea = lvl.area
+
         area.TerrainType = terrainTypes
         area.BGMusic = musicID
         area.Geolayout.EnvironmentEffect = environmentEffects
@@ -994,6 +1032,8 @@ Public Class MainController
         area.Enable2DCamera = enable2DCamera
         area.ShowMessage.Enabled = enableShowMsg
         area.ShowMessage.DialogID = showMsgDialogID
+
+        SetLevelscriptNeedToSave(lvl.level)
     End Sub
 
     Public Sub ImportLevelAreaModel(levelIndex As Integer, areaIndex As Integer, importVisualMap As Boolean, importCollision As Boolean)
@@ -1020,6 +1060,7 @@ Public Class MainController
             End If
 
             area.SetSegmentedBanks(RomManager)
+            SetLevelBank0x0ENeedToSave(levelarea.level)
         End If
     End Sub
 
@@ -1030,7 +1071,10 @@ Public Class MainController
 
     Public Sub RemoveLevelSpecialBox(levelIndex As Integer, areaIndex As Integer, sbIndex As Integer)
         Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
+
         lvl.area.SpecialBoxes.RemoveAt(sbIndex)
+
+        SetLevelscriptNeedToSave(lvl.level)
         RaiseEvent LevelSpecialItemRemoved(New SpecialItemEventArgs(sbIndex, levelIndex, areaIndex))
     End Sub
 
@@ -1049,8 +1093,13 @@ Public Class MainController
             Dim editor As New ScrollTexEditor(lvl.area)
 
             Dim scrollTextCountChanged = Sub() RaiseEvent LevelAreaScrollingTextureCountChanged(New LevelAreaEventArgs(levelIndex, areaIndex, lvl.area.AreaID))
+            Dim setNeedToSave = Sub() SetLevelscriptNeedToSave(lvl.level)
+
             AddHandler editor.ScrollTexAdded, scrollTextCountChanged
             AddHandler editor.ScrollTexRemoved, scrollTextCountChanged
+            AddHandler editor.ScrollTexAdded, setNeedToSave
+            AddHandler editor.ScrollTexRemoved, setNeedToSave
+            AddHandler editor.ScrollTexChanged, setNeedToSave
 
             editor.Show()
         End If
@@ -1189,6 +1238,7 @@ Public Class MainController
             Dim selLevel As LevelInfoDataTabelList.Level = OpenLevelSelectDialog()
             If selLevel IsNot Nothing Then
                 RomManager.ChangeLevelID(lvl, selLevel.ID, selLevel.Type)
+                SetLevelscriptNeedToSave(lvl)
                 RaiseEvent LevelIDChanged(New LevelEventArgs(levelIndex, lvl.LevelID))
             End If
         End If
@@ -1201,6 +1251,8 @@ Public Class MainController
             If frm.LoadROM(ofd.FileName) Then
                 If frm.ShowDialog = DialogResult.OK Then
                     Dim lvl As Level = RomManager.Levels.Last
+                    SetLevelscriptNeedToSave(lvl)
+                    SetLevelBank0x0ENeedToSave(lvl)
                     RaiseEvent LevelAdded(New LevelEventArgs(RomManager.Levels.IndexOf(lvl), lvl.LevelID))
                 End If
             End If
@@ -1225,6 +1277,8 @@ Public Class MainController
                         MessageBoxEx.Show(String.Format(Form_Main_Resources.MsgBox_InvalidBankSize, minSize.ToString("X")), Form_Main_Resources.MsgBox_InvalidBankSize_Title, MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Else
                         lvl.Bank0x19.Length = newVal
+                        SetLevelscriptNeedToSave(lvl)
+                        SetLevelBank0x0ENeedToSave(lvl)
                         MessageBoxEx.Show(Form_Main_Resources.MsgBox_BankSizeChangedSuccess, Form_Main_Resources.MsgBox_BankSizeChangedSuccess_Title, MessageBoxButtons.OK, MessageBoxIcon.Information)
                         [continue] = False
                     End If
