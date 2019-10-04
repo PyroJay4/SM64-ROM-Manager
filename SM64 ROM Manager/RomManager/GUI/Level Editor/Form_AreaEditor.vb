@@ -110,12 +110,12 @@ Namespace LevelEditor
 
         Friend ReadOnly Property IsStrgPressed As Boolean
             Get
-                Return pressedKeys.Contains(Keys.ControlKey)
+                Return PressedKeys.Contains(Keys.ControlKey)
             End Get
         End Property
         Friend ReadOnly Property IsShiftPressed As Boolean
             Get
-                Return pressedKeys.Contains(Keys.ShiftKey)
+                Return PressedKeys.Contains(Keys.ShiftKey)
             End Get
         End Property
 
@@ -179,10 +179,10 @@ Namespace LevelEditor
 
         Public Sub New(rommgr As SM64Lib.RomManager, Level As Level, LevelID As Byte, AreaID As Byte)
             'Setup some level variables
-            cLevel = Level
-            Me.rommgr = rommgr
-            areaIdToLoad = AreaID
-            Me.levelID = LevelID
+            CLevel = Level
+            Me.Rommgr = rommgr
+            AreaIdToLoad = AreaID
+            Me.LevelID = LevelID
 
             'Initialize Components
             InitializeComponent()
@@ -222,7 +222,7 @@ Namespace LevelEditor
 
             'Init Object Properties Helper
             PropertyTree = AdvPropertyGrid1.PropertyTree
-            bpMgr = New AdvPropGrid_ObjectPropertiesHelper(AdvPropertyGrid1, myObjectCombos, NameOf(Managed3DObject.BehaviorID), "BParam")
+            bpMgr = New AdvPropGrid_ObjectPropertiesHelper(AdvPropertyGrid1, MyObjectCombos, NameOf(Managed3DObject.BehaviorID), "BParam")
 
             'Get the PropertyTree of AdvPropertyGrid1
             PropertyTree = AdvPropertyGrid1.PropertyTree
@@ -270,7 +270,7 @@ Namespace LevelEditor
             LoadLevelsStringList()
             LoadAreaIDs()
 
-            selectedList = ListViewEx_Objects
+            SelectedList = ListViewEx_Objects
 
             ogl.Invalidate()
         End Sub
@@ -278,7 +278,7 @@ Namespace LevelEditor
         Friend Sub LoadComboBoxObjComboEntries()
             Dim myObjectCombosString As New List(Of String)
 
-            For Each c As ObjectCombo In myObjectCombos
+            For Each c As ObjectCombo In MyObjectCombos
                 myObjectCombosString.Add(c.Name)
             Next
 
@@ -291,27 +291,27 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub SortObjectCombosAlphabetlicly()
-            Dim ordered As ObjectCombo() = myObjectCombos.OrderBy(Function(n) n.Name).ToArray
-            myObjectCombos.Clear()
-            myObjectCombos.AddRange(ordered)
+            Dim ordered As ObjectCombo() = MyObjectCombos.OrderBy(Function(n) n.Name).ToArray
+            MyObjectCombos.Clear()
+            MyObjectCombos.AddRange(ordered)
         End Sub
 
         Friend Sub LoadOtherObjectCombos()
             Dim modelIDsToLoad As Byte() = {0, &H96, &H95, &HA8, &HA5, &HA6, &HA7, &HA3, &H74, &H7A, &H79, &H7C, &HA4, &H90, &H91, &H94, &HA2, &HAA, &HB9, &HBA, &H8F, &H9F, &HBB, &H9C, &HA1, &H8E, &HE0, &H9E, &HA0, &H75, &H76, &H77, &H85, &H86, &H87, &H88, &HC8, &HCC, &HCB, &HD4, &HD7, &HD8, &HDB, &HCD, &H8A, &H8B, &H8C, &HC2, &HCF, &HCA, &H81, &H82, &H83, &H89, &HC0, &H84, &HBE, &HD9, &HDA, &HBC, &HC3, &HC9, &HB4, &H7F, &H80, &H78, &HDC, &HDF, &HE1}
             For Each obj As ObjectCombo In ObjectCombos.Concat(ObjectCombosCustom)
-                If (modelIDsToLoad.Contains(obj.ModelID) OrElse obj.Name.Contains("[MOP")) AndAlso Not myObjectCombos.Contains(obj) Then
-                    myObjectCombos.Add(obj)
+                If (modelIDsToLoad.Contains(obj.ModelID) OrElse obj.Name.Contains("[MOP")) AndAlso Not MyObjectCombos.Contains(obj) Then
+                    MyObjectCombos.Add(obj)
                 End If
             Next
         End Sub
         Friend Sub LoadLevelsStringList()
-            myLevelsList.Clear()
+            MyLevelsList.Clear()
             Dim items As New List(Of ComboItem)
             Dim levels As New List(Of Levels)
 
-            For Each lvl In rommgr.LevelInfoData
+            For Each lvl In Rommgr.LevelInfoData
                 Dim displayName As String = $"{TextFromValue(lvl.ID, , 2)} - {lvl.Name}"
-                myLevelsList.Add(displayName)
+                MyLevelsList.Add(displayName)
 
                 Dim cbitem As New ComboItem(displayName)
                 cbitem.Tag = lvl
@@ -400,12 +400,12 @@ Namespace LevelEditor
             Select Case True
                 Case srti.Equals(RibbonTabItem_Objects)
 
-                    selectedList = ListViewEx_Objects
+                    SelectedList = ListViewEx_Objects
                     DockContainerItem4.Selected = True
 
                 Case srti.Equals(RibbonTabItem_Warps)
 
-                    selectedList = ListViewEx_Warps
+                    SelectedList = ListViewEx_Warps
                     DockContainerItem1.Selected = True
 
                 Case srti.Equals(RibbonTabItem_Collision)
@@ -450,7 +450,7 @@ Namespace LevelEditor
 #Region "Model"
 
         Friend Async Function LoadObjectModels() As Task 'Friend Async Function LoadObjectModels() As Task
-            objectModels.Clear()
+            ObjectModels.Clear()
 
             Dim lvlScriptMain As New Levelscript
             lvlScriptMain.Read(Rommgr, Rommgr.GetSegBank(&H15).BankAddress, LevelscriptCommandTypes.x1E)
@@ -473,13 +473,13 @@ Namespace LevelEditor
                         Dim segID As Byte = segPointer >> 24
 
                         AddObjectCombosToMyObjectCombos(modelID)
-                        If Not knownModelIDs.Contains(modelID) Then knownModelIDs.Add(modelID)
+                        If Not KnownModelIDs.Contains(modelID) Then KnownModelIDs.Add(modelID)
 
-                        Dim seg As SM64Lib.SegmentedBank = rommgr.GetSegBank(segID)
-                        If segID <> 0 AndAlso seg IsNot Nothing AndAlso Not objectModels.ContainsKey(modelID) Then
+                        Dim seg As SM64Lib.SegmentedBank = Rommgr.GetSegBank(segID)
+                        If segID <> 0 AndAlso seg IsNot Nothing AndAlso Not ObjectModels.ContainsKey(modelID) Then
 
                             Dim glscript As New Script.Geolayoutscript
-                            glscript.Read(rommgr, segPointer)
+                            glscript.Read(Rommgr, segPointer)
 
                             Dim mdlScale As Numerics.Vector3 = Numerics.Vector3.One
                             Dim mdlScaleNodeIndex As Integer = -1
@@ -495,8 +495,8 @@ Namespace LevelEditor
                                             Dim dl As New DisplayList
                                             'dl.FromStream(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), rommgr, Nothing)
                                             'dl.ToObject3D(mdl, rommgr, Nothing)
-                                            Await dl.TryFromStreamAsync(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), rommgr, Nothing)
-                                            Await dl.TryToObject3DAsync(mdl, rommgr, Nothing)
+                                            Await dl.TryFromStreamAsync(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), Rommgr, Nothing)
+                                            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
                                         End If
 
                                     Case Script.GeolayoutCommandTypes.LoadDisplaylistWithOffset
@@ -508,8 +508,8 @@ Namespace LevelEditor
                                             Dim geop As New Geopointer(geolayer, segAddr, mdlScale, cgLoadDisplayListWithOffset.GetOffset(gmd))
                                             'dl.FromStream(geop, rommgr, Nothing)
                                             'dl.ToObject3D(mdl, rommgr, Nothing)
-                                            Await dl.TryFromStreamAsync(geop, rommgr, Nothing)
-                                            Await dl.TryToObject3DAsync(mdl, rommgr, Nothing)
+                                            Await dl.TryFromStreamAsync(geop, Rommgr, Nothing)
+                                            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
                                         End If
 
                                     Case Script.GeolayoutCommandTypes.Scale2
@@ -535,7 +535,7 @@ Namespace LevelEditor
                             glscript.Close()
                             If mdl.Meshes.Count > 0 Then
                                 Dim rndr As New Renderer(mdl)
-                                objectModels.Add(modelID, rndr)
+                                ObjectModels.Add(modelID, rndr)
                             End If
 
                         End If
@@ -547,20 +547,20 @@ Namespace LevelEditor
                         Dim segID As Byte = segPointer >> 24
 
                         AddObjectCombosToMyObjectCombos(modelID)
-                        If Not knownModelIDs.Contains(modelID) Then knownModelIDs.Add(modelID)
+                        If Not KnownModelIDs.Contains(modelID) Then KnownModelIDs.Add(modelID)
 
-                        Dim seg As SM64Lib.SegmentedBank = rommgr.GetSegBank(segID)
-                        If segID <> 0 AndAlso seg IsNot Nothing AndAlso Not objectModels.ContainsKey(modelID) Then
+                        Dim seg As SM64Lib.SegmentedBank = Rommgr.GetSegBank(segID)
+                        If segID <> 0 AndAlso seg IsNot Nothing AndAlso Not ObjectModels.ContainsKey(modelID) Then
                             Dim mdl = New Object3D
 
                             Dim dl As New DisplayList
                             'dl.FromStream(New Geopointer(layer, segPointer), rommgr, Nothing)
                             'dl.ToObject3D(mdl, rommgr, Nothing)
-                            Await dl.TryFromStreamAsync(New Geopointer(layer, segPointer), rommgr, Nothing)
-                            Await dl.TryToObject3DAsync(mdl, rommgr, Nothing)
+                            Await dl.TryFromStreamAsync(New Geopointer(layer, segPointer), Rommgr, Nothing)
+                            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
 
                             Dim rndr As New Renderer(mdl)
-                            objectModels.Add(modelID, rndr)
+                            ObjectModels.Add(modelID, rndr)
                         End If
 
                     Case LevelscriptCommandTypes.PaintingWarp
@@ -570,10 +570,10 @@ Namespace LevelEditor
                         Dim bankAddr As Integer = clJumpToSegAddr.GetSegJumpAddr(cmd)
                         Dim segID As Byte = bankAddr >> 24
 
-                        Dim seg As SM64Lib.SegmentedBank = rommgr.GetSegBank(segID)
+                        Dim seg As SM64Lib.SegmentedBank = Rommgr.GetSegBank(segID)
                         If segID <> 0 AndAlso seg IsNot Nothing Then
                             Dim scrpt As New Levelscript
-                            scrpt.Read(rommgr, bankAddr, LevelscriptCommandTypes.JumpBack)
+                            scrpt.Read(Rommgr, bankAddr, LevelscriptCommandTypes.JumpBack)
                             Await ParseLevelscriptAndLoadModels(scrpt)
                         Else
                             Console.WriteLine("Doesn't know Seg-ID: " & segID.ToString)
@@ -581,14 +581,14 @@ Namespace LevelEditor
 
                     Case LevelscriptCommandTypes.LoadRomToRam, LevelscriptCommandTypes.x1A, LevelscriptCommandTypes.x18
                         Dim segID As Byte = clLoadRomToRam.GetSegmentedID(cmd)
-                        Dim segg As SM64Lib.SegmentedBank = rommgr.GetSegBank(segID)
+                        Dim segg As SM64Lib.SegmentedBank = Rommgr.GetSegBank(segID)
                         If segg Is Nothing Then
                             Dim seg As New SM64Lib.SegmentedBank
                             seg.BankID = segID
                             seg.RomStart = clLoadRomToRam.GetRomStart(cmd)
                             seg.RomEnd = clLoadRomToRam.GetRomEnd(cmd)
                             If cmd.CommandType = LevelscriptCommandTypes.x1A Then seg.MakeAsMIO0()
-                            rommgr.SetSegBank(seg)
+                            Rommgr.SetSegBank(seg)
                         End If
 
                 End Select
@@ -599,8 +599,8 @@ Namespace LevelEditor
 
         Friend Sub AddObjectCombosToMyObjectCombos(modelID As Byte)
             For Each obj As ObjectCombo In ObjectCombos.Concat(ObjectCombosCustom)
-                If obj.ModelID = modelID AndAlso Not myObjectCombos.Contains(obj) Then
-                    myObjectCombos.Add(obj)
+                If obj.ModelID = modelID AndAlso Not MyObjectCombos.Contains(obj) Then
+                    MyObjectCombos.Add(obj)
                 End If
             Next
         End Sub
@@ -617,7 +617,7 @@ Namespace LevelEditor
             Application.DoEvents()
             rommgr_SavingRom = True
 
-            SaveRom(rommgr)
+            SaveRom(Rommgr)
 
             rommgr_SavingRom = False
             ProgressControl(False)
@@ -625,7 +625,7 @@ Namespace LevelEditor
 
         Friend Async Sub ButtonItem_LaunchROM_Click(sender As Object, e As EventArgs) Handles ButtonItem_LaunchROM.Click
             Await WaitWhileSavingRom()
-            LaunchRom(rommgr)
+            LaunchRom(Rommgr)
         End Sub
 
         Friend Function WaitWhileSavingRom() As Task
@@ -691,7 +691,7 @@ Namespace LevelEditor
 
             Dim lastCmds As IntPtr() = Nothing
 
-            For Each item As ListViewItem In selectedList.SelectedItems
+            For Each item As ListViewItem In SelectedList.SelectedItems
                 Dim cmd As LevelscriptCommand = Nothing
 
                 Select Case True
@@ -743,10 +743,10 @@ Namespace LevelEditor
                 Select Case pasteSettings.GetType
                     Case GetType(PasteObjectSettings)
                         indexListToUse = ListViewEx_Objects
-                        cmdListToUse = cArea.Objects
+                        cmdListToUse = CArea.Objects
                     Case GetType(PasteWarpSettings)
                         indexListToUse = ListViewEx_Warps
-                        cmdListToUse = cArea.Warps
+                        cmdListToUse = CArea.Warps
                 End Select
 
                 selItems = indexListToUse.SelectedItems
@@ -980,9 +980,9 @@ Namespace LevelEditor
             isLoadingAreaIDs = True
             ComboBoxItem_Area.Items.Clear()
             Dim indexToSelect As Byte = 0
-            For Each a As LevelArea In cLevel.Areas
+            For Each a As LevelArea In CLevel.Areas
                 ComboBoxItem_Area.Items.Add(New ComboItem() With {.Text = $"Area {a.AreaID}", .Tag = a})
-                If a.AreaID = areaIdToLoad Then indexToSelect = cLevel.Areas.IndexOf(a)
+                If a.AreaID = AreaIdToLoad Then indexToSelect = CLevel.Areas.IndexOf(a)
             Next
             isLoadingAreaIDs = False
             ComboBoxItem_Area.SelectedIndex = indexToSelect
@@ -991,12 +991,12 @@ Namespace LevelEditor
             ListViewEx_Objects.SuspendLayout()
 
             ListViewEx_Objects.Items.Clear()
-            managedObjects.Clear()
+            ManagedObjects.Clear()
 
             Dim i As Integer = 0
-            For Each objj In cArea.Objects
-                Dim objNew As New Managed3DObject(objj, myObjectCombos)
-                managedObjects.Add(objNew)
+            For Each objj In CArea.Objects
+                Dim objNew As New Managed3DObject(objj, MyObjectCombos)
+                ManagedObjects.Add(objNew)
                 Dim lvi As New ListViewItem
                 lvi.Tag = objNew
                 lvi.SubItems.Add(New ListViewItem.ListViewSubItem)
@@ -1023,15 +1023,15 @@ Namespace LevelEditor
             ListViewEx_Warps.SuspendLayout()
 
             ListViewEx_Warps.Items.Clear()
-            managedWarps.Clear()
+            ManagedWarps.Clear()
 
             Dim allWarps As New List(Of LevelscriptCommand)
             Dim gameWarpsStart, gameWarpCount As Integer
 
-            allWarps.AddRange(cArea.Warps)
+            allWarps.AddRange(CArea.Warps)
             gameWarpsStart = allWarps.Count
-            gameWarpCount = cArea.WarpsForGame.Count
-            allWarps.AddRange(cArea.WarpsForGame)
+            gameWarpCount = CArea.WarpsForGame.Count
+            allWarps.AddRange(CArea.WarpsForGame)
 
             For Each warp As LevelscriptCommand In allWarps
                 Dim warpNew As IManagedLevelscriptCommand = Nothing
@@ -1065,7 +1065,7 @@ Namespace LevelEditor
                 'Set all Properties as Text to the SubItems
                 SetWarpPropertiesToListViewItem(lvi, warpNew)
 
-                managedWarps.Add(warpNew)
+                ManagedWarps.Add(warpNew)
                 ListViewEx_Warps.Items.Add(lvi)
             Next
 
@@ -1082,7 +1082,7 @@ Namespace LevelEditor
             If TypeOf iwarp Is ManagedWarp Then
                 Dim warp As ManagedWarp = iwarp
 
-                Dim destLevel = rommgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = warp.DestLevelID)
+                Dim destLevel = Rommgr.LevelInfoData.FirstOrDefault(Function(n) n.ID = warp.DestLevelID)
                 lvi.SubItems(0).Text = WarpIDToString(warp.WarpID)
                 lvi.SubItems(1).Text = $"{destLevel?.TypeString}-{destLevel?.Number}"
                 lvi.SubItems(2).Text = TextFromValue(warp.DestAreaID)
@@ -1110,7 +1110,7 @@ Namespace LevelEditor
         End Sub
         Friend Sub SetObjectPropertiesToListViewItem(ByRef lvi As ListViewItem, obj As Managed3DObject, Optional objIndex As Integer = -1)
             If objIndex > -1 Then lvi.SubItems(0).Text = objIndex + 1
-            Dim combo = myObjectCombos.GetObjectComboOfObject(obj)
+            Dim combo = MyObjectCombos.GetObjectComboOfObject(obj)
             Dim txt As String = ""
 
             If combo Is Nothing OrElse combo Is ObjectComboList.UnknownCombo Then
@@ -1200,7 +1200,7 @@ Namespace LevelEditor
             ogl.Update()
         End Sub
         Friend Sub DeselectAllObjects(Optional UpdateGLAndCamera As Boolean = True)
-            For Each obj As Managed3DObject In managedObjects
+            For Each obj As Managed3DObject In ManagedObjects
                 obj.IsSelected = False
             Next
 
@@ -1213,7 +1213,7 @@ Namespace LevelEditor
         Friend Sub ToogleObjectSelection(obj As Managed3DObject)
             obj.IsSelected = Not obj.IsSelected
 
-            With ListViewEx_Objects.Items(managedObjects.IndexOf(obj))
+            With ListViewEx_Objects.Items(ManagedObjects.IndexOf(obj))
                 .Selected = Not .Selected
             End With
 
@@ -1308,7 +1308,7 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub ListViewEx_Objects_Click(sender As Object, e As EventArgs) Handles ListViewEx_Warps.Click, ListViewEx_Objects.Click, ListViewEx_CollVertices.Click, ListViewEx_ColFaces.Click
-            selectedList = sender
+            SelectedList = sender
         End Sub
 
         Friend ReadOnly Property EditCollision As Boolean
@@ -1318,22 +1318,22 @@ Namespace LevelEditor
         End Property
         Friend ReadOnly Property EditCollisionVertices As Boolean
             Get
-                Return selectedList Is ListViewEx_CollVertices
+                Return SelectedList Is ListViewEx_CollVertices
             End Get
         End Property
         Friend ReadOnly Property EditCollisionFaces As Boolean
             Get
-                Return selectedList Is ListViewEx_ColFaces
+                Return SelectedList Is ListViewEx_ColFaces
             End Get
         End Property
         Friend ReadOnly Property EditObjects As Boolean
             Get
-                Return selectedList Is ListViewEx_Objects
+                Return SelectedList Is ListViewEx_Objects
             End Get
         End Property
         Friend ReadOnly Property EditWarps As Boolean
             Get
-                Return selectedList Is ListViewEx_Warps
+                Return SelectedList Is ListViewEx_Warps
             End Get
         End Property
         Friend ReadOnly Property EditWarpsDefault As Boolean
@@ -1380,12 +1380,12 @@ Namespace LevelEditor
         Friend Sub SwitchCurrentArea()
             If Not isLoadingAreaIDs Then
 
-                If Not dicHistories.ContainsKey(cArea) Then
+                If Not dicHistories.ContainsKey(CArea) Then
                     Dim hs As New HistoryStack
-                    dicHistories.Add(cArea, hs)
+                    dicHistories.Add(CArea, hs)
                     history = hs
                 Else
-                    history = dicHistories(cArea)
+                    history = dicHistories(CArea)
                 End If
                 backupCurrentAreaIndex = ComboBoxItem_Area.SelectedIndex
 
@@ -1423,7 +1423,7 @@ Namespace LevelEditor
 
         Friend Sub ButtonItem_AddArea_Click(sender As Object, e As EventArgs) Handles ButtonItem_AddArea.Click
             Dim ReamingIDs As New List(Of Byte)({&H1, &H2, &H3, &H4, &H5, &H6, &H7, &H0})
-            For Each a As LevelArea In cLevel.Areas
+            For Each a As LevelArea In CLevel.Areas
                 ReamingIDs.Remove(a.AreaID)
             Next
             If ReamingIDs.Count = 0 Then
@@ -1446,16 +1446,16 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub ButtonItem_RemoveArea_Click(sender As Object, e As EventArgs) Handles ButtonItem_RemoveArea.Click
-            Dim index = cLevel.Areas.IndexOf(cArea)
+            Dim index = CLevel.Areas.IndexOf(CArea)
             If index < 0 Then Return
 
-            cLevel.Areas.RemoveAt(index)
+            CLevel.Areas.RemoveAt(index)
 
             ButtonItem_AddArea.Enabled = True
-            If cLevel.Areas.Count = 0 Then
+            If CLevel.Areas.Count = 0 Then
                 Me.Close()
             Else
-                areaIdToLoad = If(index < cLevel.Areas.Count, cLevel.Areas(index).AreaID, cLevel.Areas.Last.AreaID)
+                AreaIdToLoad = If(index < CLevel.Areas.Count, CLevel.Areas(index).AreaID, CLevel.Areas.Last.AreaID)
                 LoadAreaIDs()
             End If
         End Sub
@@ -1485,7 +1485,7 @@ Namespace LevelEditor
                 If sender Is ButtonItem_ViewColMap Then
                     ButtonItem_DrawOutline.Checked = True
                 End If
-                If cLevel IsNot Nothing AndAlso cArea IsNot Nothing Then maps.LoadAreaModel()
+                If CLevel IsNot Nothing AndAlso CArea IsNot Nothing Then maps.LoadAreaModel()
                 ogl?.Invalidate()
             End If
         End Sub
@@ -1502,10 +1502,10 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub SetDefaultPosition(pos As Numerics.Vector3, rotY As Single)
-            Dim cmd2D As LevelscriptCommand = cLevel.GetDefaultPositionCmd
+            Dim cmd2D As LevelscriptCommand = CLevel.GetDefaultPositionCmd
             clDefaultPosition.SetPosition(cmd2D, pos)
             clDefaultPosition.SetRotation(cmd2D, rotY)
-            clDefaultPosition.SetAreaID(cmd2D, cArea.AreaID)
+            clDefaultPosition.SetAreaID(cmd2D, CArea.AreaID)
         End Sub
 
 #End Region
@@ -1581,14 +1581,14 @@ Namespace LevelEditor
             If ListViewEx_Objects.Items.Count > 0 Then
                 Dim cIndex As Integer = 0
                 For Each item As ListViewItem In ListViewEx_Objects.Items
-                    SetObjectPropertiesToListViewItem(item, managedObjects(ListViewEx_Objects.Items.IndexOf(item)), cIndex)
+                    SetObjectPropertiesToListViewItem(item, ManagedObjects(ListViewEx_Objects.Items.IndexOf(item)), cIndex)
                     cIndex += 1
                 Next
             End If
         End Sub
 
         Friend Sub SaveAllObjectProperties()
-            For Each obj As Managed3DObject In managedObjects
+            For Each obj As Managed3DObject In ManagedObjects
                 obj.SaveProperties()
             Next
         End Sub
@@ -1723,11 +1723,11 @@ Namespace LevelEditor
                     Dim newY As Single = oldPos.Y
                     Select Case mode
                         Case 0
-                            newY = cArea.AreaModel.Collision.DropToNearesGround(oldPos)
+                            newY = CArea.AreaModel.Collision.DropToNearesGround(oldPos)
                         Case 1
-                            newY = cArea.AreaModel.Collision.DropToTop(oldPos)
+                            newY = CArea.AreaModel.Collision.DropToTop(oldPos)
                         Case 2
-                            newY = cArea.AreaModel.Collision.DropToButtom(oldPos)
+                            newY = CArea.AreaModel.Collision.DropToButtom(oldPos)
                     End Select
 
                     Dim newPos As New Numerics.Vector3(oldPos.X, newY, oldPos.Z)
@@ -1764,7 +1764,7 @@ Namespace LevelEditor
 #Region "Model-ID & Behavior-ID"
 
         Friend Sub CheckObjCombo()
-            Dim objcombo = myObjectCombos.FirstOrDefault(Function(n) n.ModelID = SelectedObject.ModelID AndAlso n.BehaviorAddress = SelectedObject.BehaviorID)
+            Dim objcombo = MyObjectCombos.FirstOrDefault(Function(n) n.ModelID = SelectedObject.ModelID AndAlso n.BehaviorAddress = SelectedObject.BehaviorID)
             If objcombo Is Nothing Then Return
 
             For Each index As Integer In ListViewEx_Objects.SelectedIndices
@@ -1776,8 +1776,8 @@ Namespace LevelEditor
             Dim objs As Managed3DObject() = SelectedObjects
 
             If objs.Any Then
-                Dim dialog As New InformationListDialog(InformationListDialog.EditModes.EnableObjComboTab, myObjectCombos)
-                dialog.SelectedObjectCombo = myObjectCombos.GetObjectComboOfObject(objs.First)
+                Dim dialog As New InformationListDialog(InformationListDialog.EditModes.EnableObjComboTab, MyObjectCombos)
+                dialog.SelectedObjectCombo = MyObjectCombos.GetObjectComboOfObject(objs.First)
 
                 If dialog.ShowDialog = DialogResult.OK Then
                     'Store History Point
@@ -1845,10 +1845,10 @@ Namespace LevelEditor
             For i As Integer = 1 To objcount
 
                 Dim newObjCmd As New LevelscriptCommand(LevelArea.DefaultNormal3DObject)
-                cArea.Objects.Add(newObjCmd)
+                CArea.Objects.Add(newObjCmd)
 
-                Dim newObj As New Managed3DObject(newObjCmd, myObjectCombos)
-                managedObjects.Add(newObj)
+                Dim newObj As New Managed3DObject(newObjCmd, MyObjectCombos)
+                ManagedObjects.Add(newObj)
                 newobjects.Add(newObj)
 
                 Dim lvi As New ListViewItem
@@ -1863,7 +1863,7 @@ Namespace LevelEditor
             'Store History Point
             StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes("RemoveObjects"),
                           AreaEditorHistoryFunctions.Methodes("AddObjects"),
-                          {cArea, managedObjects, newobjects, ListViewEx_Objects.Items, newlvis})
+                          {CArea, ManagedObjects, newobjects, ListViewEx_Objects.Items, newlvis})
 
             ogl.Invalidate()
         End Sub
@@ -1876,12 +1876,12 @@ Namespace LevelEditor
             For Each index As Integer In ListViewEx_Objects.SelectedIndices
 
                 Dim newObj As New LevelscriptCommand(LevelArea.DefaultNormal3DObject)
-                Dim new3DObj As New Managed3DObject(newObj, myObjectCombos)
+                Dim new3DObj As New Managed3DObject(newObj, MyObjectCombos)
 
-                cArea.Objects(index) = newObj
-                managedObjects(index) = new3DObj
+                CArea.Objects(index) = newObj
+                ManagedObjects(index) = new3DObj
 
-                oldObjects.Add(managedObjects(index))
+                oldObjects.Add(ManagedObjects(index))
                 newObjects.Add(new3DObj)
                 indicies.Add(index)
 
@@ -1890,8 +1890,8 @@ Namespace LevelEditor
             'Store History Point
             StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes("RevertObjects"),
                           AreaEditorHistoryFunctions.Methodes("RevertObjects"),
-                          {cArea, managedObjects, indicies, oldObjects},
-                          {cArea, managedObjects, indicies, newObjects})
+                          {CArea, ManagedObjects, indicies, oldObjects},
+                          {CArea, ManagedObjects, indicies, newObjects})
 
             UpdateObjectListViewItems()
             ShowObjectProperties()
@@ -1917,8 +1917,8 @@ Namespace LevelEditor
         Friend Sub RemoveAllObjectsWhere(func As RemoveAllObjectsWhereExpression)
             Dim indices As New List(Of Integer)
 
-            For i As Integer = 0 To cArea.Objects.Count - 1
-                Dim mobj As Managed3DObject = managedObjects(i)
+            For i As Integer = 0 To CArea.Objects.Count - 1
+                Dim mobj As Managed3DObject = ManagedObjects(i)
                 If func.Invoke(mobj) Then
                     indices.Add(i)
                 End If
@@ -1935,11 +1935,11 @@ Namespace LevelEditor
             Dim removedCmds As New Dictionary(Of Integer, LevelscriptCommand)
 
             For Each index As Integer In indices.OrderByDescending(Function(n) n)
-                Dim mobj As Managed3DObject = managedObjects(index)
+                Dim mobj As Managed3DObject = ManagedObjects(index)
                 Dim lvi As ListViewItem = ListViewEx_Objects.Items(index)
 
-                managedObjects.Remove(mobj)
-                cArea.Objects.RemoveAt(index)
+                ManagedObjects.Remove(mobj)
+                CArea.Objects.RemoveAt(index)
                 ListViewEx_Objects.Items.Remove(lvi)
 
                 removedObjs.Add(index, mobj)
@@ -1950,7 +1950,7 @@ Namespace LevelEditor
             'Store History Point
             StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes("InsertObjects"),
                           AreaEditorHistoryFunctions.Methodes("RemoveAtObjects"),
-                          {cArea, managedObjects, ListViewEx_Objects.Items, removedObjs, removedlvis, removedCmds})
+                          {CArea, ManagedObjects, ListViewEx_Objects.Items, removedObjs, removedlvis, removedCmds})
 
             UpdateObjectListViewItems()
             ogl.Invalidate()
@@ -1962,8 +1962,8 @@ Namespace LevelEditor
 
         Friend Sub ButtonItem23_Click(sender As Object, e As EventArgs) Handles ButtonItem_ExportObjectModel.Click, ButtonItem68.Click
             Dim modelID As Byte = SelectedObject.ModelID
-            If objectModels.ContainsKey(modelID) Then
-                ExportModel(objectModels(modelID).Model, Settings.FileParser.FileExporterModule)
+            If ObjectModels.ContainsKey(modelID) Then
+                ExportModel(ObjectModels(modelID).Model, Settings.FileParser.FileExporterModule)
             Else
                 MessageBoxEx.Show("The Model wasn't found.", "Export Object Model", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -1991,7 +1991,7 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub SaveAllWarpProperties()
-            For Each warp As IManagedLevelscriptCommand In managedWarps
+            For Each warp As IManagedLevelscriptCommand In ManagedWarps
                 warp.SaveProperties()
             Next
         End Sub
@@ -2011,7 +2011,7 @@ Namespace LevelEditor
 #Region "Checking Destination Warp"
 
         Friend Function IsWarpDestinationValid(warp As ManagedWarp) As WarpDestinationValidationResult
-            Dim myWarpObjCombos As ObjectCombo() = myObjectCombos.Where(Function(n) n.Name.ToLower.Contains("warp")).ToArray
+            Dim myWarpObjCombos As ObjectCombo() = MyObjectCombos.Where(Function(n) n.Name.ToLower.Contains("warp")).ToArray
             Dim found As Byte = 0
             Dim foundLevel As Boolean = False
 
@@ -2054,7 +2054,7 @@ Namespace LevelEditor
             '    Next
             'End If
 
-            Dim lvl As Level = rommgr.Levels.FirstOrDefault(Function(n) n.LevelID = warp.DestLevelID)
+            Dim lvl As Level = Rommgr.Levels.FirstOrDefault(Function(n) n.LevelID = warp.DestLevelID)
             If lvl IsNot Nothing Then
                 For Each area As LevelArea In lvl.Areas
                     If area.AreaID = warp.DestAreaID Then
@@ -2068,8 +2068,8 @@ Namespace LevelEditor
                             Return WarpDestinationValidationResult.WarpDestNotFound
                         ElseIf found = 1 Then
                             found = 0
-                            If lvl Is cLevel Then
-                                For Each obj As Managed3DObject In managedObjects
+                            If lvl Is CLevel Then
+                                For Each obj As Managed3DObject In ManagedObjects
                                     If myWarpObjCombos.Where(Function(n) n.BehaviorAddress = obj.BehaviorID).Count > 0 _
                                     AndAlso obj.BParam2 = warp.DestWarpID Then
                                         found += 1
@@ -2157,15 +2157,15 @@ Namespace LevelEditor
 
                 Select Case type
                     Case LevelscriptCommandTypes.ConnectedWarp
-                        newWarp = New LevelscriptCommand({&H26, &H8, GetNextUnusedWarpID(), levelID, cArea.AreaID, &H0, &H0, &H0})
+                        newWarp = New LevelscriptCommand({&H26, &H8, GetNextUnusedWarpID(), LevelID, CArea.AreaID, &H0, &H0, &H0})
                         newManagedWarp = New ManagedWarp(newWarp)
                         lvi.Group = lvg_ConnectedWarps
                     Case LevelscriptCommandTypes.PaintingWarp
-                        newWarp = New LevelscriptCommand({&H27, &H8, GetNextUnusedWarpID(), levelID, cArea.AreaID, &H0, &H0, &H0})
+                        newWarp = New LevelscriptCommand({&H27, &H8, GetNextUnusedWarpID(), LevelID, CArea.AreaID, &H0, &H0, &H0})
                         newManagedWarp = New ManagedWarp(newWarp)
                         lvi.Group = lvg_PaintingWarps
                     Case LevelscriptCommandTypes.InstantWarp
-                        newWarp = New LevelscriptCommand({&H28, &HC, &H1B, cArea.AreaID, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0})
+                        newWarp = New LevelscriptCommand({&H28, &HC, &H1B, CArea.AreaID, &H0, &H0, &H0, &H0, &H0, &H0, &H0, &H0})
                         newManagedWarp = New ManagedInstantWarp(newWarp)
                         lvi.Group = lvg_InstantWarps
                     Case Else
@@ -2175,8 +2175,8 @@ Namespace LevelEditor
                 'Set managed warp as Tag of ListViewItem
                 lvi.Tag = newManagedWarp
 
-                cArea.Warps.Add(newWarp)
-                managedWarps.Add(newManagedWarp)
+                CArea.Warps.Add(newWarp)
+                ManagedWarps.Add(newManagedWarp)
 
                 SetWarpPropertiesToListViewItem(lvi, newManagedWarp)
                 ListViewEx_Warps.Items.Add(lvi)
@@ -2186,13 +2186,13 @@ Namespace LevelEditor
                 dicGroups.Add(lvi, lvi.Group)
                 StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes("RemoveWarps"),
                               AreaEditorHistoryFunctions.Methodes("AddWarps"),
-                              {cArea, managedWarps, ({newManagedWarp}), ListViewEx_Warps.Items, ({lvi}), dicGroups})
+                              {CArea, ManagedWarps, ({newManagedWarp}), ListViewEx_Warps.Items, ({lvi}), dicGroups})
             End If
         End Sub
 
         Friend Function CalculateWarpCountInLevel() As Integer
             Dim count As Integer = 0
-            For Each a As LevelArea In cLevel.Areas
+            For Each a As LevelArea In CLevel.Areas
                 count += a.Warps.Where(Function(n) ({LevelscriptCommandTypes.PaintingWarp, LevelscriptCommandTypes.ConnectedWarp}).Contains(n.CommandType)).Count
                 count += a.WarpsForGame.Concat(a.Warps).Count
             Next
@@ -2201,7 +2201,7 @@ Namespace LevelEditor
 
         Friend Function GetNextUnusedWarpID() As Byte
             Dim forbitten As New List(Of Byte)
-            For Each cmd As LevelscriptCommand In cArea.WarpsForGame.Concat(cArea.Warps)
+            For Each cmd As LevelscriptCommand In CArea.WarpsForGame.Concat(CArea.Warps)
                 forbitten.Add(clWarp.GetWarpID(cmd))
             Next
 
@@ -2233,8 +2233,8 @@ Namespace LevelEditor
                         Dim cmd As LevelscriptCommand = mwarp.Command
                         Dim lvg As ListViewGroup = curItem.Group
 
-                        Dim cmdIndex As Integer = cArea.Warps.IndexOf(cmd)
-                        Dim mwarpIndex As Integer = managedWarps.IndexOf(mwarp)
+                        Dim cmdIndex As Integer = CArea.Warps.IndexOf(cmd)
+                        Dim mwarpIndex As Integer = ManagedWarps.IndexOf(mwarp)
 
                         removedWarps.Add(mwarpIndex, mwarp)
                         removedlvis.Add(index, curItem)
@@ -2245,10 +2245,10 @@ Namespace LevelEditor
                 Next
 
                 For Each kvp As KeyValuePair(Of Integer, IManagedLevelscriptCommand) In removedWarps.OrderByDescending(Function(n) n.Key)
-                    managedWarps.Remove(kvp.Value)
+                    ManagedWarps.Remove(kvp.Value)
                 Next
                 For Each kvp As KeyValuePair(Of Integer, LevelscriptCommand) In removedCmds.OrderBy(Function(n) n.Key)
-                    cArea.Warps.Remove(kvp.Value)
+                    CArea.Warps.Remove(kvp.Value)
                 Next
                 For Each kvp As KeyValuePair(Of Integer, ListViewItem) In removedlvis.OrderBy(Function(n) n.Key)
                     ListViewEx_Warps.Items.Remove(kvp.Value)
@@ -2257,7 +2257,7 @@ Namespace LevelEditor
                 'Store History Point
                 StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes("InsertWarps"),
                               AreaEditorHistoryFunctions.Methodes("RemoveAtWarps"),
-                              {cArea, managedWarps, ListViewEx_Warps.Items, removedWarps, removedlvis, removedCmds, dicGroups})
+                              {CArea, ManagedWarps, ListViewEx_Warps.Items, removedWarps, removedlvis, removedCmds, dicGroups})
 
             End If
         End Sub
@@ -2283,10 +2283,10 @@ Namespace LevelEditor
                 End If
 
                 If Not err Then
-                    PatchClass.Open(rommgr.GetBinaryRom(FileAccess.ReadWrite))
+                    PatchClass.Open(Rommgr.GetBinaryRom(FileAccess.ReadWrite))
                     PatchClass.SetPauseMenuWarp(lid, aid, wid)
                     PatchClass.Close()
-                    PatchClass.UpdateChecksum(rommgr.RomFile)
+                    PatchClass.UpdateChecksum(Rommgr.RomFile)
 
                     ShowToadnotifiaction(Panel_GLControl, "Pause Menu Warp setted successfully", eToastGlowColor.Green)
                 Else
@@ -2488,21 +2488,21 @@ Namespace LevelEditor
             Dim ts As Collision.Triangle() = {f1, f2}
 
             'Add vertices
-            cArea.AreaModel.Collision.Mesh.Vertices.AddRange(vs)
+            CArea.AreaModel.Collision.Mesh.Vertices.AddRange(vs)
 
             'Add faces
-            cArea.AreaModel.Collision.Mesh.Triangles.AddRange(ts)
+            CArea.AreaModel.Collision.Mesh.Triangles.AddRange(ts)
 
             'Store history point
             StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes(NameOf(AreaEditorHistoryFunctions.RemoveFromCollision)),
                               AreaEditorHistoryFunctions.Methodes(NameOf(AreaEditorHistoryFunctions.AddToCollision)),
-                              {Me, cArea.AreaModel.Collision.Mesh.Vertices, vs, cArea.AreaModel.Collision.Mesh.Triangles, ts})
+                              {Me, CArea.AreaModel.Collision.Mesh.Vertices, vs, CArea.AreaModel.Collision.Mesh.Triangles, ts})
 
             maps.ReloadCollisionInOpenGL()
         End Sub
 
         Friend Function IsVertexUsedInSM64Collision(v As Collision.Vertex) As Boolean
-            For Each t As Collision.Triangle In cArea.AreaModel.Collision.Mesh.Triangles
+            For Each t As Collision.Triangle In CArea.AreaModel.Collision.Mesh.Triangles
                 For Each vv As Collision.Vertex In t.Vertices
                     If vv Is v Then
                         Return True
@@ -2517,10 +2517,10 @@ Namespace LevelEditor
             Dim ts As New List(Of Collision.Triangle)
 
             'Remove faces
-            For Each t As Collision.Triangle In cArea.AreaModel.Collision.Mesh.Triangles.ToArray
+            For Each t As Collision.Triangle In CArea.AreaModel.Collision.Mesh.Triangles.ToArray
                 If t.CollisionType = colType Then
                     ts.Add(t)
-                    cArea.AreaModel.Collision.Mesh.Triangles.Remove(t)
+                    CArea.AreaModel.Collision.Mesh.Triangles.Remove(t)
                 End If
             Next
 
@@ -2529,7 +2529,7 @@ Namespace LevelEditor
                 For Each v As Collision.Vertex In t.Vertices
                     If Not IsVertexUsedInSM64Collision(v) Then
                         vs.Add(v)
-                        cArea.AreaModel.Collision.Mesh.Vertices.Remove(v)
+                        CArea.AreaModel.Collision.Mesh.Vertices.Remove(v)
                     End If
                 Next
             Next
@@ -2538,7 +2538,7 @@ Namespace LevelEditor
             If ts.Any Then
                 StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes(NameOf(AreaEditorHistoryFunctions.AddToCollision)),
                                   AreaEditorHistoryFunctions.Methodes(NameOf(AreaEditorHistoryFunctions.RemoveFromCollision)),
-                                  {Me, cArea.AreaModel.Collision.Mesh.Vertices, vs.ToArray, cArea.AreaModel.Collision.Mesh.Triangles, ts.ToArray})
+                                  {Me, CArea.AreaModel.Collision.Mesh.Vertices, vs.ToArray, CArea.AreaModel.Collision.Mesh.Triangles, ts.ToArray})
             End If
 
             maps.ReloadCollisionInOpenGL()
@@ -2575,7 +2575,7 @@ Namespace LevelEditor
 
             'Read Textures
             Dim catOtherTextures As New TextureEditor.TextureCategory With {.Name = "Other Textures"}
-            Dim data = rommgr.GetBinaryRom(FileAccess.Read)
+            Dim data = Rommgr.GetBinaryRom(FileAccess.Read)
             Dim alreadyLoadedSegs As New Dictionary(Of Byte, SM64Lib.SegmentedBank)
             Dim alreadyLoadedLevelscripts As New List(Of Integer)
 
@@ -2606,7 +2606,7 @@ Namespace LevelEditor
                                 Case Else
                                     endcmd = LevelscriptCommandTypes.EndOfLevel
                             End Select
-                            script.Read(rommgr, loadLvlscript, endcmd, alreadyLoadedSegs, False)
+                            script.Read(Rommgr, loadLvlscript, endcmd, alreadyLoadedSegs, False)
                             alreadyLoadedLevelscripts.Add(loadLvlscript)
                         End If
                         If alreadyLoadedSegs.ContainsKey(bankID) Then
@@ -2614,7 +2614,7 @@ Namespace LevelEditor
                         End If
                     End If
                     If seg Is Nothing Then
-                        seg = rommgr.GetSegBank(bankID)
+                        seg = Rommgr.GetSegBank(bankID)
                     End If
 
                     'Read texture data
@@ -2664,11 +2664,11 @@ Namespace LevelEditor
             End If
 
             'Add all other textures
-            If objectModels.Any Then
+            If ObjectModels.Any Then
                 Dim block As New TextureEditor.TextureBlock
                 block.Name = "Object Models"
 
-                For Each kvpp In objectModels
+                For Each kvpp In ObjectModels
                     For Each kvp In kvpp.Value.Model.Materials
                         If kvp.Value.Image IsNot Nothing Then
                             block.Textures.Add(kvp.Value)
@@ -2696,7 +2696,7 @@ Namespace LevelEditor
             Dim dic As Dictionary(Of Material, Image) = maps.TakeSnapshotOfCurrentModelTextures()
 
             'Open Texture Editor
-            Dim frm As New TextureEditor(rommgr, otherTextures_Categories)
+            Dim frm As New TextureEditor(Rommgr, otherTextures_Categories)
 
             'Update textures
             AddHandler frm.TextureReplaced, Sub()
