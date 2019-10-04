@@ -75,7 +75,8 @@ Namespace Global.SM64Lib
             Get
                 Return MusicList.NeedToSave OrElse
                     myTextGroups.Where(Function(n) n IsNot Nothing AndAlso n.NeedToSave).Count > 0 OrElse
-                    Levels.NeedToSave
+                    Levels.NeedToSave OrElse
+                    GlobalObjectBank.NeedToSave
             End Get
         End Property
 
@@ -220,8 +221,8 @@ Namespace Global.SM64Lib
                 HexRoundUp2(lastpos)
 
                 'Global Object Bank
-                'SaveGlobalObjectBank(lastpos)
-                'HexRoundUp2(lastpos)
+                SaveGlobalObjectBank(lastpos)
+                HexRoundUp2(lastpos)
 
                 'Levels
                 SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then

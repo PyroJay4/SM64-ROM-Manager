@@ -10,6 +10,8 @@ Namespace Global.SM64Lib.ObjectBanks
     Public Class CustomObjectBank
 
         Public ReadOnly Property Objects As New List(Of CustomObject)
+        Public ReadOnly Property CurSeg As SegmentedBank = Nothing
+        Public Property NeedToSave As Boolean = False
 
         Public Function WriteToSeg(bankID As Byte)
             Dim segStream As New MemoryStream
@@ -57,6 +59,8 @@ Namespace Global.SM64Lib.ObjectBanks
             lvlScript.Add(New LevelscriptCommand("07 04 00 00"))
             lvlScript.Write(data, 0)
 
+            _CurSeg = seg
+            _NeedToSave = False
             Return seg
         End Function
 
@@ -69,6 +73,7 @@ Namespace Global.SM64Lib.ObjectBanks
             Dim data As BinaryData
             Dim lvlscript As New Levelscript
 
+            _CurSeg = seg
             s = seg.ReadDataIfNull(rommgr)
             data = New BinaryStreamData(s)
 
