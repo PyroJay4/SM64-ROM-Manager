@@ -475,16 +475,15 @@ Namespace Global.SM64Lib
             seg.RomStart = fs.ReadInt32
             seg.RomEnd = fs.ReadInt32
 
+            'Make new Object Bank
+            GlobalObjectBank = New CustomObjectBank
+
             If seg.RomStart <> &H1010101 AndAlso seg.RomStart > -1 Then
                 'Set Segmented Bank
                 SetSegBank(seg)
 
                 'Load Object Bank
-                GlobalObjectBank = New CustomObjectBank
                 GlobalObjectBank.ReadFromSeg(Me, seg)
-            Else
-                'Set Object Bank to Null
-                GlobalObjectBank = Nothing
             End If
 
             fs.Close()
