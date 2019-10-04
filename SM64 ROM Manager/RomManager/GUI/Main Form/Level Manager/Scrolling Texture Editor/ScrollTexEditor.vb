@@ -9,6 +9,7 @@ Public Class ScrollTexEditor
 
     Public Event ScrollTexAdded As EventHandler
     Public Event ScrollTexRemoved As EventHandler
+    Public Event ScrollTexChanged As EventHandler
 
     Private cArea As LevelArea
 
@@ -94,6 +95,7 @@ Public Class ScrollTexEditor
     Private Sub AdvPropertyGrid1_PropertyValueChanged(sender As Object, e As PropertyChangedEventArgs) Handles AdvPropertyGrid1.PropertyValueChanged
         UpdateAllListViewItems()
         AdvPropertyGrid1.RefreshPropertyValues()
+        RaiseEvent ScrollTexChanged(Me, New EventArgs)
     End Sub
 
     Private Sub LoadScrollTexts()

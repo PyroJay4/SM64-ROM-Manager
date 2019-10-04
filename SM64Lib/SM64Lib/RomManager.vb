@@ -75,6 +75,7 @@ Namespace Global.SM64Lib
             Get
                 Return MusicList.NeedToSave OrElse
                     myTextGroups.Where(Function(n) n IsNot Nothing AndAlso n.NeedToSave).Count > 0 OrElse
+                    levelIDsToReset.Any OrElse
                     Levels.NeedToSave
             End Get
         End Property
