@@ -124,13 +124,13 @@
     <value>This ROM was modified by SM64 Editor and isn't compatible with SM64 ROM Manager.</value>
   </data>
   <data name="MsgBox_BankSizeChangedSuccess" xml:space="preserve">
-    <value>Successfully changed the size of Bank 0x19.</value>
+    <value>Successfully changed the size of bank 0x19.</value>
   </data>
   <data name="MsgBox_BankSizeChangedSuccess_Title" xml:space="preserve">
     <value>Size changed</value>
   </data>
   <data name="MsgBox_ConvertToMidi_Failed" xml:space="preserve">
-    <value>An error happened while converting .m64 to .midi!</value>
+    <value>An error occurred while converting .m64 to .midi!</value>
   </data>
   <data name="MsgBox_ConvertToMidi_Failed_Titel" xml:space="preserve">
     <value>M64 to MIDI failed</value>
@@ -172,7 +172,7 @@
     <value>Limit reached</value>
   </data>
   <data name="MsgBox_MaxCountAreasReached" xml:space="preserve">
-    <value>The maximum amount of areas per Level is 8.</value>
+    <value>The maximum amount of areas a level can have is 8.</value>
   </data>
   <data name="MsgBox_MaxCountAreasReached_Title" xml:space="preserve">
     <value>Maximum reached</value>
@@ -208,7 +208,7 @@
     <value>ROM deleted</value>
   </data>
   <data name="MsgBox_TextsOverLimit" xml:space="preserve">
-    <value>Your text exceeds the character limit! Please reduce it before saving ROM.</value>
+    <value>Your text exceeds the character limit! Please shorten it before saving the ROM.</value>
   </data>
   <data name="MsgBox_TextsOverLimit_Title" xml:space="preserve">
     <value>Character limit exceeded</value>
@@ -226,7 +226,7 @@
     <value>Unsaved changes</value>
   </data>
   <data name="MsgBox_UpdatePatchesAvaiable" xml:space="preserve">
-    <value>There are updated patches available for this ROM, which provide improvements and/or new features.&lt;br/&gt;It is &lt;u&gt;heighly recommended&lt;/u&gt; to patch them.&lt;br/&gt;&lt;br/&gt;Do you want to patch them now?</value>
+    <value>There are updated patches available for this ROM, which provide improvements and/or new features.&lt;br/&gt;It is &lt;u&gt;highly recommended&lt;/u&gt; to apply them.&lt;br/&gt;&lt;br/&gt;Do you want to apply the patches now?</value>
   </data>
   <data name="MsgBox_UpdatePatchesAvaiable_Title" xml:space="preserve">
     <value>New patches available</value>

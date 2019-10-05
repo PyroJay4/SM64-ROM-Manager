@@ -437,4 +437,8 @@ Public Class MainForm
         Controller.OpenTextProfileEditor()
     End Sub
 
+    Private Sub ButtonItem18_Click(sender As Object, e As EventArgs) Handles ButtonItem18.Click
+        Controller.OpenGlobalObjectBankManager()
+    End Sub
+
 End Class

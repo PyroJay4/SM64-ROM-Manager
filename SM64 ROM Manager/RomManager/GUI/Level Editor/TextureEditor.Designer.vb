@@ -26,7 +26,7 @@ Namespace LevelEditor
         Private Sub InitializeComponent()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TextureEditor))
             Me.Panel1 = New System.Windows.Forms.Panel()
-            Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+            Me.FlowLayoutPanel_Textures = New System.Windows.Forms.FlowLayoutPanel()
             Me.Panel4 = New System.Windows.Forms.Panel()
             Me.SideBar1 = New DevComponents.DotNetBar.SideBar()
             Me.Panel2 = New System.Windows.Forms.Panel()
@@ -51,7 +51,7 @@ Namespace LevelEditor
             'Panel1
             '
             Me.Panel1.BackColor = System.Drawing.Color.Transparent
-            Me.Panel1.Controls.Add(Me.FlowLayoutPanel1)
+            Me.Panel1.Controls.Add(Me.FlowLayoutPanel_Textures)
             Me.Panel1.Controls.Add(Me.Panel4)
             Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
             Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -61,12 +61,12 @@ Namespace LevelEditor
             '
             'FlowLayoutPanel1
             '
-            Me.FlowLayoutPanel1.AutoScroll = True
-            Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.FlowLayoutPanel1.Location = New System.Drawing.Point(200, 0)
-            Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-            Me.FlowLayoutPanel1.Size = New System.Drawing.Size(484, 561)
-            Me.FlowLayoutPanel1.TabIndex = 6
+            Me.FlowLayoutPanel_Textures.AutoScroll = True
+            Me.FlowLayoutPanel_Textures.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.FlowLayoutPanel_Textures.Location = New System.Drawing.Point(200, 0)
+            Me.FlowLayoutPanel_Textures.Name = "FlowLayoutPanel1"
+            Me.FlowLayoutPanel_Textures.Size = New System.Drawing.Size(484, 561)
+            Me.FlowLayoutPanel_Textures.TabIndex = 6
             '
             'Panel4
             '
@@ -209,7 +209,7 @@ Namespace LevelEditor
 
         Friend WithEvents Panel1 As Panel
         Friend WithEvents SideBar1 As DevComponents.DotNetBar.SideBar
-        Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+        Friend WithEvents FlowLayoutPanel_Textures As FlowLayoutPanel
         Friend WithEvents Highlighter1 As DevComponents.DotNetBar.Validator.Highlighter
         Friend WithEvents Panel4 As Panel
         Friend WithEvents AdvPropertyGrid1 As DevComponents.DotNetBar.AdvPropertyGrid

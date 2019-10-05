@@ -136,7 +136,7 @@ Public Class TweakScriptEditor
             Case ScriptType.CSharp
                 CheckBoxX_CSharpScript.Checked = True
                 CodeEditor.Text =
-        "using System;
+                   "using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -156,7 +156,7 @@ class Script
             Case ScriptType.VisualBasic
                 CheckBoxX_VBScript.Checked = True
                 CodeEditor.Text =
-        "Imports Microsoft.VisualBasic
+                   "Imports Microsoft.VisualBasic
 Imports System
 Imports System.Collections.Generic
 Imports System.IO
@@ -195,7 +195,7 @@ End Module
 
     Private Sub LoadFromFile()
         Dim ofd As New OpenFileDialog
-        ofd.Filter = "Alls supported files (*.txt, *.vb, *.cs)|*.txt;*.vb;*.cs|Textfile (*.txt)|*.txt|VB code file (*.vb)|*.vb|C# code file(*.cs)|*.cs"
+        ofd.Filter = "All supported files (*.txt, *.vb, *.cs)|*.txt;*.vb;*.cs|Text File (*.txt)|*.txt|VB code file (*.vb)|*.vb|C# Code File(*.cs)|*.cs"
 
         If ofd.ShowDialog = DialogResult.OK Then
             Select Case IO.Path.GetExtension(ofd.FileName).ToLower
@@ -220,10 +220,10 @@ End Module
         Dim title As String
 
         If res.Errors.HasErrors Then
-            title = "Script has Errors"
+            title = "Script contains errors"
             icon = eTaskDialogIcon.Delete
         Else
-            title = "Script is fine"
+            title = "Script is OK"
             If res.Errors.HasWarnings Then
                 icon = eTaskDialogIcon.Exclamation
             Else
@@ -295,7 +295,7 @@ End Module
 
     Private Sub TweakScriptEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If Not {CloseReason.ApplicationExitCall, CloseReason.WindowsShutDown, CloseReason.TaskManagerClosing}.Contains(e.CloseReason) Then
-            Select Case MessageBoxEx.Show("Do you want to save changes?", "Save", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+            Select Case MessageBoxEx.Show("Do you want to save your changes?", "Save changes?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
                 Case DialogResult.Yes
                     SaveAllData()
                 Case DialogResult.Cancel

@@ -117,16 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MsgBox_Experimental3DCoinsRemove" xml:space="preserve">
-    <value>Remove 3D Coins is experimental and can cause problems with custom 3D Coins. Are you sure you want to continue?</value>
-  </data>
-  <data name="MsgBox_Experimental3DCoinsRemove_Titel" xml:space="preserve">
-    <value>Remove 3D Coins</value>
-  </data>
-  <data name="Notify_3DCoinsPatchesSuccess" xml:space="preserve">
-    <value>3D Coins has been patched successfully!</value>
-  </data>
-  <data name="Notify_3DCoinsRemovedSuccess" xml:space="preserve">
-    <value>3D Coins has been removed successfully!</value>
-  </data>
 </root>

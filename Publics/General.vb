@@ -24,7 +24,19 @@ Public Module General
 
     Public ReadOnly Property MyDataPath As String
         Get
-            Return Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly.Location), "Data")
+            Static p As String = String.Empty
+
+            If String.IsNullOrEmpty(p) Then
+                p = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly.Location), "Data")
+            End If
+
+            Return p
+        End Get
+    End Property
+
+    Public ReadOnly Property IsDebugging As Boolean
+        Get
+            Return Debugger.IsAttached
         End Get
     End Property
 

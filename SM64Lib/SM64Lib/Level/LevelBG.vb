@@ -2,6 +2,7 @@
 Imports System.IO
 Imports N64Graphics
 Imports SM64Lib.Data
+Imports SM64Lib.Model.Fast3D
 
 Namespace Global.SM64Lib.Levels
 

@@ -89,7 +89,7 @@ Public Class TweakViewer
             LabelX_Description.Text = patch.Description
             SuperTooltip1.SetSuperTooltip(LabelX_Description, New SuperTooltipInfo("", "", patch.Description, Nothing, Nothing, eTooltipColor.Default, False, False, Nothing))
         Else
-            LabelX_Description.Text = "(No description avaiable.)"
+            LabelX_Description.Text = "(No description available.)"
             SuperTooltip1.SetSuperTooltip(LabelX_Description, Nothing)
         End If
 
@@ -100,14 +100,14 @@ Public Class TweakViewer
         ComboBoxEx_Scripts.Items.Clear()
 
         LabelX_PatchName.Text = $"Name: {patch.Name}"
-        LabelX_Description.Text = If(String.IsNullOrEmpty(patch.Name), "No description avaiable.", patch.Description)
+        LabelX_Description.Text = If(String.IsNullOrEmpty(patch.Name), "No description available.", patch.Description)
 
         For Each script As PatchScript In patch.Scripts
             Dim item As New ComboItem
             If Not String.IsNullOrEmpty(script.Name) Then
                 item.Text = script.Name
             Else
-                item.Text = "Unnamed"
+                item.Text = "Untitled"
             End If
             item.Tag = script
             ComboBoxEx_Scripts.Items.Add(item)
@@ -279,7 +279,7 @@ Public Class TweakViewer
         Dim btnItem As ButtonItem = ItemListBox1.SelectedItem
         Dim patch As PatchProfile = btnItem?.Tag
 
-        If patch IsNot Nothing AndAlso MessageBoxEx.Show(Me, "Are you sure to remove this Tweak? You would not be able to restore it.", "Remove Tweak", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+        If patch IsNot Nothing AndAlso MessageBoxEx.Show(Me, "Are you sure to remove this tweak? You will not be able to recover it.", "Remove Tweak", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             Flyout1.Close()
             ItemListBox1.Items.Remove(btnItem)
             ItemListBox1.Refresh()
@@ -329,7 +329,7 @@ Public Class TweakViewer
                 If Not String.IsNullOrEmpty(script.Name) Then
                     ci.Text = script.Name
                 Else
-                    ci.Text = "Unnamed"
+                    ci.Text = "Untitled"
                 End If
             End If
 
@@ -358,7 +358,7 @@ Public Class TweakViewer
             MessageBoxEx.Show(owner, "Patched successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             RaiseEvent TweakFailedApply()
-            MessageBoxEx.Show(owner, "Error at executing the script. It probably has errors.", "Script Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBoxEx.Show(owner, "Error while executing the script. It probably contains errors.", "Script Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 

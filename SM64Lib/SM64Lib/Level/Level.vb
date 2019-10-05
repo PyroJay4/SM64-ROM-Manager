@@ -149,30 +149,30 @@ Namespace Global.SM64Lib.Levels
         End Function
 
         Public Sub ChangeObjectBank(BankEntries As ObjectBank0x0C)
-            ChangeObjectBank(1, CInt(BankEntries) - 1, CInt(ObjectBank0x0C) - 1)
+            ChangeObjectBank(1, BankEntries - 1, ObjectBank0x0C - 1)
             ObjectBank0x0C = BankEntries
         End Sub
 
         Public Function GetObjectBank0x0C() As ObjectBank0x0C
-            Return CType(GetObjectBank(1) + 1, ObjectBank0x0C)
+            Return GetObjectBank(1) + 1
         End Function
 
         Public Sub ChangeObjectBank(BankEntries As ObjectBank0x0D)
-            ChangeObjectBank(2, CInt(BankEntries) - 1, CInt(ObjectBank0x0D) - 1)
+            ChangeObjectBank(2, BankEntries - 1, ObjectBank0x0D - 1)
             ObjectBank0x0D = BankEntries
         End Sub
 
         Public Function GetObjectBank0x0D() As ObjectBank0x0D
-            Return CType(GetObjectBank(2) + 1, ObjectBank0x0D)
+            Return GetObjectBank(2) + 1
         End Function
 
         Public Sub ChangeObjectBank(BankEntries As ObjectBank0x0E)
-            ChangeObjectBank(3, CInt(BankEntries) - 1, CInt(ObjectBank0x0E) - 1)
+            ChangeObjectBank(3, BankEntries - 1, ObjectBank0x0E - 1)
             ObjectBank0x0E = BankEntries
         End Sub
 
         Public Function GetObjectBank0x0E() As ObjectBank0x0E
-            Return CType(GetObjectBank(3) + 1, ObjectBank0x0E)
+            Return GetObjectBank(3) + 1
         End Function
 
         Private Sub ChangeObjectBank(BankIndex As Integer, NewEntryIndex As Integer, OldEntryIndex As Integer)

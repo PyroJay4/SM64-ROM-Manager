@@ -29,15 +29,15 @@ Partial Class MainForm
         Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
         Me.tabGeneral = New SM64_ROM_Manager.Tab_General()
         Me.TabItem_General = New DevComponents.DotNetBar.TabItem(Me.components)
+        Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.tabLevelManager = New SM64_ROM_Manager.Tab_LevelManager()
+        Me.TabItem_LevelManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel3 = New DevComponents.DotNetBar.TabControlPanel()
         Me.tabTextManager = New SM64_ROM_Manager.Tab_TextManager()
         Me.TabItem_TextManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel4 = New DevComponents.DotNetBar.TabControlPanel()
         Me.tabMusicManager = New SM64_ROM_Manager.Tab_MusicManager()
         Me.TabItem_MusicManager = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.tabLevelManager = New SM64_ROM_Manager.Tab_LevelManager()
-        Me.TabItem_LevelManager = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.Bar2 = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
@@ -57,6 +57,7 @@ Partial Class MainForm
         Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem15 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem16 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem18 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem22 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
@@ -82,9 +83,9 @@ Partial Class MainForm
         CType(Me.TabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabControlPanel1.SuspendLayout()
+        Me.TabControlPanel2.SuspendLayout()
         Me.TabControlPanel3.SuspendLayout()
         Me.TabControlPanel4.SuspendLayout()
-        Me.TabControlPanel2.SuspendLayout()
         CType(Me.Bar2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -102,9 +103,9 @@ Partial Class MainForm
         Me.TabControl1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControl1.CanReorderTabs = False
         Me.TabControl1.Controls.Add(Me.TabControlPanel1)
+        Me.TabControl1.Controls.Add(Me.TabControlPanel2)
         Me.TabControl1.Controls.Add(Me.TabControlPanel3)
         Me.TabControl1.Controls.Add(Me.TabControlPanel4)
-        Me.TabControl1.Controls.Add(Me.TabControlPanel2)
         Me.TabControl1.ForeColor = System.Drawing.Color.Black
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
@@ -143,6 +144,34 @@ Partial Class MainForm
         Me.TabItem_General.AttachedControl = Me.TabControlPanel1
         Me.TabItem_General.Name = "TabItem_General"
         resources.ApplyResources(Me.TabItem_General, "TabItem_General")
+        '
+        'TabControlPanel2
+        '
+        Me.TabControlPanel2.Controls.Add(Me.tabLevelManager)
+        Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
+        Me.TabControlPanel2.Name = "TabControlPanel2"
+        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+        Me.TabControlPanel2.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+        Me.TabControlPanel2.Style.GradientAngle = 90
+        Me.TabControlPanel2.TabItem = Me.TabItem_LevelManager
+        '
+        'tabLevelManager
+        '
+        resources.ApplyResources(Me.tabLevelManager, "tabLevelManager")
+        Me.tabLevelManager.BackColor = System.Drawing.Color.White
+        Me.tabLevelManager.Controller = Nothing
+        Me.tabLevelManager.Name = "tabLevelManager"
+        '
+        'TabItem_LevelManager
+        '
+        Me.TabItem_LevelManager.AttachedControl = Me.TabControlPanel2
+        Me.TabItem_LevelManager.Name = "TabItem_LevelManager"
+        resources.ApplyResources(Me.TabItem_LevelManager, "TabItem_LevelManager")
         '
         'TabControlPanel3
         '
@@ -199,34 +228,6 @@ Partial Class MainForm
         Me.TabItem_MusicManager.AttachedControl = Me.TabControlPanel4
         Me.TabItem_MusicManager.Name = "TabItem_MusicManager"
         resources.ApplyResources(Me.TabItem_MusicManager, "TabItem_MusicManager")
-        '
-        'TabControlPanel2
-        '
-        Me.TabControlPanel2.Controls.Add(Me.tabLevelManager)
-        Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
-        Me.TabControlPanel2.Name = "TabControlPanel2"
-        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-        Me.TabControlPanel2.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-        Me.TabControlPanel2.Style.GradientAngle = 90
-        Me.TabControlPanel2.TabItem = Me.TabItem_LevelManager
-        '
-        'tabLevelManager
-        '
-        resources.ApplyResources(Me.tabLevelManager, "tabLevelManager")
-        Me.tabLevelManager.BackColor = System.Drawing.Color.White
-        Me.tabLevelManager.Controller = Nothing
-        Me.tabLevelManager.Name = "tabLevelManager"
-        '
-        'TabItem_LevelManager
-        '
-        Me.TabItem_LevelManager.AttachedControl = Me.TabControlPanel2
-        Me.TabItem_LevelManager.Name = "TabItem_LevelManager"
-        resources.ApplyResources(Me.TabItem_LevelManager, "TabItem_LevelManager")
         '
         'Bar2
         '
@@ -290,7 +291,7 @@ Partial Class MainForm
         '
         Me.ButtonItem7.BeginGroup = True
         Me.ButtonItem7.Name = "ButtonItem7"
-        Me.ButtonItem7.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem2, Me.ButtonItem8, Me.ButtonItem10, Me.ButtonItem11, Me.LabelItem3, Me.ButtonItem_ModelImporter, Me.ButtonItem17, Me.ButtonItem_TrajectoryEditor, Me.ButtonItem14, Me.ButtonItem13, Me.ButtonItem15, Me.ButtonItem16})
+        Me.ButtonItem7.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem2, Me.ButtonItem8, Me.ButtonItem10, Me.ButtonItem11, Me.LabelItem3, Me.ButtonItem_ModelImporter, Me.ButtonItem17, Me.ButtonItem_TrajectoryEditor, Me.ButtonItem14, Me.ButtonItem13, Me.ButtonItem15, Me.ButtonItem16, Me.ButtonItem18})
         resources.ApplyResources(Me.ButtonItem7, "ButtonItem7")
         '
         'LabelItem2
@@ -364,6 +365,11 @@ Partial Class MainForm
         '
         Me.ButtonItem16.Name = "ButtonItem16"
         resources.ApplyResources(Me.ButtonItem16, "ButtonItem16")
+        '
+        'ButtonItem18
+        '
+        Me.ButtonItem18.Name = "ButtonItem18"
+        resources.ApplyResources(Me.ButtonItem18, "ButtonItem18")
         '
         'ButtonItem22
         '
@@ -553,9 +559,9 @@ Partial Class MainForm
         CType(Me.TabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
         Me.TabControlPanel1.ResumeLayout(False)
+        Me.TabControlPanel2.ResumeLayout(False)
         Me.TabControlPanel3.ResumeLayout(False)
         Me.TabControlPanel4.ResumeLayout(False)
-        Me.TabControlPanel2.ResumeLayout(False)
         CType(Me.Bar2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -618,4 +624,5 @@ Partial Class MainForm
     Friend WithEvents ButtonItem16 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents RibbonControl1 As DevComponents.DotNetBar.RibbonControl
     Friend WithEvents ButtonItem19 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem18 As DevComponents.DotNetBar.ButtonItem
 End Class

@@ -102,10 +102,11 @@ Partial Class ScriptDumper(Of TCmd, eTypes)
         Me.ClientSize = New System.Drawing.Size(998, 679)
         Me.Controls.Add(Me.ContextMenuBar1)
         Me.Controls.Add(Me.PanelEx_PaintingControl1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.Name = "ScriptDumper"
-        Me.Text = "ScriptDumper"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Script Editor"
+        Me.TopLeftCornerSize = 0
+        Me.TopRightCornerSize = 0
         CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

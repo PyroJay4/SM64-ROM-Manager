@@ -5,15 +5,17 @@ Imports DevComponents.Editors
 Imports N64Graphics
 Imports SM64_ROM_Manager.Publics
 Imports Pilz.S3DFileParser
+Imports SM64Lib.Model.Fast3D
 
 Public Class TextureGraphicFormatEditor
 
     Private LoadingTextures As Boolean = False
     Private obj3d As Object3D = Nothing
-    Public Property TextureFormatSettings As SM64Lib.Model.Fast3D.TextureFormatSettings = Nothing
+    Public Property TextureFormatSettings As TextureFormatSettings = Nothing
     Private loadingtexItemSettings As Boolean = False
     Private hasInit As Boolean = False
     Private colorImages As New List(Of Integer)
+    Private ReadOnly realTextures As New Dictionary(Of Integer, Image)
 
     Public Sub New(obj As Object3D)
         SuspendLayout()
@@ -68,23 +70,30 @@ Public Class TextureGraphicFormatEditor
         'Clear Items
         ListViewEx1.Items.Clear()
         colorImages.Clear()
+        realTextures.Clear()
 
         'Setup Imagelist
         imgList.ImageSize = New Size(64, 64)
         ListViewEx1.LargeImageList = imgList
 
         For Each mat As KeyValuePair(Of String, Material) In obj3d.Materials
-            Dim item As New ListViewItem
-            item.Text = mat.Key
-            item.ImageIndex = imgList.Images.Count
-            item.Tag = mat
+            Dim imageIndex As Integer = imgList.Images.Count
+            Dim item As New ListViewItem With {
+                .Text = mat.Key,
+                .ImageIndex = imageIndex,
+                .Tag = mat
+            }
+
             If mat.Value.Image IsNot Nothing Then
-                imgList.Images.Add(mat.Value.Image)
+                Dim bmp As Image = ResizeImage(mat.Value.Image, imgList.ImageSize, True, True)
+                realTextures.Add(imageIndex, mat.Value.Image)
+                imgList.Images.Add(bmp)
             Else
                 Dim img As Image = GetImageFromColor(mat.Value.Color, New Size(32, 32))
                 colorImages.Add(item.ImageIndex)
                 imgList.Images.Add(img)
             End If
+
             If firstItem Is Nothing Then firstItem = item
             ListViewEx1.Items.Add(item)
         Next
@@ -126,7 +135,7 @@ Public Class TextureGraphicFormatEditor
         If ListViewEx1.SelectedIndices.Count > 0 Then
             Dim curItem As ListViewItem = ListViewEx1.SelectedItems(0)
             Dim matName As String = curItem.Tag.Key
-            Dim curEntry As SM64Lib.Model.Fast3D.TextureFormatSettings.Entry = TextureFormatSettings.GetEntry(matName)
+            Dim curEntry As TextureFormatSettings.Entry = TextureFormatSettings.GetEntry(matName)
             Dim found As Boolean = False
 
             loadingtexItemSettings = True
@@ -140,7 +149,15 @@ Public Class TextureGraphicFormatEditor
             Next
 
             If curItem.ImageIndex > -1 Then
-                PictureBox1.Image = ListViewEx1.LargeImageList.Images(curItem.ImageIndex)
+                Dim realImg As Image
+
+                If realTextures.ContainsKey(curItem.ImageIndex) Then
+                    realImg = realTextures(curItem.ImageIndex)
+                Else
+                    realImg = ListViewEx1.LargeImageList.Images(curItem.ImageIndex)
+                End If
+
+                PictureBox1.Image = realImg
             Else
                 PictureBox1.Image = Nothing
                 LabelX1.Text = ""

@@ -645,7 +645,7 @@ Namespace SM64Convert
                         .R = LongToByte(Round(vertcol.R * &HFF)),
                         .G = LongToByte(Round(vertcol.G * &HFF)),
                         .B = LongToByte(Round(vertcol.B * &HFF)),
-                            .A = LongToByte(Round(vertcol.A * &HFF))
+                        .A = LongToByte(Round(vertcol.A * &HFF))
                     }
                     vertexColors.Add(vc)
                 Next
@@ -736,10 +736,15 @@ Namespace SM64Convert
                             final.Data(5) = vert.Z And &HFF
                             final.Data(6) = 0
                             final.Data(7) = 0
-                            final.Data(8) = (tnew.U >> 8) And &HFF
-                            final.Data(9) = tnew.U And &HFF
-                            final.Data(10) = (tnew.V >> 8) And &HFF
-                            final.Data(11) = tnew.V And &HFF
+
+                            Dim uInt, vInt As Integer
+                            uInt = Math.Round(tnew.U)
+                            vInt = Math.Round(tnew.V)
+                            final.Data(8) = (uInt >> 8) And &HFF
+                            final.Data(9) = uInt And &HFF
+                            final.Data(10) = (vInt >> 8) And &HFF
+                            final.Data(11) = vInt And &HFF
+
                             If vertcol IsNot Nothing Then
                                 final.Data(12) = vertcol.R
                                 final.Data(13) = vertcol.G
@@ -1109,16 +1114,18 @@ Namespace SM64Convert
 
             ImpF3D("B7 00 00 00 00 01 00 00")
         End Sub
+
         Private Sub ImpFogEnd()
             ImpF3D("BA 00 14 02 00 00 00 00")
             ImpF3D("B9 00 03 1D 00 44 30 78")
             ImpF3D("B6 00 00 00 00 01 00 00") 'B6 00 00 00 00 01 02 00 --> Smoothen Shading?
         End Sub
 
-        Private Function getTypeFromMaterial(mat As Material) As Byte
+        Private Function GetTypeFromMaterial(mat As Material) As Byte
             Return getTypeFromTexType(mat.TexType)
         End Function
-        Private Function getTypeFromTexType(texType As N64Codec, Optional advanced As Boolean = False) As Byte
+
+        Private Function GetTypeFromTexType(texType As N64Codec, Optional advanced As Boolean = False) As Byte
             Select Case texType
                 Case N64Codec.CI4 : Return If(advanced, &H50, &H40)
                 Case N64Codec.CI8 : Return If(advanced, &H50, &H48)
@@ -1133,7 +1140,7 @@ Namespace SM64Convert
             End Select
         End Function
 
-        Private Function bytesPerType(type As N64Codec) As Byte
+        Private Function BytesPerType(type As N64Codec) As Byte
             Select Case type
                 Case N64Codec.RGBA16 : Return 2
                 Case N64Codec.RGBA32 : Return 4
@@ -1143,14 +1150,14 @@ Namespace SM64Convert
             End Select
         End Function
 
-        Private Function getTexelIncrement(type As N64Codec) As Byte
+        Private Function GetTexelIncrement(type As N64Codec) As Byte
             Select Case type
                 Case N64Codec.I4, N64Codec.IA4 : Return 3
                 Case N64Codec.IA8, N64Codec.I8 : Return 1
                 Case Else : Return 0
             End Select
         End Function
-        Private Function getTexelShift(type As N64Codec) As Byte
+        Private Function GetTexelShift(type As N64Codec) As Byte
             Select Case type
                 Case N64Codec.I4, N64Codec.IA4, N64Codec.CI4 : Return 2
                 Case N64Codec.IA8, N64Codec.I8, N64Codec.CI8 : Return 1
@@ -1170,6 +1177,7 @@ Namespace SM64Convert
         End Sub
 
         Private Sub ImpCmdF5_Second(mat As Material, texWidth As UInteger, texHeight As UInteger)
+            'Create upper
             Dim type As Byte = getTypeFromTexType(mat.TexType)
             Dim lineScale As Single = 1.0F
             Dim bpt As Byte = bytesPerType(mat.TexType)
@@ -1186,9 +1194,11 @@ Namespace SM64Convert
 
             Dim line As UShort = CUShort(Math.Truncate(texWidth * lineScale)) And &H1FF
             Dim upper As UInteger = ((CUInt(type) << 16) Or (CUInt(line) << 8)) And &HFFFFFF
+
+            'Create lower (shift)
             Dim maskS As Byte = Math.Ceiling(Math.Log(texWidth, 2)) And &HF
             Dim maskT As Byte = Math.Ceiling(Math.Log(texHeight, 2)) And &HF
-            Dim lower As UInteger = ((CUInt(maskT) << 14) Or (CUInt(maskS) << 4)) And &HFFFFFF
+            Dim lower As UInteger = ((CUInt(maskT) << 14) Or (CUInt(maskS) << 4)) And &HFFFFFF '&HFFC3F0 for only shift
 
             If mat.EnableMirror Then
                 lower = lower Or &H40000    'T axis
@@ -1200,10 +1210,11 @@ Namespace SM64Convert
                 lower = lower Or &H200      'S axis
             End If
 
+            'Create Command
             ImpF3D($"F5 {Hex((upper >> 16) And &HFF)} {Hex((upper >> 8) And &HFF)} {Hex(upper And &HFF)} 00 {Hex((lower >> 16) And &HFF)} {Hex((lower >> 8) And &HFF)} {Hex(lower And &HFF)}")
         End Sub
 
-        Private Sub addCmdF3(mat As Material)
+        Private Sub AddCmdF3(mat As Material)
             Dim numTexels As UInteger = ((mat.TexWidth * mat.TexHeight + getTexelIncrement(mat.TexType)) >> getTexelShift(mat.TexType)) - 1
             Dim bpt As Integer = bytesPerType(mat.TexType)
             Dim tl As UInteger
@@ -1226,8 +1237,7 @@ Namespace SM64Convert
             Dim width As UShort = ((mat.TexWidth - 1) << 2) And &HFFF
             Dim height As UShort = ((mat.TexHeight - 1) << 2) And &HFFF
             Dim data As UInteger = (CInt(width) << 12) Or height
-            Dim cmd As String = ""
-            cmd = $"F2 00 00 00 00 {Hex((data >> 16) And &HFF)} {Hex((data >> 8) And &HFF)} {Hex(data And &HFF)}"
+            Dim cmd As String = $"F2 00 00 00 00 {Hex((data >> 16) And &HFF)} {Hex((data >> 8) And &HFF)} {Hex(data And &HFF)}"
             ImpF3D(cmd)
         End Sub
 
@@ -1537,7 +1547,7 @@ Namespace SM64Convert
 
                             ImpF3D("E7 00 00 00 00 00 00 00")
                             ImpF3D("B7 00 00 00 00 00 00 00")
-                            'ImpF3D("BB 00 00 01 FF FF FF FF")
+                            ImpF3D("BB 00 00 01 FF FF FF FF")
                             ImpF3D("E8 00 00 00 00 00 00 00")
                             ImpF3D("E6 00 00 00 00 00 00 00")
                             If settings.EnableFog Then ImpFogStart(False)
@@ -1547,7 +1557,7 @@ Namespace SM64Convert
 
                                 If isAutoLayer(mp.Material.SelectDisplaylist) Then
                                     If (mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency) AndAlso Not enableForcing Then Continue For
-                                ElseIf Not isLayerSolid(mp.Material.SelectDisplaylist) Then
+                                ElseIf Not isLayerSolid(mp.Material.SelectDisplaylist) OrElse mp.Material.SelectDisplaylist <> layerID Then
                                     If Not enableForcing Then Continue For
                                 End If
 
@@ -1630,7 +1640,7 @@ Namespace SM64Convert
                             ImpF3D("E7 00 00 00 00 00 00 00")
                             If settings.EnableFog Then ImpF3D("B9 00 02 01 00 00 00 00")
                             ImpF3D("B7 00 00 00 00 00 00 00")
-                            'ImpF3D("BB 00 00 01 FF FF FF FF")
+                            ImpF3D("BB 00 00 01 FF FF FF FF")
                             ImpF3D("E8 00 00 00 00 00 00 00")
                             ImpF3D("E6 00 00 00 00 00 00 00")
                             If settings.EnableFog Then ImpFogStart(True)
@@ -1640,7 +1650,7 @@ Namespace SM64Convert
 
                                 If isAutoLayer(mp.Material.SelectDisplaylist) Then
                                     If (Not mp.Material.HasTextureAlpha OrElse mp.Material.HasTransparency OrElse mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
-                                ElseIf Not isLayerAlpha(mp.Material.SelectDisplaylist) Then
+                                ElseIf Not isLayerAlpha(mp.Material.SelectDisplaylist) OrElse mp.Material.SelectDisplaylist <> layerID Then
                                     If Not enableForcing Then Continue For
                                 End If
 
@@ -1710,7 +1720,7 @@ Namespace SM64Convert
 
                             ImpF3D("E7 00 00 00 00 00 00 00")
                             ImpF3D("B7 00 00 00 00 00 00 00")
-                            'ImpF3D("BB 00 00 01 FF FF FF FF")
+                            ImpF3D("BB 00 00 01 FF FF FF FF")
                             ImpF3D("E8 00 00 00 00 00 00 00")
                             ImpF3D("E6 00 00 00 00 00 00 00")
 
@@ -1719,7 +1729,7 @@ Namespace SM64Convert
 
                                 If isAutoLayer(mp.Material.SelectDisplaylist) Then
                                     If Not mp.Material.HasTransparency OrElse (mp.EnableVertexColors AndAlso Not mp.EnableVertexAlpha) AndAlso Not enableForcing Then Continue For
-                                ElseIf Not isLayerTrans(mp.Material.SelectDisplaylist) Then
+                                ElseIf Not isLayerTrans(mp.Material.SelectDisplaylist) OrElse mp.Material.SelectDisplaylist <> layerID Then
                                     If Not enableForcing Then Continue For
                                 End If
 

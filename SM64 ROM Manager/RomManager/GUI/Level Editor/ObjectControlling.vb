@@ -22,7 +22,7 @@ Imports DevComponents.AdvTree
 Imports System.Timers
 Imports Newtonsoft.Json.Linq
 Imports SM64Lib.Data
-Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN.Camera
+Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN
 
 Namespace LevelEditor
 
@@ -50,6 +50,8 @@ Namespace LevelEditor
         Private moveCam_InOut_mouseDown As Boolean = False
 
         Private moveCam_strafe_mouseDown As Boolean = False
+
+        Public Property WasInOrbitMode As Boolean = False
 
         Public Sub New(main As Form_AreaEditor)
             Me.Main = main
@@ -100,9 +102,11 @@ Namespace LevelEditor
             Main.StoreObjectHistoryPoint(Main.SelectedObjects, NameOf(Managed3DObject.Position))
             moveObj_UpDown_mouseDown = True
         End Sub
+
         Public Sub PictureBox_ObjCntrWheel_MouseUp(sender As Object, e As MouseEventArgs)
             moveObj_UpDown_mouseDown = False
         End Sub
+
         Public Sub PictureBox_ObjCntrWheel_MouseMove(sender As Object, e As MouseEventArgs)
             If moveObj_UpDown_mouseDown Then
                 For mo_s_incr As Integer = 0 To Main.SelectedObjects.Length - 1
@@ -170,6 +174,7 @@ Namespace LevelEditor
 
             Main.ogl.UpdateOrbitCamera()
         End Sub
+
         Private Sub moveObjectXZ(obj As Managed3DObject, e As Drawing.Point, savedPos As Numerics.Vector3, forRotation As Boolean)
             Dim speedMult As Single = 30.0F
             Dim mx, my As Integer
@@ -215,14 +220,14 @@ Namespace LevelEditor
         End Sub
 
         Private Sub RotateObject(obj As Managed3DObject, val As Numerics.Vector3)
-            obj.Rotation = New Numerics.Vector3(keepDegreesWithin360(obj.Rotation.X + val.X),
-                                                keepDegreesWithin360(obj.Rotation.Y + val.Y),
-                                               keepDegreesWithin360(obj.Rotation.Z + val.Z))
+            obj.Rotation = New Numerics.Vector3(KeepDegreesWithin360(obj.Rotation.X + val.X),
+                                                KeepDegreesWithin360(obj.Rotation.Y + val.Y),
+                                               KeepDegreesWithin360(obj.Rotation.Z + val.Z))
         End Sub
         Private Sub SetObjectRotation(obj As Managed3DObject, rot As Numerics.Vector3)
-            obj.Rotation = New Numerics.Vector3(keepDegreesWithin360(rot.X),
-                                              keepDegreesWithin360(rot.Y),
-                                              keepDegreesWithin360(rot.Z))
+            obj.Rotation = New Numerics.Vector3(KeepDegreesWithin360(rot.X),
+                                              KeepDegreesWithin360(rot.Y),
+                                              KeepDegreesWithin360(rot.Z))
         End Sub
 
         Private Sub PictureBox_ObjRotWheel_MouseDown(sender As Object, e As MouseEventArgs)
@@ -318,9 +323,12 @@ Namespace LevelEditor
             End If
         End Sub
 
-        Private Sub Camera_NeedSelectedObject(e As NeedSelectedObjectEventArgs)
+        Private Sub Camera_NeedSelectedObject(e As Camera.NeedSelectedObjectEventArgs)
             If Main.SelectedObject IsNot Nothing Then
                 e.Points = Main.SelectedObjects
+            ElseIf Main.Camera.CamMode = CameraMode.ORBIT Then
+                Main.ogl.SetCameraMode(CameraMode.FLY)
+                _WasInOrbitMode = True
             End If
         End Sub
 
@@ -329,6 +337,7 @@ Namespace LevelEditor
                 Main.ogl.ChangeViewMode(1.048F)
             End If
         End Sub
+
         Private Sub CheckBoxItem_OrthoMode_CheckedChanged(sender As Object, e As CheckBoxChangeEventArgs)
             If sender.Checked Then
                 Main.ogl.ChangeViewMode(1.5708F)

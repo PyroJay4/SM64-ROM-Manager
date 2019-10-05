@@ -2,7 +2,7 @@
 
 '    Public Class RomConfig
 
-
+'        Public Property RomVersion As RomVersion
 
 '        Friend Sub New()
 '        End Sub

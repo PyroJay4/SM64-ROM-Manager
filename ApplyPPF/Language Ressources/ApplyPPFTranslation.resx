@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MsgBox_FileNotFound" xml:space="preserve">
-    <value>Some files are missing! Redownload the programm to solve this problem.</value>
+    <value>Some files are missing! You should redownload ROM Manager to solve the problem.</value>
   </data>
   <data name="MsgBox_FileNotFound_Title" xml:space="preserve">
     <value>Missing files</value>
   </data>
   <data name="MsgBox_Success" xml:space="preserve">
-    <value>Patch has been successfully applied!</value>
+    <value>The patch has been successfully applied!</value>
   </data>
   <data name="MsgBox_Success_Title" xml:space="preserve">
     <value>Done</value>
   </data>
   <data name="MsgBox_UnkownError" xml:space="preserve">
-    <value>An unknown error happend. Patch hasn't been applied.</value>
+    <value>An unknown error occurred. The patch has not been applied.</value>
   </data>
   <data name="MsgBox_UnkownError_Title" xml:space="preserve">
-    <value>Unkown Error</value>
+    <value>Unknown error</value>
   </data>
   <data name="Text_NoFileLoaded" xml:space="preserve">
     <value>No file loaded!</value>

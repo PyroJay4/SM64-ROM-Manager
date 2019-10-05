@@ -42,7 +42,7 @@ Namespace Global.SM64Lib
         Public ReadOnly Property IsSM64EditorMode As Boolean = False
         Public ReadOnly Property TextInfoProfile As Text.Profiles.TextProfileInfo
         Public ReadOnly Property MusicList As New MusicList
-        Public Property GlobalObjectBank As CustomObjectBank = Nothing
+        Public Property GlobalObjectBank As New CustomObjectBank
 
         ''' <summary>
         ''' Gets or sets the lastly used program version for this ROM.
@@ -75,6 +75,7 @@ Namespace Global.SM64Lib
             Get
                 Return MusicList.NeedToSave OrElse
                     myTextGroups.Where(Function(n) n IsNot Nothing AndAlso n.NeedToSave).Count > 0 OrElse
+                    levelIDsToReset.Any OrElse
                     Levels.NeedToSave
             End Get
         End Property
