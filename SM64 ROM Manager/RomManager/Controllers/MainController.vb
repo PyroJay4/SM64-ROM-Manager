@@ -149,6 +149,7 @@ Public Class MainController
         'Watch BinaryWatchers
         AddHandler BinaryData.AnyBinaryDataOpened, AddressOf HandlesBinaryDataOpened
         AddHandler BinaryData.AnyBinaryDataClosed, AddressOf HandlesBinaryDataClosed
+        AddHandler BinaryData.AnyBinaryDataDisposed, AddressOf ClearUpOpenBinaryDatasAndEnableRomWatcher
 
         'Updates
         Dim updateVersion As New UpdateVersion(Application.ProductVersion) With {
@@ -212,16 +213,19 @@ Public Class MainController
     Private Sub HandlesBinaryDataClosed(data As BinaryData)
         If openBinaryDatas.Contains(data) Then
             openBinaryDatas.Remove(data)
+            ClearUpOpenBinaryDatasAndEnableRomWatcher()
+        End If
+    End Sub
 
-            For Each d As BinaryData In openBinaryDatas.ToArray
-                If Not d.CanWrite Then
-                    openBinaryDatas.Remove(d)
-                End If
-            Next
-
-            If openBinaryDatas.Count = 0 Then
-                EnableRomWatcher()
+    Private Sub ClearUpOpenBinaryDatasAndEnableRomWatcher()
+        For Each d As BinaryData In openBinaryDatas.ToArray
+            If Not d.CanWrite Then
+                openBinaryDatas.Remove(d)
             End If
+        Next
+
+        If openBinaryDatas.Count = 0 Then
+            EnableRomWatcher()
         End If
     End Sub
 
