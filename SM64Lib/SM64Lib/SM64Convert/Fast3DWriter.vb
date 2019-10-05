@@ -645,7 +645,7 @@ Namespace SM64Convert
                         .R = LongToByte(Round(vertcol.R * &HFF)),
                         .G = LongToByte(Round(vertcol.G * &HFF)),
                         .B = LongToByte(Round(vertcol.B * &HFF)),
-                            .A = LongToByte(Round(vertcol.A * &HFF))
+                        .A = LongToByte(Round(vertcol.A * &HFF))
                     }
                     vertexColors.Add(vc)
                 Next
