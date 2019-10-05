@@ -2287,7 +2287,7 @@ Namespace LevelEditor
                     PatchClass.Close()
                     PatchClass.UpdateChecksum(rommgr.RomFile)
 
-                    ShowToadnotifiaction(Panel_GLControl, "Pause Menu Warp setted successfully", eToastGlowColor.Green)
+                    ShowToadnotifiaction(Panel_GLControl, "Pause Menu Warp set successfully", eToastGlowColor.Green)
                 Else
                     ShowToadnotifiaction(Panel_GLControl, "An error occurred while setting Pause Menu Warp", eToastGlowColor.Red)
                 End If

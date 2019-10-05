@@ -52,11 +52,11 @@ Namespace Global.SM64Lib.Patching
         End Sub
 
         Public Sub Open(s As Stream)
-            data = New BinaryStreamData(s)
+            Open(New BinaryStreamData(s))
         End Sub
 
         Public Sub Close()
-            data.BaseStream.Close()
+            data.Close()
         End Sub
 
 #End Region

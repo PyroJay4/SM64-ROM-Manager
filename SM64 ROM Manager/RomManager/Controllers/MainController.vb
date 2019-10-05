@@ -30,6 +30,7 @@ Imports SM64Lib.Levels.Script
 Imports System.Net.NetworkInformation
 Imports System.Net
 Imports System.Reflection
+Imports SM64Lib.Data
 
 Public Class MainController
 
@@ -85,6 +86,7 @@ Public Class MainController
     Private savingRom As Boolean = False
     Private hasRomChanged As Byte = 0
     Private WithEvents RomWatcher As FileSystemWatcher = Nothing
+    Private openBinaryDatas As New List(Of BinaryData)
 
     'P r o p e r t i e s
 
@@ -144,6 +146,10 @@ Public Class MainController
         'Do some default inits
         DoDefaultInitsAfterApplicationStartup()
 
+        'Watch BinaryWatchers
+        AddHandler BinaryData.AnyBinaryDataOpened, AddressOf HandlesBinaryDataOpened
+        AddHandler BinaryData.AnyBinaryDataClosed, AddressOf HandlesBinaryDataClosed
+
         'Updates
         Dim updateVersion As New UpdateVersion(Application.ProductVersion) With {
             .DevelopmentalStage = CInt(DevelopmentStage),
@@ -177,7 +183,6 @@ Public Class MainController
 
     Private Sub SetRomMgr(rommgr As RomManager)
         RomManager = rommgr
-        UpdateRomDate()
     End Sub
 
     Private Async Function CanAccessUpdateServer() As Task(Of Boolean)
@@ -197,16 +202,43 @@ Public Class MainController
         Return result
     End Function
 
+    Private Sub HandlesBinaryDataOpened(data As BinaryData)
+        If TypeOf data.BaseStream Is FileStream AndAlso data.CanWrite Then
+            openBinaryDatas.Add(data)
+            DisableRomWatcher()
+        End If
+    End Sub
+
+    Private Sub HandlesBinaryDataClosed(data As BinaryData)
+        If openBinaryDatas.Contains(data) Then
+            openBinaryDatas.Remove(data)
+
+            For Each d As BinaryData In openBinaryDatas.ToArray
+                If Not d.CanWrite Then
+                    openBinaryDatas.Remove(d)
+                End If
+            Next
+
+            If openBinaryDatas.Count = 0 Then
+                EnableRomWatcher()
+            End If
+        End If
+    End Sub
+
     Private Sub EnableRomWatcher()
-        RomWatcher.EnableRaisingEvents = True
+        If RomWatcher IsNot Nothing Then
+            RomWatcher.EnableRaisingEvents = True
+        End If
     End Sub
 
     Private Sub DisableRomWatcher()
-        RomWatcher.EnableRaisingEvents = False
+        If RomWatcher IsNot Nothing Then
+            RomWatcher.EnableRaisingEvents = False
+        End If
     End Sub
 
     Private Function IsRomWatcherEnabled() As Boolean
-        Return RomWatcher.EnableRaisingEvents
+        Return RomWatcher?.EnableRaisingEvents
     End Function
 
     'M a i n   F e a t u r e s
@@ -217,10 +249,6 @@ Public Class MainController
         If Directory.Exists(pluginsPath) Then
             PluginManager.LoadPlugins(pluginsPath)
         End If
-    End Sub
-
-    Public Sub UpdateRomDate()
-        lastRomChangedDate = Date.Now
     End Sub
 
     Public Sub SetOtherStatusInfos(text As String, foreColor As Color)
