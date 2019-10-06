@@ -519,7 +519,6 @@ Public Class Tab_LevelManager
 
         If index < 0 Then
             TabControl_LM_Area.Enabled = False
-            GroupBox_LM_Areas.Enabled = False
             Button_LM_AddArea.Enabled = False
             ButtonX_LM_LevelsMore.Enabled = False
             ListBoxAdv_LM_Areas.Items.Clear()
@@ -721,10 +720,19 @@ Public Class Tab_LevelManager
 
     Private Sub ListBoxAdv_LM_Levels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxAdv_LM_Levels.SelectedItemChanged, ListBoxAdv_LM_Levels.ItemRemoved
         LoadLevelSettings(CurrentLevelIndex)
+
+        If Not Button_LM_AddArea.Enabled Then
+            Button_LM_AddArea.Enabled = True
+        End If
     End Sub
 
     Private Sub ButtonItem19_Click(sender As Object, e As EventArgs) Handles ButtonItem19.Click
         Controller.RemoveLevel(CurrentLevelIndex)
+
+        If ListBoxAdv_LM_Levels.SelectedItem Is Nothing Then
+            Button_LM_AddArea.Enabled = False
+            Button_LM_AreaEditor.Enabled = False
+        End If
     End Sub
 
     Private Sub ButtonItem20_Click(sender As Object, e As EventArgs) Handles ButtonItem20.Click
