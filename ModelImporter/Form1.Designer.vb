@@ -58,11 +58,11 @@ Partial Class ModelImporter
         Me.LabelX_PatchName = New DevComponents.DotNetBar.LabelX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.ButtonX6 = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX4 = New DevComponents.DotNetBar.ButtonX()
         Me.Flyout1 = New DevComponents.DotNetBar.Controls.Flyout(Me.components)
-        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -189,9 +189,9 @@ Partial Class ModelImporter
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Location = New System.Drawing.Point(62, 12)
+        Me.LabelX1.Location = New System.Drawing.Point(49, 12)
         Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(119, 23)
+        Me.LabelX1.Size = New System.Drawing.Size(132, 23)
         Me.LabelX1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.LabelX1.SymbolSize = 12.0!
         Me.LabelX1.TabIndex = 0
@@ -203,11 +203,11 @@ Partial Class ModelImporter
         '
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Location = New System.Drawing.Point(12, 12)
+        Me.LabelX2.Location = New System.Drawing.Point(12, 16)
         Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(44, 23)
+        Me.LabelX2.Size = New System.Drawing.Size(31, 15)
         Me.LabelX2.TabIndex = 99
-        Me.LabelX2.Text = "Romfile:"
+        Me.LabelX2.Text = "ROM:"
         '
         'Line2
         '
@@ -368,7 +368,7 @@ Partial Class ModelImporter
         Me.LabelX6.Size = New System.Drawing.Size(90, 20)
         Me.LabelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.LabelX6.TabIndex = 112
-        Me.LabelX6.Text = "Geopointer:"
+        Me.LabelX6.Text = "Geo Pointer:"
         '
         'LabelX7
         '
@@ -382,7 +382,7 @@ Partial Class ModelImporter
         Me.LabelX7.Size = New System.Drawing.Size(90, 20)
         Me.LabelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.LabelX7.TabIndex = 113
-        Me.LabelX7.Text = "Collisionpointer:"
+        Me.LabelX7.Text = "Collision Pointer:"
         '
         'TextBoxX1
         '
@@ -595,6 +595,18 @@ Partial Class ModelImporter
         Me.ButtonX6.TabIndex = 44
         Me.ButtonX6.Text = "Edit Script"
         '
+        'ButtonItem1
+        '
+        Me.ButtonItem1.GlobalItem = False
+        Me.ButtonItem1.Name = "ButtonItem1"
+        Me.ButtonItem1.Text = "Script ""Before"""
+        '
+        'ButtonItem2
+        '
+        Me.ButtonItem2.GlobalItem = False
+        Me.ButtonItem2.Name = "ButtonItem2"
+        Me.ButtonItem2.Text = "Script ""After"""
+        '
         'ButtonX7
         '
         Me.ButtonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -634,18 +646,6 @@ Partial Class ModelImporter
         Me.Flyout1.DropShadow = False
         Me.Flyout1.TargetControl = Me.ComboBoxEx2
         '
-        'ButtonItem1
-        '
-        Me.ButtonItem1.GlobalItem = False
-        Me.ButtonItem1.Name = "ButtonItem1"
-        Me.ButtonItem1.Text = "Script ""Before"""
-        '
-        'ButtonItem2
-        '
-        Me.ButtonItem2.GlobalItem = False
-        Me.ButtonItem2.Name = "ButtonItem2"
-        Me.ButtonItem2.Text = "Script ""After"""
-        '
         'ModelImporter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -676,8 +676,6 @@ Partial Class ModelImporter
         Me.Controls.Add(Me.TextBoxX_RomAddr)
         Me.Controls.Add(Me.TextBoxX_MaxLength)
         Me.Controls.Add(Me.TextBoxX_BankAddr)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
