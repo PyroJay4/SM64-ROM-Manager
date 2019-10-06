@@ -531,7 +531,6 @@ Public Class Tab_LevelManager
                 ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
                 ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
                 ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
-                SwitchButton_EnableGlobalObjectBank.Value = info.enableGlobalOjectBank
                 SwitchButton_LM_ActSelector.Value = info.enableActSelector
                 SwitchButton_LM_HardcodedCameraSettings.Value = info.enableHardcodedCamera
 
@@ -548,6 +547,14 @@ Public Class Tab_LevelManager
                 If info.bgMode = 1 Then
                     PictureBox_BGImage.Image = info.bgImage
                 End If
+
+                'Load Levelsettings
+                ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
+                ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
+                ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
+                SwitchButton_EnableGlobalObjectBank.Value = info.enableGlobalOjectBank
+                SwitchButton_LM_ActSelector.Value = info.enableActSelector
+                SwitchButton_LM_HardcodedCameraSettings.Value = info.enableHardcodedCamera
 
                 Button_LM_AddArea.Enabled = info.areasCount <> 8
                 Controller.StatusText = String.Empty
