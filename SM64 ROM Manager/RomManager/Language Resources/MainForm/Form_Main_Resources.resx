@@ -232,7 +232,7 @@
     <value>New patches available</value>
   </data>
   <data name="Notify_ShouldLoadRomFirst" xml:space="preserve">
-    <value>You should load a ROM first.</value>
+    <value>You must open a ROM first!</value>
   </data>
   <data name="Status_CalculatingTextSpace" xml:space="preserve">
     <value>Calculating space...</value>
