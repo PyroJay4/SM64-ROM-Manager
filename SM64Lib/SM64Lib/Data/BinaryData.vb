@@ -4,6 +4,13 @@ Namespace Global.SM64Lib.Data
 
     Public MustInherit Class BinaryData
 
+        Public Delegate Sub AnyBinaryDataEventHandler(data As BinaryData)
+
+        Public Shared Event AnyBinaryDataOpened As AnyBinaryDataEventHandler
+        Public Shared Event AnyBinaryDataClosing As AnyBinaryDataEventHandler
+        Public Shared Event AnyBinaryDataClosed As AnyBinaryDataEventHandler
+        Public Shared Event AnyBinaryDataDisposed()
+
         Private _BaseStream As Stream = Nothing
         Private _writer As BinaryWriter = Nothing
         Private _reader As BinaryReader = Nothing
@@ -12,7 +19,7 @@ Namespace Global.SM64Lib.Data
 
         Protected MustOverride Function GetBaseStream() As Stream
 
-        Private ReadOnly Property Writer As BinaryWriter
+        Protected ReadOnly Property Writer As BinaryWriter
             Get
                 If _writer Is Nothing Then
                     _writer = New BinaryWriter(BaseStream)
@@ -21,7 +28,7 @@ Namespace Global.SM64Lib.Data
             End Get
         End Property
 
-        Public ReadOnly Property Reader As BinaryReader
+        Protected ReadOnly Property Reader As BinaryReader
             Get
                 If _reader Is Nothing Then
                     _reader = New BinaryReader(BaseStream)
@@ -49,10 +56,15 @@ Namespace Global.SM64Lib.Data
             Get
                 If _BaseStream Is Nothing Then
                     _BaseStream = GetBaseStream()
+                    RaiseEvent AnyBinaryDataOpened(Me)
                 End If
                 Return _BaseStream
             End Get
         End Property
+
+        Protected Overrides Sub Finalize()
+            RaiseEvent AnyBinaryDataDisposed()
+        End Sub
 
         Protected Sub SetRomManager(rommgr As RomManager)
             _RomManager = rommgr
@@ -165,7 +177,9 @@ Namespace Global.SM64Lib.Data
         End Function
 
         Public Sub Close()
+            RaiseEvent AnyBinaryDataClosing(Me)
             BaseStream.Close()
+            RaiseEvent AnyBinaryDataClosed(Me)
         End Sub
 
         Public ReadOnly Property CanRead As Boolean

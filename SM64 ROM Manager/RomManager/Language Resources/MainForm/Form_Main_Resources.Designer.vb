@@ -407,7 +407,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to You should load a ROM first..
+        '''  Looks up a localized string similar to You must open a ROM first!.
         '''</summary>
         Friend Shared ReadOnly Property Notify_ShouldLoadRomFirst() As String
             Get

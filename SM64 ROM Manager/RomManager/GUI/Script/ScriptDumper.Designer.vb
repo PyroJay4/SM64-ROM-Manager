@@ -22,7 +22,6 @@ Partial Class ScriptDumper(Of TCmd, eTypes)
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ScriptDumper(Of TCmd, eTypes)))
         Me.PanelEx_PaintingControl1 = New DevComponents.DotNetBar.PanelEx()
         Me.ContextMenuBar1 = New DevComponents.DotNetBar.ContextMenuBar()
         Me.CM_Cmd = New DevComponents.DotNetBar.ButtonItem()
@@ -103,7 +102,6 @@ Partial Class ScriptDumper(Of TCmd, eTypes)
         Me.ClientSize = New System.Drawing.Size(998, 679)
         Me.Controls.Add(Me.ContextMenuBar1)
         Me.Controls.Add(Me.PanelEx_PaintingControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ScriptDumper"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Script Editor"

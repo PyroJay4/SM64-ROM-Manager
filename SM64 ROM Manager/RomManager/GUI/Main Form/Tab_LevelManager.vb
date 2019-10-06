@@ -512,54 +512,54 @@ Public Class Tab_LevelManager
         Dim index As Integer = ListBoxAdv_LM_Levels.Items.IndexOf(ListBoxAdv_LM_Levels.SelectedItem)
 
         TabControl_LM_Level.Enabled = Not (index < 0)
-        TabControl_LM_Level.Enabled = Not (index < 0)
+        TabControl_LM_Level.Enabled = Not (index < 0) 'Yes, a second time!
 
-        If LM_LoadingLevel Then Return
+        If Not LM_LoadingLevel Then
+            If index < 0 OrElse ListBoxAdv_LM_Levels.Items.Count = 0 OrElse Controller.IsLoadingRom Then
+                TabControl_LM_Level.Enabled = False
+                TabControl_LM_Area.Enabled = False
+                GroupBox_LM_Areas.Enabled = False
+                ButtonX_LM_LevelsMore.Enabled = False
+                ListBoxAdv_LM_Areas.Items.Clear()
+            ElseIf Not Controller.IsLoadingRom Then
+                LM_LoadingLevel = True
+                Controller.StatusText = Form_Main_Resources.Status_LoadingLevel
 
-        If index < 0 Then
-            TabControl_LM_Area.Enabled = False
-            GroupBox_LM_Areas.Enabled = False
-            Button_LM_AddArea.Enabled = False
-            ButtonX_LM_LevelsMore.Enabled = False
-            ListBoxAdv_LM_Areas.Items.Clear()
-            Return
-        End If
+                Dim info = Controller.GetLevelSettings(levelIndex)
 
-        If Not Controller.IsLoadingRom Then
-            LM_LoadingLevel = True
-            Controller.StatusText = Form_Main_Resources.Status_LoadingLevel
+                'Load Levelsettings
+                ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
+                ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
+                ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
+                SwitchButton_EnableGlobalObjectBank.Value = info.enableGlobalOjectBank
+                SwitchButton_LM_ActSelector.Value = info.enableActSelector
+                SwitchButton_LM_HardcodedCameraSettings.Value = info.enableHardcodedCamera
 
-            Dim info = Controller.GetLevelSettings(levelIndex)
+                'Default Start Psoition
+                If info.hasDefStartPos Then
+                    NUD_LM_DefaultPositionAreaID.Value = info.defStartPosAreaID
+                    NUD_LM_DefaultPositionYRotation.Value = info.defStartPosYRot
+                End If
 
-            'Load Levelsettings
-            ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
-            ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
-            ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
-            SwitchButton_EnableGlobalObjectBank.Value = info.enableGlobalOjectBank
-            SwitchButton_LM_ActSelector.Value = info.enableActSelector
-            SwitchButton_LM_HardcodedCameraSettings.Value = info.enableHardcodedCamera
+                'Load Level Bachground
+                ComboBoxEx_LM_BGMode.SelectedIndex = info.bgMode
+                UpdateBackgroundControlsVisible(info.bgMode)
+                ComboBox_LM_LevelBG.SelectedIndex = GetBackgroundIndexOfID(info.bgOriginal)
+                If info.bgMode = 1 Then
+                    PictureBox_BGImage.Image = info.bgImage
+                End If
 
-            'Default Start Psoition
-            If info.hasDefStartPos Then
-                NUD_LM_DefaultPositionAreaID.Value = info.defStartPosAreaID
-                NUD_LM_DefaultPositionYRotation.Value = info.defStartPosYRot
+                Button_LM_AddArea.Enabled = info.areasCount <> 8
+                Controller.StatusText = String.Empty
+                LM_LoadingLevel = False
+
+                LoadAreaList(0)
+
+                TabControl_LM_Level.Enabled = True
+                GroupBox_LM_Areas.Enabled = True
+                TabControl_LM_Area.Enabled = True
+                ButtonX_LM_LevelsMore.Enabled = True
             End If
-
-            'Load Level Bachground
-            ComboBoxEx_LM_BGMode.SelectedIndex = info.bgMode
-            UpdateBackgroundControlsVisible(info.bgMode)
-            ComboBox_LM_LevelBG.SelectedIndex = GetBackgroundIndexOfID(info.bgOriginal)
-            If info.bgMode = 1 Then
-                PictureBox_BGImage.Image = info.bgImage
-            End If
-
-            Button_LM_AddArea.Enabled = info.areasCount <> 8
-            Controller.StatusText = String.Empty
-            LM_LoadingLevel = False
-            LoadAreaList(0)
-            GroupBox_LM_Areas.Enabled = True
-            TabControl_LM_Area.Enabled = True
-            ButtonX_LM_LevelsMore.Enabled = True
         End If
     End Sub
 

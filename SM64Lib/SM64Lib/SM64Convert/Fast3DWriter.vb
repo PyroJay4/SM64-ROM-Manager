@@ -635,7 +635,7 @@ Namespace SM64Convert
                         .R = LongToByte(Round(vertcol.R * &HFF)),
                         .G = LongToByte(Round(vertcol.G * &HFF)),
                         .B = LongToByte(Round(vertcol.B * &HFF)),
-                            .A = LongToByte(Round(vertcol.A * &HFF))
+                        .A = LongToByte(Round(vertcol.A * &HFF))
                     }
                     vertexColors.Add(vc)
                 Next
@@ -1537,7 +1537,7 @@ Namespace SM64Convert
 
                             ImpF3D("E7 00 00 00 00 00 00 00")
                             ImpF3D("B7 00 00 00 00 00 00 00")
-                            'ImpF3D("BB 00 00 01 FF FF FF FF")
+                            ImpF3D("BB 00 00 01 FF FF FF FF")
                             ImpF3D("E8 00 00 00 00 00 00 00")
                             ImpF3D("E6 00 00 00 00 00 00 00")
                             If settings.EnableFog Then ImpFogStart(False)
@@ -1630,7 +1630,7 @@ Namespace SM64Convert
                             ImpF3D("E7 00 00 00 00 00 00 00")
                             If settings.EnableFog Then ImpF3D("B9 00 02 01 00 00 00 00")
                             ImpF3D("B7 00 00 00 00 00 00 00")
-                            'ImpF3D("BB 00 00 01 FF FF FF FF")
+                            ImpF3D("BB 00 00 01 FF FF FF FF")
                             ImpF3D("E8 00 00 00 00 00 00 00")
                             ImpF3D("E6 00 00 00 00 00 00 00")
                             If settings.EnableFog Then ImpFogStart(True)
@@ -1710,7 +1710,7 @@ Namespace SM64Convert
 
                             ImpF3D("E7 00 00 00 00 00 00 00")
                             ImpF3D("B7 00 00 00 00 00 00 00")
-                            'ImpF3D("BB 00 00 01 FF FF FF FF")
+                            ImpF3D("BB 00 00 01 FF FF FF FF")
                             ImpF3D("E8 00 00 00 00 00 00 00")
                             ImpF3D("E6 00 00 00 00 00 00 00")
 

@@ -922,7 +922,7 @@ Namespace LevelEditor
         Friend Sub ButtonItem22_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
             If ogl.CurrentModelDrawMod = ModelDrawMod.VisualMap Then
 
-                Dim sfd As New SaveFileDialog With {.Filter = "PNG-File (*.png)|*.png|BMP-File (*.bmp)|*.bmp|GIF-File (*.gif)|*.gif|JPEG-File (*.jpeg)|*.jpeg"}
+                Dim sfd As New SaveFileDialog With {.Filter = "PNG File (*.png)|*.png|BMP File (*.bmp)|*.bmp|GIF File (*.gif)|*.gif|JPEG File (*.jpeg)|*.jpeg"}
                 If sfd.ShowDialog = DialogResult.OK Then
                     ogl.SaveScreenshot(sfd.FileName)
                 End If
@@ -2145,7 +2145,7 @@ Namespace LevelEditor
         Friend Sub AddWarps(count As Integer, type As LevelscriptCommandTypes)
             If CalculateWarpCountInLevel() >= Byte.MaxValue Then
                 'MessageBoxEx.Show("Maximum of Warps per Level reached. It is not possible to add more Warps.", "Maximum reached", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                ShowToadnotifiaction(Panel_GLControl, "Maximum amount of warps per Level reached. It is not possible to add more warps.", eToastGlowColor.Red)
+                ShowToadnotifiaction(Panel_GLControl, "The maximum amount of warps per level has been reached. It is not possible to add more warps.", eToastGlowColor.Red)
             Else
                 Dim newWarp As LevelscriptCommand = Nothing
                 Dim newManagedWarp As IManagedLevelscriptCommand = Nothing
@@ -2288,9 +2288,9 @@ Namespace LevelEditor
                     PatchClass.Close()
                     PatchClass.UpdateChecksum(Rommgr.RomFile)
 
-                    ShowToadnotifiaction(Panel_GLControl, "Pause Menu Warp setted successfully", eToastGlowColor.Green)
+                    ShowToadnotifiaction(Panel_GLControl, "Pause Menu Warp set successfully", eToastGlowColor.Green)
                 Else
-                    ShowToadnotifiaction(Panel_GLControl, "An error occurred while setting Pause Menu Warp", eToastGlowColor.Red)
+                    ShowToadnotifiaction(Panel_GLControl, "An error occurred while setting the Pause Menu Warp", eToastGlowColor.Red)
                 End If
             End If
         End Sub
