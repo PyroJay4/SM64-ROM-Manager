@@ -35,8 +35,9 @@ Public Class Tab_General
     End Sub
 
     Private Sub TextBoxX_G_GameName_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX_G_GameName.TextChanged
-        If TextBoxX_G_GameName.ReadOnly Then Return
-        Button_G_SaveGameName.Enabled = True
+        If Not TextBoxX_G_GameName.ReadOnly And Controller.HasRomManager Then
+            Button_G_SaveGameName.Enabled = True
+        End If
     End Sub
 
 End Class
