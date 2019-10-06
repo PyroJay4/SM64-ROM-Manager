@@ -7,7 +7,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script
         Inherits Data.BinaryStreamData
         Implements ICommand
 
-        Public Property CommandType As CommandTypes = CommandTypes.F3D_EndDisplaylist
+        Public Property CommandType As CommandTypes = CommandTypes.EndDisplaylist
         Public Property RomAddress As Integer = 0 Implements ICommand.RomAddress
         Public Property BankAddress As Integer = 0 Implements ICommand.BankAddress
 

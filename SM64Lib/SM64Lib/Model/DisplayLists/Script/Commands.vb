@@ -10,34 +10,34 @@ Imports SM64Lib.Script
 Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
 
     Public Class F3D_VTX
-        Shared Function GetNumberOfVertices(cmd As DisplayListCommand) As Byte
+        Public Shared Function GetNumberOfVertices(cmd As DisplayListCommand) As Byte
             cmd.Position = 1
             Dim value As Byte = cmd.ReadByte
             cmd.Position = 0
             Return value >> 4
         End Function
 
-        Shared Function GetStartIndexInVertexBuffer(cmd As DisplayListCommand) As Byte
+        Public Shared Function GetStartIndexInVertexBuffer(cmd As DisplayListCommand) As Byte
             cmd.Position = 1
             Dim value As Byte = cmd.ReadByte
             cmd.Position = 0
             Return value And &HF
         End Function
 
-        Shared Function GetLengthOfVertexData(cmd As DisplayListCommand) As Int16
+        Public Shared Function GetLengthOfVertexData(cmd As DisplayListCommand) As Int16
             cmd.Position = 2
             Dim value = cmd.ReadInt16
             cmd.Position = 0
             Return value
         End Function
 
-        Shared Function GetSegmentedAddress(cmd As DisplayListCommand) As Int32
+        Public Shared Function GetSegmentedAddress(cmd As DisplayListCommand) As Int32
             cmd.Position = 4
             Dim value = cmd.ReadInt32
             cmd.Position = 0
             Return value
         End Function
-        Shared Sub SetSegmentedAddress(cmd As DisplayListCommand, value As Int32)
+        Public Shared Sub SetSegmentedAddress(cmd As DisplayListCommand, value As Int32)
             cmd.Position = 4
             cmd.Write(value)
             cmd.Position = 0
@@ -45,7 +45,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
     End Class
 
     Public Class F3D_TRI1
-        Shared Function GetVertice(cmd As DisplayListCommand, VerticeNumber As Byte) As Byte
+        Public Shared Function GetVertice(cmd As DisplayListCommand, VerticeNumber As Byte) As Byte
             cmd.Position = 5 + VerticeNumber - 1
             Dim value = cmd.ReadByte
             cmd.Position = 0
@@ -54,9 +54,9 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
         End Function
     End Class
 
-    Public Class G_SETTILE
+    Public Class F3D_SETTILE
 
-        Shared Function GetTextureFormat(cmd As DisplayListCommand) As N64Graphics.N64Codec
+        Public Shared Function GetTextureFormat(cmd As DisplayListCommand) As N64Graphics.N64Codec
             cmd.Position = 1
             Dim type As Byte = cmd.ReadByte
             cmd.Position = 0
@@ -85,13 +85,13 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
             End Select
         End Function
 
-        Shared Function GetWrapT(cmd As DisplayListCommand) As Byte
+        Public Shared Function GetWrapT(cmd As DisplayListCommand) As Byte
             cmd.Position = 5
             Dim val As Byte = cmd.ReadByte
             cmd.Position = 0
             Return (val >> 2) And &H2
         End Function
-        Shared Function GetWrapS(cmd As DisplayListCommand) As Byte
+        Public Shared Function GetWrapS(cmd As DisplayListCommand) As Byte
             cmd.Position = 6
             Dim val As Byte = cmd.ReadByte
             cmd.Position = 0
@@ -99,8 +99,8 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
         End Function
     End Class
 
-    Public Class G_TEXTURE
-        Shared Function GetTextureSize(cmd As DisplayListCommand) As Size
+    Public Class F3D_TEXTURE
+        Public Shared Function GetTextureSize(cmd As DisplayListCommand) As Size
             cmd.Position = 4
             Dim tsX As UInt16 = cmd.ReadUInt16
             Dim tsY As UInt16 = cmd.ReadUInt16
@@ -123,7 +123,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
             Return New Size(tsX, tsY)
         End Function
 
-        Shared Function GetTextureScaling(cmd As DisplayListCommand) As Vector2
+        Public Shared Function GetTextureScaling(cmd As DisplayListCommand) As Vector2
             cmd.Position = 4
             Dim tsX As UInt16 = cmd.ReadUInt16
             Dim tsY As UInt16 = cmd.ReadUInt16
@@ -147,28 +147,28 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
         End Function
     End Class
 
-    Public Class G_SETIMG
-        Shared Function GetSegmentedAddress(cmd As DisplayListCommand) As Int32
+    Public Class F3D_SETIMG
+        Public Shared Function GetSegmentedAddress(cmd As DisplayListCommand) As Int32
             cmd.Position = 4
             Dim value = cmd.ReadInt32
             cmd.Position = 0
             Return value
         End Function
 
-        Shared Sub SetSegmentedAddress(cmd As DisplayListCommand, value As Int32)
+        Public Shared Sub SetSegmentedAddress(cmd As DisplayListCommand, value As Int32)
             cmd.Position = 4
             cmd.Write(value)
             cmd.Position = 0
         End Sub
 
-        Shared Function GetColorFormat(cmd As DisplayListCommand) As ColorFormat
+        Public Shared Function GetColorFormat(cmd As DisplayListCommand) As ColorFormat
             cmd.Position = 1
             Dim val As Byte = cmd.ReadByte
             cmd.Position = 0
             Return val >> 5
         End Function
 
-        Shared Function GetBitSize(cmd As DisplayListCommand) As BitSize
+        Public Shared Function GetBitSize(cmd As DisplayListCommand) As BitSize
             cmd.Position = 1
             Dim val As Byte = cmd.ReadByte
             cmd.Position = 0
@@ -205,8 +205,8 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
         End Enum
     End Class
 
-    Public Class G_SETTILESIZE
-        Shared Function GetSize(cmd As DisplayListCommand) As Size
+    Public Class F3D_SETTILESIZE
+        Public Shared Function GetSize(cmd As DisplayListCommand) As Size
             cmd.Position = 4
             Dim var As Integer = cmd.ReadInt32
             cmd.Position = 0
@@ -220,7 +220,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
             Return New Size(w, h)
         End Function
 
-        Shared Sub SetSize(cmd As DisplayListCommand, size As Size)
+        Public Shared Sub SetSize(cmd As DisplayListCommand, size As Size)
             Dim w As Int32 = size.Width
             Dim h As Int32 = size.Height
 
@@ -236,19 +236,19 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
     End Class
 
     Public Class F3D_MOVEMEM
-        Shared Function GetSegmentedOffset(cmd As DisplayListCommand) As Int32
+        Public Shared Function GetSegmentedOffset(cmd As DisplayListCommand) As Int32
             cmd.Position = 4
             Dim value = cmd.ReadInt32
             cmd.Position = 0
             Return value
         End Function
-        Shared Sub SetSegmentedOffset(cmd As DisplayListCommand, value As Integer)
+        Public Shared Sub SetSegmentedOffset(cmd As DisplayListCommand, value As Integer)
             cmd.Position = 4
             cmd.Write(value)
             cmd.Position = 0
         End Sub
 
-        Shared Function GetLightValueMode(cmd As DisplayListCommand) As Byte
+        Public Shared Function GetLightValueMode(cmd As DisplayListCommand) As Byte
             cmd.Position = 1
             Dim value = cmd.ReadByte
             cmd.Position = 0
@@ -257,7 +257,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
     End Class
 
     Public Class F3D_CLEARGEOMETRYMODE
-        Shared Function GetGeometryMode(cmd As DisplayListCommand) As UInteger
+        Public Shared Function GetGeometryMode(cmd As DisplayListCommand) As UInteger
             cmd.Position = 4
             Dim flag As UInteger = cmd.ReadUInt32
             cmd.Position = 0
@@ -267,6 +267,15 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
 
     Public Class F3D_SETRGEOMETRYMODE
         Inherits F3D_CLEARGEOMETRYMODE
+    End Class
+
+    Public Class F3D_SETOTHERMODE_H
+        Public Shared Function GetModeBits(cmd As DisplayListCommand) As UInteger
+            cmd.Position = 4
+            Dim bits As UInteger = cmd.ReadUInt32
+            cmd.Position = 0
+            Return bits
+        End Function
     End Class
 
 End Namespace

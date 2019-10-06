@@ -49,6 +49,7 @@ Namespace SM64Convert
             Dim curTexLoadedInfos As TextureLoadedInfos = Nothing
 
             Dim enableVertexColors As Boolean = False
+            Dim useUVOffsetFix As Boolean = True
 
             'Load Main Segmented Bank
             Dim curSeg As SegmentedBank = GetSegBank(rommgr, dl.GeoPointer.SegPointer, AreaID)
@@ -57,18 +58,18 @@ Namespace SM64Convert
             curMesh = New Mesh
             obj.Meshes.Add(curMesh)
 
-            Do While cmdIndex < dl.Script.Count AndAlso dl.Script(cmdIndex).CommandType <> CommandTypes.F3D_EndDisplaylist
+            Do While cmdIndex < dl.Script.Count AndAlso dl.Script(cmdIndex).CommandType <> CommandTypes.EndDisplaylist
                 cmd = dl.Script(cmdIndex)
                 cmdarr = cmd.ToArray
 
                 Select Case cmd.CommandType '&H20000
-                    Case CommandTypes.F3D_ClearGeometryMode
+                    Case CommandTypes.ClearGeometryMode
                         curGeometryMode = (curGeometryMode And (Not F3D_CLEARGEOMETRYMODE.GetGeometryMode(cmd)))
 
-                    Case CommandTypes.F3D_SetGeometryMode
+                    Case CommandTypes.SetGeometryMode
                         curGeometryMode = (curGeometryMode Or F3D_SETRGEOMETRYMODE.GetGeometryMode(cmd))
 
-                    Case CommandTypes.F3D_Movemem
+                    Case CommandTypes.Movemem
                         Dim segAddr As Integer = F3D_MOVEMEM.GetSegmentedOffset(cmd)
                         Dim smode As Byte = F3D_MOVEMEM.GetLightValueMode(cmd)
 
@@ -96,7 +97,7 @@ Namespace SM64Convert
                             End If
                         End If
 
-                    Case CommandTypes.G_Loadtlut
+                    Case CommandTypes.Loadtlut
                         Dim paletteTileDescritpr As Byte = cmdarr(4)
                         Dim numColorsToLoadInPalette As UShort
 
@@ -116,7 +117,7 @@ Namespace SM64Convert
                             curTexPalette(ii + 1) = seg.Data.ReadByte
                         Next
 
-                    Case CommandTypes.F3D_Triangle1
+                    Case CommandTypes.Triangle1
                         Dim f As New Face
 
                         If curTexFormat IsNot Nothing Then
@@ -148,7 +149,7 @@ Namespace SM64Convert
 
                         curMesh.Faces.Add(f)
 
-                    Case CommandTypes.F3D_Vertex
+                    Case CommandTypes.Vertex
                         Dim num As Byte = F3D_VTX.GetNumberOfVertices(cmd)
                         Dim startindex As Byte = F3D_VTX.GetStartIndexInVertexBuffer(cmd)
                         Dim datalength As Int16 = F3D_VTX.GetLengthOfVertexData(cmd)
@@ -175,7 +176,7 @@ Namespace SM64Convert
                                 If knownUVs.ContainsKey(curSegAddr) Then
                                     p.UV = knownUVs(curSegAddr)
                                 Else
-                                    Dim uv As UV = GetUVFromStream(cs.Data, cs.BankOffsetFromSegAddr(curSegAddr), curTexScale, curTexSize)
+                                    Dim uv As UV = GetUVFromStream(cs.Data, cs.BankOffsetFromSegAddr(curSegAddr), curTexScale, curTexSize, useUVOffsetFix)
                                     p.UV = uv
                                     curMesh.UVs.Add(uv)
                                     knownUVs.Add(curSegAddr, uv)
@@ -207,17 +208,16 @@ Namespace SM64Convert
                             Next
                         End If
 
-                    Case CommandTypes.G_SetImage
-                        Dim newAddr As Integer = G_SETIMG.GetSegmentedAddress(cmd)
+                    Case CommandTypes.SetImage
+                        Dim newAddr As Integer = F3D_SETIMG.GetSegmentedAddress(cmd)
                         If newAddr <> &HFFFFFFFF Then
                             curTexSegAddr = newAddr
-                            'curColor = Nothing
                         End If
 
-                    Case CommandTypes.G_SetTileSize
-                        curTexSize = G_SETTILESIZE.GetSize(cmd)
+                    Case CommandTypes.SetTileSize
+                        curTexSize = F3D_SETTILESIZE.GetSize(cmd)
 
-                    Case CommandTypes.G_SetTile
+                    Case CommandTypes.SetTile
                         cmd.Position = 4
                         Dim checkVal As Integer = cmd.ReadInt32
                         cmd.Position = 0
@@ -225,19 +225,24 @@ Namespace SM64Convert
                         If checkVal <> &H7000000 Then
 
                             If (checkVal >> 24 And &HFF) = 0 Then
-                                curTexFormat = G_SETTILE.GetTextureFormat(cmd)
+                                curTexFormat = F3D_SETTILE.GetTextureFormat(cmd)
                             End If
 
-                            curTexWrapT = G_SETTILE.GetWrapT(cmd)
-                            curTexWrapS = G_SETTILE.GetWrapS(cmd)
+                            curTexWrapT = F3D_SETTILE.GetWrapT(cmd)
+                            curTexWrapS = F3D_SETTILE.GetWrapS(cmd)
                         End If
 
-                    Case CommandTypes.G_Texture
+                    Case CommandTypes.Texture
                         If (curGeometryMode And &H40000) = &H40000 Then
-                            curTexSize = G_TEXTURE.GetTextureSize(cmd)
+                            curTexSize = F3D_TEXTURE.GetTextureSize(cmd)
                         Else
-                            curTexScale = G_TEXTURE.GetTextureScaling(cmd)
+                            curTexScale = F3D_TEXTURE.GetTextureScaling(cmd)
                         End If
+
+                    Case CommandTypes.SetOtherMode_H
+                        Dim bits As UInteger = F3D_SETOTHERMODE_H.GetModeBits(cmd)
+                        Dim nearestNeighbor As Boolean = (bits And &H2000) = 0
+                        useUVOffsetFix = Not nearestNeighbor
 
                 End Select
 
@@ -339,13 +344,18 @@ Namespace SM64Convert
             Return vert
         End Function
 
-        Private Shared Function GetUVFromStream(s As Stream, vtStart As Integer, curTexScale As Numerics.Vector2, curTexSize As Size) As UV
+        Private Shared Function GetUVFromStream(s As Stream, vtStart As Integer, curTexScale As Numerics.Vector2, curTexSize As Size, useUVOffsetFix As Boolean) As UV
             Dim uv As New UV
             Dim br As New BinaryStreamData(s)
 
             s.Position = vtStart + 8
             uv.U = br.ReadInt16 * curTexScale.X
             uv.V = br.ReadInt16 * curTexScale.Y
+
+            If useUVOffsetFix Then 'Fixes UVs offset
+                uv.U += 16
+                uv.V += 16
+            End If
 
             uv.U /= curTexSize.Width * 32.0F
             uv.V /= curTexSize.Height * 32.0F
