@@ -801,5 +801,4 @@ Public Class Tab_LevelManager
     Private Sub ButtonItem2_EditGeolayoutScript_Click(sender As Object, e As EventArgs) Handles ButtonItem2_EditGeolayoutScript.Click
         Controller.OpenScriptDumperWithLevelAreaGeolayoutScript(CurrentLevelIndex, CurrentAreaIndex)
     End Sub
-
 End Class

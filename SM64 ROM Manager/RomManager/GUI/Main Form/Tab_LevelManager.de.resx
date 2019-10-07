@@ -299,6 +299,12 @@
   <data name="TabItem6.Text" xml:space="preserve">
     <value>Spezialboxen</value>
   </data>
+  <data name="LabelX13.Text" xml:space="preserve">
+    <value>Globale Objekt-Bank nutzen:</value>
+  </data>
+  <data name="TabItem2.Text" xml:space="preserve">
+    <value>Object-Banken</value>
+  </data>
   <data name="ComboItem1.Text" xml:space="preserve">
     <value>Original</value>
   </data>
@@ -334,8 +340,5 @@
   </data>
   <data name="TabItem1.Text" xml:space="preserve">
     <value>Leveleinstellungen</value>
-  </data>
-  <data name="TabItem2.Text" xml:space="preserve">
-    <value>Object-Banken</value>
   </data>
 </root>
