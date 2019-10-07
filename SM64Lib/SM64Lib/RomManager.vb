@@ -113,7 +113,7 @@ Namespace Global.SM64Lib
         ''' <param name="FileName">The ROM that will be opened.</param>
         Public Sub New(FileName As String, levelManager As ILevelManager)
             RomFile = FileName
-            levelManager = levelManager
+            Me.LevelManager = levelManager
 
             Dim levelTableFile As String = MyFilePaths("Level Tabel.json")
             If File.Exists(levelTableFile) Then
