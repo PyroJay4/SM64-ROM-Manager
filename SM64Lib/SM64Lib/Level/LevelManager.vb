@@ -19,7 +19,7 @@ Namespace Levels
         ''' <param name="rommgr"></param>
         ''' <param name="LevelID"></param>
         ''' <param name="segAddress"></param>
-        Public Sub LoadRomManagerLevel(lvl As Level, rommgr As RomManager, LevelID As UShort, segAddress As UInteger) Implements ILevelManager.LoadLevel
+        Public Overridable Sub LoadRomManagerLevel(lvl As Level, rommgr As RomManager, LevelID As UShort, segAddress As UInteger) Implements ILevelManager.LoadLevel
             Dim customBGStart As Integer = 0
             Dim customBGEnd As Integer = 0
 
@@ -226,7 +226,7 @@ Namespace Levels
         ''' <param name="output"></param>
         ''' <param name="curOff"></param>
         ''' <returns></returns>
-        Public Function SaveRomManagerLevel(lvl As Level, rommgr As RomManager, output As BinaryData, ByRef curOff As UInteger) As LevelSaveResult Implements ILevelManager.SaveLevel
+        Public Overridable Function SaveRomManagerLevel(lvl As Level, rommgr As RomManager, output As BinaryData, ByRef curOff As UInteger) As LevelSaveResult Implements ILevelManager.SaveLevel
             Dim saveres As New LevelSaveResult
             Dim data0x19 As BinaryData
             Dim lid = rommgr.LevelInfoData.GetByLevelID(lvl.LevelID)
