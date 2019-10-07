@@ -43,6 +43,7 @@ Namespace Global.SM64Lib
         Public ReadOnly Property TextInfoProfile As Text.Profiles.TextProfileInfo
         Public ReadOnly Property MusicList As New MusicList
         Public Property GlobalObjectBank As New CustomObjectBank
+        Public Property LevelManager As ILevelManager = New Levels.LevelManager
 
         ''' <summary>
         ''' Gets or sets the lastly used program version for this ROM.
@@ -415,13 +416,15 @@ Namespace Global.SM64Lib
                     Dim offset As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
                     Dim curLevel As Levels.Level
 
-                    If IsSM64EditorMode Then
-                        curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64Editor)
-                        SM64Lib.Levels.LevelManager.LoadSM64EditorLevel(curLevel, Me, ldi.ID, offset)
-                    Else
-                        curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64RomManager)
-                        SM64Lib.Levels.LevelManager.LoadRomManagerLevel(curLevel, Me, ldi.ID, offset)
-                    End If
+                    'If IsSM64EditorMode Then
+                    '    curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64Editor)
+                    '    LevelManager.LoadLevel(curLevel, Me, ldi.ID, offset)
+                    'Else
+                    '    curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64RomManager)
+                    '    LevelManager.LoadLevel(curLevel, Me, ldi.ID, offset)
+                    'End If
+                    curLevel = New Levels.Level
+                    LevelManager.LoadLevel(curLevel, Me, ldi.ID, offset)
 
                     curLevel.LastRomOffset = seg0x19.RomStart
                     Levels.Add(curLevel)
@@ -442,8 +445,8 @@ Namespace Global.SM64Lib
             binRom.Position = curOff
 
             For Each lvl As Levels.Level In Levels
-                Dim res As Levels.LevelManager.LevelSaveResult
-                res = SM64Lib.Levels.LevelManager.SaveRomManagerLevel(lvl, Me, binRom, curOff)
+                Dim res As Levels.LevelSaveResult
+                res = LevelManager.SaveLevel(lvl, Me, binRom, curOff)
                 lvl.LastRomOffset = res.Bank0x19.RomStart
                 HexRoundUp2(curOff)
             Next
@@ -570,6 +573,10 @@ Namespace Global.SM64Lib
             br.Close()
 
             _IsSM64EditorMode = {&H800800001900001C, &H800800000E0000C4}.Contains(tCheckData)
+
+            If IsSM64EditorMode Then
+                LevelManager = New Levels.SM64EditorLevelManager
+            End If
 
             Return True
         End Function

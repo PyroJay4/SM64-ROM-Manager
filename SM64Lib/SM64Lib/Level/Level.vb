@@ -20,7 +20,6 @@ Namespace Global.SM64Lib.Levels
 
         'A u t o   P r o p e r t i e s
 
-        Public ReadOnly Property LevelType As LevelType = LevelType.SM64RomManager
         Public Property Levelscript As New Levelscript
         Public ReadOnly Property Areas As New List(Of LevelArea)
         Public Property ObjectBank0x0C As ObjectBank0x0C = 0
@@ -80,15 +79,12 @@ Namespace Global.SM64Lib.Levels
             ActSelector = ActSelectorDefaultValues(LevelIndex)
         End Sub
 
-        Public Sub New(type As LevelType)
-            LevelType = type
+        Public Sub New()
         End Sub
 
         'M e t h o d s
 
         Public Sub CreateNewLevelscript()
-            _LevelType = LevelType.SM64RomManager
-
             With Levelscript
                 .Close()
                 .Clear()

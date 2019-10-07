@@ -33,9 +33,10 @@ Public Class ImportLevelDialog
         If openrom IsNot Nothing Then
             For Each lvl As Level In openrom.Levels
                 Dim lid As LevelInfoDataTabelList.Level = rommgr.LevelInfoData.GetByLevelID(lvl.LevelID)
-                Dim btn As New ButtonItem
-                btn.Text = If(lid.Type = LevelInfoDataTabelList.LevelTypes.Level, CByte(lid.Number).ToString("00") & " - ", "") & lid.Name
-                btn.Tag = lvl
+                Dim btn As New ButtonItem With {
+                    .Text = If(lid.Type = LevelInfoDataTabelList.LevelTypes.Level, CByte(lid.Number).ToString("00") & " - ", "") & lid.Name,
+                    .Tag = lvl
+                }
                 ItemListBox1.Items.Add(btn)
             Next
         End If
@@ -59,8 +60,8 @@ Public Class ImportLevelDialog
 
                 Dim newLvl As Level
 
-                Select Case lvl.LevelType
-                    Case LevelType.SM64Editor
+                Select Case openrom.IsSM64EditorMode
+                    Case True
 
                         'Create mew Level
                         newLvl = New Level(levelinfo.ID, levelinfo.Index)
@@ -87,7 +88,7 @@ Public Class ImportLevelDialog
                         newLvl.HardcodedCameraSettings = lvl.HardcodedCameraSettings
                         newLvl.ActSelector = lvl.ActSelector
 
-                    Case LevelType.SM64RomManager
+                    Case False
 
                         newLvl = lvl
                         newLvl.LevelID = levelinfo.ID
