@@ -435,6 +435,7 @@ Namespace Levels
             Dim foundCmdShowMsg As Boolean = False
             Dim cmdBgSegLoad As LevelscriptCommand = Nothing
             Dim cmdGobSegLoad As LevelscriptCommand = Nothing
+            Dim cmdGobJump As LevelscriptCommand = Nothing
             Dim cmdsToInsertAt As New Dictionary(Of LevelscriptCommand, LevelscriptCommand)
             Dim cmdsToRemove As New List(Of LevelscriptCommand)
 
@@ -486,6 +487,11 @@ Namespace Levels
                             cmdsToRemove.Add(c)
                         End If
 
+                    Case LevelscriptCommandTypes.JumpToSegAddr
+                        If (clJumpToSegAddr.GetSegJumpAddr(c) >> 24) = &H7 Then
+                            cmdGobJump = c
+                        End If
+
                 End Select
             Next
 
@@ -528,6 +534,7 @@ Namespace Levels
 
             'Füge Global Object Bank Command ein
             If lvl.EnableGlobalObjectBank Then
+                Dim newgobjumpcmd As LevelscriptCommand = If(cmdGobJump, New LevelscriptCommand("06 08 00 00 07 00 00 00"))
                 Dim newgobcmd As LevelscriptCommand = If(cmdGobSegLoad, New LevelscriptCommand("17 0C 00 07 00 00 00 00 00 00 00 00"))
 
                 clLoadRomToRam.SetRomStart(newgobcmd, rommgr.GlobalObjectBank.CurSeg.RomStart)
@@ -537,8 +544,18 @@ Namespace Levels
                     Dim indexoffirstx1d As Integer = lvl.Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1D)
                     lvl.Levelscript.Insert(indexoffirstx1d, newgobcmd)
                 End If
-            ElseIf cmdGobSegLoad IsNot Nothing Then
-                lvl.Levelscript.Remove(cmdGobSegLoad)
+
+                If Not lvl.Levelscript.Contains(newgobcmd) Then
+                    Dim indexoffirstx1e As Integer = lvl.Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1E)
+                    lvl.Levelscript.Insert(indexoffirstx1e, newgobjumpcmd)
+                End If
+            Else
+                If cmdGobJump IsNot Nothing Then
+                    lvl.Levelscript.Remove(cmdGobJump)
+                End If
+                If cmdGobSegLoad IsNot Nothing Then
+                    lvl.Levelscript.Remove(cmdGobSegLoad)
+                End If
             End If
 
             'Write Level Start (Start of Bank 0x19)
