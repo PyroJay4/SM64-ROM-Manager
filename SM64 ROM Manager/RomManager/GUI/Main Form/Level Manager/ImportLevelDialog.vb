@@ -13,8 +13,8 @@ Public Class ImportLevelDialog
         Me.rommgr = rommgr
     End Sub
 
-    Public Function LoadROM(fileName As String) As Boolean
-        Dim mgr As New RomManager(fileName)
+    Public Function LoadROM(fileName As String, levelManager As ILevelManager) As Boolean
+        Dim mgr As New RomManager(fileName, levelManager)
         If mgr.CheckROM() Then
             openrom = mgr
             LabelX_Romfile.Text = IO.Path.GetFileName(mgr.RomFile)

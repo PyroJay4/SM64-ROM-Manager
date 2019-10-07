@@ -43,7 +43,7 @@ Namespace Global.SM64Lib
         Public ReadOnly Property TextInfoProfile As Text.Profiles.TextProfileInfo
         Public ReadOnly Property MusicList As New MusicList
         Public Property GlobalObjectBank As New CustomObjectBank
-        Public Property LevelManager As ILevelManager = New Levels.LevelManager
+        Public ReadOnly Property LevelManager As ILevelManager
 
         ''' <summary>
         ''' Gets or sets the lastly used program version for this ROM.
@@ -104,7 +104,16 @@ Namespace Global.SM64Lib
         ''' </summary>
         ''' <param name="FileName">The ROM that will be opened.</param>
         Public Sub New(FileName As String)
+            Me.New(FileName, New Levels.LevelManager)
+        End Sub
+
+        ''' <summary>
+        ''' Creates a new instance with input ROM.
+        ''' </summary>
+        ''' <param name="FileName">The ROM that will be opened.</param>
+        Public Sub New(FileName As String, levelManager As ILevelManager)
             RomFile = FileName
+            levelManager = levelManager
 
             Dim levelTableFile As String = MyFilePaths("Level Tabel.json")
             If File.Exists(levelTableFile) Then
