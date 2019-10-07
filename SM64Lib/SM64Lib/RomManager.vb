@@ -574,7 +574,7 @@ Namespace Global.SM64Lib
 
             _IsSM64EditorMode = {&H800800001900001C, &H800800000E0000C4}.Contains(tCheckData)
 
-            If IsSM64EditorMode Then
+            If IsSM64EditorMode AndAlso TypeOf LevelManager Is Levels.SM64EditorLevelManager Then
                 LevelManager = New Levels.SM64EditorLevelManager
             End If
 
