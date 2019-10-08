@@ -281,6 +281,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyIcons.resx</DependentUpon>
     </Compile>
+    <Compile Include="RomManager\Controllers\PluginInstaller.vb" />
     <Compile Include="RomManager\EventArgs\LevelAreaEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelAreaBackgroundModeChangedEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelBackgroundImageChangedEventArgs.vb" />
@@ -405,6 +406,12 @@
       <DependentUpon>ItemBoxContentEditor.vb</DependentUpon>
     </Compile>
     <Compile Include="RomManager\GUI\Tools\ItemBoxContentEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\PluginInstallerForm.Designer.vb">
+      <DependentUpon>PluginInstallerForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\PluginInstallerForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Tools\RGB Editor\RGBEditInfoEditor.Designer.vb">
@@ -584,10 +591,10 @@
     <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SetUpPoint.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Other\Form_SM64TextConverter.Designer.vb">
+    <Compile Include="RomManager\GUI\Tools\Form_SM64TextConverter.Designer.vb">
       <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Other\Form_SM64TextConverter.vb">
+    <Compile Include="RomManager\GUI\Tools\Form_SM64TextConverter.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\Modules\General.vb" />
@@ -687,7 +694,7 @@
     <EmbeddedResource Include="RomManager\GUI\Other\Form_ErrorDialog.de.resx">
       <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Other\Form_SM64TextConverter.de.resx">
+    <EmbeddedResource Include="RomManager\GUI\Tools\Form_SM64TextConverter.de.resx">
       <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\HexEditor.resx">
@@ -698,6 +705,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\ItemBoxContentEditor.resx">
       <DependentUpon>ItemBoxContentEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\PluginInstallerForm.de.resx">
+      <DependentUpon>PluginInstallerForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\PluginInstallerForm.resx">
+      <DependentUpon>PluginInstallerForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\RGB Editor\RGBEditInfoEditor.resx">
       <DependentUpon>RGBEditInfoEditor.vb</DependentUpon>
@@ -794,7 +807,7 @@
     <EmbeddedResource Include="RomManager\GUI\Settings\Form_Settings.resx">
       <DependentUpon>Form_Settings.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Other\Form_SM64TextConverter.resx">
+    <EmbeddedResource Include="RomManager\GUI\Tools\Form_SM64TextConverter.resx">
       <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Update\UpdateDialog.resx">
