@@ -4,4 +4,5 @@ bin/*
 !bin/Debug/
 bin/Debug/*
 !bin/Debug/Data/
+!bin/Debug/Data/*
 bin/Debug/Data/Settings.json
