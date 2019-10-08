@@ -40,26 +40,26 @@ Partial Class PluginInstallerForm
         '
         'Panel1
         '
+        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.Controls.Add(Me.ButtonX_Remove)
         Me.Panel1.Controls.Add(Me.ButtonX_Install)
         Me.Panel1.Controls.Add(Me.ButtonX_Close)
         Me.Panel1.Controls.Add(Me.ListViewEx_Plugins)
-        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
         '
         'ButtonX_Remove
         '
-        Me.ButtonX_Remove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         resources.ApplyResources(Me.ButtonX_Remove, "ButtonX_Remove")
+        Me.ButtonX_Remove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_Remove.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_Remove.Name = "ButtonX_Remove"
         Me.ButtonX_Remove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ButtonX_Install
         '
-        Me.ButtonX_Install.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         resources.ApplyResources(Me.ButtonX_Install, "ButtonX_Install")
+        Me.ButtonX_Install.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_Install.AutoExpandOnClick = True
         Me.ButtonX_Install.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_Install.Name = "ButtonX_Install"
@@ -68,26 +68,26 @@ Partial Class PluginInstallerForm
         '
         'ButtonItem_SingleFile
         '
+        resources.ApplyResources(Me.ButtonItem_SingleFile, "ButtonItem_SingleFile")
         Me.ButtonItem_SingleFile.GlobalItem = False
         Me.ButtonItem_SingleFile.Name = "ButtonItem_SingleFile"
-        resources.ApplyResources(Me.ButtonItem_SingleFile, "ButtonItem_SingleFile")
         '
         'ButtonItem_ZipFile
         '
+        resources.ApplyResources(Me.ButtonItem_ZipFile, "ButtonItem_ZipFile")
         Me.ButtonItem_ZipFile.GlobalItem = False
         Me.ButtonItem_ZipFile.Name = "ButtonItem_ZipFile"
-        resources.ApplyResources(Me.ButtonItem_ZipFile, "ButtonItem_ZipFile")
         '
         'ButtonItem_Directory
         '
+        resources.ApplyResources(Me.ButtonItem_Directory, "ButtonItem_Directory")
         Me.ButtonItem_Directory.GlobalItem = False
         Me.ButtonItem_Directory.Name = "ButtonItem_Directory"
-        resources.ApplyResources(Me.ButtonItem_Directory, "ButtonItem_Directory")
         '
         'ButtonX_Close
         '
-        Me.ButtonX_Close.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         resources.ApplyResources(Me.ButtonX_Close, "ButtonX_Close")
+        Me.ButtonX_Close.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_Close.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_Close.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.ButtonX_Close.Name = "ButtonX_Close"

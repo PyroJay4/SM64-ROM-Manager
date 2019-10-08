@@ -120,13 +120,13 @@
   <data name="ButtonX_Remove.Text" xml:space="preserve">
     <value>Entfernen</value>
   </data>
-  <data name="ButtonItem1.Text" xml:space="preserve">
+  <data name="ButtonItem_SingleFile.Text" xml:space="preserve">
     <value>Einzelne Datei</value>
   </data>
-  <data name="ButtonItem2.Text" xml:space="preserve">
-    <value>Zip-Datei(en)</value>
+  <data name="ButtonItem_ZipFile.Text" xml:space="preserve">
+    <value>Zip-Dateie(en)</value>
   </data>
-  <data name="ButtonItem3.Text" xml:space="preserve">
+  <data name="ButtonItem_Directory.Text" xml:space="preserve">
     <value>Ordner</value>
   </data>
   <data name="ButtonX_Install.Text" xml:space="preserve">

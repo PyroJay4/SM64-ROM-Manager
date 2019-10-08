@@ -198,6 +198,9 @@
   <data name="ButtonItem12.Text" xml:space="preserve">
     <value>Werkzeug</value>
   </data>
+  <data name="ButtonItem20.Text" xml:space="preserve">
+    <value>Erweiterungen verwalten</value>
+  </data>
   <data name="ButtonItem_Bar_Plugins.Text" xml:space="preserve">
     <value>Erweiterungen</value>
   </data>
@@ -2076,5 +2079,9 @@
         MDEtMDU6MDDkOlH3AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDEyLTExLTIwVDA5OjAzOjUzLTA2OjAwpVUc
         +QAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
   </data>
 </root>

@@ -66,6 +66,7 @@ Partial Class MainForm
         Me.ButtonItem12 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem23 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_Bar_Plugins = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem20 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem558 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem25 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
@@ -92,9 +93,9 @@ Partial Class MainForm
         '
         'Panel1
         '
+        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Controls.Add(Me.TabControl1)
         Me.Panel1.Controls.Add(Me.Bar2)
-        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
         '
         'TabControl1
@@ -119,9 +120,9 @@ Partial Class MainForm
         '
         'TabControlPanel1
         '
+        resources.ApplyResources(Me.TabControlPanel1, "TabControlPanel1")
         Me.TabControlPanel1.Controls.Add(Me.tabGeneral)
         Me.TabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel1, "TabControlPanel1")
         Me.TabControlPanel1.Name = "TabControlPanel1"
         Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
@@ -146,9 +147,9 @@ Partial Class MainForm
         '
         'TabControlPanel2
         '
+        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
         Me.TabControlPanel2.Controls.Add(Me.tabLevelManager)
         Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
         Me.TabControlPanel2.Name = "TabControlPanel2"
         Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
@@ -173,9 +174,9 @@ Partial Class MainForm
         '
         'TabControlPanel3
         '
+        resources.ApplyResources(Me.TabControlPanel3, "TabControlPanel3")
         Me.TabControlPanel3.Controls.Add(Me.tabTextManager)
         Me.TabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel3, "TabControlPanel3")
         Me.TabControlPanel3.Name = "TabControlPanel3"
         Me.TabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
@@ -200,9 +201,9 @@ Partial Class MainForm
         '
         'TabControlPanel4
         '
+        resources.ApplyResources(Me.TabControlPanel4, "TabControlPanel4")
         Me.TabControlPanel4.Controls.Add(Me.tabMusicManager)
         Me.TabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel4, "TabControlPanel4")
         Me.TabControlPanel4.Name = "TabControlPanel4"
         Me.TabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
@@ -241,37 +242,37 @@ Partial Class MainForm
         '
         'ButtonItem2
         '
+        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
         Me.ButtonItem2.Name = "ButtonItem2"
         Me.ButtonItem2.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem3, Me.ButtonItem_SaveRom, Me.ButtonItem_LaunchROM, Me.ButtonItem6})
-        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
         '
         'ButtonItem3
         '
+        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
         Me.ButtonItem3.Name = "ButtonItem3"
         Me.ButtonItem3.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlO)
         Me.ButtonItem3.Symbol = "58055"
         Me.ButtonItem3.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
         Me.ButtonItem3.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem3.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
         '
         'ButtonItem_SaveRom
         '
+        resources.ApplyResources(Me.ButtonItem_SaveRom, "ButtonItem_SaveRom")
         Me.ButtonItem_SaveRom.Name = "ButtonItem_SaveRom"
         Me.ButtonItem_SaveRom.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlS)
         Me.ButtonItem_SaveRom.Symbol = "57697"
         Me.ButtonItem_SaveRom.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonItem_SaveRom.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_SaveRom.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem_SaveRom, "ButtonItem_SaveRom")
         '
         'ButtonItem_LaunchROM
         '
+        resources.ApplyResources(Me.ButtonItem_LaunchROM, "ButtonItem_LaunchROM")
         Me.ButtonItem_LaunchROM.Name = "ButtonItem_LaunchROM"
         Me.ButtonItem_LaunchROM.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5)
         Me.ButtonItem_LaunchROM.Symbol = ""
         Me.ButtonItem_LaunchROM.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem_LaunchROM, "ButtonItem_LaunchROM")
         '
         'ButtonItem6
         '
@@ -285,214 +286,219 @@ Partial Class MainForm
         '
         'ButtonItem7
         '
+        resources.ApplyResources(Me.ButtonItem7, "ButtonItem7")
         Me.ButtonItem7.BeginGroup = True
         Me.ButtonItem7.Name = "ButtonItem7"
         Me.ButtonItem7.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem2, Me.ButtonItem8, Me.ButtonItem10, Me.ButtonItem11, Me.LabelItem3, Me.ButtonItem_ModelImporter, Me.ButtonItem17, Me.ButtonItem_TrajectoryEditor, Me.ButtonItem14, Me.ButtonItem13, Me.ButtonItem15, Me.ButtonItem16, Me.ButtonItem18})
-        resources.ApplyResources(Me.ButtonItem7, "ButtonItem7")
         '
         'LabelItem2
         '
         Me.LabelItem2.BorderSide = DevComponents.DotNetBar.eBorderSide.Bottom
         Me.LabelItem2.BorderType = DevComponents.DotNetBar.eBorderType.SingleLine
+        resources.ApplyResources(Me.LabelItem2, "LabelItem2")
         Me.LabelItem2.Name = "LabelItem2"
         Me.LabelItem2.PaddingBottom = 1
         Me.LabelItem2.PaddingLeft = 10
         Me.LabelItem2.PaddingTop = 1
         Me.LabelItem2.SingleLineColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(197, Byte), Integer))
-        resources.ApplyResources(Me.LabelItem2, "LabelItem2")
         '
         'ButtonItem8
         '
-        Me.ButtonItem8.Name = "ButtonItem8"
         resources.ApplyResources(Me.ButtonItem8, "ButtonItem8")
+        Me.ButtonItem8.Name = "ButtonItem8"
         '
         'ButtonItem10
         '
-        Me.ButtonItem10.Name = "ButtonItem10"
         resources.ApplyResources(Me.ButtonItem10, "ButtonItem10")
+        Me.ButtonItem10.Name = "ButtonItem10"
         '
         'ButtonItem11
         '
-        Me.ButtonItem11.Name = "ButtonItem11"
         resources.ApplyResources(Me.ButtonItem11, "ButtonItem11")
+        Me.ButtonItem11.Name = "ButtonItem11"
         '
         'LabelItem3
         '
         Me.LabelItem3.BorderSide = DevComponents.DotNetBar.eBorderSide.Bottom
         Me.LabelItem3.BorderType = DevComponents.DotNetBar.eBorderType.SingleLine
+        resources.ApplyResources(Me.LabelItem3, "LabelItem3")
         Me.LabelItem3.Name = "LabelItem3"
         Me.LabelItem3.PaddingBottom = 1
         Me.LabelItem3.PaddingLeft = 10
         Me.LabelItem3.PaddingTop = 1
         Me.LabelItem3.SingleLineColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(197, Byte), Integer))
-        resources.ApplyResources(Me.LabelItem3, "LabelItem3")
         '
         'ButtonItem_ModelImporter
         '
-        Me.ButtonItem_ModelImporter.Name = "ButtonItem_ModelImporter"
         resources.ApplyResources(Me.ButtonItem_ModelImporter, "ButtonItem_ModelImporter")
+        Me.ButtonItem_ModelImporter.Name = "ButtonItem_ModelImporter"
         '
         'ButtonItem17
         '
-        Me.ButtonItem17.Name = "ButtonItem17"
         resources.ApplyResources(Me.ButtonItem17, "ButtonItem17")
+        Me.ButtonItem17.Name = "ButtonItem17"
         '
         'ButtonItem_TrajectoryEditor
         '
-        Me.ButtonItem_TrajectoryEditor.Name = "ButtonItem_TrajectoryEditor"
         resources.ApplyResources(Me.ButtonItem_TrajectoryEditor, "ButtonItem_TrajectoryEditor")
+        Me.ButtonItem_TrajectoryEditor.Name = "ButtonItem_TrajectoryEditor"
         '
         'ButtonItem14
         '
-        Me.ButtonItem14.Name = "ButtonItem14"
         resources.ApplyResources(Me.ButtonItem14, "ButtonItem14")
+        Me.ButtonItem14.Name = "ButtonItem14"
         '
         'ButtonItem13
         '
-        Me.ButtonItem13.Name = "ButtonItem13"
         resources.ApplyResources(Me.ButtonItem13, "ButtonItem13")
+        Me.ButtonItem13.Name = "ButtonItem13"
         '
         'ButtonItem15
         '
-        Me.ButtonItem15.Name = "ButtonItem15"
         resources.ApplyResources(Me.ButtonItem15, "ButtonItem15")
+        Me.ButtonItem15.Name = "ButtonItem15"
         '
         'ButtonItem16
         '
-        Me.ButtonItem16.Name = "ButtonItem16"
         resources.ApplyResources(Me.ButtonItem16, "ButtonItem16")
+        Me.ButtonItem16.Name = "ButtonItem16"
         '
         'ButtonItem18
         '
-        Me.ButtonItem18.Name = "ButtonItem18"
         resources.ApplyResources(Me.ButtonItem18, "ButtonItem18")
+        Me.ButtonItem18.Name = "ButtonItem18"
         '
         'ButtonItem22
         '
+        resources.ApplyResources(Me.ButtonItem22, "ButtonItem22")
         Me.ButtonItem22.Name = "ButtonItem22"
         Me.ButtonItem22.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem4, Me.ButtonItem9, Me.ButtonItem_M64ToMidiConverter})
-        resources.ApplyResources(Me.ButtonItem22, "ButtonItem22")
         '
         'ButtonItem1
         '
+        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
         Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonItem1.Name = "ButtonItem1"
         Me.ButtonItem1.Symbol = "T"
         Me.ButtonItem1.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
         '
         'ButtonItem4
         '
+        resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
         Me.ButtonItem4.Enabled = False
         Me.ButtonItem4.Name = "ButtonItem4"
-        resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
         '
         'ButtonItem9
         '
-        Me.ButtonItem9.Name = "ButtonItem9"
         resources.ApplyResources(Me.ButtonItem9, "ButtonItem9")
+        Me.ButtonItem9.Name = "ButtonItem9"
         '
         'ButtonItem_M64ToMidiConverter
         '
-        Me.ButtonItem_M64ToMidiConverter.Name = "ButtonItem_M64ToMidiConverter"
         resources.ApplyResources(Me.ButtonItem_M64ToMidiConverter, "ButtonItem_M64ToMidiConverter")
+        Me.ButtonItem_M64ToMidiConverter.Name = "ButtonItem_M64ToMidiConverter"
         '
         'ButtonItem12
         '
+        resources.ApplyResources(Me.ButtonItem12, "ButtonItem12")
         Me.ButtonItem12.Name = "ButtonItem12"
         Me.ButtonItem12.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem23})
-        resources.ApplyResources(Me.ButtonItem12, "ButtonItem12")
         '
         'ButtonItem23
         '
+        resources.ApplyResources(Me.ButtonItem23, "ButtonItem23")
         Me.ButtonItem23.Name = "ButtonItem23"
         Me.ButtonItem23.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9)
-        resources.ApplyResources(Me.ButtonItem23, "ButtonItem23")
         '
         'ButtonItem_Bar_Plugins
         '
+        resources.ApplyResources(Me.ButtonItem_Bar_Plugins, "ButtonItem_Bar_Plugins")
         Me.ButtonItem_Bar_Plugins.BeginGroup = True
         Me.ButtonItem_Bar_Plugins.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonItem_Bar_Plugins.Name = "ButtonItem_Bar_Plugins"
+        Me.ButtonItem_Bar_Plugins.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem20})
         Me.ButtonItem_Bar_Plugins.Symbol = ""
         Me.ButtonItem_Bar_Plugins.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem_Bar_Plugins, "ButtonItem_Bar_Plugins")
-        Me.ButtonItem_Bar_Plugins.Visible = False
+        '
+        'ButtonItem20
+        '
+        resources.ApplyResources(Me.ButtonItem20, "ButtonItem20")
+        Me.ButtonItem20.Name = "ButtonItem20"
         '
         'ButtonItem558
         '
+        resources.ApplyResources(Me.ButtonItem558, "ButtonItem558")
         Me.ButtonItem558.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonItem558.Name = "ButtonItem558"
         Me.ButtonItem558.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem25, Me.ButtonItem5, Me.ButtonItem19, Me.ButtonItem_Bar_EnableExpertMode, Me.ButtonItem27, Me.ButtonItem28, Me.ButtonItem29, Me.ButtonItem30})
         Me.ButtonItem558.Symbol = ""
         Me.ButtonItem558.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem558, "ButtonItem558")
         '
         'ButtonItem25
         '
+        resources.ApplyResources(Me.ButtonItem25, "ButtonItem25")
         Me.ButtonItem25.Name = "ButtonItem25"
         Me.ButtonItem25.Symbol = ""
         Me.ButtonItem25.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem25, "ButtonItem25")
         '
         'ButtonItem5
         '
+        resources.ApplyResources(Me.ButtonItem5, "ButtonItem5")
         Me.ButtonItem5.Name = "ButtonItem5"
         Me.ButtonItem5.Symbol = ""
         Me.ButtonItem5.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem5, "ButtonItem5")
         '
         'ButtonItem19
         '
+        resources.ApplyResources(Me.ButtonItem19, "ButtonItem19")
         Me.ButtonItem19.BeginGroup = True
         Me.ButtonItem19.Name = "ButtonItem19"
-        resources.ApplyResources(Me.ButtonItem19, "ButtonItem19")
         '
         'ButtonItem_Bar_EnableExpertMode
         '
+        resources.ApplyResources(Me.ButtonItem_Bar_EnableExpertMode, "ButtonItem_Bar_EnableExpertMode")
         Me.ButtonItem_Bar_EnableExpertMode.AutoCheckOnClick = True
         Me.ButtonItem_Bar_EnableExpertMode.BeginGroup = True
         Me.ButtonItem_Bar_EnableExpertMode.Name = "ButtonItem_Bar_EnableExpertMode"
-        resources.ApplyResources(Me.ButtonItem_Bar_EnableExpertMode, "ButtonItem_Bar_EnableExpertMode")
         Me.ButtonItem_Bar_EnableExpertMode.Visible = False
         '
         'ButtonItem27
         '
+        resources.ApplyResources(Me.ButtonItem27, "ButtonItem27")
         Me.ButtonItem27.BeginGroup = True
         Me.ButtonItem27.Name = "ButtonItem27"
         Me.ButtonItem27.Symbol = "59645"
         Me.ButtonItem27.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem27.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem27, "ButtonItem27")
         Me.ButtonItem27.Visible = False
         '
         'ButtonItem28
         '
-        Me.ButtonItem28.Name = "ButtonItem28"
         resources.ApplyResources(Me.ButtonItem28, "ButtonItem28")
+        Me.ButtonItem28.Name = "ButtonItem28"
         Me.ButtonItem28.Visible = False
         '
         'ButtonItem29
         '
+        resources.ApplyResources(Me.ButtonItem29, "ButtonItem29")
         Me.ButtonItem29.BeginGroup = True
         Me.ButtonItem29.Name = "ButtonItem29"
         Me.ButtonItem29.Symbol = ""
         Me.ButtonItem29.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem29, "ButtonItem29")
         '
         'ButtonItem30
         '
+        resources.ApplyResources(Me.ButtonItem30, "ButtonItem30")
         Me.ButtonItem30.Name = "ButtonItem30"
         Me.ButtonItem30.Symbol = "57345"
         Me.ButtonItem30.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem30.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem30, "ButtonItem30")
         '
         'Bar1
         '
+        resources.ApplyResources(Me.Bar1, "Bar1")
         Me.Bar1.AntiAlias = True
         Me.Bar1.BarType = DevComponents.DotNetBar.eBarType.StatusBar
-        resources.ApplyResources(Me.Bar1, "Bar1")
         Me.Bar1.IsMaximized = False
         Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem1, Me.LabelItem_OtherInfoText})
         Me.Bar1.Name = "Bar1"
@@ -502,15 +508,18 @@ Partial Class MainForm
         '
         'LabelItem1
         '
+        resources.ApplyResources(Me.LabelItem1, "LabelItem1")
         Me.LabelItem1.Name = "LabelItem1"
         '
         'LabelItem_OtherInfoText
         '
+        resources.ApplyResources(Me.LabelItem_OtherInfoText, "LabelItem_OtherInfoText")
         Me.LabelItem_OtherInfoText.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
         Me.LabelItem_OtherInfoText.Name = "LabelItem_OtherInfoText"
         '
         'RibbonControl1
         '
+        resources.ApplyResources(Me.RibbonControl1, "RibbonControl1")
         Me.RibbonControl1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         '
         '
@@ -518,7 +527,6 @@ Partial Class MainForm
         Me.RibbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonControl1.CanCustomize = False
         Me.RibbonControl1.CaptionVisible = True
-        resources.ApplyResources(Me.RibbonControl1, "RibbonControl1")
         Me.RibbonControl1.ForeColor = System.Drawing.Color.Black
         Me.RibbonControl1.KeyTipsFont = New System.Drawing.Font("Tahoma", 7.0!)
         Me.RibbonControl1.Name = "RibbonControl1"
@@ -621,4 +629,6 @@ Partial Class MainForm
     Friend WithEvents RibbonControl1 As DevComponents.DotNetBar.RibbonControl
     Friend WithEvents ButtonItem19 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem18 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_Bar_Plugins_ManagePlugins As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem20 As DevComponents.DotNetBar.ButtonItem
 End Class

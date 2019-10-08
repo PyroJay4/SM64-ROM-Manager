@@ -235,6 +235,7 @@ Public Class MainForm
 
     Private Sub AddMyPluginCommands()
         Dim lastFunc As PluginSystem.PluginFunction = Nothing
+        Dim isFirst As Boolean = True
 
         For Each func As PluginSystem.PluginFunction In PluginManager.GetFunctions("pluginmenu")
             Dim btn As New ButtonItem
@@ -251,8 +252,10 @@ Public Class MainForm
                     CType(sender.Tag, PluginSystem.PluginFunction).Invoke()
                 End Sub
 
+            ButtonItem_Bar_Plugins.BeginGroup = isFirst
             ButtonItem_Bar_Plugins.SubItems.Add(btn)
-            ButtonItem_Bar_Plugins.Visible = True
+
+            isFirst = False
         Next
 
         Bar2.Refresh()
@@ -473,4 +476,7 @@ Public Class MainForm
         End If
     End Sub
 
+    Private Sub ButtonItem_Bar_Plugins_ManagePlugins_Click(sender As Object, e As EventArgs) Handles ButtonItem_Bar_Plugins_ManagePlugins.Click, ButtonItem20.Click
+        Controller.OpenPluginManager()
+    End Sub
 End Class

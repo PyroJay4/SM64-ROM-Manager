@@ -513,6 +513,11 @@ Public Class MainController
         mgr.Show()
     End Sub
 
+    Public Sub OpenPluginManager()
+        Dim frm As New PluginInstallerForm
+        frm.Show()
+    End Sub
+
     'T o o l s
 
     Public Sub OpenTweakViewer()
