@@ -34,6 +34,9 @@ Public Module PluginInstaller
             Next
         Next
 
+        'Remove assembly that I need myself
+        '...
+
         'Check for references assemblies
         For Each asm As AssemblyName In asmWantToRemove.ToArray
             For Each p As PluginInfo In allPlugins
@@ -77,13 +80,13 @@ Public Module PluginInstaller
         If isFolder Then
             Dim dirInfo As New DirectoryInfo(destPath)
 
-            If Not dirInfo.Exists Then
+            If dirInfo.Exists Then
                 throwIsAlreadyInstalled()
             End If
 
             dirInfo.CopyTo(destPath, SearchOption.AllDirectories)
         Else
-            If Not File.Exists(destPath) Then
+            If File.Exists(destPath) Then
                 throwIsAlreadyInstalled()
             End If
 
