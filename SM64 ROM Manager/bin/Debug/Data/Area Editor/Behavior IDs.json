@@ -2,7 +2,7 @@
   {
     "Name": "Sliding star door",
     "Behavior": 318767104,
-    "BP1 Name": "",
+    "BP1 Name": "Star Requirement",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -110,7 +110,7 @@
   {
     "Name": "King Bob-omb",
     "Behavior": 318767604,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -326,24 +326,24 @@
   {
     "Name": "Warp (Fading)",
     "Behavior": 318768988,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Warp Radius (value * 10)",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
     "Name": "Warp Hole",
     "Behavior": 318769024,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Warp Radius (value * 10)",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
     "Name": "Warp Pipe",
     "Behavior": 318769056,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Warp Radius (value * 10)",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -546,25 +546,31 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Door",
+    "Name": "Door (warping)",
     "Behavior": 318769916,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Key Requirement",
+	"BP1 Entries": [
+      {
+        "Value": "0",
+        "Name": "None"
+      },
+      {
+        "Value": "1",
+        "Name": "Bowser 2 Key"
+      },
+	  {
+        "Value": "2",
+        "Name": "Bowser 1 Key"
+      }
+    ],
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
     "Name": "Door",
     "Behavior": 318769932,
-    "BP1 Name": "",
-    "BP2 Name": "",
-    "BP3 Name": "",
-    "BP4 Name": ""
-  },
-  {
-    "Name": "Door (warping)",
-    "Behavior": 318769940,
-    "BP1 Name": "",
+    "BP1 Name": "Star Requirement",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -764,7 +770,7 @@
   {
     "Name": "Little Cage",
     "Behavior": 318771016,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -1267,7 +1273,21 @@
     "Name": "Bowser",
     "Behavior": 318773328,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+	"BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Bowser 1"
+      },
+      {
+        "Value": "1",
+        "Name": "Bowser 2"
+      },
+	  {
+        "Value": "1",
+        "Name": "Bowser 3"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1378,8 +1398,18 @@
   {
     "Name": "Checkerboard elevators group",
     "Behavior": 318774128,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Type",
+	"BP1 Entries": [
+      {
+        "Value": "0",
+        "Name": "Type 0"
+      },
+      {
+        "Value": "1",
+        "Name": "Type 1"
+      }
+    ],
+    "BP2 Name": "Elevator Height (value * 10)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1650,7 +1680,7 @@
   {
     "Name": "Penguin mother",
     "Behavior": 318775432,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -1764,7 +1794,7 @@
   {
     "Name": "[!] Box",
     "Behavior": 318775888,
-    "BP1 Name": "Start #",
+    "BP1 Name": "",
     "BP2 Name": "Content",
     "BP2 Entries": [
       {
@@ -1801,7 +1831,7 @@
       },
       {
         "Value": "8",
-        "Name": "Star"
+        "Name": "Star 0"
       },
       {
         "Value": "9",
@@ -2100,25 +2130,25 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Boo Buddy",
+    "Name": "Big Boo (balcony)",
     "Behavior": 318777192,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Boo Buddy",
+    "Name": "Big Boo (merry-go-round)",
+    "Behavior": 318777212,
+    "BP1 Name": "Star ID",
+    "BP2 Name": "",
+    "BP3 Name": "",
+    "BP4 Name": ""
+  },
+  {
+    "Name": "Big Boo (ghost hunt)",
     "Behavior": 318777232,
-    "BP1 Name": "",
-    "BP2 Name": "",
-    "BP3 Name": "",
-    "BP4 Name": ""
-  },
-  {
-    "Name": "Big Boo on balcony",
-    "Behavior": 318777236,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -2132,7 +2162,7 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Boo Buddy 3",
+    "Name": "Boo Buddy",
     "Behavior": 318777316,
     "BP1 Name": "",
     "BP2 Name": "",
@@ -2140,7 +2170,7 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Boo Buddy 2",
+    "Name": "Boo Buddy (ghost hunt)",
     "Behavior": 318777348,
     "BP1 Name": "",
     "BP2 Name": "",
@@ -2318,7 +2348,7 @@
   {
     "Name": "Whomp King",
     "Behavior": 318778296,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -2326,14 +2356,6 @@
   {
     "Name": "Small Whomp",
     "Behavior": 318778316,
-    "BP1 Name": "",
-    "BP2 Name": "",
-    "BP3 Name": "",
-    "BP4 Name": ""
-  },
-  {
-    "Name": "Whomp King",
-    "Behavior": 318778324,
     "BP1 Name": "",
     "BP2 Name": "",
     "BP3 Name": "",
@@ -2478,7 +2500,7 @@
   {
     "Name": "Toad",
     "Behavior": 318779128,
-    "BP1 Name": "",
+    "BP1 Name": "Message ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -2503,7 +2525,7 @@
     "Name": "Warp (Mario Start 2)",
     "Behavior": 318779236,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2519,7 +2541,7 @@
     "Name": "Warp (Mario Start 3)",
     "Behavior": 318779244,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2527,7 +2549,7 @@
     "Name": "Warp (Level Exit Recovering Life)",
     "Behavior": 318779248,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2535,7 +2557,7 @@
     "Name": "Warp (Mario Start 1)",
     "Behavior": 318779252,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2543,7 +2565,7 @@
     "Name": "Warp (Mario Start 5)",
     "Behavior": 318779256,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2551,7 +2573,7 @@
     "Name": "Warp Painting Exit (Success)",
     "Behavior": 318779260,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2559,7 +2581,7 @@
     "Name": "Warp Painting Exit (Failure)",
     "Behavior": 318779264,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2575,7 +2597,7 @@
     "Name": "Warp (Level Exit Ceiling)",
     "Behavior": 318779272,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2583,7 +2605,7 @@
     "Name": "Warp (Level Exit)",
     "Behavior": 318779276,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2591,7 +2613,7 @@
     "Name": "Warp (Level Exit From Hole)",
     "Behavior": 318779280,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2599,7 +2621,7 @@
     "Name": "Warp (to level)",
     "Behavior": 318779284,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Warp ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2721,7 +2743,7 @@
     "Name": "Pink Bob-omb (Generates Message)",
     "Behavior": 318779868,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Message ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2737,7 +2759,7 @@
     "Name": "Cannon (Closed)",
     "Behavior": 318780020,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Cannon Yaw",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2761,7 +2783,7 @@
     "Name": "Wooden Signpost",
     "Behavior": 318780128,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Message ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2785,7 +2807,25 @@
     "Name": "Amp",
     "Behavior": 318780296,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Rotation Radius",
+	"BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "200"
+      },
+      {
+        "Value": "1",
+        "Name": "300"
+      },
+	  {
+        "Value": "2",
+        "Name": "400"
+      },
+	  {
+        "Value": "3",
+        "Name": "0"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2880,7 +2920,7 @@
   {
     "Name": "Big Bully Boss",
     "Behavior": 318781024,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -2888,7 +2928,7 @@
   {
     "Name": "Bully group (spawn Big Bully when all 3 are destroyed)",
     "Behavior": 318781076,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -2904,7 +2944,7 @@
   {
     "Name": "Big Chill Bully",
     "Behavior": 318781184,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -2912,7 +2952,7 @@
   {
     "Name": "Manta Rings (In Water Levels only)",
     "Behavior": 318781240,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -3065,23 +3105,67 @@
     "Name": "Tiny metal ball",
     "Behavior": 318782040,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Metal Ball Generator 2",
+    "Name": "Metal Ball Generator (less frequent)",
     "Behavior": 318782080,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+	"BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "BoB Upper"
+      },
+      {
+        "Value": "1",
+        "Name": "TTM"
+      },
+	  {
+        "Value": "2",
+        "Name": "BoB Lower"
+      },
+	  {
+        "Value": "3",
+        "Name": "THI Large"
+      },
+	  {
+        "Value": "4",
+        "Name": "THI Small"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Metal Ball Generator",
+    "Name": "Metal Ball Generator (more frequent)",
     "Behavior": 318782116,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+	"BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "BoB Upper"
+      },
+      {
+        "Value": "1",
+        "Name": "TTM"
+      },
+	  {
+        "Value": "2",
+        "Name": "BoB Lower"
+      },
+	  {
+        "Value": "3",
+        "Name": "THI Large"
+      },
+	  {
+        "Value": "4",
+        "Name": "THI Small"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -3097,7 +3181,7 @@
     "Name": "Flying Ship Wing",
     "Behavior": 318782176,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Rotation",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -3224,7 +3308,7 @@
   {
     "Name": "Big snowman head",
     "Behavior": 318782732,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -3296,7 +3380,7 @@
   {
     "Name": "Star",
     "Behavior": 318783036,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -3310,9 +3394,9 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Star For Red Coins (Hidden)",
+    "Name": "Star (Red Coins)",
     "Behavior": 318783116,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -3326,17 +3410,17 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Wind?",
+    "Name": "Star (Bowser Red Coins)",
     "Behavior": 318783204,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Star (Hidden)",
+    "Name": "Star (Secrets)",
     "Behavior": 318783228,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -3536,7 +3620,7 @@
   {
     "Name": "Manta Ray",
     "Behavior": 318784368,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -3584,15 +3668,15 @@
   {
     "Name": "Treasure chest group (sunken ship)",
     "Behavior": 318784588,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Star (Hidden for Treasure Chests?)",
+    "Name": "Treasure chest group (JRB)",
     "Behavior": 318784624,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -3600,7 +3684,7 @@
   {
     "Name": "Treasure chest group (DDD)",
     "Behavior": 318784660,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -3640,7 +3724,7 @@
   {
     "Name": "Koopa",
     "Behavior": 318784896,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "Type",
     "BP2 Entries": [
       {
@@ -3820,7 +3904,7 @@
   {
     "Name": "Wiggler Boss",
     "Behavior": 318785688,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -4093,7 +4177,7 @@
     "Name": "Cannon",
     "Behavior": 318787344,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Cannon Yaw",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4246,7 +4330,7 @@
   {
     "Name": "Eyerok Boss",
     "Behavior": 318788276,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -4262,8 +4346,18 @@
   {
     "Name": "Klepto",
     "Behavior": 318788368,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Star ID",
+    "BP2 Name": "Type",
+	"BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Cap Thief"
+      },
+      {
+        "Value": "1",
+        "Name": "Star Holding"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4278,7 +4372,7 @@
   {
     "Name": "Penguin (Racing)",
     "Behavior": 318788480,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
