@@ -519,7 +519,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Boo Boss on Balcony",
+      "Name": "Boo Boss (Balcony)",
       "ModelID": 84,
       "ModelAddress": 201327140,
       "Behavior": 318777192,
@@ -533,7 +533,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Boo Buddy",
+      "Name": "Boo Boss (Ghost Hunt)",
       "ModelID": 84,
       "ModelAddress": 201327140,
       "Behavior": 318777232,
@@ -547,7 +547,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Boo Buddy",
+      "Name": "Boo Buddy Group (x3)",
       "ModelID": 84,
       "ModelAddress": 201327140,
       "Behavior": 318777296,
@@ -561,7 +561,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Boo Buddy 2",
+      "Name": "Boo Buddy (Ghost Hunt)",
       "ModelID": 84,
       "ModelAddress": 201327140,
       "Behavior": 318777348,
@@ -575,7 +575,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Boo Buddy 3",
+      "Name": "Boo Buddy",
       "ModelID": 84,
       "ModelAddress": 201327140,
       "Behavior": 318777316,
