@@ -1,18 +1,26 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms
-Imports SettingsMgr
+Imports Pilz.Configuration
 
 Public Class Settings
 
     Private Shared enableAutoSave As Boolean = False
     Private Shared managerInstance As SettingsManager(Of SettingsStruc)
 
-    Private Shared ReadOnly Property Instance As SettingsStruc
+    <System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)>
+    Public Shared ReadOnly Property Instance As SettingsStruc
         Get
             If managerInstance Is Nothing Then
                 managerInstance = New SettingsManager(Of SettingsStruc)(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Data\Settings.json"), enableAutoSave)
             End If
             Return managerInstance.Instance
+        End Get
+    End Property
+
+    <System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)>
+    Public Shared ReadOnly Property MySettingsManager As SettingsManager(Of SettingsStruc)
+        Get
+            Return managerInstance
         End Get
     End Property
 
@@ -80,6 +88,12 @@ Public Class Settings
     Public Shared ReadOnly Property ModelConverter As ModelConverterSettingsStruc
         Get
             Return Instance.ModelConverter
+        End Get
+    End Property
+
+    Public Shared ReadOnly Property JobsToDo As JobsToDoStruc
+        Get
+            Return Instance.JobsToDo
         End Get
     End Property
 

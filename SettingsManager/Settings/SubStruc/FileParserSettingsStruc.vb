@@ -1,5 +1,4 @@
 ﻿Imports Pilz.S3DFileParser
-Imports SettingsMgr
 
 Public Class FileParserSettingsStruc
 

@@ -1,7 +1,6 @@
 ﻿Imports System.Drawing
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Metro.ColorTables
-Imports SettingsMgr
 
 Public Class StyleManagerSettingsStruc
 

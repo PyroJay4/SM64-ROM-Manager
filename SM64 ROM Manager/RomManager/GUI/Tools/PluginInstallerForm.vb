@@ -1,4 +1,7 @@
-﻿Public Class PluginInstallerForm
+﻿Imports DevComponents.DotNetBar
+Imports Microsoft.WindowsAPICodePack.Dialogs
+
+Public Class PluginInstallerForm
 
     'C o n s t r u c t o r s
 
@@ -6,6 +9,8 @@
         InitializeComponent()
         UpdateAmbientColors
     End Sub
+
+    'F e a t u r e s
 
     Private Sub LoadAllPlugins()
         ListViewEx_Plugins.SuspendLayout()
@@ -25,7 +30,7 @@
         ListViewEx_Plugins.ResumeLayout()
     End Sub
 
-    Private Function GetSelectedPlugin() As IEnumerable(Of PluginInfo)
+    Private Function GetSelectedPlugins() As IEnumerable(Of PluginInfo)
         Dim items As ListView.SelectedListViewItemCollection = ListViewEx_Plugins.SelectedItems
         Dim plugins As New List(Of PluginInfo)
 
@@ -39,7 +44,7 @@
     End Function
 
     Private Sub RemoveSelectedItems()
-        Dim plugins As IEnumerable(Of PluginInfo) = GetSelectedPlugin()
+        Dim plugins As IEnumerable(Of PluginInfo) = GetSelectedPlugins()
 
         For Each p As PluginInfo In plugins
             RemovePlugin(p)
@@ -49,6 +54,23 @@
             LoadAllPlugins()
         End If
     End Sub
+
+    Private Sub InstallPlugin(ext As String, installDir As Boolean)
+        Dim ofd As New CommonOpenFileDialog
+
+        If installDir Then
+            ofd.IsFolderPicker = True
+        Else
+            Dim extFilter As String = $"*.{ext}"
+            ofd.Filters.Add(New CommonFileDialogFilter(extFilter, extFilter))
+        End If
+
+        If ofd.ShowDialog = CommonFileDialogResult.Ok Then
+            InstallPluginFrom(ofd.FileName, installDir)
+        End If
+    End Sub
+
+    'G U I
 
     Private Sub PluginInstallerForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListViewEx_Plugins.ResetHeaderHandler()
@@ -63,19 +85,23 @@
     End Sub
 
     Private Sub ButtonX_Remove_Click(sender As Object, e As EventArgs) Handles ButtonX_Remove.Click
-        RemoveSelectedItems()
+        Try
+            RemoveSelectedItems()
+        Catch ex As InvalidOperationException
+            MessageBoxEx.Show(ex.Message, "Plugin is used", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub ButtonItem_SingleFile_Click(sender As Object, e As EventArgs) Handles ButtonItem_SingleFile.Click
-
+        InstallPlugin("dll", False)
     End Sub
 
     Private Sub ButtonItem_ZipFile_Click(sender As Object, e As EventArgs) Handles ButtonItem_ZipFile.Click
-
+        InstallPlugin("zip", False)
     End Sub
 
     Private Sub ButtonItem_Directory_Click(sender As Object, e As EventArgs) Handles ButtonItem_Directory.Click
-
+        InstallPlugin(String.Empty, True)
     End Sub
 
 End Class
