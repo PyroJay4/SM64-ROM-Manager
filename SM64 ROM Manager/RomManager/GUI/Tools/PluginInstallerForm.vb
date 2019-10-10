@@ -101,14 +101,13 @@ Public Class PluginInstallerForm
         End Try
     End Sub
 
-    Private Sub InstallPlugin(ext As String, installDir As Boolean)
+    Private Sub InstallPlugin(ext As String, filterName As String, installDir As Boolean)
         Dim ofd As New CommonOpenFileDialog
 
         If installDir Then
             ofd.IsFolderPicker = True
         Else
-            Dim extFilter As String = $"*.{ext}"
-            ofd.Filters.Add(New CommonFileDialogFilter(extFilter, extFilter))
+            ofd.Filters.Add(New CommonFileDialogFilter(filterName, $"*.{ext}"))
         End If
 
         If ofd.ShowDialog(Handle) = CommonFileDialogResult.Ok Then
@@ -156,15 +155,15 @@ Public Class PluginInstallerForm
     End Sub
 
     Private Sub ButtonItem_SingleFile_Click(sender As Object, e As EventArgs) Handles ButtonItem_SingleFile.Click
-        InstallPlugin("dll", False)
+        InstallPlugin("dll", String.Empty, False)
     End Sub
 
     Private Sub ButtonItem_ZipFile_Click(sender As Object, e As EventArgs) Handles ButtonItem_ZipFile.Click
-        InstallPlugin("zip", False)
+        InstallPlugin("zip", String.Empty, False)
     End Sub
 
     Private Sub ButtonItem_Directory_Click(sender As Object, e As EventArgs) Handles ButtonItem_Directory.Click
-        InstallPlugin(String.Empty, True)
+        InstallPlugin(String.Empty, String.Empty, True)
     End Sub
 
 End Class
