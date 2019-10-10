@@ -34,9 +34,6 @@ Public Module PluginInstaller
             Next
         Next
 
-        'Remove assembly that I need myself
-        '...
-
         'Check for references assemblies
         For Each asm As AssemblyName In asmWantToRemove.ToArray
             For Each p As PluginInfo In allPlugins
@@ -57,7 +54,7 @@ Public Module PluginInstaller
         'Check what assemblies are loaded and can be removed
         For Each asmName As AssemblyName In asmToRemove
             Dim asm As Assembly = loadedAssemblies.FirstOrDefault(Function(n) n.FullName = asmName.FullName)
-            If asm IsNot Nothing Then
+            If asm IsNot Nothing AndAlso Path.GetDirectoryName(asm.Location).Contains(MyPluginsPath) Then
                 filesToRemove.Add(asm.Location)
             End If
         Next
