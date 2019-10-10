@@ -106,6 +106,7 @@ Partial Class PluginInstallerForm
         Me.ListViewEx_Plugins.DisabledBackColor = System.Drawing.Color.Empty
         Me.ListViewEx_Plugins.ForeColor = System.Drawing.Color.Black
         Me.ListViewEx_Plugins.FullRowSelect = True
+        Me.ListViewEx_Plugins.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {CType(resources.GetObject("ListViewEx_Plugins.Groups"), System.Windows.Forms.ListViewGroup), CType(resources.GetObject("ListViewEx_Plugins.Groups1"), System.Windows.Forms.ListViewGroup)})
         Me.ListViewEx_Plugins.HideSelection = False
         Me.ListViewEx_Plugins.Name = "ListViewEx_Plugins"
         Me.ListViewEx_Plugins.UseCompatibleStateImageBehavior = False

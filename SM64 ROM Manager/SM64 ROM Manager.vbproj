@@ -214,6 +214,7 @@
       <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
     </Reference>
@@ -251,6 +252,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="WindowsBase" />
     <Reference Include="Z.ExtensionMethods.WithNamespace, Version=2.1.1.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
       <HintPath>..\packages\Z.ExtensionMethods.WithNamespace.2.1.1\lib\net45\Z.ExtensionMethods.WithNamespace.dll</HintPath>
     </Reference>
@@ -490,6 +492,16 @@
     </Compile>
     <Compile Include="RomManager\GUI\Script\ScriptDumper.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\Language Resources\Plugin Installer\Plugin_Installer_Resources.de.Designer.vb">
+      <DependentUpon>Plugin_Installer_Resources.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RomManager\Language Resources\Plugin Installer\Plugin_Installer_Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Plugin_Installer_Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RomManager\Language Resources\Star Position Editor\Star_Position_Editor_Resources.de.Designer.vb">
       <DependentUpon>Star_Position_Editor_Resources.de.resx</DependentUpon>
@@ -815,6 +827,16 @@
     <EmbeddedResource Include="RomManager\GUI\Update\UpdateDialog.resx">
       <DependentUpon>UpdateDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\Language Resources\Plugin Installer\Plugin_Installer_Resources.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Plugin_Installer_Resources.de.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\Language Resources\Plugin Installer\Plugin_Installer_Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Plugin_Installer_Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\Language Resources\Star Position Editor\Star_Position_Editor_Resources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Star_Position_Editor_Resources.de.Designer.vb</LastGenOutput>
@@ -931,6 +953,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,7 +1,13 @@
-﻿Imports DevComponents.DotNetBar
+﻿Imports System.IO
+Imports DevComponents.DotNetBar
 Imports Microsoft.WindowsAPICodePack.Dialogs
+Imports SM64_ROM_Manager.My.Resources
 
 Public Class PluginInstallerForm
+
+    'M e m b e r s
+
+    Private Shared removedPlugins As New List(Of PluginInfo)
 
     'C o n s t r u c t o r s
 
@@ -14,21 +20,54 @@ Public Class PluginInstallerForm
 
     Private Sub LoadAllPlugins()
         ListViewEx_Plugins.SuspendLayout()
-        ListViewEx_Plugins.Items.Clear()
 
-        For Each p As PluginInfo In GetAllPlugins()
-            Dim lvi As New ListViewItem With {
-                .Tag = p,
-                .Text = p.Name
-            }
-            lvi.SubItems.Add(New ListViewItem.ListViewSubItem With {.Text = p.Version.ToString})
-            lvi.SubItems.Add(New ListViewItem.ListViewSubItem With {.Text = p.Developer})
-            lvi.SubItems.Add(New ListViewItem.ListViewSubItem With {.Text = p.Location})
-            ListViewEx_Plugins.Items.Add(lvi)
+        LoadInstalledPlugins()
+        LoadRemovedPlugins()
+
+        ListViewEx_Plugins.ResumeLayout()
+    End Sub
+
+    Private Sub LoadInstalledPlugins()
+        LoadPlugins(ListViewEx_Plugins.Groups("Lvg_Installed"), GetAllPlugins.Where(Function(n) Not removedPlugins.Where(Function(b) b.Plugin Is n.Plugin).Any))
+    End Sub
+
+    Private Sub LoadRemovedPlugins()
+        LoadPlugins(ListViewEx_Plugins.Groups("Lvg_Removed"), removedPlugins)
+    End Sub
+
+    Private Sub LoadPlugins(lvg As ListViewGroup, plugins As IEnumerable(Of PluginInfo))
+        ListViewEx_Plugins.SuspendLayout()
+
+        Dim itemsToRemove As New List(Of ListViewItem)
+        For Each item As ListViewItem In ListViewEx_Plugins.Items
+            If item.Group Is lvg Then
+                itemsToRemove.Add(item)
+            End If
+        Next
+        For Each item As ListViewItem In itemsToRemove
+            ListViewEx_Plugins.Items.Remove(item)
+        Next
+
+        For Each p As PluginInfo In plugins
+            ListViewEx_Plugins.Items.Add(GetListViewItem(p, lvg))
         Next
 
         ListViewEx_Plugins.ResumeLayout()
     End Sub
+
+    Private Function GetListViewItem(p As PluginInfo, lvg As ListViewGroup) As ListViewItem
+        Dim lvi As New ListViewItem With {
+                .Tag = p,
+                .Text = p.Name,
+                .Group = lvg
+            }
+
+        lvi.SubItems.Add(New ListViewItem.ListViewSubItem With {.Text = p.Version.ToString})
+        lvi.SubItems.Add(New ListViewItem.ListViewSubItem With {.Text = p.Developer})
+        lvi.SubItems.Add(New ListViewItem.ListViewSubItem With {.Text = p.Location})
+
+        Return lvi
+    End Function
 
     Private Function GetSelectedPlugins() As IEnumerable(Of PluginInfo)
         Dim items As ListView.SelectedListViewItemCollection = ListViewEx_Plugins.SelectedItems
@@ -46,13 +85,20 @@ Public Class PluginInstallerForm
     Private Sub RemoveSelectedItems()
         Dim plugins As IEnumerable(Of PluginInfo) = GetSelectedPlugins()
 
-        For Each p As PluginInfo In plugins
-            RemovePlugin(p)
-        Next
+        Try
+            For Each p As PluginInfo In plugins
+                RemovePlugin(p)
+                removedPlugins.Add(p)
+            Next
 
-        If plugins.Any Then
-            LoadAllPlugins()
-        End If
+            If plugins.Any Then
+                LoadAllPlugins()
+            End If
+
+            MessageBoxEx.Show(Plugin_Installer_Resources.MsgBox_PluginInstalled, Plugin_Installer_Resources.MsgBox_PluginInstalled_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As InvalidOperationException
+            MessageBoxEx.Show(ex.Message, Plugin_Installer_Resources.MsgBox_PluginInstalled_Error_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub InstallPlugin(ext As String, installDir As Boolean)
@@ -65,8 +111,25 @@ Public Class PluginInstallerForm
             ofd.Filters.Add(New CommonFileDialogFilter(extFilter, extFilter))
         End If
 
-        If ofd.ShowDialog = CommonFileDialogResult.Ok Then
-            InstallPluginFrom(ofd.FileName, installDir)
+        If ofd.ShowDialog(Handle) = CommonFileDialogResult.Ok Then
+            Try
+                'Install Plugin
+                Dim res = InstallPluginFrom(ofd.FileName, installDir)
+
+                'Load Plugin
+                If res.isDirectory Then
+                    Publics.PluginManager.LoadPlugins(res.destinationPath)
+                Else
+                    Publics.PluginManager.LoadPlugin(res.destinationPath)
+                End If
+
+                'Reload list
+                LoadInstalledPlugins()
+
+                MessageBoxEx.Show(Plugin_Installer_Resources.MsgBox_PluginRemoved, Plugin_Installer_Resources.MsgBox_PluginRemoved_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As InvalidOperationException
+                MessageBoxEx.Show(ex.Message, Plugin_Installer_Resources.MsgBox_PluginRemoved_Error_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
         End If
     End Sub
 

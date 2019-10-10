@@ -38,7 +38,7 @@ Public Module PluginInstaller
         For Each asm As AssemblyName In asmWantToRemove.ToArray
             For Each p As PluginInfo In allPlugins
                 For Each ref In p.Plugin.Assembly.GetReferencedAssemblies
-                    If ref.FullName = asm.FullName Then
+                    If Not asmToRemove.Contains(asm) AndAlso ref.FullName = asm.FullName Then
                         If asm.FullName = plugin.Plugin.Assembly.FullName Then
                             Throw New InvalidOperationException("This Plugin can't be removed since it is used by an other Plugin.")
                         Else
@@ -55,24 +55,25 @@ Public Module PluginInstaller
         For Each asmName As AssemblyName In asmToRemove
             Dim asm As Assembly = loadedAssemblies.FirstOrDefault(Function(n) n.FullName = asmName.FullName)
             If asm IsNot Nothing AndAlso Path.GetDirectoryName(asm.Location).Contains(MyPluginsPath) Then
-                filesToRemove.Add(asm.Location)
+                filesToRemove.AddIfNotContains(asm.Location)
             End If
         Next
 
         'Remove files
         For Each f As String In filesToRemove
-            Settings.JobsToDo.Add(New JobToDo With {.Type = JobToDoType.DeleteFile, .Urgency = JobToDoUrgency.AsSoonAsPossible, .Params = {f}})
+            Settings.JobsToDo.Add(New JobToDo With {.Type = JobToDoType.DeleteFile, .Urgency = JobToDoUrgency.OnNextStartup, .Params = {f}})
         Next
 
         'Remove directory if empty
         If Directory.GetFiles(pluginDir, String.Empty, SearchOption.AllDirectories).Length = filesToRemove.Count Then
-            Settings.JobsToDo.Add(New JobToDo With {.Type = JobToDoType.DeleteDirectory, .Urgency = JobToDoUrgency.AsSoonAsPossible, .Params = {pluginDir, True}})
+            Settings.JobsToDo.Add(New JobToDo With {.Type = JobToDoType.DeleteDirectory, .Urgency = JobToDoUrgency.OnNextStartup, .Params = {pluginDir, True}})
         End If
     End Sub
 
-    Public Sub InstallPluginFrom(filePath As String, isFolder As Boolean)
+    Public Function InstallPluginFrom(filePath As String, isFolder As Boolean) As (destinationPath As String, isDirectory As Boolean)
         Dim throwIsAlreadyInstalled = Sub() Throw New InvalidOperationException("This plugin (or an other version of it) is already installed!")
         Dim destPath As String = Path.Combine(MyPluginsPath, Path.GetFileName(filePath))
+        Dim isDirectory As Boolean = True
 
         If isFolder Then
             Dim dirInfo As New DirectoryInfo(destPath)
@@ -100,9 +101,12 @@ Public Module PluginInstaller
                     Next
 
                     File.Copy(filePath, destPath)
+                    isDirectory = False
             End Select
         End If
-    End Sub
+
+        Return (destPath, isDirectory)
+    End Function
 
     Public Class PluginInfo
 
