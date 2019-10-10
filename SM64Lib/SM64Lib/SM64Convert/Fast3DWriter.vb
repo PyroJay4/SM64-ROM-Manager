@@ -708,6 +708,13 @@ Namespace SM64Convert
                     getVals(face.Points(1), vb, tb, nb, vcb)
                     getVals(face.Points(2), vc, tc, nc, vcc)
 
+                    If mat.EnableClamp Then
+                        Dim behavClamping = Sub(vert As Vertex) vert.Y = -1
+                        behavClamping(va)
+                        behavClamping(vb)
+                        behavClamping(vc)
+                    End If
+
                     Dim fa As New FinalVertexData
                     Dim fb As New FinalVertexData
                     Dim fc As New FinalVertexData
