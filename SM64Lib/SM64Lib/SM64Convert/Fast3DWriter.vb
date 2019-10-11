@@ -1122,7 +1122,7 @@ Namespace SM64Convert
         End Sub
 
         Private Function GetTypeFromMaterial(mat As Material) As Byte
-            Return getTypeFromTexType(mat.TexType)
+            Return GetTypeFromTexType(mat.TexType)
         End Function
 
         Private Function GetTypeFromTexType(texType As N64Codec, Optional advanced As Boolean = False) As Byte
@@ -1167,20 +1167,20 @@ Namespace SM64Convert
 
         Private Sub ImpCmdFD(offset As UInteger, texType As N64Codec)
             Dim off As UInteger = startSegOffset + offset
-            Dim type As Byte = getTypeFromTexType(texType, True)
+            Dim type As Byte = GetTypeFromTexType(texType, True)
             ImpF3D($"FD {Hex(type)} 00 00 {Hex(curSeg And &HFF)} {Hex((off >> 16) And &HFF)} {Hex((off >> 8) And &HFF)} {Hex(off And &HFF)}")
         End Sub
 
         Private Sub ImpCmdF5_First(texType As N64Codec)
-            Dim type As Byte = getTypeFromTexType(texType, True)
+            Dim type As Byte = GetTypeFromTexType(texType, True)
             ImpF3D($"F5 {Hex(type)} 00 00 07 00 00 00")
         End Sub
 
         Private Sub ImpCmdF5_Second(mat As Material, texWidth As UInteger, texHeight As UInteger)
             'Create upper
-            Dim type As Byte = getTypeFromTexType(mat.TexType)
+            Dim type As Byte = GetTypeFromTexType(mat.TexType)
             Dim lineScale As Single = 1.0F
-            Dim bpt As Byte = bytesPerType(mat.TexType)
+            Dim bpt As Byte = BytesPerType(mat.TexType)
 
             If bpt <> 0 Then
                 lineScale = bpt / 4.0
@@ -1215,8 +1215,8 @@ Namespace SM64Convert
         End Sub
 
         Private Sub AddCmdF3(mat As Material)
-            Dim numTexels As UInteger = ((mat.TexWidth * mat.TexHeight + getTexelIncrement(mat.TexType)) >> getTexelShift(mat.TexType)) - 1
-            Dim bpt As Integer = bytesPerType(mat.TexType)
+            Dim numTexels As UInteger = ((mat.TexWidth * mat.TexHeight + GetTexelIncrement(mat.TexType)) >> GetTexelShift(mat.TexType)) - 1
+            Dim bpt As Integer = BytesPerType(mat.TexType)
             Dim tl As UInteger
             Dim lower As UInteger
             Dim cmd As String
@@ -1241,7 +1241,7 @@ Namespace SM64Convert
             ImpF3D(cmd)
         End Sub
 
-        Private Sub AddCmdFC(mat As Material, ByRef lastCmd As String)
+        Private Sub AddCmdFC(mat As Material, dlType As DisplayListType, ByRef lastCmd As String)
             Dim cmd As String = String.Empty
 
             If mat.HasTexture Then
@@ -1359,7 +1359,7 @@ Namespace SM64Convert
                 ImpCmdFD(mat.Offset, mat.TexType)
                 ImpCmdF5_First(mat.TexType)
                 ImpF3D("E6 00 00 00 00 00 00 00")
-                addCmdF3(mat)
+                AddCmdF3(mat)
                 ImpF3D("E7 00 00 00 00 00 00 00")
                 ImpCmdF5_Second(mat, mat.TexWidth, mat.TexHeight)
                 AddCmdF2(mat)
@@ -1581,7 +1581,7 @@ Namespace SM64Convert
                                 If lastMaterial IsNot mp.Material Then
                                     lastMaterial = mp.Material
 
-                                    AddCmdFC(mp.Material, lastCmdFC)
+                                    AddCmdFC(mp.Material, DisplayListType.Solid, lastCmdFC)
 
                                     If lastN64Codec <> mp.Material.Type Then
                                         ImpCmd03(mp.Material, importStart)
@@ -1673,7 +1673,7 @@ Namespace SM64Convert
                                 If lastMaterial IsNot mp.Material Then
                                     lastMaterial = mp.Material
 
-                                    AddCmdFC(mp.Material, lastCmdFC)
+                                    AddCmdFC(mp.Material, DisplayListType.Alpha, lastCmdFC)
 
                                     ImpCmd03(mp.Material, importStart)
 
@@ -1756,7 +1756,7 @@ Namespace SM64Convert
                                         End If
                                     End If
 
-                                    AddCmdFC(mp.Material, lastCmdFC)
+                                    AddCmdFC(mp.Material, DisplayListType.Transparent, lastCmdFC)
 
                                     If lastN64Codec <> mp.Material.Type Then
                                         ImpCmd03(mp.Material, importStart)
