@@ -51,15 +51,14 @@
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
+    <Reference Include="Pilz.Configuration">
+      <HintPath>..\Shared Libs\Pilz.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="Pilz.Drawing.Drawing3D.OpenGLFactory">
       <HintPath>..\Shared Libs\Pilz.Drawing.Drawing3D.OpenGLFactory.dll</HintPath>
     </Reference>
     <Reference Include="Pilz.Simple3DFileParser">
       <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
-    </Reference>
-    <Reference Include="SettingsMgr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Shared Libs\SettingsMgr.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -86,6 +85,7 @@
     <Compile Include="Enums\HexEditModes.vb" />
     <Compile Include="Enums\NotificationMode.vb" />
     <Compile Include="Settings.vb" />
+    <Compile Include="Settings\SubStruc\JobsToDoStruc.vb" />
     <Compile Include="Settings\SubStruc\AreaEditorSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\FileParserSettingsStruc.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -110,6 +110,9 @@
     <Compile Include="Settings\SubStruc\StyleManagerSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\GuiInputSettings.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\HexEditModeStruc.vb" />
+    <Compile Include="Settings\SubStruc\SubStruc\JobToDo.vb" />
+    <Compile Include="Settings\SubStruc\SubStruc\JobToDoType.vb" />
+    <Compile Include="Settings\SubStruc\SubStruc\JobToDoUrgency.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

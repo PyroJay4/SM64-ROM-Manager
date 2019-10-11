@@ -1,5 +1,4 @@
 ﻿Imports System.Collections.Specialized
-Imports SettingsMgr
 
 Public Class RecentFilesSettingsStruc
 

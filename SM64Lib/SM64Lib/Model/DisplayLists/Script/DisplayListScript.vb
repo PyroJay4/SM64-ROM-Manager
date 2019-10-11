@@ -25,13 +25,13 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script
                 Me.Add(cmd)
 
                 Select Case cmd.CommandType
-                    Case CommandTypes.F3D_NOOP
+                    Case CommandTypes.NOOP
                         cmd.Position = 0
                         Dim checkVal As Integer = cmd.ReadInt32
                         cmd.Position = 0
                         If checkVal <> 0 Then Exit Do
 
-                    Case CommandTypes.F3D_DisplayList
+                    Case CommandTypes.DisplayList
                         cmd.Position = 4
                         Dim segAddr As Integer = cmd.ReadInt32
                         cmd.Position = 0
@@ -48,7 +48,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script
                         Else Exit Do
                         End If
 
-                    Case CommandTypes.F3D_EndDisplaylist
+                    Case CommandTypes.EndDisplaylist
                         If lastPositions.Count > 0 Then
                             curSeg.Data.Position = lastPositions.Pop
                         Else

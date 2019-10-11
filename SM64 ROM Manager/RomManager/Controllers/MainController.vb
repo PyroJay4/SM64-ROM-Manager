@@ -31,6 +31,7 @@ Imports System.Net.NetworkInformation
 Imports System.Net
 Imports System.Reflection
 Imports SM64Lib.Data
+Imports Pilz.Reflection.PluginSystem
 
 Public Class MainController
 
@@ -251,7 +252,7 @@ Public Class MainController
         Dim pluginsPath As String = Path.Combine(MyDataPath, "Plugins")
 
         If Directory.Exists(pluginsPath) Then
-            PluginManager.LoadPlugins(pluginsPath)
+            Publics.PluginManager.LoadPlugins(pluginsPath)
         End If
     End Sub
 
@@ -510,6 +511,11 @@ Public Class MainController
     Public Sub OpenGlobalObjectBankManager()
         Dim mgr As New CustomBankManager(RomManager, RomManager.GlobalObjectBank)
         mgr.Show()
+    End Sub
+
+    Public Sub OpenPluginManager()
+        Dim frm As New PluginInstallerForm
+        frm.Show()
     End Sub
 
     'T o o l s
@@ -1277,10 +1283,37 @@ Public Class MainController
     End Sub
 
     Public Sub ImportLevel()
-        Dim ofd As New OpenFileDialog With {.Filter = "SM64 ROMs (*.z64)|*.z64"}
-        If ofd.ShowDialog = DialogResult.OK Then
+        Dim addedFuncs As New List(Of PluginFunction)
+        Dim allFuncs As IEnumerable(Of PluginFunction) = Publics.PluginManager.GetFunctions("levelmanager.importlevels.getilevelmanager")
+
+        Dim cofd As New CommonOpenFileDialog
+        cofd.Filters.Add(New CommonFileDialogFilter("SM64 ROMs (*.z64)", "*.z64"))
+
+        Dim cb As New CommonFileDialogComboBox
+        cb.Items.Add(New CommonFileDialogComboBoxItem("SM64 RM/Editor"))
+
+        For Each pf As PluginFunction In allFuncs
+            If pf.Params.Count >= 1 AndAlso TypeOf pf.Params(0) Is String Then
+                addedFuncs.Add(pf)
+                cb.Items.Add(New CommonFileDialogComboBoxItem(pf.Params(0)))
+            End If
+        Next
+
+        cofd.Controls.Add(cb)
+        cb.SelectedIndex = 0
+
+        If cofd.ShowDialog = CommonFileDialogResult.Ok Then
+            Dim lvlmgr As ILevelManager = Nothing
+
+            Select Case cb.SelectedIndex
+                Case 0
+                    lvlmgr = New LevelManager
+                Case Else
+                    lvlmgr = addedFuncs(cb.SelectedIndex - 1).InvokeGet
+            End Select
+
             Dim frm As New ImportLevelDialog(RomManager)
-            If frm.LoadROM(ofd.FileName) Then
+            If frm.LoadROM(cofd.FileName, lvlmgr) Then
                 If frm.ShowDialog = DialogResult.OK Then
                     Dim lvl As Level = RomManager.Levels.Last
                     SetLevelscriptNeedToSave(lvl)

@@ -1,5 +1,4 @@
 ﻿Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN
-Imports SettingsMgr
 
 Public Class AreaEditorSettingsStruc
 

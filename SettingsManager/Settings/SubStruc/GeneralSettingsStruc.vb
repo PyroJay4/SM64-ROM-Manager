@@ -1,5 +1,4 @@
 ﻿Imports System.Globalization
-Imports SettingsMgr
 
 Public Class GeneralSettingsStruc
 

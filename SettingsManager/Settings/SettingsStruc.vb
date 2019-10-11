@@ -1,7 +1,4 @@
-﻿Imports System.ComponentModel
-Imports System.IO
-Imports System.Windows.Forms
-Imports SettingsMgr
+﻿Imports Pilz.Configuration
 
 Public Class SettingsStruc
     Inherits SettingsBase
@@ -12,6 +9,7 @@ Public Class SettingsStruc
     Public Property FileParser As FileParserSettingsStruc
     Public Property RecentFiles As RecentFilesSettingsStruc
     Public Property ModelConverter As ModelConverterSettingsStruc
+    Public Property JobsToDo As JobsToDoStruc
 
     Public Overrides Sub ResetValues()
         If AreaEditor Is Nothing Then AreaEditor = New AreaEditorSettingsStruc
@@ -26,6 +24,8 @@ Public Class SettingsStruc
         RecentFiles.ResetValues()
         If ModelConverter Is Nothing Then ModelConverter = New ModelConverterSettingsStruc
         ModelConverter.ResetValues()
+        If JobsToDo Is Nothing Then JobsToDo = New JobsToDoStruc
+        JobsToDo.Clear()
     End Sub
 
 End Class

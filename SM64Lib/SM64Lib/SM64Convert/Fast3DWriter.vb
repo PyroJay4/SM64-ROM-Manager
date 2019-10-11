@@ -705,8 +705,8 @@ Namespace SM64Convert
                     ' Modify UV cordinates based on material.
                     Dim modifyUVCordinates =
                         Sub(tnew As TexCord, t As TexCord)
-                            tnew.U = t.U * (mat.TexWidth / 32.0)
-                            tnew.V = t.V * (mat.TexHeight / 32.0)
+                            tnew.U = t.U * (mat.TexWidth / 32.0) - 16 '"-16" fixes the UVs offset
+                            tnew.V = t.V * (mat.TexHeight / 32.0) - 16 '"-16" fixes the UVs offset
                         End Sub
                     modifyUVCordinates(tanew, ta)
                     modifyUVCordinates(tbnew, tb)

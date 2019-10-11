@@ -34,6 +34,18 @@ Public Module General
         End Get
     End Property
 
+    Public ReadOnly Property MyPluginsPath As String
+        Get
+            Static p As String = String.Empty
+
+            If String.IsNullOrEmpty(p) Then
+                p = Path.Combine(MyDataPath, "Plugins")
+            End If
+
+            Return p
+        End Get
+    End Property
+
     Public ReadOnly Property IsDebugging As Boolean
         Get
             Return Debugger.IsAttached
@@ -91,6 +103,10 @@ Public Module General
         'Set paths to Assimp-Libs
         AssimpModule.AssimpLoader.PathToAssimpLib32 = Path.Combine(MyDataPath, "Lib\Assimp32.dll")
         AssimpModule.AssimpLoader.PathToAssimpLib64 = Path.Combine(MyDataPath, "Lib\Assimp64.dll")
+
+        'Do waiting auto jobs
+        ExecuteStartupJobsToDo()
+        AddHandler Settings.MySettingsManager.AutoSavingSettings, AddressOf ExecuteExitJobsToDo
     End Sub
 
     Public Sub SetCurrentLanguageCulture(cultureName As String)
