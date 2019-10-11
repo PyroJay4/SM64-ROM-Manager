@@ -16,6 +16,7 @@ Namespace LevelEditor
         Private WithEvents CameraPrivate As New Camera
 
         Friend ProjMatrix As Matrix4 = Nothing
+        Friend Ortho As Boolean = False
         Friend FOV As Single = 1.048F
         Friend camMtx As Matrix4 = Matrix4.Identity
         Friend savedCamPos As New OpenTK.Vector3
@@ -113,9 +114,9 @@ Namespace LevelEditor
             GLControl1.MakeCurrent()
         End Sub
 
-        Public Sub ChangeViewMode(angle As Single)
+        Public Sub ChangeViewMode(ortho As Boolean)
             If GLControl1 IsNot Nothing Then
-                FOV = angle
+                Me.Ortho = ortho
                 UpdateProjMatrix()
                 GLControl1?.Update()
             End If
@@ -229,7 +230,11 @@ Namespace LevelEditor
         End Sub
 
         Public Sub UpdateProjMatrix()
-            ProjMatrix = Matrix4.CreatePerspectiveFieldOfView(FOV, GLControl1.Width / GLControl1.Height, 100.0F, 100000.0F)
+            If Ortho Then
+                ProjMatrix = Matrix4.CreateOrthographic(GLControl1.Width * 4, GLControl1.Height * 4, 100.0F, 100000.0F)
+            Else
+                ProjMatrix = Matrix4.CreatePerspectiveFieldOfView(FOV, GLControl1.Width / GLControl1.Height, 100.0F, 100000.0F)
+            End If
         End Sub
 
         Private Sub glControl1_Wheel(sender As Object, e As MouseEventArgs) Handles GLControl1.MouseWheel
