@@ -93,6 +93,12 @@ Namespace SM64Convert
             ColorTransparent
         End Enum
 
+        Private Enum DisplayListType
+            Solid
+            Alpha
+            Transparent
+        End Enum
+
         Private Class Vertex
             Public Property X As Int16 = 0
             Public Property Y As Int16 = 0
