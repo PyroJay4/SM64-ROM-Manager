@@ -18485,6 +18485,11 @@
              Gets whether the row is the Insert Row.
             </summary>
         </member>
+        <member name="P:DevComponents.DotNetBar.SuperGrid.GridRow.IsTempInsertRow">
+            <summary>
+             Gets whether the row is a temporary insert Row (created via editing the Insert Row)
+            </summary>
+        </member>
         <member name="P:DevComponents.DotNetBar.SuperGrid.GridRow.LastFrozenCell">
             <summary>
             Gets a reference to the last Frozen cell

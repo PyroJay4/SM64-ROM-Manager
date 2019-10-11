@@ -9968,6 +9968,12 @@
             Initializes a new instance of the CircularProgress class.
             </summary>
         </member>
+        <member name="P:DevComponents.DotNetBar.Controls.CircularProgress.SetVisibleStateOnStart">
+            <summary>
+            Indicates the control should should be made visible on calling the Start method.
+            </summary>
+        </member>
+        <!-- Ungültiger XML-Kommentar wurde für den Member "P:DevComponents.DotNetBar.Controls.CircularProgress.SetVisibleStateOnStop" ignoriert -->
         <member name="E:DevComponents.DotNetBar.Controls.CircularProgress.ValueChanged">
             <summary>
             Occurs when Value property has changed.
