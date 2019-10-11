@@ -1518,6 +1518,7 @@ Namespace LevelEditor
             AdvPropertyGrid1.SelectedObjects = objs
             AdvPropertyGrid1.UpdateAmbientColors()
             AdvPropertyGrid1.ResumeLayout()
+            UpdateBParamNames()
             AdvPropertyGrid1_RefreshPropertyValues()
         End Sub
 
@@ -2313,6 +2314,26 @@ Namespace LevelEditor
 
 #Region "AdvPropertyGrid1"
 
+        Private Sub UpdateBParamNames()
+            Dim obj As Managed3DObject = SelectedObject
+            If obj IsNot Nothing Then
+                Dim info As BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehaviorID)
+                For i As Byte = 1 To 4
+                    Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
+                    If n IsNot Nothing Then
+                        Dim param As BehaviorInfo.BParam = info?.GetValue($"BParam{i}")
+                        If param IsNot Nothing AndAlso param.Name <> "" Then
+                            n.Text = param.Name
+                            n.TagString = param.Name
+                        Else
+                            n.Text = $"Behavior Param {i}"
+                            n.TagString = n.Text
+                        End If
+                    End If
+                Next
+            End If
+        End Sub
+
         Friend Sub AdvPropertyGrid1_PropertyValueChanged(sender As Object, e As PropertyChangedEventArgs) Handles AdvPropertyGrid1.PropertyValueChanged
             Select Case e.PropertyName
                 Case "AllActs", "Act1", "Act2", "Act3", "Act4", "Act5", "Act6"
@@ -2326,6 +2347,7 @@ Namespace LevelEditor
                 Case "ObjectCombo", "ModelID", "BehaviorID"
 
                     CheckObjCombo()
+                    UpdateBParamNames()
                     AdvPropertyGrid1_RefreshPropertyValues()
                     ogl.UpdateOrbitCamera()
                     ogl.Invalidate()
@@ -2383,29 +2405,6 @@ Namespace LevelEditor
         '        sender.Tag = obj
         '    End If
         'End Sub
-
-        Friend Sub AdvPropertyGrid1_PropertyTree_Paint(sender As Object, e As PaintEventArgs) Handles PropertyTree.Paint
-            Dim obj As Managed3DObject = SelectedObject
-            If obj IsNot Nothing Then
-                For i As Byte = 1 To 2
-                    Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
-                    If n IsNot Nothing Then
-                        If n.TagString = "" Then
-                            Dim info As BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehaviorID)
-                            Dim param As BehaviorInfo.BParam = info?.GetValue($"BParam{i}")
-                            If param IsNot Nothing Then
-                                If param.Name <> "" Then
-                                    n.Text = param.Name
-                                    n.TagString = param.Name
-                                End If
-                            End If
-                        ElseIf n.Tag <> n.Text Then
-                            n.Text = n.Tag
-                        End If
-                    End If
-                Next
-            End If
-        End Sub
 
         Friend Sub ButtonX_CamMode_Click(sender As Object, e As EventArgs) Handles ButtonX_CamMode.Click
 
