@@ -58,7 +58,17 @@ Public Class MainModelConverter
         LoadRecentFiles()
         LoadGuiSettings()
 
-        Dim res As DialogResult = MyBase.ShowDialog
+        Dim res As DialogResult = Nothing
+        Dim ende As Boolean = False
+
+        Do Until ende
+            Try
+                res = MyBase.ShowDialog()
+                ende = True
+            Catch ex As Exception
+            End Try
+        Loop
+
         SaveGuiSettings()
         Return res
     End Function
