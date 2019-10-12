@@ -334,13 +334,13 @@ Namespace LevelEditor
 
         Private Sub CheckBoxItem_PerspectiveMode_CheckedChanged(sender As Object, e As CheckBoxChangeEventArgs)
             If sender.Checked Then
-                Main.ogl.ChangeViewMode(1.048F)
+                Main.ogl.ChangeViewMode(False)
             End If
         End Sub
 
         Private Sub CheckBoxItem_OrthoMode_CheckedChanged(sender As Object, e As CheckBoxChangeEventArgs)
             If sender.Checked Then
-                Main.ogl.ChangeViewMode(1.5708F)
+                Main.ogl.ChangeViewMode(True)
             End If
         End Sub
 
