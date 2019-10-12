@@ -1251,31 +1251,17 @@ Namespace SM64Convert
             Dim cmd As String = String.Empty
 
             If mat.HasTexture Then
-                If mat.TexType = N64Codec.RGBA32 Then
-                    cmd = "FC 11 96 23 FF 2F FF FF"
-                ElseIf mat.TexType = N64Codec.IA4 OrElse mat.TexType = N64Codec.IA8 OrElse mat.TexType = N64Codec.IA16 Then
-                    cmd = "FC 12 18 24 FF 33 FF FF" 'FC 12 9A 25 FF 37 FF FF
-                ElseIf mat.TexType = N64Codec.I4 OrElse mat.TexType = N64Codec.I8 Then
-                    cmd = "FC 12 7E A0 FF FF F3 F8"
-                    'DOES NOT WORK:
-                    'If mat.EnableAlphaMask Then
-                    '    cmd = "FC 12 7E A0 FF FF F3 F8"
-                    'Else
-                    '    cmd = "FC 30 B2 61 FF FF FF FF"
-                    'End If
-                ElseIf mat.HasTransparency Then 'mat.type = MaterialType.TEXTURE_TRANSPARENT
-                    cmd = "FC 12 2E 24 FF FF FB FD"
-                ElseIf mat.HasTextureAlpha Then
+                If mat.HasTransparency OrElse mat.HasTextureAlpha Then
                     If settings.EnableFog Then
-                        cmd = "FC FF FF FF FF FC F2 38"
+                        ImpF3D("FC 12 19 FF FF FF FE 38")
                     Else
-                        cmd = "FC 12 18 24 FF 33 FF FF"
+                        ImpF3D("FC 12 18 24 FF 33 FF FF")
                     End If
                 Else
                     If settings.EnableFog Then
-                        cmd = "FC 12 7F FF FF FF F8 38"
+                        ImpF3D("FC 12 7F FF FF FF F8 38")
                     Else
-                        cmd = "FC 12 7E 24 FF FF F9 FC"
+                        ImpF3D("FC 12 7E 24 FF FF F9 FC")
                     End If
                 End If
             Else
