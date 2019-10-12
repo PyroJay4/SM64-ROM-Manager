@@ -153,7 +153,7 @@
     <comment>Represents e.g. the Build Number.</comment>
   </data>
   <data name="DevelopmentStage" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
     <comment>Possible Values:
 0 = Release
 1 = Release Candidate
