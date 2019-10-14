@@ -504,7 +504,7 @@ Namespace Levels
             If lvl.Background.Enabled Then
                 Dim newbgcmd As LevelscriptCommand = If(cmdBgSegLoad, New LevelscriptCommand({&H17, &HC, 0, &HA, 0, 0, 0, 0, 0, 0, 0, 0}))
 
-                If lvl.Background.HasImage Then '.ID = Geolayout.BackgroundIDs.Custom Then
+                If lvl.Background.IsCustom AndAlso lvl.Background.HasImage Then '.ID = Geolayout.BackgroundIDs.Custom Then
                     clLoadRomToRam.SetRomStart(newbgcmd, customBGStart)
                     clLoadRomToRam.SetRomEnd(newbgcmd, customBGEnd)
                 Else
