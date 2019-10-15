@@ -45,7 +45,7 @@
 044 - Hood - Wake up (WF)
 045 - Hood - Mario is to heavy (WF)
 046 - Signpost (IC)
-047 - Ping Bob-Omb (Open a cannon)
+047 - Pink Bob-Omb (Open a cannon)
 048 - Levelentry (CCM)
 049 - Wooden signpost (CCM)
 050 - Wooden signpost (BOB & HMC)
