@@ -1280,6 +1280,16 @@ Public Class MainController
     End Sub
 
     Public Sub ImportLevel()
+        ImportLevelAreaPrivate()
+    End Sub
+
+    Public Sub ImportLevelArea(levelIndex As Integer)
+        Dim lvl As Level = GetLevelAndArea(levelIndex).level
+        ImportLevelAreaPrivate(lvl)
+    End Sub
+
+    Private Sub ImportLevelAreaPrivate(Optional destLevel As Level = Nothing)
+        Dim addAreasOnly As Boolean = destLevel IsNot Nothing
         Dim addedFuncs As New List(Of PluginFunction)
         Dim allFuncs As IEnumerable(Of PluginFunction) = Publics.PluginManager.GetFunctions("levelmanager.importlevels.getilevelmanager")
 
@@ -1309,13 +1319,23 @@ Public Class MainController
                     lvlmgr = addedFuncs(cb.SelectedIndex - 1).InvokeGet
             End Select
 
-            Dim frm As New ImportLevelDialog(RomManager)
+            Dim frm As New ImportLevelDialog(RomManager, destLevel)
             If frm.LoadROM(cofd.FileName, lvlmgr) Then
                 If frm.ShowDialog = DialogResult.OK Then
-                    Dim lvl As Level = RomManager.Levels.Last
-                    SetLevelscriptNeedToSave(lvl)
-                    SetLevelBank0x0ENeedToSave(lvl)
-                    RaiseEvent LevelAdded(New LevelEventArgs(RomManager.Levels.IndexOf(lvl), lvl.LevelID))
+                    If Not addAreasOnly Then
+                        destLevel = frm.LevelCopy
+                    End If
+
+                    SetLevelscriptNeedToSave(destLevel)
+                    SetLevelBank0x0ENeedToSave(destLevel)
+
+                    If addAreasOnly Then
+                        For Each area As LevelArea In frm.AreasCopy
+                            RaiseEvent LevelAreaAdded(New LevelAreaEventArgs(RomManager.Levels.IndexOf(destLevel), destLevel.Areas.IndexOf(area), area.AreaID))
+                        Next
+                    Else
+                        RaiseEvent LevelAdded(New LevelEventArgs(RomManager.Levels.IndexOf(destLevel), destLevel.LevelID))
+                    End If
                 End If
             End If
         End If

@@ -796,7 +796,7 @@ Public Class Tab_LevelManager
     End Sub
 
     Private Sub ButtonItem_ImportArea_Click(sender As Object, e As EventArgs) Handles ButtonItem_ImportArea.Click
-
+        Controller.ImportLevelArea(CurrentLevelIndex)
     End Sub
 
 End Class
