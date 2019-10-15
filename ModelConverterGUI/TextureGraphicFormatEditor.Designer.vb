@@ -34,11 +34,13 @@ Partial Class TextureGraphicFormatEditor
         Me.CheckBoxX_EnableTextureAnimation = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.ComboBoxEx_SelectDisplaylist = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
-        Me.CheckBoxX_EnableMirror = New DevComponents.DotNetBar.Controls.CheckBoxX()
-        Me.CheckBoxX_EnableClamp = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.CheckBoxX_EnableMirrorS = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.CheckBoxX_EnableClampS = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.CheckBoxX_EnableCrystalEffect = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.ComboBoxEx_RotateFlip = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.CheckBoxX_EnableClampT = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.CheckBoxX_EnableMirrorT = New DevComponents.DotNetBar.Controls.CheckBoxX()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -157,27 +159,27 @@ Partial Class TextureGraphicFormatEditor
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         '
-        'CheckBoxX_EnableMirror
+        'CheckBoxX_EnableMirrorS
         '
-        resources.ApplyResources(Me.CheckBoxX_EnableMirror, "CheckBoxX_EnableMirror")
-        '
-        '
-        '
-        Me.CheckBoxX_EnableMirror.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.CheckBoxX_EnableMirror.FocusCuesEnabled = False
-        Me.CheckBoxX_EnableMirror.Name = "CheckBoxX_EnableMirror"
-        Me.CheckBoxX_EnableMirror.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        '
-        'CheckBoxX_EnableClamp
-        '
-        resources.ApplyResources(Me.CheckBoxX_EnableClamp, "CheckBoxX_EnableClamp")
+        resources.ApplyResources(Me.CheckBoxX_EnableMirrorS, "CheckBoxX_EnableMirrorS")
         '
         '
         '
-        Me.CheckBoxX_EnableClamp.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.CheckBoxX_EnableClamp.FocusCuesEnabled = False
-        Me.CheckBoxX_EnableClamp.Name = "CheckBoxX_EnableClamp"
-        Me.CheckBoxX_EnableClamp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CheckBoxX_EnableMirrorS.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX_EnableMirrorS.FocusCuesEnabled = False
+        Me.CheckBoxX_EnableMirrorS.Name = "CheckBoxX_EnableMirrorS"
+        Me.CheckBoxX_EnableMirrorS.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'CheckBoxX_EnableClampS
+        '
+        resources.ApplyResources(Me.CheckBoxX_EnableClampS, "CheckBoxX_EnableClampS")
+        '
+        '
+        '
+        Me.CheckBoxX_EnableClampS.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX_EnableClampS.FocusCuesEnabled = False
+        Me.CheckBoxX_EnableClampS.Name = "CheckBoxX_EnableClampS"
+        Me.CheckBoxX_EnableClampS.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'CheckBoxX_EnableCrystalEffect
         '
@@ -210,15 +212,39 @@ Partial Class TextureGraphicFormatEditor
         Me.ComboBoxEx_RotateFlip.Name = "ComboBoxEx_RotateFlip"
         Me.ComboBoxEx_RotateFlip.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
+        'CheckBoxX_EnableClampT
+        '
+        resources.ApplyResources(Me.CheckBoxX_EnableClampT, "CheckBoxX_EnableClampT")
+        '
+        '
+        '
+        Me.CheckBoxX_EnableClampT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX_EnableClampT.FocusCuesEnabled = False
+        Me.CheckBoxX_EnableClampT.Name = "CheckBoxX_EnableClampT"
+        Me.CheckBoxX_EnableClampT.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'CheckBoxX_EnableMirrorT
+        '
+        resources.ApplyResources(Me.CheckBoxX_EnableMirrorT, "CheckBoxX_EnableMirrorT")
+        '
+        '
+        '
+        Me.CheckBoxX_EnableMirrorT.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckBoxX_EnableMirrorT.FocusCuesEnabled = False
+        Me.CheckBoxX_EnableMirrorT.Name = "CheckBoxX_EnableMirrorT"
+        Me.CheckBoxX_EnableMirrorT.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
         'TextureGraphicFormatEditor
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.CheckBoxX_EnableClampT)
+        Me.Controls.Add(Me.CheckBoxX_EnableMirrorT)
         Me.Controls.Add(Me.ComboBoxEx_RotateFlip)
         Me.Controls.Add(Me.LabelX3)
         Me.Controls.Add(Me.CheckBoxX_EnableCrystalEffect)
-        Me.Controls.Add(Me.CheckBoxX_EnableClamp)
-        Me.Controls.Add(Me.CheckBoxX_EnableMirror)
+        Me.Controls.Add(Me.CheckBoxX_EnableClampS)
+        Me.Controls.Add(Me.CheckBoxX_EnableMirrorS)
         Me.Controls.Add(Me.ComboBoxEx_SelectDisplaylist)
         Me.Controls.Add(Me.LabelX2)
         Me.Controls.Add(Me.CheckBoxX_EnableTextureAnimation)
@@ -251,9 +277,11 @@ Partial Class TextureGraphicFormatEditor
     Friend WithEvents CheckBoxX_EnableTextureAnimation As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents ComboBoxEx_SelectDisplaylist As DevComponents.DotNetBar.Controls.ComboBoxEx
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents CheckBoxX_EnableMirror As DevComponents.DotNetBar.Controls.CheckBoxX
-    Friend WithEvents CheckBoxX_EnableClamp As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents CheckBoxX_EnableMirrorS As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents CheckBoxX_EnableClampS As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents CheckBoxX_EnableCrystalEffect As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
     Friend WithEvents ComboBoxEx_RotateFlip As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents CheckBoxX_EnableClampT As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents CheckBoxX_EnableMirrorT As DevComponents.DotNetBar.Controls.CheckBoxX
 End Class

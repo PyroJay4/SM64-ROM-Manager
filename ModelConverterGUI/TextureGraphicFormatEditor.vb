@@ -164,8 +164,10 @@ Public Class TextureGraphicFormatEditor
             End If
 
             CheckBoxX_EnableTextureAnimation.Checked = curEntry.IsScrollingTexture
-            CheckBoxX_EnableMirror.Checked = curEntry.EnableMirror
-            CheckBoxX_EnableClamp.Checked = curEntry.EnableClamp
+            CheckBoxX_EnableMirrorS.Checked = curEntry.EnableMirrorS
+            CheckBoxX_EnableMirrorT.Checked = curEntry.EnableMirrorT
+            CheckBoxX_EnableClampS.Checked = curEntry.EnableClampS
+            CheckBoxX_EnableClampT.Checked = curEntry.EnableClampT
             CheckBoxX_EnableCrystalEffect.Checked = curEntry.EnableCrystalEffect
             ComboBoxEx_RotateFlip.SelectedItem = GetRotateFlipComboItem(curEntry.RotateFlip)
 
@@ -177,8 +179,8 @@ Public Class TextureGraphicFormatEditor
 
             Dim enTexTools As Boolean = Not colorImages.Contains(curItem.ImageIndex)
             CheckBoxX_EnableTextureAnimation.Enabled = enTexTools
-            CheckBoxX_EnableMirror.Enabled = enTexTools
-            CheckBoxX_EnableClamp.Enabled = enTexTools
+            CheckBoxX_EnableMirrorS.Enabled = enTexTools
+            CheckBoxX_EnableClampS.Enabled = enTexTools
             CheckBoxX_EnableCrystalEffect.Enabled = enTexTools
             ComboBoxEx_RotateFlip.Enabled = enTexTools
 
@@ -226,8 +228,10 @@ Public Class TextureGraphicFormatEditor
                 curEntry.IsScrollingTexture = CheckBoxX_EnableTextureAnimation.Checked
                 curEntry.TextureFormat = id
                 curEntry.SelectDisplaylistMode = CType(ComboBoxEx_SelectDisplaylist.SelectedItem, ComboItem).Tag
-                curEntry.EnableMirror = CheckBoxX_EnableMirror.Checked
-                curEntry.EnableClamp = CheckBoxX_EnableClamp.Checked
+                curEntry.EnableMirrorS = CheckBoxX_EnableMirrorS.Checked
+                curEntry.EnableMirrorT = CheckBoxX_EnableMirrorT.Checked
+                curEntry.EnableClampS = CheckBoxX_EnableClampS.Checked
+                curEntry.EnableClampT = CheckBoxX_EnableClampT.Checked
                 curEntry.EnableCrystalEffect = CheckBoxX_EnableCrystalEffect.Checked
                 curEntry.RotateFlip = CType(ComboBoxEx_RotateFlip.SelectedItem, ComboItem).Tag
             Next
@@ -235,7 +239,7 @@ Public Class TextureGraphicFormatEditor
         End If
     End Sub
 
-    Private Sub ButtonItem_IsScollTex_Click(sender As Object, e As EventArgs) Handles CheckBoxX_EnableTextureAnimation.CheckedChanged, ComboBoxEx_SelectDisplaylist.SelectedIndexChanged, CheckBoxX_EnableClamp.CheckedChanged, CheckBoxX_EnableMirror.CheckedChanged, CheckBoxX_EnableCrystalEffect.CheckedChanged, ComboBoxEx_RotateFlip.SelectedIndexChanged
+    Private Sub ButtonItem_IsScollTex_Click(sender As Object, e As EventArgs) Handles CheckBoxX_EnableTextureAnimation.CheckedChanged, ComboBoxEx_SelectDisplaylist.SelectedIndexChanged, CheckBoxX_EnableClampS.CheckedChanged, CheckBoxX_EnableMirrorS.CheckedChanged, CheckBoxX_EnableCrystalEffect.CheckedChanged, ComboBoxEx_RotateFlip.SelectedIndexChanged, CheckBoxX_EnableMirrorT.CheckedChanged, CheckBoxX_EnableClampT.CheckedChanged
         If hasInit AndAlso Not loadingtexItemSettings Then
             Dim selItem As ComboItem = ComboBox_ColType.SelectedItem
             Dim id As String = selItem.Tag

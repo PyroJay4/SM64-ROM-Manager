@@ -68,8 +68,10 @@ Namespace Model.Fast3D
             Public Property IsScrollingTexture As Boolean = False
             Public Property SelectDisplaylistMode As SByte = -1
             Public Property FaceCullingMode As FaceCullingMode = FaceCullingMode.Back
-            Public Property EnableMirror As Boolean = False
-            Public Property EnableClamp As Boolean = False
+            Public Property EnableMirrorS As Boolean = False
+            Public Property EnableMirrorT As Boolean = False
+            Public Property EnableClampS As Boolean = False
+            Public Property EnableClampT As Boolean = False
             Public Property EnableCrystalEffect As Boolean = False
             Public Property RotateFlip As RotateFlipType = RotateFlipType.RotateNoneFlipNone
 
@@ -87,8 +89,10 @@ Namespace Model.Fast3D
                 End If
                 If parts.Length > 4 Then newEntry.FaceCullingMode = Convert.ToByte(parts(4))
                 If parts.Length > 5 Then
-                    newEntry.EnableMirror = Convert.ToBoolean(parts(5))
-                    newEntry.EnableClamp = Convert.ToBoolean(parts(6))
+                    newEntry.EnableMirrorS = Convert.ToBoolean(parts(5))
+                    newEntry.EnableMirrorT = Convert.ToBoolean(parts(5))
+                    newEntry.EnableClampS = Convert.ToBoolean(parts(6))
+                    newEntry.EnableClampT = Convert.ToBoolean(parts(6))
                 End If
                 If parts.Length > 7 Then newEntry.EnableCrystalEffect = Convert.ToBoolean(parts(7))
                 If parts.Length > 8 Then newEntry.RotateFlip = Convert.ToInt32(parts(8))

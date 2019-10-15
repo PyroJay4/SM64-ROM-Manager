@@ -151,8 +151,10 @@ Namespace SM64Convert
             Public Property EnableScrolling As Boolean = False
             Public Property SelectDisplaylist As SByte = -1
             Public Property FaceCullingMode As FaceCullingMode = FaceCullingMode.Back
-            Public Property EnableMirror As Boolean = False
-            Public Property EnableClamp As Boolean = False
+            Public Property EnableMirrorS As Boolean = False
+            Public Property EnableMirrorT As Boolean = False
+            Public Property EnableClampS As Boolean = False
+            Public Property EnableClampT As Boolean = False
             Public Property EnableCrystalEffect As Boolean = False
         End Class
         Private Class FinalVertexData
@@ -817,8 +819,10 @@ Namespace SM64Convert
                 .CameFromBMP = False,
                 .EnableScrolling = curEntry.IsScrollingTexture,
                 .SelectDisplaylist = curEntry.SelectDisplaylistMode,
-                .EnableMirror = curEntry.EnableMirror,
-                .EnableClamp = curEntry.EnableClamp,
+                .EnableMirrorS = curEntry.EnableMirrorS,
+                .EnableMirrorT = curEntry.EnableMirrorT,
+                .EnableClampS = curEntry.EnableClampS,
+                .EnableClampT = curEntry.EnableClampT,
                 .EnableCrystalEffect = curEntry.EnableCrystalEffect
             }
 
@@ -1206,13 +1210,17 @@ Namespace SM64Convert
             Dim maskT As Byte = Math.Ceiling(Math.Log(texHeight, 2)) And &HF
             Dim lower As UInteger = ((CUInt(maskT) << 14) Or (CUInt(maskS) << 4)) And &HFFFFFF '&HFFC3F0 for only shift
 
-            If mat.EnableMirror Then
-                lower = lower Or &H40000    'T axis
+            If mat.EnableMirrorS Then
                 lower = lower Or &H100      'S axis
             End If
+            If mat.EnableMirrorT Then
+                lower = lower Or &H40000    'T axis
+            End If
 
-            If mat.EnableClamp Then
+            If mat.EnableClampS Then
                 lower = lower Or &H80000    'T axis
+            End If
+            If mat.EnableClampT Then
                 lower = lower Or &H200      'S axis
             End If
 
