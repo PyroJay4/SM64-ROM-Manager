@@ -285,6 +285,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyIcons.resx</DependentUpon>
     </Compile>
+    <Compile Include="MyOldIcons.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyOldIcons.resx</DependentUpon>
+    </Compile>
     <Compile Include="RomManager\Controllers\PluginInstaller.vb" />
     <Compile Include="RomManager\EventArgs\LevelAreaEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelAreaBackgroundModeChangedEventArgs.vb" />
@@ -623,8 +628,13 @@
   <ItemGroup>
     <EmbeddedResource Include="MyIcons.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MyIcons.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyOldIcons.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyOldIcons.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Coins Settings\Coins Settings.de.resx">
       <DependentUpon>Coins Settings.vb</DependentUpon>

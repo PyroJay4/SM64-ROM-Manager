@@ -1621,13 +1621,13 @@
             'ButtonItem_ChangeObjectCombo
             '
             Me.ButtonItem_ChangeObjectCombo.BeginGroup = True
-            Me.ButtonItem_ChangeObjectCombo.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Shrink_16px1
+            Me.ButtonItem_ChangeObjectCombo.Image = Global.SM64_ROM_Manager.My.Resources.MyOldIcons.Shrink_16px1
             Me.ButtonItem_ChangeObjectCombo.Name = "ButtonItem_ChangeObjectCombo"
             resources.ApplyResources(Me.ButtonItem_ChangeObjectCombo, "ButtonItem_ChangeObjectCombo")
             '
             'ButtonItem30
             '
-            Me.ButtonItem30.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Psychology_16px
+            Me.ButtonItem30.Image = Global.SM64_ROM_Manager.My.Resources.MyOldIcons.Psychology_16px
             Me.ButtonItem30.Name = "ButtonItem30"
             resources.ApplyResources(Me.ButtonItem30, "ButtonItem30")
             '
@@ -1845,7 +1845,7 @@
             'ButtonItem35
             '
             Me.ButtonItem35.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem35.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.EditPicture_32px
+            Me.ButtonItem35.Image = Global.SM64_ROM_Manager.My.Resources.MyOldIcons.EditPicture_32px
             Me.ButtonItem35.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem35.Name = "ButtonItem35"
             Me.ButtonItem35.SubItemsExpandWidth = 14
@@ -2156,7 +2156,7 @@
             'ButtonItem31
             '
             Me.ButtonItem31.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem31.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.Shrink_32px
+            Me.ButtonItem31.Image = Global.SM64_ROM_Manager.My.Resources.MyOldIcons.Shrink_32px
             Me.ButtonItem31.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem31.Name = "ButtonItem31"
             Me.ButtonItem31.SubItemsExpandWidth = 14
@@ -2363,7 +2363,7 @@
             'ButtonItem36
             '
             Me.ButtonItem36.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem36.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.EditPicture_32px
+            Me.ButtonItem36.Image = Global.SM64_ROM_Manager.My.Resources.MyOldIcons.EditPicture_32px
             Me.ButtonItem36.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem36.Name = "ButtonItem36"
             Me.ButtonItem36.SubItemsExpandWidth = 14
@@ -2583,7 +2583,7 @@
             'ButtonItem34
             '
             Me.ButtonItem34.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-            Me.ButtonItem34.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.EditPicture_32px
+            Me.ButtonItem34.Image = Global.SM64_ROM_Manager.My.Resources.MyOldIcons.EditPicture_32px
             Me.ButtonItem34.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem34.Name = "ButtonItem34"
             Me.ButtonItem34.SubItemsExpandWidth = 14
