@@ -13,7 +13,7 @@ Namespace Model.Fast3D
     Public Class Fast3DBuffer
         Inherits MemoryStream
 
-        Public Property ConvertResult As SM64Convert.Fast3DWriter.ConvertResult = Nothing
+        Public Property ConvertResult As Conversion.Fast3DWriting.Fast3DWriter.ConvertResult = Nothing
         Public Property Fast3DBankStart As Integer = &HE000000
         Public Property DLPointers As Geopointer() = {}
 
@@ -22,7 +22,7 @@ Namespace Model.Fast3D
         ''' </summary>
         Public Sub FromModel(ObjSettings As ObjectInputSettings, model As Object3D, Optional texFormatSettings As TextureFormatSettings = Nothing)
             'Setup Settings
-            Dim conSettings As New SM64Convert.Fast3DWriter.ConvertSettings With {
+            Dim conSettings As New Conversion.Fast3DWriting.Fast3DWriter.ConvertSettings With {
                 .CenterModel = ObjSettings.CenterModel,
                 .Scale = ObjSettings.Scaling,
                 .ResizeTextures = ObjSettings.ResizeTextures,
@@ -36,7 +36,7 @@ Namespace Model.Fast3D
             model.Shading = ObjSettings.Shading
 
             'Convert Model
-            Dim con As New SM64Convert.Fast3DWriter
+            Dim con As New Conversion.Fast3DWriting.Fast3DWriter
             ConvertResult = con.ConvertModel(Me, conSettings, model)
 
             'Fit to align

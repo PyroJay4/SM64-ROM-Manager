@@ -58,7 +58,7 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists
         End Function
 
         Public Sub ToObject3D(obj As Object3D, rommgr As RomManager, AreaID As Byte?)
-            SM64Convert.Fast3DParser.Convert(obj, Me, rommgr, AreaID)
+            Conversion.Fast3DParsing.Fast3DParser.Convert(obj, Me, rommgr, AreaID)
         End Sub
         Public Function ToObject3DAsync(obj As Object3D, rommgr As RomManager, AreaID As Byte?) As Task
             Dim t As New Task(Sub() ToObject3D(obj, rommgr, AreaID))

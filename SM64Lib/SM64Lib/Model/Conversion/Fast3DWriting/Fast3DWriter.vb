@@ -7,7 +7,7 @@ Imports SM64Lib.Data
 Imports SM64Lib.Levels.ScrolTex
 Imports SM64Lib.Model.Fast3D
 
-Namespace SM64Convert
+Namespace Model.Conversion.Fast3DWriting
 
     Public Class Fast3DWriter
 

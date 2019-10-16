@@ -7,7 +7,7 @@ Imports SM64Lib.Model.Fast3D.DisplayLists
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
 
-Namespace SM64Convert
+Namespace Model.Conversion.Fast3DParsing
 
     Public Class Fast3DParser
 
@@ -392,12 +392,5 @@ Namespace SM64Convert
         End Function
 
     End Class
-
-    Public Enum FaceCullingMode
-        NoCulling
-        Front
-        Back
-        FrontAndBack = Front Or Back
-    End Enum
 
 End Namespace

@@ -2636,7 +2636,7 @@ Namespace LevelEditor
                     m.Image = bmp
 
                     'Set Tag
-                    m.Tag = New SM64Lib.SM64Convert.TextureLoadedInfos(jt.Name, texFormat, segAddr, -1, seg.SegToRomAddr(segAddr), -1, bmp.Size, isMIO0)
+                    m.Tag = New Conversion.Fast3DParsing.TextureLoadedInfos(jt.Name, texFormat, segAddr, -1, seg.SegToRomAddr(segAddr), -1, bmp.Size, isMIO0)
 
                     block.Textures.Add(m)
                 Next

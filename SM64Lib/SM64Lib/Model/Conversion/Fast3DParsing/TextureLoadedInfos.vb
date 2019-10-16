@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing
 
-Namespace SM64Convert
+Namespace Model.Conversion.Fast3DParsing
 
     Public Class TextureLoadedInfos
 

@@ -1,12 +1,14 @@
 ﻿Imports System.Drawing
 Imports System.IO
 Imports Newtonsoft.Json.Linq
+Imports SM64Lib.Model.Conversion.Fast3DWriting
 
 Namespace Model.Fast3D
 
     Public Class TextureFormatSettings
 
         Public ReadOnly Property Entries As New List(Of Entry)
+        Public ReadOnly Property CustomDisplayLists As New List(Of CustomDisplaylistProps)
 
         Public Async Function Load(fileName As String) As Task
             If File.Exists(fileName) Then
@@ -112,4 +114,3 @@ Namespace Model.Fast3D
     End Class
 
 End Namespace
-

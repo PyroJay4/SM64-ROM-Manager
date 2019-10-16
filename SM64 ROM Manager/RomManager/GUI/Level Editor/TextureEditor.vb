@@ -6,8 +6,8 @@ Imports SM64_ROM_Manager.Publics.My.Resources
 Imports Pilz.S3DFileParser
 Imports SM64Lib
 Imports SM64Lib.Data
-Imports SM64Lib.SM64Convert
 Imports SM64_ROM_Manager.SettingsManager
+Imports SM64Lib.Model.Conversion.Fast3DParsing
 
 Namespace LevelEditor
 
