@@ -2143,7 +2143,7 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub AddWarps(count As Integer, type As LevelscriptCommandTypes)
-            If CalculateWarpCountInLevel() >= Byte.MaxValue Then
+            If WarpTools.GetWarpsCountInLevel(CLevel) >= Byte.MaxValue Then
                 ShowToadnotifiaction(Panel_GLControl, "The maximum amount of warps per level has been reached. It is not possible to add more warps.", eToastGlowColor.Red)
             Else
                 Dim newWarp As LevelscriptCommand = Nothing
@@ -2156,11 +2156,11 @@ Namespace LevelEditor
 
                 Select Case type
                     Case LevelscriptCommandTypes.ConnectedWarp
-                        newWarp = New LevelscriptCommand({&H26, &H8, GetNextUnusedWarpID(), levelID, cArea.AreaID, &H0, &H0, &H0})
+                        newWarp = New LevelscriptCommand({&H26, &H8, WarpTools.GetNextUnusedWarpID(CArea), LevelID, CArea.AreaID, &H0, &H0, &H0})
                         newManagedWarp = New ManagedWarp(newWarp)
                         lvi.Group = lvg_ConnectedWarps
                     Case LevelscriptCommandTypes.PaintingWarp
-                        newWarp = New LevelscriptCommand({&H27, &H8, GetNextUnusedWarpID(), levelID, cArea.AreaID, &H0, &H0, &H0})
+                        newWarp = New LevelscriptCommand({&H27, &H8, WarpTools.GetNextUnusedWarpID(CArea), LevelID, CArea.AreaID, &H0, &H0, &H0})
                         newManagedWarp = New ManagedWarp(newWarp)
                         lvi.Group = lvg_PaintingWarps
                     Case LevelscriptCommandTypes.InstantWarp
@@ -2189,28 +2189,6 @@ Namespace LevelEditor
             End If
         End Sub
 
-        Friend Function CalculateWarpCountInLevel() As Integer
-            Dim count As Integer = 0
-            For Each a As LevelArea In cLevel.Areas
-                count += a.Warps.Where(Function(n) {LevelscriptCommandTypes.PaintingWarp, LevelscriptCommandTypes.ConnectedWarp}.Contains(n.CommandType)).Count
-                count += a.WarpsForGame.Concat(a.Warps).Count
-            Next
-            Return count
-        End Function
-
-        Friend Function GetNextUnusedWarpID() As Byte
-            Dim forbitten As New List(Of Byte)
-            For Each cmd As LevelscriptCommand In cArea.WarpsForGame.Concat(cArea.Warps)
-                forbitten.Add(clWarp.GetWarpID(cmd))
-            Next
-
-            For i As Integer = Byte.MinValue To Byte.MaxValue
-                If Not forbitten.Contains(i) Then Return i
-            Next
-
-            Return Byte.MaxValue
-        End Function
-
         Friend Sub ButtonX_WarpsRemove_Click(sender As Object, e As EventArgs) Handles ButtonX_WarpsRemove.Click, ButtonItem23.Click
             If SelectedWarp IsNot Nothing Then
 
@@ -2232,8 +2210,8 @@ Namespace LevelEditor
                         Dim cmd As LevelscriptCommand = mwarp.Command
                         Dim lvg As ListViewGroup = curItem.Group
 
-                        Dim cmdIndex As Integer = cArea.Warps.IndexOf(cmd)
-                        Dim mwarpIndex As Integer = managedWarps.IndexOf(mwarp)
+                        Dim cmdIndex As Integer = CArea.Warps.IndexOf(cmd)
+                        Dim mwarpIndex As Integer = ManagedWarps.IndexOf(mwarp)
 
                         removedWarps.Add(mwarpIndex, mwarp)
                         removedlvis.Add(index, curItem)
@@ -2244,10 +2222,10 @@ Namespace LevelEditor
                 Next
 
                 For Each kvp As KeyValuePair(Of Integer, IManagedLevelscriptCommand) In removedWarps.OrderByDescending(Function(n) n.Key)
-                    managedWarps.Remove(kvp.Value)
+                    ManagedWarps.Remove(kvp.Value)
                 Next
                 For Each kvp As KeyValuePair(Of Integer, LevelscriptCommand) In removedCmds.OrderBy(Function(n) n.Key)
-                    cArea.Warps.Remove(kvp.Value)
+                    CArea.Warps.Remove(kvp.Value)
                 Next
                 For Each kvp As KeyValuePair(Of Integer, ListViewItem) In removedlvis.OrderBy(Function(n) n.Key)
                     ListViewEx_Warps.Items.Remove(kvp.Value)
@@ -2256,7 +2234,7 @@ Namespace LevelEditor
                 'Store History Point
                 StoreHistoryPoint(AreaEditorHistoryFunctions.Methodes("InsertWarps"),
                               AreaEditorHistoryFunctions.Methodes("RemoveAtWarps"),
-                              {cArea, managedWarps, ListViewEx_Warps.Items, removedWarps, removedlvis, removedCmds, dicGroups})
+                              {CArea, ManagedWarps, ListViewEx_Warps.Items, removedWarps, removedlvis, removedCmds, dicGroups})
 
             End If
         End Sub

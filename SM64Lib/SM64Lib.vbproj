@@ -123,6 +123,7 @@
     <Compile Include="SM64Lib\Level\Script\LevelscriptCommandTypes.vb" />
     <Compile Include="SM64Lib\Level\SM64EditorLevelManager.vb" />
     <Compile Include="SM64Lib\Level\SpecialBoxList.vb" />
+    <Compile Include="SM64Lib\Level\WarpTools.vb" />
     <Compile Include="SM64Lib\Model\Collision\BoxData.vb" />
     <Compile Include="SM64Lib\Model\Collision\BoxDataType.vb" />
     <Compile Include="SM64Lib\Model\Collision\ColMesh.vb" />
