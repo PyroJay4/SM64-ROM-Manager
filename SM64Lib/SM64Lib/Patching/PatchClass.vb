@@ -3,9 +3,9 @@ Imports System.Windows.Forms
 Imports SM64Lib.Data
 Imports SM64Lib.Levels.Script
 
-Namespace Global.SM64Lib.Patching
+Namespace Patching
 
-    Public Class SM64PatchClass
+    Public Class PatchClass
 
         Private data As BinaryData = Nothing
 

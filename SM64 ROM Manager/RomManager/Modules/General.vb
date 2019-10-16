@@ -32,7 +32,7 @@ Friend Module General
     Public ReadOnly Property BehaviorInfos As New BehaviorInfoList
     Public ReadOnly Property ObjectCombosCustom As New ObjectComboList
     Public ReadOnly Property BehaviorInfosCustom As New BehaviorInfoList
-    Public ReadOnly Property PatchClass As New SM64PatchClass
+    Public ReadOnly Property PatchClass As New PatchClass
     Public Property HasToolkitInit As Boolean = False
 
     Public Function OpenHexEditorAsync(cmd As SM64Lib.Script.ICommand) As Task

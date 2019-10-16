@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports SM64Lib.Data
 
-Namespace Global.SM64Lib
+Namespace SegmentedBanking
 
     Public Class SegmentedBank
 
@@ -161,10 +161,10 @@ Namespace Global.SM64Lib
 
         Private Function IsDataMIO0(arr As Byte()) As Boolean
             Dim check As Integer =
-                (CInt(arr(0)) << 24) Or
-                (CInt(arr(1)) << 16) Or
-                (CInt(arr(2)) << 8) Or
-                arr(3)
+                    (CInt(arr(0)) << 24) Or
+                    (CInt(arr(1)) << 16) Or
+                    (CInt(arr(2)) << 8) Or
+                    arr(3)
             Return check = &H4D494F30
         End Function
 

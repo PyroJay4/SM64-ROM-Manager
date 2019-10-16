@@ -11,7 +11,7 @@ Imports Newtonsoft.Json.Linq
 Imports SM64Lib.Levels.Script
 Imports SM64Lib.ObjectBanks
 Imports SM64Lib.Data
-Imports SM64Lib.RomStruc
+Imports SM64Lib.SegmentedBanking
 Imports System.ComponentModel
 
 Public Class RomManager

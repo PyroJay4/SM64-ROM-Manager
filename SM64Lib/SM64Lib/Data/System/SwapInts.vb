@@ -1,4 +1,4 @@
-﻿Namespace Global.SM64Lib.ExtensionFeatures
+﻿Namespace Data.System
 
     Friend Class SwapInts
 

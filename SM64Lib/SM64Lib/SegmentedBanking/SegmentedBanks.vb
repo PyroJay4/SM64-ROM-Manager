@@ -1,4 +1,4 @@
-﻿Namespace Global.SM64Lib.RomStruc
+﻿Namespace SegmentedBanking
 
     Public Class SegmentedBanks
         Public Const Bank0x2RomStart As UInteger = &H803156
