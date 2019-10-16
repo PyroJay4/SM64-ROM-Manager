@@ -41,7 +41,13 @@ Partial Class TextureGraphicFormatEditor
         Me.ComboBoxEx_RotateFlip = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.CheckBoxX_EnableClampT = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.CheckBoxX_EnableMirrorT = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ListViewEx1
@@ -234,34 +240,86 @@ Partial Class TextureGraphicFormatEditor
         Me.CheckBoxX_EnableMirrorT.Name = "CheckBoxX_EnableMirrorT"
         Me.CheckBoxX_EnableMirrorT.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
+        'LabelX4
+        '
+        resources.ApplyResources(Me.LabelX4, "LabelX4")
+        '
+        '
+        '
+        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX4.Name = "LabelX4"
+        Me.LabelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
+        '
+        'LabelX5
+        '
+        resources.ApplyResources(Me.LabelX5, "LabelX5")
+        '
+        '
+        '
+        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX5.Name = "LabelX5"
+        Me.LabelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
+        '
+        'LabelX6
+        '
+        resources.ApplyResources(Me.LabelX6, "LabelX6")
+        '
+        '
+        '
+        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX6.Name = "LabelX6"
+        Me.LabelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
+        '
+        'LabelX7
+        '
+        resources.ApplyResources(Me.LabelX7, "LabelX7")
+        '
+        '
+        '
+        Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX7.Name = "LabelX7"
+        Me.LabelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.CheckBoxX_EnableClampT)
+        Me.Panel1.Controls.Add(Me.LabelX48)
+        Me.Panel1.Controls.Add(Me.CheckBoxX_EnableMirrorT)
+        Me.Panel1.Controls.Add(Me.ComboBoxEx_RotateFlip)
+        Me.Panel1.Controls.Add(Me.Button_SaveColsettings)
+        Me.Panel1.Controls.Add(Me.LabelX3)
+        Me.Panel1.Controls.Add(Me.PictureBox1)
+        Me.Panel1.Controls.Add(Me.CheckBoxX_EnableCrystalEffect)
+        Me.Panel1.Controls.Add(Me.LabelX_CollisionType)
+        Me.Panel1.Controls.Add(Me.CheckBoxX_EnableClampS)
+        Me.Panel1.Controls.Add(Me.ComboBox_ColType)
+        Me.Panel1.Controls.Add(Me.CheckBoxX_EnableMirrorS)
+        Me.Panel1.Controls.Add(Me.LabelX_MaxPixels)
+        Me.Panel1.Controls.Add(Me.ComboBoxEx_SelectDisplaylist)
+        Me.Panel1.Controls.Add(Me.LabelX1)
+        Me.Panel1.Controls.Add(Me.LabelX7)
+        Me.Panel1.Controls.Add(Me.CheckBoxX_EnableTextureAnimation)
+        Me.Panel1.Controls.Add(Me.LabelX5)
+        Me.Panel1.Controls.Add(Me.LabelX2)
+        Me.Panel1.Controls.Add(Me.LabelX6)
+        Me.Panel1.Controls.Add(Me.LabelX4)
+        Me.Panel1.Controls.Add(Me.ListViewEx1)
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.Name = "Panel1"
+        '
         'TextureGraphicFormatEditor
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.CheckBoxX_EnableClampT)
-        Me.Controls.Add(Me.CheckBoxX_EnableMirrorT)
-        Me.Controls.Add(Me.ComboBoxEx_RotateFlip)
-        Me.Controls.Add(Me.LabelX3)
-        Me.Controls.Add(Me.CheckBoxX_EnableCrystalEffect)
-        Me.Controls.Add(Me.CheckBoxX_EnableClampS)
-        Me.Controls.Add(Me.CheckBoxX_EnableMirrorS)
-        Me.Controls.Add(Me.ComboBoxEx_SelectDisplaylist)
-        Me.Controls.Add(Me.LabelX2)
-        Me.Controls.Add(Me.CheckBoxX_EnableTextureAnimation)
-        Me.Controls.Add(Me.LabelX1)
-        Me.Controls.Add(Me.LabelX_MaxPixels)
-        Me.Controls.Add(Me.ComboBox_ColType)
-        Me.Controls.Add(Me.LabelX_CollisionType)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.Button_SaveColsettings)
-        Me.Controls.Add(Me.ListViewEx1)
-        Me.Controls.Add(Me.LabelX48)
+        Me.Controls.Add(Me.Panel1)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "TextureGraphicFormatEditor"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -284,4 +342,9 @@ Partial Class TextureGraphicFormatEditor
     Friend WithEvents ComboBoxEx_RotateFlip As DevComponents.DotNetBar.Controls.ComboBoxEx
     Friend WithEvents CheckBoxX_EnableClampT As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents CheckBoxX_EnableMirrorT As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX7 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents Panel1 As Windows.Forms.Panel
 End Class

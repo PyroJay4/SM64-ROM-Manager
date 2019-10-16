@@ -40,8 +40,10 @@ Partial Class CollisionEditor
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.CheckBoxX_IsNonSolid = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.CircularProgress1 = New DevComponents.DotNetBar.Controls.CircularProgress()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'TextBoxX_ColParam2
@@ -236,17 +238,23 @@ Partial Class CollisionEditor
         Me.CircularProgress1.SetVisibleStateOnStop = True
         Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.LabelX48)
+        Me.Panel2.Controls.Add(Me.CircularProgress1)
+        Me.Panel2.Controls.Add(Me.Button_SaveColsettings)
+        Me.Panel2.Controls.Add(Me.CheckBoxX_IsNonSolid)
+        Me.Panel2.Controls.Add(Me.ListViewEx1)
+        Me.Panel2.Controls.Add(Me.Panel1)
+        Me.Panel2.Controls.Add(Me.PictureBox1)
+        resources.ApplyResources(Me.Panel2, "Panel2")
+        Me.Panel2.Name = "Panel2"
+        '
         'CollisionEditor
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.CircularProgress1)
-        Me.Controls.Add(Me.CheckBoxX_IsNonSolid)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.ListViewEx1)
-        Me.Controls.Add(Me.Button_SaveColsettings)
-        Me.Controls.Add(Me.LabelX48)
+        Me.Controls.Add(Me.Panel2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "CollisionEditor"
@@ -254,6 +262,7 @@ Partial Class CollisionEditor
         Me.TopRightCornerSize = 0
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -275,4 +284,5 @@ Partial Class CollisionEditor
     Friend WithEvents Panel1 As Windows.Forms.Panel
     Friend WithEvents CheckBoxX_IsNonSolid As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents CircularProgress1 As DevComponents.DotNetBar.Controls.CircularProgress
+    Friend WithEvents Panel2 As Windows.Forms.Panel
 End Class

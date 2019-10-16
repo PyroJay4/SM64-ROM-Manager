@@ -135,17 +135,23 @@
   <data name="LabelX2.Text" xml:space="preserve">
     <value>Wähle Displaylist:</value>
   </data>
-  <data name="CheckBoxX_EnableMirror.Text" xml:space="preserve">
-    <value>Aktiviere Spiegel</value>
-  </data>
-  <data name="CheckBoxX_EnableClamp.Text" xml:space="preserve">
-    <value>Aktiviere Clamp</value>
-  </data>
   <data name="CheckBoxX_EnableCrystalEffect.Text" xml:space="preserve">
     <value>Aktiviere Kristalleffekt</value>
   </data>
   <data name="LabelX3.Text" xml:space="preserve">
     <value>Textur spiegeln:</value>
+  </data>
+  <data name="LabelX4.Text" xml:space="preserve">
+    <value>Aktiviere Spiegeln:</value>
+  </data>
+  <data name="LabelX5.Text" xml:space="preserve">
+    <value>Aktiviere Clamp:</value>
+  </data>
+  <data name="LabelX6.Text" xml:space="preserve">
+    <value>Axe:</value>
+  </data>
+  <data name="LabelX7.Text" xml:space="preserve">
+    <value>Axe:</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
