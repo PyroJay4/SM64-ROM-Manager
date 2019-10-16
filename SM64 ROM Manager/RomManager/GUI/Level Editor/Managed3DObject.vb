@@ -9,6 +9,7 @@ Imports System.ComponentModel
 Imports System.Globalization
 Imports SM64_ROM_Manager.TypeConverters
 Imports SM64_ROM_Manager.LevelEditor
+Imports SM64Lib.Data.System
 
 <DefaultProperty("AllActs")>
 Public Class Managed3DObject

@@ -5,6 +5,7 @@ Imports System.Windows.Forms
 Imports SM64Lib.Geolayout.Script
 Imports SM64Lib.Geolayout.Script.Commands
 Imports SM64Lib.Levels.ScrolTex
+Imports SM64Lib.SegmentedBanking
 
 Namespace Global.SM64Lib.Levels
 
@@ -135,8 +136,8 @@ Namespace Global.SM64Lib.Levels
                 End Select
             Next
 
-            If bank0x19 IsNot Nothing Then
-                rommgr.SetSegBank(bank0x19)
+            If Bank0x19 IsNot Nothing Then
+                rommgr.SetSegBank(Bank0x19)
             End If
         End Sub
 

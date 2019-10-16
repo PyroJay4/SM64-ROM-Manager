@@ -6,6 +6,8 @@ Imports SM64Lib.Geolayout.Script.Commands
 Imports SM64Lib.Levels.ScrolTex
 Imports SM64Lib.Data
 Imports SM64Lib.ObjectBanks
+Imports SM64Lib.Data.System
+Imports SM64Lib.SegmentedBanking
 
 Namespace Levels
 

@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports SM64Lib.SegmentedBanking
 
 Namespace Global.SM64Lib.Data
 

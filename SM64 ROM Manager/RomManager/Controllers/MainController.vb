@@ -32,6 +32,7 @@ Imports System.Net
 Imports System.Reflection
 Imports SM64Lib.Data
 Imports Pilz.Reflection.PluginSystem
+Imports SM64Lib.EventArguments
 
 Public Class MainController
 

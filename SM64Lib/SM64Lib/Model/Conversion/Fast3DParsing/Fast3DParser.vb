@@ -6,6 +6,7 @@ Imports SM64Lib.Data
 Imports SM64Lib.Model.Fast3D.DisplayLists
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script
 Imports SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
+Imports SM64Lib.SegmentedBanking
 
 Namespace Model.Conversion.Fast3DParsing
 

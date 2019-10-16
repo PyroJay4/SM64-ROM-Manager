@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
-    <Import Include="SM64Lib.ExtensionFeatures" />
+    <Import Include="SM64Lib.Data.System" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />

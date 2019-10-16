@@ -4,6 +4,7 @@ Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Levels.Script
 Imports SM64Lib.Levels.Script.Commands
+Imports SM64Lib.SegmentedBanking
 
 Namespace Global.SM64Lib.ObjectBanks
 

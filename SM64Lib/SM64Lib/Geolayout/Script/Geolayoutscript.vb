@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms
 Imports SM64Lib.Data
+Imports SM64Lib.SegmentedBanking
 
 Namespace Global.SM64Lib.Geolayout.Script
 

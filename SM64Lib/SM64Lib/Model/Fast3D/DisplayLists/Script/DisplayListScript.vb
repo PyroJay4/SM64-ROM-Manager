@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports SM64Lib.Data
+Imports SM64Lib.SegmentedBanking
 
 Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script
 

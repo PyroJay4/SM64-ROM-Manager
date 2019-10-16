@@ -13,6 +13,8 @@ Imports SM64Lib.ObjectBanks
 Imports SM64Lib.Data
 Imports SM64Lib.SegmentedBanking
 Imports System.ComponentModel
+Imports SM64Lib.EventArguments
+Imports SM64Lib.Data.System
 
 Public Class RomManager
 

@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports SM64Lib.Data
 Imports SM64Lib.Levels.Script.Commands
+Imports SM64Lib.SegmentedBanking
 
 Namespace Global.SM64Lib.Levels.Script
 
