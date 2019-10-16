@@ -2144,7 +2144,6 @@ Namespace LevelEditor
 
         Friend Sub AddWarps(count As Integer, type As LevelscriptCommandTypes)
             If CalculateWarpCountInLevel() >= Byte.MaxValue Then
-                'MessageBoxEx.Show("Maximum of Warps per Level reached. It is not possible to add more Warps.", "Maximum reached", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 ShowToadnotifiaction(Panel_GLControl, "The maximum amount of warps per level has been reached. It is not possible to add more warps.", eToastGlowColor.Red)
             Else
                 Dim newWarp As LevelscriptCommand = Nothing
@@ -2193,7 +2192,7 @@ Namespace LevelEditor
         Friend Function CalculateWarpCountInLevel() As Integer
             Dim count As Integer = 0
             For Each a As LevelArea In cLevel.Areas
-                count += a.Warps.Where(Function(n) ({LevelscriptCommandTypes.PaintingWarp, LevelscriptCommandTypes.ConnectedWarp}).Contains(n.CommandType)).Count
+                count += a.Warps.Where(Function(n) {LevelscriptCommandTypes.PaintingWarp, LevelscriptCommandTypes.ConnectedWarp}.Contains(n.CommandType)).Count
                 count += a.WarpsForGame.Concat(a.Warps).Count
             Next
             Return count
@@ -2697,10 +2696,11 @@ Namespace LevelEditor
             Dim frm As New TextureEditor(rommgr, otherTextures_Categories)
 
             'Update textures
-            AddHandler frm.TextureReplaced, Sub()
-                                                maps.UpdateTexturesOfCurrentModel(dic)
-                                                dic = maps.TakeSnapshotOfCurrentModelTextures
-                                            End Sub
+            AddHandler frm.TextureReplaced,
+                Sub()
+                    maps.UpdateTexturesOfCurrentModel(dic)
+                    dic = maps.TakeSnapshotOfCurrentModelTextures
+                End Sub
 
             'Show the editor
             frm.Show()

@@ -73,7 +73,9 @@ Namespace Global.SM64Lib.Levels
         Public Sub WriteImage(s As Stream, offset As Integer)
             'Write Image Data
             s.Position = offset
-            s.Write(_ImageBytes, 0, _ImageBytes.Length)
+            If _ImageBytes IsNot Nothing Then
+                s.Write(_ImageBytes, 0, _ImageBytes.Length)
+            End If
         End Sub
 
         Public Sub ReadImage(s As Stream, offset As Integer)
