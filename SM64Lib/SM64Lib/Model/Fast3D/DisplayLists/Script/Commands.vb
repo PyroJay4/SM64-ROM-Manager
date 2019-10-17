@@ -278,4 +278,135 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
         End Function
     End Class
 
+
+    Public Class F3D_SETCOMBINE
+        Public Enum CCMUX As Byte
+            COMBINED = 0
+            TEXEL0
+            TEXEL1
+            PRIMITIVE
+            SHADE
+            ENVIRONMENT
+            CENTER
+            COMBINED_ALPHA
+            TEXEL0_ALPHA
+            TEXEL1_ALPHA
+            PRIMITIVE_ALPHA
+            SHADE_ALPHA
+            ENV_ALPHA
+            LOD_FRACTION
+            PRIM_LOD_FRAC
+
+            SCALE = 6
+            NOISE = 7
+            K4 = 7
+            K5 = 15
+            ONE = 6
+            ZERO = 31
+        End Enum
+
+        Public Enum ACMUX As Byte
+            COMBINED = 0
+            TEXEL0
+            TEXEL1
+            PRIMITIVE
+            SHADE
+            ENVIRONMENT
+            PRIM_LOD_FRAC
+
+            ONE = 6
+            ZERO = 7
+            LOD_FRACTION = 0
+        End Enum
+
+        Public Class Formula
+            Public ReadOnly a As Byte
+            Public ReadOnly b As Byte
+            Public ReadOnly c As Byte
+            Public ReadOnly d As Byte
+
+            Public Sub New(a As Byte, b As Byte, c As Byte, d As Byte) ' CC formula is (a - b) * c + d
+                Me.a = a
+                Me.b = b
+                Me.c = c
+                Me.d = d
+            End Sub
+
+            Shared Function Output(a As CCMUX) As Formula
+                Return New Formula(CCMUX.ZERO, CCMUX.ZERO, CCMUX.ZERO, a) ' (0 - 0) * 0 + a = a
+            End Function
+
+            Shared Function Output(a As ACMUX) As Formula
+                Return New Formula(ACMUX.ZERO, ACMUX.ZERO, ACMUX.ZERO, a)
+            End Function
+
+            Shared Function Multiply(a As CCMUX, b As CCMUX) As Formula
+                Return New Formula(a, CCMUX.ZERO, b, CCMUX.ZERO) ' (a - 0) * b + 0 = a * b
+            End Function
+
+            Shared Function Multiply(a As Byte, b As Byte) As Formula
+                Return New Formula(a, ACMUX.ZERO, b, ACMUX.ZERO) ' (a - 0) * b + 0 = a * b
+            End Function
+        End Class
+
+        Shared Function _SHIFTL(v As UInt32, s As UInt32, w As UInt32) As UInt32
+            Return (v And ((1 << w) - 1)) << s
+        End Function
+
+        Shared Function GCCc0w0(saRGB0 As UInt32, mRGB0 As UInt32, saA0 As UInt32, mA0 As UInt32) As UInt32
+            Return _SHIFTL(saRGB0, 20, 4) Or _SHIFTL(mRGB0, 15, 5) Or _SHIFTL(saA0, 12, 3) Or _SHIFTL(mA0, 9, 3)
+        End Function
+
+        Shared Function GCCc1w0(saRGB1 As UInt32, mRGB1 As UInt32) As UInt32
+            Return _SHIFTL(saRGB1, 5, 4) Or _SHIFTL(mRGB1, 0, 5)
+        End Function
+
+        Shared Function GCCc0w1(sbRGB0 As UInt32, aRGB0 As UInt32, sbA0 As UInt32, aA0 As UInt32) As UInt32
+            Return _SHIFTL(sbRGB0, 28, 4) Or _SHIFTL(aRGB0, 15, 3) Or _SHIFTL(sbA0, 12, 3) Or _SHIFTL(aA0, 9, 3)
+        End Function
+
+        Shared Function GCCc1w1(sbRGB1 As UInt32, saA1 As UInt32, mA1 As UInt32, aRGB1 As UInt32, sbA1 As UInt32, aA1 As UInt32) As UInt32
+            Return _SHIFTL(sbRGB1, 24, 4) Or _SHIFTL(saA1, 21, 3) Or _SHIFTL(mA1, 18, 3) Or _SHIFTL(aRGB1, 6, 3) Or _SHIFTL(sbA1, 3, 3) Or _SHIFTL(aA1, 0, 3)
+        End Function
+
+        ' For Jabo plugin you can't specify anything you want for 2nd cycle, only combined or the same as previous :(
+        Public Shared Function Make(color As Formula, alpha As Formula, isFog As Boolean) As String
+            If Not isFog Then
+                Return Make(color, alpha, color, alpha)
+            Else
+                Return Make(color, alpha, Formula.Output(CCMUX.COMBINED), Formula.Output(ACMUX.COMBINED))
+            End If
+        End Function
+
+        ' TODO: Let user specify custom combiner with this
+        Public Shared Function Make(color0 As Formula, alpha0 As Formula, color1 As Formula, alpha1 As Formula) As String
+            Return Make(color0.a, color0.b, color0.c, color0.d,
+                        alpha0.a, alpha0.b, alpha0.c, alpha0.d,
+                        color1.a, color1.b, color1.c, color1.d,
+                        alpha1.a, alpha1.b, alpha1.c, alpha1.d)
+        End Function
+
+        Shared Function Make(a0 As CCMUX, b0 As CCMUX, c0 As CCMUX, d0 As CCMUX,
+                      Aa0 As ACMUX, Ab0 As ACMUX, Ac0 As ACMUX, Ad0 As ACMUX,
+                      a1 As CCMUX, b1 As CCMUX, c1 As CCMUX, d1 As CCMUX,
+                      Aa1 As ACMUX, Ab1 As ACMUX, Ac1 As ACMUX, Ad1 As ACMUX) As String
+            Dim w0 = _SHIFTL(&HFC, 24, 8) Or _SHIFTL(GCCc0w0(a0, c0, Aa0, Ac0) Or GCCc1w0(a1, c1), 0, 24)
+            Dim w1 = GCCc0w1(b0, d0, Ab0, Ad0) Or GCCc1w1(b1, Aa1, Ac1, d1, Ab1, Ad1)
+
+            Dim w0bytes = BitConverter.GetBytes(w0)
+            Dim w1bytes = BitConverter.GetBytes(w1)
+            ' Little endian assumed
+            Dim ret = w0bytes(3).ToString("X")
+            ret += " " + w0bytes(2).ToString("X")
+            ret += " " + w0bytes(1).ToString("X")
+            ret += " " + w0bytes(0).ToString("X")
+            ret += " " + w1bytes(3).ToString("X")
+            ret += " " + w1bytes(2).ToString("X")
+            ret += " " + w1bytes(1).ToString("X")
+            ret += " " + w1bytes(0).ToString("X")
+            Return ret
+        End Function
+
+    End Class
+
 End Namespace

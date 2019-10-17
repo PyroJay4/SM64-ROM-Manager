@@ -7,6 +7,7 @@ Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Levels.ScrolTex
 Imports SM64Lib.Model.Fast3D
+Imports SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
 
 Namespace Model.Conversion.Fast3DWriting
 
@@ -155,15 +156,10 @@ Namespace Model.Conversion.Fast3DWriting
         Private Class FinalVertexData
             Public Property Data As Byte() = New Byte(15) {}
             Public Property EnableVertexColor As Boolean = False
-            Public ReadOnly Property EnableVertexAlpha As Boolean
-                Get
-                    Return Data.LastOrDefault() = &H0
-                End Get
-            End Property
             Public ReadOnly Property EnableVertexTransparent As Boolean
                 Get
                     Dim db As Byte = Data.LastOrDefault()
-                    Return db < &HFF AndAlso db > 0
+                    Return db < &HFF
                 End Get
             End Property
         End Class
@@ -187,7 +183,7 @@ Namespace Model.Conversion.Fast3DWriting
             Public ReadOnly Property EnableVertexAlpha As Boolean
                 Get
                     For Each fvd As FinalVertexData In FinalVertexData
-                        If fvd.EnableVertexAlpha Then Return True
+                        If fvd.EnableVertexTransparent Then Return True
                     Next
                     Return False
                 End Get
@@ -417,7 +413,7 @@ Namespace Model.Conversion.Fast3DWriting
             If alpha < 1.0F Then
                 mat.Type = MaterialType.ColorTransparent
                 mat.HasTransparency = True
-            Else
+            ElseIf Not mat.HasTexture Then
                 mat.Type = MaterialType.ColorSolid
             End If
         End Sub
@@ -545,7 +541,6 @@ Namespace Model.Conversion.Fast3DWriting
                 N64Graphics.N64Graphics.RenderTexture(g, entry.Data, entry.Palette, 0, mat.TexWidth, mat.TexHeight, 1, mat.TexType, N64IMode.AlphaCopyIntensity)
             End If
 
-            'Set material type
             mat.Type = MaterialType.TextureSolid
 
             'Check for alpha and transparency
@@ -559,14 +554,9 @@ Namespace Model.Conversion.Fast3DWriting
                             If pix.A = 0 AndAlso Not mat.HasTransparency Then
                                 mat.HasTextureAlpha = True
                                 mat.Type = MaterialType.TextureAlpha
-                            ElseIf pix.A < &HFF OrElse mat.Opacity < &HFF Then
-                                If mat.Type <> MaterialType.TextureAlpha Then
-                                    If mat.Opacity = &HFF Then
-                                        mat.Opacity = (CInt(mat.Opacity) * pix.A) And &HFF
-                                    End If
-                                    mat.Type = MaterialType.TextureTransparent
-                                    mat.HasTransparency = True
-                                End If
+                            ElseIf pix.A < &HFF Then
+                                mat.Type = MaterialType.TextureTransparent
+                                mat.HasTransparency = True
                             End If
 
                             'If pix.A = 0 Then
@@ -585,8 +575,7 @@ Namespace Model.Conversion.Fast3DWriting
 
                         Case N64Codec.I4, N64Codec.I8
 
-                            If pix.A < &HFF OrElse mat.Opacity < &HFF OrElse mat.EnableAlphaMask Then
-                                If mat.Opacity = &HFF Then mat.Opacity *= (CInt(mat.Opacity) * pix.A) And &HFF
+                            If pix.A < &HFF OrElse mat.EnableAlphaMask Then
                                 mat.Type = MaterialType.TextureTransparent
                                 mat.HasTransparency = True
                             End If
@@ -754,8 +743,11 @@ Namespace Model.Conversion.Fast3DWriting
                                 final.Data(14) = vertcol.B
                                 final.Data(15) = vertcol.A
                                 final.EnableVertexColor = True
-                                mat.HasTextureAlpha = mat.HasTextureAlpha OrElse final.EnableVertexAlpha
-                                mat.HasTransparency = mat.HasTransparency OrElse final.EnableVertexTransparent
+                                ' FIXME: Add warning if Type is not TextureSolid
+                                If final.EnableVertexTransparent Then
+                                    mat.Type = MaterialType.TextureTransparent
+                                    mat.HasTransparency = mat.HasTransparency OrElse final.EnableVertexTransparent
+                                End If
                             Else
                                 final.Data(12) = normal.A
                                 final.Data(13) = normal.B
@@ -845,16 +837,6 @@ Namespace Model.Conversion.Fast3DWriting
                 End If
             End If
 
-            'Process Material Color Alpha
-            If kvp.Value.Opacity IsNot Nothing Then
-                Dim tempopacity As Single = kvp.Value.Opacity
-                With m
-                    .Opacity = (tempopacity * &HFF) And &HFF
-                    .OpacityOrg = .Opacity
-                End With
-                processMaterialColorAlpha(tempopacity, m)
-            End If
-
             'Check Texture Type
             If texFormatSettings IsNot Nothing Then
                 m.TexType = N64Graphics.N64Graphics.StringCodec(texFormatSettings.GetEntry(kvp.Key).TextureFormat)
@@ -864,6 +846,16 @@ Namespace Model.Conversion.Fast3DWriting
             If kvp.Value.Image IsNot Nothing Then
                 ProcessImage(obj, kvp.Value.Image, m)
                 size = m.Texture.Data.Length
+            End If
+
+            'Process Material Color Alpha
+            If kvp.Value.Opacity IsNot Nothing Then
+                Dim tempopacity As Single = kvp.Value.Opacity
+                With m
+                    .Opacity = (tempopacity * &HFF) And &HFF
+                    .OpacityOrg = .Opacity
+                End With
+                processMaterialColorAlpha(tempopacity, m)
             End If
 
             'Set offset and size
@@ -1253,28 +1245,66 @@ Namespace Model.Conversion.Fast3DWriting
         Private Sub AddCmdFC(mat As Material, dlType As DisplayListType, ByRef lastCmd As String)
             Dim cmd As String = String.Empty
 
+            Dim colorFormula As F3D_SETCOMBINE.Formula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.CCMUX.SHADE)
             If mat.HasTexture Then
-                If mat.HasTransparency OrElse mat.HasTextureAlpha Then
-                    If settings.EnableFog Then
-                        ImpF3D("FC 12 19 FF FF FF FE 38")
-                    Else
-                        ImpF3D("FC 12 18 24 FF 33 FF FF")
-                    End If
-                Else
-                    If settings.EnableFog Then
-                        ImpF3D("FC 12 7F FF FF FF F8 38")
-                    Else
-                        ImpF3D("FC 12 7E 24 FF FF F9 FC")
-                    End If
-                End If
+                Select Case (mat.Type)
+                    Case MaterialType.None, MaterialType.TextureSolid, MaterialType.TextureAlpha, MaterialType.TextureTransparent, MaterialType.ColorTransparent
+                        colorFormula = F3D_SETCOMBINE.Formula.Multiply(F3D_SETCOMBINE.CCMUX.TEXEL0, F3D_SETCOMBINE.CCMUX.SHADE)
+
+                    Case MaterialType.ColorSolid
+                        colorFormula = F3D_SETCOMBINE.Formula.Multiply(F3D_SETCOMBINE.CCMUX.TEXEL0, F3D_SETCOMBINE.CCMUX.ENVIRONMENT)
+                End Select
             Else
-                If mat.Type = MaterialType.ColorTransparent Then
-                    cmd = "FC FF FF FF FF FE FB FD"
-                Else
-                    cmd = "FC FF FF FF FF FE 7B 3D"
-                End If
+                Select Case (mat.Type)
+                    Case MaterialType.None, MaterialType.TextureSolid, MaterialType.TextureAlpha, MaterialType.TextureTransparent, MaterialType.ColorTransparent
+                        colorFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.CCMUX.SHADE)
+
+                    Case MaterialType.ColorSolid
+                        colorFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.CCMUX.ENVIRONMENT)
+                End Select
             End If
 
+            Dim alphaFormula As F3D_SETCOMBINE.Formula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.SHADE)
+            If mat.HasTexture Then
+                Select Case (mat.Type)
+                    Case MaterialType.None, MaterialType.TextureSolid
+                        alphaFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.ONE)
+
+                    Case MaterialType.TextureAlpha, MaterialType.TextureTransparent
+                        ' With Fog multiplying SHADE is not something you want because it will be alpha fog so just output TEXEL0 and hope it is fine
+                        If settings.EnableFog Then
+                            alphaFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.TEXEL0)
+                        Else
+                            alphaFormula = F3D_SETCOMBINE.Formula.Multiply(F3D_SETCOMBINE.ACMUX.TEXEL0, F3D_SETCOMBINE.ACMUX.SHADE)
+                        End If
+
+                    Case MaterialType.ColorSolid, MaterialType.ColorTransparent
+                        alphaFormula = F3D_SETCOMBINE.Formula.Multiply(F3D_SETCOMBINE.ACMUX.TEXEL0, F3D_SETCOMBINE.ACMUX.ENVIRONMENT)
+                End Select
+            Else
+                Select Case (mat.Type)
+                    Case MaterialType.None, MaterialType.TextureSolid
+                        alphaFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.ONE)
+
+                    Case MaterialType.TextureAlpha, MaterialType.TextureTransparent
+                        ' With Fog multiplying SHADE is not something you want because it will be alpha fog so just output TEXEL0
+                        If settings.EnableFog Then
+                            alphaFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.ONE)
+                        Else
+                            alphaFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.SHADE)
+                        End If
+
+                    Case MaterialType.ColorSolid, MaterialType.ColorTransparent
+                        ' If there is no material, may as well provide more options for alpha modulate
+                        If settings.EnableFog Then
+                            alphaFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.ENVIRONMENT)
+                        Else
+                            alphaFormula = F3D_SETCOMBINE.Formula.Multiply(F3D_SETCOMBINE.ACMUX.SHADE, F3D_SETCOMBINE.ACMUX.ENVIRONMENT)
+                        End If
+                End Select
+            End If
+
+            cmd = F3D_SETCOMBINE.Make(colorFormula, alphaFormula, settings.EnableFog)
             If Not String.IsNullOrEmpty(cmd) AndAlso lastCmd <> cmd Then
                 ImpF3D(cmd)
                 lastCmd = cmd
@@ -1464,7 +1494,8 @@ Namespace Model.Conversion.Fast3DWriting
             impdata.Write(defaultColor)
 
             'Remove duplicated textures
-            MergeDuplicatedTextures()
+            ' FIXME: This function does not account for materials properties like Opacity
+            'MergeDuplicatedTextures()
 
             'Write materials
             For Each mt As Material In materials
