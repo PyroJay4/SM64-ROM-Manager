@@ -126,6 +126,13 @@
     <value>False</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Button_LM_AddArea.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAABJSURBVDhPY8AF/Kq2/odhqBBpAKSxe/uHUQOIMQCkABeGGYALww0AKSQVoxiAC8MU4sJgA3AB
+        kAIUm0gFowZADIBhqBAtAAMDAPUn2urrmjpaAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="Button_LM_AddArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -156,6 +163,17 @@
   <data name="Button_LM_AreaEditor.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="Button_LM_AreaEditor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAFNSURBVDhPY6Ar2B6XZHktMvL07aSka5eCgsqgwsSBJb1FMXMWrvizf9r8/9/7+//fio+/BpUi
+        DBbObo1Zvmnb7xvPv/4/dO7W/13TF/y/EhFxCiqNHxxc4q+7cln/+4NAjTeBBlx/9uX/zPkr/q5LSrOB
+        KsENjiwKNrm+N+fu/3eL/h88tPL/rhOX/s9fte7nqs58P6gS3ACk+drevDsgzf/fLf7/9/XC/8uW9b6d
+        MbvVFaoEN4BozkXRfGFr6vX98z0UoEpwg8NLA4zJ17wKpDnnNlmat8zwC7q4LfMnWZr/MzAw7p4d/vTp
+        2Qaw5n9vFv6/uD3t5v75wRpQJfhBUYpP+JlVuV/u78n7/+hUzf+zm1N/bZnqbQWVJgzio/wvBYeG/j+y
+        LOv7zlkhz7ZOD/GBShEHAgN93ibE+l8pz/aLaGhoYIIK0wMwMAAAtArmknLGrxYAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="Button_LM_AreaEditor.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 3</value>
   </data>
@@ -165,8 +183,30 @@
   <data name="Button_LM_RemoveArea.Text" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="ButtonItem_EditAreaLevelScript.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAFNSURBVDhPY6Ar2B6XZHktMvL07aSka5eCgsqgwsSBJb1FMXMWrvizf9r8/9/7+//fio+/BpUi
+        DBbObo1Zvmnb7xvPv/4/dO7W/13TF/y/EhFxCiqNHxxc4q+7cln/+4NAjTeBBlx/9uX/zPkr/q5LSrOB
+        KsENjiwKNrm+N+fu/3eL/h88tPL/rhOX/s9fte7nqs58P6gS3ACk+drevDsgzf/fLf7/9/XC/8uW9b6d
+        MbvVFaoEN4BozkXRfGFr6vX98z0UoEpwg8NLA4zJ17wKpDnnNlmat8zwC7q4LfMnWZr/MzAw7p4d/vTp
+        2Qaw5n9vFv6/uD3t5v75wRpQJfhBUYpP+JlVuV/u78n7/+hUzf+zm1N/bZnqbQWVJgzio/wvBYeG/j+y
+        LOv7zlkhz7ZOD/GBShEHAgN93ibE+l8pz/aLaGhoYIIK0wMwMAAAtArmknLGrxYAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="ButtonItem_EditAreaLevelScript.Text" xml:space="preserve">
     <value>Edit Level Script</value>
+  </data>
+  <data name="ButtonItem2_EditGeolayoutScript.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAFNSURBVDhPY6Ar2B6XZHktMvL07aSka5eCgsqgwsSBJb1FMXMWrvizf9r8/9/7+//fio+/BpUi
+        DBbObo1Zvmnb7xvPv/4/dO7W/13TF/y/EhFxCiqNHxxc4q+7cln/+4NAjTeBBlx/9uX/zPkr/q5LSrOB
+        KsENjiwKNrm+N+fu/3eL/h88tPL/rhOX/s9fte7nqs58P6gS3ACk+drevDsgzf/fLf7/9/XC/8uW9b6d
+        MbvVFaoEN4BozkXRfGFr6vX98z0UoEpwg8NLA4zJ17wKpDnnNlmat8zwC7q4LfMnWZr/MzAw7p4d/vTp
+        2Qaw5n9vFv6/uD3t5v75wRpQJfhBUYpP+JlVuV/u78n7/+hUzf+zm1N/bZnqbQWVJgzio/wvBYeG/j+y
+        LOv7zlkhz7ZOD/GBShEHAgN93ibE+l8pz/aLaGhoYIIK0wMwMAAAtArmknLGrxYAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="ButtonItem2_EditGeolayoutScript.Text" xml:space="preserve">
     <value>Edit Geo Layout Script</value>
@@ -244,7 +284,7 @@
     <value>False</value>
   </data>
   <data name="ButtonX_LM_LevelsMore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 6</value>
+    <value>101, 3</value>
   </data>
   <data name="ButtonX_LM_LevelsMore.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 23</value>
@@ -260,6 +300,17 @@
   </data>
   <data name="ButtonItem21.Text" xml:space="preserve">
     <value>Copy ROM Address</value>
+  </data>
+  <data name="ButtonItem15.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAFNSURBVDhPY6Ar2B6XZHktMvL07aSka5eCgsqgwsSBJb1FMXMWrvizf9r8/9/7+//fio+/BpUi
+        DBbObo1Zvmnb7xvPv/4/dO7W/13TF/y/EhFxCiqNHxxc4q+7cln/+4NAjTeBBlx/9uX/zPkr/q5LSrOB
+        KsENjiwKNrm+N+fu/3eL/h88tPL/rhOX/s9fte7nqs58P6gS3ACk+drevDsgzf/fLf7/9/XC/8uW9b6d
+        MbvVFaoEN4BozkXRfGFr6vX98z0UoEpwg8NLA4zJ17wKpDnnNlmat8zwC7q4LfMnWZr/MzAw7p4d/vTp
+        2Qaw5n9vFv6/uD3t5v75wRpQJfhBUYpP+JlVuV/u78n7/+hUzf+zm1N/bZnqbQWVJgzio/wvBYeG/j+y
+        LOv7zlkhz7ZOD/GBShEHAgN93ibE+l8pz/aLaGhoYIIK0wMwMAAAtArmknLGrxYAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="ButtonItem15.Text" xml:space="preserve">
     <value>Edit Level Script</value>
@@ -282,8 +333,15 @@
   <data name="&gt;&gt;ButtonX_LM_LevelsMore.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="Button_LM_AddNewLevel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAABJSURBVDhPY8AF/Kq2/odhqBBpAKSxe/uHUQOIMQCkABeGGYALww0AKSQVoxiAC8MU4sJgA3AB
+        kAIUm0gFowZADIBhqBAtAAMDAPUn2urrmjpaAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="Button_LM_AddNewLevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 6</value>
+    <value>3, 3</value>
   </data>
   <data name="Button_LM_AddNewLevel.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 23</value>
@@ -316,13 +374,13 @@
     <value>True</value>
   </data>
   <data name="ListBoxAdv_LM_Levels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 35</value>
+    <value>3, 32</value>
   </data>
   <data name="ListBoxAdv_LM_Levels.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="ListBoxAdv_LM_Levels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 260</value>
+    <value>172, 263</value>
   </data>
   <data name="ListBoxAdv_LM_Levels.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -498,34 +556,6 @@
   <data name="&gt;&gt;SwitchButton_LM_ShowMsgEnabled.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="ColorPickerButton_LM_BackgroundColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
-        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ColorPickerButton_LM_BackgroundColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 107</value>
-  </data>
-  <data name="ColorPickerButton_LM_BackgroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 23</value>
-  </data>
-  <data name="ColorPickerButton_LM_BackgroundColor.TabIndex" type="System.Int32, mscorlib">
-    <value>91</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_LM_BackgroundColor.Name" xml:space="preserve">
-    <value>ColorPickerButton_LM_BackgroundColor</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_LM_BackgroundColor.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_LM_BackgroundColor.Parent" xml:space="preserve">
-    <value>TabControlPanel4</value>
-  </data>
-  <data name="&gt;&gt;ColorPickerButton_LM_BackgroundColor.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="LabelX2.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 135</value>
   </data>
@@ -548,7 +578,7 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;LabelX2.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="CheckBoxX_LM_Enable2DCamera.Location" type="System.Drawing.Point, System.Drawing">
     <value>420, 56</value>
@@ -581,7 +611,7 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;CheckBoxX_LM_Enable2DCamera.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="LabelX6.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 4</value>
@@ -605,7 +635,7 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;LabelX6.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="ComboBox_LM_Music.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -641,7 +671,7 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;ComboBox_LM_Music.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="LabelX7.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 30</value>
@@ -665,7 +695,7 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;LabelX7.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="ComboBox_LM_TerrainTyp.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -713,7 +743,7 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;ComboBox_LM_TerrainTyp.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="LabelX8.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 56</value>
@@ -737,7 +767,7 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;LabelX8.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="ComboBox_LM_EnvironmentEffects.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -785,7 +815,7 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;ComboBox_LM_EnvironmentEffects.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="LabelX11.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 82</value>
@@ -809,7 +839,7 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;LabelX11.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="ComboBox_LM_CameraPreset.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -884,6 +914,34 @@
     <value>TabControlPanel4</value>
   </data>
   <data name="&gt;&gt;ComboBox_LM_CameraPreset.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="ColorPickerButton_LM_BackgroundColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAqSURBVDhPY/j//z9FGEIAKXIwigEgmhQ8asCoASA8
+        HA0gB8MNIB//ZwAAsSyVh9SDH54AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ColorPickerButton_LM_BackgroundColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>307, 107</value>
+  </data>
+  <data name="ColorPickerButton_LM_BackgroundColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 23</value>
+  </data>
+  <data name="ColorPickerButton_LM_BackgroundColor.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_LM_BackgroundColor.Name" xml:space="preserve">
+    <value>ColorPickerButton_LM_BackgroundColor</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_LM_BackgroundColor.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ColorPickerButton, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_LM_BackgroundColor.Parent" xml:space="preserve">
+    <value>TabControlPanel4</value>
+  </data>
+  <data name="&gt;&gt;ColorPickerButton_LM_BackgroundColor.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
   <data name="TabControlPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -1175,7 +1233,7 @@
     <value>TabControl_LM_Area</value>
   </data>
   <data name="&gt;&gt;TabControlPanel5.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="Button_LM_RemoveSpecial.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1383,7 +1441,7 @@
     <value>TabControl_LM_Area</value>
   </data>
   <data name="&gt;&gt;TabControlPanel6.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="TabControl_LM_Area.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1523,33 +1581,6 @@
   <data name="&gt;&gt;LabelX3.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="Button_LM_LoadLevelBG.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 81</value>
-  </data>
-  <data name="Button_LM_LoadLevelBG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 23</value>
-  </data>
-  <data name="Button_LM_LoadLevelBG.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="Button_LM_LoadLevelBG.Text" xml:space="preserve">
-    <value>Load ...</value>
-  </data>
-  <data name="Button_LM_LoadLevelBG.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_LoadLevelBG.Name" xml:space="preserve">
-    <value>Button_LM_LoadLevelBG</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_LoadLevelBG.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_LoadLevelBG.Parent" xml:space="preserve">
-    <value>TabControlPanel1</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_LoadLevelBG.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="SwitchButton_LM_ActSelector.Location" type="System.Drawing.Point, System.Drawing">
     <value>163, 4</value>
   </data>
@@ -1575,7 +1606,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;SwitchButton_LM_ActSelector.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="LabelX57.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 56</value>
@@ -1599,7 +1630,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX57.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="SwitchButton_LM_HardcodedCameraSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>163, 30</value>
@@ -1626,28 +1657,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;SwitchButton_LM_HardcodedCameraSettings.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="Button_LM_SetUpStartPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 55</value>
-  </data>
-  <data name="Button_LM_SetUpStartPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 23</value>
-  </data>
-  <data name="Button_LM_SetUpStartPosition.TabIndex" type="System.Int32, mscorlib">
-    <value>85</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_SetUpStartPosition.Name" xml:space="preserve">
-    <value>Button_LM_SetUpStartPosition</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_SetUpStartPosition.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_SetUpStartPosition.Parent" xml:space="preserve">
-    <value>TabControlPanel1</value>
-  </data>
-  <data name="&gt;&gt;Button_LM_SetUpStartPosition.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="LabelX4.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 30</value>
@@ -1671,7 +1681,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX4.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="ComboBox_LM_LevelBG.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1728,7 +1738,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;ComboBox_LM_LevelBG.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="LabelX24.Location" type="System.Drawing.Point, System.Drawing">
     <value>335, 56</value>
@@ -1752,7 +1762,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX24.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="NUD_LM_DefaultPositionYRotation.Location" type="System.Drawing.Point, System.Drawing">
     <value>263, 57</value>
@@ -1773,7 +1783,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;NUD_LM_DefaultPositionYRotation.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>10</value>
   </data>
   <data name="LabelX25.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 56</value>
@@ -1797,7 +1807,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX25.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>11</value>
   </data>
   <data name="NUD_LM_DefaultPositionAreaID.Location" type="System.Drawing.Point, System.Drawing">
     <value>384, 57</value>
@@ -1818,6 +1828,54 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;NUD_LM_DefaultPositionAreaID.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="Button_LM_LoadLevelBG.Location" type="System.Drawing.Point, System.Drawing">
+    <value>273, 81</value>
+  </data>
+  <data name="Button_LM_LoadLevelBG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 23</value>
+  </data>
+  <data name="Button_LM_LoadLevelBG.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="Button_LM_LoadLevelBG.Text" xml:space="preserve">
+    <value>Load ...</value>
+  </data>
+  <data name="Button_LM_LoadLevelBG.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;Button_LM_LoadLevelBG.Name" xml:space="preserve">
+    <value>Button_LM_LoadLevelBG</value>
+  </data>
+  <data name="&gt;&gt;Button_LM_LoadLevelBG.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Button_LM_LoadLevelBG.Parent" xml:space="preserve">
+    <value>TabControlPanel1</value>
+  </data>
+  <data name="&gt;&gt;Button_LM_LoadLevelBG.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="Button_LM_SetUpStartPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 55</value>
+  </data>
+  <data name="Button_LM_SetUpStartPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="Button_LM_SetUpStartPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="&gt;&gt;Button_LM_SetUpStartPosition.Name" xml:space="preserve">
+    <value>Button_LM_SetUpStartPosition</value>
+  </data>
+  <data name="&gt;&gt;Button_LM_SetUpStartPosition.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Button_LM_SetUpStartPosition.Parent" xml:space="preserve">
+    <value>TabControlPanel1</value>
+  </data>
+  <data name="&gt;&gt;Button_LM_SetUpStartPosition.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
   <data name="TabControlPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -1911,7 +1969,7 @@
     <value>TabControl_LM_Level</value>
   </data>
   <data name="&gt;&gt;TabControlPanel2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="TabControl_LM_Level.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1948,12 +2006,6 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>694, 546</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_ImportArea.Name" xml:space="preserve">
-    <value>ButtonItem_ImportArea</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_ImportArea.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Button_LM_RemoveArea.Name" xml:space="preserve">
     <value>Button_LM_RemoveArea</value>
@@ -2001,12 +2053,6 @@
     <value>ButtonItem15</value>
   </data>
   <data name="&gt;&gt;ButtonItem15.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem26.Name" xml:space="preserve">
-    <value>ButtonItem26</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem26.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboItem12.Name" xml:space="preserve">
@@ -2140,6 +2186,18 @@
   </data>
   <data name="&gt;&gt;TabItem2.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_ImportArea.Name" xml:space="preserve">
+    <value>ButtonItem_ImportArea</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_ImportArea.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem26.Name" xml:space="preserve">
+    <value>ButtonItem26</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem26.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Tab_LevelManager</value>

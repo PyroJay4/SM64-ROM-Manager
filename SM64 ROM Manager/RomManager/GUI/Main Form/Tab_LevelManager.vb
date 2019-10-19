@@ -799,4 +799,19 @@ Public Class Tab_LevelManager
         Controller.ImportLevelArea(CurrentLevelIndex)
     End Sub
 
+    Private Sub LM_SaveAreaBackgorund(sender As Object, e As EventArgs) Handles ColorPickerButton_LM_BackgroundColor.SelectedColorChanged
+
+    End Sub
+
+    Private Sub LM_LoadCustomBackground(sender As Object, e As EventArgs) Handles Button_LM_LoadLevelBG.Click
+
+    End Sub
+
+    Private Sub Button_LM_AddNewLevel_Click(sender As Object, e As EventArgs) Handles Button_LM_AddNewLevel.Click
+
+    End Sub
+
+    Private Sub Button_LM_AddArea_Click(sender As Object, e As EventArgs) Handles Button_LM_AddArea.Click
+
+    End Sub
 End Class

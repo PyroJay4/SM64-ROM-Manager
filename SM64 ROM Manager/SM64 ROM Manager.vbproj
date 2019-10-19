@@ -930,6 +930,13 @@
     <None Include="Resources\icons8_paper_plane_16px.png" />
     <None Include="Resources\icons8_message_16px.png" />
     <None Include="Resources\icons8_color_dropper_16px.png" />
+    <None Include="Resources\icons8_plus_math_16px.png" />
+    <None Include="Resources\icons8_plus_16px.png" />
+    <None Include="Resources\icons8_delete_sign_16px.png" />
+    <None Include="Resources\icons8_cancel_16px_1.png" />
+    <None Include="Resources\icons8_trash_16px.png" />
+    <None Include="Resources\icons8_delete_2_16px.png" />
+    <None Include="Resources\icons8_edit_16px.png" />
     <Content Include="RomManager\Others\RomMap.txt" />
   </ItemGroup>
   <ItemGroup>
