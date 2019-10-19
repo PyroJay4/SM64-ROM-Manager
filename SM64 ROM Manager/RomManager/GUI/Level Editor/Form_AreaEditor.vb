@@ -2349,6 +2349,17 @@ Namespace LevelEditor
             End Select
         End Sub
 
+        Friend Sub AdvPropertyGrid1_PropertyTree_Paint(sender As Object, e As PaintEventArgs) Handles PropertyTree.Paint
+            'Property names keep reverting back to their attribute-defined values when the property is selected.
+            'This is the ugly workaround
+            For i As Byte = 1 To 4
+                Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
+                If n IsNot Nothing AndAlso n.TagString <> "" AndAlso n.TagString <> n.Text Then
+                    n.Text = n.TagString
+                End If
+            Next
+        End Sub
+
         'Friend Sub ProvideBParamContentList(sender As ContentSelectorEditor.ComboBoxEditor, e As EventArgs)
         '    Dim obj As Managed3DObject = SelectedObject
         '    Dim i As Byte
