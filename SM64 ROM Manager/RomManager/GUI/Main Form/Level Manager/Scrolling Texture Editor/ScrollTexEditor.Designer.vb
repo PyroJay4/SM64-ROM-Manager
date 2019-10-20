@@ -139,11 +139,11 @@ Partial Class ScrollTexEditor
         'ButtonItem44
         '
         Me.ButtonItem44.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem44.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
         Me.ButtonItem44.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.ButtonItem44.Name = "ButtonItem44"
         Me.ButtonItem44.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlN)
         Me.ButtonItem44.SubItemsExpandWidth = 14
-        Me.ButtonItem44.Symbol = "57669"
         Me.ButtonItem44.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonItem44.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem44.SymbolSize = 12.0!
@@ -152,9 +152,9 @@ Partial Class ScrollTexEditor
         'ButtonItem43
         '
         Me.ButtonItem43.BeginGroup = True
+        Me.ButtonItem43.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.ButtonItem43.Name = "ButtonItem43"
         Me.ButtonItem43.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.Del)
-        Me.ButtonItem43.Symbol = "57676"
         Me.ButtonItem43.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonItem43.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem43.SymbolSize = 12.0!

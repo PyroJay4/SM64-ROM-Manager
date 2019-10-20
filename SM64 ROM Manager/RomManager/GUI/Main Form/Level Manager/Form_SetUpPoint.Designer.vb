@@ -31,9 +31,11 @@ Partial Class Form_SetUpPoint
         Me.LabelX_Z = New DevComponents.DotNetBar.LabelX()
         Me.IntegerInput_Z = New DevComponents.Editors.IntegerInput()
         Me.Button_Cancel = New DevComponents.DotNetBar.ButtonX()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.IntegerInput_X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IntegerInput_Y, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IntegerInput_Z, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button_Okay
@@ -42,7 +44,7 @@ Partial Class Form_SetUpPoint
         Me.Button_Okay.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_Okay.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Button_Okay.FocusCuesEnabled = False
-        Me.Button_Okay.Location = New System.Drawing.Point(12, 90)
+        Me.Button_Okay.Location = New System.Drawing.Point(3, 81)
         Me.Button_Okay.Name = "Button_Okay"
         Me.Button_Okay.Size = New System.Drawing.Size(56, 23)
         Me.Button_Okay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -57,7 +59,7 @@ Partial Class Form_SetUpPoint
         Me.IntegerInput_X.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput_X.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.IntegerInput_X.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput_X.Location = New System.Drawing.Point(36, 12)
+        Me.IntegerInput_X.Location = New System.Drawing.Point(27, 3)
         Me.IntegerInput_X.MaxValue = 32767
         Me.IntegerInput_X.MinValue = -32767
         Me.IntegerInput_X.Name = "IntegerInput_X"
@@ -72,7 +74,7 @@ Partial Class Form_SetUpPoint
         '
         '
         Me.LabelX_X.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX_X.Location = New System.Drawing.Point(12, 12)
+        Me.LabelX_X.Location = New System.Drawing.Point(3, 3)
         Me.LabelX_X.Name = "LabelX_X"
         Me.LabelX_X.Size = New System.Drawing.Size(18, 20)
         Me.LabelX_X.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
@@ -86,7 +88,7 @@ Partial Class Form_SetUpPoint
         '
         '
         Me.LabelX_Y.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX_Y.Location = New System.Drawing.Point(12, 38)
+        Me.LabelX_Y.Location = New System.Drawing.Point(3, 29)
         Me.LabelX_Y.Name = "LabelX_Y"
         Me.LabelX_Y.Size = New System.Drawing.Size(18, 20)
         Me.LabelX_Y.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
@@ -102,7 +104,7 @@ Partial Class Form_SetUpPoint
         Me.IntegerInput_Y.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput_Y.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.IntegerInput_Y.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput_Y.Location = New System.Drawing.Point(36, 38)
+        Me.IntegerInput_Y.Location = New System.Drawing.Point(27, 29)
         Me.IntegerInput_Y.MaxValue = 32767
         Me.IntegerInput_Y.MinValue = -32767
         Me.IntegerInput_Y.Name = "IntegerInput_Y"
@@ -117,7 +119,7 @@ Partial Class Form_SetUpPoint
         '
         '
         Me.LabelX_Z.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX_Z.Location = New System.Drawing.Point(12, 64)
+        Me.LabelX_Z.Location = New System.Drawing.Point(3, 55)
         Me.LabelX_Z.Name = "LabelX_Z"
         Me.LabelX_Z.Size = New System.Drawing.Size(18, 20)
         Me.LabelX_Z.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
@@ -133,7 +135,7 @@ Partial Class Form_SetUpPoint
         Me.IntegerInput_Z.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput_Z.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.IntegerInput_Z.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput_Z.Location = New System.Drawing.Point(36, 64)
+        Me.IntegerInput_Z.Location = New System.Drawing.Point(27, 55)
         Me.IntegerInput_Z.MaxValue = 32767
         Me.IntegerInput_Z.MinValue = -32767
         Me.IntegerInput_Z.Name = "IntegerInput_Z"
@@ -148,12 +150,29 @@ Partial Class Form_SetUpPoint
         Me.Button_Cancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Button_Cancel.FocusCuesEnabled = False
-        Me.Button_Cancel.Location = New System.Drawing.Point(80, 90)
+        Me.Button_Cancel.Location = New System.Drawing.Point(71, 81)
         Me.Button_Cancel.Name = "Button_Cancel"
         Me.Button_Cancel.Size = New System.Drawing.Size(56, 23)
         Me.Button_Cancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Button_Cancel.TabIndex = 96
         Me.Button_Cancel.Text = "Cancel"
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.LabelX_X)
+        Me.Panel1.Controls.Add(Me.Button_Cancel)
+        Me.Panel1.Controls.Add(Me.Button_Okay)
+        Me.Panel1.Controls.Add(Me.LabelX_Z)
+        Me.Panel1.Controls.Add(Me.IntegerInput_X)
+        Me.Panel1.Controls.Add(Me.IntegerInput_Z)
+        Me.Panel1.Controls.Add(Me.IntegerInput_Y)
+        Me.Panel1.Controls.Add(Me.LabelX_Y)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(130, 107)
+        Me.Panel1.TabIndex = 97
         '
         'Form_SetUpPoint
         '
@@ -161,15 +180,8 @@ Partial Class Form_SetUpPoint
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Button_Cancel
-        Me.ClientSize = New System.Drawing.Size(148, 125)
-        Me.Controls.Add(Me.Button_Cancel)
-        Me.Controls.Add(Me.LabelX_Z)
-        Me.Controls.Add(Me.IntegerInput_Z)
-        Me.Controls.Add(Me.LabelX_Y)
-        Me.Controls.Add(Me.IntegerInput_Y)
-        Me.Controls.Add(Me.LabelX_X)
-        Me.Controls.Add(Me.IntegerInput_X)
-        Me.Controls.Add(Me.Button_Okay)
+        Me.ClientSize = New System.Drawing.Size(130, 107)
+        Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -183,6 +195,7 @@ Partial Class Form_SetUpPoint
         CType(Me.IntegerInput_X, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IntegerInput_Y, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IntegerInput_Z, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -195,4 +208,5 @@ Partial Class Form_SetUpPoint
     Friend WithEvents LabelX_Z As DevComponents.DotNetBar.LabelX
     Friend WithEvents IntegerInput_Z As DevComponents.Editors.IntegerInput
     Friend WithEvents Button_Cancel As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents Panel1 As Panel
 End Class

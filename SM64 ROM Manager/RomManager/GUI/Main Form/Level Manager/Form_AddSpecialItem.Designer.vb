@@ -43,10 +43,12 @@ Partial Class Form_AddSpecialItem
         Me.LabelX_Pos2 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX_Pos1 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX59 = New DevComponents.DotNetBar.LabelX()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox_Type.SuspendLayout()
         Me.GroupBox_Box.SuspendLayout()
         CType(Me.IntegerInput_Alpha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IntegerInput_Scale, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button_Cancel
@@ -55,7 +57,7 @@ Partial Class Form_AddSpecialItem
         Me.Button_Cancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Button_Cancel.FocusCuesEnabled = False
-        Me.Button_Cancel.Location = New System.Drawing.Point(74, 142)
+        Me.Button_Cancel.Location = New System.Drawing.Point(65, 133)
         Me.Button_Cancel.Name = "Button_Cancel"
         Me.Button_Cancel.Size = New System.Drawing.Size(56, 23)
         Me.Button_Cancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -68,7 +70,7 @@ Partial Class Form_AddSpecialItem
         Me.Button_Okay.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_Okay.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Button_Okay.FocusCuesEnabled = False
-        Me.Button_Okay.Location = New System.Drawing.Point(12, 142)
+        Me.Button_Okay.Location = New System.Drawing.Point(3, 133)
         Me.Button_Okay.Name = "Button_Okay"
         Me.Button_Okay.Size = New System.Drawing.Size(56, 23)
         Me.Button_Okay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -80,7 +82,7 @@ Partial Class Form_AddSpecialItem
         Me.GroupBox_Type.Controls.Add(Me.CheckBoxX_Mist)
         Me.GroupBox_Type.Controls.Add(Me.CheckBoxX_ToxicHaze)
         Me.GroupBox_Type.Controls.Add(Me.CheckBoxX_Water)
-        Me.GroupBox_Type.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox_Type.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox_Type.Name = "GroupBox_Type"
         Me.GroupBox_Type.Size = New System.Drawing.Size(118, 124)
         Me.GroupBox_Type.TabIndex = 104
@@ -147,7 +149,7 @@ Partial Class Form_AddSpecialItem
         Me.GroupBox_Box.Controls.Add(Me.LabelX_Pos2)
         Me.GroupBox_Box.Controls.Add(Me.LabelX_Pos1)
         Me.GroupBox_Box.Controls.Add(Me.LabelX59)
-        Me.GroupBox_Box.Location = New System.Drawing.Point(136, 12)
+        Me.GroupBox_Box.Location = New System.Drawing.Point(127, 3)
         Me.GroupBox_Box.Name = "GroupBox_Box"
         Me.GroupBox_Box.Size = New System.Drawing.Size(258, 153)
         Me.GroupBox_Box.TabIndex = 105
@@ -327,15 +329,25 @@ Partial Class Form_AddSpecialItem
         Me.LabelX59.TabIndex = 95
         Me.LabelX59.Text = "Scale:"
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.GroupBox_Type)
+        Me.Panel1.Controls.Add(Me.GroupBox_Box)
+        Me.Panel1.Controls.Add(Me.Button_Cancel)
+        Me.Panel1.Controls.Add(Me.Button_Okay)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(389, 159)
+        Me.Panel1.TabIndex = 106
+        '
         'Form_AddSpecialItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(406, 177)
-        Me.Controls.Add(Me.GroupBox_Type)
-        Me.Controls.Add(Me.Button_Cancel)
-        Me.Controls.Add(Me.Button_Okay)
-        Me.Controls.Add(Me.GroupBox_Box)
+        Me.ClientSize = New System.Drawing.Size(389, 159)
+        Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -350,6 +362,7 @@ Partial Class Form_AddSpecialItem
         Me.GroupBox_Box.ResumeLayout(False)
         CType(Me.IntegerInput_Alpha, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IntegerInput_Scale, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -374,4 +387,5 @@ Partial Class Form_AddSpecialItem
     Friend WithEvents IntegerInput_Alpha As DevComponents.Editors.IntegerInput
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents Panel1 As Panel
 End Class

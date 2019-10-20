@@ -67,9 +67,9 @@ Partial Class CustomBankManager
         resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX1.FocusCuesEnabled = False
+        Me.ButtonX1.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
         Me.ButtonX1.Name = "ButtonX1"
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX1.Symbol = "57669"
         Me.ButtonX1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX1.SymbolSize = 12.0!
@@ -80,9 +80,9 @@ Partial Class CustomBankManager
         resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
+        Me.ButtonX2.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.ButtonX2.Name = "ButtonX2"
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX2.Symbol = "57676"
         Me.ButtonX2.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonX2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX2.SymbolSize = 12.0!
@@ -190,8 +190,8 @@ Partial Class CustomBankManager
         'ButtonItem_RemoveObject
         '
         Me.ButtonItem_RemoveObject.BeginGroup = True
+        Me.ButtonItem_RemoveObject.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.ButtonItem_RemoveObject.Name = "ButtonItem_RemoveObject"
-        Me.ButtonItem_RemoveObject.Symbol = "57676"
         Me.ButtonItem_RemoveObject.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonItem_RemoveObject.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_RemoveObject.SymbolSize = 12.0!

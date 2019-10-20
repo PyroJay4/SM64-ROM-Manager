@@ -546,12 +546,6 @@
     <Compile Include="RomManager\GUI\Other\Form_ErrorDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.Designer.vb">
-      <DependentUpon>Form_SelectImportModelFormat.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="RomManager\Components\LM Custom ListViewItems.vb" />
     <Compile Include="RomManager\GUI\Other\Form_About.Designer.vb">
       <DependentUpon>Form_About.vb</DependentUpon>
@@ -803,9 +797,6 @@
     <EmbeddedResource Include="RomManager\GUI\Other\Form_ErrorDialog.resx">
       <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.resx">
-      <DependentUpon>Form_SelectImportModelFormat.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Other\Form_About.resx">
       <DependentUpon>Form_About.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -950,6 +941,19 @@
     <None Include="Resources\icons8_variation_16px.png" />
     <None Include="Resources\icons8_coins_16px.png" />
     <None Include="Resources\icons8_map_16px.png" />
+    <None Include="Resources\icons8_copy_16px_1.png" />
+    <None Include="Resources\icons8_forward_16px.png" />
+    <None Include="Resources\icons8_folder_16px.png" />
+    <None Include="Resources\icons8_copy_16px_2.png" />
+    <None Include="Resources\icons8_arrow_16px.png" />
+    <None Include="Resources\icons8_arrow_40px.png" />
+    <None Include="Resources\icons8_refresh_16px.png" />
+    <None Include="Resources\icons8_undo_16px.png" />
+    <None Include="Resources\icons8_redo_16px.png" />
+    <None Include="Resources\icons8_download_16px.png" />
+    <None Include="Resources\icons8_export_16px.png" />
+    <None Include="Resources\icons8_import_16px.png" />
+    <None Include="Resources\icons8_upload_16px.png" />
     <Content Include="RomManager\Others\RomMap.txt" />
   </ItemGroup>
   <ItemGroup>

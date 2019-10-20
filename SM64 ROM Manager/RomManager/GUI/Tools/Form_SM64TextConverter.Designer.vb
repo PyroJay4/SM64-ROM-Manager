@@ -26,9 +26,7 @@ Partial Class Form_SM64TextConverter
         Me.TextBoxX_Input = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.TextBoxX_Output = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.ButtonX_CopyOutput = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
-        Me.ButtonX_Convert = New DevComponents.DotNetBar.ButtonX()
         Me.ComboBoxEx_Mode = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.ComboItem1 = New DevComponents.Editors.ComboItem()
         Me.ComboItem2 = New DevComponents.Editors.ComboItem()
@@ -39,7 +37,11 @@ Partial Class Form_SM64TextConverter
         Me.ButtonItem_Paste = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_SelectAll = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_Remove = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonX_Convert = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonX_CopyOutput = New DevComponents.DotNetBar.ButtonX()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TextBoxX_Input
@@ -82,18 +84,6 @@ Partial Class Form_SM64TextConverter
         Me.TextBoxX_Output.PreventEnterBeep = True
         Me.TextBoxX_Output.ReadOnly = True
         '
-        'ButtonX_CopyOutput
-        '
-        Me.ButtonX_CopyOutput.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        resources.ApplyResources(Me.ButtonX_CopyOutput, "ButtonX_CopyOutput")
-        Me.ButtonX_CopyOutput.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX_CopyOutput.FocusCuesEnabled = False
-        Me.ButtonX_CopyOutput.Name = "ButtonX_CopyOutput"
-        Me.ButtonX_CopyOutput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_CopyOutput.Symbol = ""
-        Me.ButtonX_CopyOutput.SymbolColor = System.Drawing.Color.Gray
-        Me.ButtonX_CopyOutput.SymbolSize = 12.0!
-        '
         'LabelX2
         '
         resources.ApplyResources(Me.LabelX2, "LabelX2")
@@ -102,18 +92,6 @@ Partial Class Form_SM64TextConverter
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX2.Name = "LabelX2"
-        '
-        'ButtonX_Convert
-        '
-        Me.ButtonX_Convert.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX_Convert.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX_Convert.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX_Convert, "ButtonX_Convert")
-        Me.ButtonX_Convert.Name = "ButtonX_Convert"
-        Me.ButtonX_Convert.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_Convert.Symbol = ""
-        Me.ButtonX_Convert.SymbolColor = System.Drawing.Color.Gray
-        Me.ButtonX_Convert.SymbolSize = 30.0!
         '
         'ComboBoxEx_Mode
         '
@@ -138,6 +116,7 @@ Partial Class Form_SM64TextConverter
         'ContextMenuBar1
         '
         Me.ContextMenuBar1.AntiAlias = True
+        Me.ContextMenuBar1.DockSide = DevComponents.DotNetBar.eDockSide.Document
         resources.ApplyResources(Me.ContextMenuBar1, "ContextMenuBar1")
         Me.ContextMenuBar1.IsMaximized = False
         Me.ContextMenuBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1})
@@ -151,7 +130,6 @@ Partial Class Form_SM64TextConverter
         Me.ButtonItem1.AutoExpandOnClick = True
         Me.ButtonItem1.Name = "ButtonItem1"
         Me.ButtonItem1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_Copy, Me.ButtonItem_cut, Me.ButtonItem_Paste, Me.ButtonItem_SelectAll, Me.ButtonItem_Remove})
-        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
         '
         'ButtonItem_Copy
         '
@@ -199,26 +177,56 @@ Partial Class Form_SM64TextConverter
         Me.ButtonItem_Remove.SymbolSize = 12.0!
         resources.ApplyResources(Me.ButtonItem_Remove, "ButtonItem_Remove")
         '
+        'ButtonX_Convert
+        '
+        Me.ButtonX_Convert.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX_Convert.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX_Convert.FocusCuesEnabled = False
+        Me.ButtonX_Convert.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_arrow_40px
+        resources.ApplyResources(Me.ButtonX_Convert, "ButtonX_Convert")
+        Me.ButtonX_Convert.Name = "ButtonX_Convert"
+        Me.ButtonX_Convert.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX_Convert.SymbolColor = System.Drawing.Color.Gray
+        Me.ButtonX_Convert.SymbolSize = 30.0!
+        '
+        'ButtonX_CopyOutput
+        '
+        Me.ButtonX_CopyOutput.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX_CopyOutput, "ButtonX_CopyOutput")
+        Me.ButtonX_CopyOutput.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX_CopyOutput.FocusCuesEnabled = False
+        Me.ButtonX_CopyOutput.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_copy_16px
+        Me.ButtonX_CopyOutput.Name = "ButtonX_CopyOutput"
+        Me.ButtonX_CopyOutput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX_CopyOutput.SymbolColor = System.Drawing.Color.Gray
+        Me.ButtonX_CopyOutput.SymbolSize = 12.0!
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.ContextMenuBar1)
+        Me.Panel1.Controls.Add(Me.LabelX1)
+        Me.Panel1.Controls.Add(Me.ComboBoxEx_Mode)
+        Me.Panel1.Controls.Add(Me.TextBoxX_Input)
+        Me.Panel1.Controls.Add(Me.ButtonX_Convert)
+        Me.Panel1.Controls.Add(Me.TextBoxX_Output)
+        Me.Panel1.Controls.Add(Me.LabelX2)
+        Me.Panel1.Controls.Add(Me.ButtonX_CopyOutput)
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.Name = "Panel1"
+        '
         'Form_SM64TextConverter
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.ContextMenuBar1)
-        Me.Controls.Add(Me.ComboBoxEx_Mode)
-        Me.Controls.Add(Me.ButtonX_Convert)
-        Me.Controls.Add(Me.LabelX2)
-        Me.Controls.Add(Me.ButtonX_CopyOutput)
-        Me.Controls.Add(Me.TextBoxX_Output)
-        Me.Controls.Add(Me.LabelX1)
-        Me.Controls.Add(Me.TextBoxX_Input)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
+        Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "Form_SM64TextConverter"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -239,4 +247,5 @@ Partial Class Form_SM64TextConverter
     Friend WithEvents ButtonItem_Paste As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_SelectAll As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_Remove As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents Panel1 As Panel
 End Class

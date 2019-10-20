@@ -88,10 +88,10 @@ Partial Class StarPositionEditor
         Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX1.FocusCuesEnabled = False
+        Me.ButtonX1.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_save_16px
         resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.Name = "ButtonX1"
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX1.Symbol = "57697"
         Me.ButtonX1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX1.SymbolSize = 12.0!
@@ -172,8 +172,6 @@ Partial Class StarPositionEditor
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "StarPositionEditor"

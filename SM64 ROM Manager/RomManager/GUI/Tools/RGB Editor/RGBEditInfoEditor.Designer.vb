@@ -40,9 +40,9 @@ Partial Class RGBEditInfoEditor
         Me.TextBoxX_Light = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TextBoxX_Name = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.SuperValidator1 = New DevComponents.DotNetBar.Validator.SuperValidator()
+        Me.RegularExpressionValidator1 = New DevComponents.DotNetBar.Validator.RegularExpressionValidator()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Highlighter1 = New DevComponents.DotNetBar.Validator.Highlighter()
-        Me.RegularExpressionValidator1 = New DevComponents.DotNetBar.Validator.RegularExpressionValidator()
         Me.Panel1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -321,6 +321,13 @@ Partial Class RGBEditInfoEditor
         Me.SuperValidator1.Highlighter = Me.Highlighter1
         Me.SuperValidator1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         '
+        'RegularExpressionValidator1
+        '
+        Me.RegularExpressionValidator1.ErrorMessage = "Your error message here."
+        Me.RegularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red
+        Me.RegularExpressionValidator1.ValidationExpression = "\S{5,5}"
+        Me.RegularExpressionValidator1.ValuePropertyName = "Text"
+        '
         'ErrorProvider1
         '
         Me.ErrorProvider1.ContainerControl = Me
@@ -329,13 +336,7 @@ Partial Class RGBEditInfoEditor
         'Highlighter1
         '
         Me.Highlighter1.ContainerControl = Me
-        '
-        'RegularExpressionValidator1
-        '
-        Me.RegularExpressionValidator1.ErrorMessage = "Your error message here."
-        Me.RegularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red
-        Me.RegularExpressionValidator1.ValidationExpression = "\S{5,5}"
-        Me.RegularExpressionValidator1.ValuePropertyName = "Text"
+        Me.Highlighter1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         '
         'RGBEditInfoEditor
         '
@@ -345,8 +346,6 @@ Partial Class RGBEditInfoEditor
         Me.CancelButton = Me.ButtonX_Cancel
         Me.ClientSize = New System.Drawing.Size(284, 140)
         Me.Controls.Add(Me.Panel1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

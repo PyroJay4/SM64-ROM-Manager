@@ -31,14 +31,14 @@ Partial Class ItemBoxContentEditor
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
-        Me.ButtonItem_SaveRom = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
         Me.AdvPropertyGrid1 = New DevComponents.DotNetBar.AdvPropertyGrid()
+        Me.ButtonItem_SaveRom = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel1.SuspendLayout()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AdvPropertyGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,16 +46,15 @@ Partial Class ItemBoxContentEditor
         '
         'Panel1
         '
-        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.Controls.Add(Me.ListViewEx1)
         Me.Panel1.Controls.Add(Me.Bar1)
         Me.Panel1.Controls.Add(Me.AdvPropertyGrid1)
+        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
         '
         'ListViewEx1
         '
-        resources.ApplyResources(Me.ListViewEx1, "ListViewEx1")
         Me.ListViewEx1.BackColor = System.Drawing.Color.White
         '
         '
@@ -64,6 +63,7 @@ Partial Class ItemBoxContentEditor
         Me.ListViewEx1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ListViewEx1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
         Me.ListViewEx1.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.ListViewEx1, "ListViewEx1")
         Me.ListViewEx1.FocusCuesEnabled = False
         Me.ListViewEx1.ForeColor = System.Drawing.Color.Black
         Me.ListViewEx1.FullRowSelect = True
@@ -95,8 +95,8 @@ Partial Class ItemBoxContentEditor
         '
         'Bar1
         '
-        resources.ApplyResources(Me.Bar1, "Bar1")
         Me.Bar1.AntiAlias = True
+        resources.ApplyResources(Me.Bar1, "Bar1")
         Me.Bar1.DockSide = DevComponents.DotNetBar.eDockSide.Document
         Me.Bar1.IsMaximized = False
         Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_SaveRom, Me.ButtonItem6, Me.ButtonItem1, Me.ButtonItem2, Me.ButtonItem3, Me.ButtonItem4, Me.ButtonItem5})
@@ -105,93 +105,87 @@ Partial Class ItemBoxContentEditor
         Me.Bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Bar1.TabStop = False
         '
-        'ButtonItem_SaveRom
-        '
-        resources.ApplyResources(Me.ButtonItem_SaveRom, "ButtonItem_SaveRom")
-        Me.ButtonItem_SaveRom.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem_SaveRom.Name = "ButtonItem_SaveRom"
-        Me.ButtonItem_SaveRom.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlS)
-        Me.ButtonItem_SaveRom.Symbol = "57697"
-        Me.ButtonItem_SaveRom.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ButtonItem_SaveRom.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem_SaveRom.SymbolSize = 12.0!
-        '
         'ButtonItem6
         '
-        resources.ApplyResources(Me.ButtonItem6, "ButtonItem6")
         Me.ButtonItem6.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem6.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_refresh_16px
         Me.ButtonItem6.Name = "ButtonItem6"
-        Me.ButtonItem6.Symbol = "57384"
         Me.ButtonItem6.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem6.SymbolSize = 12.0!
-        '
-        'ButtonItem1
-        '
-        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
-        Me.ButtonItem1.BeginGroup = True
-        Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem1.Name = "ButtonItem1"
-        Me.ButtonItem1.Symbol = "57669"
-        Me.ButtonItem1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ButtonItem1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem1.SymbolSize = 12.0!
-        '
-        'ButtonItem2
-        '
-        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
-        Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem2.Name = "ButtonItem2"
-        Me.ButtonItem2.Symbol = "57676"
-        Me.ButtonItem2.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.ButtonItem2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem2.SymbolSize = 12.0!
+        resources.ApplyResources(Me.ButtonItem6, "ButtonItem6")
         '
         'ButtonItem3
         '
-        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
         Me.ButtonItem3.BeginGroup = True
         Me.ButtonItem3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem3.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_undo_16px
         Me.ButtonItem3.Name = "ButtonItem3"
-        Me.ButtonItem3.Symbol = "57410"
         Me.ButtonItem3.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem3.SymbolSize = 12.0!
+        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
         '
         'ButtonItem4
         '
-        resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
         Me.ButtonItem4.BeginGroup = True
         Me.ButtonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem4.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_import_16px
         Me.ButtonItem4.Name = "ButtonItem4"
-        Me.ButtonItem4.Symbol = "57944"
         Me.ButtonItem4.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem4.SymbolSize = 12.0!
+        resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
         '
         'ButtonItem5
         '
-        resources.ApplyResources(Me.ButtonItem5, "ButtonItem5")
         Me.ButtonItem5.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem5.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_export_16px
         Me.ButtonItem5.Name = "ButtonItem5"
-        Me.ButtonItem5.Symbol = "57946"
         Me.ButtonItem5.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem5.SymbolSize = 12.0!
+        resources.ApplyResources(Me.ButtonItem5, "ButtonItem5")
         '
         'AdvPropertyGrid1
         '
         resources.ApplyResources(Me.AdvPropertyGrid1, "AdvPropertyGrid1")
         Me.AdvPropertyGrid1.GridLinesColor = System.Drawing.Color.WhiteSmoke
         Me.AdvPropertyGrid1.Name = "AdvPropertyGrid1"
-        Me.AdvPropertyGrid1.SystemText.AlphabeticalToolbarTooltip = resources.GetString("AdvPropertyGrid1.SystemText.AlphabeticalToolbarTooltip")
-        Me.AdvPropertyGrid1.SystemText.CategorizeToolbarTooltip = resources.GetString("AdvPropertyGrid1.SystemText.CategorizeToolbarTooltip")
-        Me.AdvPropertyGrid1.SystemText.ErrorSettingPropertyValueTooltip = resources.GetString("AdvPropertyGrid1.SystemText.ErrorSettingPropertyValueTooltip")
-        Me.AdvPropertyGrid1.SystemText.SearchBoxWatermarkText = resources.GetString("AdvPropertyGrid1.SystemText.SearchBoxWatermarkText")
+        '
+        'ButtonItem_SaveRom
+        '
+        Me.ButtonItem_SaveRom.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_SaveRom.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_save_16px
+        Me.ButtonItem_SaveRom.Name = "ButtonItem_SaveRom"
+        Me.ButtonItem_SaveRom.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlS)
+        Me.ButtonItem_SaveRom.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.ButtonItem_SaveRom.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonItem_SaveRom.SymbolSize = 12.0!
+        resources.ApplyResources(Me.ButtonItem_SaveRom, "ButtonItem_SaveRom")
+        '
+        'ButtonItem1
+        '
+        Me.ButtonItem1.BeginGroup = True
+        Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem1.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
+        Me.ButtonItem1.Name = "ButtonItem1"
+        Me.ButtonItem1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.ButtonItem1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonItem1.SymbolSize = 12.0!
+        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
+        '
+        'ButtonItem2
+        '
+        Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem2.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
+        Me.ButtonItem2.Name = "ButtonItem2"
+        Me.ButtonItem2.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ButtonItem2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonItem2.SymbolSize = 12.0!
+        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
         '
         'ItemBoxContentEditor
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.Name = "ItemBoxContentEditor"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0

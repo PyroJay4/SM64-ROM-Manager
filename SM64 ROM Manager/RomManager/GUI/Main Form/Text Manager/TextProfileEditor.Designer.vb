@@ -31,9 +31,9 @@ Partial Class TextProfileEditor
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ItemListBox1 = New SM64_ROM_Manager.Publics.Controls.ItemListBox()
         Me.Bar2 = New DevComponents.DotNetBar.Bar()
-        Me.ButtonItem_ClearArrayItems = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem_RemoveArrayItem = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_AddArrayItem = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_RemoveArrayItem = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_ClearArrayItems = New DevComponents.DotNetBar.ButtonItem()
         Me.AdvPropertyGrid1 = New DevComponents.DotNetBar.AdvPropertyGrid()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem_AddTableGroup = New DevComponents.DotNetBar.ButtonItem()
@@ -151,35 +151,35 @@ Partial Class TextProfileEditor
         Me.Bar2.TabStop = False
         Me.Bar2.Text = "Bar2"
         '
-        'ButtonItem_ClearArrayItems
+        'ButtonItem_AddArrayItem
         '
-        Me.ButtonItem_ClearArrayItems.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem_ClearArrayItems.Name = "ButtonItem_ClearArrayItems"
-        Me.ButtonItem_ClearArrayItems.Symbol = "57676"
-        Me.ButtonItem_ClearArrayItems.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.ButtonItem_ClearArrayItems.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem_ClearArrayItems.SymbolSize = 12.0!
-        Me.ButtonItem_ClearArrayItems.Text = "Clear List"
+        Me.ButtonItem_AddArrayItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_AddArrayItem.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_add_subnode_16px
+        Me.ButtonItem_AddArrayItem.Name = "ButtonItem_AddArrayItem"
+        Me.ButtonItem_AddArrayItem.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.ButtonItem_AddArrayItem.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonItem_AddArrayItem.SymbolSize = 12.0!
+        Me.ButtonItem_AddArrayItem.Text = "Text Item"
         '
         'ButtonItem_RemoveArrayItem
         '
         Me.ButtonItem_RemoveArrayItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_RemoveArrayItem.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_subnode_16px
         Me.ButtonItem_RemoveArrayItem.Name = "ButtonItem_RemoveArrayItem"
-        Me.ButtonItem_RemoveArrayItem.Symbol = "57676"
         Me.ButtonItem_RemoveArrayItem.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonItem_RemoveArrayItem.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_RemoveArrayItem.SymbolSize = 12.0!
         Me.ButtonItem_RemoveArrayItem.Text = "Remove Item"
         '
-        'ButtonItem_AddArrayItem
+        'ButtonItem_ClearArrayItems
         '
-        Me.ButtonItem_AddArrayItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem_AddArrayItem.Name = "ButtonItem_AddArrayItem"
-        Me.ButtonItem_AddArrayItem.Symbol = "57669"
-        Me.ButtonItem_AddArrayItem.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ButtonItem_AddArrayItem.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonItem_AddArrayItem.SymbolSize = 12.0!
-        Me.ButtonItem_AddArrayItem.Text = "Text Item"
+        Me.ButtonItem_ClearArrayItems.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_ClearArrayItems.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_2_16px
+        Me.ButtonItem_ClearArrayItems.Name = "ButtonItem_ClearArrayItems"
+        Me.ButtonItem_ClearArrayItems.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ButtonItem_ClearArrayItems.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.ButtonItem_ClearArrayItems.SymbolSize = 12.0!
+        Me.ButtonItem_ClearArrayItems.Text = "Clear List"
         '
         'AdvPropertyGrid1
         '
@@ -214,8 +214,8 @@ Partial Class TextProfileEditor
         'ButtonItem_AddTableGroup
         '
         Me.ButtonItem_AddTableGroup.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_AddTableGroup.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_add_node_16px
         Me.ButtonItem_AddTableGroup.Name = "ButtonItem_AddTableGroup"
-        Me.ButtonItem_AddTableGroup.Symbol = "57669"
         Me.ButtonItem_AddTableGroup.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonItem_AddTableGroup.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_AddTableGroup.SymbolSize = 12.0!
@@ -224,8 +224,8 @@ Partial Class TextProfileEditor
         'ButtonItem_AddArrayGroup
         '
         Me.ButtonItem_AddArrayGroup.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_AddArrayGroup.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_add_node_16px
         Me.ButtonItem_AddArrayGroup.Name = "ButtonItem_AddArrayGroup"
-        Me.ButtonItem_AddArrayGroup.Symbol = "57669"
         Me.ButtonItem_AddArrayGroup.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonItem_AddArrayGroup.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_AddArrayGroup.SymbolSize = 12.0!
@@ -234,8 +234,8 @@ Partial Class TextProfileEditor
         'ButtonItem_RemoveGroup
         '
         Me.ButtonItem_RemoveGroup.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_RemoveGroup.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_node_16px
         Me.ButtonItem_RemoveGroup.Name = "ButtonItem_RemoveGroup"
-        Me.ButtonItem_RemoveGroup.Symbol = "57676"
         Me.ButtonItem_RemoveGroup.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonItem_RemoveGroup.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_RemoveGroup.SymbolSize = 12.0!
@@ -248,8 +248,6 @@ Partial Class TextProfileEditor
         Me.ClientSize = New System.Drawing.Size(567, 497)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Bar1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "TextProfileEditor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

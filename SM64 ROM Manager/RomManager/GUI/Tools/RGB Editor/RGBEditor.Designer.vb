@@ -49,6 +49,7 @@ Partial Class RGBEditor
         '
         'panel1
         '
+        Me.panel1.BackColor = System.Drawing.Color.Transparent
         Me.panel1.Controls.Add(Me.TableLayoutPanel1)
         Me.panel1.Controls.Add(Me.label6)
         Me.panel1.Controls.Add(Me.textBox8)
@@ -370,8 +371,6 @@ Partial Class RGBEditor
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(273, 131)
         Me.Controls.Add(Me.panel1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
