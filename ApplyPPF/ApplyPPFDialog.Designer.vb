@@ -52,41 +52,41 @@ Partial Class ApplyPPFDialog
         '
         'CheckBoxX1
         '
+        resources.ApplyResources(Me.CheckBoxX1, "CheckBoxX1")
         '
         '
         '
         Me.CheckBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CheckBoxX1.FocusCuesEnabled = False
-        resources.ApplyResources(Me.CheckBoxX1, "CheckBoxX1")
         Me.CheckBoxX1.Name = "CheckBoxX1"
         Me.CheckBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX4
         '
+        resources.ApplyResources(Me.LabelX4, "LabelX4")
         '
         '
         '
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX4, "LabelX4")
         Me.LabelX4.Name = "LabelX4"
         '
         'LabelX3
         '
+        resources.ApplyResources(Me.LabelX3, "LabelX3")
         '
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.Name = "LabelX3"
         '
         'CircularProgress1
         '
+        resources.ApplyResources(Me.CircularProgress1, "CircularProgress1")
         '
         '
         '
         Me.CircularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CircularProgress1.FocusCuesEnabled = False
-        resources.ApplyResources(Me.CircularProgress1, "CircularProgress1")
         Me.CircularProgress1.Name = "CircularProgress1"
         Me.CircularProgress1.ProgressColor = System.Drawing.Color.Empty
         Me.CircularProgress1.SetVisibleStateOnStart = True
@@ -96,9 +96,9 @@ Partial Class ApplyPPFDialog
         'ButtonX3
         '
         Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX3.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.Name = "ButtonX3"
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX3.Symbol = "58055"
@@ -109,9 +109,9 @@ Partial Class ApplyPPFDialog
         'ButtonX2
         '
         Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.Name = "ButtonX2"
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX2.Symbol = "58055"
@@ -122,8 +122,8 @@ Partial Class ApplyPPFDialog
         'ButtonX1
         '
         Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         resources.ApplyResources(Me.ButtonX1, "ButtonX1")
+        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX1.FocusCuesEnabled = False
         Me.ButtonX1.Name = "ButtonX1"
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -151,10 +151,8 @@ Partial Class ApplyPPFDialog
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "ApplyPPFDialog"
-        Me.ShowIcon = False
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         Me.Panel1.ResumeLayout(False)
