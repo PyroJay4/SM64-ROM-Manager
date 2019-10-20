@@ -129,15 +129,6 @@
   <data name="ColumnHeader3.Text" xml:space="preserve">
     <value>Combo-Name</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ButtonItem_CopyObjCmdAsHex.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAH5JREFUOE+9j9EJgDAMRDuVQ7hN++9QLtMhXEI5SaBJL7ZQ8MH9xON5TcuUUm6W
-        nPMmlW9Q9ojgmpIwAZDPY1SwH+cbBXeWbhWODHYXgX2aFnWBrogEtVYrYUXgxQC3NkYws6ClE3iY2P9g
-        ShBhBD6teLggQgUR/whGkeoKKT1XGv722h004AAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="ButtonItem_CopyObjCmdAsHex.Text" xml:space="preserve">
     <value>Kopiere Command als Hex-Array</value>
   </data>
@@ -147,6 +138,7 @@
   <data name="ButtonItem_ResetObjToDefault.Text" xml:space="preserve">
     <value>Zurücksetzen zu Standart-Object</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="RibbonBar9.Location" type="System.Drawing.Point, System.Drawing">
     <value>925, 0</value>
   </data>
@@ -204,39 +196,11 @@
   <data name="RibbonBar27.Text" xml:space="preserve">
     <value>Listen</value>
   </data>
-  <data name="ButtonItem_PasteObjDefault.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAPZJREFUWEftlk0KwjAUhL24NiiNejJd6CG614V4gOhIKjGd5L2GFDcZ+DYN80Nb
-        SldNJbJ974wxP+CaP15ecfmIP15ecWHVAY/L1t3Pmy+4xm55WMjOxkcSZj2vO3nk7bSeDGAFGuANs8a8
-        rJiBhWtI5WXFDCxcQyovq9igMiVUlMVMNfE1aTFTTXxNWswk4a11xAok4GMvYcxxf1juDqAgJ5xba+UR
-        rEACPs2AYRjkEaxAAj7NAEgcwQok4NMOgLIjWIEEfJoBjE9pKFYgAV/Xdb5Kr6oDEDZXbUAb0Aa0AXQA
-        /t3jX3MJ+Kp9CUtl/j7gHTYf416wwUzgQMve2gAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="ButtonItem_PasteObjDefault.Text" xml:space="preserve">
     <value>Einfügen (Standart)</value>
   </data>
-  <data name="ButtonItem_ObjectsCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAH5JREFUOE+9j9EJgDAMRDuVQ7hN++9QLtMhXEI5SaBJL7ZQ8MH9xON5TcuUUm6W
-        nPMmlW9Q9ojgmpIwAZDPY1SwH+cbBXeWbhWODHYXgX2aFnWBrogEtVYrYUXgxQC3NkYws6ClE3iY2P9g
-        ShBhBD6teLggQgUR/whGkeoKKT1XGv722h004AAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="ButtonItem_ObjectsCopy.Text" xml:space="preserve">
     <value>Objekt kopieren</value>
-  </data>
-  <data name="buttonItem55.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAQZJREFUOE9joDsIDQ1lKygo2F5UVPQfKkQ8QNYMw1ApTICsGEhfAokB6S5kzYWF
-        hefBirEBoOJ1aIpXZ2VlSQDpYzDNQCwEVY4AL/fX2zzaUS8ENKAR2QCopsNQQ2ZiaAZpfHmw4cCrQ03/
-        Xx5svPp0d70cNkNALoNqgYAXBxungTShY6D48+cH681wuQSqnYFh1apQZqCNG7EZAhT/BnRZCLohQANQ
-        A+/RqkLOlwcaT2IzBISBBlXADAFpxvA/CDzbVikKdPZtbAaA8IsDjfOvrKpngyrHDoDOVQHa9gqbAcAA
-        boQqww9AAQfyO1maYeDFgXo/oCF/yNIMA0A/F5GtmXjAwAAAc8UrgIN7yTkAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="buttonItem55.Text" xml:space="preserve">
     <value>Einfügen (Spezial)</value>
@@ -364,14 +328,6 @@
   <data name="RibbonBar17.Text" xml:space="preserve">
     <value>Modell</value>
   </data>
-  <data name="ButtonItem_CopyWarpCmdAsHex.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAH5JREFUOE+9j9EJgDAMRDuVQ7hN++9QLtMhXEI5SaBJL7ZQ8MH9xON5TcuUUm6W
-        nPMmlW9Q9ojgmpIwAZDPY1SwH+cbBXeWbhWODHYXgX2aFnWBrogEtVYrYUXgxQC3NkYws6ClE3iY2P9g
-        ShBhBD6teLggQgUR/whGkeoKKT1XGv722h004AAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="ButtonItem_CopyWarpCmdAsHex.Text" xml:space="preserve">
     <value>Kopiere Command als Hex-Array</value>
   </data>
@@ -396,39 +352,11 @@
   <data name="RibbonBar10.Text" xml:space="preserve">
     <value>Entfernen</value>
   </data>
-  <data name="ButtonX_PasteWarpDefault.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAPZJREFUWEftlk0KwjAUhL24NiiNejJd6CG614V4gOhIKjGd5L2GFDcZ+DYN80Nb
-        SldNJbJ974wxP+CaP15ecfmIP15ecWHVAY/L1t3Pmy+4xm55WMjOxkcSZj2vO3nk7bSeDGAFGuANs8a8
-        rJiBhWtI5WXFDCxcQyovq9igMiVUlMVMNfE1aTFTTXxNWswk4a11xAok4GMvYcxxf1juDqAgJ5xba+UR
-        rEACPs2AYRjkEaxAAj7NAEgcwQok4NMOgLIjWIEEfJoBjE9pKFYgAV/Xdb5Kr6oDEDZXbUAb0Aa0AXQA
-        /t3jX3MJ+Kp9CUtl/j7gHTYf416wwUzgQMve2gAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="ButtonX_PasteWarpDefault.Text" xml:space="preserve">
     <value>Einfügen (Standart)</value>
   </data>
-  <data name="ButtonX_WarpsCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAH5JREFUOE+9j9EJgDAMRDuVQ7hN++9QLtMhXEI5SaBJL7ZQ8MH9xON5TcuUUm6W
-        nPMmlW9Q9ojgmpIwAZDPY1SwH+cbBXeWbhWODHYXgX2aFnWBrogEtVYrYUXgxQC3NkYws6ClE3iY2P9g
-        ShBhBD6teLggQgUR/whGkeoKKT1XGv722h004AAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="ButtonX_WarpsCopy.Text" xml:space="preserve">
     <value>Warp kopieren</value>
-  </data>
-  <data name="ButtonItem73.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAQZJREFUOE9joDsIDQ1lKygo2F5UVPQfKkQ8QNYMw1ApTICsGEhfAokB6S5kzYWF
-        hefBirEBoOJ1aIpXZ2VlSQDpYzDNQCwEVY4AL/fX2zzaUS8ENKAR2QCopsNQQ2ZiaAZpfHmw4cCrQ03/
-        Xx5svPp0d70cNkNALoNqgYAXBxungTShY6D48+cH681wuQSqnYFh1apQZqCNG7EZAhT/BnRZCLohQANQ
-        A+/RqkLOlwcaT2IzBISBBlXADAFpxvA/CDzbVikKdPZtbAaA8IsDjfOvrKpngyrHDoDOVQHa9gqbAcAA
-        boQqww9AAQfyO1maYeDFgXo/oCF/yNIMA0A/F5GtmXjAwAAAc8UrgIN7yTkAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="ButtonItem73.Text" xml:space="preserve">
     <value>Einfügen (Spezial)</value>
@@ -438,16 +366,6 @@
   </data>
   <data name="RibbonBar11.Text" xml:space="preserve">
     <value>Zwischenablage</value>
-  </data>
-  <data name="ButtonX_WarpsAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAPZJREFUWEftlk0KwjAUhL24NiiNejJd6CG614V4gOhIKjGd5L2GFDcZ+DYN80Nb
-        SldNJbJ974wxP+CaP15ecfmIP15ecWHVAY/L1t3Pmy+4xm55WMjOxkcSZj2vO3nk7bSeDGAFGuANs8a8
-        rJiBhWtI5WXFDCxcQyovq9igMiVUlMVMNfE1aTFTTXxNWswk4a11xAok4GMvYcxxf1juDqAgJ5xba+UR
-        rEACPs2AYRjkEaxAAj7NAEgcwQok4NMOgLIjWIEEfJoBjE9pKFYgAV/Xdb5Kr6oDEDZXbUAb0Aa0AXQA
-        /t3jX3MJ+Kp9CUtl/j7gHTYf416wwUzgQMve2gAAAABJRU5ErkJggg==
-</value>
   </data>
   <data name="ButtonItem47.Text" xml:space="preserve">
     <value>Importieren</value>
