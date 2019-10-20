@@ -1430,8 +1430,8 @@ Partial Class Tab_LevelManager
     Friend WithEvents Line2 As DevComponents.DotNetBar.Controls.Line
     Friend WithEvents LabelX_Area_CountOfCustomObjects As DevComponents.DotNetBar.LabelX
     Friend WithEvents TableLayoutPanel_ObjectBankSelectorBoxes As TableLayoutPanel
+    Friend WithEvents ButtonItem_ImportArea As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
     Friend WithEvents SwitchButton_EnableGlobalObjectBank As DevComponents.DotNetBar.Controls.SwitchButton
-    Friend WithEvents ButtonItem_ImportArea As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
 End Class

@@ -571,7 +571,7 @@ Namespace LevelEditor
                         Dim bankAddr As Integer = clJumpToSegAddr.GetSegJumpAddr(cmd)
                         Dim segID As Byte = bankAddr >> 24
 
-                        Dim seg As SegmentedBank = Rommgr.GetSegBank(segID)
+                        Dim seg As SM64Lib.SegmentedBank = Rommgr.GetSegBank(segID)
                         If segID <> 0 AndAlso seg IsNot Nothing Then
                             Dim scrpt As New Levelscript
                             scrpt.Read(Rommgr, bankAddr, LevelscriptCommandTypes.JumpBack)
@@ -582,7 +582,7 @@ Namespace LevelEditor
 
                     Case LevelscriptCommandTypes.LoadRomToRam, LevelscriptCommandTypes.x1A, LevelscriptCommandTypes.x18
                         Dim segID As Byte = clLoadRomToRam.GetSegmentedID(cmd)
-                        Dim segg As SegmentedBank = Rommgr.GetSegBank(segID)
+                        Dim segg As SM64Lib.SegmentedBank = Rommgr.GetSegBank(segID)
                         If segg Is Nothing Then
                             Dim seg As New SegmentedBank
                             seg.BankID = segID
@@ -2564,7 +2564,7 @@ Namespace LevelEditor
             'Read Textures
             Dim catOtherTextures As New TextureEditor.TextureCategory With {.Name = "Other Textures"}
             Dim data = Rommgr.GetBinaryRom(FileAccess.Read)
-            Dim alreadyLoadedSegs As New Dictionary(Of Byte, SegmentedBank)
+            Dim alreadyLoadedSegs As New Dictionary(Of Byte, SM64Lib.SegmentedBank)
             Dim alreadyLoadedLevelscripts As New List(Of Integer)
 
             For Each jb As TextureBlocksJsonClass In jblocks
