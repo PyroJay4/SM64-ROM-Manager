@@ -2696,6 +2696,10 @@ Namespace LevelEditor
             frm.Show()
         End Sub
 
+        Private Sub PictureBox_ObjCntr_MouseUp(sender As Object, e As MouseEventArgs) Handles PictureBox_ObjCntrWheel.MouseUp, PictureBox_ObjCntrCross.MouseUp
+
+        End Sub
+
 #End Region
 
     End Class
