@@ -66587,6 +66587,13 @@
             <param name="c">Reference to supported component.</param>
             <param name="ambientSettings">Ambient settings that StyleManager may change.</param>
         </member>
+        <member name="M:DevComponents.DotNetBar.StyleManagerAmbient.SetEnableAmbientSettings(System.Type,DevComponents.DotNetBar.eAmbientSettings)">
+            <summary>
+            Sets the ambient settings StyleManager is allowed to change on component.
+            </summary>
+            <param name="t">Type to supported component.</param>
+            <param name="ambientSettings">Ambient settings that StyleManager may change.</param>
+        </member>
         <member name="T:DevComponents.DotNetBar.eAmbientSettings">
             <summary>
             Specifies ambient settings enabled on the control for StyleManager.
