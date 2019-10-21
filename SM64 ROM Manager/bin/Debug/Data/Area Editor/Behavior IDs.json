@@ -10,7 +10,7 @@
   {
     "Name": "Mr. I (grouped object)",
     "Behavior": 318767188,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "Type",
     "BP2 Entries": [
       {
@@ -61,7 +61,7 @@
     "Name": "Pole (scalable by parameter 2)",
     "Behavior": 318767428,
     "BP1 Name": "",
-    "BP2 Name": "Height",
+    "BP2 Name": "Height (value * 10)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -191,7 +191,7 @@
     "Name": "Open cannon (grouped object)",
     "Behavior": 318768296,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Cannon Yaw",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -232,6 +232,16 @@
     "Behavior": 318768564,
     "BP1 Name": "Speed",
     "BP2 Name": "Collision",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "WF 1"
+      },
+      {
+        "Value": "1",
+        "Name": "WDW 1"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -358,7 +368,7 @@
   {
     "Name": "Spawned star (no coordinates)",
     "Behavior": 318769144,
-    "BP1 Name": "",
+    "BP1 Name": "Star ID",
     "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
@@ -422,7 +432,7 @@
         "Name": "Coin ring vertical"
       }
     ],
-    "BP3 Name": "",
+    "BP3 Name": "Collected Coin Bits",
     "BP4 Name": ""
   },
   {
@@ -549,7 +559,7 @@
     "Name": "Door (warping)",
     "Behavior": 318769916,
     "BP1 Name": "Key Requirement",
-	"BP1 Entries": [
+    "BP1 Entries": [
       {
         "Value": "0",
         "Name": "None"
@@ -558,7 +568,7 @@
         "Value": "1",
         "Name": "Bowser 2 Key"
       },
-	  {
+      {
         "Value": "2",
         "Name": "Bowser 1 Key"
       }
@@ -579,23 +589,23 @@
     "Name": "Grindel",
     "Behavior": 318770008,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Rise Frames (value + 40)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Twhomp 2",
+    "Name": "Thwomp 2",
     "Behavior": 318770060,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Rise Frames (value + 40)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Twhomp",
+    "Name": "Thwomp",
     "Behavior": 318770120,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Rise Frames (value + 40)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -611,7 +621,25 @@
     "Name": "Tumbling platform group (Whomp's Fortress)",
     "Behavior": 318770216,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Collision",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "WF 1"
+      },
+      {
+        "Value": "1",
+        "Name": "BBH 1"
+      },
+      {
+        "Value": "2",
+        "Name": "LLL 1"
+      },
+      {
+        "Value": "3",
+        "Name": "BitFS 1"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -643,7 +671,7 @@
     "Name": "Another elevator (re-check)",
     "Behavior": 318770376,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "???",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -763,7 +791,17 @@
     "Name": "Ukiki the monkey",
     "Behavior": 318770952,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Cage Opener"
+      },
+      {
+        "Value": "1",
+        "Name": "Hat Thief"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -787,7 +825,17 @@
     "Name": "Sinking Cage Platform (Bowser's Fire Sea)",
     "Behavior": 318771144,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Speed",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Slow"
+      },
+      {
+        "Value": "1",
+        "Name": "Fast"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1039,7 +1087,25 @@
     "Name": "Moving Pyramid Platform",
     "Behavior": 318772232,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Start Direction",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "0"
+      },
+      {
+        "Value": "1",
+        "Name": "90"
+      },
+      {
+        "Value": "2",
+        "Name": "180"
+      },
+      {
+        "Value": "3",
+        "Name": "270"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1071,7 +1137,21 @@
     "Name": "Purple switch (grills)",
     "Behavior": 318772344,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Grills"
+      },
+      {
+        "Value": "1",
+        "Name": "Bowser Staircase"
+      },
+      {
+        "Value": "2",
+        "Name": "Hidden Objects"
+      },
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1079,7 +1159,21 @@
     "Name": "Purple switch",
     "Behavior": 318772356,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Grills"
+      },
+      {
+        "Value": "1",
+        "Name": "Bowser Staircase"
+      },
+      {
+        "Value": "2",
+        "Name": "Hidden Objects"
+      },
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1095,7 +1189,17 @@
     "Name": "Hidden object (param2 = object#)",
     "Behavior": 318772412,
     "BP1 Name": "",
-    "BP2 Name": "Object ID",
+    "BP2 Name": "Object",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Breakable cork box"
+      },
+      {
+        "Value": "1",
+        "Name": "WDW Platform"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1273,21 +1377,7 @@
     "Name": "Bowser",
     "Behavior": 318773328,
     "BP1 Name": "",
-    "BP2 Name": "Type",
-	"BP2 Entries": [
-      {
-        "Value": "0",
-        "Name": "Bowser 1"
-      },
-      {
-        "Value": "1",
-        "Name": "Bowser 2"
-      },
-	  {
-        "Value": "1",
-        "Name": "Bowser 3"
-      }
-    ],
+    "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1398,15 +1488,15 @@
   {
     "Name": "Checkerboard elevators group",
     "Behavior": 318774128,
-    "BP1 Name": "Type",
-	"BP1 Entries": [
+    "BP1 Name": "Size",
+    "BP1 Entries": [
       {
         "Value": "0",
-        "Name": "Type 0"
+        "Name": "Small"
       },
       {
         "Value": "1",
-        "Name": "Type 1"
+        "Name": "Large"
       }
     ],
     "BP2 Name": "Elevator Height (value * 10)",
@@ -1494,10 +1584,20 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Ukiki the monkey (opens cage)",
+    "Name": "Ukiki the monkey 2",
     "Behavior": 318774448,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Cage Opener"
+      },
+      {
+        "Value": "1",
+        "Name": "Hat Thief"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1537,7 +1637,17 @@
     "Name": "Moving platform (LLL mesh rafts)",
     "Behavior": 318774648,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Type 0"
+      },
+      {
+        "Value": "1",
+        "Name": "Type 1"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1553,7 +1663,17 @@
     "Name": "Rotating Hexa Block With Fire Bars",
     "Behavior": 318774696,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "4 Flames"
+      },
+      {
+        "Value": "1",
+        "Name": "3 Flames"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1641,7 +1761,21 @@
     "Name": "Tox Box",
     "Behavior": 318775184,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Path",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Path 1"
+      },
+      {
+        "Value": "1",
+        "Name": "Path 2"
+      },
+      {
+        "Value": "2",
+        "Name": "Path 3"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1681,7 +1815,7 @@
     "Name": "Penguin mother",
     "Behavior": 318775432,
     "BP1 Name": "Star ID",
-    "BP2 Name": "",
+    "BP2 Name": "Penguin Pair ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -1697,22 +1831,12 @@
     "Name": "Penguin baby",
     "Behavior": 318775528,
     "BP1 Name": "",
-    "BP2 Name": "Is Lost",
-    "BP2 Entries": [
-      {
-        "Value": "0",
-        "Name": "Lost Penguin"
-      },
-      {
-        "Value": "1",
-        "Name": "Not Lost Penguin"
-      }
-    ],
+    "BP2 Name": "Penguin Pair ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Fish 2",
+    "Name": "Group of 20 fish",
     "Behavior": 318775612,
     "BP1 Name": "",
     "BP2 Name": "",
@@ -1720,7 +1844,7 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Fish 3",
+    "Name": "Group of 5 fish",
     "Behavior": 318775628,
     "BP1 Name": "",
     "BP2 Name": "",
@@ -1728,23 +1852,33 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Fish",
+    "Name": "Group of fish",
     "Behavior": 318775644,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "20 Fish"
+      },
+      {
+        "Value": "1",
+        "Name": "5 Fish"
+      },
+      {
+        "Value": "2",
+        "Name": "20 Cyan Fish"
+      },
+      {
+        "Value": "3",
+        "Name": "5 Cyan Fish"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Large group of fish",
-    "Behavior": 318775648,
-    "BP1 Name": "",
-    "BP2 Name": "",
-    "BP3 Name": "",
-    "BP4 Name": ""
-  },
-  {
-    "Name": "Group of fish",
+    "Name": "Fish",
     "Behavior": 318775672,
     "BP1 Name": "",
     "BP2 Name": "",
@@ -2061,7 +2195,17 @@
     "Name": "Openable Grills",
     "Behavior": 318776800,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Collision",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "BoB 1"
+      },
+      {
+        "Value": "1",
+        "Name": "HMC 1"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2093,7 +2237,7 @@
     "Name": "Tweester",
     "Behavior": 318776912,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Activation Distance (value * 100)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -2796,7 +2940,7 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Amp 2",
+    "Name": "Homing Amp",
     "Behavior": 318780244,
     "BP1 Name": "",
     "BP2 Name": "",
@@ -2804,11 +2948,11 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Amp",
+    "Name": "Circling Amp",
     "Behavior": 318780296,
     "BP1 Name": "",
     "BP2 Name": "Rotation Radius",
-	"BP2 Entries": [
+    "BP2 Entries": [
       {
         "Value": "0",
         "Name": "200"
@@ -2817,11 +2961,11 @@
         "Value": "1",
         "Name": "300"
       },
-	  {
+      {
         "Value": "2",
         "Name": "400"
       },
-	  {
+      {
         "Value": "3",
         "Name": "0"
       }
@@ -3065,7 +3209,21 @@
     "Name": "Sliding Brick Platform",
     "Behavior": 318781808,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Speed",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Slow"
+      },
+      {
+        "Value": "1",
+        "Name": "Medium"
+      },
+      {
+        "Value": "2",
+        "Name": "Fast"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -3114,7 +3272,7 @@
     "Behavior": 318782080,
     "BP1 Name": "",
     "BP2 Name": "Type",
-	"BP2 Entries": [
+    "BP2 Entries": [
       {
         "Value": "0",
         "Name": "BoB Upper"
@@ -3123,15 +3281,15 @@
         "Value": "1",
         "Name": "TTM"
       },
-	  {
+      {
         "Value": "2",
         "Name": "BoB Lower"
       },
-	  {
+      {
         "Value": "3",
         "Name": "THI Large"
       },
-	  {
+      {
         "Value": "4",
         "Name": "THI Small"
       }
@@ -3144,7 +3302,7 @@
     "Behavior": 318782116,
     "BP1 Name": "",
     "BP2 Name": "Type",
-	"BP2 Entries": [
+    "BP2 Entries": [
       {
         "Value": "0",
         "Name": "BoB Upper"
@@ -3153,15 +3311,15 @@
         "Value": "1",
         "Name": "TTM"
       },
-	  {
+      {
         "Value": "2",
         "Name": "BoB Lower"
       },
-	  {
+      {
         "Value": "3",
         "Name": "THI Large"
       },
-	  {
+      {
         "Value": "4",
         "Name": "THI Small"
       }
@@ -3197,7 +3355,21 @@
     "Name": "Moving up and down (pyramid platforms)",
     "Behavior": 318782256,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Starting Position",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "High"
+      },
+      {
+        "Value": "1",
+        "Name": "Mid"
+      },
+      {
+        "Value": "2",
+        "Name": "Low"
+      },
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -3269,7 +3441,21 @@
     "Name": "PlaySound loop (birds)",
     "Behavior": 318782588,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Sound",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Sound 1"
+      },
+      {
+        "Value": "1",
+        "Name": "Sound 2"
+      },
+      {
+        "Value": "2",
+        "Name": "Sound 3"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -3485,7 +3671,21 @@
     "Name": "1-up mushroom",
     "Behavior": 318783612,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Type 0"
+      },
+      {
+        "Value": "1",
+        "Name": "Type 1"
+      },
+      {
+        "Value": "1",
+        "Name": "Type 2"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -3501,7 +3701,7 @@
     "Name": "1-up mushroom (enable when behavior 0x13004124 is touched)",
     "Behavior": 318783724,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Trigger Count",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -3890,7 +4090,7 @@
     "Behavior": 318785564,
     "BP1 Name": "",
     "BP2 Name": "",
-    "BP3 Name": "",
+    "BP3 Name": "Disable coins",
     "BP4 Name": ""
   },
   {
@@ -3961,7 +4161,17 @@
     "Name": "Monty Mole",
     "Behavior": 318786048,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Throw Rock?",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "No"
+      },
+      {
+        "Value": "1",
+        "Name": "Yes"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -3982,10 +4192,44 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Platform on tracks (param1 = collision pointer, param2 = track#)",
+    "Name": "Platform on tracks",
     "Behavior": 318786224,
-    "BP1 Name": "Collision Pointer",
-    "BP2 Name": "Track ID",
+    "BP1 Name": "Flags",
+    "BP1 Entries": [
+      {
+        "Value": "0",
+        "Name": "Normal"
+      },
+      {
+        "Value": "1",
+        "Name": "Don't Disappear"
+      },
+      {
+        "Value": "2",
+        "Name": "No Yaw"
+      },
+      {
+        "Value": "3",
+        "Name": "No Yaw + Don't Disappear"
+      },
+      {
+        "Value": "4",
+        "Name": "No Roll"
+      },
+      {
+        "Value": "5",
+        "Name": "No Roll + Don't Disappear"
+      },
+      {
+        "Value": "6",
+        "Name": "No Roll + No Yaw"
+      },
+      {
+        "Value": "7",
+        "Name": "No Roll + No Yaw + Don't Disappear"
+      }
+    ],
+    "BP2 Name": "Collision + Track ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4001,7 +4245,41 @@
     "Name": "Tilting Bridge",
     "Behavior": 318786332,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Collision",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "BitDW 1",
+      },
+      {
+        "Value": "1",
+        "Name": "BitS 1"
+      },
+      {
+        "Value": "2",
+        "Name": "BitS 2"
+      },
+      {
+        "Value": "3",
+        "Name": "BoB 1"
+      },
+      {
+        "Value": "4",
+        "Name": "BitFS 1"
+      },
+      {
+        "Value": "5",
+        "Name": "RR 1"
+      },
+      {
+        "Value": "6",
+        "Name": "RR 2"
+      },
+      {
+        "Value": "7",
+        "Name": "VCUtM 1"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4009,7 +4287,17 @@
     "Name": "Four Rotating Platforms",
     "Behavior": 318786372,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Collision",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "BitS 1"
+      },
+      {
+        "Value": "1",
+        "Name": "BitDW 1"
+      },
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4022,10 +4310,10 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Water Bubble Drop",
+    "Name": "Water Bomb Spawner",
     "Behavior": 318786444,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Radius ((p1 * 256 + p2) * 50 + 200)",
+    "BP2 Name": "Radius ((p1 * 256 + p2) * 50 + 200)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4046,10 +4334,20 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Rotating Cube",
+    "Name": "TTC Rotating Cube",
     "Behavior": 318786544,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Shape",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Cube"
+      },
+      {
+        "Value": "1",
+        "Name": "Triangular Prism"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4062,42 +4360,80 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Metal Platform",
+    "Name": "TTC Treadmill",
     "Behavior": 318786652,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Length",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Long"
+      },
+      {
+        "Value": "1",
+        "Name": "Short"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Moving Platforms",
+    "Name": "TTC Moving Bar",
     "Behavior": 318786708,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Initial Delay (value * 10)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Rotating Platforms",
+    "Name": "TTC Cog",
     "Behavior": 318786764,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Hexagon (Counter-Clockwise)"
+      },
+      {
+        "Value": "1",
+        "Name": "Hexagon (Clockwise)"
+      },
+      {
+        "Value": "2",
+        "Name": "Triangle (Counter-Clockwise)"
+      },
+      {
+        "Value": "3",
+        "Name": "Triangle (Clockwise)"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Box Platform",
+    "Name": "TTC Box Platform",
     "Behavior": 318786808,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Collision",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Collision 1"
+      },
+      {
+        "Value": "1",
+        "Name": "Collision 2"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
   {
-    "Name": "Clock Platform",
+    "Name": "TTC Elevator",
     "Behavior": 318786856,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Distance ((p1 * 256 + p2) * 100)",
+    "BP2 Name": "Distance ((p1 * 256 + p2) * 100)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4105,7 +4441,17 @@
     "Name": "Clock Big Hand Rotating",
     "Behavior": 318786916,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Speed",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Slow"
+      },
+      {
+        "Value": "1",
+        "Name": "Fast"
+      },
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4121,8 +4467,18 @@
     "Name": "Mr. Blizzard",
     "Behavior": 318787004,
     "BP1 Name": "",
-    "BP2 Name": "",
-    "BP3 Name": "",
+    "BP2 Name": "Type",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Type 0"
+      },
+      {
+        "Value": "1",
+        "Name": "Type 1"
+      },
+    ],
+    "BP3 Name": "Disable Coins",
     "BP4 Name": ""
   },
   {
@@ -4144,8 +4500,36 @@
   {
     "Name": "Octogonal Platform Rotating",
     "Behavior": 318787192,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Speed + Direction",
+    "BP1 Entries": [
+      {
+        "Value": "0",
+        "Name": "Slow, Counter-Clockwise"
+      },
+      {
+        "Value": "1",
+        "Name": "Slow, Clockwise"
+      },
+      {
+        "Value": "2",
+        "Name": "Fast, Counter-Clockwise"
+      },
+      {
+        "Value": "3",
+        "Name": "Fast, Clockwise"
+      },
+    ],
+    "BP2 Name": "Collision",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "BitS 1"
+      },
+      {
+        "Value": "1",
+        "Name": "RR 1"
+      },
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4160,8 +4544,22 @@
   {
     "Name": "Climbable Cage",
     "Behavior": 318787276,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Collision",
+    "BP1 Entries": [
+      {
+        "Value": "0",
+        "Name": "BitS Arrow Platform"
+      },
+      {
+        "Value": "1",
+        "Name": "BitFS Mesh Platform"
+      },
+      {
+        "Value": "2",
+        "Name": "BitFS Elevator"
+      }
+    ],
+    "BP2 Name": "Distance (value * 50) (signed)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4174,10 +4572,10 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Cannon",
+    "Name": "Water Bomb Cannon",
     "Behavior": 318787344,
     "BP1 Name": "",
-    "BP2 Name": "Cannon Yaw",
+    "BP2 Name": "",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4192,8 +4590,22 @@
   {
     "Name": "Unagi the eel (swimming)",
     "Behavior": 318787392,
-    "BP1 Name": "",
-    "BP2 Name": "",
+    "BP1 Name": "Star ID",
+    "BP2 Name": "Path",
+    "BP2 Entries": [
+      {
+        "Value": "0",
+        "Name": "Path 1 (from ship)"
+      },
+      {
+        "Value": "1",
+        "Name": "Path 2 (star)"
+      },
+      {
+        "Value": "2",
+        "Name": "Path 1"
+      }
+    ],
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -4276,7 +4688,7 @@
         "Name": "Large Pirahna Plant"
       }
     ],
-    "BP3 Name": "",
+    "BP3 Name": "Disable Coins",
     "BP4 Name": ""
   },
   {
@@ -4320,7 +4732,7 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Grindel",
+    "Name": "Grindel (Horizontal)",
     "Behavior": 318788188,
     "BP1 Name": "",
     "BP2 Name": "",
@@ -4348,7 +4760,7 @@
     "Behavior": 318788368,
     "BP1 Name": "Star ID",
     "BP2 Name": "Type",
-	"BP2 Entries": [
+    "BP2 Entries": [
       {
         "Value": "0",
         "Name": "Cap Thief"
@@ -4461,7 +4873,7 @@
     "Name": "Yellow Poles (Dire, Dire Docks)",
     "Behavior": 318788904,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Distance (value * 100)",
     "BP3 Name": "",
     "BP4 Name": ""
   },
