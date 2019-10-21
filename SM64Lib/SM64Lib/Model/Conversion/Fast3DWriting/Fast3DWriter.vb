@@ -371,6 +371,7 @@ Namespace Model.Conversion.Fast3DWriting
                 End If
             Next
         End Sub
+
         Private Sub CheckColorTexInfo(m As Material)
             m.Color = 0
 
@@ -390,6 +391,7 @@ Namespace Model.Conversion.Fast3DWriting
 
             Next
         End Sub
+
         Private Sub processMaterialColor(str As String, mat As Material)
             Dim splitColor() As String = str.Replace(".", ",").Split(" ")
             Dim r As UInteger = Convert.ToSingle(splitColor(0)) * 255
@@ -397,6 +399,7 @@ Namespace Model.Conversion.Fast3DWriting
             Dim b As UInteger = Convert.ToSingle(splitColor(2)) * 255
             mat.Color = r << 24 Or g << 16 Or b << 8 Or &HFF
         End Sub
+
         Private Sub processMaterialColorAlpha(alpha As Single, mat As Material)
             mat.Color = mat.Color And &HFFFFFF00UI
             mat.Color = mat.Color Or CByte((&HFF * alpha) And &HFF)
@@ -407,6 +410,7 @@ Namespace Model.Conversion.Fast3DWriting
                 mat.Type = MaterialType.ColorSolid
             End If
         End Sub
+
         Private Sub checkN64CodecInfo(m As Material)
             Dim gma() As String = settings.TexTypeData.Split(",")
 
@@ -548,20 +552,6 @@ Namespace Model.Conversion.Fast3DWriting
                                 mat.Type = MaterialType.TextureTransparent
                                 mat.HasTransparency = True
                             End If
-
-                            'If pix.A = 0 Then
-                            '    mat.hasTextureAlpha = True
-                            '    mat.type = MaterialType.TextureAlpha
-                            '    mat.HasTransparency = False
-                            'ElseIf pix.A < &HFF OrElse mat.opacity < &HFF Then
-                            '    If mat.Type <> MaterialType.TextureAlpha Then
-                            '        If mat.Opacity = &HFF Then
-                            '            mat.Opacity = (CInt(mat.Opacity) * pix.A) And &HFF
-                            '        End If
-                            '        mat.Type = MaterialType.TextureTransparent
-                            '        mat.HasTransparency = True
-                            '    End If
-                            'End If
 
                         Case N64Codec.I4, N64Codec.I8
 

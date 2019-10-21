@@ -350,34 +350,34 @@ Public Class MainController
             Try
 #End If
 
-            Dim romFileInfo As New FileInfo(Romfile)
-            Dim newrommgr As New RomManager(Romfile)
-            StatusText = Form_Main_Resources.Status_Checking
+                Dim romFileInfo As New FileInfo(Romfile)
+                Dim newrommgr As New RomManager(Romfile)
+                StatusText = Form_Main_Resources.Status_Checking
 
-            If romFileInfo.Length = 8 * 1024 * 1024 Then
-                If MessageBoxEx.Show(Form_Main_Resources.MsgBox_PrepaireRom, Form_Main_Resources.MsgBox_PrepaireRom_Title, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) <> DialogResult.OK Then
-                    Throw New RomCompatiblityException("Rom Length is incompatible!")
+                If romFileInfo.Length = 8 * 1024 * 1024 Then
+                    If MessageBoxEx.Show(Form_Main_Resources.MsgBox_PrepaireRom, Form_Main_Resources.MsgBox_PrepaireRom_Title, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) <> DialogResult.OK Then
+                        Throw New RomCompatiblityException("Rom Length is incompatible!")
+                    End If
                 End If
-            End If
 
-            If Not newrommgr.CheckROM() Then
-                Throw New RomCompatiblityException("Rom Check was false!")
-            ElseIf newrommgr.IsSM64EditorMode Then
-                Throw New RomCompatiblityException(Form_Main_Resources.Exception_RomWasUsedBySM64E)
-            End If
+                If Not newrommgr.CheckROM() Then
+                    Throw New RomCompatiblityException("Rom Check was false!")
+                ElseIf newrommgr.IsSM64EditorMode Then
+                    Throw New RomCompatiblityException(Form_Main_Resources.Exception_RomWasUsedBySM64E)
+                End If
 
-            loadRecentROM = True
+                loadRecentROM = True
 
-            AddRecentFile(Settings.RecentFiles.RecentROMs, Romfile)
-            MergeRecentFiles(Settings.RecentFiles.RecentROMs)
-            RaiseEvent RecentFilesChanged()
+                AddRecentFile(Settings.RecentFiles.RecentROMs, Romfile)
+                MergeRecentFiles(Settings.RecentFiles.RecentROMs)
+                RaiseEvent RecentFilesChanged()
 
-            SetRomMgr(newrommgr)
-            LoadROM()
+                SetRomMgr(newrommgr)
+                LoadROM()
 
-            CreateRomWatcherForCurrentRom()
+                CreateRomWatcherForCurrentRom()
 
-            success = True
+                success = True
 
 #If Not DEBUG Then
             Catch ex As RomCompatiblityException
@@ -402,7 +402,7 @@ Public Class MainController
         RaiseEvent RomLoading()
 
         'Load Global Object Banks
-        'RomManager.LoadGlobalObjectBank()
+        RomManager.LoadGlobalObjectBank()
 
         'Load Levels
         RomManager.LoadLevels()
@@ -958,7 +958,7 @@ Public Class MainController
         lvl.NeedToSaveBanks0E = True
     End Sub
 
-    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer, enableShowMsg As Boolean, showMsgDialogID As Byte)
+    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer, enableGlobalObjectBank As Boolean)
         Dim lvl As Level = GetLevelAndArea(levelIndex, -1).level
 
         'Default Start Position
@@ -970,6 +970,9 @@ Public Class MainController
 
         'Hardcoded Camera
         lvl.HardcodedCameraSettings = enableHardcodedCamera
+
+        'Global Object Bank
+        lvl.EnableGlobalObjectBank = enableGlobalObjectBank
 
         'Object Banks
         lvl.ChangeObjectBankData(&HC, ObjectBankData(CByte(&HC)).ElementAtOrDefault(objBank0x0C - 1))
@@ -1239,7 +1242,7 @@ Public Class MainController
         End If
     End Sub
 
-    Public Function GetLevelSettings(levelIndex As Integer) As (enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, bgImage As Image, bgOriginal As BackgroundIDs, areasCount As Byte)
+    Public Function GetLevelSettings(levelIndex As Integer) As (enableGlobalOjectBank As Boolean, enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, bgImage As Image, bgOriginal As BackgroundIDs, areasCount As Byte)
         Dim lvl As Level = GetLevelAndArea(levelIndex).level
         Dim defPosCmd As LevelscriptCommand = lvl.GetDefaultPositionCmd
         Dim bgMode As Byte
@@ -1267,6 +1270,7 @@ Public Class MainController
         End If
 
         Return (
+            lvl.EnableGlobalObjectBank,
             lvl.ActSelector,
             lvl.HardcodedCameraSettings,
             defPosCmd IsNot Nothing,
