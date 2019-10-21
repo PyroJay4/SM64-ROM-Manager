@@ -416,7 +416,7 @@ Public Class MainController
         RaiseEvent RomLoading()
 
         'Load Global Object Banks
-        'RomManager.LoadGlobalObjectBank()
+        RomManager.LoadGlobalObjectBank()
 
         'Load Levels
         RomManager.LoadLevels()
@@ -972,7 +972,7 @@ Public Class MainController
         lvl.NeedToSaveBanks0E = True
     End Sub
 
-    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableShowMsg As Boolean, showMsgDialogID As Byte)
+    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableGlobalObjectBank As Boolean)
         Dim lvl As Level = GetLevelAndArea(levelIndex, -1).level
 
         'Default Start Position
@@ -984,6 +984,9 @@ Public Class MainController
 
         'Hardcoded Camera
         lvl.HardcodedCameraSettings = enableHardcodedCamera
+
+        'Global Object Bank
+        lvl.EnableGlobalObjectBank = enableGlobalObjectBank
 
         'Object Banks
         lvl.ChangeObjectBank(objBank0x0C)
@@ -1253,7 +1256,7 @@ Public Class MainController
         End If
     End Sub
 
-    Public Function GetLevelSettings(levelIndex As Integer) As (objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, bgImage As Image, bgOriginal As BackgroundIDs, areasCount As Byte)
+    Public Function GetLevelSettings(levelIndex As Integer) As (objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableGlobalOjectBank As Boolean, enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, bgImage As Image, bgOriginal As BackgroundIDs, areasCount As Byte)
         Dim lvl As Level = GetLevelAndArea(levelIndex).level
         Dim defPosCmd As LevelscriptCommand = lvl.GetDefaultPositionCmd
         Dim bgMode As Byte
@@ -1280,7 +1283,7 @@ Public Class MainController
             defPosYRot = clDefaultPosition.GetRotation(defPosCmd)
         End If
 
-        Return (lvl.ObjectBank0x0C, lvl.ObjectBank0x0D, lvl.ObjectBank0x0E, lvl.ActSelector, lvl.HardcodedCameraSettings, defPosCmd IsNot Nothing, defPosAreaID, defPosYRot, bgMode, bgImage, bgOriginal, lvl.Areas.Count)
+        Return (lvl.ObjectBank0x0C, lvl.ObjectBank0x0D, lvl.ObjectBank0x0E, lvl.EnableGlobalObjectBank, lvl.ActSelector, lvl.HardcodedCameraSettings, defPosCmd IsNot Nothing, defPosAreaID, defPosYRot, bgMode, bgImage, bgOriginal, lvl.Areas.Count)
     End Function
 
     Public Sub ChangeLevelID(levelIndex As Integer)

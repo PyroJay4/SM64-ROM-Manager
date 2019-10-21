@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Tab_LevelManager
     Inherits System.Windows.Forms.UserControl
 
     'UserControl überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Tab_LevelManager
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Tab_LevelManager))
@@ -63,6 +63,20 @@ Partial Class Tab_LevelManager
         Me.ComboBox_LM_CameraPreset = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.ColorPickerButton_LM_BackgroundColor = New DevComponents.DotNetBar.ColorPickerButton()
         Me.TabItem4 = New DevComponents.DotNetBar.TabItem(Me.components)
+        Me.TabControlPanel6 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.Button_LM_RemoveSpecial = New DevComponents.DotNetBar.ButtonX()
+        Me.Button_LM_AddSpecial = New DevComponents.DotNetBar.ButtonX()
+        Me.Button_LM_EditSpecial = New DevComponents.DotNetBar.ButtonX()
+        Me.ListViewEx_LM_Specials = New DevComponents.DotNetBar.Controls.ListViewEx()
+        Me.ColumnHeaderA1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeaderA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.TabItem6 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel5 = New DevComponents.DotNetBar.TabControlPanel()
         Me.Line2 = New DevComponents.DotNetBar.Controls.Line()
         Me.LabelX_Area_CountOfCustomObjects = New DevComponents.DotNetBar.LabelX()
@@ -78,21 +92,12 @@ Partial Class Tab_LevelManager
         Me.ButtonItem_ExportVisualMap = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_ExportCollisionMap = New DevComponents.DotNetBar.ButtonItem()
         Me.TabItem5 = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabControlPanel6 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.Button_LM_RemoveSpecial = New DevComponents.DotNetBar.ButtonX()
-        Me.Button_LM_AddSpecial = New DevComponents.DotNetBar.ButtonX()
-        Me.Button_LM_EditSpecial = New DevComponents.DotNetBar.ButtonX()
-        Me.ListViewEx_LM_Specials = New DevComponents.DotNetBar.Controls.ListViewEx()
-        Me.ColumnHeaderA1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeaderA = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.TabItem6 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControl_LM_Level = New DevComponents.DotNetBar.TabControl()
+        Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
+        Me.SwitchButton_UseGlobalObjectBank = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.TableLayoutPanel_ObjectBankSelectorBoxes = New System.Windows.Forms.TableLayoutPanel()
+        Me.TabItem2 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
         Me.PictureBox_BGImage = New System.Windows.Forms.PictureBox()
         Me.ComboBoxEx_LM_BGMode = New DevComponents.DotNetBar.Controls.ComboBoxEx()
@@ -113,23 +118,20 @@ Partial Class Tab_LevelManager
         Me.Button_LM_LoadLevelBG = New DevComponents.DotNetBar.ButtonX()
         Me.Button_LM_SetUpStartPosition = New DevComponents.DotNetBar.ButtonX()
         Me.TabItem1 = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.TableLayoutPanel_ObjectBankSelectorBoxes = New System.Windows.Forms.TableLayoutPanel()
-        Me.TabItem2 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.GroupBox_LM_Areas.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
         CType(Me.TabControl_LM_Area, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl_LM_Area.SuspendLayout()
         Me.TabControlPanel4.SuspendLayout()
-        Me.TabControlPanel5.SuspendLayout()
         Me.TabControlPanel6.SuspendLayout()
+        Me.TabControlPanel5.SuspendLayout()
         CType(Me.TabControl_LM_Level, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl_LM_Level.SuspendLayout()
+        Me.TabControlPanel2.SuspendLayout()
         Me.TabControlPanel1.SuspendLayout()
         CType(Me.PictureBox_BGImage, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUD_LM_DefaultPositionYRotation, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUD_LM_DefaultPositionAreaID, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabControlPanel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox_LM_Areas
@@ -642,6 +644,125 @@ Partial Class Tab_LevelManager
         Me.TabItem4.Name = "TabItem4"
         resources.ApplyResources(Me.TabItem4, "TabItem4")
         '
+        'TabControlPanel6
+        '
+        Me.TabControlPanel6.Controls.Add(Me.Button_LM_RemoveSpecial)
+        Me.TabControlPanel6.Controls.Add(Me.Button_LM_AddSpecial)
+        Me.TabControlPanel6.Controls.Add(Me.Button_LM_EditSpecial)
+        Me.TabControlPanel6.Controls.Add(Me.ListViewEx_LM_Specials)
+        Me.TabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel6, "TabControlPanel6")
+        Me.TabControlPanel6.Name = "TabControlPanel6"
+        Me.TabControlPanel6.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel6.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.TabControlPanel6.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+        Me.TabControlPanel6.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+        Me.TabControlPanel6.Style.GradientAngle = 90
+        Me.TabControlPanel6.TabItem = Me.TabItem6
+        '
+        'Button_LM_RemoveSpecial
+        '
+        Me.Button_LM_RemoveSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.Button_LM_RemoveSpecial, "Button_LM_RemoveSpecial")
+        Me.Button_LM_RemoveSpecial.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.Button_LM_RemoveSpecial.FocusCuesEnabled = False
+        Me.Button_LM_RemoveSpecial.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
+        Me.Button_LM_RemoveSpecial.Name = "Button_LM_RemoveSpecial"
+        Me.Button_LM_RemoveSpecial.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Button_LM_RemoveSpecial.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button_LM_RemoveSpecial.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.Button_LM_RemoveSpecial.SymbolSize = 12.0!
+        '
+        'Button_LM_AddSpecial
+        '
+        Me.Button_LM_AddSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.Button_LM_AddSpecial.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.Button_LM_AddSpecial.FocusCuesEnabled = False
+        Me.Button_LM_AddSpecial.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
+        resources.ApplyResources(Me.Button_LM_AddSpecial, "Button_LM_AddSpecial")
+        Me.Button_LM_AddSpecial.Name = "Button_LM_AddSpecial"
+        Me.Button_LM_AddSpecial.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Button_LM_AddSpecial.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Button_LM_AddSpecial.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.Button_LM_AddSpecial.SymbolSize = 12.0!
+        '
+        'Button_LM_EditSpecial
+        '
+        Me.Button_LM_EditSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.Button_LM_EditSpecial.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        resources.ApplyResources(Me.Button_LM_EditSpecial, "Button_LM_EditSpecial")
+        Me.Button_LM_EditSpecial.FocusCuesEnabled = False
+        Me.Button_LM_EditSpecial.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
+        Me.Button_LM_EditSpecial.Name = "Button_LM_EditSpecial"
+        Me.Button_LM_EditSpecial.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Button_LM_EditSpecial.SymbolColor = System.Drawing.Color.Goldenrod
+        Me.Button_LM_EditSpecial.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
+        Me.Button_LM_EditSpecial.SymbolSize = 12.0!
+        '
+        'ListViewEx_LM_Specials
+        '
+        resources.ApplyResources(Me.ListViewEx_LM_Specials, "ListViewEx_LM_Specials")
+        Me.ListViewEx_LM_Specials.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.ListViewEx_LM_Specials.Border.Class = "ListViewBorder"
+        Me.ListViewEx_LM_Specials.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ListViewEx_LM_Specials.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeaderA1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeaderA})
+        Me.ListViewEx_LM_Specials.DisabledBackColor = System.Drawing.Color.Empty
+        Me.ListViewEx_LM_Specials.FocusCuesEnabled = False
+        Me.ListViewEx_LM_Specials.ForeColor = System.Drawing.Color.Black
+        Me.ListViewEx_LM_Specials.FullRowSelect = True
+        Me.ListViewEx_LM_Specials.GridLines = True
+        Me.ListViewEx_LM_Specials.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {CType(resources.GetObject("ListViewEx_LM_Specials.Groups"), System.Windows.Forms.ListViewGroup), CType(resources.GetObject("ListViewEx_LM_Specials.Groups1"), System.Windows.Forms.ListViewGroup), CType(resources.GetObject("ListViewEx_LM_Specials.Groups2"), System.Windows.Forms.ListViewGroup), CType(resources.GetObject("ListViewEx_LM_Specials.Groups3"), System.Windows.Forms.ListViewGroup)})
+        Me.ListViewEx_LM_Specials.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+        Me.ListViewEx_LM_Specials.HideSelection = False
+        Me.ListViewEx_LM_Specials.MultiSelect = False
+        Me.ListViewEx_LM_Specials.Name = "ListViewEx_LM_Specials"
+        Me.ListViewEx_LM_Specials.ShowGroups = False
+        Me.ListViewEx_LM_Specials.UseCompatibleStateImageBehavior = False
+        Me.ListViewEx_LM_Specials.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeaderA1
+        '
+        resources.ApplyResources(Me.ColumnHeaderA1, "ColumnHeaderA1")
+        '
+        'ColumnHeader2
+        '
+        resources.ApplyResources(Me.ColumnHeader2, "ColumnHeader2")
+        '
+        'ColumnHeader3
+        '
+        resources.ApplyResources(Me.ColumnHeader3, "ColumnHeader3")
+        '
+        'ColumnHeader4
+        '
+        resources.ApplyResources(Me.ColumnHeader4, "ColumnHeader4")
+        '
+        'ColumnHeader5
+        '
+        resources.ApplyResources(Me.ColumnHeader5, "ColumnHeader5")
+        '
+        'ColumnHeader6
+        '
+        resources.ApplyResources(Me.ColumnHeader6, "ColumnHeader6")
+        '
+        'ColumnHeader7
+        '
+        resources.ApplyResources(Me.ColumnHeader7, "ColumnHeader7")
+        '
+        'ColumnHeaderA
+        '
+        resources.ApplyResources(Me.ColumnHeaderA, "ColumnHeaderA")
+        '
+        'TabItem6
+        '
+        Me.TabItem6.AttachedControl = Me.TabControlPanel6
+        Me.TabItem6.Name = "TabItem6"
+        resources.ApplyResources(Me.TabItem6, "TabItem6")
+        '
         'TabControlPanel5
         '
         Me.TabControlPanel5.Controls.Add(Me.Line2)
@@ -783,132 +904,13 @@ Partial Class Tab_LevelManager
         Me.TabItem5.Name = "TabItem5"
         resources.ApplyResources(Me.TabItem5, "TabItem5")
         '
-        'TabControlPanel6
-        '
-        Me.TabControlPanel6.Controls.Add(Me.Button_LM_RemoveSpecial)
-        Me.TabControlPanel6.Controls.Add(Me.Button_LM_AddSpecial)
-        Me.TabControlPanel6.Controls.Add(Me.Button_LM_EditSpecial)
-        Me.TabControlPanel6.Controls.Add(Me.ListViewEx_LM_Specials)
-        Me.TabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel6, "TabControlPanel6")
-        Me.TabControlPanel6.Name = "TabControlPanel6"
-        Me.TabControlPanel6.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel6.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel6.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-        Me.TabControlPanel6.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-        Me.TabControlPanel6.Style.GradientAngle = 90
-        Me.TabControlPanel6.TabItem = Me.TabItem6
-        '
-        'Button_LM_RemoveSpecial
-        '
-        Me.Button_LM_RemoveSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        resources.ApplyResources(Me.Button_LM_RemoveSpecial, "Button_LM_RemoveSpecial")
-        Me.Button_LM_RemoveSpecial.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.Button_LM_RemoveSpecial.FocusCuesEnabled = False
-        Me.Button_LM_RemoveSpecial.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
-        Me.Button_LM_RemoveSpecial.Name = "Button_LM_RemoveSpecial"
-        Me.Button_LM_RemoveSpecial.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Button_LM_RemoveSpecial.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button_LM_RemoveSpecial.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.Button_LM_RemoveSpecial.SymbolSize = 12.0!
-        '
-        'Button_LM_AddSpecial
-        '
-        Me.Button_LM_AddSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.Button_LM_AddSpecial.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.Button_LM_AddSpecial.FocusCuesEnabled = False
-        Me.Button_LM_AddSpecial.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
-        resources.ApplyResources(Me.Button_LM_AddSpecial, "Button_LM_AddSpecial")
-        Me.Button_LM_AddSpecial.Name = "Button_LM_AddSpecial"
-        Me.Button_LM_AddSpecial.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Button_LM_AddSpecial.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Button_LM_AddSpecial.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.Button_LM_AddSpecial.SymbolSize = 12.0!
-        '
-        'Button_LM_EditSpecial
-        '
-        Me.Button_LM_EditSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.Button_LM_EditSpecial.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        resources.ApplyResources(Me.Button_LM_EditSpecial, "Button_LM_EditSpecial")
-        Me.Button_LM_EditSpecial.FocusCuesEnabled = False
-        Me.Button_LM_EditSpecial.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
-        Me.Button_LM_EditSpecial.Name = "Button_LM_EditSpecial"
-        Me.Button_LM_EditSpecial.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Button_LM_EditSpecial.SymbolColor = System.Drawing.Color.Goldenrod
-        Me.Button_LM_EditSpecial.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.Button_LM_EditSpecial.SymbolSize = 12.0!
-        '
-        'ListViewEx_LM_Specials
-        '
-        resources.ApplyResources(Me.ListViewEx_LM_Specials, "ListViewEx_LM_Specials")
-        Me.ListViewEx_LM_Specials.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.ListViewEx_LM_Specials.Border.Class = "ListViewBorder"
-        Me.ListViewEx_LM_Specials.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ListViewEx_LM_Specials.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeaderA1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeaderA})
-        Me.ListViewEx_LM_Specials.DisabledBackColor = System.Drawing.Color.Empty
-        Me.ListViewEx_LM_Specials.FocusCuesEnabled = False
-        Me.ListViewEx_LM_Specials.ForeColor = System.Drawing.Color.Black
-        Me.ListViewEx_LM_Specials.FullRowSelect = True
-        Me.ListViewEx_LM_Specials.GridLines = True
-        Me.ListViewEx_LM_Specials.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {CType(resources.GetObject("ListViewEx_LM_Specials.Groups"), System.Windows.Forms.ListViewGroup), CType(resources.GetObject("ListViewEx_LM_Specials.Groups1"), System.Windows.Forms.ListViewGroup), CType(resources.GetObject("ListViewEx_LM_Specials.Groups2"), System.Windows.Forms.ListViewGroup), CType(resources.GetObject("ListViewEx_LM_Specials.Groups3"), System.Windows.Forms.ListViewGroup)})
-        Me.ListViewEx_LM_Specials.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
-        Me.ListViewEx_LM_Specials.HideSelection = False
-        Me.ListViewEx_LM_Specials.MultiSelect = False
-        Me.ListViewEx_LM_Specials.Name = "ListViewEx_LM_Specials"
-        Me.ListViewEx_LM_Specials.ShowGroups = False
-        Me.ListViewEx_LM_Specials.UseCompatibleStateImageBehavior = False
-        Me.ListViewEx_LM_Specials.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeaderA1
-        '
-        resources.ApplyResources(Me.ColumnHeaderA1, "ColumnHeaderA1")
-        '
-        'ColumnHeader2
-        '
-        resources.ApplyResources(Me.ColumnHeader2, "ColumnHeader2")
-        '
-        'ColumnHeader3
-        '
-        resources.ApplyResources(Me.ColumnHeader3, "ColumnHeader3")
-        '
-        'ColumnHeader4
-        '
-        resources.ApplyResources(Me.ColumnHeader4, "ColumnHeader4")
-        '
-        'ColumnHeader5
-        '
-        resources.ApplyResources(Me.ColumnHeader5, "ColumnHeader5")
-        '
-        'ColumnHeader6
-        '
-        resources.ApplyResources(Me.ColumnHeader6, "ColumnHeader6")
-        '
-        'ColumnHeader7
-        '
-        resources.ApplyResources(Me.ColumnHeader7, "ColumnHeader7")
-        '
-        'ColumnHeaderA
-        '
-        resources.ApplyResources(Me.ColumnHeaderA, "ColumnHeaderA")
-        '
-        'TabItem6
-        '
-        Me.TabItem6.AttachedControl = Me.TabControlPanel6
-        Me.TabItem6.Name = "TabItem6"
-        resources.ApplyResources(Me.TabItem6, "TabItem6")
-        '
         'TabControl_LM_Level
         '
         resources.ApplyResources(Me.TabControl_LM_Level, "TabControl_LM_Level")
         Me.TabControl_LM_Level.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControl_LM_Level.CanReorderTabs = False
-        Me.TabControl_LM_Level.Controls.Add(Me.TabControlPanel1)
         Me.TabControl_LM_Level.Controls.Add(Me.TabControlPanel2)
+        Me.TabControl_LM_Level.Controls.Add(Me.TabControlPanel1)
         Me.TabControl_LM_Level.ForeColor = System.Drawing.Color.Black
         Me.TabControl_LM_Level.Name = "TabControl_LM_Level"
         Me.TabControl_LM_Level.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
@@ -917,6 +919,63 @@ Partial Class Tab_LevelManager
         Me.TabControl_LM_Level.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
         Me.TabControl_LM_Level.Tabs.Add(Me.TabItem1)
         Me.TabControl_LM_Level.Tabs.Add(Me.TabItem2)
+        '
+        'TabControlPanel2
+        '
+        Me.TabControlPanel2.Controls.Add(Me.LabelX12)
+        Me.TabControlPanel2.Controls.Add(Me.SwitchButton_UseGlobalObjectBank)
+        Me.TabControlPanel2.Controls.Add(Me.TableLayoutPanel_ObjectBankSelectorBoxes)
+        Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
+        Me.TabControlPanel2.Name = "TabControlPanel2"
+        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+        Me.TabControlPanel2.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+        Me.TabControlPanel2.Style.GradientAngle = 90
+        Me.TabControlPanel2.TabItem = Me.TabItem2
+        '
+        'LabelX12
+        '
+        Me.LabelX12.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX12, "LabelX12")
+        Me.LabelX12.Name = "LabelX12"
+        Me.LabelX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'SwitchButton_UseGlobalObjectBank
+        '
+        '
+        '
+        '
+        Me.SwitchButton_UseGlobalObjectBank.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.SwitchButton_UseGlobalObjectBank.FocusCuesEnabled = False
+        resources.ApplyResources(Me.SwitchButton_UseGlobalObjectBank, "SwitchButton_UseGlobalObjectBank")
+        Me.SwitchButton_UseGlobalObjectBank.Name = "SwitchButton_UseGlobalObjectBank"
+        Me.SwitchButton_UseGlobalObjectBank.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SwitchButton_UseGlobalObjectBank.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.SwitchWidth = 15
+        '
+        'TableLayoutPanel_ObjectBankSelectorBoxes
+        '
+        resources.ApplyResources(Me.TableLayoutPanel_ObjectBankSelectorBoxes, "TableLayoutPanel_ObjectBankSelectorBoxes")
+        Me.TableLayoutPanel_ObjectBankSelectorBoxes.BackColor = System.Drawing.Color.Transparent
+        Me.TableLayoutPanel_ObjectBankSelectorBoxes.Name = "TableLayoutPanel_ObjectBankSelectorBoxes"
+        '
+        'TabItem2
+        '
+        Me.TabItem2.AttachedControl = Me.TabControlPanel2
+        Me.TabItem2.Name = "TabItem2"
+        resources.ApplyResources(Me.TabItem2, "TabItem2")
         '
         'TabControlPanel1
         '
@@ -1136,33 +1195,6 @@ Partial Class Tab_LevelManager
         Me.TabItem1.Name = "TabItem1"
         resources.ApplyResources(Me.TabItem1, "TabItem1")
         '
-        'TabControlPanel2
-        '
-        Me.TabControlPanel2.Controls.Add(Me.TableLayoutPanel_ObjectBankSelectorBoxes)
-        Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
-        Me.TabControlPanel2.Name = "TabControlPanel2"
-        Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-        Me.TabControlPanel2.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-        Me.TabControlPanel2.Style.GradientAngle = 90
-        Me.TabControlPanel2.TabItem = Me.TabItem2
-        '
-        'TableLayoutPanel_ObjectBankSelectorBoxes
-        '
-        Me.TableLayoutPanel_ObjectBankSelectorBoxes.BackColor = System.Drawing.Color.Transparent
-        resources.ApplyResources(Me.TableLayoutPanel_ObjectBankSelectorBoxes, "TableLayoutPanel_ObjectBankSelectorBoxes")
-        Me.TableLayoutPanel_ObjectBankSelectorBoxes.Name = "TableLayoutPanel_ObjectBankSelectorBoxes"
-        '
-        'TabItem2
-        '
-        Me.TabItem2.AttachedControl = Me.TabControlPanel2
-        Me.TabItem2.Name = "TabItem2"
-        resources.ApplyResources(Me.TabItem2, "TabItem2")
-        '
         'Tab_LevelManager
         '
         resources.ApplyResources(Me, "$this")
@@ -1178,15 +1210,15 @@ Partial Class Tab_LevelManager
         CType(Me.TabControl_LM_Area, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl_LM_Area.ResumeLayout(False)
         Me.TabControlPanel4.ResumeLayout(False)
-        Me.TabControlPanel5.ResumeLayout(False)
         Me.TabControlPanel6.ResumeLayout(False)
+        Me.TabControlPanel5.ResumeLayout(False)
         CType(Me.TabControl_LM_Level, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl_LM_Level.ResumeLayout(False)
+        Me.TabControlPanel2.ResumeLayout(False)
         Me.TabControlPanel1.ResumeLayout(False)
         CType(Me.PictureBox_BGImage, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NUD_LM_DefaultPositionYRotation, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NUD_LM_DefaultPositionAreaID, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabControlPanel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1283,4 +1315,6 @@ Partial Class Tab_LevelManager
     Friend WithEvents LabelX_Area_CountOfCustomObjects As DevComponents.DotNetBar.LabelX
     Friend WithEvents TableLayoutPanel_ObjectBankSelectorBoxes As TableLayoutPanel
     Friend WithEvents ButtonItem_ImportArea As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents SwitchButton_UseGlobalObjectBank As DevComponents.DotNetBar.Controls.SwitchButton
 End Class
