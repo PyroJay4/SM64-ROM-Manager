@@ -1847,12 +1847,6 @@ Namespace Model.Conversion.Fast3DWriting
             Return conRes
         End Function
 
-        Public Function ConvertModelAsync(s As Stream, settings As ConvertSettings, input As Pilz.S3DFileParser.Object3D, texFormatSettings As TextureFormatSettings) As Task(Of ConvertResult)
-            Dim t As New Task(Of ConvertResult)(Function() ConvertModel(s, settings, input))
-            t.Start()
-            Return t
-        End Function
-
     End Class
 
 End Namespace
