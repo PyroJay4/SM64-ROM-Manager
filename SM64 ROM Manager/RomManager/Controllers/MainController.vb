@@ -844,13 +844,17 @@ Public Class MainController
     End Function
 
     Public Sub LoadObjectBankData()
-        Dim temp_1 As String = Path.Combine(MyDataPath, "Other\Object Bank Data\Bank 0x{0}.txt")
+        'Dim temp_1 As String = Path.Combine(MyDataPath, "Other\Object Bank Data\Bank 0x{0}.txt")
 
-        ObjectBankData.Clear()
+        'ObjectBankData.Clear()
 
-        For Each t As String In {"B", "C", "D", "9"}
-            ObjectBankData.Add(FileIniParser.ReadFile(String.Format(temp_1, t)))
-        Next
+        'For Each t As String In {"B", "C", "D", "9"}
+        '    ObjectBankData.Add(FileIniParser.ReadFile(String.Format(temp_1, t)))
+        'Next
+
+        'ObjectBankDataNew.DoIt1()
+        'ObjectBankDataNew.Save(Path.Combine(MyDataPath, "Other\Object Bank Data.json"))
+        ObjectBankData.Load(Path.Combine(MyDataPath, "Other\Object Bank Data.json"))
     End Sub
 
     Public Function GetLevelsCount() As Integer

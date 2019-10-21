@@ -141,6 +141,10 @@
     <Compile Include="SM64Lib\Model\Fast3D\DisplayLists\DisplayListCollection.vb" />
     <Compile Include="SM64Lib\Model\Fog.vb" />
     <Compile Include="SM64Lib\Model\FogPreset.vb" />
+    <Compile Include="SM64Lib\Object Banks\Data\ObjectBankDataCommand.vb" />
+    <Compile Include="SM64Lib\Object Banks\Data\ObjectBankDataList.vb" />
+    <Compile Include="SM64Lib\Object Banks\Data\ObjectBankDataListCollection.vb" />
+    <Compile Include="SM64Lib\Object Banks\Data\ObjectBankData.vb" />
     <Compile Include="SM64Lib\RomVersion.vb" />
     <Compile Include="SM64Lib\EventArguments\RomVersionEventArgs.vb" />
     <Compile Include="SM64Lib\Model\Conversion\Fast3DWriting\CustomDisplaylistProps.vb" />

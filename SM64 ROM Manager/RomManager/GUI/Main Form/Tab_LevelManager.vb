@@ -15,6 +15,7 @@ Imports SM64_ROM_Manager.EventArguments
 Imports SM64Lib.Levels
 Imports DevComponents.Editors
 Imports DevComponents.DotNetBar.Controls
+Imports SM64Lib.ObjectBanks.Data
 
 Public Class Tab_LevelManager
 
@@ -275,8 +276,12 @@ Public Class Tab_LevelManager
             Sub(sb As ObjectBankSelectorBox, number As Byte)
                 sb.ComboItems.Clear()
                 sb.ComboItems.Add(Form_Main_Resources.Text_Disabled)
-                For Each s In ObjectBankData(number).Sections
-                    sb.ComboItems.Add(s.SectionName)
+                For Each s In SM64Lib.ObjectBankData(CInt(number))
+                    Dim cb As New ComboItem With {
+                        .Text = s.Name,
+                        .Tag = s
+                    }
+                    sb.ComboItems.Add(cb)
                 Next
             End Sub
 
@@ -638,29 +643,30 @@ Public Class Tab_LevelManager
 
     Private Sub LM_UpdateObjectBankList(sender As Object, e As EventArgs) Handles ObjectBankSelectorBox_C.SelectedComboIndexChanged, ObjectBankSelectorBox_D.SelectedComboIndexChanged, ObjectBankSelectorBox_9.SelectedComboIndexChanged
         Dim Index As Integer = 1
-        Dim Text As String = ""
+        Dim obdData As ObjectBankData = Nothing
         Dim SelectedIndex As Integer = 0
+
+        Dim setValues =
+            Sub(obsbox As ObjectBankSelectorBox)
+                SelectedIndex = obsbox.SelectedComboIndex
+                obdData = TryCast(obsbox.SelectedComboItem, ComboItem)?.Tag
+                obsbox.ContentItems.Clear()
+            End Sub
 
         Select Case sender.GetHashCode
             Case ObjectBankSelectorBox_C.GetHashCode
-                SelectedIndex = ObjectBankSelectorBox_C.SelectedComboIndex
-                Text = ObjectBankSelectorBox_C.SelectedComboItem.ToString
+                setValues(ObjectBankSelectorBox_C)
                 Index = 1
-                ObjectBankSelectorBox_C.ContentItems.Clear()
             Case ObjectBankSelectorBox_D.GetHashCode
-                SelectedIndex = ObjectBankSelectorBox_D.SelectedComboIndex
-                Text = ObjectBankSelectorBox_D.SelectedComboItem.ToString
+                setValues(ObjectBankSelectorBox_D)
                 Index = 2
-                ObjectBankSelectorBox_D.ContentItems.Clear()
             Case ObjectBankSelectorBox_9.GetHashCode
-                SelectedIndex = ObjectBankSelectorBox_9.SelectedComboIndex
-                Text = ObjectBankSelectorBox_9.SelectedComboItem.ToString
+                setValues(ObjectBankSelectorBox_9)
                 Index = 3
-                ObjectBankSelectorBox_9.ContentItems.Clear()
         End Select
 
         If SelectedIndex >= 1 Then
-            For Each n As String In ObjectBankData(Index).Sections(Text)("List").Split("|")
+            For Each n As String In obdData.Objects
                 Select Case sender.GetHashCode
                     Case ObjectBankSelectorBox_C.GetHashCode
                         ObjectBankSelectorBox_C.ContentItems.Add(New LabelItem With {.Text = n})

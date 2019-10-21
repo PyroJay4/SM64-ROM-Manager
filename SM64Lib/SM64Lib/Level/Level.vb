@@ -6,6 +6,7 @@ Imports SM64Lib.Geolayout.Script
 Imports SM64Lib.Geolayout.Script.Commands
 Imports SM64Lib.Levels.ScrolTex
 Imports SM64Lib.SegmentedBanking
+Imports SM64Lib.ObjectBanks.Data
 
 Namespace Global.SM64Lib.Levels
 
@@ -173,101 +174,48 @@ Namespace Global.SM64Lib.Levels
         End Function
 
         Private Sub ChangeObjectBank(BankIndex As Integer, NewEntryIndex As Integer, OldEntryIndex As Integer)
-            Dim oldiniindex As String = GetObjectBankSectionNameOfIndex(BankIndex, OldEntryIndex)
-            Dim newiniindex As String = GetObjectBankSectionNameOfIndex(BankIndex, NewEntryIndex)
-
             'Remove old commands
-            If OldEntryIndex = -1 Then GoTo AddCmds
-
-            For Each cmditem As String In {"cmd22", "cmd06", "cmd1A", "cmd17"}
-                Dim tKeyValue As String = ObjectBankData(BankIndex)(oldiniindex)(cmditem)
-                If tKeyValue = String.Empty Then Continue For
-
-                For Each s As String In tKeyValue.Split("|")
-                    Dim stringBytes() As String = s.Split(" ")
-
-                    Dim bytesList As New List(Of Byte)
-                    For Each sb As String In stringBytes
-                        If Not sb = String.Empty Then bytesList.Add(CByte("&H" & sb))
-                    Next
-
-                    For Each cmd In Levelscript.Where(Function(n) CompareTwoByteArrays(n.ToArray, bytesList.ToArray)).ToArray
+            If OldEntryIndex <> -1 Then
+                For Each obdCmd As ObjectBankDataCommand In ObjectBankData(BankIndex)(OldEntryIndex).Commands
+                    For Each cmd In Levelscript.Where(Function(n) CompareTwoByteArrays(n.ToArray, obdCmd.Command)).ToArray
                         cmd.Close()
                         Levelscript.Remove(cmd)
                     Next
                 Next
-            Next
+            End If
 
-AddCmds:'Add new commands
-            If NewEntryIndex = -1 Then Return
+            If NewEntryIndex <> -1 Then
+                For Each obdCmd As ObjectBankDataCommand In ObjectBankData(BankIndex)(NewEntryIndex).Commands
+                    Dim startIndex As Integer = Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1D)
+                    If Not (obdCmd.Command.Last = &H1A OrElse obdCmd.Command.Last = &H17) Then
+                        startIndex += 1
+                    End If
 
-            For Each cmditem As String In {"cmd22", "cmd06", "cmd1A", "cmd17"}
-                Dim tKeyValue As String = ObjectBankData(BankIndex)(newiniindex)(cmditem)
-                If tKeyValue = String.Empty Then Continue For
-
-                Dim startIndex As Integer = Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1D)
-                If Not (cmditem.EndsWith("1A") OrElse cmditem.EndsWith("17")) Then
-                    startIndex += 1
-                End If
-
-                For Each s As String In tKeyValue.Split("|")
-                    Dim stringBytes() As String = s.Split(" ")
-
-                    Dim bytesList As New List(Of Byte)
-                    For Each sb As String In stringBytes
-                        If Not sb = String.Empty Then bytesList.Add(CByte("&H" & sb))
-                    Next
-
-                    Dim cmd As New LevelscriptCommand(bytesList.ToArray)
+                    Dim cmd As New LevelscriptCommand(obdCmd.Command)
                     Levelscript.Insert(startIndex, cmd)
                     startIndex += 1
                 Next
-            Next
+            End If
         End Sub
 
         Private Function GetObjectBank(BankIndex As Integer) As Integer
             Dim Found As New List(Of Boolean)
 
-            For Each s In ObjectBankData(BankIndex).Sections
-                For Each cmdkey In {"cmd22", "cmd06", "cmd1A", "cmd17"}
-                    Dim tKeyValue As String = s.Keys(cmdkey)
-                    If tKeyValue = String.Empty Then Continue For
+            For obdDataIndex As Integer = 0 To ObjectBankData(BankIndex).Count - 1
+                Dim obdData As ObjectBankData = ObjectBankData(BankIndex)(obdDataIndex)
 
-                    For Each k As String In tKeyValue.Split("|")
-                        Dim stringBytes() As String = k.Split(" ")
-
-                        Dim bytesList As New List(Of Byte)
-                        For Each sb As String In stringBytes
-                            If Not sb = String.Empty Then bytesList.Add(CByte("&H" & sb))
-                        Next
-
-                        Found.Add(Levelscript.Where(Function(n) CompareTwoByteArrays(n.ToArray, bytesList.ToArray)).Count > 0)
-                    Next
+                For Each obdCmd As ObjectBankDataCommand In obdData.Commands
+                    Found.Add(Levelscript.Where(Function(n) CompareTwoByteArrays(n.ToArray, obdCmd.Command)).Any)
                 Next
 
-                If Not Found.Contains(False) Then Return GetObjectBankSectionIndexOfName(BankIndex, s.SectionName)
+                If Not Found.Contains(False) Then
+                    Return obdDataIndex
+                End If
+
                 Found.Clear()
             Next
 
             Return -1
-        End Function
-
-        Private Function GetObjectBankSectionNameOfIndex(Bank As Integer, Index As Integer) As String
-            If Index < 0 Then Return ""
-            Dim NameLists As New List(Of String)
-            For Each s In ObjectBankData(Bank).Sections
-                NameLists.Add(s.SectionName)
-            Next
-            Return NameLists(Index)
-        End Function
-
-        Private Function GetObjectBankSectionIndexOfName(Bank As Integer, Name As String) As Integer
-            Dim cIndex As Integer = 0
-            For Each s In ObjectBankData(Bank).Sections
-                If s.SectionName = Name Then Return cIndex
-                cIndex += 1
-            Next
-            Return 0
         End Function
 
         Public Sub Close()
