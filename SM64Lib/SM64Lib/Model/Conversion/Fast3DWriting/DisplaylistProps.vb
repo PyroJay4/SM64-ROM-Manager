@@ -2,10 +2,11 @@
 
 Namespace Model.Conversion.Fast3DWriting
 
-    Public Class CustomDisplaylistProps
+    Public Class DisplaylistProps
 
         Public Property ID As Integer = 0
-        Public Property DisplaylistType As DisplayListType = DisplaylistType.Solid
+        Public Property Type As DisplayListType = DisplayListType.Solid
+        Public Property Layer As Byte = 1
 
     End Class
 

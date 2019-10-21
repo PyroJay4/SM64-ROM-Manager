@@ -111,7 +111,7 @@
     <Compile Include="SM64Lib\Geolayout\CameraPresets.vb" />
     <Compile Include="SM64Lib\Geolayout\EnvironmentEffects.vb" />
     <Compile Include="SM64Lib\Geolayout\GeoAsmPointer.vb" />
-    <Compile Include="SM64Lib\Geolayout\Geolayer.vb" />
+    <Compile Include="SM64Lib\Geolayout\DefaultGeolayers.vb" />
     <Compile Include="SM64Lib\Geolayout\Geopointer.vb" />
     <Compile Include="SM64Lib\Geolayout\Script\GeolayoutCommandCollection.vb" />
     <Compile Include="SM64Lib\Geolayout\Script\GeolayoutCommandTypes.vb" />
@@ -133,6 +133,8 @@
     <Compile Include="SM64Lib\Model\Collision\Vertex.vb" />
     <Compile Include="SM64Lib\Model\Collision\VertexList.vb" />
     <Compile Include="SM64Lib\Model\Conversion\FaceCullingMode.vb" />
+    <Compile Include="SM64Lib\Model\Conversion\Fast3DWriting\DisplaylistSelectionMode.vb" />
+    <Compile Include="SM64Lib\Model\Conversion\Fast3DWriting\DisplaylistSelectionSettings.vb" />
     <Compile Include="SM64Lib\Model\Conversion\Fast3DWriting\DisplayListType.vb" />
     <Compile Include="SM64Lib\Model\Fast3D\DisplayLists\Script\CommandTypes.vb" />
     <Compile Include="SM64Lib\Model\Fast3D\DisplayLists\Script\DisplayListCommand.vb" />
@@ -147,7 +149,7 @@
     <Compile Include="SM64Lib\Object Banks\Data\ObjectBankData.vb" />
     <Compile Include="SM64Lib\RomVersion.vb" />
     <Compile Include="SM64Lib\EventArguments\RomVersionEventArgs.vb" />
-    <Compile Include="SM64Lib\Model\Conversion\Fast3DWriting\CustomDisplaylistProps.vb" />
+    <Compile Include="SM64Lib\Model\Conversion\Fast3DWriting\DisplaylistProps.vb" />
     <Compile Include="SM64Lib\Model\Conversion\Fast3DParsing\TextureLoadedInfos.vb" />
     <Compile Include="SM64Lib\NPCs\CoinsManager.vb" />
     <Compile Include="SM64Lib\Object Banks\CustomObject.vb" />

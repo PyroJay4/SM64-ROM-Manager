@@ -8,7 +8,7 @@ Namespace Model.Fast3D
     Public Class TextureFormatSettings
 
         Public ReadOnly Property Entries As New List(Of Entry)
-        Public ReadOnly Property CustomDisplayLists As New List(Of CustomDisplaylistProps)
+        Public ReadOnly Property CustomDisplayLists As New List(Of DisplaylistProps)
 
         Public Async Function Load(fileName As String) As Task
             If File.Exists(fileName) Then
@@ -68,7 +68,7 @@ Namespace Model.Fast3D
             Public Property MaterialName As String = ""
             Public Property TextureFormat As String = ""
             Public Property IsScrollingTexture As Boolean = False
-            Public Property SelectDisplaylistMode As SByte = -1
+            Public Property DisplaylistSelection As New DisplaylistSelectionSettings
             Public Property FaceCullingMode As FaceCullingMode = FaceCullingMode.Back
             Public Property EnableMirrorS As Boolean = False
             Public Property EnableMirrorT As Boolean = False
@@ -86,8 +86,11 @@ Namespace Model.Fast3D
                 newEntry.TextureFormat = parts(1)
                 If parts.Length > 2 Then newEntry.IsScrollingTexture = Convert.ToBoolean(parts(2))
                 If parts.Length > 3 Then
-                    newEntry.SelectDisplaylistMode = Convert.ToSByte(parts(3))
-                    If newEntry.SelectDisplaylistMode = 0 Then newEntry.SelectDisplaylistMode = -1
+                    Dim selDL As SByte = Convert.ToSByte(parts(3))
+                    If {0, -1}.Contains(selDL) Then
+                        newEntry.DisplaylistSelection.SelectionMode = DisplaylistSelectionMode.Automatic
+                        newEntry.DisplaylistSelection.DefaultGeolayer = selDL
+                    End If
                 End If
                 If parts.Length > 4 Then newEntry.FaceCullingMode = Convert.ToByte(parts(4))
                 If parts.Length > 5 Then

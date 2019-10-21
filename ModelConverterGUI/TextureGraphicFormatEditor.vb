@@ -6,6 +6,8 @@ Imports N64Graphics
 Imports SM64_ROM_Manager.Publics
 Imports Pilz.S3DFileParser
 Imports SM64Lib.Model.Fast3D
+Imports SM64Lib.Model.Conversion.Fast3DWriting
+Imports SM64Lib.Geolayout
 
 Public Class TextureGraphicFormatEditor
 
@@ -43,12 +45,12 @@ Public Class TextureGraphicFormatEditor
     Private Sub LoadDisplayListTypes()
         ComboBoxEx_SelectDisplaylist.Items.AddRange(
             {
-            New ComboItem With {.Text = "Automatic", .Tag = -1},
-            New ComboItem With {.Text = "1 - Solid", .Tag = 1},
-            New ComboItem With {.Text = "2 - Solid Foreground", .Tag = 2},
-            New ComboItem With {.Text = "4 - Alpha", .Tag = 4},
-            New ComboItem With {.Text = "5 - Transparent", .Tag = 5},
-            New ComboItem With {.Text = "6 - Transparent Foreground", .Tag = 6}
+            New ComboItem With {.Text = "Automatic"},
+            New ComboItem With {.Text = "1 - Solid", .Tag = DefaultGeolayers.Solid},
+            New ComboItem With {.Text = "2 - Solid Foreground", .Tag = DefaultGeolayers.SolidForeground},
+            New ComboItem With {.Text = "4 - Alpha", .Tag = DefaultGeolayers.Alpha},
+            New ComboItem With {.Text = "5 - Transparent", .Tag = DefaultGeolayers.Transparent},
+            New ComboItem With {.Text = "6 - Transparent Foreground", .Tag = DefaultGeolayers.TransparentForeground}
             })
         ComboBoxEx_SelectDisplaylist.SelectedIndex = 0
     End Sub
@@ -172,9 +174,14 @@ Public Class TextureGraphicFormatEditor
             ComboBoxEx_RotateFlip.SelectedItem = GetRotateFlipComboItem(curEntry.RotateFlip)
 
             For Each item As ComboItem In ComboBoxEx_SelectDisplaylist.Items
-                If item.Tag = curEntry.SelectDisplaylistMode Then
-                    ComboBoxEx_SelectDisplaylist.SelectedItem = item
-                End If
+                Select Case curEntry.DisplaylistSelection.SelectionMode
+                    Case DisplaylistSelectionMode.Automatic
+                        ComboBoxEx_SelectDisplaylist.SelectedIndex = 0
+                    Case DisplaylistSelectionMode.Default
+                        If item.Tag = curEntry.DisplaylistSelection.DefaultGeolayer Then
+                            ComboBoxEx_SelectDisplaylist.SelectedItem = item
+                        End If
+                End Select
             Next
 
             Dim enTexTools As Boolean = Not colorImages.Contains(curItem.ImageIndex)
@@ -212,7 +219,7 @@ Public Class TextureGraphicFormatEditor
         Dim selItem As ComboItem = ComboBox_ColType.SelectedItem
         Dim id As String = selItem.Tag
 
-        LabelX_MaxPixels.Text = $"Maximal Pixels: {SM64Lib.Model.Fast3D.TextureManager.GetMaxPixls(N64Graphics.N64Graphics.StringCodec(id))}"
+        LabelX_MaxPixels.Text = $"Maximal Pixels: {GetMaxPixls(N64Graphics.N64Graphics.StringCodec(id))}"
 
         If Not loadingtexItemSettings Then
             UpdateTextureListItemSettings(id)
@@ -224,16 +231,24 @@ Public Class TextureGraphicFormatEditor
 
             For Each item As ListViewItem In ListViewEx1.SelectedItems
                 Dim mat As KeyValuePair(Of String, Material) = item.Tag
-                Dim curEntry As SM64Lib.Model.Fast3D.TextureFormatSettings.Entry = TextureFormatSettings.GetEntry(mat.Key)
+                Dim curEntry As TextureFormatSettings.Entry = TextureFormatSettings.GetEntry(mat.Key)
+
                 curEntry.IsScrollingTexture = CheckBoxX_EnableTextureAnimation.Checked
                 curEntry.TextureFormat = id
-                curEntry.SelectDisplaylistMode = CType(ComboBoxEx_SelectDisplaylist.SelectedItem, ComboItem).Tag
                 curEntry.EnableMirrorS = CheckBoxX_EnableMirrorS.Checked
                 curEntry.EnableMirrorT = CheckBoxX_EnableMirrorT.Checked
                 curEntry.EnableClampS = CheckBoxX_EnableClampS.Checked
                 curEntry.EnableClampT = CheckBoxX_EnableClampT.Checked
                 curEntry.EnableCrystalEffect = CheckBoxX_EnableCrystalEffect.Checked
                 curEntry.RotateFlip = CType(ComboBoxEx_RotateFlip.SelectedItem, ComboItem).Tag
+
+                Dim selDL As Object = CType(ComboBoxEx_SelectDisplaylist.SelectedItem, ComboItem).Tag
+                If TypeOf selDL Is DefaultGeolayers Then
+                    curEntry.DisplaylistSelection.SelectionMode = DisplaylistSelectionMode.Default
+                    curEntry.DisplaylistSelection.DefaultGeolayer = selDL
+                Else
+                    curEntry.DisplaylistSelection.SelectionMode = DisplaylistSelectionMode.Automatic
+                End If
             Next
 
         End If
