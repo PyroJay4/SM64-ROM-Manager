@@ -175,7 +175,7 @@ Public Class MainForm
     Private Sub LoadRecentROMs()
         tabGeneral.ItemPanel_RecentFiles.Items.Clear()
 
-        Dim di_Open As New ButtonItem With {.Text = Form_Main_Resources.Button_OpenRom, .SymbolSet = eSymbolSet.Material, .Symbol = "58055", .SymbolColor = Color.FromArgb(215, 172, 106), .ButtonStyle = eButtonStyle.ImageAndText, .SymbolSize = 12}
+        Dim di_Open As New ButtonItem With {.Text = Form_Main_Resources.Button_OpenRom, .Image = MyIcons.icons8_open_folder_16px, .ButtonStyle = eButtonStyle.ImageAndText} ', .SymbolSet = eSymbolSet.Material, .Symbol = "58055", .SymbolColor = Color.FromArgb(215, 172, 106), .SymbolSize = 12
         AddHandler di_Open.Click, AddressOf MenuItem_OpenROM_Click
         tabGeneral.ItemPanel_RecentFiles.Items.Add(di_Open)
 

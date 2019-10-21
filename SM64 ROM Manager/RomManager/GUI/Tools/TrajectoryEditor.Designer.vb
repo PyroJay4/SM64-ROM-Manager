@@ -172,9 +172,9 @@ Partial Class TrajectoryEditor
         resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX1.FocusCuesEnabled = False
+        Me.ButtonX1.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_add_subnode_16px
         Me.ButtonX1.Name = "ButtonX1"
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX1.Symbol = "57669"
         Me.ButtonX1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX1.SymbolSize = 12.0!
@@ -185,9 +185,9 @@ Partial Class TrajectoryEditor
         resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
+        Me.ButtonX2.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_subnode_16px
         Me.ButtonX2.Name = "ButtonX2"
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX2.Symbol = "57676"
         Me.ButtonX2.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonX2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX2.SymbolSize = 12.0!
@@ -198,6 +198,7 @@ Partial Class TrajectoryEditor
         resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX3.FocusCuesEnabled = False
+        Me.ButtonX3.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_export_16px
         Me.ButtonX3.Name = "ButtonX3"
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
@@ -207,6 +208,7 @@ Partial Class TrajectoryEditor
         resources.ApplyResources(Me.ButtonX4, "ButtonX4")
         Me.ButtonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX4.FocusCuesEnabled = False
+        Me.ButtonX4.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_import_16px
         Me.ButtonX4.Name = "ButtonX4"
         Me.ButtonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
@@ -256,6 +258,7 @@ Partial Class TrajectoryEditor
         resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX5.FocusCuesEnabled = False
+        Me.ButtonX5.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_save_16px
         Me.ButtonX5.Name = "ButtonX5"
         Me.ButtonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
@@ -265,9 +268,9 @@ Partial Class TrajectoryEditor
         resources.ApplyResources(Me.ButtonX6, "ButtonX6")
         Me.ButtonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX6.FocusCuesEnabled = False
+        Me.ButtonX6.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_move_node_up_16px
         Me.ButtonX6.Name = "ButtonX6"
         Me.ButtonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX6.Symbol = "58134"
         Me.ButtonX6.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX6.SymbolSize = 12.0!
         '
@@ -277,9 +280,9 @@ Partial Class TrajectoryEditor
         resources.ApplyResources(Me.ButtonX7, "ButtonX7")
         Me.ButtonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX7.FocusCuesEnabled = False
+        Me.ButtonX7.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_move_node_down_16px
         Me.ButtonX7.Name = "ButtonX7"
         Me.ButtonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX7.Symbol = "58131"
         Me.ButtonX7.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX7.SymbolSize = 12.0!
         '
@@ -290,9 +293,9 @@ Partial Class TrajectoryEditor
         Me.ButtonX8.AutoExpandOnClick = True
         Me.ButtonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX8.FocusCuesEnabled = False
+        Me.ButtonX8.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
         Me.ButtonX8.Name = "ButtonX8"
         Me.ButtonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX8.Symbol = "57669"
         Me.ButtonX8.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX8.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX8.SymbolSize = 12.0!
@@ -327,8 +330,6 @@ Partial Class TrajectoryEditor
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "TrajectoryEditor"

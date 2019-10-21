@@ -27,6 +27,8 @@ Partial Class Form_Stylemanager
         Me.CheckBoxX_KeepEditorControlBarBlue = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.CheckBoxX1 = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.CheckBoxX2 = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ComboBoxEx1
@@ -76,25 +78,31 @@ Partial Class Form_Stylemanager
         Me.CheckBoxX2.Name = "CheckBoxX2"
         Me.CheckBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.CheckBoxX1)
+        Me.Panel1.Controls.Add(Me.CheckBoxX2)
+        Me.Panel1.Controls.Add(Me.ComboBoxEx1)
+        Me.Panel1.Controls.Add(Me.CheckBoxX_KeepEditorControlBarBlue)
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.Name = "Panel1"
+        '
         'Form_Stylemanager
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BottomLeftCornerSize = 0
         Me.BottomRightCornerSize = 0
-        Me.Controls.Add(Me.CheckBoxX2)
-        Me.Controls.Add(Me.CheckBoxX1)
-        Me.Controls.Add(Me.CheckBoxX_KeepEditorControlBarBlue)
-        Me.Controls.Add(Me.ComboBoxEx1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Controls.Add(Me.Panel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Form_Stylemanager"
         Me.ShowInTaskbar = False
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -103,4 +111,5 @@ Partial Class Form_Stylemanager
     Friend WithEvents CheckBoxX_KeepEditorControlBarBlue As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents CheckBoxX1 As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents CheckBoxX2 As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents Panel1 As Panel
 End Class

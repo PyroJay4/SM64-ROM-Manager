@@ -50,6 +50,13 @@
       <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar.Layout">
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Layout.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Layout.Design">
+      <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Layout.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
@@ -90,7 +97,9 @@
     <Compile Include="Classes\SerializedAssemblyMember.vb" />
     <Compile Include="Classes\SerializedAssemblyMemberParam.vb" />
     <Compile Include="Classes\SerializedAssemblyMemberType.vb" />
-    <Compile Include="GUI\InputDialog.Designer.vb" />
+    <Compile Include="GUI\InputDialog.Designer.vb">
+      <DependentUpon>InputDialog.vb</DependentUpon>
+    </Compile>
     <Compile Include="GUI\InputDialog.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -140,8 +149,16 @@
     <Compile Include="GUI\TweakViewer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MyIcons.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyIcons.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GUI\InputDialog.resx">
+      <DependentUpon>InputDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ObjectCatalog.resx">
       <DependentUpon>ObjectCatalog.vb</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +184,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TweakViewer.resx">
       <DependentUpon>TweakViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyIcons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyIcons.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +249,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Enum.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_checkmark_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_delete_sign_16px_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

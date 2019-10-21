@@ -546,12 +546,6 @@
     <Compile Include="RomManager\GUI\Other\Form_ErrorDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.Designer.vb">
-      <DependentUpon>Form_SelectImportModelFormat.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="RomManager\Components\LM Custom ListViewItems.vb" />
     <Compile Include="RomManager\GUI\Other\Form_About.Designer.vb">
       <DependentUpon>Form_About.vb</DependentUpon>
@@ -803,9 +797,6 @@
     <EmbeddedResource Include="RomManager\GUI\Other\Form_ErrorDialog.resx">
       <DependentUpon>Form_ErrorDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Form_SelectImportModelFormat.resx">
-      <DependentUpon>Form_SelectImportModelFormat.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Other\Form_About.resx">
       <DependentUpon>Form_About.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -912,6 +903,72 @@
     <None Include="Resources\Save_18px.png" />
     <None Include="Resources\Save_19px.png" />
     <None Include="Resources\EditPicture_32px.png" />
+    <None Include="Resources\icons8_open_folder_16px.png" />
+    <None Include="Resources\icons8_save_16px.png" />
+    <None Include="Resources\icons8_controller_30px.png" />
+    <None Include="Resources\icons8_controller_16px.png" />
+    <None Include="Resources\icons8_cancel_16px.png" />
+    <None Include="Resources\icons8_text_16px.png" />
+    <None Include="Resources\icons8_music_16px.png" />
+    <None Include="Resources\icons8_plugin_16px.png" />
+    <None Include="Resources\icons8_support_16px.png" />
+    <None Include="Resources\icons8_settings_16px.png" />
+    <None Include="Resources\icons8_help_16px.png" />
+    <None Include="Resources\icons8_info_16px.png" />
+    <None Include="Resources\icons8_high_importance_16px.png" />
+    <None Include="Resources\icons8_about_16px.png" />
+    <None Include="Resources\icons8_downloading_updates_16px.png" />
+    <None Include="Resources\icons8_paper_plane_16px.png" />
+    <None Include="Resources\icons8_message_16px.png" />
+    <None Include="Resources\icons8_color_dropper_16px.png" />
+    <None Include="Resources\icons8_plus_math_16px.png" />
+    <None Include="Resources\icons8_plus_16px.png" />
+    <None Include="Resources\icons8_delete_sign_16px.png" />
+    <None Include="Resources\icons8_cancel_16px_1.png" />
+    <None Include="Resources\icons8_trash_16px.png" />
+    <None Include="Resources\icons8_delete_2_16px.png" />
+    <None Include="Resources\icons8_edit_16px.png" />
+    <None Include="Resources\icons8_pills_16px_1.png" />
+    <None Include="Resources\icons8_syringe_16px.png" />
+    <None Include="Resources\icons8_edit_node_16px.png" />
+    <None Include="Resources\icons8_add_node_16px.png" />
+    <None Include="Resources\icons8_add_subnode_16px.png" />
+    <None Include="Resources\icons8_delete_subnode_16px.png" />
+    <None Include="Resources\icons8_delete_node_16px.png" />
+    <None Include="Resources\icons8_move_node_down_16px.png" />
+    <None Include="Resources\icons8_move_node_up_16px.png" />
+    <None Include="Resources\icons8_filled_star_location_16px.png" />
+    <None Include="Resources\icons8_variation_16px.png" />
+    <None Include="Resources\icons8_coins_16px.png" />
+    <None Include="Resources\icons8_map_16px.png" />
+    <None Include="Resources\icons8_copy_16px_1.png" />
+    <None Include="Resources\icons8_forward_16px.png" />
+    <None Include="Resources\icons8_folder_16px.png" />
+    <None Include="Resources\icons8_copy_16px_2.png" />
+    <None Include="Resources\icons8_arrow_16px.png" />
+    <None Include="Resources\icons8_arrow_40px.png" />
+    <None Include="Resources\icons8_refresh_16px.png" />
+    <None Include="Resources\icons8_undo_16px.png" />
+    <None Include="Resources\icons8_redo_16px.png" />
+    <None Include="Resources\icons8_download_16px.png" />
+    <None Include="Resources\icons8_export_16px.png" />
+    <None Include="Resources\icons8_import_16px.png" />
+    <None Include="Resources\icons8_upload_16px.png" />
+    <None Include="Resources\icons8_plus_math_32px_2.png" />
+    <None Include="Resources\icons8_paste_16px.png" />
+    <None Include="Resources\icons8_cut_16px.png" />
+    <None Include="Resources\icons8_paste_special_16px.png" />
+    <None Include="Resources\icons8_paste_32px.png" />
+    <None Include="Resources\icons8_delete_sign_32px.png" />
+    <None Include="Resources\icons8_export_32px.png" />
+    <None Include="Resources\icons8_import_32px.png" />
+    <None Include="Resources\icons8_split_vertical_30px.png" />
+    <None Include="Resources\icons8_split_vertical_16px.png" />
+    <None Include="Resources\icons8_merge_horizontal_16px.png" />
+    <None Include="Resources\icons8_chevron_up_16px.png" />
+    <None Include="Resources\icons8_chevron_down_16px.png" />
+    <None Include="Resources\icons8_screenshot_32px.png" />
+    <None Include="Resources\icons8_fit_to_width_32px.png" />
     <Content Include="RomManager\Others\RomMap.txt" />
   </ItemGroup>
   <ItemGroup>

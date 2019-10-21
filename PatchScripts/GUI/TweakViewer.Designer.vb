@@ -402,6 +402,8 @@ Partial Class TweakViewer
         Me.CircularProgress1.Location = New System.Drawing.Point(204, 267)
         Me.CircularProgress1.Name = "CircularProgress1"
         Me.CircularProgress1.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot
+        Me.CircularProgress1.SetVisibleStateOnStart = True
+        Me.CircularProgress1.SetVisibleStateOnStop = True
         Me.CircularProgress1.Size = New System.Drawing.Size(75, 75)
         Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         Me.CircularProgress1.TabIndex = 45
@@ -434,8 +436,6 @@ Partial Class TweakViewer
         Me.Controls.Add(Me.ButtonX_AddNew)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ItemListBox1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "TweakViewer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

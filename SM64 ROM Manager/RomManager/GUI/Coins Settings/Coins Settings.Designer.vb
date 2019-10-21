@@ -73,6 +73,7 @@ Partial Class Form_CoinsSettings
         Me.ButtonX_SaveSettings.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_SaveSettings.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_SaveSettings.FocusCuesEnabled = False
+        Me.ButtonX_SaveSettings.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_save_16px
         resources.ApplyResources(Me.ButtonX_SaveSettings, "ButtonX_SaveSettings")
         Me.ButtonX_SaveSettings.Name = "ButtonX_SaveSettings"
         Me.ButtonX_SaveSettings.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -90,6 +91,7 @@ Partial Class Form_CoinsSettings
         Me.ButtonX_Remove3DCoins.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_Remove3DCoins.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_Remove3DCoins.FocusCuesEnabled = False
+        Me.ButtonX_Remove3DCoins.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         resources.ApplyResources(Me.ButtonX_Remove3DCoins, "ButtonX_Remove3DCoins")
         Me.ButtonX_Remove3DCoins.Name = "ButtonX_Remove3DCoins"
         Me.ButtonX_Remove3DCoins.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -370,9 +372,7 @@ Partial Class Form_CoinsSettings
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "Form_CoinsSettings"
         Me.TopLeftCornerSize = 0

@@ -26,38 +26,42 @@ Partial Class TweakScriptEditor
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TweakScriptEditor))
         Me.TextBoxX_ScriptDescription = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.TextBoxX_ScriptName = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.CheckBoxX_TweakScript = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.CheckBoxX_CSharpScript = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.CheckBoxX_VBScript = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.ButtonX_ShowObjectCatalog = New DevComponents.DotNetBar.ButtonX()
-        Me.ButtonX_RunScript = New DevComponents.DotNetBar.ButtonX()
-        Me.ButtonItem_RunInTestMode = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
-        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonX2 = New DevComponents.DotNetBar.ButtonX()
-        Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonX_CheckForErros = New DevComponents.DotNetBar.ButtonX()
         Me.ItemListBox1 = New SM64_ROM_Manager.Publics.Controls.ItemListBox()
-        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX4 = New DevComponents.DotNetBar.ButtonX()
         Me.TextBoxX_ReferenceName = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LayoutControl1 = New DevComponents.DotNetBar.Layout.LayoutControl()
+        Me.LayoutControlItem1 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
+        Me.LayoutControlItem2 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
+        Me.LayoutControlItem3 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
+        Me.LayoutControlItem4 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Bar1 = New DevComponents.DotNetBar.Bar()
+        Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_NewTemplate = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_SaveToFile = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_LoadFromFile = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_RunInTestMode = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_CheckForErrors = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_ShowObjectCatalog = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel1.SuspendLayout()
-        Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
+        Me.LayoutControl1.SuspendLayout()
+        Me.Panel4.SuspendLayout()
+        CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBoxX_ScriptDescription
@@ -74,15 +78,6 @@ Partial Class TweakScriptEditor
         Me.TextBoxX_ScriptDescription.Name = "TextBoxX_ScriptDescription"
         Me.TextBoxX_ScriptDescription.PreventEnterBeep = True
         '
-        'LabelX2
-        '
-        '
-        '
-        '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX2, "LabelX2")
-        Me.LabelX2.Name = "LabelX2"
-        '
         'TextBoxX_ScriptName
         '
         Me.TextBoxX_ScriptName.BackColor = System.Drawing.Color.White
@@ -96,24 +91,6 @@ Partial Class TweakScriptEditor
         resources.ApplyResources(Me.TextBoxX_ScriptName, "TextBoxX_ScriptName")
         Me.TextBoxX_ScriptName.Name = "TextBoxX_ScriptName"
         Me.TextBoxX_ScriptName.PreventEnterBeep = True
-        '
-        'LabelX1
-        '
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX1, "LabelX1")
-        Me.LabelX1.Name = "LabelX1"
-        '
-        'LabelX3
-        '
-        '
-        '
-        '
-        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX3, "LabelX3")
-        Me.LabelX3.Name = "LabelX3"
         '
         'CheckBoxX_TweakScript
         '
@@ -168,114 +145,9 @@ Partial Class TweakScriptEditor
         resources.ApplyResources(Me.Panel2, "Panel2")
         Me.Panel2.Name = "Panel2"
         '
-        'LabelX4
-        '
-        resources.ApplyResources(Me.LabelX4, "LabelX4")
-        '
-        '
-        '
-        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX4.Name = "LabelX4"
-        '
-        'TableLayoutPanel1
-        '
-        resources.ApplyResources(Me.TableLayoutPanel1, "TableLayoutPanel1")
-        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.Transparent
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonX_ShowObjectCatalog, 4, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonX_RunScript, 3, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonX1, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonX2, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonX_CheckForErros, 2, 0)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        '
-        'ButtonX_ShowObjectCatalog
-        '
-        Me.ButtonX_ShowObjectCatalog.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX_ShowObjectCatalog.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX_ShowObjectCatalog.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX_ShowObjectCatalog, "ButtonX_ShowObjectCatalog")
-        Me.ButtonX_ShowObjectCatalog.Name = "ButtonX_ShowObjectCatalog"
-        Me.ButtonX_ShowObjectCatalog.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        '
-        'ButtonX_RunScript
-        '
-        Me.ButtonX_RunScript.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX_RunScript.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX_RunScript.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX_RunScript, "ButtonX_RunScript")
-        Me.ButtonX_RunScript.Name = "ButtonX_RunScript"
-        Me.ButtonX_RunScript.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_RunScript.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_RunInTestMode})
-        Me.ButtonX_RunScript.Symbol = "57399"
-        Me.ButtonX_RunScript.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ButtonX_RunScript.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-        Me.ButtonX_RunScript.SymbolSize = 12.0!
-        '
-        'ButtonItem_RunInTestMode
-        '
-        Me.ButtonItem_RunInTestMode.AutoCheckOnClick = True
-        Me.ButtonItem_RunInTestMode.Checked = True
-        Me.ButtonItem_RunInTestMode.GlobalItem = False
-        Me.ButtonItem_RunInTestMode.Name = "ButtonItem_RunInTestMode"
-        resources.ApplyResources(Me.ButtonItem_RunInTestMode, "ButtonItem_RunInTestMode")
-        '
-        'ButtonX1
-        '
-        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX1.AutoExpandOnClick = True
-        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX1.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
-        Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem2})
-        '
-        'ButtonItem1
-        '
-        Me.ButtonItem1.GlobalItem = False
-        Me.ButtonItem1.Name = "ButtonItem1"
-        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
-        '
-        'ButtonItem2
-        '
-        Me.ButtonItem2.GlobalItem = False
-        Me.ButtonItem2.Name = "ButtonItem2"
-        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
-        '
-        'ButtonX2
-        '
-        Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX2.AutoExpandOnClick = True
-        Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX2.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
-        Me.ButtonX2.Name = "ButtonX2"
-        Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX2.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem3, Me.ButtonItem4})
-        '
-        'ButtonItem3
-        '
-        Me.ButtonItem3.GlobalItem = False
-        Me.ButtonItem3.Name = "ButtonItem3"
-        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
-        '
-        'ButtonItem4
-        '
-        Me.ButtonItem4.GlobalItem = False
-        Me.ButtonItem4.Name = "ButtonItem4"
-        resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
-        '
-        'ButtonX_CheckForErros
-        '
-        Me.ButtonX_CheckForErros.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX_CheckForErros.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX_CheckForErros.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX_CheckForErros, "ButtonX_CheckForErros")
-        Me.ButtonX_CheckForErros.Name = "ButtonX_CheckForErros"
-        Me.ButtonX_CheckForErros.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        '
         'ItemListBox1
         '
+        resources.ApplyResources(Me.ItemListBox1, "ItemListBox1")
         '
         '
         '
@@ -285,25 +157,14 @@ Partial Class TweakScriptEditor
         Me.ItemListBox1.DragDropSupport = True
         Me.ItemListBox1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
         Me.ItemListBox1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        resources.ApplyResources(Me.ItemListBox1, "ItemListBox1")
         Me.ItemListBox1.Name = "ItemListBox1"
         Me.ItemListBox1.ReserveLeftSpace = False
         Me.ItemListBox1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        '
-        'LabelX5
-        '
-        '
-        '
-        '
-        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX5, "LabelX5")
-        Me.LabelX5.Name = "LabelX5"
         '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
         Me.Panel3.Controls.Add(Me.TableLayoutPanel2)
-        Me.Panel3.Controls.Add(Me.LabelX5)
         Me.Panel3.Controls.Add(Me.ItemListBox1)
         resources.ApplyResources(Me.Panel3, "Panel3")
         Me.Panel3.Name = "Panel3"
@@ -344,6 +205,7 @@ Partial Class TweakScriptEditor
         '
         'TextBoxX_ReferenceName
         '
+        resources.ApplyResources(Me.TextBoxX_ReferenceName, "TextBoxX_ReferenceName")
         Me.TextBoxX_ReferenceName.BackColor = System.Drawing.Color.White
         '
         '
@@ -352,64 +214,209 @@ Partial Class TweakScriptEditor
         Me.TextBoxX_ReferenceName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TextBoxX_ReferenceName.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_ReferenceName.ForeColor = System.Drawing.Color.Black
-        resources.ApplyResources(Me.TextBoxX_ReferenceName, "TextBoxX_ReferenceName")
         Me.TextBoxX_ReferenceName.Name = "TextBoxX_ReferenceName"
         Me.TextBoxX_ReferenceName.PreventEnterBeep = True
+        '
+        'LayoutControl1
+        '
+        Me.LayoutControl1.BackColor = System.Drawing.Color.Transparent
+        Me.LayoutControl1.Controls.Add(Me.TextBoxX_ScriptName)
+        Me.LayoutControl1.Controls.Add(Me.TextBoxX_ScriptDescription)
+        Me.LayoutControl1.Controls.Add(Me.Panel1)
+        Me.LayoutControl1.Controls.Add(Me.Panel3)
+        resources.ApplyResources(Me.LayoutControl1, "LayoutControl1")
+        Me.LayoutControl1.Name = "LayoutControl1"
+        '
+        '
+        '
+        Me.LayoutControl1.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4})
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.TextBoxX_ScriptName
+        Me.LayoutControlItem1.Height = 45
+        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(120, 0)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        resources.ApplyResources(Me.LayoutControlItem1, "LayoutControlItem1")
+        Me.LayoutControlItem1.TextPosition = DevComponents.DotNetBar.Layout.eLayoutPosition.Top
+        Me.LayoutControlItem1.Width = 100
+        Me.LayoutControlItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'LayoutControlItem2
+        '
+        Me.LayoutControlItem2.Control = Me.TextBoxX_ScriptDescription
+        Me.LayoutControlItem2.Height = 200
+        Me.LayoutControlItem2.MinSize = New System.Drawing.Size(120, 0)
+        Me.LayoutControlItem2.Name = "LayoutControlItem2"
+        resources.ApplyResources(Me.LayoutControlItem2, "LayoutControlItem2")
+        Me.LayoutControlItem2.TextPosition = DevComponents.DotNetBar.Layout.eLayoutPosition.Top
+        Me.LayoutControlItem2.Width = 100
+        Me.LayoutControlItem2.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.Panel1
+        Me.LayoutControlItem3.Height = 48
+        Me.LayoutControlItem3.MinSize = New System.Drawing.Size(64, 18)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        resources.ApplyResources(Me.LayoutControlItem3, "LayoutControlItem3")
+        Me.LayoutControlItem3.TextPosition = DevComponents.DotNetBar.Layout.eLayoutPosition.Top
+        Me.LayoutControlItem3.Width = 100
+        Me.LayoutControlItem3.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.Control = Me.Panel3
+        Me.LayoutControlItem4.Height = 100
+        Me.LayoutControlItem4.HeightType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        Me.LayoutControlItem4.MinSize = New System.Drawing.Size(64, 18)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        resources.ApplyResources(Me.LayoutControlItem4, "LayoutControlItem4")
+        Me.LayoutControlItem4.TextPosition = DevComponents.DotNetBar.Layout.eLayoutPosition.Top
+        Me.LayoutControlItem4.Width = 100
+        Me.LayoutControlItem4.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.Transparent
+        Me.Panel4.Controls.Add(Me.LayoutControl1)
+        Me.Panel4.Controls.Add(Me.Panel2)
+        resources.ApplyResources(Me.Panel4, "Panel4")
+        Me.Panel4.Name = "Panel4"
+        '
+        'Bar1
+        '
+        resources.ApplyResources(Me.Bar1, "Bar1")
+        Me.Bar1.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar
+        Me.Bar1.AntiAlias = True
+        Me.Bar1.BarType = DevComponents.DotNetBar.eBarType.MenuBar
+        Me.Bar1.IsMaximized = False
+        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem5, Me.ButtonItem4, Me.ButtonItem_ShowObjectCatalog})
+        Me.Bar1.MenuBar = True
+        Me.Bar1.Name = "Bar1"
+        Me.Bar1.Stretch = True
+        Me.Bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Bar1.TabStop = False
+        '
+        'ButtonItem5
+        '
+        Me.ButtonItem5.Name = "ButtonItem5"
+        Me.ButtonItem5.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_NewTemplate, Me.ButtonItem_SaveToFile, Me.ButtonItem_LoadFromFile})
+        resources.ApplyResources(Me.ButtonItem5, "ButtonItem5")
+        '
+        'ButtonItem_NewTemplate
+        '
+        Me.ButtonItem_NewTemplate.Name = "ButtonItem_NewTemplate"
+        Me.ButtonItem_NewTemplate.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem2})
+        resources.ApplyResources(Me.ButtonItem_NewTemplate, "ButtonItem_NewTemplate")
+        '
+        'ButtonItem1
+        '
+        Me.ButtonItem1.GlobalItem = False
+        Me.ButtonItem1.Name = "ButtonItem1"
+        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
+        '
+        'ButtonItem2
+        '
+        Me.ButtonItem2.GlobalItem = False
+        Me.ButtonItem2.Name = "ButtonItem2"
+        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
+        '
+        'ButtonItem_SaveToFile
+        '
+        Me.ButtonItem_SaveToFile.BeginGroup = True
+        Me.ButtonItem_SaveToFile.GlobalItem = False
+        Me.ButtonItem_SaveToFile.Image = Global.PatchScripts.MyIcons.icons8_save_16px_1
+        Me.ButtonItem_SaveToFile.Name = "ButtonItem_SaveToFile"
+        resources.ApplyResources(Me.ButtonItem_SaveToFile, "ButtonItem_SaveToFile")
+        '
+        'ButtonItem_LoadFromFile
+        '
+        Me.ButtonItem_LoadFromFile.GlobalItem = False
+        Me.ButtonItem_LoadFromFile.Image = Global.PatchScripts.MyIcons.icons8_open_folder_16px_1
+        Me.ButtonItem_LoadFromFile.Name = "ButtonItem_LoadFromFile"
+        resources.ApplyResources(Me.ButtonItem_LoadFromFile, "ButtonItem_LoadFromFile")
+        '
+        'ButtonItem4
+        '
+        Me.ButtonItem4.Name = "ButtonItem4"
+        Me.ButtonItem4.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem3, Me.ButtonItem_RunInTestMode, Me.ButtonItem_CheckForErrors})
+        resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
+        '
+        'ButtonItem3
+        '
+        Me.ButtonItem3.Image = Global.PatchScripts.MyIcons.icons8_play_16px
+        Me.ButtonItem3.Name = "ButtonItem3"
+        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
+        '
+        'ButtonItem_RunInTestMode
+        '
+        Me.ButtonItem_RunInTestMode.AutoCheckOnClick = True
+        Me.ButtonItem_RunInTestMode.Checked = True
+        Me.ButtonItem_RunInTestMode.GlobalItem = False
+        Me.ButtonItem_RunInTestMode.Name = "ButtonItem_RunInTestMode"
+        resources.ApplyResources(Me.ButtonItem_RunInTestMode, "ButtonItem_RunInTestMode")
+        '
+        'ButtonItem_CheckForErrors
+        '
+        Me.ButtonItem_CheckForErrors.BeginGroup = True
+        Me.ButtonItem_CheckForErrors.Name = "ButtonItem_CheckForErrors"
+        resources.ApplyResources(Me.ButtonItem_CheckForErrors, "ButtonItem_CheckForErrors")
+        '
+        'ButtonItem_ShowObjectCatalog
+        '
+        Me.ButtonItem_ShowObjectCatalog.Name = "ButtonItem_ShowObjectCatalog"
+        resources.ApplyResources(Me.ButtonItem_ShowObjectCatalog, "ButtonItem_ShowObjectCatalog")
         '
         'TweakScriptEditor
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.TextBoxX_ScriptName)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.TableLayoutPanel1)
-        Me.Controls.Add(Me.LabelX4)
-        Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.LabelX3)
-        Me.Controls.Add(Me.TextBoxX_ScriptDescription)
-        Me.Controls.Add(Me.LabelX2)
-        Me.Controls.Add(Me.LabelX1)
+        Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Bar1)
         Me.Name = "TweakScriptEditor"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         Me.Panel1.ResumeLayout(False)
-        Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.LayoutControl1.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
+        CType(Me.Bar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
     Private WithEvents TextBoxX_ScriptDescription As DevComponents.DotNetBar.Controls.TextBoxX
-    Private WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
     Private WithEvents TextBoxX_ScriptName As DevComponents.DotNetBar.Controls.TextBoxX
-    Private WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
-    Private WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
     Friend WithEvents CheckBoxX_TweakScript As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents Panel1 As Panel
     Friend WithEvents CheckBoxX_CSharpScript As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents CheckBoxX_VBScript As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents Panel2 As Panel
-    Private WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem2 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonX2 As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents ButtonItem3 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ItemListBox1 As SM64_ROM_Manager.Publics.Controls.ItemListBox
-    Private WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Panel3 As Panel
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
     Friend WithEvents TextBoxX_ReferenceName As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents ButtonX3 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ButtonX4 As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents ButtonX_CheckForErros As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents ButtonX_RunScript As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LayoutControl1 As DevComponents.DotNetBar.Layout.LayoutControl
+    Friend WithEvents LayoutControlItem1 As DevComponents.DotNetBar.Layout.LayoutControlItem
+    Friend WithEvents LayoutControlItem2 As DevComponents.DotNetBar.Layout.LayoutControlItem
+    Friend WithEvents LayoutControlItem3 As DevComponents.DotNetBar.Layout.LayoutControlItem
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents LayoutControlItem4 As DevComponents.DotNetBar.Layout.LayoutControlItem
+    Friend WithEvents Bar1 As DevComponents.DotNetBar.Bar
+    Friend WithEvents ButtonItem5 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_NewTemplate As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_SaveToFile As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_LoadFromFile As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem2 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_CheckForErrors As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem3 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_RunInTestMode As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonX_ShowObjectCatalog As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents ButtonItem_ShowObjectCatalog As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
 End Class

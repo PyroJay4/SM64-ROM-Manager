@@ -289,7 +289,7 @@ End Module
 
         If sender Is CheckBoxX_TweakScript Then
             Panel3.Visible = Not sender.Checked
-            ButtonX_CheckForErros.Enabled = Not sender.Checked
+            ButtonItem_CheckForErrors.Enabled = Not sender.Checked
         End If
     End Sub
 
@@ -338,15 +338,15 @@ End Module
         LoadDefaultScript(ScriptType.CSharp)
     End Sub
 
-    Private Sub ButtonItem3_Click(sender As Object, e As EventArgs) Handles ButtonItem3.Click
+    Private Sub ButtonItem3_Click(sender As Object, e As EventArgs) Handles ButtonItem_SaveToFile.Click
         SaveToFile()
     End Sub
 
-    Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem4.Click
+    Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem_LoadFromFile.Click
         LoadFromFile()
     End Sub
 
-    Private Sub ButtonX5_Click(sender As Object, e As EventArgs) Handles ButtonX_CheckForErros.Click
+    Private Sub ButtonX5_Click(sender As Object, e As EventArgs) Handles ButtonItem_CheckForErrors.Click
         SaveAllData()
         TestScript()
     End Sub
@@ -359,11 +359,11 @@ End Module
         runInTestMode = sender.Checked
     End Sub
 
-    Private Sub ButtonX_RunScript_Click(sender As Object, e As EventArgs) Handles ButtonX_RunScript.Click
+    Private Sub ButtonX_RunScript_Click(sender As Object, e As EventArgs)
         RunScript()
     End Sub
 
-    Private Sub ButtonX_ShowObjectCatalog_Click(sender As Object, e As EventArgs) Handles ButtonX_ShowObjectCatalog.Click
+    Private Sub ButtonX_ShowObjectCatalog_Click(sender As Object, e As EventArgs) Handles ButtonItem_ShowObjectCatalog.Click, ButtonItem_ShowObjectCatalog.Click
         Static frm As ObjectCatalog
         If frm Is Nothing Then
             frm = New ObjectCatalog
@@ -372,4 +372,11 @@ End Module
         frm.Show()
     End Sub
 
+    Private Sub ButtonItem_RunInTestMode_CheckedChanged(sender As Object, e As EventArgs) Handles ButtonItem_RunInTestMode.CheckedChanged
+
+    End Sub
+
+    Private Sub CheckBoxX_ScriptChange_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxX_VBScript.CheckedChanged, CheckBoxX_TweakScript.CheckedChanged, CheckBoxX_CSharpScript.CheckedChanged
+
+    End Sub
 End Class

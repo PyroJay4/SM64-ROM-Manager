@@ -27,27 +27,35 @@ Public Class ItemBoxContentEditor
         End Get
     End Property
 
-    Private Sub AdvPropertyGrid1_PropertyTree_Paint(sender As Object, e As PaintEventArgs) Handles PropertyTree.Paint
+    Private Sub UpdateBParamNames()
         Dim obj As ItemBoxContentEntry = SelectedEntry
         If obj IsNot Nothing Then
+            Dim info As BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehavAddress)
             For i As Byte = 1 To 2
                 Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
                 If n IsNot Nothing Then
-                    If n.TagString = "" Then
-                        Dim info As BehaviorInfo = BehaviorInfos.GetByBehaviorAddress(obj.BehavAddress)
-                        Dim param As BehaviorInfo.BParam = info?.GetValue($"BParam{i}")
-                        If param IsNot Nothing Then
-                            If param.Name <> "" Then
-                                n.Text = param.Name
-                                n.TagString = param.Name
-                            End If
-                        End If
-                    ElseIf n.Tag <> n.Text Then
-                        n.Text = n.Tag
+                    Dim param As BehaviorInfo.BParam = info?.GetValue($"BParam{i}")
+                    If param IsNot Nothing AndAlso param.Name <> "" Then
+                        n.Text = param.Name
+                        n.TagString = param.Name
+                    Else
+                        n.Text = $"Behavior Param {i}"
+                        n.TagString = n.Text
                     End If
                 End If
             Next
         End If
+    End Sub
+
+    Private Sub AdvPropertyGrid1_PropertyTree_Paint(sender As Object, e As PaintEventArgs) Handles PropertyTree.Paint
+        'Property names keep reverting back to their attribute-defined values when the property is selected.
+        'This is the ugly workaround
+        For i As Byte = 1 To 2
+            Dim n As Node = AdvPropertyGrid1.GetPropertyNode($"BParam{i}")
+            If n IsNot Nothing AndAlso n.TagString <> "" AndAlso n.TagString <> n.Text Then
+                n.Text = n.TagString
+            End If
+        Next
     End Sub
 
     Private Sub ItemBoxContentEditor_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -77,11 +85,15 @@ Public Class ItemBoxContentEditor
         Next
         AdvPropertyGrid1.SuspendLayout()
         AdvPropertyGrid1.SelectedObjects = list.ToArray
+        UpdateBParamNames()
         AdvPropertyGrid1.RefreshPropertyValues()
         AdvPropertyGrid1.ResumeLayout()
     End Sub
 
     Private Sub AdvPropertyGrid1_PropertyValueChanged(sender As Object, e As PropertyChangedEventArgs) Handles AdvPropertyGrid1.PropertyValueChanged
+        If e.PropertyName = "BehavAddress" Then
+            UpdateBParamNames()
+        End If
         For Each lvi As ListViewItem In ListViewEx1.SelectedItems
             UpdateLvi(lvi)
         Next

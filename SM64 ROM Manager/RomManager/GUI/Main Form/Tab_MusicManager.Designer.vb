@@ -367,9 +367,9 @@ Partial Class Tab_MusicManager
         Me.ButtonX_MS_RemoveSequence.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         resources.ApplyResources(Me.ButtonX_MS_RemoveSequence, "ButtonX_MS_RemoveSequence")
         Me.ButtonX_MS_RemoveSequence.FocusCuesEnabled = False
+        Me.ButtonX_MS_RemoveSequence.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.ButtonX_MS_RemoveSequence.Name = "ButtonX_MS_RemoveSequence"
         Me.ButtonX_MS_RemoveSequence.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_MS_RemoveSequence.Symbol = "57676"
         Me.ButtonX_MS_RemoveSequence.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonX_MS_RemoveSequence.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX_MS_RemoveSequence.SymbolSize = 12.0!
@@ -379,10 +379,10 @@ Partial Class Tab_MusicManager
         Me.ButtonX_MS_AddSequence.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_MS_AddSequence.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_MS_AddSequence.FocusCuesEnabled = False
+        Me.ButtonX_MS_AddSequence.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
         resources.ApplyResources(Me.ButtonX_MS_AddSequence, "ButtonX_MS_AddSequence")
         Me.ButtonX_MS_AddSequence.Name = "ButtonX_MS_AddSequence"
         Me.ButtonX_MS_AddSequence.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_MS_AddSequence.Symbol = "57669"
         Me.ButtonX_MS_AddSequence.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX_MS_AddSequence.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX_MS_AddSequence.SymbolSize = 12.0!

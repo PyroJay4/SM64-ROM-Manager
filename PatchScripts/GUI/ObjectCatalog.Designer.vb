@@ -32,8 +32,8 @@ Partial Class ObjectCatalog
         Me.ElementStyle1 = New DevComponents.DotNetBar.ElementStyle()
         Me.TableLayoutPanel_2 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel_1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.CircularProgress1 = New DevComponents.DotNetBar.Controls.CircularProgress()
         Me.LabelX_MemberInfo = New DevComponents.DotNetBar.LabelX()
+        Me.CircularProgress1 = New DevComponents.DotNetBar.Controls.CircularProgress()
         CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel_2.SuspendLayout()
         Me.TableLayoutPanel_1.SuspendLayout()
@@ -137,6 +137,19 @@ Partial Class ObjectCatalog
         Me.TableLayoutPanel_1.TabIndex = 3
         Me.TableLayoutPanel_1.Visible = False
         '
+        'LabelX_MemberInfo
+        '
+        '
+        '
+        '
+        Me.LabelX_MemberInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX_MemberInfo.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LabelX_MemberInfo.Location = New System.Drawing.Point(3, 373)
+        Me.LabelX_MemberInfo.Name = "LabelX_MemberInfo"
+        Me.LabelX_MemberInfo.Size = New System.Drawing.Size(794, 74)
+        Me.LabelX_MemberInfo.TabIndex = 3
+        Me.LabelX_MemberInfo.TextLineAlignment = System.Drawing.StringAlignment.Near
+        '
         'CircularProgress1
         '
         '
@@ -151,19 +164,6 @@ Partial Class ObjectCatalog
         Me.CircularProgress1.Size = New System.Drawing.Size(75, 75)
         Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         Me.CircularProgress1.TabIndex = 5
-        '
-        'LabelX_MemberInfo
-        '
-        '
-        '
-        '
-        Me.LabelX_MemberInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX_MemberInfo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelX_MemberInfo.Location = New System.Drawing.Point(3, 373)
-        Me.LabelX_MemberInfo.Name = "LabelX_MemberInfo"
-        Me.LabelX_MemberInfo.Size = New System.Drawing.Size(794, 74)
-        Me.LabelX_MemberInfo.TabIndex = 3
-        Me.LabelX_MemberInfo.TextLineAlignment = System.Drawing.StringAlignment.Near
         '
         'ObjectCatalog
         '
