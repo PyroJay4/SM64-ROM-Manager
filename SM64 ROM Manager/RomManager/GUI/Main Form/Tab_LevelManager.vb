@@ -342,13 +342,15 @@ Public Class Tab_LevelManager
         ListBoxAdv_LM_Areas.Refresh()
 
         'Check if can add more areas
-        Button_LM_AddArea.Enabled = Controller.GetLevelAreasCount(CurrentLevelIndex) < 8
+        Button_LM_AddArea.Enabled = Controller.GetLevelAreasCount(CurrentLevelIndex) < Byte.MaxValue
 
         LM_LoadingAreaList = False
 
         'Select first item, if possible
         If ListBoxAdv_LM_Areas.Items.Count > selectAreaIndex Then
-            ListBoxAdv_LM_Areas.SelectedItem = ListBoxAdv_LM_Areas.Items(selectAreaIndex)
+            Dim selItem As BaseItem = ListBoxAdv_LM_Areas.Items(selectAreaIndex)
+            ListBoxAdv_LM_Areas.SelectedItem = selItem
+            ListBoxAdv_LM_Areas.EnsureVisible(selItem)
         End If
     End Sub
 
@@ -359,9 +361,9 @@ Public Class Tab_LevelManager
         }
 
         ListBoxAdv_LM_Levels.Items.Add(btn)
-        ListBoxAdv_LM_Areas.EnsureVisible(btn)
         ListBoxAdv_LM_Levels.Refresh()
-        ListBoxAdv_LM_Levels.SelectedItem = ListBoxAdv_LM_Levels.Items(ListBoxAdv_LM_Levels.Items.Count - 1)
+        ListBoxAdv_LM_Levels.SelectedItem = btn
+        ListBoxAdv_LM_Levels.EnsureVisible(btn)
     End Sub
 
     Private Sub AddAreaToList(areaIndex As Byte)

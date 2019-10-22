@@ -19,6 +19,12 @@ Public Module General
     Public ReadOnly Property ObjectBankData As New ObjectBanks.Data.ObjectBankDataListCollection
     Public ReadOnly Property PatchClass As New PatchClass
 
+    Public ReadOnly Property IsDebugging As Boolean
+        Get
+            Return Debugger.IsAttached
+        End Get
+    End Property
+
     Public Function KeepInInt16Range(value As Double) As Short
         If value > Short.MaxValue Then
             value = Short.MaxValue

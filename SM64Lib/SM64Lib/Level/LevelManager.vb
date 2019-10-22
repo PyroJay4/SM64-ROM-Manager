@@ -339,15 +339,12 @@ Namespace Levels
             Next
 
             'Write Geolayouts
-            Dim GeoIndex As Integer = 0
+            Dim geoOffset As Integer = &H5F00
             For Each a As LevelArea In lvl.Areas
-                Dim geooffset As Integer = &H5000 + GeoIndex * &H1E0
-                a.GeolayoutOffset = lvl.Bank0x19.BankAddress + geooffset
-
-                a.Geolayout.Write(lvl.Bank0x19.Data, geooffset)
-                a.Geolayout.NewGeoOffset = lvl.Bank0x19.RomStart + geooffset
-
-                GeoIndex += 1
+                geoOffset -= HexRoundUp1(a.Geolayout.Length) + &H50
+                a.GeolayoutOffset = lvl.Bank0x19.BankAddress + geoOffset
+                a.Geolayout.Write(lvl.Bank0x19.Data, geoOffset)
+                a.Geolayout.NewGeoOffset = lvl.Bank0x19.RomStart + geoOffset
             Next
 
             'Füge Show-Dialog-Command & 2D-Camera-Object ein

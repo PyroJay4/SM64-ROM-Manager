@@ -18,7 +18,7 @@ Namespace Global.SM64Lib.Geolayout
 
         Public ReadOnly Property Length As Integer
             Get
-                Dim tLength As Integer = 0
+                Dim tLength As Integer = Geopointers.Count * 8
                 For Each c In Geolayoutscript
                     tLength += c.Length
                 Next

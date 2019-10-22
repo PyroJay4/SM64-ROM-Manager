@@ -439,6 +439,7 @@ Public Class RomManager
                 Levels.Add(curLevel)
             Catch ex As Exception
                 'Skip the Level
+                'If IsDebugging Then Throw
             End Try
         Next
     End Sub

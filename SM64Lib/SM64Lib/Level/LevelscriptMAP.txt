@@ -1,5 +1,4 @@
-﻿0x19000000 - 0x19005000: Levelscript
-0x19005000 - 0x19005F00: Geolayouts
+﻿0x19000000 - 0x19005F00: Levelscript, Geolayouts (aligned to end)
 0x19005F00 - 0x19005F80: Area Table (Contains inportant infos)
 0x19005F80 - 0x19005FC0: Pointers for 0xE-Bank per Area
 0x19006000 - 0x19006280: Water Table

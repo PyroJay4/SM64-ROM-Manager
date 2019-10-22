@@ -888,17 +888,29 @@ Public Class MainController
     End Sub
 
     Public Sub AddNewArea(levelIndex As Integer)
-        Dim ReamingIDs As New List(Of Byte) From {&H1, &H2, &H3, &H4, &H5, &H6, &H7, &H0}
-        Dim curLevel As Level = GetLevelAndArea(levelIndex, -1).level
+        'Dim ReamingIDs As New List(Of Byte) From {&H1, &H2, &H3, &H4, &H5, &H6, &H7, &H0}
+        Dim newID As Byte? = Nothing
+        Dim isAnyFree As Boolean = False
+        Dim curLevel As Level = GetLevelAndArea(levelIndex).level
 
         'Check for left area IDs
-        For Each a As LevelArea In curLevel.Areas
-            ReamingIDs.Remove(a.AreaID)
+        For i As Integer = 0 To Byte.MaxValue
+            If newID Is Nothing Then
+                Dim areaID As Byte = i
+
+                If Not curLevel.Areas.Where(Function(n) n.AreaID = areaID).Any Then
+                    If areaID <> 0 Then
+                        newID = areaID
+                    End If
+
+                    isAnyFree = True
+                End If
+            End If
         Next
 
         'Convert a model
-        If ReamingIDs.Count > 0 Then
-            Dim areaID As Byte = ReamingIDs(0)
+        If isAnyFree Then
+            Dim areaID As Byte = If(newID, 0)
             Dim res = GetModelViaModelConverter(False, False,,,, GetKeyForConvertAreaModel(RomManager.GameName, curLevel.LevelID, areaID))
 
             If res IsNot Nothing Then
