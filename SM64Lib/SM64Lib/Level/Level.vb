@@ -187,7 +187,8 @@ Namespace Global.SM64Lib.Levels
             If NewEntryIndex <> -1 Then
                 For Each obdCmd As ObjectBankDataCommand In ObjectBankData(BankIndex)(NewEntryIndex).Commands
                     Dim startIndex As Integer = Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1D)
-                    If Not (obdCmd.Command.Last = &H1A OrElse obdCmd.Command.Last = &H17) Then
+
+                    If Not (obdCmd.CommandType = &H1A OrElse obdCmd.CommandType = &H17) Then
                         startIndex += 1
                     End If
 
