@@ -43,7 +43,7 @@ Partial Class ImportLevelDialog
         Me.ButtonX_Import.Size = New System.Drawing.Size(110, 23)
         Me.ButtonX_Import.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX_Import.TabIndex = 2
-        Me.ButtonX_Import.Text = "Import Level"
+        Me.ButtonX_Import.Text = "Import"
         '
         'LabelX_Romfile
         '
@@ -100,6 +100,7 @@ Partial Class ImportLevelDialog
         '
         'ItemPanel_Areas
         '
+        Me.ItemPanel_Areas.AutoScroll = True
         '
         '
         '
