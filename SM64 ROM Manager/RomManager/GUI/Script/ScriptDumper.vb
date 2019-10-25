@@ -9,8 +9,8 @@ Public Class ScriptDumper(Of TCmd, eTypes)
 
     Private WithEvents PaintingControl1 As New PaintingControl With {.Dock = DockStyle.None, .Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right, .Location = Point.Empty, .AutoScroll = True, .BackColor = Color.Transparent} '.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top, .Location = New Point(0, 0)
     Public Property Script As BaseCommandCollection(Of TCmd, eTypes) = Nothing
-    Private Shared dicLabelItems As New Dictionary(Of String, LabelX)
-    Private Shared dicCommands As New Dictionary(Of String, BaseCommand(Of eTypes))
+    Private dicLabelItems As New Dictionary(Of String, LabelX)
+    Private dicCommands As New Dictionary(Of String, BaseCommand(Of eTypes))
 
     Public Sub New()
         SuspendLayout()
@@ -81,7 +81,7 @@ Public Class ScriptDumper(Of TCmd, eTypes)
         PaintingControl1.Invalidate()
     End Sub
 
-    Private Shared Sub DrawCmdText(e As PaintingObjectPaintEventArgs)
+    Private Sub DrawCmdText(e As PaintingObjectPaintEventArgs)
         Dim lb As LabelX = dicLabelItems(e.PaintingObject.Name)
         Dim bmp As New Bitmap(CInt(e.PaintingObject.Width), CInt(e.PaintingObject.Height))
         lb.Text = e.PaintingObject.Text
