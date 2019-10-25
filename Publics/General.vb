@@ -13,6 +13,7 @@ Imports System.Threading
 Imports SM64_ROM_Manager.SettingsManager
 Imports System.Reflection
 Imports Pilz.S3DFileParser
+Imports SM64Lib.Levels
 
 Public Module General
 
@@ -312,6 +313,45 @@ Public Module General
             value += 1
         Loop
     End Sub
+
+    Public Function GetNextAreaID(lvl As Level) As (newID As Byte?, isAnyFree As Boolean)
+        Dim newID As Byte? = Nothing
+        Dim isAnyFree As Boolean = False
+
+        'Check for left area IDs
+        For i As Integer = 0 To Byte.MaxValue
+            If newID Is Nothing Then
+                Dim areaID As Byte = i
+
+                If Not lvl.Areas.Where(Function(n) n.AreaID = areaID).Any Then
+                    If areaID <> 0 Then
+                        newID = areaID
+                    End If
+
+                    isAnyFree = True
+                End If
+            End If
+        Next
+
+        Return (newID, isAnyFree)
+    End Function
+
+    Public Function GetAllFreeAreaIDs(lvl As Level) As Stack(Of Byte)
+        Dim ids As New Stack(Of Byte)
+
+        Dim addAreaIfNotUsed =
+            Sub(areaID As Byte)
+                If Not lvl.Areas.Where(Function(n) n.AreaID = areaID).Any Then
+                    ids.Push(areaID)
+                End If
+            End Sub
+        addAreaIfNotUsed(0)
+        For i As Integer = Byte.MaxValue To 1 Step -1
+            addAreaIfNotUsed(i)
+        Next
+
+        Return ids
+    End Function
 
     Public Class Bits
         Shared Function ByteToBitArray(b As Byte) As Byte()

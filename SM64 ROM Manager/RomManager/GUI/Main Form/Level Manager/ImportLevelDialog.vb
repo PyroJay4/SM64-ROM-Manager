@@ -81,21 +81,12 @@ Public Class ImportLevelDialog
 
             If addAreasOnly Then
                 Dim areasToAsdd As New List(Of LevelArea)
-                Dim availableAreaIDs As New Stack(Of Integer)
+                Dim availableAreaIDs As Stack(Of Byte)
 
                 newLvl = destLevel
 
-                'Check out available Area IDs
-                Dim addAreaIfNotUsed =
-                    Sub(areaID As Byte)
-                        If Not newLvl.Areas.Where(Function(n) n.AreaID = areaID).Any Then
-                            availableAreaIDs.Push(areaID)
-                        End If
-                    End Sub
-                addAreaIfNotUsed(0)
-                For i As SByte = 7 To 1 Step -1
-                    addAreaIfNotUsed(i)
-                Next
+                'Get all available area ids
+                availableAreaIDs = Publics.GetAllFreeAreaIDs(destLevel)
 
                 'Get selected Areas
                 Dim areasToCopy As New List(Of LevelArea)
