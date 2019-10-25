@@ -533,7 +533,13 @@ Public Class RomManager
     ''' <param name="LevelID">The ID of the Level.</param>
     Public Function AddLevel(LevelID As Byte) As Levels.Level
         Dim newLevel As New Levels.Level(LevelID, LevelInfoData.GetByLevelID(LevelID).Index) 'GetLevelIndexFromID(LevelID)
+
         Levels.Add(newLevel)
+
+        If levelIDsToReset.Contains(LevelID) Then
+            levelIDsToReset.Remove(LevelID)
+        End If
+
         Return newLevel
     End Function
 
@@ -613,7 +619,7 @@ Public Class RomManager
         'Write Custom Background Pointer
         fs.Position = &H1202500
         For Each s As String In ("0A 02 00 00 0A 01 88 00 0A 02 00 00 0A 02 00 00 0A 02 00 00 0A 02 00 00 0A 01 48 00 0A 02 00 00 0A 01 48 00 0A 02 00 00 0A 02 00 00").Split(" ")
-            fs.WriteByte(CInt("&H" & s))
+            fs.WriteByte("&H" & s)
         Next
 
         'Patch Act-Selector
@@ -630,8 +636,8 @@ Public Class RomManager
         fs.Close()
 
         'Repaire patched music
-        MusicList.NeedToSaveSequences = True
         MusicList.Read(RomFile)
+        MusicList.NeedToSaveSequences = True
         MusicList.NeedToSaveSequenceNames = True
         MusicList.NeedToSaveNInsts = True
         MusicList.NeedToSaveMusicHackSettings = True
