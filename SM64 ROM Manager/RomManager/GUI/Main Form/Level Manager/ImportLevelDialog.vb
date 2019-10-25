@@ -200,6 +200,7 @@ Public Class ImportLevelDialog
         End If
 
         ItemPanel_Areas.ResumeLayout(False)
+        ItemPanel_Areas.Refresh()
         ItemPanel_Areas.Enabled = enableListBox
     End Sub
 
