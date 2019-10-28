@@ -1737,25 +1737,21 @@ Namespace Model.Conversion.Fast3DWriting
             Me.settings = settings
             impdata = New BinaryStreamData(s)
 
-            With settings
+            'Rom Address
+            definedSegPtr = False
 
-                'Rom Address
-                definedSegPtr = False
+            'Segmented Address
+            If settings.SegmentedAddress IsNot Nothing Then
+                startSegOffset = settings.SegmentedAddress And &HFFFFFF
+                curSeg = (settings.SegmentedAddress >> 24) And &HFF
+                definedSegPtr = True
+            End If
 
-                'Segmented Address
-                If .SegmentedAddress IsNot Nothing Then
-                    startSegOffset = .SegmentedAddress And &HFFFFFF
-                    curSeg = (.SegmentedAddress >> 24) And &HFF
-                    definedSegPtr = True
-                End If
+            'Shading
+            SetLightAndDarkValues(input.Shading)
 
-                'Shading
-                SetLightAndDarkValues(input.Shading)
-
-                'Convert
-                ImportObj(input)
-
-            End With
+            'Convert
+            ImportObj(input)
 
             ResetVariables()
 
