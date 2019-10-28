@@ -1303,7 +1303,7 @@ Namespace Model.Conversion.Fast3DWriting
             Dim alphaFormula As F3D_SETCOMBINE.Formula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.SHADE)
             Dim isTransPresent = ((mat.Color & &HFFUI) <> &HFFUI)
             If mat.HasTexture Then
-                Select Case (mat.Type)
+                Select Case mat.Type
                     Case MaterialType.None, MaterialType.TextureSolid, MaterialType.ColorSolid
                         alphaFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.ONE)
 
@@ -1327,7 +1327,7 @@ Namespace Model.Conversion.Fast3DWriting
                         End If
                 End Select
             Else
-                Select Case (mat.Type)
+                Select Case mat.Type
                     Case MaterialType.None, MaterialType.TextureSolid, MaterialType.ColorSolid
                         alphaFormula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.ACMUX.ONE)
 

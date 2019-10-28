@@ -278,8 +278,8 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
         End Function
     End Class
 
-
     Public Class F3D_SETCOMBINE
+
         Public Enum CCMUX As Byte
             COMBINED = 0
             TEXEL0
@@ -349,23 +349,23 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
             End Function
         End Class
 
-        Shared Function _SHIFTL(v As UInt32, s As UInt32, w As UInt32) As UInt32
+        Private Shared Function _SHIFTL(v As UInt32, s As UInt32, w As UInt32) As UInt32
             Return (v And ((1 << w) - 1)) << s
         End Function
 
-        Shared Function GCCc0w0(saRGB0 As UInt32, mRGB0 As UInt32, saA0 As UInt32, mA0 As UInt32) As UInt32
+        Private Shared Function GCCc0w0(saRGB0 As UInt32, mRGB0 As UInt32, saA0 As UInt32, mA0 As UInt32) As UInt32
             Return _SHIFTL(saRGB0, 20, 4) Or _SHIFTL(mRGB0, 15, 5) Or _SHIFTL(saA0, 12, 3) Or _SHIFTL(mA0, 9, 3)
         End Function
 
-        Shared Function GCCc1w0(saRGB1 As UInt32, mRGB1 As UInt32) As UInt32
+        Private Shared Function GCCc1w0(saRGB1 As UInt32, mRGB1 As UInt32) As UInt32
             Return _SHIFTL(saRGB1, 5, 4) Or _SHIFTL(mRGB1, 0, 5)
         End Function
 
-        Shared Function GCCc0w1(sbRGB0 As UInt32, aRGB0 As UInt32, sbA0 As UInt32, aA0 As UInt32) As UInt32
+        Private Shared Function GCCc0w1(sbRGB0 As UInt32, aRGB0 As UInt32, sbA0 As UInt32, aA0 As UInt32) As UInt32
             Return _SHIFTL(sbRGB0, 28, 4) Or _SHIFTL(aRGB0, 15, 3) Or _SHIFTL(sbA0, 12, 3) Or _SHIFTL(aA0, 9, 3)
         End Function
 
-        Shared Function GCCc1w1(sbRGB1 As UInt32, saA1 As UInt32, mA1 As UInt32, aRGB1 As UInt32, sbA1 As UInt32, aA1 As UInt32) As UInt32
+        Private Shared Function GCCc1w1(sbRGB1 As UInt32, saA1 As UInt32, mA1 As UInt32, aRGB1 As UInt32, sbA1 As UInt32, aA1 As UInt32) As UInt32
             Return _SHIFTL(sbRGB1, 24, 4) Or _SHIFTL(saA1, 21, 3) Or _SHIFTL(mA1, 18, 3) Or _SHIFTL(aRGB1, 6, 3) Or _SHIFTL(sbA1, 3, 3) Or _SHIFTL(aA1, 0, 3)
         End Function
 
@@ -386,10 +386,10 @@ Namespace Global.SM64Lib.Model.Fast3D.DisplayLists.Script.Commands
                         alpha1.a, alpha1.b, alpha1.c, alpha1.d)
         End Function
 
-        Shared Function Make(a0 As CCMUX, b0 As CCMUX, c0 As CCMUX, d0 As CCMUX,
-                      Aa0 As ACMUX, Ab0 As ACMUX, Ac0 As ACMUX, Ad0 As ACMUX,
-                      a1 As CCMUX, b1 As CCMUX, c1 As CCMUX, d1 As CCMUX,
-                      Aa1 As ACMUX, Ab1 As ACMUX, Ac1 As ACMUX, Ad1 As ACMUX) As String
+        Private Shared Function Make(a0 As CCMUX, b0 As CCMUX, c0 As CCMUX, d0 As CCMUX,
+                                     Aa0 As ACMUX, Ab0 As ACMUX, Ac0 As ACMUX, Ad0 As ACMUX,
+                                     a1 As CCMUX, b1 As CCMUX, c1 As CCMUX, d1 As CCMUX,
+                                     Aa1 As ACMUX, Ab1 As ACMUX, Ac1 As ACMUX, Ad1 As ACMUX) As String
             Dim w0 = _SHIFTL(&HFC, 24, 8) Or _SHIFTL(GCCc0w0(a0, c0, Aa0, Ac0) Or GCCc1w0(a1, c1), 0, 24)
             Dim w1 = GCCc0w1(b0, d0, Ab0, Ad0) Or GCCc1w1(b1, Aa1, Ac1, d1, Ab1, Ad1)
 
