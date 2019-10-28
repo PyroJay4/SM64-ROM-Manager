@@ -15,6 +15,7 @@ Imports SM64Lib.SegmentedBanking
 Imports System.ComponentModel
 Imports SM64Lib.EventArguments
 Imports SM64Lib.Data.System
+Imports SM64Lib.Levels
 
 Public Class RomManager
 
@@ -417,30 +418,38 @@ Public Class RomManager
         Dim br As New BinaryReader(seg0x15.Data)
 
         For Each ldi In LevelInfoData
+            Dim lvl As Level
             seg0x15.Data.Position = seg0x15.BankOffsetFromRomAddr(ldi.Pointer + 3)
-            If br.ReadByte <> &H19 Then Continue For
+            Dim segID As Byte = br.ReadByte
+            Dim curLvlSeg As SegmentedBank = SetSegBank(segID, SwapUInt32(br.ReadUInt32), SwapUInt32(br.ReadUInt32))
+            Dim offset As UInteger = SwapUInt32(br.ReadUInt32)
 
             Try
-                Dim seg0x19 As SegmentedBank = SetSegBank(&H19, SwapInts.SwapUInt32(br.ReadUInt32), SwapInts.SwapUInt32(br.ReadUInt32))
-                Dim offset As UInteger = SwapInts.SwapUInt32(br.ReadUInt32)
-                Dim curLevel As Levels.Level
+                Select Case segID
+                    Case &H19
+                        lvl = New Level
+                        LevelManager.LoadLevel(lvl, Me, ldi.ID, offset)
+                        lvl.LastRomOffset = curLvlSeg.RomStart
 
-                'If IsSM64EditorMode Then
-                '    curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64Editor)
-                '    LevelManager.LoadLevel(curLevel, Me, ldi.ID, offset)
-                'Else
-                '    curLevel = New Levels.Level(SM64Lib.Levels.LevelType.SM64RomManager)
-                '    LevelManager.LoadLevel(curLevel, Me, ldi.ID, offset)
-                'End If
-                curLevel = New Levels.Level
-                LevelManager.LoadLevel(curLevel, Me, ldi.ID, offset)
+                    Case Else 'Original Level
+                        lvl = Nothing
+                        'Dim mgr As New OriginalLevelManager
+                        'lvl = New Level
+                        'mgr.LoadLevel(lvl, Me, ldi.ID, offset)
 
-                curLevel.LastRomOffset = seg0x19.RomStart
-                Levels.Add(curLevel)
+                End Select
             Catch ex As Exception
                 'Skip the Level
-                'If IsDebugging Then Throw
+                If IsDebugging Then
+                    Throw
+                Else
+                    lvl = Nothing
+                End If
             End Try
+
+            If lvl IsNot Nothing Then
+                Levels.Add(lvl)
+            End If
         Next
     End Sub
 

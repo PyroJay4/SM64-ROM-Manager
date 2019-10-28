@@ -120,6 +120,7 @@
     <Compile Include="SM64Lib\Level\LevelList.vb" />
     <Compile Include="SM64Lib\Level\LevelSaveResult.vb" />
     <Compile Include="SM64Lib\Level\LevelType.vb" />
+    <Compile Include="SM64Lib\Level\OriginalLevelManager.vb" />
     <Compile Include="SM64Lib\Level\Script\LevelscriptCommandCollection.vb" />
     <Compile Include="SM64Lib\Level\Script\LevelscriptCommandTypes.vb" />
     <Compile Include="SM64Lib\Level\SM64EditorLevelManager.vb" />
