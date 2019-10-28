@@ -149,7 +149,7 @@
     <value>..\Resources\Psychology_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DevelopmentBuild" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
     <comment>Represents e.g. the Build Number.</comment>
   </data>
   <data name="DevelopmentStage" xml:space="preserve">
