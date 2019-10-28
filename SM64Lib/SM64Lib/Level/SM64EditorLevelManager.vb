@@ -49,7 +49,7 @@ Namespace Levels
                 Select Case c.CommandType
                     Case LevelscriptCommandTypes.StartArea
                         AreaOnFly = True
-                        tArea = New LevelArea
+                        tArea = New SM64ELevelArea
                         If firstArea Is Nothing Then firstArea = tArea
                         tArea.AreaID = clStartArea.GetAreaID(c)
                         tArea.GeolayoutOffset = clStartArea.GetSegGeolayoutAddr(c)

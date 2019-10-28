@@ -11,7 +11,7 @@ Imports SM64Lib.SegmentedBanking
 
 Namespace Levels
 
-    Public Class LevelArea
+    Public MustInherit Class LevelArea
 
         'S h a r e d   M e m b e r s
 
@@ -19,7 +19,7 @@ Namespace Levels
 
         'F i e l d s
 
-        Private _GettingAreaCollision As Boolean = False
+        Protected _GettingAreaCollision As Boolean = False
 
         'A u t o   P r o p e r t i e s
 
@@ -111,15 +111,15 @@ Namespace Levels
 
         'C o n s t r u c t o r s
 
-        Public Sub New(AreaID As Byte)
+        Protected Sub New(AreaID As Byte)
             Me.New(AreaID, 9)
         End Sub
 
-        Public Sub New(AreaID As Byte, LevelID As Byte)
+        Protected Sub New(AreaID As Byte, LevelID As Byte)
             Me.New(AreaID, LevelID, True, True)
         End Sub
 
-        Public Sub New(AreaID As Byte, LevelID As Byte, AddWarps As Boolean, AddObjects As Boolean)
+        Protected Sub New(AreaID As Byte, LevelID As Byte, AddWarps As Boolean, AddObjects As Boolean)
             Geolayout = New Geolayout.Geolayout(SM64Lib.Geolayout.Geolayout.NewScriptCreationMode.Level)
             Me.AreaID = AreaID
 
@@ -146,7 +146,7 @@ Namespace Levels
             End If
         End Sub
 
-        Public Sub New()
+        Protected Sub New()
             Geolayout = New Geolayout.Geolayout(SM64Lib.Geolayout.Geolayout.NewScriptCreationMode.Level)
         End Sub
 

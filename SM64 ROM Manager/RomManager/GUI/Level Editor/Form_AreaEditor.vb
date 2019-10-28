@@ -1434,7 +1434,7 @@ Namespace LevelEditor
             End If
 
             Dim newAreaID As Byte = ReamingIDs(0)
-            Dim tArea As New LevelArea(newAreaID)
+            Dim tArea As New RMLevelArea(newAreaID)
             Dim res = GetModelViaModelConverter(False, False,,,, GetKeyForConvertAreaModel(Rommgr.GameName, CLevel.LevelID, newAreaID))
 
             If res IsNot Nothing Then

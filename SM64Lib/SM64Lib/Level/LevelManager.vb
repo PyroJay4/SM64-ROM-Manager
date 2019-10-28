@@ -49,7 +49,7 @@ Namespace Levels
                 Select Case c.CommandType
                     Case LevelscriptCommandTypes.StartArea
                         AreaOnFly = True
-                        tArea = New LevelArea
+                        tArea = New RMLevelArea
                         tArea.AreaID = clStartArea.GetAreaID(c)
                         tArea.GeolayoutOffset = clStartArea.GetSegGeolayoutAddr(c) '- bank0x19.BankAddress + bank0x19.RomStart
                         tArea.Geolayout.Read(rommgr, tArea.GeolayoutOffset)

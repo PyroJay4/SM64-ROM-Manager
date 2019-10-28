@@ -100,7 +100,7 @@ Public Class ImportLevelDialog
                     'Copy areas
                     For Each area As LevelArea In areasToCopy
                         If openrom.IsSM64EditorMode Then
-                            Dim newArea As New LevelArea(availableAreaIDs.Pop)
+                            Dim newArea As New SM64ELevelArea(availableAreaIDs.Pop)
                             copySM64EArea(area, newArea)
                             area = newArea
                         Else
@@ -130,11 +130,11 @@ Public Class ImportLevelDialog
                         Case True
 
                             'Create mew Level
-                            newLvl = New Level(levelinfo.ID, levelinfo.Index)
+                            newLvl = New RMLevel(levelinfo.ID, levelinfo.Index)
 
                             'Create new Areas & Copy Area Data
                             For Each a As LevelArea In lvl.Areas
-                                Dim newArea As New LevelArea(a.AreaID, newLvl.LevelID, False, False)
+                                Dim newArea As New RMLevelArea(a.AreaID, newLvl.LevelID, False, False)
                                 copySM64EArea(a, newArea)
                                 newLvl.Areas.Add(newArea)
                             Next

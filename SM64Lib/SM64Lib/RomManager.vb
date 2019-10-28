@@ -427,7 +427,7 @@ Public Class RomManager
             Try
                 Select Case segID
                     Case &H19
-                        lvl = New Level
+                        lvl = New RMLevel
                         LevelManager.LoadLevel(lvl, Me, ldi.ID, offset)
                         lvl.LastRomOffset = curLvlSeg.RomStart
 
@@ -541,7 +541,7 @@ Public Class RomManager
     ''' </summary>
     ''' <param name="LevelID">The ID of the Level.</param>
     Public Function AddLevel(LevelID As Byte) As Levels.Level
-        Dim newLevel As New Levels.Level(LevelID, LevelInfoData.GetByLevelID(LevelID).Index) 'GetLevelIndexFromID(LevelID)
+        Dim newLevel As New RMLevel(LevelID, LevelInfoData.GetByLevelID(LevelID).Index) 'GetLevelIndexFromID(LevelID)
 
         Levels.Add(newLevel)
 

@@ -898,7 +898,7 @@ Public Class MainController
 
             If res IsNot Nothing Then
                 'Create new area
-                Dim tArea As New LevelArea(areaID)
+                Dim tArea As New RMLevelArea(areaID)
                 tArea.AreaModel = res?.mdl
                 tArea.ScrollingTextures.AddRange(res?.mdl.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
 

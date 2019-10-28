@@ -10,7 +10,7 @@ Imports SM64Lib.ObjectBanks.Data
 
 Namespace Global.SM64Lib.Levels
 
-    Public Class Level
+    Public MustInherit Class Level
 
         'S h a r e d   M e m b e r s
 
@@ -18,7 +18,7 @@ Namespace Global.SM64Lib.Levels
 
         'F i e l d s
 
-        Private _Bank0x19 As SegmentedBank = Nothing
+        Protected _Bank0x19 As SegmentedBank = Nothing
 
         'A u t o   P r o p e r t i e s
 
@@ -74,14 +74,14 @@ Namespace Global.SM64Lib.Levels
 
         'C o n s t r u c t o r s
 
-        Public Sub New(LevelID As UShort, LevelIndex As Integer)
+        Protected Sub New(LevelID As UShort, LevelIndex As Integer)
             Me.LevelID = LevelID
             CreateNewLevelscript()
             HardcodedCameraSettings = False
             ActSelector = ActSelectorDefaultValues(LevelIndex)
         End Sub
 
-        Public Sub New()
+        Protected Sub New()
         End Sub
 
         'M e t h o d s
@@ -173,7 +173,7 @@ Namespace Global.SM64Lib.Levels
             Return GetObjectBank(3) + 1
         End Function
 
-        Private Sub ChangeObjectBank(BankIndex As Integer, NewEntryIndex As Integer, OldEntryIndex As Integer)
+        Protected Sub ChangeObjectBank(BankIndex As Integer, NewEntryIndex As Integer, OldEntryIndex As Integer)
             'Remove old commands
             If OldEntryIndex <> -1 Then
                 For Each obdCmd As ObjectBankDataCommand In ObjectBankData(BankIndex)(OldEntryIndex).Commands
@@ -199,7 +199,7 @@ Namespace Global.SM64Lib.Levels
             End If
         End Sub
 
-        Private Function GetObjectBank(BankIndex As Integer) As Integer
+        Protected Function GetObjectBank(BankIndex As Integer) As Integer
             Dim Found As New List(Of Boolean)
 
             For obdDataIndex As Integer = 0 To ObjectBankData(BankIndex).Count - 1
