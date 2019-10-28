@@ -240,6 +240,7 @@ Partial Class CollisionEditor
         '
         'Panel2
         '
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
         Me.Panel2.Controls.Add(Me.LabelX48)
         Me.Panel2.Controls.Add(Me.CircularProgress1)
         Me.Panel2.Controls.Add(Me.Button_SaveColsettings)
