@@ -1571,14 +1571,14 @@ Namespace Model.Conversion.Fast3DWriting
                     dlProp.Layer = layerID
                     dlProp.ID = layerID * -1
 
-                    Select Case layerID
-                        Case DefaultGeolayers.Solid, DefaultGeolayers.SolidForeground
-                            dlProp.Type = DisplayListType.Solid
-                        Case DefaultGeolayers.Alpha
-                            dlProp.Type = DisplayListType.Alpha
-                        Case DefaultGeolayers.Transparent, DefaultGeolayers.TransparentForeground
-                            dlProp.Type = DisplayListType.Transparent
-                    End Select
+                    'Select Case layerID
+                    '    Case DefaultGeolayers.Solid, DefaultGeolayers.SolidForeground
+                    '        dlProp.Type = DisplayListType.Solid
+                    '    Case DefaultGeolayers.Alpha
+                    '        dlProp.Type = DisplayListType.Alpha
+                    '    Case DefaultGeolayers.Transparent, DefaultGeolayers.TransparentForeground
+                    '        dlProp.Type = DisplayListType.Transparent
+                    'End Select
 
                     If Not dlsToCreate.Contains(dlProp) Then
                         dlsToCreate.Add(dlProp)
