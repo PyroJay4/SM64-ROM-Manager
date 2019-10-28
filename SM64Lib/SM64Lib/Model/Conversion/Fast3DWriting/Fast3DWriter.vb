@@ -1268,7 +1268,7 @@ Namespace Model.Conversion.Fast3DWriting
             ImpF3D(cmd)
         End Sub
 
-        Private Sub AddCmdFC(mat As Material, dlType As DisplayListType, ByRef lastCmd As String)
+        Private Sub AddCmdFC(mat As Material, ByRef lastCmd As String)
             Dim cmd As String = String.Empty
 
             Dim colorFormula As F3D_SETCOMBINE.Formula = F3D_SETCOMBINE.Formula.Output(F3D_SETCOMBINE.CCMUX.SHADE)
@@ -1688,7 +1688,7 @@ Namespace Model.Conversion.Fast3DWriting
                     If lastMaterial IsNot mp.Material Then
                         lastMaterial = mp.Material
 
-                        AddCmdFC(mp.Material, DisplayListType.Solid, lastCmdFC)
+                        AddCmdFC(mp.Material, lastCmdFC)
                         If mp.Material.Type = MaterialType.ColorSolid Or mp.Material.Type = MaterialType.ColorTransparent Then
                             If lastFBColor <> mp.Material.Color Then
                                 ImpColorCmdFB(mp.Material)
@@ -1696,7 +1696,6 @@ Namespace Model.Conversion.Fast3DWriting
                         End If
 
                         ImpMaterialCmds(mp.Material, needToRevertShiftTMEM, hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
-
                     End If
 
                     Dim grpOff As Integer = 0
