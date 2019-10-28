@@ -433,9 +433,9 @@ Public Class RomManager
 
                     Case Else 'Original Level
                         lvl = Nothing
-                        'Dim mgr As New OriginalLevelManager
-                        'lvl = New Level
-                        'mgr.LoadLevel(lvl, Me, ldi.ID, offset)
+                        Dim mgr As New OriginalLevelManager
+                        lvl = New Level
+                        mgr.LoadLevel(lvl, Me, ldi.ID, offset)
 
                 End Select
             Catch ex As Exception
