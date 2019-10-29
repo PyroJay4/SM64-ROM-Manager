@@ -617,6 +617,12 @@ Public Class MainController
         End If
     End Sub
 
+    Public Sub OpenObjectBankDataEditor()
+        Dim editor As New ObjectBankDataEditor(ObjectBankData)
+        editor.ShowDialog()
+        SaveObjectBankData()
+    End Sub
+
     Private Sub OpenScriptDumper(Of TCmd, eTypes)(script As BaseCommandCollection(Of TCmd, eTypes))
         Dim frm As New ScriptDumper(Of TCmd, eTypes)
         frm.Script = script
@@ -844,17 +850,11 @@ Public Class MainController
     End Function
 
     Public Sub LoadObjectBankData()
-        'Dim temp_1 As String = Path.Combine(MyDataPath, "Other\Object Bank Data\Bank 0x{0}.txt")
-
-        'ObjectBankData.Clear()
-
-        'For Each t As String In {"B", "C", "D", "9"}
-        '    ObjectBankData.Add(FileIniParser.ReadFile(String.Format(temp_1, t)))
-        'Next
-
-        'ObjectBankDataNew.DoIt1()
-        'ObjectBankDataNew.Save(Path.Combine(MyDataPath, "Other\Object Bank Data.json"))
         ObjectBankData.Load(Path.Combine(MyDataPath, "Other\Object Bank Data.json"))
+    End Sub
+
+    Private Sub SaveObjectBankData()
+        ObjectBankData.Save(Path.Combine(MyDataPath, "Other\Object Bank Data.json"))
     End Sub
 
     Public Function GetLevelsCount() As Integer

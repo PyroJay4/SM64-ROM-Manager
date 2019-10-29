@@ -16,7 +16,7 @@ Namespace Global.SM64Lib.Script
 
         Public Sub New(bytes As String, Optional enabledHex As Boolean = True)
             Me.New
-                        Dim bts As New List(Of Byte)
+            Dim bts As New List(Of Byte)
             For Each b As String In bytes.Split(" ")
                 If enabledHex Then b = Convert.ToInt32(b, 16)
                 bts.Add(b)
@@ -46,10 +46,7 @@ Namespace Global.SM64Lib.Script
         End Function
 
         Public Overrides Function ToString() As String
-            ToString = $"{RomAddress.ToString("X")} ({BankAddress.ToString("X")}):"
-            For Each b As Byte In ToArray()
-                ToString &= " " & b.ToString("X2")
-            Next
+            Return $"{RomAddress.ToString("X")} ({BankAddress.ToString("X")}): {CommandByteArrayToString(ToArray)}"
         End Function
 
         Public Shared Operator =(cmd1 As BaseCommand(Of eTypes), cmd2 As BaseCommand(Of eTypes)) As Boolean

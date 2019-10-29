@@ -479,4 +479,9 @@ Public Class MainForm
     Private Sub ButtonItem_Bar_Plugins_ManagePlugins_Click(sender As Object, e As EventArgs) Handles ButtonItem_Bar_Plugins_ManagePlugins.Click, ButtonItem20.Click
         Controller.OpenPluginManager()
     End Sub
+
+    Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem4.Click
+        Controller.OpenObjectBankDataEditor()
+    End Sub
+
 End Class

@@ -229,7 +229,7 @@
     <value>TabControl1</value>
   </data>
   <data name="&gt;&gt;TabControlPanel2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="tabTextManager.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -2624,6 +2624,9 @@
   <data name="ButtonItem19.Text" xml:space="preserve">
     <value>Manage Text Profile</value>
   </data>
+  <data name="ButtonItem4.Text" xml:space="preserve">
+    <value>Manage Object Bank Data</value>
+  </data>
   <data name="ButtonItem_Bar_EnableExpertMode.Text" xml:space="preserve">
     <value>Enable Expert Mode</value>
   </data>
@@ -4664,16 +4667,16 @@
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="&gt;&gt;TabItem_LevelManager.Name" xml:space="preserve">
-    <value>TabItem_LevelManager</value>
-  </data>
-  <data name="&gt;&gt;TabItem_LevelManager.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;TabItem_General.Name" xml:space="preserve">
     <value>TabItem_General</value>
   </data>
   <data name="&gt;&gt;TabItem_General.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;TabItem_LevelManager.Name" xml:space="preserve">
+    <value>TabItem_LevelManager</value>
+  </data>
+  <data name="&gt;&gt;TabItem_LevelManager.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TabItem_TextManager.Name" xml:space="preserve">
@@ -4915,6 +4918,12 @@
   </data>
   <data name="&gt;&gt;LabelItem_OtherInfoText.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.LabelItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem4.Name" xml:space="preserve">
+    <value>ButtonItem4</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem4.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

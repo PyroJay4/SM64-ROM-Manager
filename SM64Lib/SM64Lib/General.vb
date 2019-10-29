@@ -214,4 +214,17 @@ Public Module General
         Return If(EndAddr, Geolayout.BackgroundPointers.OceanEnd, Geolayout.BackgroundPointers.OceanStart)
     End Function
 
+    Public Function CommandByteArrayToString(bytes As Byte()) As String
+        Dim res As String = String.Empty
+
+        For Each b As Byte In bytes
+            If Not String.IsNullOrEmpty(res) Then
+                res &= " "
+            End If
+            res &= b.ToString("X2")
+        Next
+
+        Return res
+    End Function
+
 End Module
