@@ -1559,7 +1559,7 @@ Namespace Model.Conversion.Fast3DWriting
                     Dim dlProp As DisplaylistProps = Nothing
 
                     For Each dl As DisplaylistProps In dlsToCreate
-                        If dlProp Is Nothing AndAlso dl.Layer = layerID Then
+                        If dlProp Is Nothing AndAlso dl.ID = layerID * -1 Then
                             dlProp = dl
                         End If
                     Next
@@ -1569,15 +1569,6 @@ Namespace Model.Conversion.Fast3DWriting
                     End If
 
                     dlProp.Layer = layerID
-
-                    'Select Case layerID
-                    '    Case DefaultGeolayers.Solid, DefaultGeolayers.SolidForeground
-                    '        dlProp.Type = DisplayListType.Solid
-                    '    Case DefaultGeolayers.Alpha
-                    '        dlProp.Type = DisplayListType.Alpha
-                    '    Case DefaultGeolayers.Transparent, DefaultGeolayers.TransparentForeground
-                    '        dlProp.Type = DisplayListType.Transparent
-                    'End Select
 
                     If Not dlsToCreate.Contains(dlProp) Then
                         dlsToCreate.Add(dlProp)
