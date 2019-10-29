@@ -1,6 +1,4 @@
-﻿#If DEBUG Then
-
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ApplyStyleMgrStyle
     Inherits System.Windows.Forms.Form
 
@@ -46,5 +44,3 @@ Partial Class ApplyStyleMgrStyle
 
     Friend WithEvents StyleManager1 As DevComponents.DotNetBar.StyleManager
 End Class
-
-#End If
