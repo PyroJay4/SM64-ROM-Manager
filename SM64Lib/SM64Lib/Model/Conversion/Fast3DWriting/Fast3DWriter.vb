@@ -269,10 +269,6 @@ Namespace Model.Conversion.Fast3DWriting
 
         Private currentMaterial As Material
         Private currentFace As Integer = 0
-        'Private createSolidDL As Boolean = False
-        'Private createAlphaDL As Boolean = False
-        'Private createTransDL As Boolean = False
-        'Private ReadOnly createDL As Boolean() = New Boolean() {False, False, False, False, False, False, False}
         Private Const GEOLAYER_SOLID As Byte = 1
         Private Const GEOLAYER_ALPHA As Byte = 4
         Private Const GEOLAYER_TRANSPARENT As Byte = 5
