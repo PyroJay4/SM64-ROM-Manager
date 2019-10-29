@@ -1606,7 +1606,7 @@ Namespace Model.Conversion.Fast3DWriting
                     Select Case mat.DisplaylistSelection.SelectionMode
                         Case DisplaylistSelectionMode.Automatic
                             If mat.HasTransparency Then
-                                dlID = createDefaultDL(DefaultGeolayers.Transparent)
+                                dlID = createDefaultDL(DefaultGeolayers.Translucent)
                             ElseIf mat.HasTextureAlpha Then
                                 dlID = createDefaultDL(DefaultGeolayers.Alpha)
                             Else
