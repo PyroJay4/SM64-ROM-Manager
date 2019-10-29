@@ -46,8 +46,12 @@ Partial Class TextureGraphicFormatEditor
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ContextMenuBar1 = New DevComponents.DotNetBar.ContextMenuBar()
+        Me.ButtonItem_CM_SelDL = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_EditCustomDisplaylists = New DevComponents.DotNetBar.ButtonItem()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ListViewEx1
@@ -146,6 +150,7 @@ Partial Class TextureGraphicFormatEditor
         'ComboBoxEx_SelectDisplaylist
         '
         resources.ApplyResources(Me.ComboBoxEx_SelectDisplaylist, "ComboBoxEx_SelectDisplaylist")
+        Me.ContextMenuBar1.SetContextMenuEx(Me.ComboBoxEx_SelectDisplaylist, Me.ButtonItem_CM_SelDL)
         Me.ComboBoxEx_SelectDisplaylist.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_SelectDisplaylist.DropDownHeight = 150
         Me.ComboBoxEx_SelectDisplaylist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -308,10 +313,35 @@ Partial Class TextureGraphicFormatEditor
         resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
         '
+        'ContextMenuBar1
+        '
+        Me.ContextMenuBar1.AntiAlias = True
+        resources.ApplyResources(Me.ContextMenuBar1, "ContextMenuBar1")
+        Me.ContextMenuBar1.IsMaximized = False
+        Me.ContextMenuBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_CM_SelDL})
+        Me.ContextMenuBar1.Name = "ContextMenuBar1"
+        Me.ContextMenuBar1.Stretch = True
+        Me.ContextMenuBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ContextMenuBar1.TabStop = False
+        '
+        'ButtonItem_CM_SelDL
+        '
+        Me.ButtonItem_CM_SelDL.AutoExpandOnClick = True
+        Me.ButtonItem_CM_SelDL.Name = "ButtonItem_CM_SelDL"
+        Me.ButtonItem_CM_SelDL.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_EditCustomDisplaylists})
+        resources.ApplyResources(Me.ButtonItem_CM_SelDL, "ButtonItem_CM_SelDL")
+        '
+        'ButtonItem1
+        '
+        Me.ButtonItem_EditCustomDisplaylists.Image = Global.SM64_ROM_Manager.ModelConverterGUI.My.Resources.Resources.icons8_edit_16px
+        Me.ButtonItem_EditCustomDisplaylists.Name = "ButtonItem1"
+        resources.ApplyResources(Me.ButtonItem_EditCustomDisplaylists, "ButtonItem1")
+        '
         'TextureGraphicFormatEditor
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.ContextMenuBar1)
         Me.Controls.Add(Me.Panel1)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -320,6 +350,7 @@ Partial Class TextureGraphicFormatEditor
         Me.TopRightCornerSize = 0
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        CType(Me.ContextMenuBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -347,4 +378,7 @@ Partial Class TextureGraphicFormatEditor
     Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX7 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Panel1 As Windows.Forms.Panel
+    Friend WithEvents ContextMenuBar1 As DevComponents.DotNetBar.ContextMenuBar
+    Friend WithEvents ButtonItem_CM_SelDL As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_EditCustomDisplaylists As DevComponents.DotNetBar.ButtonItem
 End Class

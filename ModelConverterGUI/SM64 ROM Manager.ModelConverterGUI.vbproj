@@ -49,6 +49,13 @@
       <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Design.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar.Layout">
+      <HintPath>C:\DotNetBarNew\DevComponents.DotNetBar.Layout.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Layout.Design">
+      <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Layout.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
@@ -110,6 +117,18 @@
     <Compile Include="CollisionEditor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CustomDisplaylistEditor.Designer.vb">
+      <DependentUpon>CustomDisplaylistEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDisplaylistEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomDisplaylistEntryEditor.Designer.vb">
+      <DependentUpon>CustomDisplaylistEntryEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDisplaylistEntryEditor.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="DialogSetUpPoint.Designer.vb">
       <DependentUpon>DialogSetUpPoint.vb</DependentUpon>
     </Compile>
@@ -167,6 +186,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CollisionEditor.resx">
       <DependentUpon>CollisionEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomDisplaylistEditor.resx">
+      <DependentUpon>CustomDisplaylistEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomDisplaylistEntryEditor.resx">
+      <DependentUpon>CustomDisplaylistEntryEditor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogSetUpPoint.resx">
       <DependentUpon>DialogSetUpPoint.vb</DependentUpon>
@@ -239,6 +264,12 @@
       <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>
       <Name>TextValueConverter</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_edit_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

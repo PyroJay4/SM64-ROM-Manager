@@ -1565,11 +1565,10 @@ Namespace Model.Conversion.Fast3DWriting
                     Next
 
                     If dlProp Is Nothing Then
-                        dlProp = New DisplaylistProps
+                        dlProp = New DisplaylistProps(layerID * -1)
                     End If
 
                     dlProp.Layer = layerID
-                    dlProp.ID = layerID * -1
 
                     'Select Case layerID
                     '    Case DefaultGeolayers.Solid, DefaultGeolayers.SolidForeground

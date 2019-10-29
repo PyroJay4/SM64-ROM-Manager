@@ -9,21 +9,33 @@ Imports SM64Lib.Model.Fast3D
 Imports SM64Lib.Model.Conversion.Fast3DWriting
 Imports SM64Lib.Geolayout
 Imports SM64_ROM_Manager.ModelConverterGUI.My.Resources
+Imports DevComponents.DotNetBar
 
 Public Class TextureGraphicFormatEditor
 
     Private LoadingTextures As Boolean = False
     Private obj3d As Object3D = Nothing
-    Public Property TextureFormatSettings As TextureFormatSettings = Nothing
     Private loadingtexItemSettings As Boolean = False
     Private hasInit As Boolean = False
     Private colorImages As New List(Of Integer)
+    Private _TextureFormatSettings As TextureFormatSettings = Nothing
     Private ReadOnly realTextures As New Dictionary(Of Integer, Image)
+
+    Public Property TextureFormatSettings As TextureFormatSettings
+        Get
+            Return _TextureFormatSettings
+        End Get
+        Set
+            _TextureFormatSettings = Value
+            LoadDisplayListTypes()
+        End Set
+    End Property
 
     Public Sub New(obj As Object3D)
         SuspendLayout()
 
         InitializeComponent()
+        StyleManager.UpdateAmbientColors(Me)
 
         obj3d = obj
         AcceptButton = Button_SaveColsettings
@@ -44,19 +56,22 @@ Public Class TextureGraphicFormatEditor
     End Sub
 
     Private Sub LoadDisplayListTypes()
-        ComboBoxEx_SelectDisplaylist.Items.AddRange(
-            {
-            New ComboItem With {.Text = MainModelconverter_Resources.Automatic},
-            New ComboItem With {.Text = $"0 - {MainModelconverter_Resources.Layer0}", .Tag = DefaultGeolayers.SolidAntiAlias},
-            New ComboItem With {.Text = $"1 - {MainModelconverter_Resources.Layer1}", .Tag = DefaultGeolayers.Solid},
-            New ComboItem With {.Text = $"2 - {MainModelconverter_Resources.Layer2}", .Tag = DefaultGeolayers.SolidDecal},
-            New ComboItem With {.Text = $"3 - {MainModelconverter_Resources.Layer3}", .Tag = DefaultGeolayers.TranslucentDecal},
-            New ComboItem With {.Text = $"4 - {MainModelconverter_Resources.Layer4}", .Tag = DefaultGeolayers.Alpha},
-            New ComboItem With {.Text = $"5 - {MainModelconverter_Resources.Layer5}", .Tag = DefaultGeolayers.Transparent},
-            New ComboItem With {.Text = $"6 - {MainModelconverter_Resources.Layer6}", .Tag = DefaultGeolayers.TransparentForeground},
-            New ComboItem With {.Text = $"7 - {MainModelconverter_Resources.Layer7}", .Tag = DefaultGeolayers.TranslucentDecal2}
-            })
-        ComboBoxEx_SelectDisplaylist.SelectedIndex = 0
+        ComboBoxEx_SelectDisplaylist.BeginUpdate()
+        ComboBoxEx_SelectDisplaylist.Items.Clear()
+
+        ComboBoxEx_SelectDisplaylist.Items.Add(New ComboItem With {.Text = MainModelconverter_Resources.Automatic})
+        ComboBoxEx_SelectDisplaylist.Items.AddRange(GetDefaultGeolayerComboItems)
+
+        If TextureFormatSettings?.CustomDisplayLists IsNot Nothing Then
+            For Each dlprop As DisplaylistProps In TextureFormatSettings.CustomDisplayLists
+                Dim layerID As Integer = dlprop.Layer
+                ComboBoxEx_SelectDisplaylist.Items.Add(New ComboItem With {
+                    .Text = $"#{dlprop.ID} ({layerID} - {MainModelconverter_Resources.ResourceManager.GetString($"Layer{layerID}")})",
+                    .Tag = dlprop.ID})
+            Next
+        End If
+
+        ComboBoxEx_SelectDisplaylist.EndUpdate()
     End Sub
 
     Private Sub LoadRotateFlip()
@@ -137,7 +152,7 @@ Public Class TextureGraphicFormatEditor
         ComboBox_ColType.ResumeLayout()
     End Sub
 
-    Private Sub ListBoxAdv_CI_Textures_ItemClick(sender As Object, e As EventArgs) Handles ListViewEx1.SelectedIndexChanged
+    Private Sub LoadTextureProps()
         If ListViewEx1.SelectedIndices.Count > 0 Then
             Dim curItem As ListViewItem = ListViewEx1.SelectedItems(0)
             Dim matName As String = curItem.Tag.Key
@@ -166,7 +181,7 @@ Public Class TextureGraphicFormatEditor
                 PictureBox1.Image = realImg
             Else
                 PictureBox1.Image = Nothing
-                LabelX1.Text = ""
+                LabelX1.Text = String.Empty
             End If
 
             CheckBoxX_EnableTextureAnimation.Checked = curEntry.IsScrollingTexture
@@ -185,6 +200,10 @@ Public Class TextureGraphicFormatEditor
                         If item.Tag = curEntry.DisplaylistSelection.DefaultGeolayer Then
                             ComboBoxEx_SelectDisplaylist.SelectedItem = item
                         End If
+                    Case DisplaylistSelectionMode.Custom
+                        If item.Tag = curEntry.DisplaylistSelection.CustomDisplaylistID Then
+                            ComboBoxEx_SelectDisplaylist.SelectedItem = item
+                        End If
                 End Select
             Next
 
@@ -201,6 +220,10 @@ Public Class TextureGraphicFormatEditor
                 ComboBox_ColType.SelectedIndex = 0
             End If
         End If
+    End Sub
+
+    Private Sub ListBoxAdv_CI_Textures_ItemClick(sender As Object, e As EventArgs) Handles ListViewEx1.SelectedIndexChanged
+        LoadTextureProps()
     End Sub
 
     Private Function GetRotateFlipComboItem(type As RotateFlipType) As ComboItem
@@ -250,6 +273,9 @@ Public Class TextureGraphicFormatEditor
                 If TypeOf selDL Is DefaultGeolayers Then
                     curEntry.DisplaylistSelection.SelectionMode = DisplaylistSelectionMode.Default
                     curEntry.DisplaylistSelection.DefaultGeolayer = selDL
+                ElseIf TypeOf selDL Is Integer Then
+                    curEntry.DisplaylistSelection.SelectionMode = DisplaylistSelectionMode.Custom
+                    curEntry.DisplaylistSelection.CustomDisplaylistID = selDL
                 Else
                     curEntry.DisplaylistSelection.SelectionMode = DisplaylistSelectionMode.Automatic
                 End If
@@ -264,6 +290,13 @@ Public Class TextureGraphicFormatEditor
             Dim id As String = selItem.Tag
             UpdateTextureListItemSettings(id)
         End If
+    End Sub
+
+    Private Sub ButtonItem_EditCustomDisplaylists_Click(sender As Object, e As EventArgs) Handles ButtonItem_EditCustomDisplaylists.Click
+        Dim frm As New CustomDisplaylistEditor(TextureFormatSettings.CustomDisplayLists)
+        frm.ShowDialog()
+        LoadDisplayListTypes()
+        LoadTextureProps()
     End Sub
 
 End Class

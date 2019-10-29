@@ -18,12 +18,23 @@ Namespace Model.Fast3D
 
                 streamReader.Close()
                 Entries.Clear()
+                CustomDisplayLists.Clear()
 
                 Try
-                    Entries.AddRange(JArray.Parse(content).ToObject(Of Entry()))
+                    Dim settings As TextureFormatSettings = JObject.Parse(content).ToObject(Of TextureFormatSettings)
+                    Entries.AddRange(settings.Entries)
+                    CustomDisplayLists.AddRange(settings.CustomDisplayLists)
                     success = True
                 Catch ex As Exception
                 End Try
+
+                If Not success Then
+                    Try
+                        Entries.AddRange(JArray.Parse(content).ToObject(Of Entry()))
+                        success = True
+                    Catch ex As Exception
+                    End Try
+                End If
 
                 If Not success Then
                     Dim sr As New StringReader(content)
@@ -44,7 +55,7 @@ Namespace Model.Fast3D
         Public Async Function Save(fileName As String) As Task
             Dim sw As New StreamWriter(fileName)
 
-            Await sw.WriteAsync(JArray.FromObject(Entries).ToString)
+            Await sw.WriteAsync(JObject.FromObject(Me).ToString)
 
             sw.Flush()
             sw.Close()

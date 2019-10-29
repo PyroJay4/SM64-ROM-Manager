@@ -1,4 +1,7 @@
-﻿Imports SM64_ROM_Manager.Publics
+﻿Imports DevComponents.Editors
+Imports SM64_ROM_Manager.ModelConverterGUI.My.Resources
+Imports SM64_ROM_Manager.Publics
+Imports SM64Lib.Geolayout
 Imports SM64Lib.Model
 
 Public Module PublicFunctions
@@ -32,6 +35,19 @@ Public Module PublicFunctions
         Else
             Return Nothing
         End If
+    End Function
+
+    Friend Function GetDefaultGeolayerComboItems() As ComboItem()
+        Return {
+            New ComboItem With {.Text = $"0 - {MainModelconverter_Resources.Layer0}", .Tag = DefaultGeolayers.SolidAntiAlias},
+            New ComboItem With {.Text = $"1 - {MainModelconverter_Resources.Layer1}", .Tag = DefaultGeolayers.Solid},
+            New ComboItem With {.Text = $"2 - {MainModelconverter_Resources.Layer2}", .Tag = DefaultGeolayers.SolidDecal},
+            New ComboItem With {.Text = $"3 - {MainModelconverter_Resources.Layer3}", .Tag = DefaultGeolayers.TranslucentDecal},
+            New ComboItem With {.Text = $"4 - {MainModelconverter_Resources.Layer4}", .Tag = DefaultGeolayers.Alpha},
+            New ComboItem With {.Text = $"5 - {MainModelconverter_Resources.Layer5}", .Tag = DefaultGeolayers.Transparent},
+            New ComboItem With {.Text = $"6 - {MainModelconverter_Resources.Layer6}", .Tag = DefaultGeolayers.TransparentForeground},
+            New ComboItem With {.Text = $"7 - {MainModelconverter_Resources.Layer7}", .Tag = DefaultGeolayers.TranslucentDecal2}
+            }
     End Function
 
 End Module

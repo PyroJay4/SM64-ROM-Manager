@@ -1,12 +1,15 @@
-﻿Imports SM64Lib.Model.Fast3D.DisplayLists
+﻿Imports SM64Lib.Geolayout
 
 Namespace Model.Conversion.Fast3DWriting
 
     Public Class DisplaylistProps
 
-        Public Property ID As Integer = 0
-        'Public Property Type As DisplayListType = DisplayListType.Solid
-        Public Property Layer As Byte = 1
+        Public Property ID As Integer
+        Public Property Layer As DefaultGeolayers = DefaultGeolayers.Solid
+
+        Public Sub New(ID As Integer)
+            Me.ID = ID
+        End Sub
 
     End Class
 
