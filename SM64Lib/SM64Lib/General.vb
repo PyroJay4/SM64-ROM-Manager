@@ -15,7 +15,6 @@ Public Module General
     Public ReadOnly Property ActSelectorDefaultValues As Byte() = {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
     Public ReadOnly Property FileIniParser As New IniParser.FileIniDataParser
     Public ReadOnly Property StreamIniParser As New IniParser.StreamIniDataParser
-    Public ReadOnly Property ObjectBankDataOld As New List(Of IniData)
     Public ReadOnly Property ObjectBankData As New ObjectBanks.Data.ObjectBankDataListCollection
     Public ReadOnly Property PatchClass As New PatchClass
 
