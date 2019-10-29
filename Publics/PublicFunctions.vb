@@ -43,6 +43,8 @@ Public Module Publics
 
         If setTheme Is Nothing Then
             setTheme = Settings.StyleManager.MetroColorParams
+        Else
+            Settings.StyleManager.MetroColorParams = setTheme
         End If
 
         StyleManager.Style = eStyle.Metro
