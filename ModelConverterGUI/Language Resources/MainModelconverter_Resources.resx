@@ -148,7 +148,7 @@
     <value>Out of bounds</value>
   </data>
   <data name="Layer0" xml:space="preserve">
-    <value>Solid (Anti Alias)</value>
+    <value>Solid (no anti alias)</value>
   </data>
   <data name="Layer1" xml:space="preserve">
     <value>Solid</value>
@@ -163,10 +163,10 @@
     <value>Alpha</value>
   </data>
   <data name="Layer5" xml:space="preserve">
-    <value>Transparent</value>
+    <value>Translucent</value>
   </data>
   <data name="Layer6" xml:space="preserve">
-    <value>Transparent Decal</value>
+    <value>Translucent Decal</value>
   </data>
   <data name="Layer7" xml:space="preserve">
     <value>Translucent Decal</value>

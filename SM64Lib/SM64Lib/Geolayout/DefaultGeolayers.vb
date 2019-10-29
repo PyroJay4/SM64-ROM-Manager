@@ -1,14 +1,14 @@
 ﻿Namespace Geolayout
 
     Public Enum DefaultGeolayers
-        SolidAntiAlias
+        SolidNoAntiAlias
         Solid
         SolidDecal
         TranslucentDecal
         Alpha
-        Transparent
-        TransparentForeground
+        Translucent
         TranslucentDecal2
+        TranslucentDecal3
     End Enum
 
 End Namespace

@@ -74,7 +74,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Solid (Anti Alias) ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Solid (no anti alias) ähnelt.
         '''</summary>
         Public Shared ReadOnly Property Layer0() As String
             Get
@@ -119,7 +119,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Transparent ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Translucent ähnelt.
         '''</summary>
         Public Shared ReadOnly Property Layer5() As String
             Get
@@ -128,7 +128,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Transparent Decal ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Translucent Decal ähnelt.
         '''</summary>
         Public Shared ReadOnly Property Layer6() As String
             Get
