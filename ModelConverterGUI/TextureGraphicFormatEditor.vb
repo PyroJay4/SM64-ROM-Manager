@@ -8,6 +8,7 @@ Imports Pilz.S3DFileParser
 Imports SM64Lib.Model.Fast3D
 Imports SM64Lib.Model.Conversion.Fast3DWriting
 Imports SM64Lib.Geolayout
+Imports SM64_ROM_Manager.ModelConverterGUI.My.Resources
 
 Public Class TextureGraphicFormatEditor
 
@@ -45,12 +46,15 @@ Public Class TextureGraphicFormatEditor
     Private Sub LoadDisplayListTypes()
         ComboBoxEx_SelectDisplaylist.Items.AddRange(
             {
-            New ComboItem With {.Text = "Automatic"},
-            New ComboItem With {.Text = "1 - Solid", .Tag = DefaultGeolayers.Solid},
-            New ComboItem With {.Text = "2 - Solid Foreground", .Tag = DefaultGeolayers.SolidForeground},
-            New ComboItem With {.Text = "4 - Alpha", .Tag = DefaultGeolayers.Alpha},
-            New ComboItem With {.Text = "5 - Transparent", .Tag = DefaultGeolayers.Transparent},
-            New ComboItem With {.Text = "6 - Transparent Foreground", .Tag = DefaultGeolayers.TransparentForeground}
+            New ComboItem With {.Text = MainModelconverter_Resources.Automatic},
+            New ComboItem With {.Text = $"0 - {MainModelconverter_Resources.Layer0}", .Tag = DefaultGeolayers.SolidAntiAlias},
+            New ComboItem With {.Text = $"1 - {MainModelconverter_Resources.Layer1}", .Tag = DefaultGeolayers.Solid},
+            New ComboItem With {.Text = $"2 - {MainModelconverter_Resources.Layer2}", .Tag = DefaultGeolayers.SolidDecal},
+            New ComboItem With {.Text = $"3 - {MainModelconverter_Resources.Layer3}", .Tag = DefaultGeolayers.TranslucentDecal},
+            New ComboItem With {.Text = $"4 - {MainModelconverter_Resources.Layer4}", .Tag = DefaultGeolayers.Alpha},
+            New ComboItem With {.Text = $"5 - {MainModelconverter_Resources.Layer5}", .Tag = DefaultGeolayers.Transparent},
+            New ComboItem With {.Text = $"6 - {MainModelconverter_Resources.Layer6}", .Tag = DefaultGeolayers.TransparentForeground},
+            New ComboItem With {.Text = $"7 - {MainModelconverter_Resources.Layer7}", .Tag = DefaultGeolayers.TranslucentDecal2}
             })
         ComboBoxEx_SelectDisplaylist.SelectedIndex = 0
     End Sub

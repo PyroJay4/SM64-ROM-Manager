@@ -25,7 +25,7 @@ Namespace My.Resources
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
-    Friend Class MainModelconverter_Resources
+    Public Class MainModelconverter_Resources
         
         Private Shared resourceMan As Global.System.Resources.ResourceManager
         
@@ -40,7 +40,7 @@ Namespace My.Resources
         '''  Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
+        Public Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
                     Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("SM64_ROM_Manager.ModelConverterGUI.MainModelconverter_Resources", GetType(MainModelconverter_Resources).Assembly)
@@ -55,7 +55,7 @@ Namespace My.Resources
         '''  Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend Shared Property Culture() As Global.System.Globalization.CultureInfo
+        Public Shared Property Culture() As Global.System.Globalization.CultureInfo
             Get
                 Return resourceCulture
             End Get
@@ -65,9 +65,90 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Automatic ähnelt.
+        '''</summary>
+        Public Shared ReadOnly Property Automatic() As String
+            Get
+                Return ResourceManager.GetString("Automatic", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Solid (Anti Alias) ähnelt.
+        '''</summary>
+        Public Shared ReadOnly Property Layer0() As String
+            Get
+                Return ResourceManager.GetString("Layer0", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Solid ähnelt.
+        '''</summary>
+        Public Shared ReadOnly Property Layer1() As String
+            Get
+                Return ResourceManager.GetString("Layer1", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Solid Decal ähnelt.
+        '''</summary>
+        Public Shared ReadOnly Property Layer2() As String
+            Get
+                Return ResourceManager.GetString("Layer2", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Translucent Decal ähnelt.
+        '''</summary>
+        Public Shared ReadOnly Property Layer3() As String
+            Get
+                Return ResourceManager.GetString("Layer3", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Alpha ähnelt.
+        '''</summary>
+        Public Shared ReadOnly Property Layer4() As String
+            Get
+                Return ResourceManager.GetString("Layer4", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Transparent ähnelt.
+        '''</summary>
+        Public Shared ReadOnly Property Layer5() As String
+            Get
+                Return ResourceManager.GetString("Layer5", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Transparent Decal ähnelt.
+        '''</summary>
+        Public Shared ReadOnly Property Layer6() As String
+            Get
+                Return ResourceManager.GetString("Layer6", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Translucent Decal ähnelt.
+        '''</summary>
+        Public Shared ReadOnly Property Layer7() As String
+            Get
+                Return ResourceManager.GetString("Layer7", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Your collision map is not triangulated. ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_ColMapIsnotTriangled() As String
+        Public Shared ReadOnly Property MsgBox_ColMapIsnotTriangled() As String
             Get
                 Return ResourceManager.GetString("MsgBox_ColMapIsnotTriangled", resourceCulture)
             End Get
@@ -76,7 +157,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Collision Map ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_ColMapIsnotTriangled_Title() As String
+        Public Shared ReadOnly Property MsgBox_ColMapIsnotTriangled_Title() As String
             Get
                 Return ResourceManager.GetString("MsgBox_ColMapIsnotTriangled_Title", resourceCulture)
             End Get
@@ -85,7 +166,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Error at loading Materials:&lt;br/&gt;{0} ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_ErrorLoadingMaterial() As String
+        Public Shared ReadOnly Property MsgBox_ErrorLoadingMaterial() As String
             Get
                 Return ResourceManager.GetString("MsgBox_ErrorLoadingMaterial", resourceCulture)
             End Get
@@ -94,7 +175,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Material Error ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_ErrorLoadingMaterial_Title() As String
+        Public Shared ReadOnly Property MsgBox_ErrorLoadingMaterial_Title() As String
             Get
                 Return ResourceManager.GetString("MsgBox_ErrorLoadingMaterial_Title", resourceCulture)
             End Get
@@ -103,7 +184,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Your {0} is too big or your scaling is too large. Your collision map probably will have some issues after importing. ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_ModelTooBig() As String
+        Public Shared ReadOnly Property MsgBox_ModelTooBig() As String
             Get
                 Return ResourceManager.GetString("MsgBox_ModelTooBig", resourceCulture)
             End Get
@@ -112,7 +193,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Out of bounds ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_ModelTooBig_Title() As String
+        Public Shared ReadOnly Property MsgBox_ModelTooBig_Title() As String
             Get
                 Return ResourceManager.GetString("MsgBox_ModelTooBig_Title", resourceCulture)
             End Get
@@ -121,7 +202,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die To use different formats then Waverfront OBJ, you need &lt;b&gt;Microsoft Visual C++ Redistributable 2017&lt;/b&gt; installed on your PC.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Download links:&lt;/b&gt;&lt;br/&gt;&lt;a href=&quot;&quot;https://aka.ms/vs/15/release/vc_redist.x64.exe&quot;&quot;&gt;vc_redist.x64.exe&lt;/a&gt; (for &lt;b&gt;64-bit&lt;/b&gt; systems)&lt;br/&gt;&lt;a href=&quot;&quot;https://aka.ms/vs/15/release/vc_redist.x86.exe&quot;&quot;&gt;vc_redist.x32.exe&lt;/a&gt; (for &lt;b&gt;32-bit&lt;/b&gt; systems) ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_MVCppMissing() As String
+        Public Shared ReadOnly Property MsgBox_MVCppMissing() As String
             Get
                 Return ResourceManager.GetString("MsgBox_MVCppMissing", resourceCulture)
             End Get
@@ -130,7 +211,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Microsoft Visual C++ Redistributable 2017 is missing ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_MVCppMissing_Title() As String
+        Public Shared ReadOnly Property MsgBox_MVCppMissing_Title() As String
             Get
                 Return ResourceManager.GetString("MsgBox_MVCppMissing_Title", resourceCulture)
             End Get
@@ -139,7 +220,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Your visual map is not triangulated. ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_VMapIsnotTriangled() As String
+        Public Shared ReadOnly Property MsgBox_VMapIsnotTriangled() As String
             Get
                 Return ResourceManager.GetString("MsgBox_VMapIsnotTriangled", resourceCulture)
             End Get
@@ -148,7 +229,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Visual Map ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property MsgBox_VMapIsnotTriangled_Title() As String
+        Public Shared ReadOnly Property MsgBox_VMapIsnotTriangled_Title() As String
             Get
                 Return ResourceManager.GetString("MsgBox_VMapIsnotTriangled_Title", resourceCulture)
             End Get

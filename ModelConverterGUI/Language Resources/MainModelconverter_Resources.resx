@@ -147,4 +147,31 @@
   <data name="MsgBox_ModelTooBig_Title" xml:space="preserve">
     <value>Out of bounds</value>
   </data>
+  <data name="Layer0" xml:space="preserve">
+    <value>Solid (Anti Alias)</value>
+  </data>
+  <data name="Layer1" xml:space="preserve">
+    <value>Solid</value>
+  </data>
+  <data name="Layer2" xml:space="preserve">
+    <value>Solid Decal</value>
+  </data>
+  <data name="Layer3" xml:space="preserve">
+    <value>Translucent Decal</value>
+  </data>
+  <data name="Layer4" xml:space="preserve">
+    <value>Alpha</value>
+  </data>
+  <data name="Layer5" xml:space="preserve">
+    <value>Transparent</value>
+  </data>
+  <data name="Layer6" xml:space="preserve">
+    <value>Transparent Decal</value>
+  </data>
+  <data name="Layer7" xml:space="preserve">
+    <value>Translucent Decal</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
 </root>
