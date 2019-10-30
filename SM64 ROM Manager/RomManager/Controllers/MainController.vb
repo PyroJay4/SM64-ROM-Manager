@@ -620,7 +620,7 @@ Public Class MainController
     Public Sub OpenObjectBankDataEditor()
         Dim editor As New ObjectBankDataEditor(ObjectBankData)
         editor.ShowDialog()
-        SaveObjectBankData()
+        'SaveObjectBankData()
     End Sub
 
     Private Sub OpenScriptDumper(Of TCmd, eTypes)(script As BaseCommandCollection(Of TCmd, eTypes))
