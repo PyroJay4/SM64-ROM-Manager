@@ -24,6 +24,8 @@ Partial Class Form_About
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_About))
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.PictureBox_Donate = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox_Donate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelX1
@@ -37,13 +39,20 @@ Partial Class Form_About
         Me.LabelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
         Me.LabelX1.TextLineAlignment = System.Drawing.StringAlignment.Near
         '
+        'PictureBox_Donate
+        '
+        resources.ApplyResources(Me.PictureBox_Donate, "PictureBox_Donate")
+        Me.PictureBox_Donate.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox_Donate.Image = Global.SM64_ROM_Manager.My.Resources.Resources.btn_donateCC_LG
+        Me.PictureBox_Donate.Name = "PictureBox_Donate"
+        Me.PictureBox_Donate.TabStop = False
+        '
         'Form_About
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.PictureBox_Donate)
         Me.Controls.Add(Me.LabelX1)
-        Me.DoubleBuffered = True
-        Me.EnableGlass = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -51,9 +60,11 @@ Partial Class Form_About
         Me.ShowIcon = False
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
+        CType(Me.PictureBox_Donate, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents PictureBox_Donate As PictureBox
 End Class
