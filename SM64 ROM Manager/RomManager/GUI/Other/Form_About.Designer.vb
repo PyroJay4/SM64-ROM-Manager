@@ -43,6 +43,7 @@ Partial Class Form_About
         '
         resources.ApplyResources(Me.PictureBox_Donate, "PictureBox_Donate")
         Me.PictureBox_Donate.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox_Donate.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox_Donate.Image = Global.SM64_ROM_Manager.My.Resources.Resources.btn_donateCC_LG
         Me.PictureBox_Donate.Name = "PictureBox_Donate"
         Me.PictureBox_Donate.TabStop = False
