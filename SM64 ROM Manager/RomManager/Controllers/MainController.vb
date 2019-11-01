@@ -71,6 +71,7 @@ Public Class MainController
     Public Event LevelAreaBackgroundModeChanged(e As LevelAreaBackgroundModeChangedEventArgs)
     Public Event LevelAreaCustomObjectsCountChanged(e As LevelAreaEventArgs)
     Public Event LevelAreaScrollingTextureCountChanged(e As LevelAreaEventArgs)
+    Public Event ObjectBankDataChanged()
 
     'C o n s t a n t s
 
@@ -619,8 +620,38 @@ Public Class MainController
 
     Public Sub OpenObjectBankDataEditor()
         Dim editor As New ObjectBankDataEditor(ObjectBankData)
+        Dim removedObds As New List(Of Data.ObjectBankData)
+        Dim changedObds As New List(Of Data.ObjectBankData)
+
+        'Watch for removed and changed Obds
+        AddHandler editor.RemovedObjectBankData, Sub(obd) removedObds.Add(obd)
+        AddHandler editor.ChangedObjectBankDataCommand, Sub(obd) If Not changedObds.Contains(obd) Then changedObds.Add(obd)
+
+        'Show Editor
         editor.ShowDialog()
+
+        'Save Obd
         SaveObjectBankData()
+
+        'Set removed and changed Obds in Levels to Null
+        Dim setObdsToNull =
+             Sub(dic As List(Of Data.ObjectBankData), remove As Boolean)
+                 For Each lvl As Level In RomManager.Levels
+                     For Each bankID As Byte In lvl.LoadedObjectBanks.Keys.ToArray
+                         For Each obd As Data.ObjectBankData In dic
+                             Dim curObd As Data.ObjectBankData = lvl.GetObjectBankData(bankID)
+                             If curObd Is obd Then
+                                 lvl.ChangeObjectBankData(bankID, If(remove, Nothing, curObd))
+                             End If
+                         Next
+                     Next
+                 Next
+             End Sub
+        setObdsToNull(removedObds, True)
+        setObdsToNull(changedObds, False)
+
+        'Raise events
+        RaiseEvent ObjectBankDataChanged()
     End Sub
 
     Private Sub OpenScriptDumper(Of TCmd, eTypes)(script As BaseCommandCollection(Of TCmd, eTypes))
@@ -850,7 +881,11 @@ Public Class MainController
     End Function
 
     Public Sub LoadObjectBankData()
-        ObjectBankData.Load(Path.Combine(MyDataPath, "Other\Object Bank Data.json"))
+        Static loaded As Boolean = False
+        If Not loaded Then
+            ObjectBankData.Load(Path.Combine(MyDataPath, "Other\Object Bank Data.json"))
+            loaded = True
+        End If
     End Sub
 
     Private Sub SaveObjectBankData()
@@ -955,7 +990,7 @@ Public Class MainController
         lvl.NeedToSaveBanks0E = True
     End Sub
 
-    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableShowMsg As Boolean, showMsgDialogID As Byte)
+    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer, enableShowMsg As Boolean, showMsgDialogID As Byte)
         Dim lvl As Level = GetLevelAndArea(levelIndex, -1).level
 
         'Default Start Position
@@ -969,9 +1004,9 @@ Public Class MainController
         lvl.HardcodedCameraSettings = enableHardcodedCamera
 
         'Object Banks
-        lvl.ChangeObjectBank(objBank0x0C)
-        lvl.ChangeObjectBank(objBank0x0D)
-        lvl.ChangeObjectBank(objBank0x0E)
+        lvl.ChangeObjectBankData(&HC, ObjectBankData(CByte(&HC)).ElementAtOrDefault(objBank0x0C - 1))
+        lvl.ChangeObjectBankData(&HD, ObjectBankData(CByte(&HD)).ElementAtOrDefault(objBank0x0D - 1))
+        lvl.ChangeObjectBankData(&H9, ObjectBankData(CByte(&H9)).ElementAtOrDefault(objBank0x0E - 1))
 
         SetLevelscriptNeedToSave(lvl)
     End Sub
@@ -1236,7 +1271,7 @@ Public Class MainController
         End If
     End Sub
 
-    Public Function GetLevelSettings(levelIndex As Integer) As (objBank0x0C As ObjectBank0x0C, objBank0x0D As ObjectBank0x0D, objBank0x0E As ObjectBank0x0E, enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, bgImage As Image, bgOriginal As BackgroundIDs, areasCount As Byte)
+    Public Function GetLevelSettings(levelIndex As Integer) As (enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, bgImage As Image, bgOriginal As BackgroundIDs, areasCount As Byte)
         Dim lvl As Level = GetLevelAndArea(levelIndex).level
         Dim defPosCmd As LevelscriptCommand = lvl.GetDefaultPositionCmd
         Dim bgMode As Byte
@@ -1263,7 +1298,24 @@ Public Class MainController
             defPosYRot = clDefaultPosition.GetRotation(defPosCmd)
         End If
 
-        Return (lvl.ObjectBank0x0C, lvl.ObjectBank0x0D, lvl.ObjectBank0x0E, lvl.ActSelector, lvl.HardcodedCameraSettings, defPosCmd IsNot Nothing, defPosAreaID, defPosYRot, bgMode, bgImage, bgOriginal, lvl.Areas.Count)
+        Return (
+            lvl.ActSelector,
+            lvl.HardcodedCameraSettings,
+            defPosCmd IsNot Nothing,
+            defPosAreaID,
+            defPosYRot,
+            bgMode,
+            bgImage,
+            bgOriginal,
+            lvl.Areas.Count)
+    End Function
+
+    Public Function GetLevelObjectBankDataSettings(levelIndex As Integer) As (objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer)
+        Dim lvl As Level = GetLevelAndArea(levelIndex).level
+        Return (
+            ObjectBankData(CByte(&HC)).IndexOf(lvl.GetObjectBankData(&HC)) + 1,
+            ObjectBankData(CByte(&HD)).IndexOf(lvl.GetObjectBankData(&HD)) + 1,
+            ObjectBankData(CByte(&H9)).IndexOf(lvl.GetObjectBankData(&H9)) + 1)
     End Function
 
     Public Sub ChangeLevelID(levelIndex As Integer)

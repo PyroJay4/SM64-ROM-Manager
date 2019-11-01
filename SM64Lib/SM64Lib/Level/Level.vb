@@ -7,6 +7,7 @@ Imports SM64Lib.Geolayout.Script.Commands
 Imports SM64Lib.Levels.ScrolTex
 Imports SM64Lib.SegmentedBanking
 Imports SM64Lib.ObjectBanks.Data
+Imports System.Collections.ObjectModel
 
 Namespace Global.SM64Lib.Levels
 
@@ -22,11 +23,9 @@ Namespace Global.SM64Lib.Levels
 
         'A u t o   P r o p e r t i e s
 
+        Friend ReadOnly Property MyObjectBanks As New Dictionary(Of Byte, ObjectBankData)
         Public Property Levelscript As New Levelscript
         Public ReadOnly Property Areas As New List(Of LevelArea)
-        Public Property ObjectBank0x0C As ObjectBank0x0C = 0
-        Public Property ObjectBank0x0D As ObjectBank0x0D = 0
-        Public Property ObjectBank0x0E As ObjectBank0x0E = 0
         Public Property DefaultTerrainType As Integer = 0
         Public Property LevelID As UShort = 0
         Public Property SegmentedID As Byte = &H19
@@ -42,6 +41,12 @@ Namespace Global.SM64Lib.Levels
         Public Property OneBank0xESystemEnabled As Boolean = True
 
         'O t h e r   P r o p e r t i e s
+
+        Public ReadOnly Property LoadedObjectBanks As IReadOnlyDictionary(Of Byte, ObjectBankData)
+            Get
+                Return MyObjectBanks
+            End Get
+        End Property
 
         Public Property Bank0x19 As SegmentedBank
             Get
@@ -115,7 +120,7 @@ Namespace Global.SM64Lib.Levels
                 .Add(New LevelscriptCommand({&H2, &H4, &H0, &H0}))
 
                 'Add the general object bank
-                ChangeObjectBank(0, 0, -1)
+                ChangeObjectBank(Nothing, ObjectBankData(&HB)?.FirstOrDefault)
             End With
 
             For Each c As LevelscriptCommand In Levelscript
@@ -146,37 +151,25 @@ Namespace Global.SM64Lib.Levels
             Return Levelscript.FirstOrDefault(Function(n) n.CommandType = LevelscriptCommandTypes.DefaultPosition)
         End Function
 
-        Public Sub ChangeObjectBank(BankEntries As ObjectBank0x0C)
-            ChangeObjectBank(1, BankEntries - 1, ObjectBank0x0C - 1)
-            ObjectBank0x0C = BankEntries
+        Public Sub ChangeObjectBankData(bankID As Byte, newObd As ObjectBankData)
+            ChangeObjectBank(GetObjectBankData(bankID), newObd)
+            CType(MyObjectBanks, Dictionary(Of Byte, ObjectBankData))(bankID) = newObd
         End Sub
 
-        Public Function GetObjectBank0x0C() As ObjectBank0x0C
-            Return GetObjectBank(1) + 1
+        Public Function GetObjectBankData(bankID As Byte) As ObjectBankData
+            If MyObjectBanks.ContainsKey(bankID) Then
+                Return MyObjectBanks(bankID)
+            Else
+                Dim obd As ObjectBankData = FindObjectBankData(bankID)
+                CType(MyObjectBanks, Dictionary(Of Byte, ObjectBankData)).Add(bankID, obd)
+                Return obd
+            End If
         End Function
 
-        Public Sub ChangeObjectBank(BankEntries As ObjectBank0x0D)
-            ChangeObjectBank(2, BankEntries - 1, ObjectBank0x0D - 1)
-            ObjectBank0x0D = BankEntries
-        End Sub
-
-        Public Function GetObjectBank0x0D() As ObjectBank0x0D
-            Return GetObjectBank(2) + 1
-        End Function
-
-        Public Sub ChangeObjectBank(BankEntries As ObjectBank0x0E)
-            ChangeObjectBank(3, BankEntries - 1, ObjectBank0x0E - 1)
-            ObjectBank0x0E = BankEntries
-        End Sub
-
-        Public Function GetObjectBank0x0E() As ObjectBank0x0E
-            Return GetObjectBank(3) + 1
-        End Function
-
-        Protected Sub ChangeObjectBank(BankIndex As Integer, NewEntryIndex As Integer, OldEntryIndex As Integer)
+        Protected Sub ChangeObjectBank(oldObd As ObjectBankData, newObd As ObjectBankData)
             'Remove old commands
-            If OldEntryIndex <> -1 Then
-                For Each obdCmd As ObjectBankDataCommand In ObjectBankData(BankIndex)(OldEntryIndex).Commands
+            If oldObd IsNot Nothing Then
+                For Each obdCmd As ObjectBankDataCommand In oldObd.Commands
                     For Each cmd In Levelscript.Where(Function(n) CompareTwoByteArrays(n.ToArray, obdCmd.Command)).ToArray
                         cmd.Close()
                         Levelscript.Remove(cmd)
@@ -184,8 +177,9 @@ Namespace Global.SM64Lib.Levels
                 Next
             End If
 
-            If NewEntryIndex <> -1 Then
-                For Each obdCmd As ObjectBankDataCommand In ObjectBankData(BankIndex)(NewEntryIndex).Commands
+            'Add new commands
+            If newObd IsNot Nothing Then
+                For Each obdCmd As ObjectBankDataCommand In newObd.Commands
                     Dim startIndex As Integer = Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1D)
 
                     If Not (obdCmd.CommandType = &H1A OrElse obdCmd.CommandType = &H17) Then
@@ -199,24 +193,23 @@ Namespace Global.SM64Lib.Levels
             End If
         End Sub
 
-        Protected Function GetObjectBank(BankIndex As Integer) As Integer
+        Protected Function FindObjectBankData(bankID As Byte) As ObjectBankData
+            Dim list As ObjectBankDataList = ObjectBankData(bankID)
             Dim Found As New List(Of Boolean)
 
-            For obdDataIndex As Integer = 0 To ObjectBankData(BankIndex).Count - 1
-                Dim obdData As ObjectBankData = ObjectBankData(BankIndex)(obdDataIndex)
-
-                For Each obdCmd As ObjectBankDataCommand In obdData.Commands
+            For Each obd As ObjectBankData In list
+                For Each obdCmd As ObjectBankDataCommand In obd.Commands
                     Found.Add(Levelscript.Where(Function(n) CompareTwoByteArrays(n.ToArray, obdCmd.Command)).Any)
                 Next
 
                 If Not Found.Contains(False) Then
-                    Return obdDataIndex
+                    Return obd
                 End If
 
                 Found.Clear()
             Next
 
-            Return -1
+            Return Nothing
         End Function
 
         Public Sub Close()

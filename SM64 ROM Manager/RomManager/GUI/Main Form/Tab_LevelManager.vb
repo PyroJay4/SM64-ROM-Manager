@@ -174,6 +174,10 @@ Public Class Tab_LevelManager
         End If
     End Sub
 
+    Private Sub Controller_ObjectBankDataChanged() Handles Controller.ObjectBankDataChanged
+        LoadObjectBankListBoxEntries()
+    End Sub
+
     'F e a t u r e s   &   G U I
 
     Private Sub LoadSequenceList()
@@ -269,7 +273,7 @@ Public Class Tab_LevelManager
         lvi.SubItems(7).Text = If(sd.boxType = SpecialBoxType.Water, If(sd.invisibleWater, Form_Main_Resources.Text_Invisible, sd.waterType.ToString), "-")
     End Sub
 
-    Friend Sub LoadListBoxEntries()
+    Friend Sub LoadObjectBankListBoxEntries()
         Controller.LoadObjectBankData()
 
         Dim load =
@@ -283,6 +287,7 @@ Public Class Tab_LevelManager
                     }
                     sb.ComboItems.Add(cb)
                 Next
+                LoadLevelObjectBankDataSettings(CurrentLevelIndex)
             End Sub
 
         load(ObjectBankSelectorBox_C, 1)
@@ -517,13 +522,11 @@ Public Class Tab_LevelManager
     End Sub
 
     Private Sub LoadLevelSettings(levelIndex As Integer)
-        Dim index As Integer = ListBoxAdv_LM_Levels.Items.IndexOf(ListBoxAdv_LM_Levels.SelectedItem)
-
-        TabControl_LM_Level.Enabled = Not (index < 0)
-        TabControl_LM_Level.Enabled = Not (index < 0) 'Yes, a second time!
+        TabControl_LM_Level.Enabled = levelIndex >= 0
+        TabControl_LM_Level.Enabled = levelIndex >= 0 'Yes, a second time! Otherwise id doesn't work for no reason.
 
         If Not LM_LoadingLevel Then
-            If index < 0 OrElse ListBoxAdv_LM_Levels.Items.Count = 0 OrElse Controller.IsLoadingRom Then
+            If levelIndex < 0 OrElse ListBoxAdv_LM_Levels.Items.Count = 0 OrElse Controller.IsLoadingRom Then
                 TabControl_LM_Level.Enabled = False
                 TabControl_LM_Area.Enabled = False
                 GroupBox_LM_Areas.Enabled = False
@@ -536,9 +539,7 @@ Public Class Tab_LevelManager
                 Dim info = Controller.GetLevelSettings(levelIndex)
 
                 'Load Levelsettings
-                ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
-                ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
-                ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
+                LoadLevelObjectBankDataSettings(levelIndex)
                 SwitchButton_LM_ActSelector.Value = info.enableActSelector
                 SwitchButton_LM_HardcodedCameraSettings.Value = info.enableHardcodedCamera
 
@@ -567,6 +568,20 @@ Public Class Tab_LevelManager
                 TabControl_LM_Area.Enabled = True
                 ButtonX_LM_LevelsMore.Enabled = True
             End If
+        End If
+    End Sub
+
+    Private Sub LoadLevelObjectBankDataSettings(levelIndex As Integer)
+        If levelIndex >= 0 Then
+            Dim info = Controller.GetLevelObjectBankDataSettings(levelIndex)
+            Dim wasLoadingLevel As Boolean = LM_LoadingLevel
+            LM_LoadingLevel = True
+
+            ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
+            ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
+            ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
+
+            LM_LoadingLevel = wasLoadingLevel
         End If
     End Sub
 
@@ -807,19 +822,4 @@ Public Class Tab_LevelManager
         Controller.ImportLevelArea(CurrentLevelIndex)
     End Sub
 
-    Private Sub LM_SaveAreaBackgorund(sender As Object, e As EventArgs) Handles ColorPickerButton_LM_BackgroundColor.SelectedColorChanged
-
-    End Sub
-
-    Private Sub LM_LoadCustomBackground(sender As Object, e As EventArgs) Handles Button_LM_LoadLevelBG.Click
-
-    End Sub
-
-    Private Sub Button_LM_AddNewLevel_Click(sender As Object, e As EventArgs) Handles Button_LM_AddNewLevel.Click
-
-    End Sub
-
-    Private Sub Button_LM_AddArea_Click(sender As Object, e As EventArgs) Handles Button_LM_AddArea.Click
-
-    End Sub
 End Class

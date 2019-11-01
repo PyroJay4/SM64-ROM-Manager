@@ -209,9 +209,10 @@ Namespace Levels
             fs.Close()
 
             'Object-Banks
-            lvl.ObjectBank0x0C = ObjectBank0x0C.Disabled
-            lvl.ObjectBank0x0D = ObjectBank0x0D.Disabled
-            lvl.ObjectBank0x0E = ObjectBank0x0E.Disabled
+            lvl.MyObjectBanks.Clear()
+            lvl.MyObjectBanks.Add(&HC, Nothing)
+            lvl.MyObjectBanks.Add(&HD, Nothing)
+            lvl.MyObjectBanks.Add(&H9, Nothing)
         End Sub
 
         Public Function SaveLevel(lvl As Level, rommgr As RomManager, output As BinaryData, ByRef curOff As UInteger) As LevelSaveResult Implements ILevelManager.SaveLevel

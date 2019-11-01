@@ -213,11 +213,6 @@ Namespace Levels
             lvl.HardcodedCameraSettings = PatchClass.HardcodedCamera_Enabled(LevelID)
 
             fs.Close()
-
-            'Object-Banks
-            lvl.ObjectBank0x0C = lvl.GetObjectBank0x0C()
-            lvl.ObjectBank0x0D = lvl.GetObjectBank0x0D()
-            lvl.ObjectBank0x0E = lvl.GetObjectBank0x0E()
         End Sub
 
         ''' <summary>

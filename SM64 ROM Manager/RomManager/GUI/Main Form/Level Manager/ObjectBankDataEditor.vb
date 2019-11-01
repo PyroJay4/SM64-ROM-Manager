@@ -4,7 +4,10 @@ Imports SM64Lib.Script
 
 Public Class ObjectBankDataEditor
 
-    'F i e l d s
+    'E v e n t s
+
+    Public Event ChangedObjectBankDataCommand(obd As ObjectBankData)
+    Public Event RemovedObjectBankData(obd As ObjectBankData)
 
     'A u t o m a t i c   P r o p e r t i e s
 
@@ -177,6 +180,9 @@ Public Class ObjectBankDataEditor
         BeginTreeUpdate()
         nObdList.Nodes.Remove(nObd)
         EndTreeUpdate()
+
+        'Raise event
+        RaiseEvent RemovedObjectBankData(obd)
     End Sub
 
     Private Sub AddObj(nObjs As Node)
@@ -236,14 +242,26 @@ Public Class ObjectBankDataEditor
             nCmds.Nodes.Add(nCmd)
             nCmds.Expand()
             EndTreeUpdate()
+
+            'Raise event
+            RaiseEvent ChangedObjectBankDataCommand(obd)
         End If
     End Sub
 
-    Private Sub EditCmd(n As Node)
-        Dim cmd As ObjectBankDataCommand = n.Tag
+    Private Sub EditCmd(nCmd As Node)
+        Dim nCmds As Node = nCmd.Parent
+        Dim obd As ObjectBankData = nCmds.Tag
+        Dim cmd As ObjectBankDataCommand = nCmd.Tag
+
+        'Edit cmd
         OpenHexEditor(cmd.Command)
-        n.Text = $"<font face=""Consolas"">{SM64Lib.CommandByteArrayToString(cmd.Command)}</font>"
+
+        'Update ObdTree
+        nCmd.Text = $"<font face=""Consolas"">{SM64Lib.CommandByteArrayToString(cmd.Command)}</font>"
         ObdTree.Refresh()
+
+        'Raise event
+        RaiseEvent ChangedObjectBankDataCommand(obd)
     End Sub
 
     Private Sub RemoveCmd(nCmd As Node)
@@ -258,6 +276,9 @@ Public Class ObjectBankDataEditor
         BeginTreeUpdate()
         nCmds.Nodes.Remove(nCmd)
         EndTreeUpdate()
+
+        'Raise event
+        RaiseEvent ChangedObjectBankDataCommand(obd)
     End Sub
 
     'G U I

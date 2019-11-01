@@ -220,7 +220,7 @@ Public Class MainForm
         Panel1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top
 
         LoadRecentROMs()
-        tabLevelManager.LoadListBoxEntries()
+        tabLevelManager.LoadObjectBankListBoxEntries()
         finishedLoading = True
 
         Controller.StatusText = String.Empty
