@@ -143,6 +143,9 @@ Public Class MainController
 
     'C o n s t r u c t o r
 
+    Public Sub New()
+    End Sub
+
     Public Sub New(mainForm As MainForm)
         Me.mainForm = mainForm
 
