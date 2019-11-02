@@ -1561,7 +1561,7 @@ Namespace Model.Conversion.Fast3DWriting
                     Next
 
                     If dlProp Is Nothing Then
-                        dlProp = New DisplaylistProps(layerID * -1)
+                        dlProp = New DisplaylistProps((layerID + 1) * -1)
                     End If
 
                     dlProp.Layer = layerID
