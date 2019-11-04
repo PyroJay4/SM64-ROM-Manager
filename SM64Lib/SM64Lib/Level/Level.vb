@@ -120,7 +120,7 @@ Namespace Global.SM64Lib.Levels
                 .Add(New LevelscriptCommand({&H2, &H4, &H0, &H0}))
 
                 'Add the general object bank
-                ChangeObjectBank(Nothing, ObjectBankData(&HB)?.FirstOrDefault)
+                ChangeObjectBank(Nothing, ObjectBankData(CByte(&HB))?.FirstOrDefault)
             End With
 
             For Each c As LevelscriptCommand In Levelscript
