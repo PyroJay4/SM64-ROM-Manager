@@ -686,7 +686,7 @@ Namespace LevelEditor
         End Sub
 
         Friend Sub CopySelection()
-            Dim cmds As New List(Of IntPtr)
+            Dim cmds As New List(Of String)
             Dim format As String = ""
 
             Dim lastCmds As IntPtr() = Nothing
@@ -710,32 +710,17 @@ Namespace LevelEditor
                 End Select
 
                 If cmd IsNot Nothing Then
-                    Dim h = GCHandle.Alloc(cmd)
-                    cmds.Add(h)
+                    cmds.Add(Convert.ToBase64String(cmd.ToArray))
                 End If
             Next
 
-            'Get current clipboard content
-            If Clipboard.ContainsData("sm64lvlcmdobj3d") Then
-                lastCmds = Clipboard.GetData("sm64lvlcmdobj3d")
-            ElseIf Clipboard.ContainsData("sm64lvlcmdconnectwarp") Then
-                lastCmds = Clipboard.GetData("sm64lvlcmdconnectwarp")
-            End If
-
-            'Free current handles in clipboard
-            If lastCmds IsNot Nothing Then
-                For Each cmd As GCHandle In lastCmds
-                    cmd.Free()
-                Next
-            End If
-
-            'Set new handles as content to clipboard
+            'Set content to clipboard
             Clipboard.SetData(format, cmds.ToArray)
         End Sub
 
         Friend Sub PasteSelection(pasteSettings As PasteSettings)
             If Clipboard.ContainsData(pasteSettings.DataFormat) Then
-                Dim cmds() As IntPtr = Clipboard.GetData(pasteSettings.DataFormat)
+                Dim cmds As String() = Clipboard.GetData(pasteSettings.DataFormat)
 
                 Dim selItems As ListView.SelectedListViewItemCollection
                 Dim indexListToUse As ListViewEx = Nothing
@@ -757,7 +742,7 @@ Namespace LevelEditor
 
                     Do While selItems.Count > curCmd2Index
                         Dim curCmd1 As LevelscriptCommand
-                        Dim curCmd2 As LevelscriptCommand = CType(cmds(curCmdIndex), GCHandle).Target
+                        Dim curCmd2 As New LevelscriptCommand(Convert.FromBase64String(cmds(curCmdIndex)))
 
                         If curCmd2 IsNot Nothing Then
                             Select Case pasteSettings.GetType
@@ -795,6 +780,9 @@ Namespace LevelEditor
                                     mwarp.LoadProperties()
 
                             End Select
+
+                            'Close temp command
+                            curCmd2.Close()
                         End If
 
                         curCmdIndex += 1
@@ -814,6 +802,7 @@ Namespace LevelEditor
                     Case GetType(PasteObjectSettings)
                         UpdateObjectListViewItems()
                         AdvPropertyGrid1_RefreshPropertyValues()
+                        ogl.UpdateOrbitCamera()
                     Case GetType(PasteWarpSettings)
                         UpdateWarpListViewItem()
                         AdvPropertyGrid1_RefreshPropertyValues()
