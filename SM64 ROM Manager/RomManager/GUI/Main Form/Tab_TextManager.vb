@@ -10,7 +10,6 @@ Public Class Tab_TextManager
 
     'F i e l d s
 
-    Public WithEvents MainController As MainController
     Public WithEvents TMController As TextManagerController
     Private TM_LoadingItem As Boolean = False
     Private TM_BytesLeft As Integer = 0
