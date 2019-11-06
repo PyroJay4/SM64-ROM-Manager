@@ -291,11 +291,14 @@
       <DependentUpon>MyOldIcons.resx</DependentUpon>
     </Compile>
     <Compile Include="RomManager\Controllers\PluginInstaller.vb" />
+    <Compile Include="RomManager\Controllers\TextManagerController.vb" />
     <Compile Include="RomManager\EventArgs\LevelAreaEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelAreaBackgroundModeChangedEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelBackgroundImageChangedEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelBackgroundModeChangedEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\EnabledEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\RequestValueEventArgs.vb" />
+    <Compile Include="RomManager\EventArgs\RequestRomManagerEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\SpecialItemEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\LevelEventArgs.vb" />
     <Compile Include="RomManager\EventArgs\TextItemEventArgs.vb" />

@@ -45,12 +45,12 @@ Public Class MainForm
         'Set instance on Tabs   
         tabGeneral.Controller = Controller
         tabLevelManager.Controller = Controller
-        tabTextManager.Controller = Controller
+        tabTextManager.TMController = Controller.TextManagerController
         tabMusicManager.Controller = Controller
 
         'Set my style
         SetStyleManagerStyle()
-        Controller.SendRequestReloadTextManagerLineColors()
+        Controller.TextManagerController.SendRequestReloadTextManagerLineColors()
 
         'Resume drawing
         ResumeLayout()
@@ -294,7 +294,7 @@ Public Class MainForm
         If e IsNot Nothing Then
             Select Case True
                 Case e.NewTab Is TabItem_TextManager
-                    Controller.SendRequestReloadTextManagerLists()
+                    Controller.TextManagerController.SendRequestReloadTextManagerLists()
                 Case Else
                     If e.OldTab Is TabItem_TextManager Then
                         Controller.SetOtherStatusInfos(String.Empty, Nothing)
@@ -464,7 +464,7 @@ Public Class MainForm
         If Not Controller.HasRomManager Then
             ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
         Else
-            Controller.OpenTextProfileEditor()
+            Controller.TextManagerController.OpenTextProfileEditor()
         End If
     End Sub
 

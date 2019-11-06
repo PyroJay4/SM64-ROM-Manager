@@ -190,7 +190,7 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.tabTextManager, "tabTextManager")
         Me.tabTextManager.BackColor = System.Drawing.Color.White
-        Me.tabTextManager.Controller = Nothing
+        Me.tabTextManager.TMController = Nothing
         Me.tabTextManager.Name = "tabTextManager"
         '
         'TabItem_TextManager
