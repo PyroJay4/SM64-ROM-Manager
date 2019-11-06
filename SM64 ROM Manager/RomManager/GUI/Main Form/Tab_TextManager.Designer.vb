@@ -282,9 +282,9 @@ Partial Class Tab_TextManager
         'ButtonItem_AddTextItem
         '
         Me.ButtonItem_AddTextItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_AddTextItem.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
         Me.ButtonItem_AddTextItem.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
         Me.ButtonItem_AddTextItem.Name = "ButtonItem_AddTextItem"
-        Me.ButtonItem_AddTextItem.Symbol = "57669"
         Me.ButtonItem_AddTextItem.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonItem_AddTextItem.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_AddTextItem.SymbolSize = 12.0!
@@ -292,9 +292,9 @@ Partial Class Tab_TextManager
         'ButtonItem_RemoveTextItem
         '
         Me.ButtonItem_RemoveTextItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_RemoveTextItem.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.ButtonItem_RemoveTextItem.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
         Me.ButtonItem_RemoveTextItem.Name = "ButtonItem_RemoveTextItem"
-        Me.ButtonItem_RemoveTextItem.Symbol = "57676"
         Me.ButtonItem_RemoveTextItem.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonItem_RemoveTextItem.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_RemoveTextItem.SymbolSize = 12.0!

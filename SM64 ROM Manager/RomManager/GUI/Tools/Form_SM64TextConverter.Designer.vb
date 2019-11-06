@@ -133,27 +133,27 @@ Partial Class Form_SM64TextConverter
         '
         'ButtonItem_Copy
         '
+        Me.ButtonItem_Copy.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_copy_16px
         Me.ButtonItem_Copy.Name = "ButtonItem_Copy"
         Me.ButtonItem_Copy.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlC)
-        Me.ButtonItem_Copy.Symbol = "57677"
         Me.ButtonItem_Copy.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_Copy.SymbolSize = 12.0!
         resources.ApplyResources(Me.ButtonItem_Copy, "ButtonItem_Copy")
         '
         'ButtonItem_cut
         '
+        Me.ButtonItem_cut.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_cut_16px
         Me.ButtonItem_cut.Name = "ButtonItem_cut"
         Me.ButtonItem_cut.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlX)
-        Me.ButtonItem_cut.Symbol = "57678"
         Me.ButtonItem_cut.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_cut.SymbolSize = 12.0!
         resources.ApplyResources(Me.ButtonItem_cut, "ButtonItem_cut")
         '
         'ButtonItem_Paste
         '
+        Me.ButtonItem_Paste.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_paste_16px
         Me.ButtonItem_Paste.Name = "ButtonItem_Paste"
         Me.ButtonItem_Paste.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlV)
-        Me.ButtonItem_Paste.Symbol = "57679"
         Me.ButtonItem_Paste.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_Paste.SymbolSize = 12.0!
         resources.ApplyResources(Me.ButtonItem_Paste, "ButtonItem_Paste")
@@ -169,9 +169,9 @@ Partial Class Form_SM64TextConverter
         'ButtonItem_Remove
         '
         Me.ButtonItem_Remove.BeginGroup = True
+        Me.ButtonItem_Remove.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.ButtonItem_Remove.Name = "ButtonItem_Remove"
         Me.ButtonItem_Remove.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.Del)
-        Me.ButtonItem_Remove.Symbol = "57676"
         Me.ButtonItem_Remove.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonItem_Remove.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_Remove.SymbolSize = 12.0!
