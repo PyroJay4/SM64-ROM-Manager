@@ -71,7 +71,9 @@
     <Reference Include="Pilz.Simple3DFileParser">
       <HintPath>..\Shared Libs\Pilz.Simple3DFileParser.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationCore">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RegistryMonitor">
       <HintPath>..\Shared Libs\RegistryMonitor.dll</HintPath>
     </Reference>
