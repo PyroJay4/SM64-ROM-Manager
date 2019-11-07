@@ -99,9 +99,9 @@ Partial Class ApplyPPFDialog
         resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX3.FocusCuesEnabled = False
+        Me.ButtonX3.Image = Global.ApplyPPF.My.Resources.Resources.icons8_folder_16px
         Me.ButtonX3.Name = "ButtonX3"
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX3.Symbol = "58055"
         Me.ButtonX3.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
         Me.ButtonX3.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX3.SymbolSize = 12.0!
@@ -112,9 +112,9 @@ Partial Class ApplyPPFDialog
         resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.FocusCuesEnabled = False
+        Me.ButtonX2.Image = Global.ApplyPPF.My.Resources.Resources.icons8_folder_16px
         Me.ButtonX2.Name = "ButtonX2"
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX2.Symbol = "58055"
         Me.ButtonX2.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
         Me.ButtonX2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX2.SymbolSize = 12.0!

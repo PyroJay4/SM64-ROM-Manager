@@ -170,6 +170,7 @@
   <ItemGroup>
     <Content Include="icons8_pills.ico" />
     <Content Include="icons8_syringe.ico" />
+    <None Include="Resources\icons8_folder_16px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
