@@ -47,8 +47,6 @@ Partial Class Tab_TextManager
         Me.Bar_AddRemoveItems = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem_AddTextItem = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_RemoveTextItem = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
         Me.Bar_TextOptions = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem_AddButtons = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
@@ -296,7 +294,7 @@ Partial Class Tab_TextManager
         resources.ApplyResources(Me.Bar_AddRemoveItems, "Bar_AddRemoveItems")
         Me.Bar_AddRemoveItems.AntiAlias = True
         Me.Bar_AddRemoveItems.IsMaximized = False
-        Me.Bar_AddRemoveItems.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddTextItem, Me.ButtonItem_RemoveTextItem, Me.ButtonItem2, Me.ButtonItem3})
+        Me.Bar_AddRemoveItems.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddTextItem, Me.ButtonItem_RemoveTextItem})
         Me.Bar_AddRemoveItems.Name = "Bar_AddRemoveItems"
         Me.Bar_AddRemoveItems.Stretch = True
         Me.Bar_AddRemoveItems.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -315,16 +313,6 @@ Partial Class Tab_TextManager
         Me.ButtonItem_RemoveTextItem.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.ButtonItem_RemoveTextItem.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
         Me.ButtonItem_RemoveTextItem.Name = "ButtonItem_RemoveTextItem"
-        '
-        'ButtonItem2
-        '
-        Me.ButtonItem2.Name = "ButtonItem2"
-        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
-        '
-        'ButtonItem3
-        '
-        Me.ButtonItem3.Name = "ButtonItem3"
-        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
         '
         'Bar_TextOptions
         '
@@ -484,8 +472,6 @@ Partial Class Tab_TextManager
     Friend WithEvents Bar_AddRemoveItems As DevComponents.DotNetBar.Bar
     Friend WithEvents ButtonItem_AddTextItem As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_RemoveTextItem As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem2 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem3 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents Bar_TextOptions As DevComponents.DotNetBar.Bar
     Friend WithEvents ButtonItem_AddButtons As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
