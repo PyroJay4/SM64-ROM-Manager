@@ -188,14 +188,14 @@ Public Class Tab_TextManager
         GroupPanel_TM_DialogProps.Visible = groupInfo.isDialogGroup
         TextBoxX_TM_TextEditor.CharacterCasing = If(isUpperCase, CharacterCasing.Upper, CharacterCasing.Normal)
 
-        Dim elementHight As Integer = ListViewEx_TM_TableEntries.Height + TabStrip_TextTable.Height
+        Dim elementHight As Integer = ListViewEx_TM_TableEntries.Height
         If groupInfo.isDialogGroup Then
-            elementHight -= GroupPanel_TM_DialogProps.Height + 4
+            elementHight -= GroupPanel_TM_DialogProps.Height + 3
         End If
         TextBoxX_TM_TextEditor.Height = elementHight
-        Line_TM_Green.Height = elementHight - 5
-        Line_TM_Warning1.Height = elementHight - 5
-        Line_TM_Warning2.Height = elementHight - 5
+        Line_TM_Green.Height = elementHight - 1
+        Line_TM_Warning1.Height = elementHight - 1
+        Line_TM_Warning2.Height = elementHight - 1
 
         Bar_AddRemoveItems.Visible = Not isPreDefined
         If isPreDefined OrElse Not groupInfo.isTableGroup Then
