@@ -117,16 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="GroupPanel_TM_DialogProps.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="GroupPanel_TM_DialogProps.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <metadata name="LabelX22.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LabelX22.Location" type="System.Drawing.Point, System.Drawing">
     <value>187, 32</value>
@@ -153,9 +147,6 @@
   <data name="&gt;&gt;LabelX22.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="LabelX21.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="LabelX21.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 32</value>
   </data>
@@ -180,9 +171,6 @@
   <data name="&gt;&gt;LabelX21.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="ComboBoxEx_TM_DialogPosY.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="ComboBoxEx_TM_DialogPosY.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
@@ -213,9 +201,6 @@
   <data name="&gt;&gt;ComboBoxEx_TM_DialogPosY.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="IntegerInput_TM_DialogSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="IntegerInput_TM_DialogSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 33</value>
   </data>
@@ -237,9 +222,6 @@
   <data name="&gt;&gt;IntegerInput_TM_DialogSize.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="ComboBoxEx_TM_DialogPosX.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="ComboBoxEx_TM_DialogPosX.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
@@ -273,9 +255,6 @@
   <data name="&gt;&gt;ComboBoxEx_TM_DialogPosX.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="LabelX18.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="LabelX18.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -324,9 +303,6 @@
   <data name="&gt;&gt;GroupPanel_TM_DialogProps.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="TabStrip_TextTable.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="TabStrip_TextTable.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -354,9 +330,6 @@
   <data name="&gt;&gt;TabStrip_TextTable.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="ListViewEx_TM_TableEntries.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="ListViewEx_TM_TableEntries.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -405,9 +378,6 @@
   <data name="&gt;&gt;ListViewEx_TM_TableEntries.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="Line_TM_Green.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="Line_TM_Green.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
   </data>
@@ -432,9 +402,6 @@
   <data name="&gt;&gt;Line_TM_Green.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="Line_TM_Warning1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="Line_TM_Warning1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
   </data>
@@ -459,9 +426,6 @@
   <data name="&gt;&gt;Line_TM_Warning1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="Line_TM_Warning2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="Line_TM_Warning2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
   </data>
@@ -486,9 +450,6 @@
   <data name="&gt;&gt;Line_TM_Warning2.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="TextBoxX_TM_TextEditor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="TextBoxX_TM_TextEditor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
   </data>
@@ -525,9 +486,6 @@
   <data name="&gt;&gt;TextBoxX_TM_TextEditor.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <metadata name="Bar_AddRemoveItems.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="Bar_AddRemoveItems.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -561,9 +519,6 @@
   <data name="&gt;&gt;Bar_AddRemoveItems.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="Bar_TextOptions.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="Bar_TextOptions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -699,9 +654,6 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -822,12 +774,6 @@
   <data name="&gt;&gt;ButtonItem9.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;ButtonItem10.Name" xml:space="preserve">
-    <value>ButtonItem10</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem10.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;ButtonItem8.Name" xml:space="preserve">
     <value>ButtonItem8</value>
   </data>
@@ -852,16 +798,22 @@
   <data name="&gt;&gt;ButtonItem13.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;ButtonItem14.Name" xml:space="preserve">
-    <value>ButtonItem14</value>
+  <data name="&gt;&gt;ButtonItem10.Name" xml:space="preserve">
+    <value>ButtonItem10</value>
   </data>
-  <data name="&gt;&gt;ButtonItem14.Type" xml:space="preserve">
+  <data name="&gt;&gt;ButtonItem10.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ButtonItem15.Name" xml:space="preserve">
     <value>ButtonItem15</value>
   </data>
   <data name="&gt;&gt;ButtonItem15.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem14.Name" xml:space="preserve">
+    <value>ButtonItem14</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem14.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ButtonItem16.Name" xml:space="preserve">

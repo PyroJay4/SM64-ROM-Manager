@@ -47,9 +47,9 @@ Partial Class Tab_TextManager
         Me.Bar_AddRemoveItems = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem_AddTextItem = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_RemoveTextItem = New DevComponents.DotNetBar.ButtonItem()
-        Me.Bar_TextOptions = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
+        Me.Bar_TextOptions = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem_AddButtons = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
@@ -57,13 +57,13 @@ Partial Class Tab_TextManager
         Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem7 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem9 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem10 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem8 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem11 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem12 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem14 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem10 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem15 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem14 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem16 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem17 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem18 = New DevComponents.DotNetBar.ButtonItem()
@@ -316,6 +316,16 @@ Partial Class Tab_TextManager
         Me.ButtonItem_RemoveTextItem.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
         Me.ButtonItem_RemoveTextItem.Name = "ButtonItem_RemoveTextItem"
         '
+        'ButtonItem2
+        '
+        Me.ButtonItem2.Name = "ButtonItem2"
+        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
+        '
+        'ButtonItem3
+        '
+        Me.ButtonItem3.Name = "ButtonItem3"
+        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
+        '
         'Bar_TextOptions
         '
         resources.ApplyResources(Me.Bar_TextOptions, "Bar_TextOptions")
@@ -326,16 +336,6 @@ Partial Class Tab_TextManager
         Me.Bar_TextOptions.Stretch = True
         Me.Bar_TextOptions.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Bar_TextOptions.TabStop = False
-        '
-        'ButtonItem2
-        '
-        Me.ButtonItem2.Name = "ButtonItem2"
-        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
-        '
-        'ButtonItem3
-        '
-        Me.ButtonItem3.Name = "ButtonItem3"
-        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
         '
         'ButtonItem_AddButtons
         '
@@ -376,13 +376,6 @@ Partial Class Tab_TextManager
         Me.ButtonItem9.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem8, Me.ButtonItem11, Me.ButtonItem12, Me.ButtonItem13})
         resources.ApplyResources(Me.ButtonItem9, "ButtonItem9")
         '
-        'ButtonItem10
-        '
-        Me.ButtonItem10.AutoExpandOnClick = True
-        Me.ButtonItem10.Name = "ButtonItem10"
-        Me.ButtonItem10.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem15, Me.ButtonItem14, Me.ButtonItem16, Me.ButtonItem17, Me.ButtonItem18, Me.ButtonItem19, Me.ButtonItem20})
-        resources.ApplyResources(Me.ButtonItem10, "ButtonItem10")
-        '
         'ButtonItem8
         '
         Me.ButtonItem8.Name = "ButtonItem8"
@@ -403,15 +396,22 @@ Partial Class Tab_TextManager
         Me.ButtonItem13.Name = "ButtonItem13"
         resources.ApplyResources(Me.ButtonItem13, "ButtonItem13")
         '
-        'ButtonItem14
+        'ButtonItem10
         '
-        Me.ButtonItem14.Name = "ButtonItem14"
-        resources.ApplyResources(Me.ButtonItem14, "ButtonItem14")
+        Me.ButtonItem10.AutoExpandOnClick = True
+        Me.ButtonItem10.Name = "ButtonItem10"
+        Me.ButtonItem10.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem15, Me.ButtonItem14, Me.ButtonItem16, Me.ButtonItem17, Me.ButtonItem18, Me.ButtonItem19, Me.ButtonItem20})
+        resources.ApplyResources(Me.ButtonItem10, "ButtonItem10")
         '
         'ButtonItem15
         '
         Me.ButtonItem15.Name = "ButtonItem15"
         resources.ApplyResources(Me.ButtonItem15, "ButtonItem15")
+        '
+        'ButtonItem14
+        '
+        Me.ButtonItem14.Name = "ButtonItem14"
+        resources.ApplyResources(Me.ButtonItem14, "ButtonItem14")
         '
         'ButtonItem16
         '
