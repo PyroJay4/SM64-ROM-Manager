@@ -112,6 +112,7 @@ Partial Class TextProfileEditor
         '
         'ItemListBox1
         '
+        Me.ItemListBox1.AutoScroll = True
         '
         '
         '
