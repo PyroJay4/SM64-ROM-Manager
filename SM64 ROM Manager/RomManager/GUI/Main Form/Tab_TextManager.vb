@@ -337,4 +337,8 @@ Public Class Tab_TextManager
         TMController.RemoveTextTableItem(index.tableName, index.tableIndex)
     End Sub
 
+    Private Sub ButtonItemAddSpecialChar_Click(sender As ButtonItem, e As EventArgs) Handles ButtonItem7.Click, ButtonItem6.Click, ButtonItem5.Click, ButtonItem4.Click, ButtonItem1.Click, ButtonItem8.Click, ButtonItem13.Click, ButtonItem12.Click, ButtonItem11.Click, ButtonItem20.Click, ButtonItem19.Click, ButtonItem18.Click, ButtonItem17.Click, ButtonItem16.Click, ButtonItem15.Click, ButtonItem14.Click
+        TextBoxX_TM_TextEditor.Paste(sender.Tag)
+    End Sub
+
 End Class

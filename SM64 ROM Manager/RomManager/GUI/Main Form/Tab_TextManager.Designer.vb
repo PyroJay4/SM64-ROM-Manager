@@ -47,9 +47,32 @@ Partial Class Tab_TextManager
         Me.Bar_AddRemoveItems = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem_AddTextItem = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_RemoveTextItem = New DevComponents.DotNetBar.ButtonItem()
+        Me.Bar_TextOptions = New DevComponents.DotNetBar.Bar()
+        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_AddButtons = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem7 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem9 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem10 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem8 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem11 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem12 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem13 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem14 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem15 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem16 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem17 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem18 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem19 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem20 = New DevComponents.DotNetBar.ButtonItem()
         Me.GroupPanel_TM_DialogProps.SuspendLayout()
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Bar_AddRemoveItems, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Bar_TextOptions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupPanel_TM_DialogProps
@@ -270,10 +293,10 @@ Partial Class Tab_TextManager
         '
         'Bar_AddRemoveItems
         '
-        Me.Bar_AddRemoveItems.AntiAlias = True
         resources.ApplyResources(Me.Bar_AddRemoveItems, "Bar_AddRemoveItems")
+        Me.Bar_AddRemoveItems.AntiAlias = True
         Me.Bar_AddRemoveItems.IsMaximized = False
-        Me.Bar_AddRemoveItems.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddTextItem, Me.ButtonItem_RemoveTextItem})
+        Me.Bar_AddRemoveItems.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddTextItem, Me.ButtonItem_RemoveTextItem, Me.ButtonItem2, Me.ButtonItem3})
         Me.Bar_AddRemoveItems.Name = "Bar_AddRemoveItems"
         Me.Bar_AddRemoveItems.Stretch = True
         Me.Bar_AddRemoveItems.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -293,10 +316,133 @@ Partial Class Tab_TextManager
         Me.ButtonItem_RemoveTextItem.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
         Me.ButtonItem_RemoveTextItem.Name = "ButtonItem_RemoveTextItem"
         '
+        'Bar_TextOptions
+        '
+        resources.ApplyResources(Me.Bar_TextOptions, "Bar_TextOptions")
+        Me.Bar_TextOptions.AntiAlias = True
+        Me.Bar_TextOptions.IsMaximized = False
+        Me.Bar_TextOptions.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddButtons, Me.ButtonItem9, Me.ButtonItem10})
+        Me.Bar_TextOptions.Name = "Bar_TextOptions"
+        Me.Bar_TextOptions.Stretch = True
+        Me.Bar_TextOptions.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Bar_TextOptions.TabStop = False
+        '
+        'ButtonItem2
+        '
+        Me.ButtonItem2.Name = "ButtonItem2"
+        resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
+        '
+        'ButtonItem3
+        '
+        Me.ButtonItem3.Name = "ButtonItem3"
+        resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
+        '
+        'ButtonItem_AddButtons
+        '
+        Me.ButtonItem_AddButtons.AutoExpandOnClick = True
+        Me.ButtonItem_AddButtons.Name = "ButtonItem_AddButtons"
+        Me.ButtonItem_AddButtons.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem4, Me.ButtonItem1, Me.ButtonItem5, Me.ButtonItem6, Me.ButtonItem7})
+        resources.ApplyResources(Me.ButtonItem_AddButtons, "ButtonItem_AddButtons")
+        '
+        'ButtonItem4
+        '
+        Me.ButtonItem4.Name = "ButtonItem4"
+        resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
+        '
+        'ButtonItem1
+        '
+        Me.ButtonItem1.Name = "ButtonItem1"
+        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
+        '
+        'ButtonItem5
+        '
+        Me.ButtonItem5.Name = "ButtonItem5"
+        resources.ApplyResources(Me.ButtonItem5, "ButtonItem5")
+        '
+        'ButtonItem6
+        '
+        Me.ButtonItem6.Name = "ButtonItem6"
+        resources.ApplyResources(Me.ButtonItem6, "ButtonItem6")
+        '
+        'ButtonItem7
+        '
+        Me.ButtonItem7.Name = "ButtonItem7"
+        resources.ApplyResources(Me.ButtonItem7, "ButtonItem7")
+        '
+        'ButtonItem9
+        '
+        Me.ButtonItem9.AutoExpandOnClick = True
+        Me.ButtonItem9.Name = "ButtonItem9"
+        Me.ButtonItem9.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem8, Me.ButtonItem11, Me.ButtonItem12, Me.ButtonItem13})
+        resources.ApplyResources(Me.ButtonItem9, "ButtonItem9")
+        '
+        'ButtonItem10
+        '
+        Me.ButtonItem10.AutoExpandOnClick = True
+        Me.ButtonItem10.Name = "ButtonItem10"
+        Me.ButtonItem10.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem15, Me.ButtonItem14, Me.ButtonItem16, Me.ButtonItem17, Me.ButtonItem18, Me.ButtonItem19, Me.ButtonItem20})
+        resources.ApplyResources(Me.ButtonItem10, "ButtonItem10")
+        '
+        'ButtonItem8
+        '
+        Me.ButtonItem8.Name = "ButtonItem8"
+        resources.ApplyResources(Me.ButtonItem8, "ButtonItem8")
+        '
+        'ButtonItem11
+        '
+        Me.ButtonItem11.Name = "ButtonItem11"
+        resources.ApplyResources(Me.ButtonItem11, "ButtonItem11")
+        '
+        'ButtonItem12
+        '
+        Me.ButtonItem12.Name = "ButtonItem12"
+        resources.ApplyResources(Me.ButtonItem12, "ButtonItem12")
+        '
+        'ButtonItem13
+        '
+        Me.ButtonItem13.Name = "ButtonItem13"
+        resources.ApplyResources(Me.ButtonItem13, "ButtonItem13")
+        '
+        'ButtonItem14
+        '
+        Me.ButtonItem14.Name = "ButtonItem14"
+        resources.ApplyResources(Me.ButtonItem14, "ButtonItem14")
+        '
+        'ButtonItem15
+        '
+        Me.ButtonItem15.Name = "ButtonItem15"
+        resources.ApplyResources(Me.ButtonItem15, "ButtonItem15")
+        '
+        'ButtonItem16
+        '
+        Me.ButtonItem16.Name = "ButtonItem16"
+        resources.ApplyResources(Me.ButtonItem16, "ButtonItem16")
+        '
+        'ButtonItem17
+        '
+        Me.ButtonItem17.Name = "ButtonItem17"
+        resources.ApplyResources(Me.ButtonItem17, "ButtonItem17")
+        '
+        'ButtonItem18
+        '
+        Me.ButtonItem18.Name = "ButtonItem18"
+        resources.ApplyResources(Me.ButtonItem18, "ButtonItem18")
+        '
+        'ButtonItem19
+        '
+        Me.ButtonItem19.Name = "ButtonItem19"
+        resources.ApplyResources(Me.ButtonItem19, "ButtonItem19")
+        '
+        'ButtonItem20
+        '
+        Me.ButtonItem20.Name = "ButtonItem20"
+        resources.ApplyResources(Me.ButtonItem20, "ButtonItem20")
+        '
         'Tab_TextManager
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Bar_TextOptions)
         Me.Controls.Add(Me.Bar_AddRemoveItems)
         Me.Controls.Add(Me.GroupPanel_TM_DialogProps)
         Me.Controls.Add(Me.TabStrip_TextTable)
@@ -309,6 +455,7 @@ Partial Class Tab_TextManager
         Me.GroupPanel_TM_DialogProps.ResumeLayout(False)
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Bar_AddRemoveItems, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Bar_TextOptions, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -337,4 +484,26 @@ Partial Class Tab_TextManager
     Friend WithEvents Bar_AddRemoveItems As DevComponents.DotNetBar.Bar
     Friend WithEvents ButtonItem_AddTextItem As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_RemoveTextItem As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem2 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem3 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents Bar_TextOptions As DevComponents.DotNetBar.Bar
+    Friend WithEvents ButtonItem_AddButtons As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem5 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem6 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem7 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem9 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem10 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem8 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem11 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem12 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem13 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem14 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem15 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem16 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem17 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem18 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem19 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem20 As DevComponents.DotNetBar.ButtonItem
 End Class

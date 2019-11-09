@@ -128,9 +128,7 @@ Namespace Global.SM64Lib.Text
 
                     Case &HFE : txt &= vbNewLine
                     Case &HFF : Exit For
-                    Case Else : GoTo skip
                 End Select
-skip:
             Next
 
             Return txt
