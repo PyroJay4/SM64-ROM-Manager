@@ -187,6 +187,7 @@ Public Class MainController
 
     Private Sub SetRomMgr(rommgr As RomManager)
         RomManager = rommgr
+        rommgr.TextInfoProfile = TextManagerController.MyTextProfiles.DefaultTextProfileInfo
     End Sub
 
     Private Async Function CanAccessUpdateServer() As Task(Of Boolean)
@@ -388,7 +389,7 @@ Public Class MainController
             RaiseEvent RecentFilesChanged()
 
             SetRomMgr(newrommgr)
-            LoadROM(Romfile)
+            LoadROM()
 
             CreateRomWatcherForCurrentRom()
 
@@ -411,7 +412,7 @@ Public Class MainController
         Return success
     End Function
 
-    Public Sub LoadROM(Romfile As String)
+    Public Sub LoadROM()
         loadingROM = True
         StatusText = Form_Main_Resources.Status_LoadingRom
         RaiseEvent RomLoading()

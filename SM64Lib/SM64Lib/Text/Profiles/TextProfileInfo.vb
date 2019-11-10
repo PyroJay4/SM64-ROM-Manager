@@ -4,6 +4,7 @@ Namespace Global.SM64Lib.Text.Profiles
 
     Public Class TextProfileInfo
 
+        Public Property Name As String
         Public Property TextTableGroups As New List(Of TextTableGroupInfo)
         Public Property TextArrayGroups As New List(Of TextArrayGroupInfo)
 

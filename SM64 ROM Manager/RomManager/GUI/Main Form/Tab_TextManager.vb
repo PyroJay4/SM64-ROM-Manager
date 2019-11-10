@@ -146,7 +146,7 @@ Public Class Tab_TextManager
 
     Private Sub AddTextListViewItem(tableName As String, tableIndex As Integer, nameList As String())
         Dim itemInfos = TMController.GetTextItemInfos(tableName, tableIndex)
-        Dim nameEntry As String = String.Empty
+        Dim nameEntry As String = Nothing
 
         If nameList.Count > tableIndex Then
             nameEntry = nameList(tableIndex)

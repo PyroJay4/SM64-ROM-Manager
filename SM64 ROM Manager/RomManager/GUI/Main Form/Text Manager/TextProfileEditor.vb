@@ -15,7 +15,6 @@ Public Class TextProfileEditor
     'A U T O M A T I C   P R O P E R T I E S
 
     Public Property ProfileInfo As TextProfileInfo
-    Public ReadOnly Property HasSaved As Boolean = False
 
     'C O N S T R U C T O R S
 

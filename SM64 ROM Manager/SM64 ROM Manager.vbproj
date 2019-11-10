@@ -358,11 +358,18 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Main Form\Text Manager\MinimalAdvPropertyGridManager.vb" />
+    <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileInfoManager.vb" />
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditorExtensions.vb" />
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.Designer.vb">
       <DependentUpon>TextProfileEditor.vb</DependentUpon>
     </Compile>
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfilesManagerDialog.Designer.vb">
+      <DependentUpon>TextProfilesManagerDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfilesManagerDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Tools\CustomBankManager.Designer.vb">
@@ -678,6 +685,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.resx">
       <DependentUpon>TextProfileEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Text Manager\TextProfilesManagerDialog.resx">
+      <DependentUpon>TextProfilesManagerDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\CustomBankManager.de.resx">
       <DependentUpon>CustomBankManager.vb</DependentUpon>

@@ -41,7 +41,7 @@ Public Class RomManager
     Public ReadOnly Property Levels As New Levels.LevelList
     Public Property RomFile As String = String.Empty
     Public ReadOnly Property IsSM64EditorMode As Boolean = False
-    Public ReadOnly Property TextInfoProfile As Text.Profiles.TextProfileInfo
+    Public Property TextInfoProfile As Text.Profiles.TextProfileInfo
     Public ReadOnly Property MusicList As New MusicList
     Public Property GlobalObjectBank As New CustomObjectBank
     Public ReadOnly Property LevelManager As ILevelManager
@@ -285,22 +285,7 @@ Public Class RomManager
         Return myProgramVersion
     End Function
 
-    Public Sub LoadTextProfileIfNotLoaded()
-        If TextInfoProfile Is Nothing Then
-            LoadTextProfile()
-        End If
-    End Sub
-
-    Public Sub LoadTextProfile()
-        _TextInfoProfile = JObject.Parse(File.ReadAllText(MyFilePaths("Text Profiles.json"))).ToObject(Of Text.Profiles.TextProfileInfo)
-    End Sub
-
-    Public Sub SaveTextProfile()
-        File.WriteAllText(MyFilePaths("Text Profiles.json"), JObject.FromObject(TextInfoProfile).ToString)
-    End Sub
-
     Private Function GetTextProfile(name As String) As Text.Profiles.TextGroupInfo
-        LoadTextProfileIfNotLoaded()
         Return TextInfoProfile.GetGroup(name)
     End Function
 
@@ -319,8 +304,6 @@ Public Class RomManager
     End Function
 
     Private Function LoadTextGroup(table As Text.TextGroup, name As String, Optional CheckIfAlreadyLoaded As Boolean = True) As Text.TextGroup
-        LoadTextProfileIfNotLoaded()
-
         If table Is Nothing OrElse Not CheckIfAlreadyLoaded Then
             Dim data As New BinaryRom(Me, FileAccess.Read)
             Dim prof As Text.Profiles.TextGroupInfo = GetTextProfile(name)
@@ -349,7 +332,6 @@ Public Class RomManager
     ''' </summary>
     ''' <returns></returns>
     Public Function GetTextGroupInfos() As Text.Profiles.TextGroupInfo()
-        LoadTextProfileIfNotLoaded()
         Return TextInfoProfile.AllGroups.ToArray
     End Function
 
