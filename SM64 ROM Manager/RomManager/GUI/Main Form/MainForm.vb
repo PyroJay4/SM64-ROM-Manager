@@ -461,11 +461,7 @@ Public Class MainForm
     End Sub
 
     Private Sub ButtonItem19_Click(sender As Object, e As EventArgs) Handles ButtonItem19.Click
-        If Not Controller.HasRomManager Then
-            ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
-        Else
-            Controller.TextManagerController.OpenTextProfileEditor()
-        End If
+        Controller.TextManagerController.OpenTextProfileEditor()
     End Sub
 
     Private Sub ButtonItem18_Click(sender As Object, e As EventArgs) Handles ButtonItem18.Click

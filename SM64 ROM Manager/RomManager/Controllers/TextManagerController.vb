@@ -34,7 +34,7 @@ Public Class TextManagerController
 
     Public ReadOnly Property MyTextProfiles As New TextProfileInfoManager
 
-    Private ReadOnly Property RomManager As RomManager
+    Public ReadOnly Property RomManager As RomManager
         Get
             Dim e As New RequestRomManagerEventArgs
             RaiseEvent RequestRomManager(e)
@@ -63,16 +63,15 @@ Public Class TextManagerController
     'G e n e r a l   F e a t u r e s
 
     Public Sub OpenTextProfileEditor()
+        MyTextProfiles.LoadAllTextProfilesIfNotLoaded()
+
+        Dim editor As New TextProfilesManagerDialog With {
+            .MyTextProfiles = MyTextProfiles
+        }
+
+        editor.ShowDialog()
+
         If RomManager IsNot Nothing Then
-            MyTextProfiles.LoadAllTextProfilesIfNotLoaded()
-
-            Dim editor As New TextProfilesManagerDialog With {
-                .MyTextProfiles = MyTextProfiles
-            }
-
-            editor.ShowDialog()
-
-            myTextProfiles.SaveAllTextProfile()
             RomManager.ClearTextGroups()
             SendRequestReloadTextManagerLists()
         End If
