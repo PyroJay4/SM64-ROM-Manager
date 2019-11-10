@@ -16993,6 +16993,16 @@
             Indicates whether alert plays exclamation sound when shown.
             </summary>
         </member>
+        <member name="P:DevComponents.DotNetBar.Controls.DesktopAlert.CustomBackColor">
+            <summary>
+            Gets or sets the custom back color for the alert used by eDesktopAlertColor.Custom.
+            </summary>
+        </member>
+        <member name="P:DevComponents.DotNetBar.Controls.DesktopAlert.CustomForeColor">
+            <summary>
+            Gets or sets the custom fore color for the alert used by eDesktopAlertColor.Custom.
+            </summary>
+        </member>
         <member name="E:DevComponents.DotNetBar.Controls.DesktopAlert.BeforeAlertDisplayed">
             <summary>
             Occurs before alert is displayed and allows access to the alert Window through sender.
