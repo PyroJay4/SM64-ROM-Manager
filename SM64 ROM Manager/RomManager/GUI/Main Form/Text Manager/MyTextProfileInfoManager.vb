@@ -2,18 +2,15 @@
 Imports Newtonsoft.Json.Linq
 Imports SM64Lib.Text.Profiles
 
-Public Class TextProfileInfoManager
+Public Class MyTextProfileInfoManager
 
-    Private ReadOnly textProfiles As New List(Of TextProfileInfo)
+    Public ReadOnly Property Manager As New SM64Lib.Text.TextProfileInfoManager
     Private ReadOnly filePaths As New Dictionary(Of TextProfileInfo, String)
     Private ReadOnly ids As New Dictionary(Of TextProfileInfo, String)
 
-    Public ReadOnly Property DefaultTextProfileInfo As TextProfileInfo
-        Get
-            LoadAllTextProfilesIfNotLoaded()
-            Return textProfiles.FirstOrDefault(Function(n) n.Name.ToLower = "default")
-        End Get
-    End Property
+    Public Sub New()
+        LoadAllTextProfilesIfNotLoaded()
+    End Sub
 
     Private Shared ReadOnly Property MyTextEditorPath As String
         Get
@@ -21,12 +18,8 @@ Public Class TextProfileInfoManager
         End Get
     End Property
 
-    Private Function Clone(info As TextProfileInfo) As TextProfileInfo
-        Return JObject.FromObject(info).ToObject(Of TextProfileInfo)
-    End Function
-
     Public Sub SaveAllTextProfile()
-        For Each info As TextProfileInfo In textProfiles
+        For Each info As TextProfileInfo In Manager.GetTextProfiles
             SaveTextProfile(info)
         Next
     End Sub
@@ -34,7 +27,7 @@ Public Class TextProfileInfoManager
     Public Sub SaveTextProfile(info As TextProfileInfo)
         Dim myPath As String
 
-        If info Is DefaultTextProfileInfo Then
+        If info Is Manager.DefaultTextProfileInfo Then
             If filePaths.ContainsKey(info) Then
                 myPath = filePaths(info)
             Else
@@ -42,12 +35,8 @@ Public Class TextProfileInfoManager
                 filePaths.Add(info, myPath)
             End If
 
-            SaveToFile(info, myPath)
+            Manager.SaveToFile(info, myPath)
         End If
-    End Sub
-
-    Private Sub SaveToFile(info As TextProfileInfo, outputFile As String)
-        File.WriteAllText(Path.Combine(outputFile), JObject.FromObject(info).ToString)
     End Sub
 
     Private Function GetID(info As TextProfileInfo) As String
@@ -71,59 +60,38 @@ Public Class TextProfileInfoManager
     End Function
 
     Public Sub LoadAllTextProfilesIfNotLoaded()
-        If Not textProfiles.Any Then
+        If Not Manager.GetTextProfiles.Any Then
             LoadAllTextProfiles()
         End If
     End Sub
 
     Public Sub LoadAllTextProfiles()
-        textProfiles.Clear()
+        Manager.ClearProfleList()
         filePaths.Clear()
         ids.Clear()
 
         For Each f As String In Directory.GetFiles(MyTextEditorPath, "*.json")
-            Dim info As TextProfileInfo = LoadFromFile(f)
-            textProfiles.Add(info)
+            Dim info As TextProfileInfo = Manager.LoadFromFile(f)
             filePaths.Add(info, f)
             ids.Add(info, Path.GetFileNameWithoutExtension(f))
         Next
     End Sub
-
-    Private Function LoadFromFile(inputFile As String) As TextProfileInfo
-        Return JObject.Parse(File.ReadAllText(inputFile)).ToObject(Of TextProfileInfo)
-    End Function
 
     Public Sub RemoveTextProfile(p As TextProfileInfo)
         If filePaths.ContainsKey(p) Then
             File.Delete(filePaths(p))
             filePaths.Remove(p)
         End If
-        textProfiles.RemoveIfContains(p)
+        Manager.RemoveTextProfile(p)
         ids.RemoveIfContainsKey(p)
     End Sub
 
-    Public Function GetTextProfiles() As IEnumerable(Of TextProfileInfo)
-        Return textProfiles
-    End Function
-
-    Public Function CreateTextProfile() As TextProfileInfo
-        Dim definfo As TextProfileInfo = DefaultTextProfileInfo
-        Dim p As TextProfileInfo = Clone(definfo)
-        p.Name = definfo.Name & textProfiles.Count
-
-        textProfiles.Add(p)
-
-        Return p
-    End Function
-
     Public Sub Export(info As TextProfileInfo, outputFile As String)
-        SaveToFile(info, outputFile)
+        Manager.SaveToFile(info, outputFile)
     End Sub
 
     Public Function Import(inputFile As String) As TextProfileInfo
-        Dim p As TextProfileInfo = LoadFromFile(inputFile)
-        textProfiles.Add(p)
-        Return p
+        Return Manager.LoadFromFile(inputFile)
     End Function
 
 End Class

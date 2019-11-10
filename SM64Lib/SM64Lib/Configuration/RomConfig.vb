@@ -1,20 +1,24 @@
-﻿'Namespace Configuration
+﻿Imports System.IO
+Imports Newtonsoft.Json.Linq
 
-'    Public Class RomConfig
+Namespace Configuration
 
-'        Public Property RomVersion As RomVersion
+    Public Class RomConfig
 
-'        Friend Sub New()
-'        End Sub
+        Public ReadOnly Property CustomConfigs As New Dictionary(Of String, String)
+        Friend ReadOnly Property LevelNames As New Dictionary(Of Byte, String)
 
-'        Friend Shared Function Load(filePath As String) As RomConfig
+        Friend Sub New()
+        End Sub
 
-'        End Function
+        Friend Shared Function Load(filePath As String) As RomConfig
+            Return JObject.Parse(File.ReadAllText(filePath)).ToObject(Of RomConfig)
+        End Function
 
-'        Friend Shared Sub Save(filePath As String)
+        Friend Sub Save(filePath As String)
+            File.WriteAllText(filePath, JObject.FromObject(filePath))
+        End Sub
 
-'        End Sub
+    End Class
 
-'    End Class
-
-'End Namespace
+End Namespace

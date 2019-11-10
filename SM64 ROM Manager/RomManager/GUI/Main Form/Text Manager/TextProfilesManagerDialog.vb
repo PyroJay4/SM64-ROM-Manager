@@ -9,7 +9,7 @@ Public Class TextProfilesManagerDialog
 
     'P r o p e r t i e s
 
-    Public Property MyTextProfiles As TextProfileInfoManager
+    Public Property MyTextProfiles As MyTextProfileInfoManager
 
     'C o n s t r u c t o r s
 
@@ -25,7 +25,7 @@ Public Class TextProfilesManagerDialog
 
         ItemPanel_Profiles.BeginUpdate()
 
-        For Each info As TextProfileInfo In MyTextProfiles.GetTextProfiles
+        For Each info As TextProfileInfo In MyTextProfiles.Manager.GetTextProfiles
             Dim newItem As BaseItem = AddToItemPanel(info)
             If itemToSelect Is Nothing Then
                 itemToSelect = newItem
@@ -38,7 +38,7 @@ Public Class TextProfilesManagerDialog
 
     Private Sub LoadProfile(info As TextProfileInfo)
         Dim isNull As Boolean = info Is Nothing
-        Dim canEdit As Boolean = Not isNull AndAlso info IsNot MyTextProfiles.DefaultTextProfileInfo
+        Dim canEdit As Boolean = Not isNull AndAlso info IsNot MyTextProfiles.Manager.DefaultTextProfileInfo
 
         ButtonX_Delete.Enabled = canEdit
         ButtonX_Export.Enabled = canEdit
@@ -53,7 +53,7 @@ Public Class TextProfilesManagerDialog
     End Function
 
     Private Sub CreateProfile()
-        Dim info As TextProfileInfo = MyTextProfiles.CreateTextProfile
+        Dim info As TextProfileInfo = MyTextProfiles.Manager.CreateTextProfile
         MyTextProfiles.SaveTextProfile(info)
 
         Dim item As BaseItem = AddToItemPanel(info)

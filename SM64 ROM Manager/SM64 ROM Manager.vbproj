@@ -358,7 +358,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Main Form\Text Manager\MinimalAdvPropertyGridManager.vb" />
-    <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileInfoManager.vb" />
+    <Compile Include="RomManager\GUI\Main Form\Text Manager\MyTextProfileInfoManager.vb" />
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditorExtensions.vb" />
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.Designer.vb">
       <DependentUpon>TextProfileEditor.vb</DependentUpon>
