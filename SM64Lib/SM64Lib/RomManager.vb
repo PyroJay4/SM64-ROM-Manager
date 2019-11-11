@@ -16,6 +16,7 @@ Imports System.ComponentModel
 Imports SM64Lib.EventArguments
 Imports SM64Lib.Data.System
 Imports SM64Lib.Levels
+Imports SM64Lib.Configuration
 
 Public Class RomManager
 
@@ -37,14 +38,15 @@ Public Class RomManager
 
     'P r o p e r t i e s
 
-    Public ReadOnly Property LevelInfoData As New Levels.LevelInfoDataTabelList
-    Public ReadOnly Property Levels As New Levels.LevelList
+    Public ReadOnly Property LevelInfoData As New LevelInfoDataTabelList
+    Public ReadOnly Property Levels As New LevelList
     Public Property RomFile As String = String.Empty
     Public ReadOnly Property IsSM64EditorMode As Boolean = False
     Public Property TextInfoProfile As Text.Profiles.TextProfileInfo
     Public ReadOnly Property MusicList As New MusicList
     Public Property GlobalObjectBank As New CustomObjectBank
     Public ReadOnly Property LevelManager As ILevelManager
+    Public ReadOnly Property RomConfig As RomConfig
 
     ''' <summary>
     ''' Gets or sets the lastly used program version for this ROM.
@@ -105,7 +107,7 @@ Public Class RomManager
     ''' </summary>
     ''' <param name="FileName">The ROM that will be opened.</param>
     Public Sub New(FileName As String)
-        Me.New(FileName, New Levels.LevelManager)
+        Me.New(FileName, New LevelManager)
     End Sub
 
     ''' <summary>
@@ -126,6 +128,8 @@ Public Class RomManager
         'SetSegBank(&H2, &H108A40, &H114750)
         SetSegBank(&H2, &H803156, 0) 'Text Table??
 
+        LoadRomConfig()
+
         LoadDictionaryUpdatePatches()
     End Sub
 
@@ -142,6 +146,23 @@ Public Class RomManager
     End Sub
 
     'F e a t u r e s
+
+    Private Function GetRomConfigFilePath() As String
+        Return RomFile & ".config"
+    End Function
+
+    Private Sub LoadRomConfig()
+        Dim confFile As String = GetRomConfigFilePath()
+        If File.Exists(confFile) Then
+            _RomConfig = RomConfig.Load(confFile)
+        Else
+            _RomConfig = New RomConfig
+        End If
+    End Sub
+
+    Private Sub SaveRomConfig()
+        RomConfig.Save(GetRomConfigFilePath)
+    End Sub
 
     ''' <summary>
     ''' Gets if Update Patches are avaiable for this ROM.
@@ -240,6 +261,9 @@ Public Class RomManager
 
             If needUpdateChecksum Then _
                     PatchClass.UpdateChecksum(RomFile)
+
+            'Write Rom.config
+            SaveRomConfig()
 
             RaiseAfterRomSave()
         End If

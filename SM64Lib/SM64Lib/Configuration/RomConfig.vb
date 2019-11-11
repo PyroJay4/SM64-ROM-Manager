@@ -6,17 +6,15 @@ Namespace Configuration
     Public Class RomConfig
 
         Public ReadOnly Property CustomConfigs As New Dictionary(Of String, String)
-        Friend ReadOnly Property LevelNames As New Dictionary(Of Byte, String)
+        Public ReadOnly Property LevelNames As New Dictionary(Of Byte, String)
+        Public Property SelectedTextProfileInfo As String = String.Empty
 
-        Friend Sub New()
-        End Sub
-
-        Friend Shared Function Load(filePath As String) As RomConfig
+        Public Shared Function Load(filePath As String) As RomConfig
             Return JObject.Parse(File.ReadAllText(filePath)).ToObject(Of RomConfig)
         End Function
 
-        Friend Sub Save(filePath As String)
-            File.WriteAllText(filePath, JObject.FromObject(filePath))
+        Public Sub Save(filePath As String)
+            File.WriteAllText(filePath, JObject.FromObject(Me).ToString)
         End Sub
 
     End Class
