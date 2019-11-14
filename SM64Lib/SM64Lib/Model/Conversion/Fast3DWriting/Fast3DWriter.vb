@@ -1553,15 +1553,16 @@ Namespace Model.Conversion.Fast3DWriting
             Dim createDefaultDL =
                 Function(layerID As DefaultGeolayers) As Integer
                     Dim dlProp As DisplaylistProps = Nothing
+                    Dim newLayerID = (layerID + 1) * -1
 
                     For Each dl As DisplaylistProps In dlsToCreate
-                        If dlProp Is Nothing AndAlso dl.ID = layerID * -1 Then
+                        If dlProp Is Nothing AndAlso dl.ID = newLayerID Then
                             dlProp = dl
                         End If
                     Next
 
                     If dlProp Is Nothing Then
-                        dlProp = New DisplaylistProps((layerID + 1) * -1)
+                        dlProp = New DisplaylistProps(newLayerID)
                     End If
 
                     dlProp.Layer = layerID
