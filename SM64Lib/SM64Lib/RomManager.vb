@@ -128,7 +128,7 @@ Public Class RomManager
         'SetSegBank(&H2, &H108A40, &H114750)
         SetSegBank(&H2, &H803156, 0) 'Text Table??
 
-        LoadRomConfig()
+        'LoadRomConfig()
 
         LoadDictionaryUpdatePatches()
     End Sub
@@ -263,7 +263,7 @@ Public Class RomManager
                     PatchClass.UpdateChecksum(RomFile)
 
             'Write Rom.config
-            SaveRomConfig()
+            'SaveRomConfig()
 
             RaiseAfterRomSave()
         End If

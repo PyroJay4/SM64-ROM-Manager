@@ -268,4 +268,4 @@ __pycache__/
 # tools/
 
 # Ignore update project
-SM64 ROM Manager Update.nupdproj
+*.nupdproj
