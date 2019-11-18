@@ -1286,6 +1286,7 @@ Public Class MainController
         End If
 
         Return (
+            lvl.EnableGlobalObjectBank,
             lvl.ActSelector,
             lvl.HardcodedCameraSettings,
             defPosCmd IsNot Nothing,
