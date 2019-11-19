@@ -174,6 +174,12 @@
   <data name="ComboBoxEx_TM_DialogPosY.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
+  <data name="ComboItem10.Text" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="ComboItem8.Text" xml:space="preserve">
+    <value>Top</value>
+  </data>
   <data name="ComboBoxEx_TM_DialogPosY.Location" type="System.Drawing.Point, System.Drawing">
     <value>187, 4</value>
   </data>
@@ -218,6 +224,15 @@
   </data>
   <data name="ComboBoxEx_TM_DialogPosX.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
+  </data>
+  <data name="ComboItem5.Text" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="ComboItem6.Text" xml:space="preserve">
+    <value>Centred</value>
+  </data>
+  <data name="ComboItem7.Text" xml:space="preserve">
+    <value>Right</value>
   </data>
   <data name="ComboBoxEx_TM_DialogPosX.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 4</value>
@@ -287,21 +302,6 @@
   </data>
   <data name="&gt;&gt;GroupPanel_TM_DialogProps.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="ComboItem10.Text" xml:space="preserve">
-    <value>Middle</value>
-  </data>
-  <data name="ComboItem8.Text" xml:space="preserve">
-    <value>Top</value>
-  </data>
-  <data name="ComboItem5.Text" xml:space="preserve">
-    <value>Left</value>
-  </data>
-  <data name="ComboItem6.Text" xml:space="preserve">
-    <value>Centred</value>
-  </data>
-  <data name="ComboItem7.Text" xml:space="preserve">
-    <value>Right</value>
   </data>
   <data name="TabStrip_TextTable.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -519,39 +519,6 @@
   <data name="Bar_TextOptions.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="ButtonItem_AddButtons.Text" xml:space="preserve">
-    <value>Butttons</value>
-  </data>
-  <data name="ButtonItem9.Text" xml:space="preserve">
-    <value>Arrows</value>
-  </data>
-  <data name="ButtonItem10.Text" xml:space="preserve">
-    <value>Other</value>
-  </data>
-  <data name="Bar_TextOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>425, 1</value>
-  </data>
-  <data name="Bar_TextOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 25</value>
-  </data>
-  <data name="Bar_TextOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="Bar_TextOptions.Text" xml:space="preserve">
-    <value>Bar1</value>
-  </data>
-  <data name="&gt;&gt;Bar_TextOptions.Name" xml:space="preserve">
-    <value>Bar_TextOptions</value>
-  </data>
-  <data name="&gt;&gt;Bar_TextOptions.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Bar, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Bar_TextOptions.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Bar_TextOptions.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="ButtonItem4.Tag" xml:space="preserve">
     <value>[A]</value>
   </data>
@@ -582,6 +549,9 @@
   <data name="ButtonItem7.Text" xml:space="preserve">
     <value>R</value>
   </data>
+  <data name="ButtonItem_AddButtons.Text" xml:space="preserve">
+    <value>Buttons</value>
+  </data>
   <data name="ButtonItem8.Tag" xml:space="preserve">
     <value>↑</value>
   </data>
@@ -602,6 +572,9 @@
   </data>
   <data name="ButtonItem13.Text" xml:space="preserve">
     <value>→</value>
+  </data>
+  <data name="ButtonItem9.Text" xml:space="preserve">
+    <value>Arrows</value>
   </data>
   <data name="ButtonItem15.Tag" xml:space="preserve">
     <value>[you]</value>
@@ -644,6 +617,33 @@
   </data>
   <data name="ButtonItem20.Text" xml:space="preserve">
     <value>Stars left</value>
+  </data>
+  <data name="ButtonItem10.Text" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Bar_TextOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>425, 1</value>
+  </data>
+  <data name="Bar_TextOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>266, 25</value>
+  </data>
+  <data name="Bar_TextOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="Bar_TextOptions.Text" xml:space="preserve">
+    <value>Bar1</value>
+  </data>
+  <data name="&gt;&gt;Bar_TextOptions.Name" xml:space="preserve">
+    <value>Bar_TextOptions</value>
+  </data>
+  <data name="&gt;&gt;Bar_TextOptions.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Bar, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Bar_TextOptions.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Bar_TextOptions.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
