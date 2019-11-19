@@ -233,22 +233,6 @@ Public Class MainController
         End If
     End Sub
 
-    Private Sub EnableRomWatcher()
-        If RomWatcher IsNot Nothing Then
-            RomWatcher.EnableRaisingEvents = True
-        End If
-    End Sub
-
-    Private Sub DisableRomWatcher()
-        If RomWatcher IsNot Nothing Then
-            RomWatcher.EnableRaisingEvents = False
-        End If
-    End Sub
-
-    Private Function IsRomWatcherEnabled() As Boolean
-        Return RomWatcher?.EnableRaisingEvents
-    End Function
-
     'M a i n   F e a t u r e s
 
     Public Sub LoadPlugins()

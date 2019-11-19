@@ -2240,11 +2240,9 @@ Namespace LevelEditor
                 Dim err As Boolean = False
 
                 If TypeOf warp Is ManagedWarp Then
-                    With CType(warp, ManagedWarp)
-                        lid = .DestLevelID
-                        aid = .DestAreaID
-                        wid = .DestWarpID
-                    End With
+                    lid = CLevel.LevelID
+                    aid = CArea.AreaID
+                    wid = CType(warp, ManagedWarp).WarpID
                 Else
                     err = True
                 End If
@@ -2253,7 +2251,7 @@ Namespace LevelEditor
                     PatchClass.Open(Rommgr.GetBinaryRom(FileAccess.ReadWrite))
                     PatchClass.SetPauseMenuWarp(lid, aid, wid)
                     PatchClass.Close()
-                    PatchClass.UpdateChecksum(Rommgr.RomFile)
+                    UpdateChecksum(Rommgr.RomFile)
 
                     ShowToadnotifiaction(Panel_GLControl, "Pause Menu Warp set successfully", eToastGlowColor.Green)
                 Else

@@ -35,6 +35,28 @@ Friend Module General
     Public ReadOnly Property PatchClass As New PatchClass
     Public Property HasToolkitInit As Boolean = False
 
+    Public Sub UpdateChecksum(Romfile As String)
+        DisableRomWatcher()
+        PatchClass.UpdateChecksum(Romfile)
+        EnableRomWatcher()
+    End Sub
+
+    Public Sub EnableRomWatcher()
+        If RomWatcher IsNot Nothing Then
+            RomWatcher.EnableRaisingEvents = True
+        End If
+    End Sub
+
+    Public Sub DisableRomWatcher()
+        If RomWatcher IsNot Nothing Then
+            RomWatcher.EnableRaisingEvents = False
+        End If
+    End Sub
+
+    Public Function IsRomWatcherEnabled() As Boolean
+        Return RomWatcher?.EnableRaisingEvents
+    End Function
+
     Public Function OpenHexEditorAsync(cmd As SM64Lib.Script.ICommand) As Task
         Dim t As New Task(Sub() OpenHexEditor(cmd))
         t.Start()

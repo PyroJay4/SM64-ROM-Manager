@@ -266,29 +266,6 @@ Public Module General
         End Select
     End Function
 
-    Public Sub UpdateChecksum(Romfile As String)
-        Dim proc As New Process
-        With proc.StartInfo
-            .FileName = MyDataPath & "\Tools\rn64crc.exe"
-            .Arguments = String.Format("""{0}"" -u", Romfile)
-            .UseShellExecute = False
-            .CreateNoWindow = True
-        End With
-        proc.Start()
-        proc.WaitForExit()
-    End Sub
-    Public Sub RestoreChecksum(Romfile As String)
-        Dim proc As New Process
-        With proc.StartInfo
-            .FileName = MyDataPath & "\Tools\chksum64.exe"
-            .Arguments = String.Format("""{0}""", Romfile)
-            .UseShellExecute = False
-            .CreateNoWindow = True
-        End With
-        proc.Start()
-        proc.WaitForExit()
-    End Sub
-
     Public Function TrimString(str As String) As String
         Dim str1 As String
         Try
