@@ -113,6 +113,7 @@
     <Compile Include="Settings\SubStruc\SubStruc\JobToDo.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\JobToDoType.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\JobToDoUrgency.vb" />
+    <Compile Include="Settings\SubStruc\TextManagerSettingsStruc.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

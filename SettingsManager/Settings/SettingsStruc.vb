@@ -10,6 +10,7 @@ Public Class SettingsStruc
     Public Property RecentFiles As RecentFilesSettingsStruc
     Public Property ModelConverter As ModelConverterSettingsStruc
     Public Property JobsToDo As JobsToDoStruc
+    Public Property TextManager As TextManagerSettingsStruc
 
     Public Overrides Sub ResetValues()
         If AreaEditor Is Nothing Then AreaEditor = New AreaEditorSettingsStruc
@@ -26,6 +27,8 @@ Public Class SettingsStruc
         ModelConverter.ResetValues()
         If JobsToDo Is Nothing Then JobsToDo = New JobsToDoStruc
         JobsToDo.Clear()
+        If TextManager Is Nothing Then TextManager = New TextManagerSettingsStruc
+        TextManager.ResetValues()
     End Sub
 
 End Class
