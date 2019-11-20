@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.SM64_ROM_Manager.Updating.Administration.GUI.Form1
+            Me.MainForm = Global.SM64_ROM_Manager.Updating.Administration.GUI.ToolSelectionWindow
         End Sub
     End Class
 End Namespace

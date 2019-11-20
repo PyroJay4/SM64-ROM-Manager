@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("SM64 ROM Manager.Updating.Administration")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("DRSN")>
+<Assembly: AssemblyCompany("Pilzinsel64")>
 <Assembly: AssemblyProduct("SM64 ROM Manager.Updating.Administration")>
-<Assembly: AssemblyCopyright("Copyright © DRSN 2019")>
+<Assembly: AssemblyCopyright("Copyright © Pilzinsel64 2019")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

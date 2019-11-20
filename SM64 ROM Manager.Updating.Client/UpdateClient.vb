@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Drawing
+Imports System.IO
 Imports System.Net
 Imports System.Reflection
 Imports Newtonsoft.Json.Linq
@@ -25,6 +26,8 @@ Public Class UpdateClient
     Public Property InstallAsAdmin As Boolean = False
     Public Property MillisecondsToWaitForHostApplicationToClose As UInteger = 10000
     Public Property ForceClosingHostApplication As Boolean = True
+    Public Property UpdateWindowBaseColor As Color = Color.FromArgb(&HFFB7472A)
+    Public Property UpdateWindowCanvasColor As Color = Color.FromArgb(&HFFFFFFFF)
 
     'C o n s t r u c t o r s
 
@@ -142,7 +145,9 @@ Public Class UpdateClient
                 .HostApplicationPath = If(String.IsNullOrEmpty(HostApplicationPath), Path.GetDirectoryName(Assembly.GetEntryAssembly.Location), HostApplicationPath),
                 .HostApplicationProcessPath = Assembly.GetEntryAssembly.Location,
                 .MillisecondsToWaitForHostApplicationToClose = MillisecondsToWaitForHostApplicationToClose,
-                .ForceClosingHostApplication = ForceClosingHostApplication
+                .ForceClosingHostApplication = ForceClosingHostApplication,
+                .UpdateWindowBaseColor = UpdateWindowBaseColor,
+                .UpdateWindowCanvasColor = UpdateWindowCanvasColor
             }
 
             'Start UpdateInstaller

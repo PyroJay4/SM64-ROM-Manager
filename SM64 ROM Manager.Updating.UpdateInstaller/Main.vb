@@ -1,4 +1,5 @@
-﻿Imports SM64_ROM_Manager.Updating.UpdateInstaller
+﻿Imports DevComponents.DotNetBar
+Imports SM64_ROM_Manager.Updating.UpdateInstaller
 Imports SM64_ROM_Manager.Updating.UpdateInstaller.My.Resources.UpdateInstallerGuiLangRes
 
 Public Class Main
@@ -19,6 +20,13 @@ Public Class Main
 
             'Init Form
             InitializeComponent()
+
+            'Init Style
+            StyleManager.Style = eStyle.Office2016
+            StyleManager.MetroColorGeneratorParameters = New Metro.ColorTables.MetroColorGeneratorParameters(
+                Installer.Configuration.UpdateWindowCanvasColor,
+                Installer.Configuration.UpdateWindowBaseColor)
+            StyleManager.UpdateAmbientColors(Me)
 
             'Init Application Header Text
             Dim header As String
