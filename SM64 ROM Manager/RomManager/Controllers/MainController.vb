@@ -958,7 +958,7 @@ Public Class MainController
         lvl.NeedToSaveBanks0E = True
     End Sub
 
-    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer, enableGlobalObjectBank As Boolean, enableGlobalObjectBank As Boolean)
+    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer, enableGlobalObjectBank As Boolean)
         Dim lvl As Level = GetLevelAndArea(levelIndex, -1).level
 
         'Default Start Position
