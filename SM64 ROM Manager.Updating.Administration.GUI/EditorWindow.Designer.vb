@@ -30,26 +30,26 @@ Partial Class EditorWindow
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.TextBoxX1 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.SuperTabItem_Pkg_Changelog = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.SuperTabItem_Pkg_Files = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel4 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.SuperTabItem_Pkg_Extensions = New DevComponents.DotNetBar.SuperTabItem()
-        Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.SuperTabItem_Pkg_Files = New DevComponents.DotNetBar.SuperTabItem()
         Me.RibbonControl1 = New DevComponents.DotNetBar.RibbonControl()
         Me.RibbonPanel2 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar2 = New DevComponents.DotNetBar.RibbonBar()
-        Me.RibbonPanel1 = New DevComponents.DotNetBar.RibbonPanel()
-        Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
-        Me.RibbonBar3 = New DevComponents.DotNetBar.RibbonBar()
-        Me.RibbonTabItem_UpdateInfo = New DevComponents.DotNetBar.RibbonTabItem()
-        Me.RibbonTabItem_Packaging = New DevComponents.DotNetBar.RibbonTabItem()
         Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonPanel1 = New DevComponents.DotNetBar.RibbonPanel()
+        Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonBar3 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem7 = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonTabItem_UpdateInfo = New DevComponents.DotNetBar.RibbonTabItem()
+        Me.RibbonTabItem_Packaging = New DevComponents.DotNetBar.RibbonTabItem()
         CType(Me.SuperTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControl1.SuspendLayout()
         Me.SuperTabControlPanel3.SuspendLayout()
@@ -81,15 +81,15 @@ Partial Class EditorWindow
         Me.SuperTabControl1.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl1.ControlBox.MenuBox, Me.SuperTabControl1.ControlBox.CloseBox})
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel5)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel3)
-        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel2)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel4)
+        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel2)
         Me.SuperTabControl1.ForeColor = System.Drawing.Color.Black
         Me.SuperTabControl1.Location = New System.Drawing.Point(1, 155)
         Me.SuperTabControl1.Name = "SuperTabControl1"
         Me.SuperTabControl1.ReorderTabsEnabled = True
         Me.SuperTabControl1.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.SuperTabControl1.SelectedTabIndex = 0
-        Me.SuperTabControl1.Size = New System.Drawing.Size(568, 344)
+        Me.SuperTabControl1.Size = New System.Drawing.Size(598, 394)
         Me.SuperTabControl1.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Left
         Me.SuperTabControl1.TabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabControl1.TabIndex = 1
@@ -103,7 +103,7 @@ Partial Class EditorWindow
         Me.SuperTabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel5.Location = New System.Drawing.Point(98, 0)
         Me.SuperTabControlPanel5.Name = "SuperTabControlPanel5"
-        Me.SuperTabControlPanel5.Size = New System.Drawing.Size(470, 344)
+        Me.SuperTabControlPanel5.Size = New System.Drawing.Size(500, 394)
         Me.SuperTabControlPanel5.TabIndex = 0
         Me.SuperTabControlPanel5.TabItem = Me.SuperTabItem_UpdateInfo
         '
@@ -120,7 +120,7 @@ Partial Class EditorWindow
         Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel3.Location = New System.Drawing.Point(98, 0)
         Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(470, 344)
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(500, 394)
         Me.SuperTabControlPanel3.TabIndex = 0
         Me.SuperTabControlPanel3.TabItem = Me.SuperTabItem_Pkg_Changelog
         '
@@ -131,7 +131,7 @@ Partial Class EditorWindow
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(470, 344)
+        Me.Panel3.Size = New System.Drawing.Size(500, 394)
         Me.Panel3.TabIndex = 1
         '
         'TextBoxX1
@@ -149,7 +149,7 @@ Partial Class EditorWindow
         Me.TextBoxX1.Multiline = True
         Me.TextBoxX1.Name = "TextBoxX1"
         Me.TextBoxX1.PreventEnterBeep = True
-        Me.TextBoxX1.Size = New System.Drawing.Size(470, 344)
+        Me.TextBoxX1.Size = New System.Drawing.Size(500, 394)
         Me.TextBoxX1.TabIndex = 0
         Me.TextBoxX1.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
         Me.TextBoxX1.WatermarkText = "Änderungen hier hinschreiben ..." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Beispiel:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- Fehler behoben" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- Neue Funktion:" &
@@ -161,32 +161,6 @@ Partial Class EditorWindow
         Me.SuperTabItem_Pkg_Changelog.GlobalItem = False
         Me.SuperTabItem_Pkg_Changelog.Name = "SuperTabItem_Pkg_Changelog"
         Me.SuperTabItem_Pkg_Changelog.Text = "Änderungsliste"
-        '
-        'SuperTabControlPanel4
-        '
-        Me.SuperTabControlPanel4.Controls.Add(Me.Panel4)
-        Me.SuperTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel4.Location = New System.Drawing.Point(98, 0)
-        Me.SuperTabControlPanel4.Name = "SuperTabControlPanel4"
-        Me.SuperTabControlPanel4.Size = New System.Drawing.Size(470, 344)
-        Me.SuperTabControlPanel4.TabIndex = 0
-        Me.SuperTabControlPanel4.TabItem = Me.SuperTabItem_Pkg_Extensions
-        '
-        'Panel4
-        '
-        Me.Panel4.BackColor = System.Drawing.Color.Transparent
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(0, 0)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(470, 344)
-        Me.Panel4.TabIndex = 1
-        '
-        'SuperTabItem_Pkg_Extensions
-        '
-        Me.SuperTabItem_Pkg_Extensions.AttachedControl = Me.SuperTabControlPanel4
-        Me.SuperTabItem_Pkg_Extensions.GlobalItem = False
-        Me.SuperTabItem_Pkg_Extensions.Name = "SuperTabItem_Pkg_Extensions"
-        Me.SuperTabItem_Pkg_Extensions.Text = "Erweiterungen"
         '
         'SuperTabControlPanel2
         '
@@ -203,6 +177,32 @@ Partial Class EditorWindow
         Me.SuperTabItem_Pkg_Files.GlobalItem = False
         Me.SuperTabItem_Pkg_Files.Name = "SuperTabItem_Pkg_Files"
         Me.SuperTabItem_Pkg_Files.Text = "Dateien"
+        '
+        'SuperTabControlPanel4
+        '
+        Me.SuperTabControlPanel4.Controls.Add(Me.Panel4)
+        Me.SuperTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel4.Location = New System.Drawing.Point(98, 0)
+        Me.SuperTabControlPanel4.Name = "SuperTabControlPanel4"
+        Me.SuperTabControlPanel4.Size = New System.Drawing.Size(486, 383)
+        Me.SuperTabControlPanel4.TabIndex = 0
+        Me.SuperTabControlPanel4.TabItem = Me.SuperTabItem_Pkg_Extensions
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.Transparent
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(486, 383)
+        Me.Panel4.TabIndex = 1
+        '
+        'SuperTabItem_Pkg_Extensions
+        '
+        Me.SuperTabItem_Pkg_Extensions.AttachedControl = Me.SuperTabControlPanel4
+        Me.SuperTabItem_Pkg_Extensions.GlobalItem = False
+        Me.SuperTabItem_Pkg_Extensions.Name = "SuperTabItem_Pkg_Extensions"
+        Me.SuperTabItem_Pkg_Extensions.Text = "Erweiterungen"
         '
         'RibbonControl1
         '
@@ -221,7 +221,7 @@ Partial Class EditorWindow
         Me.RibbonControl1.KeyTipsFont = New System.Drawing.Font("Tahoma", 7.0!)
         Me.RibbonControl1.Location = New System.Drawing.Point(5, 1)
         Me.RibbonControl1.Name = "RibbonControl1"
-        Me.RibbonControl1.Size = New System.Drawing.Size(560, 154)
+        Me.RibbonControl1.Size = New System.Drawing.Size(590, 154)
         Me.RibbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonControl1.SystemText.MaximizeRibbonText = "&Maximize the Ribbon"
         Me.RibbonControl1.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon"
@@ -249,7 +249,7 @@ Partial Class EditorWindow
         Me.RibbonPanel2.Location = New System.Drawing.Point(0, 55)
         Me.RibbonPanel2.Name = "RibbonPanel2"
         Me.RibbonPanel2.Padding = New System.Windows.Forms.Padding(3, 0, 3, 2)
-        Me.RibbonPanel2.Size = New System.Drawing.Size(560, 99)
+        Me.RibbonPanel2.Size = New System.Drawing.Size(590, 99)
         '
         '
         '
@@ -294,6 +294,33 @@ Partial Class EditorWindow
         '
         '
         Me.RibbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonItem2
+        '
+        Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem2.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_opened_folder_32px
+        Me.ButtonItem2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem2.Name = "ButtonItem2"
+        Me.ButtonItem2.SubItemsExpandWidth = 14
+        Me.ButtonItem2.Text = "Info Öffnen"
+        '
+        'ButtonItem3
+        '
+        Me.ButtonItem3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem3.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_save_32px
+        Me.ButtonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem3.Name = "ButtonItem3"
+        Me.ButtonItem3.SubItemsExpandWidth = 14
+        Me.ButtonItem3.Text = "Info Speichern"
+        '
+        'ButtonItem4
+        '
+        Me.ButtonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem4.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_save_as_32px
+        Me.ButtonItem4.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem4.Name = "ButtonItem4"
+        Me.ButtonItem4.SubItemsExpandWidth = 14
+        Me.ButtonItem4.Text = "Speichern unter"
         '
         'RibbonPanel1
         '
@@ -351,6 +378,15 @@ Partial Class EditorWindow
         '
         Me.RibbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
+        'ButtonItem1
+        '
+        Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem1.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_export_32px_3
+        Me.ButtonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem1.Name = "ButtonItem1"
+        Me.ButtonItem1.SubItemsExpandWidth = 14
+        Me.ButtonItem1.Text = "Paket exportieren"
+        '
         'RibbonBar3
         '
         Me.RibbonBar3.AutoOverflowEnabled = True
@@ -382,55 +418,6 @@ Partial Class EditorWindow
         '
         Me.RibbonBar3.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
-        'RibbonTabItem_UpdateInfo
-        '
-        Me.RibbonTabItem_UpdateInfo.Checked = True
-        Me.RibbonTabItem_UpdateInfo.Name = "RibbonTabItem_UpdateInfo"
-        Me.RibbonTabItem_UpdateInfo.Panel = Me.RibbonPanel2
-        Me.RibbonTabItem_UpdateInfo.Text = "Update-Info"
-        '
-        'RibbonTabItem_Packaging
-        '
-        Me.RibbonTabItem_Packaging.Name = "RibbonTabItem_Packaging"
-        Me.RibbonTabItem_Packaging.Panel = Me.RibbonPanel1
-        Me.RibbonTabItem_Packaging.Text = "Paketierung"
-        '
-        'ButtonItem2
-        '
-        Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem2.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_opened_folder_32px
-        Me.ButtonItem2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem2.Name = "ButtonItem2"
-        Me.ButtonItem2.SubItemsExpandWidth = 14
-        Me.ButtonItem2.Text = "Info Öffnen"
-        '
-        'ButtonItem3
-        '
-        Me.ButtonItem3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem3.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_save_32px
-        Me.ButtonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem3.Name = "ButtonItem3"
-        Me.ButtonItem3.SubItemsExpandWidth = 14
-        Me.ButtonItem3.Text = "Info Speichern"
-        '
-        'ButtonItem4
-        '
-        Me.ButtonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem4.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_save_as_32px
-        Me.ButtonItem4.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem4.Name = "ButtonItem4"
-        Me.ButtonItem4.SubItemsExpandWidth = 14
-        Me.ButtonItem4.Text = "Speichern unter"
-        '
-        'ButtonItem1
-        '
-        Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem1.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_export_32px_3
-        Me.ButtonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem1.Name = "ButtonItem1"
-        Me.ButtonItem1.SubItemsExpandWidth = 14
-        Me.ButtonItem1.Text = "Paket exportieren"
-        '
         'ButtonItem5
         '
         Me.ButtonItem5.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
@@ -458,11 +445,24 @@ Partial Class EditorWindow
         Me.ButtonItem7.SubItemsExpandWidth = 14
         Me.ButtonItem7.Text = "Speichern unter"
         '
+        'RibbonTabItem_UpdateInfo
+        '
+        Me.RibbonTabItem_UpdateInfo.Checked = True
+        Me.RibbonTabItem_UpdateInfo.Name = "RibbonTabItem_UpdateInfo"
+        Me.RibbonTabItem_UpdateInfo.Panel = Me.RibbonPanel2
+        Me.RibbonTabItem_UpdateInfo.Text = "Update-Info"
+        '
+        'RibbonTabItem_Packaging
+        '
+        Me.RibbonTabItem_Packaging.Name = "RibbonTabItem_Packaging"
+        Me.RibbonTabItem_Packaging.Panel = Me.RibbonPanel1
+        Me.RibbonTabItem_Packaging.Text = "Paketierung"
+        '
         'EditorWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(570, 500)
+        Me.ClientSize = New System.Drawing.Size(600, 550)
         Me.Controls.Add(Me.SuperTabControl1)
         Me.Controls.Add(Me.RibbonControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

@@ -39,9 +39,6 @@ Public Class MainForm
         'Init Components
         InitializeComponent()
 
-        'TEMPORARY: Set the new client size until DotNetBar fixed the border issue
-        ClientSize = New Size(712, 689)
-
         'Set instance on Tabs   
         tabGeneral.Controller = Controller
         tabLevelManager.Controller = Controller
