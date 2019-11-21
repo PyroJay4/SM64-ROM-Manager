@@ -1,17 +1,13 @@
 ﻿Public Class ToolSelectionWindow
 
     Private Sub ShowEditorWindow(mode As Byte)
-        Dim editor As New EditorWindow
-
         Select Case mode
             Case 0
-                editor.InitVersionInfoEditor()
+                EditorWindow.InitVersionInfoEditor()
             Case 1
-                editor.InitPackageEditor()
+                EditorWindow.InitPackageEditor()
         End Select
-
-        editor.Show()
-        Close()
+        EditorWindow.Show()
     End Sub
 
     Private Sub ButtonX_OpenUpdateInfoManager_Click(sender As Object, e As EventArgs) Handles ButtonX_OpenUpdateInfoManager.Click
