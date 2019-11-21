@@ -19,8 +19,4 @@
         RibbonControl_Main.SelectedRibbonTabItem = RibbonTabItem_Packaging
     End Sub
 
-    Private Sub EditorWindow_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        MsgBox(Size.ToString)
-
-    End Sub
 End Class
