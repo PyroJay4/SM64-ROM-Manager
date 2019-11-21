@@ -8,6 +8,7 @@
                 EditorWindow.InitPackageEditor()
         End Select
         EditorWindow.Show()
+        Close()
     End Sub
 
     Private Sub ButtonX_OpenUpdateInfoManager_Click(sender As Object, e As EventArgs) Handles ButtonX_OpenUpdateInfoManager.Click

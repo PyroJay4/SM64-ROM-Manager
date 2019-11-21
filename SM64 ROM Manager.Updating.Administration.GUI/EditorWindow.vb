@@ -8,14 +8,19 @@
         RibbonTabItem_Packaging.Visible = False
         SuperTabItem_Pkg_Files.Visible = False
         SuperTabItem_Pkg_Extensions.Visible = False
-        SuperTabItem_Pkg_Changelog.Visible = False
-        RibbonControl1.SelectedRibbonTabItem = RibbonTabItem_UpdateInfo
+        RibbonControl_Main.SelectedRibbonTabItem = RibbonTabItem_UpdateInfo
     End Sub
 
     Public Sub InitPackageEditor()
         RibbonTabItem_UpdateInfo.Visible = False
-        SuperTabItem_UpdateInfo.Visible = False
-        RibbonControl1.SelectedRibbonTabItem = RibbonTabItem_Packaging
+        SuperTabItem_UI_General.Visible = False
+        SuperTabItem_UI_PackageInfo.Visible = False
+        SuperTabItem_UI_Changelog.Visible = False
+        RibbonControl_Main.SelectedRibbonTabItem = RibbonTabItem_Packaging
     End Sub
 
+    Private Sub EditorWindow_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        MsgBox(Size.ToString)
+
+    End Sub
 End Class
