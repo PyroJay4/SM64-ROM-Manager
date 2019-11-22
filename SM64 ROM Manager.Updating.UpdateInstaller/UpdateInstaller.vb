@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 Imports System.IO.Compression
 Imports System.Reflection
-Imports MS.Internal.IO
 
 Friend Class UpdateInstaller
 
@@ -81,7 +80,7 @@ Friend Class UpdateInstaller
 
         'Run installation addon
         ChangeStatus(UpdateInstallerStatus.RunningAddons)
-        RunAddOn()
+        RunAddOns()
     End Sub
 
     Private Sub CopyFiles()
@@ -111,18 +110,19 @@ Friend Class UpdateInstaller
         Next
     End Sub
 
-    Private Sub RunAddOn()
-        Dim addOnPath As String = Path.Combine(dataPath, ZIP_INSTALLER_ADDON_PATH)
-        Dim asm As Assembly = Assembly.Load(addOnPath)
-        Dim t As Type = asm.GetType($"{UPDATE_INSTALLER_ADDON_NAMESPACE}.{UPDATE_INSTALLER_ADDON_TYPE}", False)
+    Private Sub RunAddOns()
+        For Each addOnPath As String In Directory.GetFiles(Path.Combine(dataPath, ZIP_UPDATE_INSTALLER_ADDONS_DIRECTORY))
+            Dim asm As Assembly = Assembly.Load(addOnPath)
+            Dim t As Type = asm.GetType($"{UPDATE_INSTALLER_ADDON_NAMESPACE}.{UPDATE_INSTALLER_ADDON_TYPE}", False)
 
-        If t IsNot Nothing Then
-            Dim m As MethodInfo = t.GetMethod(UPDATE_INSTALLER_ADDON_METHOD, BindingFlags.Static Or BindingFlags.Public)
-            Dim dicParams As New Dictionary(Of String, Object) From {
-                {"hostAppPath", Configuration.HostApplicationPath}
-            }
-            m.Invoke(Nothing, {dicParams})
-        End If
+            If t IsNot Nothing Then
+                Dim m As MethodInfo = t.GetMethod(UPDATE_INSTALLER_ADDON_METHOD, BindingFlags.Static Or BindingFlags.Public)
+                Dim dicParams As New Dictionary(Of String, Object) From {
+                    {"hostAppPath", Configuration.HostApplicationPath}
+                }
+                m.Invoke(Nothing, {dicParams})
+            End If
+        Next
     End Sub
 
     Private Sub DeletePackage()

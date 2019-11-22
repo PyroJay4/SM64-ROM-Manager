@@ -24,21 +24,17 @@ Partial Class EditorWindow
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorWindow))
         Me.SuperTabControl1 = New DevComponents.DotNetBar.SuperTabControl()
+        Me.SuperTabControlPanel4 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.ListViewEx_Files = New DevComponents.DotNetBar.Controls.ListViewEx()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.SuperTabItem_Pkg_Extensions = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.LayoutControl2 = New DevComponents.DotNetBar.Layout.LayoutControl()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.LayoutControlItem6 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.SuperTabItem_UI_General = New DevComponents.DotNetBar.SuperTabItem()
-        Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.AdvTree1 = New DevComponents.AdvTree.AdvTree()
-        Me.Node1 = New DevComponents.AdvTree.Node()
-        Me.NodeConnector1 = New DevComponents.AdvTree.NodeConnector()
-        Me.ElementStyle1 = New DevComponents.DotNetBar.ElementStyle()
-        Me.SuperTabItem_Pkg_Files = New DevComponents.DotNetBar.SuperTabItem()
-        Me.SuperTabControlPanel4 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.ListViewEx_Files = New DevComponents.DotNetBar.Controls.ListViewEx()
-        Me.SuperTabItem_Pkg_Extensions = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel5 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.LayoutControl1 = New DevComponents.DotNetBar.Layout.LayoutControl()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
@@ -57,6 +53,11 @@ Partial Class EditorWindow
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.TextBoxX_Pkg_Changelog = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.SuperTabItem_UI_Changelog = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.AdvTree1 = New DevComponents.AdvTree.AdvTree()
+        Me.NodeConnector1 = New DevComponents.AdvTree.NodeConnector()
+        Me.ElementStyle1 = New DevComponents.DotNetBar.ElementStyle()
+        Me.SuperTabItem_Pkg_Files = New DevComponents.DotNetBar.SuperTabItem()
         Me.RibbonControl_Main = New DevComponents.DotNetBar.RibbonControl()
         Me.RibbonPanel2 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar4 = New DevComponents.DotNetBar.RibbonBar()
@@ -69,19 +70,21 @@ Partial Class EditorWindow
         Me.RibbonBar5 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar2 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem_UI_NewPackage = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_UI_Open = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_UI_Save = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_UI_SaveAs = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonPanel1 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar_Pkg_Erweiterungen = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem7 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_Pkg_AddExtension = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_Pkg_RemoveExtension = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar_Pkg_Dateien = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_Pkg_SelectFileFolder = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_Pkg_RemoveFileFolder = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem_ButtonItem_Pkg_Export = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar3 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem_Pkg_NewTemplate = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_Pkg_OpenTemplate = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_Pkg_SaveTemplate = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_Pkg_SaveTemplateAs = New DevComponents.DotNetBar.ButtonItem()
@@ -89,16 +92,16 @@ Partial Class EditorWindow
         Me.RibbonTabItem_Packaging = New DevComponents.DotNetBar.RibbonTabItem()
         CType(Me.SuperTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControl1.SuspendLayout()
-        Me.SuperTabControlPanel1.SuspendLayout()
-        Me.LayoutControl2.SuspendLayout()
-        Me.SuperTabControlPanel2.SuspendLayout()
-        CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel4.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.SuperTabControlPanel1.SuspendLayout()
+        Me.LayoutControl2.SuspendLayout()
         Me.SuperTabControlPanel5.SuspendLayout()
         Me.LayoutControl1.SuspendLayout()
         Me.SuperTabControlPanel3.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.SuperTabControlPanel2.SuspendLayout()
+        CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RibbonControl_Main.SuspendLayout()
         Me.RibbonPanel2.SuspendLayout()
         Me.RibbonPanel1.SuspendLayout()
@@ -123,18 +126,18 @@ Partial Class EditorWindow
         Me.SuperTabControl1.ControlBox.MenuBox.Name = ""
         Me.SuperTabControl1.ControlBox.Name = ""
         Me.SuperTabControl1.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl1.ControlBox.MenuBox, Me.SuperTabControl1.ControlBox.CloseBox})
-        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel1)
-        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel2)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel4)
+        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel1)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel5)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel3)
+        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel2)
         Me.SuperTabControl1.ForeColor = System.Drawing.Color.Black
         Me.SuperTabControl1.Location = New System.Drawing.Point(1, 155)
         Me.SuperTabControl1.Name = "SuperTabControl1"
         Me.SuperTabControl1.ReorderTabsEnabled = True
         Me.SuperTabControl1.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.SuperTabControl1.SelectedTabIndex = 0
-        Me.SuperTabControl1.Size = New System.Drawing.Size(598, 394)
+        Me.SuperTabControl1.Size = New System.Drawing.Size(648, 394)
         Me.SuperTabControl1.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Left
         Me.SuperTabControl1.TabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabControl1.TabIndex = 1
@@ -143,13 +146,72 @@ Partial Class EditorWindow
         Me.SuperTabControl1.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.Office2010BackstageBlue
         Me.SuperTabControl1.Text = "SuperTabControl1"
         '
+        'SuperTabControlPanel4
+        '
+        Me.SuperTabControlPanel4.Controls.Add(Me.Panel4)
+        Me.SuperTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel4.Location = New System.Drawing.Point(98, 0)
+        Me.SuperTabControlPanel4.Name = "SuperTabControlPanel4"
+        Me.SuperTabControlPanel4.Size = New System.Drawing.Size(550, 394)
+        Me.SuperTabControlPanel4.TabIndex = 0
+        Me.SuperTabControlPanel4.TabItem = Me.SuperTabItem_Pkg_Extensions
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.Transparent
+        Me.Panel4.Controls.Add(Me.ListViewEx_Files)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(550, 394)
+        Me.Panel4.TabIndex = 1
+        '
+        'ListViewEx_Files
+        '
+        Me.ListViewEx_Files.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.ListViewEx_Files.Border.Class = "ListViewBorder"
+        Me.ListViewEx_Files.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ListViewEx_Files.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
+        Me.ListViewEx_Files.DisabledBackColor = System.Drawing.Color.Empty
+        Me.ListViewEx_Files.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ListViewEx_Files.ForeColor = System.Drawing.Color.Black
+        Me.ListViewEx_Files.FullRowSelect = True
+        Me.ListViewEx_Files.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+        Me.ListViewEx_Files.HideSelection = False
+        Me.ListViewEx_Files.Location = New System.Drawing.Point(0, 0)
+        Me.ListViewEx_Files.Name = "ListViewEx_Files"
+        Me.ListViewEx_Files.Size = New System.Drawing.Size(550, 394)
+        Me.ListViewEx_Files.TabIndex = 0
+        Me.ListViewEx_Files.UseCompatibleStateImageBehavior = False
+        Me.ListViewEx_Files.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Datei"
+        Me.ColumnHeader1.Width = 150
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Ort"
+        Me.ColumnHeader2.Width = 360
+        '
+        'SuperTabItem_Pkg_Extensions
+        '
+        Me.SuperTabItem_Pkg_Extensions.AttachedControl = Me.SuperTabControlPanel4
+        Me.SuperTabItem_Pkg_Extensions.GlobalItem = False
+        Me.SuperTabItem_Pkg_Extensions.Name = "SuperTabItem_Pkg_Extensions"
+        Me.SuperTabItem_Pkg_Extensions.Text = "Erweiterungen"
+        '
         'SuperTabControlPanel1
         '
         Me.SuperTabControlPanel1.Controls.Add(Me.LayoutControl2)
         Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel1.Location = New System.Drawing.Point(98, 0)
         Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(500, 394)
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(550, 394)
         Me.SuperTabControlPanel1.TabIndex = 0
         Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem_UI_General
         '
@@ -165,7 +227,7 @@ Partial Class EditorWindow
         '
         '
         Me.LayoutControl2.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem6})
-        Me.LayoutControl2.Size = New System.Drawing.Size(500, 394)
+        Me.LayoutControl2.Size = New System.Drawing.Size(550, 394)
         Me.LayoutControl2.TabIndex = 0
         '
         'LabelX6
@@ -177,7 +239,7 @@ Partial Class EditorWindow
         Me.LabelX6.Location = New System.Drawing.Point(183, 4)
         Me.LabelX6.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.Size = New System.Drawing.Size(313, 23)
+        Me.LabelX6.Size = New System.Drawing.Size(363, 23)
         Me.LabelX6.TabIndex = 0
         Me.LabelX6.Text = "-"
         '
@@ -200,114 +262,13 @@ Partial Class EditorWindow
         Me.SuperTabItem_UI_General.Name = "SuperTabItem_UI_General"
         Me.SuperTabItem_UI_General.Text = "Allgemein"
         '
-        'SuperTabControlPanel2
-        '
-        Me.SuperTabControlPanel2.Controls.Add(Me.AdvTree1)
-        Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel2.Location = New System.Drawing.Point(98, 0)
-        Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
-        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(500, 394)
-        Me.SuperTabControlPanel2.TabIndex = 0
-        Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem_Pkg_Files
-        '
-        'AdvTree1
-        '
-        Me.AdvTree1.AccessibleRole = System.Windows.Forms.AccessibleRole.Outline
-        Me.AdvTree1.BackColor = System.Drawing.SystemColors.Window
-        '
-        '
-        '
-        Me.AdvTree1.BackgroundStyle.Class = "TreeBorderKey"
-        Me.AdvTree1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.AdvTree1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AdvTree1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.AdvTree1.Location = New System.Drawing.Point(0, 0)
-        Me.AdvTree1.Name = "AdvTree1"
-        Me.AdvTree1.Nodes.AddRange(New DevComponents.AdvTree.Node() {Me.Node1})
-        Me.AdvTree1.NodesConnector = Me.NodeConnector1
-        Me.AdvTree1.NodeStyle = Me.ElementStyle1
-        Me.AdvTree1.PathSeparator = ";"
-        Me.AdvTree1.Size = New System.Drawing.Size(500, 394)
-        Me.AdvTree1.Styles.Add(Me.ElementStyle1)
-        Me.AdvTree1.TabIndex = 0
-        Me.AdvTree1.Text = "AdvTree1"
-        '
-        'Node1
-        '
-        Me.Node1.Expanded = True
-        Me.Node1.Name = "Node1"
-        Me.Node1.Text = "Node1"
-        '
-        'NodeConnector1
-        '
-        Me.NodeConnector1.LineColor = System.Drawing.SystemColors.ControlText
-        '
-        'ElementStyle1
-        '
-        Me.ElementStyle1.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ElementStyle1.Name = "ElementStyle1"
-        Me.ElementStyle1.TextColor = System.Drawing.SystemColors.ControlText
-        '
-        'SuperTabItem_Pkg_Files
-        '
-        Me.SuperTabItem_Pkg_Files.AttachedControl = Me.SuperTabControlPanel2
-        Me.SuperTabItem_Pkg_Files.GlobalItem = False
-        Me.SuperTabItem_Pkg_Files.Name = "SuperTabItem_Pkg_Files"
-        Me.SuperTabItem_Pkg_Files.Text = "Dateien"
-        '
-        'SuperTabControlPanel4
-        '
-        Me.SuperTabControlPanel4.Controls.Add(Me.Panel4)
-        Me.SuperTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel4.Location = New System.Drawing.Point(98, 0)
-        Me.SuperTabControlPanel4.Name = "SuperTabControlPanel4"
-        Me.SuperTabControlPanel4.Size = New System.Drawing.Size(500, 394)
-        Me.SuperTabControlPanel4.TabIndex = 0
-        Me.SuperTabControlPanel4.TabItem = Me.SuperTabItem_Pkg_Extensions
-        '
-        'Panel4
-        '
-        Me.Panel4.BackColor = System.Drawing.Color.Transparent
-        Me.Panel4.Controls.Add(Me.ListViewEx_Files)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(0, 0)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(500, 394)
-        Me.Panel4.TabIndex = 1
-        '
-        'ListViewEx_Files
-        '
-        Me.ListViewEx_Files.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.ListViewEx_Files.Border.Class = "ListViewBorder"
-        Me.ListViewEx_Files.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ListViewEx_Files.DisabledBackColor = System.Drawing.Color.Empty
-        Me.ListViewEx_Files.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ListViewEx_Files.ForeColor = System.Drawing.Color.Black
-        Me.ListViewEx_Files.HideSelection = False
-        Me.ListViewEx_Files.Location = New System.Drawing.Point(0, 0)
-        Me.ListViewEx_Files.Name = "ListViewEx_Files"
-        Me.ListViewEx_Files.Size = New System.Drawing.Size(500, 394)
-        Me.ListViewEx_Files.TabIndex = 0
-        Me.ListViewEx_Files.UseCompatibleStateImageBehavior = False
-        Me.ListViewEx_Files.View = System.Windows.Forms.View.Details
-        '
-        'SuperTabItem_Pkg_Extensions
-        '
-        Me.SuperTabItem_Pkg_Extensions.AttachedControl = Me.SuperTabControlPanel4
-        Me.SuperTabItem_Pkg_Extensions.GlobalItem = False
-        Me.SuperTabItem_Pkg_Extensions.Name = "SuperTabItem_Pkg_Extensions"
-        Me.SuperTabItem_Pkg_Extensions.Text = "Erweiterungen"
-        '
         'SuperTabControlPanel5
         '
         Me.SuperTabControlPanel5.Controls.Add(Me.LayoutControl1)
         Me.SuperTabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel5.Location = New System.Drawing.Point(98, 0)
         Me.SuperTabControlPanel5.Name = "SuperTabControlPanel5"
-        Me.SuperTabControlPanel5.Size = New System.Drawing.Size(500, 394)
+        Me.SuperTabControlPanel5.Size = New System.Drawing.Size(550, 394)
         Me.SuperTabControlPanel5.TabIndex = 0
         Me.SuperTabControlPanel5.TabItem = Me.SuperTabItem_UI_PackageInfo
         '
@@ -327,7 +288,7 @@ Partial Class EditorWindow
         '
         '
         Me.LayoutControl1.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutSpacerItem1, Me.LayoutControlItem5})
-        Me.LayoutControl1.Size = New System.Drawing.Size(500, 394)
+        Me.LayoutControl1.Size = New System.Drawing.Size(550, 394)
         Me.LayoutControl1.TabIndex = 0
         '
         'LabelX1
@@ -340,7 +301,7 @@ Partial Class EditorWindow
         Me.LabelX1.Location = New System.Drawing.Point(82, 4)
         Me.LabelX1.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(414, 23)
+        Me.LabelX1.Size = New System.Drawing.Size(464, 23)
         Me.LabelX1.TabIndex = 0
         Me.LabelX1.Text = "-"
         '
@@ -354,7 +315,7 @@ Partial Class EditorWindow
         Me.LabelX2.Location = New System.Drawing.Point(82, 35)
         Me.LabelX2.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(414, 23)
+        Me.LabelX2.Size = New System.Drawing.Size(464, 23)
         Me.LabelX2.TabIndex = 1
         Me.LabelX2.Text = "-"
         '
@@ -368,7 +329,7 @@ Partial Class EditorWindow
         Me.LabelX3.Location = New System.Drawing.Point(82, 66)
         Me.LabelX3.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.Size = New System.Drawing.Size(414, 23)
+        Me.LabelX3.Size = New System.Drawing.Size(464, 23)
         Me.LabelX3.TabIndex = 2
         Me.LabelX3.Text = "-"
         '
@@ -382,7 +343,7 @@ Partial Class EditorWindow
         Me.LabelX4.Location = New System.Drawing.Point(82, 97)
         Me.LabelX4.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelX4.Name = "LabelX4"
-        Me.LabelX4.Size = New System.Drawing.Size(414, 23)
+        Me.LabelX4.Size = New System.Drawing.Size(464, 23)
         Me.LabelX4.TabIndex = 3
         Me.LabelX4.Text = "-"
         '
@@ -396,7 +357,7 @@ Partial Class EditorWindow
         Me.LabelX5.Location = New System.Drawing.Point(82, 160)
         Me.LabelX5.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelX5.Name = "LabelX5"
-        Me.LabelX5.Size = New System.Drawing.Size(414, 23)
+        Me.LabelX5.Size = New System.Drawing.Size(464, 23)
         Me.LabelX5.TabIndex = 5
         Me.LabelX5.Text = "-"
         '
@@ -480,7 +441,7 @@ Partial Class EditorWindow
         Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel3.Location = New System.Drawing.Point(98, 0)
         Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(500, 394)
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(550, 394)
         Me.SuperTabControlPanel3.TabIndex = 0
         Me.SuperTabControlPanel3.TabItem = Me.SuperTabItem_UI_Changelog
         '
@@ -491,7 +452,7 @@ Partial Class EditorWindow
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(500, 394)
+        Me.Panel3.Size = New System.Drawing.Size(550, 394)
         Me.Panel3.TabIndex = 1
         '
         'TextBoxX_Pkg_Changelog
@@ -511,7 +472,7 @@ Partial Class EditorWindow
         Me.TextBoxX_Pkg_Changelog.Multiline = True
         Me.TextBoxX_Pkg_Changelog.Name = "TextBoxX_Pkg_Changelog"
         Me.TextBoxX_Pkg_Changelog.PreventEnterBeep = True
-        Me.TextBoxX_Pkg_Changelog.Size = New System.Drawing.Size(500, 394)
+        Me.TextBoxX_Pkg_Changelog.Size = New System.Drawing.Size(550, 394)
         Me.TextBoxX_Pkg_Changelog.TabIndex = 0
         Me.TextBoxX_Pkg_Changelog.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
         Me.TextBoxX_Pkg_Changelog.WatermarkText = "Änderungen hier hinschreiben ..." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Beispiel:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- Fehler behoben" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- Neue Funktion:" &
@@ -523,6 +484,54 @@ Partial Class EditorWindow
         Me.SuperTabItem_UI_Changelog.GlobalItem = False
         Me.SuperTabItem_UI_Changelog.Name = "SuperTabItem_UI_Changelog"
         Me.SuperTabItem_UI_Changelog.Text = "Änderungsliste"
+        '
+        'SuperTabControlPanel2
+        '
+        Me.SuperTabControlPanel2.Controls.Add(Me.AdvTree1)
+        Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel2.Location = New System.Drawing.Point(98, 0)
+        Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
+        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(550, 394)
+        Me.SuperTabControlPanel2.TabIndex = 0
+        Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem_Pkg_Files
+        '
+        'AdvTree1
+        '
+        Me.AdvTree1.AccessibleRole = System.Windows.Forms.AccessibleRole.Outline
+        Me.AdvTree1.BackColor = System.Drawing.SystemColors.Window
+        '
+        '
+        '
+        Me.AdvTree1.BackgroundStyle.Class = "TreeBorderKey"
+        Me.AdvTree1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.AdvTree1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AdvTree1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+        Me.AdvTree1.Location = New System.Drawing.Point(0, 0)
+        Me.AdvTree1.Name = "AdvTree1"
+        Me.AdvTree1.NodesConnector = Me.NodeConnector1
+        Me.AdvTree1.NodeStyle = Me.ElementStyle1
+        Me.AdvTree1.PathSeparator = ";"
+        Me.AdvTree1.Size = New System.Drawing.Size(550, 394)
+        Me.AdvTree1.Styles.Add(Me.ElementStyle1)
+        Me.AdvTree1.TabIndex = 0
+        Me.AdvTree1.Text = "AdvTree1"
+        '
+        'NodeConnector1
+        '
+        Me.NodeConnector1.LineColor = System.Drawing.SystemColors.ControlText
+        '
+        'ElementStyle1
+        '
+        Me.ElementStyle1.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ElementStyle1.Name = "ElementStyle1"
+        Me.ElementStyle1.TextColor = System.Drawing.SystemColors.ControlText
+        '
+        'SuperTabItem_Pkg_Files
+        '
+        Me.SuperTabItem_Pkg_Files.AttachedControl = Me.SuperTabControlPanel2
+        Me.SuperTabItem_Pkg_Files.GlobalItem = False
+        Me.SuperTabItem_Pkg_Files.Name = "SuperTabItem_Pkg_Files"
+        Me.SuperTabItem_Pkg_Files.Text = "Dateien"
         '
         'RibbonControl_Main
         '
@@ -541,7 +550,7 @@ Partial Class EditorWindow
         Me.RibbonControl_Main.KeyTipsFont = New System.Drawing.Font("Tahoma", 7.0!)
         Me.RibbonControl_Main.Location = New System.Drawing.Point(5, 1)
         Me.RibbonControl_Main.Name = "RibbonControl_Main"
-        Me.RibbonControl_Main.Size = New System.Drawing.Size(590, 154)
+        Me.RibbonControl_Main.Size = New System.Drawing.Size(640, 154)
         Me.RibbonControl_Main.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonControl_Main.SystemText.MaximizeRibbonText = "&Maximize the Ribbon"
         Me.RibbonControl_Main.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon"
@@ -571,7 +580,7 @@ Partial Class EditorWindow
         Me.RibbonPanel2.Location = New System.Drawing.Point(0, 55)
         Me.RibbonPanel2.Name = "RibbonPanel2"
         Me.RibbonPanel2.Padding = New System.Windows.Forms.Padding(3, 0, 3, 2)
-        Me.RibbonPanel2.Size = New System.Drawing.Size(590, 99)
+        Me.RibbonPanel2.Size = New System.Drawing.Size(640, 99)
         '
         '
         '
@@ -602,7 +611,7 @@ Partial Class EditorWindow
         Me.RibbonBar4.DragDropSupport = True
         Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer1, Me.ButtonItem_UI_EditVersion, Me.ButtonItem_UI_EditDownloadlink})
         Me.RibbonBar4.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar4.Location = New System.Drawing.Point(282, 0)
+        Me.RibbonBar4.Location = New System.Drawing.Point(327, 0)
         Me.RibbonBar4.Name = "RibbonBar4"
         Me.RibbonBar4.Size = New System.Drawing.Size(302, 97)
         Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -690,7 +699,7 @@ Partial Class EditorWindow
         Me.RibbonBar5.DragDropSupport = True
         Me.RibbonBar5.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem3})
         Me.RibbonBar5.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar5.Location = New System.Drawing.Point(188, 0)
+        Me.RibbonBar5.Location = New System.Drawing.Point(233, 0)
         Me.RibbonBar5.Name = "RibbonBar5"
         Me.RibbonBar5.Size = New System.Drawing.Size(94, 97)
         Me.RibbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -728,11 +737,11 @@ Partial Class EditorWindow
         Me.RibbonBar2.ContainerControlProcessDialogKey = True
         Me.RibbonBar2.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar2.DragDropSupport = True
-        Me.RibbonBar2.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_UI_Open, Me.ButtonItem_UI_Save, Me.ButtonItem_UI_SaveAs})
+        Me.RibbonBar2.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_UI_NewPackage, Me.ButtonItem_UI_Open, Me.ButtonItem_UI_Save, Me.ButtonItem_UI_SaveAs})
         Me.RibbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar2.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar2.Name = "RibbonBar2"
-        Me.RibbonBar2.Size = New System.Drawing.Size(185, 97)
+        Me.RibbonBar2.Size = New System.Drawing.Size(230, 97)
         Me.RibbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar2.TabIndex = 0
         Me.RibbonBar2.Text = "Konfiguration"
@@ -744,6 +753,15 @@ Partial Class EditorWindow
         '
         '
         Me.RibbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonItem_UI_NewPackage
+        '
+        Me.ButtonItem_UI_NewPackage.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_UI_NewPackage.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_new_file_32px
+        Me.ButtonItem_UI_NewPackage.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem_UI_NewPackage.Name = "ButtonItem_UI_NewPackage"
+        Me.ButtonItem_UI_NewPackage.SubItemsExpandWidth = 14
+        Me.ButtonItem_UI_NewPackage.Text = "Neue Info"
         '
         'ButtonItem_UI_Open
         '
@@ -783,7 +801,7 @@ Partial Class EditorWindow
         Me.RibbonPanel1.Location = New System.Drawing.Point(0, 55)
         Me.RibbonPanel1.Name = "RibbonPanel1"
         Me.RibbonPanel1.Padding = New System.Windows.Forms.Padding(3, 0, 3, 2)
-        Me.RibbonPanel1.Size = New System.Drawing.Size(590, 99)
+        Me.RibbonPanel1.Size = New System.Drawing.Size(640, 99)
         '
         '
         '
@@ -813,9 +831,9 @@ Partial Class EditorWindow
         Me.RibbonBar_Pkg_Erweiterungen.ContainerControlProcessDialogKey = True
         Me.RibbonBar_Pkg_Erweiterungen.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar_Pkg_Erweiterungen.DragDropSupport = True
-        Me.RibbonBar_Pkg_Erweiterungen.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem6, Me.ButtonItem7})
+        Me.RibbonBar_Pkg_Erweiterungen.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_Pkg_AddExtension, Me.ButtonItem_Pkg_RemoveExtension})
         Me.RibbonBar_Pkg_Erweiterungen.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar_Pkg_Erweiterungen.Location = New System.Drawing.Point(408, 0)
+        Me.RibbonBar_Pkg_Erweiterungen.Location = New System.Drawing.Point(463, 0)
         Me.RibbonBar_Pkg_Erweiterungen.Name = "RibbonBar_Pkg_Erweiterungen"
         Me.RibbonBar_Pkg_Erweiterungen.Size = New System.Drawing.Size(144, 97)
         Me.RibbonBar_Pkg_Erweiterungen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -830,23 +848,23 @@ Partial Class EditorWindow
         '
         Me.RibbonBar_Pkg_Erweiterungen.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
-        'ButtonItem6
+        'ButtonItem_Pkg_AddExtension
         '
-        Me.ButtonItem6.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem6.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_merge_files_32px
-        Me.ButtonItem6.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem6.Name = "ButtonItem6"
-        Me.ButtonItem6.SubItemsExpandWidth = 14
-        Me.ButtonItem6.Text = "Erweiterung hinzufügen"
+        Me.ButtonItem_Pkg_AddExtension.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_Pkg_AddExtension.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_merge_files_32px
+        Me.ButtonItem_Pkg_AddExtension.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem_Pkg_AddExtension.Name = "ButtonItem_Pkg_AddExtension"
+        Me.ButtonItem_Pkg_AddExtension.SubItemsExpandWidth = 14
+        Me.ButtonItem_Pkg_AddExtension.Text = "Erweiterung hinzufügen"
         '
-        'ButtonItem7
+        'ButtonItem_Pkg_RemoveExtension
         '
-        Me.ButtonItem7.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem7.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_delete_sign_32px_1
-        Me.ButtonItem7.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem7.Name = "ButtonItem7"
-        Me.ButtonItem7.SubItemsExpandWidth = 14
-        Me.ButtonItem7.Text = "Erweiterung entfernen"
+        Me.ButtonItem_Pkg_RemoveExtension.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_Pkg_RemoveExtension.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_delete_sign_32px_1
+        Me.ButtonItem_Pkg_RemoveExtension.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem_Pkg_RemoveExtension.Name = "ButtonItem_Pkg_RemoveExtension"
+        Me.ButtonItem_Pkg_RemoveExtension.SubItemsExpandWidth = 14
+        Me.ButtonItem_Pkg_RemoveExtension.Text = "Erweiterung entfernen"
         '
         'RibbonBar_Pkg_Dateien
         '
@@ -862,11 +880,11 @@ Partial Class EditorWindow
         Me.RibbonBar_Pkg_Dateien.ContainerControlProcessDialogKey = True
         Me.RibbonBar_Pkg_Dateien.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar_Pkg_Dateien.DragDropSupport = True
-        Me.RibbonBar_Pkg_Dateien.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem4, Me.ButtonItem5})
+        Me.RibbonBar_Pkg_Dateien.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_Pkg_SelectFileFolder, Me.ButtonItem_Pkg_RemoveFileFolder})
         Me.RibbonBar_Pkg_Dateien.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar_Pkg_Dateien.Location = New System.Drawing.Point(269, 0)
+        Me.RibbonBar_Pkg_Dateien.Location = New System.Drawing.Point(314, 0)
         Me.RibbonBar_Pkg_Dateien.Name = "RibbonBar_Pkg_Dateien"
-        Me.RibbonBar_Pkg_Dateien.Size = New System.Drawing.Size(139, 97)
+        Me.RibbonBar_Pkg_Dateien.Size = New System.Drawing.Size(149, 97)
         Me.RibbonBar_Pkg_Dateien.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar_Pkg_Dateien.TabIndex = 2
         Me.RibbonBar_Pkg_Dateien.Text = "Dateien"
@@ -879,23 +897,23 @@ Partial Class EditorWindow
         '
         Me.RibbonBar_Pkg_Dateien.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
-        'ButtonItem4
+        'ButtonItem_Pkg_SelectFileFolder
         '
-        Me.ButtonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem4.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_opened_folder_32px
-        Me.ButtonItem4.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem4.Name = "ButtonItem4"
-        Me.ButtonItem4.SubItemsExpandWidth = 14
-        Me.ButtonItem4.Text = "Ordner auswählen"
+        Me.ButtonItem_Pkg_SelectFileFolder.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_Pkg_SelectFileFolder.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_opened_folder_32px
+        Me.ButtonItem_Pkg_SelectFileFolder.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem_Pkg_SelectFileFolder.Name = "ButtonItem_Pkg_SelectFileFolder"
+        Me.ButtonItem_Pkg_SelectFileFolder.SubItemsExpandWidth = 14
+        Me.ButtonItem_Pkg_SelectFileFolder.Text = "Ordner auswählen"
         '
-        'ButtonItem5
+        'ButtonItem_Pkg_RemoveFileFolder
         '
-        Me.ButtonItem5.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem5.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_delete_sign_32px_1
-        Me.ButtonItem5.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem5.Name = "ButtonItem5"
-        Me.ButtonItem5.SubItemsExpandWidth = 14
-        Me.ButtonItem5.Text = "Auswahl löschen"
+        Me.ButtonItem_Pkg_RemoveFileFolder.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_Pkg_RemoveFileFolder.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_delete_sign_32px_1
+        Me.ButtonItem_Pkg_RemoveFileFolder.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem_Pkg_RemoveFileFolder.Name = "ButtonItem_Pkg_RemoveFileFolder"
+        Me.ButtonItem_Pkg_RemoveFileFolder.SubItemsExpandWidth = 14
+        Me.ButtonItem_Pkg_RemoveFileFolder.Text = "Ordner entfernen"
         '
         'RibbonBar1
         '
@@ -913,7 +931,7 @@ Partial Class EditorWindow
         Me.RibbonBar1.DragDropSupport = True
         Me.RibbonBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ButtonItem_Pkg_Export})
         Me.RibbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar1.Location = New System.Drawing.Point(188, 0)
+        Me.RibbonBar1.Location = New System.Drawing.Point(233, 0)
         Me.RibbonBar1.Name = "RibbonBar1"
         Me.RibbonBar1.Size = New System.Drawing.Size(81, 97)
         Me.RibbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -951,11 +969,11 @@ Partial Class EditorWindow
         Me.RibbonBar3.ContainerControlProcessDialogKey = True
         Me.RibbonBar3.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar3.DragDropSupport = True
-        Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_Pkg_OpenTemplate, Me.ButtonItem_Pkg_SaveTemplate, Me.ButtonItem_Pkg_SaveTemplateAs})
+        Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_Pkg_NewTemplate, Me.ButtonItem_Pkg_OpenTemplate, Me.ButtonItem_Pkg_SaveTemplate, Me.ButtonItem_Pkg_SaveTemplateAs})
         Me.RibbonBar3.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar3.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
-        Me.RibbonBar3.Size = New System.Drawing.Size(185, 97)
+        Me.RibbonBar3.Size = New System.Drawing.Size(230, 97)
         Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar3.TabIndex = 1
         Me.RibbonBar3.Text = "Vorlage"
@@ -967,6 +985,15 @@ Partial Class EditorWindow
         '
         '
         Me.RibbonBar3.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonItem_Pkg_NewTemplate
+        '
+        Me.ButtonItem_Pkg_NewTemplate.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_Pkg_NewTemplate.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_new_file_32px
+        Me.ButtonItem_Pkg_NewTemplate.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem_Pkg_NewTemplate.Name = "ButtonItem_Pkg_NewTemplate"
+        Me.ButtonItem_Pkg_NewTemplate.SubItemsExpandWidth = 14
+        Me.ButtonItem_Pkg_NewTemplate.Text = "Neues Template"
         '
         'ButtonItem_Pkg_OpenTemplate
         '
@@ -1012,26 +1039,26 @@ Partial Class EditorWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(600, 550)
+        Me.ClientSize = New System.Drawing.Size(650, 550)
         Me.Controls.Add(Me.SuperTabControl1)
         Me.Controls.Add(Me.RibbonControl_Main)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "EditorWindow"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Tag = "600; 550"
+        Me.Tag = "650; 550"
         Me.Text = "Update-Administration"
         CType(Me.SuperTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControl1.ResumeLayout(False)
-        Me.SuperTabControlPanel1.ResumeLayout(False)
-        Me.LayoutControl2.ResumeLayout(False)
-        Me.SuperTabControlPanel2.ResumeLayout(False)
-        CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel4.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
+        Me.SuperTabControlPanel1.ResumeLayout(False)
+        Me.LayoutControl2.ResumeLayout(False)
         Me.SuperTabControlPanel5.ResumeLayout(False)
         Me.LayoutControl1.ResumeLayout(False)
         Me.SuperTabControlPanel3.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
+        Me.SuperTabControlPanel2.ResumeLayout(False)
+        CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RibbonControl_Main.ResumeLayout(False)
         Me.RibbonControl_Main.PerformLayout()
         Me.RibbonPanel2.ResumeLayout(False)
@@ -1068,7 +1095,6 @@ Partial Class EditorWindow
     Friend WithEvents TextBoxX_Pkg_Changelog As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents ListViewEx_Files As DevComponents.DotNetBar.Controls.ListViewEx
     Friend WithEvents AdvTree1 As DevComponents.AdvTree.AdvTree
-    Friend WithEvents Node1 As DevComponents.AdvTree.Node
     Friend WithEvents NodeConnector1 As DevComponents.AdvTree.NodeConnector
     Friend WithEvents ElementStyle1 As DevComponents.DotNetBar.ElementStyle
     Friend WithEvents LayoutControl1 As DevComponents.DotNetBar.Layout.LayoutControl
@@ -1099,8 +1125,12 @@ Partial Class EditorWindow
     Friend WithEvents LayoutControlItem6 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents RibbonBar_Pkg_Erweiterungen As DevComponents.DotNetBar.RibbonBar
     Friend WithEvents RibbonBar_Pkg_Dateien As DevComponents.DotNetBar.RibbonBar
-    Friend WithEvents ButtonItem6 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem7 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem5 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_Pkg_AddExtension As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_Pkg_RemoveExtension As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_Pkg_SelectFileFolder As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_UI_NewPackage As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_Pkg_NewTemplate As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ButtonItem_Pkg_RemoveFileFolder As DevComponents.DotNetBar.ButtonItem
 End Class

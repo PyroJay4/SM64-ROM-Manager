@@ -34,4 +34,4 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyVersion("1.0.0.0")>
 <Assembly: InternalsVisibleTo("SM64 ROM Manager.Updating.Client")>
-<Assembly: InternalsVisibleTo("SM64 ROM Manager.Updating.Server")>
+<Assembly: InternalsVisibleTo("SM64 ROM Manager.Updating.Administration")>
