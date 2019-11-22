@@ -179,6 +179,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_software_installer.ico" />
+    <None Include="Resources\icons8_code_file_32px_1.png" />
+    <None Include="Resources\icons8_template_32px.png" />
+    <None Include="Resources\icons8_view_file_32px_1.png" />
+    <None Include="Resources\icons8_code_file_32px.png" />
+    <None Include="Resources\icons8_documents_folder_32px.png" />
+    <None Include="Resources\icons8_merge_files_32px.png" />
+    <None Include="Resources\icons8_merge_files_16px_1.png" />
+    <None Include="Resources\icons8_delete_sign_16px.png" />
+    <None Include="Resources\icons8_add_16px.png" />
+    <None Include="Resources\icons8_link_32px.png" />
+    <None Include="Resources\icons8_edit_property_32px.png" />
+    <None Include="Resources\icons8_edit_file_32px.png" />
+    <None Include="Resources\icons8_edit_32px.png" />
+    <None Include="Resources\icons8_delete_sign_32px_1.png" />
+    <None Include="Resources\icons8_add_32px.png" />
+    <None Include="Resources\icons8_versions_32px.png" />
     <None Include="Resources\icons8_open_box_32px.png" />
     <None Include="Resources\icons8_administrative_tools_32px.png" />
     <None Include="Resources\icons8_export_32px_3.png" />

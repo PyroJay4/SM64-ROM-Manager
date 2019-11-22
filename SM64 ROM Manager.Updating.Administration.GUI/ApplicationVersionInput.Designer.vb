@@ -28,15 +28,15 @@ Partial Class ApplicationVersionInput
         Me.ComboBoxEx_Channel = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.IntegerInput_Build = New DevComponents.Editors.IntegerInput()
         Me.LayoutControl1 = New DevComponents.DotNetBar.Layout.LayoutControl()
+        Me.ButtonX_Cancel = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonX_Okay = New DevComponents.DotNetBar.ButtonX()
         Me.LayoutControlItem1 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
-        Me.ButtonX_Cancel = New DevComponents.DotNetBar.ButtonX()
-        Me.LayoutControlItem5 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
-        Me.ButtonX_Okay = New DevComponents.DotNetBar.ButtonX()
-        Me.LayoutControlItem6 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.LayoutSpacerItem1 = New DevComponents.DotNetBar.Layout.LayoutSpacerItem()
+        Me.LayoutControlItem5 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
+        Me.LayoutControlItem6 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         CType(Me.IntegerInput_Build, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         Me.SuspendLayout()
@@ -57,10 +57,10 @@ Partial Class ApplicationVersionInput
         Me.TextBoxX_VersionName.Margin = New System.Windows.Forms.Padding(0)
         Me.TextBoxX_VersionName.Name = "TextBoxX_VersionName"
         Me.TextBoxX_VersionName.PreventEnterBeep = True
-        Me.TextBoxX_VersionName.Size = New System.Drawing.Size(227, 20)
+        Me.TextBoxX_VersionName.Size = New System.Drawing.Size(275, 20)
         Me.TextBoxX_VersionName.TabIndex = 0
         Me.TextBoxX_VersionName.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
-        Me.TextBoxX_VersionName.WatermarkText = "Bspw.: Version 1.2.5.0 - Dark Mode und vieles mehr!!"
+        Me.TextBoxX_VersionName.WatermarkText = "Bspw.: Version 1.2.5.0 - Dark Mode und vieles mehr!"
         '
         'TextBoxX_Version
         '
@@ -78,7 +78,7 @@ Partial Class ApplicationVersionInput
         Me.TextBoxX_Version.Margin = New System.Windows.Forms.Padding(0)
         Me.TextBoxX_Version.Name = "TextBoxX_Version"
         Me.TextBoxX_Version.PreventEnterBeep = True
-        Me.TextBoxX_Version.Size = New System.Drawing.Size(227, 20)
+        Me.TextBoxX_Version.Size = New System.Drawing.Size(275, 20)
         Me.TextBoxX_Version.TabIndex = 1
         Me.TextBoxX_Version.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
         Me.TextBoxX_Version.WatermarkText = "Bspw.: 1.2.5.0"
@@ -94,7 +94,7 @@ Partial Class ApplicationVersionInput
         Me.ComboBoxEx_Channel.Location = New System.Drawing.Point(53, 60)
         Me.ComboBoxEx_Channel.Margin = New System.Windows.Forms.Padding(0)
         Me.ComboBoxEx_Channel.Name = "ComboBoxEx_Channel"
-        Me.ComboBoxEx_Channel.Size = New System.Drawing.Size(227, 21)
+        Me.ComboBoxEx_Channel.Size = New System.Drawing.Size(275, 21)
         Me.ComboBoxEx_Channel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ComboBoxEx_Channel.TabIndex = 2
         '
@@ -114,7 +114,7 @@ Partial Class ApplicationVersionInput
         Me.IntegerInput_Build.MinValue = 0
         Me.IntegerInput_Build.Name = "IntegerInput_Build"
         Me.IntegerInput_Build.ShowUpDown = True
-        Me.IntegerInput_Build.Size = New System.Drawing.Size(227, 20)
+        Me.IntegerInput_Build.Size = New System.Drawing.Size(275, 20)
         Me.IntegerInput_Build.TabIndex = 3
         '
         'LayoutControl1
@@ -134,8 +134,34 @@ Partial Class ApplicationVersionInput
         '
         '
         Me.LayoutControl1.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutSpacerItem1, Me.LayoutControlItem5, Me.LayoutControlItem6})
-        Me.LayoutControl1.Size = New System.Drawing.Size(284, 144)
+        Me.LayoutControl1.Size = New System.Drawing.Size(332, 144)
         Me.LayoutControl1.TabIndex = 5
+        '
+        'ButtonX_Cancel
+        '
+        Me.ButtonX_Cancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX_Cancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.ButtonX_Cancel.Location = New System.Drawing.Point(170, 117)
+        Me.ButtonX_Cancel.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonX_Cancel.Name = "ButtonX_Cancel"
+        Me.ButtonX_Cancel.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonX_Cancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX_Cancel.TabIndex = 5
+        Me.ButtonX_Cancel.Text = "Abbrechen"
+        '
+        'ButtonX_Okay
+        '
+        Me.ButtonX_Okay.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX_Okay.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX_Okay.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.ButtonX_Okay.Location = New System.Drawing.Point(253, 117)
+        Me.ButtonX_Okay.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonX_Okay.Name = "ButtonX_Okay"
+        Me.ButtonX_Okay.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonX_Okay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX_Okay.TabIndex = 6
+        Me.ButtonX_Okay.Text = "Okay"
         '
         'LayoutControlItem1
         '
@@ -144,6 +170,7 @@ Partial Class ApplicationVersionInput
         Me.LayoutControlItem1.MinSize = New System.Drawing.Size(120, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
         Me.LayoutControlItem1.Text = "Name:"
+        Me.LayoutControlItem1.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
         Me.LayoutControlItem1.Width = 100
         Me.LayoutControlItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
         '
@@ -154,6 +181,7 @@ Partial Class ApplicationVersionInput
         Me.LayoutControlItem2.MinSize = New System.Drawing.Size(120, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Text = "Version:"
+        Me.LayoutControlItem2.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
         Me.LayoutControlItem2.Width = 100
         Me.LayoutControlItem2.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
         '
@@ -164,6 +192,7 @@ Partial Class ApplicationVersionInput
         Me.LayoutControlItem3.MinSize = New System.Drawing.Size(64, 18)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Text = "Kanal:"
+        Me.LayoutControlItem3.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
         Me.LayoutControlItem3.Width = 100
         Me.LayoutControlItem3.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
         '
@@ -171,53 +200,12 @@ Partial Class ApplicationVersionInput
         '
         Me.LayoutControlItem4.Control = Me.IntegerInput_Build
         Me.LayoutControlItem4.Height = 28
-        Me.LayoutControlItem4.MinSize = New System.Drawing.Size(64, 18)
+        Me.LayoutControlItem4.MinSize = New System.Drawing.Size(120, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
         Me.LayoutControlItem4.Text = "Build:"
+        Me.LayoutControlItem4.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
         Me.LayoutControlItem4.Width = 100
         Me.LayoutControlItem4.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
-        '
-        'ButtonX_Cancel
-        '
-        Me.ButtonX_Cancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX_Cancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ButtonX_Cancel.Location = New System.Drawing.Point(122, 117)
-        Me.ButtonX_Cancel.Margin = New System.Windows.Forms.Padding(0, 0, 0, 0)
-        Me.ButtonX_Cancel.Name = "ButtonX_Cancel"
-        Me.ButtonX_Cancel.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonX_Cancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_Cancel.TabIndex = 5
-        Me.ButtonX_Cancel.Text = "Abbrechen"
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.Control = Me.ButtonX_Cancel
-        Me.LayoutControlItem5.Height = 31
-        Me.LayoutControlItem5.MinSize = New System.Drawing.Size(32, 20)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Width = 83
-        '
-        'ButtonX_Okay
-        '
-        Me.ButtonX_Okay.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX_Okay.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX_Okay.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.ButtonX_Okay.Location = New System.Drawing.Point(205, 117)
-        Me.ButtonX_Okay.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonX_Okay.Name = "ButtonX_Okay"
-        Me.ButtonX_Okay.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonX_Okay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_Okay.TabIndex = 6
-        Me.ButtonX_Okay.Text = "Okay"
-        '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.ButtonX_Okay
-        Me.LayoutControlItem6.Height = 31
-        Me.LayoutControlItem6.MinSize = New System.Drawing.Size(32, 20)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Width = 83
         '
         'LayoutSpacerItem1
         '
@@ -227,13 +215,29 @@ Partial Class ApplicationVersionInput
         Me.LayoutSpacerItem1.Width = 99
         Me.LayoutSpacerItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
         '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.ButtonX_Cancel
+        Me.LayoutControlItem5.Height = 31
+        Me.LayoutControlItem5.MinSize = New System.Drawing.Size(32, 20)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Width = 83
+        '
+        'LayoutControlItem6
+        '
+        Me.LayoutControlItem6.Control = Me.ButtonX_Okay
+        Me.LayoutControlItem6.Height = 31
+        Me.LayoutControlItem6.MinSize = New System.Drawing.Size(32, 20)
+        Me.LayoutControlItem6.Name = "LayoutControlItem6"
+        Me.LayoutControlItem6.Width = 83
+        '
         'ApplicationVersionInput
         '
         Me.AcceptButton = Me.ButtonX_Okay
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.ButtonX_Cancel
-        Me.ClientSize = New System.Drawing.Size(284, 144)
+        Me.ClientSize = New System.Drawing.Size(332, 144)
         Me.Controls.Add(Me.LayoutControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
