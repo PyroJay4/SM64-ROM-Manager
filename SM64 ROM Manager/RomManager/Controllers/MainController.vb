@@ -34,6 +34,7 @@ Imports SM64Lib.Data
 Imports Pilz.Reflection.PluginSystem
 Imports SM64Lib.EventArguments
 Imports SM64_ROM_Manager.Updating
+Imports SM64_ROM_Manager.Updating.Client.GUI
 
 Public Class MainController
 
@@ -260,16 +261,9 @@ Public Class MainController
 
     Public Async Function SearchForUpdates(searchHidden As Boolean) As Task(Of Boolean)
         If Await CanAccessUpdateServer() Then
-            'Dim ui As New UpdaterUI(updateManager, SynchronizationContext.Current, True)
-            'ui.UseHiddenSearch = searchHidden
-            'ui.ShowUserInterface()
-
-            'Dim pkg = updateClient.CheckForUpdate()
-            'If pkg IsNot Nothing Then
-            '    If MessageBox.Show("Download " & pkg.Version.Version.ToString & " " & pkg.Version.Channel.ToString & " " & pkg.Version.Build & vbNewLine & pkg.Changelog) Then
-            '        updateClient.UpdateInteractive()
-            '    End If
-            'End If
+            Dim gui As New UpdateClientGUI(updateClient)
+            gui.UseHiddenSearch = searchHidden
+            gui.UpdateInteractive()
             Return True
         Else
             Return False

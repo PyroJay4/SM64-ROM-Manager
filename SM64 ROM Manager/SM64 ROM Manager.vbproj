@@ -1036,6 +1036,10 @@
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
       <Name>SM64 ROM Manager.SettingsManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SM64 ROM Manager.Updating.Client.GUI\SM64 ROM Manager.Updating.Client.GUI.vbproj">
+      <Project>{8205C526-D8FE-4C86-9E14-CF926B57AEC7}</Project>
+      <Name>SM64 ROM Manager.Updating.Client.GUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SM64 ROM Manager.Updating.Client\SM64 ROM Manager.Updating.Client.vbproj">
       <Project>{4ef35d44-5860-41b5-a1ea-1aa1b496933c}</Project>
       <Name>SM64 ROM Manager.Updating.Client</Name>
