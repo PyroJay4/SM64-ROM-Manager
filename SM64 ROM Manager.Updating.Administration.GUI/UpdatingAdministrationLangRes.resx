@@ -129,4 +129,10 @@
   <data name="Channel_Stable" xml:space="preserve">
     <value>Stabil</value>
   </data>
+  <data name="MsgBox_ErrorAddingInstallerAddOn" xml:space="preserve">
+    <value>Fehler beim hinzufügen des AddOns.</value>
+  </data>
+  <data name="MsgBox_Error_Titel" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
 </root>

@@ -38,22 +38,6 @@ Public Class UpdateClient
         Me.MinimumChannel = minimumChannel
     End Sub
 
-    'P r i v a t e   F e a t u r e s
-
-    Private Function GetMyAppDataPath() As String
-        Static p As String = String.Empty
-
-        If String.IsNullOrEmpty(p) Then
-            p = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "")
-
-            If Not Directory.Exists(p) Then
-                Directory.CreateDirectory(p)
-            End If
-        End If
-
-        Return p
-    End Function
-
     'U p d a t e   R o u t i n e s
 
     Public Sub UpdateInteractive()

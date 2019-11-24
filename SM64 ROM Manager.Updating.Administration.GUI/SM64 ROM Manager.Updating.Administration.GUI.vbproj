@@ -71,6 +71,15 @@
     <Reference Include="DevComponents.DotNetBar2">
       <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
@@ -100,6 +109,7 @@
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
+    <Import Include="Z.Collections.Extensions" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationVersionInput.Designer.vb">
@@ -179,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_software_installer.ico" />
+    <None Include="Resources\icons8_new_file_32px.png" />
     <None Include="Resources\icons8_code_file_32px_1.png" />
     <None Include="Resources\icons8_template_32px.png" />
     <None Include="Resources\icons8_view_file_32px_1.png" />
@@ -203,6 +214,10 @@
     <None Include="Resources\icons8_save_32px.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SM64 ROM Manager.Updating.Administration\SM64 ROM Manager.Updating.Administration.vbproj">
+      <Project>{059e523b-773a-43f5-a6c4-e2d74ef73c6c}</Project>
+      <Name>SM64 ROM Manager.Updating.Administration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SM64 ROM Manager.Updating\SM64 ROM Manager.Updating.vbproj">
       <Project>{8f01bb84-a3da-4039-a9d2-0f6db31739ec}</Project>
       <Name>SM64 ROM Manager.Updating</Name>

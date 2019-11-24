@@ -99,5 +99,23 @@ Namespace My.Resources
                 Return ResourceManager.GetString("Channel_Stable", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Fehler ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_Error_Titel() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_Error_Titel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Fehler beim hinzufügen des AddOns. ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_ErrorAddingInstallerAddOn() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_ErrorAddingInstallerAddOn", resourceCulture)
+            End Get
+        End Property
     End Class
 End Namespace
