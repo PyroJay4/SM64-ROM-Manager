@@ -29,8 +29,8 @@ Friend Class UpdateInstaller
     End Sub
 
     Public Sub StartHostApplication()
-        If Not String.IsNullOrEmpty(Configuration.RestartHostApplication) Then
-            Process.Start(Configuration.RestartHostApplication, Configuration.RestartHostApplicationArguments)
+        If Not String.IsNullOrEmpty(Configuration.RestartHostApplication) AndAlso File.Exists(Configuration.HostApplicationProcessPath) Then
+            Process.Start(Configuration.RestartHostApplication, Configuration.HostApplicationProcessPath)
         End If
     End Sub
 
@@ -43,6 +43,7 @@ Friend Class UpdateInstaller
         InstallPackage()
 
         'Delete Package
+        ChangeStatus(UpdateInstallerStatus.RemovingFiles)
         DeletePackage()
 
         'Finish
@@ -108,17 +109,12 @@ Friend Class UpdateInstaller
             destinationDir.Create()
         End If
 
-        For Each sFile As FileInfo In sourceDir.EnumerateFiles(String.Empty, SearchOption.TopDirectoryOnly)
+        For Each sFile As FileInfo In sourceDir.EnumerateFiles("*", SearchOption.TopDirectoryOnly)
             Dim dFile As New FileInfo(Path.Combine(destinationDir.FullName, sFile.Name))
-
-            If dFile.Exists Then
-                dFile.Delete()
-            End If
-
-            sFile.CopyTo(dFile.FullName)
+            sFile.CopyTo(dFile.FullName, True)
         Next
 
-        For Each sDir As DirectoryInfo In sourceDir.EnumerateDirectories(String.Empty, SearchOption.TopDirectoryOnly)
+        For Each sDir As DirectoryInfo In sourceDir.EnumerateDirectories("*", SearchOption.TopDirectoryOnly)
             Dim dDir As DirectoryInfo = destinationDir.CreateSubdirectory(sDir.Name)
             CopyFiles(sDir, dDir)
         Next
@@ -140,7 +136,7 @@ Friend Class UpdateInstaller
     End Sub
 
     Private Sub DeletePackage()
-        Directory.Delete(Configuration.PackagePath)
+        Directory.Delete(Configuration.PackagePath, True)
     End Sub
 
 End Class

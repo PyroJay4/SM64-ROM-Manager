@@ -115,12 +115,12 @@ Public Class Form_Settings
                 ComboBoxEx_NotifyOnRomChanges.SelectedIndex = 2
         End Select
 
-        Select Case True
-            Case Settings.General.IncludeAlphaVersions
+        Select Case Settings.General.MinimumUpdateChannel
+            Case Updating.Channels.Alpha
                 ComboBoxEx_UpdateLevel.SelectedIndex = 2
-            Case Settings.General.IncludeBetaVersions
+            Case Updating.Channels.Beta
                 ComboBoxEx_UpdateLevel.SelectedIndex = 1
-            Case Else
+            Case Updating.Channels.Stable
                 ComboBoxEx_UpdateLevel.SelectedIndex = 0
         End Select
 
@@ -175,14 +175,11 @@ Public Class Form_Settings
 
         Select Case ComboBoxEx_UpdateLevel.SelectedIndex
             Case 0
-                Settings.General.IncludeBetaVersions = False
-                Settings.General.IncludeAlphaVersions = False
+                Settings.General.MinimumUpdateChannel = Updating.Channels.Stable
             Case 1
-                Settings.General.IncludeBetaVersions = True
-                Settings.General.IncludeAlphaVersions = False
+                Settings.General.MinimumUpdateChannel = Updating.Channels.Beta
             Case 2
-                Settings.General.IncludeBetaVersions = True
-                Settings.General.IncludeAlphaVersions = True
+                Settings.General.MinimumUpdateChannel = Updating.Channels.Alpha
         End Select
 
         Dim selLangItem As ComboItem = ComboBoxEx_Language.SelectedItem

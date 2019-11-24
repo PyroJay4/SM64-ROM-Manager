@@ -92,6 +92,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Removing files ... ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property Status_RemovingFiles() As String
+            Get
+                Return ResourceManager.GetString("Status_RemovingFiles", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Executing AddOn&apos;s ... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property Status_RunningAddOns() As String

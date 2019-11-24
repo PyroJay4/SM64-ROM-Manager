@@ -115,6 +115,9 @@ Public Class UpdateClient
         If installerDirPath.Exists Then
             installerDirPath.Delete(True)
         End If
+        Task.Delay(100)
+        installerDirPath.Create()
+        Task.Delay(100)
 
         'Download update installer zip
         Dim installerZipPath As String = Path.Combine(installerDirPath.FullName, "UpdatenInstaller.zip")
@@ -123,6 +126,7 @@ Public Class UpdateClient
         'Extract update installer
         Dim installerExtractPath As DirectoryInfo = installerDirPath.CreateSubdirectory("extracted")
         ZipFile.ExtractToDirectory(installerZipPath, installerExtractPath.FullName)
+        File.Delete(installerZipPath)
 
         'Get UpdateInstaller.exe file
         Return installerExtractPath.EnumerateFiles("*.exe").FirstOrDefault
@@ -166,7 +170,7 @@ Public Class UpdateClient
 
             'Close Host Application
             If AutoCloseHostApplication Then
-                Environment.Exit(0)
+                Environment.Exit(Environment.ExitCode)
             End If
         End If
 

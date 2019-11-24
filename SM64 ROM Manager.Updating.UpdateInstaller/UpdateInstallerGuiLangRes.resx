@@ -126,6 +126,9 @@
   <data name="Status_Extracting" xml:space="preserve">
     <value>Extracting update package ...</value>
   </data>
+  <data name="Status_RemovingFiles" xml:space="preserve">
+    <value>Removing files ...</value>
+  </data>
   <data name="Status_RunningAddOns" xml:space="preserve">
     <value>Executing AddOn's ...</value>
   </data>

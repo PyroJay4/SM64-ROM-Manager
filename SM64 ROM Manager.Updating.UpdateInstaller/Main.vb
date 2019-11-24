@@ -55,11 +55,13 @@ Public Class Main
                 newStatusText = Status_Extracting
             Case UpdateInstallerStatus.RunningAddons
                 newStatusText = Status_RunningAddOns
+            Case UpdateInstallerStatus.RemovingFiles
+                newStatusText = Status_RemovingFiles
             Case UpdateInstallerStatus.Waiting
                 newStatusText = Status_Waiting
         End Select
 
-        LabelX_Status.Text = newStatus
+        LabelX_Status.Text = newStatusText
 
         If newStatus = UpdateInstallerStatus.Done Then
             allowClose = True
@@ -68,6 +70,7 @@ Public Class Main
     End Sub
 
     Private Async Function WaitforHostApp() As Task
+        SetStatus(UpdateInstallerStatus.Waiting)
         Await Task.Run(Sub() Installer.WaitForHostApplication())
     End Function
 

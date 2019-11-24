@@ -3,5 +3,6 @@
     Extracting
     CopyingFiles
     RunningAddons
+    RemovingFiles
     Done
 End Enum

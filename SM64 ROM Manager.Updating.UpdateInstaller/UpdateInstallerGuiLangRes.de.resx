@@ -126,6 +126,9 @@
   <data name="Status_Extracting" xml:space="preserve">
     <value>Extrahiere neue Dateien ...</value>
   </data>
+  <data name="Status_RemovingFiles" xml:space="preserve">
+    <value>Lösche Dateien ...</value>
+  </data>
   <data name="Status_RunningAddOns" xml:space="preserve">
     <value>Führe AddOns aus ...</value>
   </data>
