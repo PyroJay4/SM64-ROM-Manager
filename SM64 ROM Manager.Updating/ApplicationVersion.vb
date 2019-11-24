@@ -15,7 +15,7 @@
         Me.New(version, 0, 0)
     End Sub
 
-    Public Sub New(version As Version, build As Integer, channel As Integer)
+    Public Sub New(version As Version, build As Integer, channel As Channels)
         Me.Version = version
         Me.Build = build
         Me.Channel = channel

@@ -33,6 +33,7 @@ Imports System.Reflection
 Imports SM64Lib.Data
 Imports Pilz.Reflection.PluginSystem
 Imports SM64Lib.EventArguments
+Imports SM64_ROM_Manager.Updating
 
 Public Class MainController
 
@@ -71,12 +72,13 @@ Public Class MainController
     'C o n s t a n t s
 
     Public Const PLUGINCODE_PLUGINMENU As String = "pluginmenu"
-    Public Const UPDATE_URL As String = "http://pilzinsel64.square7.ch/Updates/SM64_ROM_Manager_New/updates.json"
+    Public Const UPDATE_URL As String = "https://pilzinsel64.com/Updates/SM64_ROM_Manager/Updates.json" '"http://pilzinsel64.square7.ch/Updates/SM64_ROM_Manager_New/updates.json"
 
     'F i e l d s
 
     Private ReadOnly mainForm As MainForm
     Private ReadOnly updateManager As UpdateManager = Nothing
+    Private ReadOnly updateClient As UpdateClient
     Private WithEvents RomManager As RomManager = Nothing
     Private _StatusText As String = String.Empty
     Private loadRecentROM As Boolean = False
@@ -159,12 +161,22 @@ Public Class MainController
             .DevelopmentalStage = CInt(DevelopmentStage),
             .DevelopmentBuild = DevelopmentBuild
         }
-
         updateManager = New UpdateManager(New Uri(UPDATE_URL), "<RSAKeyValue><Modulus>w5WpraTgIe2QlQGkvrJDcdrtRkb1AQ0iDMO0JMsCd7rPoUYw7cu7YnRreeadU5jBiit4G82oB/TOtT+quJPDBixxKjof9gKVqrxeKtMYU/3vwRQg0+Y77GFD6tMLNlJwrk1NzgS3FN2Zlpl9LplgeQr9g5RSKMyu+VJ5OTZOHZAyHpvMnPSD9V1Kpyj/WFf2ADf9PL3Z4vEJfcmoFdGY6i4hq4IAIe5o5lYGB5zC/QOfDuAHEO+oGbOkFs65BeHDZWkLnzBOYPI4rnHZpU9E/ChcJVerNln45D9XGElDVXy7AIdy417mefjqnPaqMgm/22aTUW3f1Jsy3kcUhe1/f5eE/PHQoFvLPjcezY5mPUkW5JT1Y+2tIROvXh5zejyb+/2ctyVLSqLhG6wh4UNFd60Be4mV2NJ+Acn9IagdvMW3AvUmbSgQK4Jmq2OP656XkrdDi2vGibdMOB2Nt+O/q5+GpbzrEAnX+t9ikxmT568PpfjGBVvh+DmQxhiEaKT28HKWuDwLOdq6bnnnw6LlqF0odHqf2L09uXULJQo9W8zMoA5lyNbgHTfrj1ik9X4xheZkqmwJWIyYrRsPsyLN6Eani4vqVeVgBfJxdon45x5tPqYhadHoIHWU8WxnIGBnDAmaBZ/6lQpfTmbo3c8T2WuNjQAarzmnFKHP6GqP9X7JFhGQklTI5LFNsz6IjFRoHl/R5bUi6GJddoFitKXT4XjaJw+zR4Vp6W37wLjbe/r7Wd+vBST3YxTELQ+zQ3lxOb3Ht+0psinyaqqWVG8jh69axesPDIXvqDmZsYTlbm8YWyHeViX6xDo1+gYCZkFnCqdpXaB2B2a/bnvV1DKRDWCUi122BzCkUQg104F2ncnTnwrEwGXBQzVcZkkCtNhoiQRbOz+kJZz3tdmF+IPdhsdevpB4XwVbb/aTCkx2T68LOrGCuaKZ8EmHzTEbX2thSs7q3+ImfxCC9pubzCgwQEiS4MD/k+BMfDt7JQEPSP8EvBDxLLJ8Ls34/GnX5DSkUwMC3a/DUoZ0FgV8aIJEPSequjB/HtVQaR9t8j8ynr9FpsxGS0Qa0UZLt5ACG76Z4wgnLdrPKJMD0hcscmdiy4ov3a3AkuvkvIeGDwWFRMFrwq4F+5+i5AvC+f+jjwRjCckOEUsUrgcycsLXDMKjD0VGRLQIr+qegB1I7Wrl15ctvS+z3YIgx+SrGNbrEzLKxV5Habe/HKZrQ2t8JzflurHJByifFQ/Szp0BkoOXkVmkuczAw0a/DglU2um1Ic8cXAuNIWP0PbYpvVDUnChZrFMVO5QFMAdI8Ei9LHbjlTNdegXtHXIGJS9uXdf8285rlHsyVkCHbtFyZRsQSkuDuQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", New CultureInfo("en"), updateVersion) With {
             .HostApplicationOptions = nUpdate.Shared.Core.HostApplicationOptions.CloseAndRestart,
             .RunInstallerAsAdmin = Settings.General.UseAdminRightsForUpdates,
-            .IncludeBeta = Settings.General.IncludeBetaVersions Or (DevelopmentStage >= 2),
-            .IncludeAlpha = Settings.General.IncludeAlphaVersions Or DevelopmentStage = 3
+            .IncludeBeta = Settings.General.MinimumUpdateChannel >= Channels.Beta,
+            .IncludeAlpha = Settings.General.MinimumUpdateChannel >= Channels.Alpha
+        }
+
+        Dim appVersion As New ApplicationVersion(New Version(Application.ProductVersion), DevelopmentBuild, CInt(DevelopmentStage))
+        updateClient = New UpdateClient(UPDATE_URL, appVersion, Settings.General.MinimumUpdateChannel) With {
+            .ApplicationName = Application.ProductName,
+            .AutoCloseHostApplication = True,
+            .AutoRestartHostApplication = True,
+            .ForceClosingHostApplication = True,
+            .InstallAsAdmin = Settings.General.UseAdminRightsForUpdates,
+            .UpdateWindowBaseColor = StyleManager.MetroColorGeneratorParameters.BaseColor,
+            .UpdateWindowCanvasColor = StyleManager.MetroColorGeneratorParameters.CanvasColor
         }
 
         'Enable Auto-Save for Settings

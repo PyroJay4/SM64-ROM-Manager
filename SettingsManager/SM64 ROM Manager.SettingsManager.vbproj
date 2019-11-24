@@ -137,6 +137,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SM64 ROM Manager.Updating\SM64 ROM Manager.Updating.vbproj">
+      <Project>{8F01BB84-A3DA-4039-A9D2-0F6DB31739EC}</Project>
+      <Name>SM64 ROM Manager.Updating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
       <Project>{50BE8215-8945-4A29-908A-36E1102A540C}</Project>
       <Name>SM64Lib</Name>

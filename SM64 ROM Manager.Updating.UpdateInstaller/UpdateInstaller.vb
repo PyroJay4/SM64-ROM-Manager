@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 Imports System.IO.Compression
 Imports System.Reflection
-Imports MS.Internal.IO
 
 Friend Class UpdateInstaller
 
@@ -51,18 +50,32 @@ Friend Class UpdateInstaller
     End Sub
 
     Public Sub WaitForHostApplication()
+        Dim forcedKill As Boolean = False
         Dim enabled As Boolean = True
         Dim stw As New Stopwatch
         stw.Start()
 
+        Dim getProcesses =
+            Function() As Process()
+                Return Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Configuration.HostApplicationProcessPath))
+            End Function
+
         Do While enabled
-            If stw.ElapsedMilliseconds >= Configuration.MillisecondsToWaitForHostApplicationToClose Then
-                stw.Stop()
-                For Each p As Process In Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Configuration.HostApplicationProcessPath))
-                    p.Kill()
-                    Do Until p.HasExited
-                    Loop
-                Next
+            If getProcesses().Any Then
+                If stw.ElapsedMilliseconds >= Configuration.MillisecondsToWaitForHostApplicationToClose Then
+                    If Not forcedKill AndAlso Configuration.ForceClosingHostApplication Then
+                        For Each p As Process In getProcesses()
+                            p.Kill()
+                        Next
+                        stw.Reset()
+                        forcedKill = True
+                    Else
+                        stw.Stop()
+                        enabled = False
+                    End If
+                End If
+            Else
+                enabled = False
             End If
         Loop
     End Sub

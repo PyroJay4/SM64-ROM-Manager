@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports System.IO
+Imports System.IO.Compression
 Imports System.Net
 Imports System.Reflection
 Imports Newtonsoft.Json.Linq
@@ -124,40 +125,60 @@ Public Class UpdateClient
         Return True
     End Function
 
+    Private Function DownloadUpdateInstaller() As FileInfo
+        'Ensure update installer path is empty
+        Dim installerDirPath As New DirectoryInfo(Path.Combine(GetMyAppDataPath, "UpdateInstallerTool"))
+        If installerDirPath.Exists Then
+            installerDirPath.Delete(True)
+        End If
+
+        'Download update installer zip
+        Dim installerZipPath As String = Path.Combine(installerDirPath.FullName, "UpdatenInstaller.zip")
+        WebClient.DownloadFile(UpdateInfo.UpdateInstallerLink, installerZipPath)
+
+        'Extract update installer
+        Dim installerExtractPath As DirectoryInfo = installerDirPath.CreateSubdirectory("extracted")
+        ZipFile.ExtractToDirectory(installerZipPath, installerExtractPath.FullName)
+
+        'Get UpdateInstaller.exe file
+        Return installerExtractPath.EnumerateFiles("*.exe").FirstOrDefault
+    End Function
+
+    Private Sub StartUpdateInstaller(packagePath As String, installerPath As String)
+        'Create update settings
+        Dim updateConfig As New UpdateInstallerConfig With {
+            .PackagePath = packagePath,
+            .RestartHostApplication = AutoRestartHostApplication,
+            .RestartHostApplicationArguments = If(AutoRestartHostApplication, RestartHostApplicationArguments, String.Empty),
+            .ApplicationName = ApplicationName,
+            .HostApplicationPath = If(String.IsNullOrEmpty(HostApplicationPath), Path.GetDirectoryName(Assembly.GetEntryAssembly.Location), HostApplicationPath),
+            .HostApplicationProcessPath = Assembly.GetEntryAssembly.Location,
+            .MillisecondsToWaitForHostApplicationToClose = MillisecondsToWaitForHostApplicationToClose,
+            .ForceClosingHostApplication = ForceClosingHostApplication,
+            .UpdateWindowBaseColor = UpdateWindowBaseColor,
+            .UpdateWindowCanvasColor = UpdateWindowCanvasColor
+        }
+
+        'Start UpdateInstaller
+        Dim procStartInfo As New ProcessStartInfo With {
+            .FileName = installerPath,
+            .Arguments = updateConfig.ToString,
+            .UseShellExecute = False,
+            .Verb = If(InstallAsAdmin, "runas", String.Empty)
+        }
+        Process.Start(procStartInfo)
+    End Sub
+
     Public Function InstallPackage(package As UpdatePackageInfo) As Boolean
         Dim packagePath As String = Nothing
         Dim hasDownloaded As Boolean = dicPackagePaths.TryGetValue(package, packagePath)
 
         If hasDownloaded Then
             'Download update installer
-            Dim installerPath As String = Path.Combine(GetMyAppDataPath, "UpdateInstaller.exe")
-            If File.Exists(installerPath) Then
-                File.Delete(installerPath)
-            End If
-            WebClient.DownloadFile(UpdateInfo.UpdateInstallerLink, installerPath)
+            Dim installerPath As FileInfo = DownloadUpdateInstaller()
 
-            'Create update settings
-            Dim updateConfig As New UpdateInstallerConfig With {
-                .PackagePath = packagePath,
-                .RestartHostApplication = AutoRestartHostApplication,
-                .RestartHostApplicationArguments = If(AutoRestartHostApplication, RestartHostApplicationArguments, String.Empty),
-                .ApplicationName = ApplicationName,
-                .HostApplicationPath = If(String.IsNullOrEmpty(HostApplicationPath), Path.GetDirectoryName(Assembly.GetEntryAssembly.Location), HostApplicationPath),
-                .HostApplicationProcessPath = Assembly.GetEntryAssembly.Location,
-                .MillisecondsToWaitForHostApplicationToClose = MillisecondsToWaitForHostApplicationToClose,
-                .ForceClosingHostApplication = ForceClosingHostApplication,
-                .UpdateWindowBaseColor = UpdateWindowBaseColor,
-                .UpdateWindowCanvasColor = UpdateWindowCanvasColor
-            }
-
-            'Start UpdateInstaller
-            Dim procStartInfo As New ProcessStartInfo With {
-                .FileName = installerPath,
-                .Arguments = updateConfig.ToString,
-                .UseShellExecute = False,
-                .Verb = If(InstallAsAdmin, "runas", String.Empty)
-            }
-            Process.Start(procStartInfo)
+            'Start update installer
+            StartUpdateInstaller(packagePath, installerPath.FullName)
 
             'Close Host Application
             If AutoCloseHostApplication Then

@@ -134,7 +134,7 @@ Partial Class EditorWindow
         Me.SuperTabControl1.ReorderTabsEnabled = True
         Me.SuperTabControl1.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.SuperTabControl1.SelectedTabIndex = 0
-        Me.SuperTabControl1.Size = New System.Drawing.Size(598, 394)
+        Me.SuperTabControl1.Size = New System.Drawing.Size(614, 433)
         Me.SuperTabControl1.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Left
         Me.SuperTabControl1.TabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabControl1.TabIndex = 1
@@ -149,7 +149,7 @@ Partial Class EditorWindow
         Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel1.Location = New System.Drawing.Point(98, 0)
         Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(500, 394)
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(516, 433)
         Me.SuperTabControlPanel1.TabIndex = 0
         Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem_UI_General
         '
@@ -165,7 +165,7 @@ Partial Class EditorWindow
         '
         '
         Me.LayoutControl2.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem6})
-        Me.LayoutControl2.Size = New System.Drawing.Size(500, 394)
+        Me.LayoutControl2.Size = New System.Drawing.Size(516, 433)
         Me.LayoutControl2.TabIndex = 0
         '
         'LabelX6
@@ -177,7 +177,7 @@ Partial Class EditorWindow
         Me.LabelX6.Location = New System.Drawing.Point(183, 4)
         Me.LabelX6.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.Size = New System.Drawing.Size(313, 23)
+        Me.LabelX6.Size = New System.Drawing.Size(329, 23)
         Me.LabelX6.TabIndex = 0
         Me.LabelX6.Text = "-"
         '
@@ -541,7 +541,8 @@ Partial Class EditorWindow
         Me.RibbonControl_Main.KeyTipsFont = New System.Drawing.Font("Tahoma", 7.0!)
         Me.RibbonControl_Main.Location = New System.Drawing.Point(5, 1)
         Me.RibbonControl_Main.Name = "RibbonControl_Main"
-        Me.RibbonControl_Main.Size = New System.Drawing.Size(590, 154)
+        Me.RibbonControl_Main.Padding = New System.Windows.Forms.Padding(0, 0, 0, 3)
+        Me.RibbonControl_Main.Size = New System.Drawing.Size(606, 154)
         Me.RibbonControl_Main.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonControl_Main.SystemText.MaximizeRibbonText = "&Maximize the Ribbon"
         Me.RibbonControl_Main.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon"
@@ -568,10 +569,10 @@ Partial Class EditorWindow
         Me.RibbonPanel2.Controls.Add(Me.RibbonBar5)
         Me.RibbonPanel2.Controls.Add(Me.RibbonBar2)
         Me.RibbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RibbonPanel2.Location = New System.Drawing.Point(0, 55)
+        Me.RibbonPanel2.Location = New System.Drawing.Point(0, 56)
         Me.RibbonPanel2.Name = "RibbonPanel2"
-        Me.RibbonPanel2.Padding = New System.Windows.Forms.Padding(3, 0, 3, 2)
-        Me.RibbonPanel2.Size = New System.Drawing.Size(590, 99)
+        Me.RibbonPanel2.Padding = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.RibbonPanel2.Size = New System.Drawing.Size(606, 95)
         '
         '
         '
@@ -604,7 +605,7 @@ Partial Class EditorWindow
         Me.RibbonBar4.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar4.Location = New System.Drawing.Point(282, 0)
         Me.RibbonBar4.Name = "RibbonBar4"
-        Me.RibbonBar4.Size = New System.Drawing.Size(302, 97)
+        Me.RibbonBar4.Size = New System.Drawing.Size(302, 92)
         Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar4.TabIndex = 1
         Me.RibbonBar4.Text = "Paket-Info"
@@ -692,7 +693,7 @@ Partial Class EditorWindow
         Me.RibbonBar5.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar5.Location = New System.Drawing.Point(188, 0)
         Me.RibbonBar5.Name = "RibbonBar5"
-        Me.RibbonBar5.Size = New System.Drawing.Size(94, 97)
+        Me.RibbonBar5.Size = New System.Drawing.Size(94, 92)
         Me.RibbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar5.TabIndex = 2
         Me.RibbonBar5.Text = "Allgemein"
@@ -732,7 +733,7 @@ Partial Class EditorWindow
         Me.RibbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar2.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar2.Name = "RibbonBar2"
-        Me.RibbonBar2.Size = New System.Drawing.Size(185, 97)
+        Me.RibbonBar2.Size = New System.Drawing.Size(185, 92)
         Me.RibbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar2.TabIndex = 0
         Me.RibbonBar2.Text = "Konfiguration"
@@ -782,7 +783,7 @@ Partial Class EditorWindow
         Me.RibbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RibbonPanel1.Location = New System.Drawing.Point(0, 55)
         Me.RibbonPanel1.Name = "RibbonPanel1"
-        Me.RibbonPanel1.Padding = New System.Windows.Forms.Padding(3, 0, 3, 2)
+        Me.RibbonPanel1.Padding = New System.Windows.Forms.Padding(3, 0, 3, 3)
         Me.RibbonPanel1.Size = New System.Drawing.Size(590, 99)
         '
         '
@@ -817,7 +818,7 @@ Partial Class EditorWindow
         Me.RibbonBar_Pkg_Erweiterungen.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar_Pkg_Erweiterungen.Location = New System.Drawing.Point(408, 0)
         Me.RibbonBar_Pkg_Erweiterungen.Name = "RibbonBar_Pkg_Erweiterungen"
-        Me.RibbonBar_Pkg_Erweiterungen.Size = New System.Drawing.Size(144, 97)
+        Me.RibbonBar_Pkg_Erweiterungen.Size = New System.Drawing.Size(144, 96)
         Me.RibbonBar_Pkg_Erweiterungen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar_Pkg_Erweiterungen.TabIndex = 3
         Me.RibbonBar_Pkg_Erweiterungen.Text = "Erweiterungen"
@@ -866,7 +867,7 @@ Partial Class EditorWindow
         Me.RibbonBar_Pkg_Dateien.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar_Pkg_Dateien.Location = New System.Drawing.Point(269, 0)
         Me.RibbonBar_Pkg_Dateien.Name = "RibbonBar_Pkg_Dateien"
-        Me.RibbonBar_Pkg_Dateien.Size = New System.Drawing.Size(139, 97)
+        Me.RibbonBar_Pkg_Dateien.Size = New System.Drawing.Size(139, 96)
         Me.RibbonBar_Pkg_Dateien.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar_Pkg_Dateien.TabIndex = 2
         Me.RibbonBar_Pkg_Dateien.Text = "Dateien"
@@ -915,7 +916,7 @@ Partial Class EditorWindow
         Me.RibbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar1.Location = New System.Drawing.Point(188, 0)
         Me.RibbonBar1.Name = "RibbonBar1"
-        Me.RibbonBar1.Size = New System.Drawing.Size(81, 97)
+        Me.RibbonBar1.Size = New System.Drawing.Size(81, 96)
         Me.RibbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar1.TabIndex = 0
         Me.RibbonBar1.Text = "Paket"
@@ -955,7 +956,7 @@ Partial Class EditorWindow
         Me.RibbonBar3.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar3.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
-        Me.RibbonBar3.Size = New System.Drawing.Size(185, 97)
+        Me.RibbonBar3.Size = New System.Drawing.Size(185, 96)
         Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar3.TabIndex = 1
         Me.RibbonBar3.Text = "Vorlage"
@@ -1012,7 +1013,7 @@ Partial Class EditorWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(600, 550)
+        Me.ClientSize = New System.Drawing.Size(616, 589)
         Me.Controls.Add(Me.SuperTabControl1)
         Me.Controls.Add(Me.RibbonControl_Main)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
