@@ -80,13 +80,19 @@ Friend Module General
         data.Write(buffer)
     End Sub
 
-    Public Sub OpenHexEditor(ByRef buffer As Byte())
+    Public Function GetCurrentHexEditMode() As HexEditModes
         Dim mode As HexEditModes = Settings.General.HexEditMode.Mode
-        Dim exeFile As String = Settings.General.HexEditMode.CustomPath
 
-        If mode = HexEditModes.CustomHexEditor AndAlso Not File.Exists(exeFile) Then
+        If mode = HexEditModes.CustomHexEditor AndAlso Not File.Exists(Settings.General.HexEditMode.CustomPath) Then
             mode = HexEditModes.BuildInHexEditor
         End If
+
+        Return mode
+    End Function
+
+    Public Sub OpenHexEditor(ByRef buffer As Byte())
+        Dim mode As HexEditModes = GetCurrentHexEditMode()
+        Dim exeFile As String = Settings.General.HexEditMode.CustomPath
 
         Select Case mode
             Case HexEditModes.BuildInHexEditor

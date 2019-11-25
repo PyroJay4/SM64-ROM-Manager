@@ -1,4 +1,5 @@
 Imports DevComponents.AdvTree
+Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib.ObjectBanks.Data
 Imports SM64Lib.Script
 
@@ -224,10 +225,32 @@ Public Class ObjectBankDataEditor
     End Sub
 
     Private Sub AddCmd(nCmds As Node)
-        Dim cmdBuf As Byte() = New Byte() {}
+        Dim bytesStartCount As Integer
+        Dim allowOpenHexEditor As Boolean = True
+
+        'Set start bytes count
+        If GetCurrentHexEditMode() = HexEditModes.BuildInHexEditor Then
+            Dim valueInputDialog As New ValueInputDialog
+
+            valueInputDialog.InfoLabel.Text = "Count of Bytes"
+            valueInputDialog.ValueTextBox.Text = 8
+
+            If valueInputDialog.ShowDialog = DialogResult.OK Then
+                bytesStartCount = ValueFromText(valueInputDialog.ValueTextBox.Text)
+            End If
+
+            allowOpenHexEditor = bytesStartCount > 0
+        Else
+            bytesStartCount = 0
+        End If
+
+        'Create Buffer
+        Dim cmdBuf As Byte() = New Byte(bytesStartCount - 1) {}
 
         'Create new
-        OpenHexEditor(cmdBuf)
+        If allowOpenHexEditor Then
+            OpenHexEditor(cmdBuf)
+        End If
 
         If cmdBuf?.Any Then
             Dim obd As ObjectBankData = nCmds.Tag
