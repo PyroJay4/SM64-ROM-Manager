@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SimpleActions_Downloading" xml:space="preserve">
-    <value>Update herunterladen ...</value>
+  <data name="MsgBox_NoUpdatesFound" xml:space="preserve">
+    <value>No updates found! You are using the latest version.</value>
   </data>
-  <data name="SimpleActions_PreConfigure" xml:space="preserve">
-    <value>Update konfigurieren ...</value>
+  <data name="MsgBox_NoUpdatesFound_Titel" xml:space="preserve">
+    <value>No Updates found</value>
+  </data>
+  <data name="SimpleActions_DownloadingInstaller" xml:space="preserve">
+    <value>Downloading Update Installer ...</value>
+  </data>
+  <data name="SimpleActions_DownloadingPackage" xml:space="preserve">
+    <value>Downloading Update Package ...</value>
   </data>
   <data name="SimpleActions_Searching" xml:space="preserve">
     <value>Nach Updates suchen ...</value>

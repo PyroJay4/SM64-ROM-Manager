@@ -110,7 +110,7 @@ Public Class PluginInstallerForm
             ofd.Filters.Add(New CommonFileDialogFilter(filterName, $"*.{ext}"))
         End If
 
-        If ofd.ShowDialog(Handle) = CommonFileDialogResult.Ok Then
+        If ofd.ShowDialog() = CommonFileDialogResult.Ok Then
             Try
                 'Install Plugin
                 Dim res = InstallPluginFrom(ofd.FileName, installDir)

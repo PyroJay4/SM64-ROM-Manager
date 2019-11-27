@@ -73,6 +73,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -130,8 +131,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SimpleActionDialog.de.resx">
+      <DependentUpon>SimpleActionDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SimpleActionDialog.resx">
       <DependentUpon>SimpleActionDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatesAvailableDialog.de.resx">
+      <DependentUpon>UpdatesAvailableDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatesAvailableDialog.resx">
       <DependentUpon>UpdatesAvailableDialog.vb</DependentUpon>

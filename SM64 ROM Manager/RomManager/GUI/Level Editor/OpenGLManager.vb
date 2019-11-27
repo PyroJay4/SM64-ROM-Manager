@@ -15,6 +15,7 @@ Namespace LevelEditor
         Private WithEvents TargetControl As Control
         Private WithEvents GLControl1 As New GLControl
         Private WithEvents CameraPrivate As New Camera
+        Private WithEvents RenderTimer As New Timers.Timer(25)
 
         Friend ProjMatrix As Matrix4 = Nothing
         Friend Ortho As Boolean = False
@@ -35,6 +36,9 @@ Namespace LevelEditor
             AddHandler Main.KeyUp, AddressOf ModelPreview_KeyUp
 
             InitializeGLControl()
+
+            RenderTimer.SynchronizingObject = Nothing
+            RenderTimer.Start()
         End Sub
 
         Private ReadOnly Property Maps As MapManagement
@@ -92,9 +96,7 @@ Namespace LevelEditor
             GLControl1.VSync = True
             GLControl1.Dock = DockStyle.Fill
 
-            TargetControl.Controls.Add(Me.GLControl1)
-
-            AddHandler Windows.Media.CompositionTarget.Rendering, AddressOf CompositionTarget_Rendering
+            TargetControl.Controls.Add(GLControl1)
 
             GLControl1.CreateControl()
             GLControl1.Enabled = False
@@ -280,10 +282,11 @@ Namespace LevelEditor
             If Main.PressedKeys.Contains(e.KeyCode) Then Main.PressedKeys.Remove(e.KeyCode)
         End Sub
 
-        Private Sub CompositionTarget_Rendering(sender As Object, e As EventArgs)
+        Private Sub CompositionTarget_Rendering(sender As Object, e As Timers.ElapsedEventArgs) Handles RenderTimer.Elapsed
             If Not Main.isDeactivated Then
                 GLControl1.Invalidate()
             End If
+            Application.DoEvents()
         End Sub
 
         Private Sub MoveCameraViaWASDQE()

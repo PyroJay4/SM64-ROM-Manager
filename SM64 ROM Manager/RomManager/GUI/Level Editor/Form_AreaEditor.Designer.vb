@@ -753,8 +753,6 @@
             resources.ApplyResources(Me.ButtonX_KeepOnButtom, "ButtonX_KeepOnButtom")
             Me.ButtonX_KeepOnButtom.Name = "ButtonX_KeepOnButtom"
             Me.ButtonX_KeepOnButtom.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonX_KeepOnButtom.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonX_KeepOnButtom.SymbolSize = 12.0!
             '
             'ButtonX_KeepOnTop
             '
@@ -766,8 +764,6 @@
             resources.ApplyResources(Me.ButtonX_KeepOnTop, "ButtonX_KeepOnTop")
             Me.ButtonX_KeepOnTop.Name = "ButtonX_KeepOnTop"
             Me.ButtonX_KeepOnTop.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonX_KeepOnTop.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonX_KeepOnTop.SymbolSize = 12.0!
             '
             'ButtonX_KeepOnGround
             '
@@ -779,8 +775,6 @@
             resources.ApplyResources(Me.ButtonX_KeepOnGround, "ButtonX_KeepOnGround")
             Me.ButtonX_KeepOnGround.Name = "ButtonX_KeepOnGround"
             Me.ButtonX_KeepOnGround.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonX_KeepOnGround.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonX_KeepOnGround.SymbolSize = 12.0!
             '
             'ButtonX_DropToBottom
             '
@@ -1369,7 +1363,6 @@
             Me.ButtonItem_PasteObjDefault.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem_PasteObjDefault.Name = "ButtonItem_PasteObjDefault"
             Me.SuperTooltip1.SetSuperTooltip(Me.ButtonItem_PasteObjDefault, New DevComponents.DotNetBar.SuperTooltipInfo(resources.GetString("ButtonItem_PasteObjDefault.SuperTooltip"), resources.GetString("ButtonItem_PasteObjDefault.SuperTooltip1"), resources.GetString("ButtonItem_PasteObjDefault.SuperTooltip2"), CType(resources.GetObject("ButtonItem_PasteObjDefault.SuperTooltip3"), System.Drawing.Image), CType(resources.GetObject("ButtonItem_PasteObjDefault.SuperTooltip4"), System.Drawing.Image), CType(resources.GetObject("ButtonItem_PasteObjDefault.SuperTooltip5"), DevComponents.DotNetBar.eTooltipColor)))
-            Me.ButtonItem_PasteObjDefault.SymbolSize = 32.0!
             resources.ApplyResources(Me.ButtonItem_PasteObjDefault, "ButtonItem_PasteObjDefault")
             '
             'ItemContainer7
@@ -1449,8 +1442,6 @@
             Me.ButtonItem44.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem44.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_2_16px
             Me.ButtonItem44.Name = "ButtonItem44"
-            Me.ButtonItem44.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem44.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem44, "ButtonItem44")
             '
             'RibbonBar11
@@ -1487,7 +1478,6 @@
             Me.ButtonX_PasteWarpDefault.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonX_PasteWarpDefault.Name = "ButtonX_PasteWarpDefault"
             Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX_PasteWarpDefault, New DevComponents.DotNetBar.SuperTooltipInfo(resources.GetString("ButtonX_PasteWarpDefault.SuperTooltip"), resources.GetString("ButtonX_PasteWarpDefault.SuperTooltip1"), resources.GetString("ButtonX_PasteWarpDefault.SuperTooltip2"), CType(resources.GetObject("ButtonX_PasteWarpDefault.SuperTooltip3"), System.Drawing.Image), CType(resources.GetObject("ButtonX_PasteWarpDefault.SuperTooltip4"), System.Drawing.Image), CType(resources.GetObject("ButtonX_PasteWarpDefault.SuperTooltip5"), DevComponents.DotNetBar.eTooltipColor)))
-            Me.ButtonX_PasteWarpDefault.SymbolSize = 32.0!
             resources.ApplyResources(Me.ButtonX_PasteWarpDefault, "ButtonX_PasteWarpDefault")
             '
             'ItemContainer12
@@ -1547,8 +1537,6 @@
             Me.ButtonItem81.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem81.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_2_16px
             Me.ButtonItem81.Name = "ButtonItem81"
-            Me.ButtonItem81.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem81.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem81, "ButtonItem81")
             '
             'ButtonItem5
@@ -1556,8 +1544,6 @@
             Me.ButtonItem5.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_paste_16px
             Me.ButtonItem5.Name = "ButtonItem5"
             Me.SuperTooltip1.SetSuperTooltip(Me.ButtonItem5, New DevComponents.DotNetBar.SuperTooltipInfo(resources.GetString("ButtonItem5.SuperTooltip"), resources.GetString("ButtonItem5.SuperTooltip1"), resources.GetString("ButtonItem5.SuperTooltip2"), CType(resources.GetObject("ButtonItem5.SuperTooltip3"), System.Drawing.Image), CType(resources.GetObject("ButtonItem5.SuperTooltip4"), System.Drawing.Image), CType(resources.GetObject("ButtonItem5.SuperTooltip5"), DevComponents.DotNetBar.eTooltipColor), CType(resources.GetObject("ButtonItem5.SuperTooltip6"), Boolean), CType(resources.GetObject("ButtonItem5.SuperTooltip7"), Boolean), CType(resources.GetObject("ButtonItem5.SuperTooltip8"), System.Drawing.Size)))
-            Me.ButtonItem5.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem5.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem5, "ButtonItem5")
             '
             'ButtonItem37
@@ -1565,8 +1551,6 @@
             Me.ButtonItem37.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_paste_16px
             Me.ButtonItem37.Name = "ButtonItem37"
             Me.SuperTooltip1.SetSuperTooltip(Me.ButtonItem37, New DevComponents.DotNetBar.SuperTooltipInfo(resources.GetString("ButtonItem37.SuperTooltip"), resources.GetString("ButtonItem37.SuperTooltip1"), resources.GetString("ButtonItem37.SuperTooltip2"), CType(resources.GetObject("ButtonItem37.SuperTooltip3"), System.Drawing.Image), CType(resources.GetObject("ButtonItem37.SuperTooltip4"), System.Drawing.Image), CType(resources.GetObject("ButtonItem37.SuperTooltip5"), DevComponents.DotNetBar.eTooltipColor), CType(resources.GetObject("ButtonItem37.SuperTooltip6"), Boolean), CType(resources.GetObject("ButtonItem37.SuperTooltip7"), Boolean), CType(resources.GetObject("ButtonItem37.SuperTooltip8"), System.Drawing.Size)))
-            Me.ButtonItem37.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem37.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem37, "ButtonItem37")
             '
             'ButtonItem_CopyObjCmdAsHex
@@ -1607,8 +1591,6 @@
             '
             Me.ButtonItem9.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_copy_16px
             Me.ButtonItem9.Name = "ButtonItem9"
-            Me.ButtonItem9.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem9.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem9, "ButtonItem9")
             '
             'ButtonItem63
@@ -1616,8 +1598,6 @@
             Me.ButtonItem63.BeginGroup = True
             Me.ButtonItem63.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
             Me.ButtonItem63.Name = "ButtonItem63"
-            Me.ButtonItem63.SymbolColor = System.Drawing.Color.Goldenrod
-            Me.ButtonItem63.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem63, "ButtonItem63")
             Me.ButtonItem63.Visible = False
             '
@@ -1645,15 +1625,12 @@
             Me.ButtonItem64.GlobalItem = False
             Me.ButtonItem64.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_undo_16px
             Me.ButtonItem64.Name = "ButtonItem64"
-            Me.ButtonItem64.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem64, "ButtonItem64")
             '
             'ButtonItem65
             '
             Me.ButtonItem65.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
             Me.ButtonItem65.Name = "ButtonItem65"
-            Me.ButtonItem65.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem65.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem65, "ButtonItem65")
             '
             'ButtonItem68
@@ -1661,7 +1638,6 @@
             Me.ButtonItem68.BeginGroup = True
             Me.ButtonItem68.GlobalItem = False
             Me.ButtonItem68.Name = "ButtonItem68"
-            Me.ButtonItem68.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem68, "ButtonItem68")
             '
             'ButtonItem1_CM_Warps
@@ -1675,8 +1651,6 @@
             '
             Me.ButtonItem6.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_copy_16px
             Me.ButtonItem6.Name = "ButtonItem6"
-            Me.ButtonItem6.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem6.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem6, "ButtonItem6")
             '
             'ButtonItem7
@@ -1684,8 +1658,6 @@
             Me.ButtonItem7.BeginGroup = True
             Me.ButtonItem7.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
             Me.ButtonItem7.Name = "ButtonItem7"
-            Me.ButtonItem7.SymbolColor = System.Drawing.Color.Goldenrod
-            Me.ButtonItem7.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem7, "ButtonItem7")
             Me.ButtonItem7.Visible = False
             '
@@ -1694,8 +1666,6 @@
             Me.ButtonItem23.BeginGroup = True
             Me.ButtonItem23.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
             Me.ButtonItem23.Name = "ButtonItem23"
-            Me.ButtonItem23.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem23.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem23, "ButtonItem23")
             '
             'ButtonItem22
@@ -1904,8 +1874,6 @@
             Me.ButtonItem_ObjectsEditorCmd.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem_ObjectsEditorCmd.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
             Me.ButtonItem_ObjectsEditorCmd.Name = "ButtonItem_ObjectsEditorCmd"
-            Me.ButtonItem_ObjectsEditorCmd.SymbolColor = System.Drawing.Color.Goldenrod
-            Me.ButtonItem_ObjectsEditorCmd.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem_ObjectsEditorCmd, "ButtonItem_ObjectsEditorCmd")
             '
             'ButtonItem_ResetObjToDefault
@@ -1914,7 +1882,6 @@
             Me.ButtonItem_ResetObjToDefault.GlobalItem = False
             Me.ButtonItem_ResetObjToDefault.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_undo_16px
             Me.ButtonItem_ResetObjToDefault.Name = "ButtonItem_ResetObjToDefault"
-            Me.ButtonItem_ResetObjToDefault.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem_ResetObjToDefault, "ButtonItem_ResetObjToDefault")
             '
             'RibbonBar18
@@ -2000,24 +1967,18 @@
             Me.ButtonItem_KeepOnGround.AutoCheckOnClick = True
             Me.ButtonItem_KeepOnGround.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_merge_horizontal_16px
             Me.ButtonItem_KeepOnGround.Name = "ButtonItem_KeepOnGround"
-            Me.ButtonItem_KeepOnGround.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_KeepOnGround.SymbolSize = 12.0!
             '
             'ButtonItem_KeepOnTop
             '
             Me.ButtonItem_KeepOnTop.AutoCheckOnClick = True
             Me.ButtonItem_KeepOnTop.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_chevron_up_16px
             Me.ButtonItem_KeepOnTop.Name = "ButtonItem_KeepOnTop"
-            Me.ButtonItem_KeepOnTop.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_KeepOnTop.SymbolSize = 12.0!
             '
             'ButtonItem_KeepOnButtom
             '
             Me.ButtonItem_KeepOnButtom.AutoCheckOnClick = True
             Me.ButtonItem_KeepOnButtom.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_chevron_down_16px
             Me.ButtonItem_KeepOnButtom.Name = "ButtonItem_KeepOnButtom"
-            Me.ButtonItem_KeepOnButtom.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_KeepOnButtom.SymbolSize = 12.0!
             '
             'RibbonBar7
             '
@@ -2051,8 +2012,6 @@
             Me.ButtonItem_ExportObjectModel.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_export_32px
             Me.ButtonItem_ExportObjectModel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem_ExportObjectModel.Name = "ButtonItem_ExportObjectModel"
-            Me.ButtonItem_ExportObjectModel.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_ExportObjectModel.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem_ExportObjectModel, "ButtonItem_ExportObjectModel")
             '
             'RibbonBar8
@@ -2088,9 +2047,6 @@
             Me.ButtonItem_ObjectsRemove.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_32px
             Me.ButtonItem_ObjectsRemove.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem_ObjectsRemove.Name = "ButtonItem_ObjectsRemove"
-            Me.ButtonItem_ObjectsRemove.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem_ObjectsRemove.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_ObjectsRemove.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem_ObjectsRemove, "ButtonItem_ObjectsRemove")
             '
             'ItemContainer21
@@ -2116,16 +2072,12 @@
             '
             Me.ButtonItem27.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem27.Name = "ButtonItem27"
-            Me.ButtonItem27.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem27.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem27, "ButtonItem27")
             '
             'ButtonItem28
             '
             Me.ButtonItem28.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem28.Name = "ButtonItem28"
-            Me.ButtonItem28.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem28.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem28, "ButtonItem28")
             '
             'RibbonBar27
@@ -2208,9 +2160,6 @@
             Me.ButtonX_ObjectsAdd.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonX_ObjectsAdd.Name = "ButtonX_ObjectsAdd"
             Me.ButtonX_ObjectsAdd.SubItemsExpandWidth = 14
-            Me.ButtonX_ObjectsAdd.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonX_ObjectsAdd.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonX_ObjectsAdd.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonX_ObjectsAdd, "ButtonX_ObjectsAdd")
             '
             'ItemContainer5
@@ -2237,9 +2186,6 @@
             Me.ButtonItem38.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem38.Name = "ButtonItem38"
             Me.ButtonItem38.SubItemsExpandWidth = 14
-            Me.ButtonItem38.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem38.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem38.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem38, "ButtonItem38")
             '
             'ButtonItem39
@@ -2248,9 +2194,6 @@
             Me.ButtonItem39.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem39.Name = "ButtonItem39"
             Me.ButtonItem39.SubItemsExpandWidth = 14
-            Me.ButtonItem39.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem39.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem39.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem39, "ButtonItem39")
             '
             'ButtonItem40
@@ -2259,9 +2202,6 @@
             Me.ButtonItem40.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem40.Name = "ButtonItem40"
             Me.ButtonItem40.SubItemsExpandWidth = 14
-            Me.ButtonItem40.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem40.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem40.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem40, "ButtonItem40")
             '
             'ItemContainer6
@@ -2288,9 +2228,6 @@
             Me.ButtonItem41.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem41.Name = "ButtonItem41"
             Me.ButtonItem41.SubItemsExpandWidth = 14
-            Me.ButtonItem41.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem41.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem41.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem41, "ButtonItem41")
             '
             'ButtonItem42
@@ -2299,9 +2236,6 @@
             Me.ButtonItem42.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem42.Name = "ButtonItem42"
             Me.ButtonItem42.SubItemsExpandWidth = 14
-            Me.ButtonItem42.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem42.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem42.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem42, "ButtonItem42")
             '
             'ButtonItem43
@@ -2310,9 +2244,6 @@
             Me.ButtonItem43.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem43.Name = "ButtonItem43"
             Me.ButtonItem43.SubItemsExpandWidth = 14
-            Me.ButtonItem43.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem43.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem43.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem43, "ButtonItem43")
             '
             'RibbonPanel6
@@ -2434,8 +2365,6 @@
             Me.ButtonItem2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem2.Name = "ButtonItem2"
             Me.ButtonItem2.SubItemsExpandWidth = 14
-            Me.ButtonItem2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem2.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem2, "ButtonItem2")
             '
             'RibbonBar21
@@ -2472,8 +2401,6 @@
             Me.ButtonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem1.Name = "ButtonItem1"
             Me.ButtonItem1.SubItemsExpandWidth = 14
-            Me.ButtonItem1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem1.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
             '
             'RibbonBar20
@@ -2699,17 +2626,12 @@
             Me.ButtonItem83.Enabled = False
             Me.ButtonItem83.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
             Me.ButtonItem83.Name = "ButtonItem83"
-            Me.ButtonItem83.SymbolColor = System.Drawing.Color.Goldenrod
-            Me.ButtonItem83.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem83, "ButtonItem83")
             '
             'ButtonItem84
             '
             Me.ButtonItem84.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem84.Name = "ButtonItem84"
-            Me.ButtonItem84.Symbol = "57686"
-            Me.ButtonItem84.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem84.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem84, "ButtonItem84")
             '
             'RibbonBar16
@@ -2894,9 +2816,6 @@
             Me.ButtonItem8.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem8.Name = "ButtonItem8"
             Me.ButtonItem8.SubItemsExpandWidth = 14
-            Me.ButtonItem8.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem8.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem8.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem8, "ButtonItem8")
             '
             'ButtonItem4
@@ -2904,8 +2823,6 @@
             Me.ButtonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem4.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_2_16px
             Me.ButtonItem4.Name = "ButtonItem4"
-            Me.ButtonItem4.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem4.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
             '
             'RibbonBar24
@@ -2959,9 +2876,6 @@
             Me.ButtonItem10.Enabled = False
             Me.ButtonItem10.Name = "ButtonItem10"
             Me.ButtonItem10.SubItemsExpandWidth = 14
-            Me.ButtonItem10.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem10.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem10.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem10, "ButtonItem10")
             '
             'ButtonItem11
@@ -2969,9 +2883,6 @@
             Me.ButtonItem11.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem11.Name = "ButtonItem11"
             Me.ButtonItem11.SubItemsExpandWidth = 14
-            Me.ButtonItem11.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem11.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem11.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem11, "ButtonItem11")
             '
             'ButtonItem12
@@ -2980,9 +2891,6 @@
             Me.ButtonItem12.Enabled = False
             Me.ButtonItem12.Name = "ButtonItem12"
             Me.ButtonItem12.SubItemsExpandWidth = 14
-            Me.ButtonItem12.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem12.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem12.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem12, "ButtonItem12")
             '
             'RibbonBar15
@@ -3019,9 +2927,6 @@
             Me.ButtonItem21.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem21.Name = "ButtonItem21"
             Me.ButtonItem21.SubItemsExpandWidth = 14
-            Me.ButtonItem21.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem21.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem21.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem21, "ButtonItem21")
             '
             'ItemContainer19
@@ -3048,9 +2953,6 @@
             Me.ButtonItem18.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem18.Name = "ButtonItem18"
             Me.ButtonItem18.SubItemsExpandWidth = 14
-            Me.ButtonItem18.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem18.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem18.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem18, "ButtonItem18")
             '
             'ButtonItem17
@@ -3059,9 +2961,6 @@
             Me.ButtonItem17.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem17.Name = "ButtonItem17"
             Me.ButtonItem17.SubItemsExpandWidth = 14
-            Me.ButtonItem17.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem17.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem17.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem17, "ButtonItem17")
             '
             'ButtonItem19
@@ -3069,9 +2968,6 @@
             Me.ButtonItem19.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem19.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
             Me.ButtonItem19.Name = "ButtonItem19"
-            Me.ButtonItem19.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem19.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem19.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem19, "ButtonItem19")
             '
             'RibbonBar13
@@ -3142,9 +3038,6 @@
             Me.ButtonItem20.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem20.Name = "ButtonItem20"
             Me.ButtonItem20.SubItemsExpandWidth = 14
-            Me.ButtonItem20.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem20.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem20.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem20, "ButtonItem20")
             '
             'ButtonItem14
@@ -3153,9 +3046,6 @@
             Me.ButtonItem14.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem14.Name = "ButtonItem14"
             Me.ButtonItem14.SubItemsExpandWidth = 14
-            Me.ButtonItem14.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem14.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem14.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem14, "ButtonItem14")
             '
             'ButtonItem15
@@ -3164,9 +3054,6 @@
             Me.ButtonItem15.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem15.Name = "ButtonItem15"
             Me.ButtonItem15.SubItemsExpandWidth = 14
-            Me.ButtonItem15.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem15.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem15.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem15, "ButtonItem15")
             '
             'ButtonItem16
@@ -3174,9 +3061,6 @@
             Me.ButtonItem16.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem16.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
             Me.ButtonItem16.Name = "ButtonItem16"
-            Me.ButtonItem16.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem16.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem16.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem16, "ButtonItem16")
             '
             'LabelItem4
@@ -3217,8 +3101,6 @@
             Me.ButtonItem85.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_import_32px
             Me.ButtonItem85.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem85.Name = "ButtonItem85"
-            Me.ButtonItem85.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem85.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem85, "ButtonItem85")
             '
             'ButtonItem86
@@ -3226,8 +3108,6 @@
             Me.ButtonItem86.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_export_32px
             Me.ButtonItem86.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem86.Name = "ButtonItem86"
-            Me.ButtonItem86.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem86.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem86, "ButtonItem86")
             '
             'RibbonPanel2
@@ -3303,8 +3183,6 @@
             Me.ButtonX_WarpsEditCmd.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonX_WarpsEditCmd.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
             Me.ButtonX_WarpsEditCmd.Name = "ButtonX_WarpsEditCmd"
-            Me.ButtonX_WarpsEditCmd.SymbolColor = System.Drawing.Color.Goldenrod
-            Me.ButtonX_WarpsEditCmd.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonX_WarpsEditCmd, "ButtonX_WarpsEditCmd")
             '
             'ButtonItem69
@@ -3313,7 +3191,6 @@
             Me.ButtonItem69.GlobalItem = False
             Me.ButtonItem69.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_undo_16px
             Me.ButtonItem69.Name = "ButtonItem69"
-            Me.ButtonItem69.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem69, "ButtonItem69")
             '
             'RibbonBar26
@@ -3400,9 +3277,6 @@
             Me.ButtonX_WarpsRemove.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_32px
             Me.ButtonX_WarpsRemove.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonX_WarpsRemove.Name = "ButtonX_WarpsRemove"
-            Me.ButtonX_WarpsRemove.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonX_WarpsRemove.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonX_WarpsRemove.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonX_WarpsRemove, "ButtonX_WarpsRemove")
             '
             'RibbonBar12
@@ -3441,9 +3315,6 @@
             Me.ButtonX_WarpsAdd.SplitButton = True
             Me.ButtonX_WarpsAdd.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonX_WarpsAddConnectedWarp, Me.ButtonX_WarpsAddPaintingWarp, Me.ButtonItem_WarpsAddInstantWarp})
             Me.ButtonX_WarpsAdd.SubItemsExpandWidth = 14
-            Me.ButtonX_WarpsAdd.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonX_WarpsAdd.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonX_WarpsAdd.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonX_WarpsAdd, "ButtonX_WarpsAdd")
             '
             'ButtonX_WarpsAddConnectedWarp
@@ -3552,8 +3423,6 @@
             Me.ButtonItem47.Name = "ButtonItem47"
             Me.ButtonItem47.SplitButton = True
             Me.ButtonItem47.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ImportModel, Me.ButtonItem_ImportVisualMap, Me.ButtonItem_ImportCollision})
-            Me.ButtonItem47.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem47.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem47, "ButtonItem47")
             '
             'ButtonItem_ImportModel
@@ -3580,8 +3449,6 @@
             Me.ButtonItem53.Name = "ButtonItem53"
             Me.ButtonItem53.SplitButton = True
             Me.ButtonItem53.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ExportVisualMap, Me.ButtonItem_ExportCollision})
-            Me.ButtonItem53.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem53.SymbolSize = 24.0!
             resources.ApplyResources(Me.ButtonItem53, "ButtonItem53")
             '
             'ButtonItem_ExportVisualMap
@@ -3667,9 +3534,6 @@
             Me.ButtonItem_AddArea.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem_AddArea.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
             Me.ButtonItem_AddArea.Name = "ButtonItem_AddArea"
-            Me.ButtonItem_AddArea.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem_AddArea.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_AddArea.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem_AddArea, "ButtonItem_AddArea")
             '
             'ButtonItem_RemoveArea
@@ -3677,9 +3541,6 @@
             Me.ButtonItem_RemoveArea.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItem_RemoveArea.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
             Me.ButtonItem_RemoveArea.Name = "ButtonItem_RemoveArea"
-            Me.ButtonItem_RemoveArea.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem_RemoveArea.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_RemoveArea.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem_RemoveArea, "ButtonItem_RemoveArea")
             '
             'RibbonTabItem3
@@ -3729,9 +3590,6 @@
             '
             Me.ButtonItem95.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
             Me.ButtonItem95.Name = "ButtonItem95"
-            Me.ButtonItem95.Symbol = "58830"
-            Me.ButtonItem95.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem95.SymbolSize = 12.0!
             '
             'ApplicationButton1
             '
@@ -3750,9 +3608,6 @@
             Me.ButtonItem_SaveRom.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_save_16px
             Me.ButtonItem_SaveRom.Name = "ButtonItem_SaveRom"
             Me.ButtonItem_SaveRom.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlS)
-            Me.ButtonItem_SaveRom.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem_SaveRom.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_SaveRom.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem_SaveRom, "ButtonItem_SaveRom")
             '
             'ButtonItem_LaunchROM
@@ -3760,8 +3615,6 @@
             Me.ButtonItem_LaunchROM.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_controller_16px
             Me.ButtonItem_LaunchROM.Name = "ButtonItem_LaunchROM"
             Me.ButtonItem_LaunchROM.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5)
-            Me.ButtonItem_LaunchROM.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem_LaunchROM.SymbolSize = 12.0!
             resources.ApplyResources(Me.ButtonItem_LaunchROM, "ButtonItem_LaunchROM")
             '
             'ButtonItem3
@@ -3770,27 +3623,18 @@
             Me.ButtonItem3.BeginGroup = True
             Me.ButtonItem3.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_cancel_16px
             Me.ButtonItem3.Name = "ButtonItem3"
-            Me.ButtonItem3.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ButtonItem3.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem3.SymbolSize = 12.0!
             '
             'ButtonItem_Undo
             '
             Me.ButtonItem_Undo.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_undo_16px
             Me.ButtonItem_Undo.Name = "ButtonItem_Undo"
             Me.ButtonItem_Undo.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlZ)
-            Me.ButtonItem_Undo.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(122, Byte), Integer))
-            Me.ButtonItem_Undo.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_Undo.SymbolSize = 12.0!
             '
             'ButtonItem_Redo
             '
             Me.ButtonItem_Redo.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_redo_16px
             Me.ButtonItem_Redo.Name = "ButtonItem_Redo"
             Me.ButtonItem_Redo.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlY)
-            Me.ButtonItem_Redo.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(81, Byte), Integer), CType(CType(122, Byte), Integer))
-            Me.ButtonItem_Redo.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem_Redo.SymbolSize = 12.0!
             '
             'ButtonItem13
             '
@@ -3798,10 +3642,6 @@
             Me.ButtonItem13.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItem13.Name = "ButtonItem13"
             Me.ButtonItem13.SubItemsExpandWidth = 14
-            Me.ButtonItem13.Symbol = "57669"
-            Me.ButtonItem13.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.ButtonItem13.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
-            Me.ButtonItem13.SymbolSize = 32.0!
             resources.ApplyResources(Me.ButtonItem13, "ButtonItem13")
             '
             'Form_AreaEditor

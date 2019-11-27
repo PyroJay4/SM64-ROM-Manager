@@ -227,7 +227,9 @@ Public Class MainForm
         Controller.LoadPlugins()
         AddMyPluginCommands()
 
-        Await Controller.SearchForUpdates(True)
+        If Settings.General.AutoUpdates Then
+            Await Controller.SearchForUpdates(True)
+        End If
     End Sub
 
     Private Sub AddMyPluginCommands()

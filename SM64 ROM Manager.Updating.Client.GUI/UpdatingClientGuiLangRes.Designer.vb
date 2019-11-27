@@ -65,20 +65,38 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Downloading Update ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Es wurden keine Aktuallisierungen gefunden. Du verwendest die aktuellste Version. ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property SimpleActions_Downloading() As String
+        Friend Shared ReadOnly Property MsgBox_NoUpdatesFound() As String
             Get
-                Return ResourceManager.GetString("SimpleActions_Downloading", resourceCulture)
+                Return ResourceManager.GetString("MsgBox_NoUpdatesFound", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Configure Update ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Keine Aktuallisierung gefunden ähnelt.
         '''</summary>
-        Friend Shared ReadOnly Property SimpleActions_PreConfigure() As String
+        Friend Shared ReadOnly Property MsgBox_NoUpdatesFound_Titel() As String
             Get
-                Return ResourceManager.GetString("SimpleActions_PreConfigure", resourceCulture)
+                Return ResourceManager.GetString("MsgBox_NoUpdatesFound_Titel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Update-Installer wird heruntergeladen ... ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property SimpleActions_DownloadingInstaller() As String
+            Get
+                Return ResourceManager.GetString("SimpleActions_DownloadingInstaller", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Aktuallisierungspaket wird heruntergeladen ... ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property SimpleActions_DownloadingPackage() As String
+            Get
+                Return ResourceManager.GetString("SimpleActions_DownloadingPackage", resourceCulture)
             End Get
         End Property
         

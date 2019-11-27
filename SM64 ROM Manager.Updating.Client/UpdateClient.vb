@@ -14,6 +14,7 @@ Public Class UpdateClient
     Public Event DownloadingUpdate(pkg As UpdatePackageInfo, e As CancelEventArgs)
     Public Event InstallingUpdate(pkg As UpdatePackageInfo, e As CancelEventArgs)
     Public Event UpdateInstallerStarted()
+    Public Event NoUpdatesFound()
 
     'F i e l d s
 
@@ -56,7 +57,7 @@ Public Class UpdateClient
 
     Private Function RaiseInstallingUpdate(pkg As UpdatePackageInfo) As Boolean
         Dim e As New CancelEventArgs(True)
-        RaiseEvent DownloadingUpdate(pkg, e)
+        RaiseEvent InstallingUpdate(pkg, e)
         Return e.Cancel
     End Function
 
@@ -64,14 +65,16 @@ Public Class UpdateClient
 
     Public Sub UpdateInteractive()
         Dim latestVersion As UpdatePackageInfo = CheckForUpdate()
-        If latestVersion IsNot Nothing Then
+        If latestVersion Is Nothing Then
+            RaiseEvent NoUpdatesFound()
+        Else
             UpdateInteractive(latestVersion)
         End If
     End Sub
 
     Public Sub UpdateInteractive(package As UpdatePackageInfo)
-        If RaiseDownloadingUpdate(package) AndAlso DownloadPackage(package) Then
-            If RaiseInstallingUpdate(package) Then
+        If Not RaiseDownloadingUpdate(package) AndAlso DownloadPackage(package) Then
+            If Not RaiseInstallingUpdate(package) Then
                 InstallPackage(package)
             End If
         End If
@@ -195,7 +198,7 @@ Public Class UpdateClient
         }
         Process.Start(procStartInfo)
 
-        RaiseEvent StartedUpdateInstaller()
+        RaiseEvent UpdateInstallerStarted()
     End Sub
 
     Public Function InstallPackage(package As UpdatePackageInfo) As Boolean

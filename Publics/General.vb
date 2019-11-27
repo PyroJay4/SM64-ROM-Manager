@@ -14,6 +14,9 @@ Imports SM64_ROM_Manager.SettingsManager
 Imports System.Reflection
 Imports Pilz.S3DFileParser
 Imports SM64Lib.Levels
+Imports System.Security.Cryptography.X509Certificates
+Imports System.Net
+Imports System.Net.Security
 
 Public Module General
 
@@ -88,7 +91,34 @@ Public Module General
         config.SetFilePath("Original Level Pointers.bin", Path.Combine(MyDataPath, "Other\Original Level Pointers.bin"))
     End Sub
 
+    Private Sub SetServerCertificateValidationCallback()
+        ServicePointManager.ServerCertificateValidationCallback = AddressOf MyRemoteCertificateValidationCallback
+    End Sub
+
+    Private Function MyRemoteCertificateValidationCallback(sender As Object, certificate As X509Certificate, chain As X509Chain, sslPolicyErrors As SslPolicyErrors) As Boolean
+        Dim isOk As Boolean = True
+        ' If there are errors in the certificate chain, look at each error to determine the cause.
+        If sslPolicyErrors <> SslPolicyErrors.None Then
+            For i As Integer = 0 To chain.ChainStatus.Length - 1
+                If chain.ChainStatus(i).Status <> X509ChainStatusFlags.RevocationStatusUnknown Then
+                    chain.ChainPolicy.RevocationFlag = X509RevocationFlag.EntireChain
+                    chain.ChainPolicy.RevocationMode = X509RevocationMode.Online
+                    chain.ChainPolicy.UrlRetrievalTimeout = New TimeSpan(0, 1, 0)
+                    chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllFlags
+                    Dim chainIsValid As Boolean = chain.Build(CType(certificate, X509Certificate2))
+                    If Not chainIsValid Then
+                        isOk = False
+                    End If
+                End If
+            Next i
+        End If
+        Return isOk
+    End Function
+
     Public Sub DoDefaultInitsAfterApplicationStartup()
+        'Set server certification validation callback
+        SetServerCertificateValidationCallback()
+
         'Load Settings
         Settings.SettingsConfigFilePath = Path.Combine(MyDataPath, "Settings.json")
 

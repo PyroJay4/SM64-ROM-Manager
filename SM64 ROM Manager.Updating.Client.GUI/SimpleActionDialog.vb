@@ -1,9 +1,11 @@
-﻿Imports SM64_ROM_Manager.Updating.Client.GUI.My.Resources
+﻿Imports DevComponents.DotNetBar
+Imports SM64_ROM_Manager.Updating.Client.GUI.My.Resources
 
 Public Class SimpleActionDialog
 
     Public Sub New()
         InitializeComponent()
+        StyleManager.UpdateAmbientColors(Me)
         SetCurrentState(UpdateStatus.Waiting)
     End Sub
 
@@ -21,10 +23,12 @@ Public Class SimpleActionDialog
                 LabelX_Progress.Text = UpdatingClientGuiLangRes.SimpleActions_Waiting
             Case UpdateStatus.Searching
                 LabelX_Progress.Text = UpdatingClientGuiLangRes.SimpleActions_Searching
-            Case UpdateStatus.Downloading
-                LabelX_Progress.Text = UpdatingClientGuiLangRes.SimpleActions_Downloading
-            Case UpdateStatus.PreConfigure
-                LabelX_Progress.Text = UpdatingClientGuiLangRes.SimpleActions_PreConfigure
+            Case UpdateStatus.DownloadingInstaller
+                LabelX_Progress.Text = UpdatingClientGuiLangRes.SimpleActions_DownloadingInstaller
+            Case UpdateStatus.DownloadingPackage
+                LabelX_Progress.Text = UpdatingClientGuiLangRes.SimpleActions_DownloadingPackage
+            Case UpdateStatus.StartingInstaller
+                LabelX_Progress.Text = UpdatingClientGuiLangRes.SimpleActions_DownloadingInstaller
         End Select
 
         If progress = -1 Then
