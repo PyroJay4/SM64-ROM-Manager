@@ -74,6 +74,7 @@
     <Import Include="Z.Net.Extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UpdateStatus.vb" />
     <Compile Include="UpdateClient.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

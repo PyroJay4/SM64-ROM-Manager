@@ -89,6 +89,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SimpleActionDialog.Designer.vb">
+      <DependentUpon>SimpleActionDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleActionDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UpdateClientGUI.vb" />
     <Compile Include="UpdatesAvailableDialog.vb">
       <SubType>Form</SubType>
@@ -112,8 +118,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="UpdatingClientGuiLangRes.de.Designer.vb">
+      <DependentUpon>UpdatingClientGuiLangRes.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UpdatingClientGuiLangRes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdatingClientGuiLangRes.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SimpleActionDialog.resx">
+      <DependentUpon>SimpleActionDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdatesAvailableDialog.resx">
       <DependentUpon>UpdatesAvailableDialog.vb</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +141,16 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatingClientGuiLangRes.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UpdatingClientGuiLangRes.de.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdatingClientGuiLangRes.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UpdatingClientGuiLangRes.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿Imports System.Drawing
+﻿Imports System.ComponentModel
+Imports System.Drawing
 Imports System.IO
 Imports System.IO.Compression
 Imports System.Net
@@ -6,6 +7,13 @@ Imports System.Reflection
 Imports Newtonsoft.Json.Linq
 
 Public Class UpdateClient
+
+    'E b v e n t s
+
+    Public Event UpdateStatusChanged(newStatus As UpdateStatus, progress As Integer)
+    Public Event DownloadingUpdate(pkg As UpdatePackageInfo, e As CancelEventArgs)
+    Public Event InstallingUpdate(pkg As UpdatePackageInfo, e As CancelEventArgs)
+    Public Event UpdateInstallerStarted()
 
     'F i e l d s
 
@@ -38,6 +46,20 @@ Public Class UpdateClient
         Me.MinimumChannel = minimumChannel
     End Sub
 
+    'E v e n t   M e t h o d s
+
+    Private Function RaiseDownloadingUpdate(pkg As UpdatePackageInfo) As Boolean
+        Dim e As New CancelEventArgs(False)
+        RaiseEvent DownloadingUpdate(pkg, e)
+        Return e.Cancel
+    End Function
+
+    Private Function RaiseInstallingUpdate(pkg As UpdatePackageInfo) As Boolean
+        Dim e As New CancelEventArgs(True)
+        RaiseEvent DownloadingUpdate(pkg, e)
+        Return e.Cancel
+    End Function
+
     'U p d a t e   R o u t i n e s
 
     Public Sub UpdateInteractive()
@@ -48,9 +70,15 @@ Public Class UpdateClient
     End Sub
 
     Public Sub UpdateInteractive(package As UpdatePackageInfo)
-        If DownloadPackage(package) Then
-            InstallPackage(package)
+        If RaiseDownloadingUpdate(package) AndAlso DownloadPackage(package) Then
+            If RaiseInstallingUpdate(package) Then
+                InstallPackage(package)
+            End If
         End If
+    End Sub
+
+    Public Sub RaiseUpdateStatusChanged(newStatus As UpdateStatus, Optional progress As Integer = -1)
+        RaiseEvent UpdateStatusChanged(newStatus, progress)
     End Sub
 
     'F e a t u r e s
@@ -62,7 +90,10 @@ Public Class UpdateClient
     End Function
 
     Public Function CheckForUpdate() As UpdatePackageInfo
+        RaiseUpdateStatusChanged(UpdateStatus.Searching)
+
         _UpdateInfo = GetUpdateInfo()
+
         If UpdateInfo IsNot Nothing Then
             Return CheckForUpdate(UpdateInfo)
         Else
@@ -73,6 +104,8 @@ Public Class UpdateClient
     Public Function CheckForUpdate(updateInfo As UpdateInfo) As UpdatePackageInfo
         Dim foundPkgInfo As UpdatePackageInfo = Nothing
         Dim latestVersion As ApplicationVersion = CurrentVersion
+
+        RaiseUpdateStatusChanged(UpdateStatus.Searching)
 
         For Each pkgInfo As UpdatePackageInfo In updateInfo.Packages
             If pkgInfo.Version.Channel <= MinimumChannel AndAlso pkgInfo.Version > latestVersion Then
@@ -86,6 +119,8 @@ Public Class UpdateClient
     End Function
 
     Public Function DownloadPackage(package As UpdatePackageInfo) As Boolean
+        RaiseUpdateStatusChanged(UpdateStatus.DownloadingPackage)
+
         Dim dirPath As String = Path.Combine(GetMyAppDataPath, package.GetHashCode)
         Dim zipPath As String = Path.Combine(dirPath, ZIP_PACKAGE_FILENAME)
         Dim dir As New DirectoryInfo(dirPath)
@@ -110,6 +145,8 @@ Public Class UpdateClient
     End Function
 
     Private Function DownloadUpdateInstaller() As FileInfo
+        RaiseUpdateStatusChanged(UpdateStatus.DownloadingInstaller)
+
         'Ensure update installer path is empty
         Dim installerDirPath As New DirectoryInfo(Path.Combine(GetMyAppDataPath, "UpdateInstallerTool"))
         If installerDirPath.Exists Then
@@ -133,6 +170,8 @@ Public Class UpdateClient
     End Function
 
     Private Sub StartUpdateInstaller(packagePath As String, installerPath As String)
+        RaiseUpdateStatusChanged(UpdateStatus.StartingInstaller)
+
         'Create update settings
         Dim updateConfig As New UpdateInstallerConfig With {
             .PackagePath = packagePath,
@@ -155,6 +194,8 @@ Public Class UpdateClient
             .Verb = If(InstallAsAdmin, "runas", String.Empty)
         }
         Process.Start(procStartInfo)
+
+        RaiseEvent StartedUpdateInstaller()
     End Sub
 
     Public Function InstallPackage(package As UpdatePackageInfo) As Boolean
