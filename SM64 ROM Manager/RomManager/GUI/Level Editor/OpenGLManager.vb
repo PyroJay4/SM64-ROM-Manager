@@ -5,6 +5,7 @@ Imports Pilz.S3DFileParser
 Imports Pilz.Drawing.Drawing3D.OpenGLFactory.CameraN
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib.Levels
+Imports Color = System.Drawing.Color
 
 Namespace LevelEditor
 
