@@ -1,6 +1,6 @@
 ﻿Imports DevComponents.DotNetBar
 Imports SM64_ROM_Manager.SettingsManager
-Imports TextValueConverter
+Imports SM64Lib.TextValueConverter
 Imports SM64_ROM_Manager.Publics
 Imports DevComponents.Editors
 Imports System.Globalization

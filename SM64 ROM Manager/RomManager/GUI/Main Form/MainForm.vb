@@ -9,7 +9,7 @@ Imports System.Threading
 Imports System.Globalization
 Imports SM64Lib.Music
 Imports SM64Lib.Levels
-Imports PatchScripts
+Imports SM64Lib.TextValueConverter
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib.Exceptions
 Imports Microsoft.WindowsAPICodePack.Dialogs

@@ -5,7 +5,7 @@ Imports System.Windows.Forms
 Imports DevComponents.AdvTree
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
-Imports PatchScripts.My.Resources
+Imports SM64_ROM_Manager.PatchScripts.My.Resources
 
 Public Class ObjectCatalog
 

@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports Newtonsoft.Json.Linq
 Imports SM64_ROM_Manager.LevelEditor.ObjectCombo
-Imports TextValueConverter
+Imports SM64Lib.TextValueConverter
 
 Namespace LevelEditor
 

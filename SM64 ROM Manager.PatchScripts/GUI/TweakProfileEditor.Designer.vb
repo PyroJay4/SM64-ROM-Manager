@@ -78,7 +78,7 @@ Partial Class TweakProfileEditor
         Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX2.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.ButtonX2.Image = Global.PatchScripts.MyIcons.icons8_checkmark_16px
+        Me.ButtonX2.Image = Global.SM64_ROM_Manager.PatchScripts.MyIcons.icons8_checkmark_16px
         Me.ButtonX2.Location = New System.Drawing.Point(213, 278)
         Me.ButtonX2.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonX2.Name = "ButtonX2"
@@ -95,7 +95,7 @@ Partial Class TweakProfileEditor
         Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX1.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ButtonX1.Image = Global.PatchScripts.MyIcons.icons8_delete_sign_16px_1
+        Me.ButtonX1.Image = Global.SM64_ROM_Manager.PatchScripts.MyIcons.icons8_delete_sign_16px_1
         Me.ButtonX1.Location = New System.Drawing.Point(296, 278)
         Me.ButtonX1.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonX1.Name = "ButtonX1"

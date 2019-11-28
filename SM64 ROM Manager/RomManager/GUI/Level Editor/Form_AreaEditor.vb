@@ -26,6 +26,7 @@ Imports Newtonsoft.Json.Linq
 Imports SM64Lib.Data
 Imports System.Runtime.InteropServices
 Imports SM64Lib.SegmentedBanking
+Imports SM64Lib.N64Graphics
 
 Namespace LevelEditor
 
@@ -2562,8 +2563,8 @@ Namespace LevelEditor
                     Dim segAddr As Integer = Convert.ToInt32(jt.FromSegmentAddress, 16)
                     Dim seg As SegmentedBank = Nothing
                     Dim bmp As New Bitmap(CInt(jt.Width), CInt(jt.Height))
-                    Dim texFormat As N64Graphics.N64Codec = [Enum].Parse(GetType(N64Graphics.N64Codec), jt.Format, True)
-                    Dim bytesCount As Integer = N64Graphics.N64Graphics.PixelsToBytes(texFormat, bmp.Width * bmp.Height)
+                    Dim texFormat As N64Codec = [Enum].Parse(GetType(N64Codec), jt.Format, True)
+                    Dim bytesCount As Integer = N64Graphics.PixelsToBytes(texFormat, bmp.Width * bmp.Height)
                     Dim loadLvlscript As Integer = If(String.IsNullOrEmpty(jt.LoadLvlscript), -1, Convert.ToInt32(jt.LoadLvlscript, 16))
                     Dim bankID As Byte = segAddr >> 24
 
@@ -2606,7 +2607,7 @@ Namespace LevelEditor
 
                     'Render Texture
                     Dim g = Drawing.Graphics.FromImage(bmp)
-                    N64Graphics.N64Graphics.RenderTexture(g, imgdata, Nothing, 0, bmp.Width, bmp.Height, 1, texFormat, N64Graphics.N64IMode.AlphaCopyIntensity)
+                    N64Graphics.RenderTexture(g, imgdata, Nothing, 0, bmp.Width, bmp.Height, 1, texFormat, N64IMode.AlphaCopyIntensity)
 
                     'Set image
                     m.Image = bmp

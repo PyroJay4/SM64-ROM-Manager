@@ -34,8 +34,6 @@ Imports SM64Lib.EventArguments
 Imports SM64_ROM_Manager.Updating
 Imports SM64_ROM_Manager.Updating.Client.GUI
 Imports SM64_ROM_Manager.PatchScripts
-Imports SM64_ROM_Manager.SM64Lib
-Imports SM64_ROM_Manager.SM64Lib.EventArguments
 
 Public Class MainController
 

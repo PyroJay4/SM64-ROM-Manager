@@ -2,7 +2,7 @@ Imports System.IO
 Imports System.Reflection
 Imports DevComponents.DotNetBar
 Imports SM64_ROM_Manager.SettingsManager
-Imports ApplyPPF.My.Resources
+Imports SM64_ROM_Manager.ApplyPPF.My.Resources
 Imports SM64_ROM_Manager.Publics
 
 Public Class ApplyPPFDialog

@@ -1,4 +1,4 @@
-﻿Imports TextValueConverter
+﻿Imports SM64Lib.TextValueConverter
 Imports Newtonsoft.Json.Linq
 Imports System.IO
 Imports SM64_ROM_Manager.LevelEditor.BehaviorInfo

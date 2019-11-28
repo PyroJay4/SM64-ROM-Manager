@@ -12,7 +12,7 @@ Namespace My
     Partial Friend Class MyApplication
 
         Private Sub OnAppStart(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
-            AddHandler TextValueConverter.WantIntegerValueMode, Sub(ee) ee.IntegerValueMode = SM64_ROM_Manager.SettingsManager.Settings.General.IntegerValueMode
+            AddHandler SM64Lib.TextValueConverter.WantIntegerValueMode, Sub(ee) ee.IntegerValueMode = SettingsManager.Settings.General.IntegerValueMode
         End Sub
 
     End Class

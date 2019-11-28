@@ -4,7 +4,6 @@ Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 Imports FastColoredTextBoxNS
-Imports PatchScripts
 Imports SM64Lib
 
 Public Class TweakScriptEditor

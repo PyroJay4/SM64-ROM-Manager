@@ -2,7 +2,7 @@
 Imports SM64Lib.Model
 Imports SM64_ROM_Manager.Publics
 Imports SM64_ROM_Manager.SettingsManager
-Imports TextValueConverter
+Imports SM64Lib.TextValueConverter
 Imports SM64_ROM_Manager.ModelConverterGUI
 Imports System.IO
 Imports System.Text

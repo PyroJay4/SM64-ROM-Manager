@@ -3,7 +3,7 @@ Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 Imports DevComponents.Editors
 Imports SM64Lib.Levels
-Imports TextValueConverter
+Imports SM64Lib.TextValueConverter
 
 Namespace PropertyValueEditors
 

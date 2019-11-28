@@ -4,7 +4,7 @@ Imports System.Windows.Forms
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Schedule
 Imports DevComponents.Editors
-Imports PatchScripts
+Imports SM64_ROM_Manager.PatchScripts
 Imports SM64_ROM_Manager.Publics
 
 Public Class TweakViewer

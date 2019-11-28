@@ -2,7 +2,7 @@ Imports System.Drawing
 Imports System.IO
 Imports System.Windows.Forms
 Imports DevComponents.Editors
-Imports N64Graphics
+Imports SM64Lib.N64Graphics
 Imports SM64_ROM_Manager.Publics
 Imports Pilz.S3DFileParser
 Imports SM64Lib.Model.Fast3D
@@ -145,7 +145,7 @@ Public Class TextureGraphicFormatEditor
         For i As Integer = 0 To names.Count - 2
             Dim item As New ComboItem
             item.Text = names(i)
-            item.Tag = N64Graphics.N64Graphics.CodecString(values(i))
+            item.Tag = N64Graphics.CodecString(values(i))
             ComboBox_ColType.Items.Add(item)
         Next
 
@@ -246,7 +246,7 @@ Public Class TextureGraphicFormatEditor
         Dim selItem As ComboItem = ComboBox_ColType.SelectedItem
         Dim id As String = selItem.Tag
 
-        LabelX_MaxPixels.Text = $"Maximal Pixels: {GetMaxPixls(N64Graphics.N64Graphics.StringCodec(id))}"
+        LabelX_MaxPixels.Text = $"Maximal Pixels: {GetMaxPixls(N64Graphics.StringCodec(id))}"
 
         If Not loadingtexItemSettings Then
             UpdateTextureListItemSettings(id)

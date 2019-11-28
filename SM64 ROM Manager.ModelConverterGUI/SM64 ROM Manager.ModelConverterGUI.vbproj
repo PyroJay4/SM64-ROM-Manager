@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
+    <Import Include="SM64Lib.TextValueConverter" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
@@ -119,7 +120,6 @@
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
-    <Import Include="TextValueConverter" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollisionEditor.designer.vb">
@@ -263,17 +263,17 @@
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
       <Name>SM64 ROM Manager.SettingsManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SM64 ROM Manager.SM64Lib.N64Graphics\SM64 ROM Manager.SM64Lib.N64Graphics.csproj">
+    <ProjectReference Include="..\SM64Lib.N64Graphics\SM64Lib.N64Graphics.csproj">
       <Project>{d9258483-950c-46d1-a333-31f32492cd7e}</Project>
-      <Name>SM64 ROM Manager.SM64Lib.N64Graphics</Name>
+      <Name>SM64Lib.N64Graphics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SM64 ROM Manager.SM64Lib\SM64 ROM Manager.SM64Lib.vbproj">
-      <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
-      <Name>SM64 ROM Manager.SM64Lib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SM64 ROM Manager.TextValueConverter\SM64 ROM Manager.TextValueConverter.vbproj">
+    <ProjectReference Include="..\SM64Lib.TextValueConverter\SM64Lib.TextValueConverter.vbproj">
       <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>
-      <Name>SM64 ROM Manager.TextValueConverter</Name>
+      <Name>SM64Lib.TextValueConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
+      <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
+      <Name>SM64Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

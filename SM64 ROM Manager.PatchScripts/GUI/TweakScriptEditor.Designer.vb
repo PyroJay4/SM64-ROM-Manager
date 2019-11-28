@@ -326,14 +326,14 @@ Partial Class TweakScriptEditor
         '
         Me.ButtonItem_SaveToFile.BeginGroup = True
         Me.ButtonItem_SaveToFile.GlobalItem = False
-        Me.ButtonItem_SaveToFile.Image = Global.PatchScripts.MyIcons.icons8_save_16px_1
+        Me.ButtonItem_SaveToFile.Image = Global.SM64_ROM_Manager.PatchScripts.MyIcons.icons8_save_16px_1
         Me.ButtonItem_SaveToFile.Name = "ButtonItem_SaveToFile"
         resources.ApplyResources(Me.ButtonItem_SaveToFile, "ButtonItem_SaveToFile")
         '
         'ButtonItem_LoadFromFile
         '
         Me.ButtonItem_LoadFromFile.GlobalItem = False
-        Me.ButtonItem_LoadFromFile.Image = Global.PatchScripts.MyIcons.icons8_open_folder_16px_1
+        Me.ButtonItem_LoadFromFile.Image = Global.SM64_ROM_Manager.PatchScripts.MyIcons.icons8_open_folder_16px_1
         Me.ButtonItem_LoadFromFile.Name = "ButtonItem_LoadFromFile"
         resources.ApplyResources(Me.ButtonItem_LoadFromFile, "ButtonItem_LoadFromFile")
         '
@@ -345,7 +345,7 @@ Partial Class TweakScriptEditor
         '
         'ButtonItem3
         '
-        Me.ButtonItem3.Image = Global.PatchScripts.MyIcons.icons8_play_16px
+        Me.ButtonItem3.Image = Global.SM64_ROM_Manager.PatchScripts.MyIcons.icons8_play_16px
         Me.ButtonItem3.Name = "ButtonItem3"
         resources.ApplyResources(Me.ButtonItem3, "ButtonItem3")
         '

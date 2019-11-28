@@ -178,9 +178,9 @@
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
       <Name>SM64 ROM Manager.SettingsManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SM64 ROM Manager.SM64Lib\SM64 ROM Manager.SM64Lib.vbproj">
+    <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
       <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
-      <Name>SM64 ROM Manager.SM64Lib</Name>
+      <Name>SM64Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
