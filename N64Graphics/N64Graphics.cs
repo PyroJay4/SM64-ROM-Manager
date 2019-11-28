@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace N64Graphics
+namespace SM64_ROM_Manager.N64Graphics
 {
     public enum N64Codec { RGBA16, RGBA32, IA16, IA8, IA4, I8, I4, CI8, CI4, ONEBPP };
     public enum N64IMode { AlphaCopyIntensity, AlphaBinary, AlphaOne };
