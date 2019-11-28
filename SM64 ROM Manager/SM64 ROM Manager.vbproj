@@ -1038,37 +1038,45 @@
     <Content Include="RomManager\Others\RomMap.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApplyPPF\SM64 ROM Manager.ApplyPPF.vbproj">
+    <ProjectReference Include="..\SM64 ROM Manager.ApplyPPF\SM64 ROM Manager.ApplyPPF.vbproj">
       <Project>{34873a8f-d8df-4c98-b290-2ee3e64aea1f}</Project>
       <Name>SM64 ROM Manager.ApplyPPF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LIBMIO0\SM64 ROM Manager.LIBMIO0.csproj">
-      <Project>{e4cec3b1-5778-4d63-8c97-c95153cdc052}</Project>
-      <Name>SM64 ROM Manager.LIBMIO0</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ModelConverterGUI\SM64 ROM Manager.ModelConverterGUI.vbproj">
+    <ProjectReference Include="..\SM64 ROM Manager.ModelConverterGUI\SM64 ROM Manager.ModelConverterGUI.vbproj">
       <Project>{745e6a23-6957-45f8-9305-88ec5474d077}</Project>
       <Name>SM64 ROM Manager.ModelConverterGUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ModelImporter\SM64 ROM Manager.ModelImporterGUI.vbproj">
+    <ProjectReference Include="..\SM64 ROM Manager.ModelImporterGUI\SM64 ROM Manager.ModelImporterGUI.vbproj">
       <Project>{3f9044f1-1aa1-4d44-b68b-7087c59b818f}</Project>
       <Name>SM64 ROM Manager.ModelImporterGUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\N64Graphics\SM64 ROM Manager.N64Graphics.csproj">
-      <Project>{d9258483-950c-46d1-a333-31f32492cd7e}</Project>
-      <Name>SM64 ROM Manager.N64Graphics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PatchScripts\SM64 ROM Manager.PatchScripts.vbproj">
+    <ProjectReference Include="..\SM64 ROM Manager.PatchScripts\SM64 ROM Manager.PatchScripts.vbproj">
       <Project>{c5de39f9-c9aa-48df-bd74-68a057012953}</Project>
       <Name>SM64 ROM Manager.PatchScripts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Publics\SM64 ROM Manager.Publics.vbproj">
+    <ProjectReference Include="..\SM64 ROM Manager.Publics\SM64 ROM Manager.Publics.vbproj">
       <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>
       <Name>SM64 ROM Manager.Publics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SettingsManager\SM64 ROM Manager.SettingsManager.vbproj">
+    <ProjectReference Include="..\SM64 ROM Manager.SettingsManager\SM64 ROM Manager.SettingsManager.vbproj">
       <Project>{9672afec-766d-4308-9184-74e1e770011b}</Project>
       <Name>SM64 ROM Manager.SettingsManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SM64 ROM Manager.SM64Lib.LIBMIO0\SM64 ROM Manager.SM64Lib.LIBMIO0.csproj">
+      <Project>{e4cec3b1-5778-4d63-8c97-c95153cdc052}</Project>
+      <Name>SM64 ROM Manager.SM64Lib.LIBMIO0</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SM64 ROM Manager.SM64Lib.N64Graphics\SM64 ROM Manager.SM64Lib.N64Graphics.csproj">
+      <Project>{d9258483-950c-46d1-a333-31f32492cd7e}</Project>
+      <Name>SM64 ROM Manager.SM64Lib.N64Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SM64 ROM Manager.SM64Lib\SM64 ROM Manager.SM64Lib.vbproj">
+      <Project>{50BE8215-8945-4A29-908A-36E1102A540C}</Project>
+      <Name>SM64 ROM Manager.SM64Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SM64 ROM Manager.TextValueConverter\SM64 ROM Manager.TextValueConverter.vbproj">
+      <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>
+      <Name>SM64 ROM Manager.TextValueConverter</Name>
     </ProjectReference>
     <ProjectReference Include="..\SM64 ROM Manager.Updating.Client.GUI\SM64 ROM Manager.Updating.Client.GUI.vbproj">
       <Project>{8205C526-D8FE-4C86-9E14-CF926B57AEC7}</Project>
@@ -1081,14 +1089,6 @@
     <ProjectReference Include="..\SM64 ROM Manager.Updating\SM64 ROM Manager.Updating.vbproj">
       <Project>{8f01bb84-a3da-4039-a9d2-0f6db31739ec}</Project>
       <Name>SM64 ROM Manager.Updating</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SM64Lib\SM64Lib.vbproj">
-      <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
-      <Name>SM64Lib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TextValueConverter\SM64 ROM Manager.TextValueConverter.vbproj">
-      <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>
-      <Name>SM64 ROM Manager.TextValueConverter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
