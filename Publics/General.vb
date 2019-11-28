@@ -91,6 +91,7 @@ Public Module General
         config.SetFilePath("Original Level Pointers.bin", Path.Combine(MyDataPath, "Other\Original Level Pointers.bin"))
     End Sub
 
+#If RelMono Then
     Private Sub SetServerCertificateValidationCallback()
         ServicePointManager.ServerCertificateValidationCallback = AddressOf MyRemoteCertificateValidationCallback
     End Sub
@@ -114,10 +115,13 @@ Public Module General
         End If
         Return isOk
     End Function
+#End If
 
     Public Sub DoDefaultInitsAfterApplicationStartup()
+#If RelMono Then
         'Set server certification validation callback
         SetServerCertificateValidationCallback()
+#End If
 
         'Load Settings
         Settings.SettingsConfigFilePath = Path.Combine(MyDataPath, "Settings.json")

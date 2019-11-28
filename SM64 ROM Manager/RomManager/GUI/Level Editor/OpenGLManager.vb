@@ -15,7 +15,9 @@ Namespace LevelEditor
         Private WithEvents TargetControl As Control
         Private WithEvents GLControl1 As New GLControl
         Private WithEvents CameraPrivate As New Camera
+#If Not RelMono Then
         Private WithEvents RenderTimer As New Timers.Timer(25)
+#End If
 
         Friend ProjMatrix As Matrix4 = Nothing
         Friend Ortho As Boolean = False
@@ -37,8 +39,10 @@ Namespace LevelEditor
 
             InitializeGLControl()
 
+#If Not RelMono Then
             RenderTimer.SynchronizingObject = Nothing
             RenderTimer.Start()
+#End If
         End Sub
 
         Private ReadOnly Property Maps As MapManagement
@@ -160,7 +164,9 @@ Namespace LevelEditor
         End Sub
 
         Private Sub GlControl1_Paint(sender As Object, e As PaintEventArgs) Handles GLControl1.Paint
+#If Not RelMono Then
             MoveCameraViaWASDQE()
+#End If
 
             GL.ClearColor(If(Settings.StyleManager.AlwaysKeepBlueColors, Color.CornflowerBlue, Main.BackColor))
 
@@ -282,12 +288,14 @@ Namespace LevelEditor
             If Main.PressedKeys.Contains(e.KeyCode) Then Main.PressedKeys.Remove(e.KeyCode)
         End Sub
 
+#If Not RelMono Then
         Private Sub CompositionTarget_Rendering(sender As Object, e As Timers.ElapsedEventArgs) Handles RenderTimer.Elapsed
             If Not Main.isDeactivated Then
                 GLControl1.Invalidate()
             End If
             Application.DoEvents()
         End Sub
+#End If
 
         Private Sub MoveCameraViaWASDQE()
             Dim moveSpeed As Integer = Convert.ToInt32(Math.Round(If(Main.IsShiftPressed, 60, 30) * Camera.CamSpeedMultiplier, 0))

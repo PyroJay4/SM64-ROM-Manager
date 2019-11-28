@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Reflection
 Imports System.Windows.Threading
+Imports DevComponents.DotNetBar
 Imports SM64_ROM_Manager.Updating
 Imports SM64_ROM_Manager.Updating.Client.GUI.My.Resources
 
@@ -85,7 +86,7 @@ Public Class UpdateClientGUI
 
     Private Sub MyUpdateClient_NoUpdatesFound() Handles UpdateClient.NoUpdatesFound
         EndUpdating()
-        MessageBox.Show(UpdatingClientGuiLangRes.MsgBox_NoUpdatesFound, UpdatingClientGuiLangRes.MsgBox_NoUpdatesFound_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBoxEx.Show(UpdatingClientGuiLangRes.MsgBox_NoUpdatesFound, UpdatingClientGuiLangRes.MsgBox_NoUpdatesFound_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
 End Class
