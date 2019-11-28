@@ -164,9 +164,9 @@
       <Project>{745e6a23-6957-45f8-9305-88ec5474d077}</Project>
       <Name>SM64 ROM Manager.ModelConverterGUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PatchScripts\PatchScripts.vbproj">
+    <ProjectReference Include="..\PatchScripts\SM64 ROM Manager.PatchScripts.vbproj">
       <Project>{c5de39f9-c9aa-48df-bd74-68a057012953}</Project>
-      <Name>PatchScripts</Name>
+      <Name>SM64 ROM Manager.PatchScripts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Publics\SM64 ROM Manager.Publics.vbproj">
       <Project>{5013d291-0c3d-45ae-b216-792260c246ec}</Project>
@@ -180,9 +180,9 @@
       <Project>{50be8215-8945-4a29-908a-36e1102a540c}</Project>
       <Name>SM64Lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TextValueConverter\TextValueConverter.vbproj">
+    <ProjectReference Include="..\TextValueConverter\SM64 ROM Manager.TextValueConverter.vbproj">
       <Project>{533793c3-92d5-48ce-82de-dba815c6a121}</Project>
-      <Name>TextValueConverter</Name>
+      <Name>SM64 ROM Manager.TextValueConverter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

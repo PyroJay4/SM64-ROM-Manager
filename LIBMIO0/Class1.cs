@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LIBMIO0
+namespace SM64_ROM_Manager.LIBMIO0
 {
     public struct MIO0_Header
     {

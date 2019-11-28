@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.PatchScripts.My.MySettings
+        Friend ReadOnly Property Settings() As Global.SM64_ROM_Manager.PatchScripts.My.MySettings
             Get
-                Return Global.PatchScripts.My.MySettings.Default
+                Return Global.SM64_ROM_Manager.PatchScripts.My.MySettings.Default
             End Get
         End Property
     End Module

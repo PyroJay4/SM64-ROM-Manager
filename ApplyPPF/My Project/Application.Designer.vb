@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.ApplyPPF.ApplyPPFDialog
+            Me.MainForm = Global.SM64_ROM_Manager.ApplyPPF.Form1
         End Sub
     End Class
 End Namespace

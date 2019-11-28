@@ -43,7 +43,7 @@ Namespace My.Resources
         Friend Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("PatchScripts.ReflectionSymbols", GetType(ReflectionSymbols).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("SM64_ROM_Manager.PatchScripts.ReflectionSymbols", GetType(ReflectionSymbols).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan

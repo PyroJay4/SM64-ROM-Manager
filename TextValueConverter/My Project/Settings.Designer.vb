@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.TextValueConverter.My.MySettings
+        Friend ReadOnly Property Settings() As Global.SM64_ROM_Manager.TextValueConverter.My.MySettings
             Get
-                Return Global.TextValueConverter.My.MySettings.Default
+                Return Global.SM64_ROM_Manager.TextValueConverter.My.MySettings.Default
             End Get
         End Property
     End Module
