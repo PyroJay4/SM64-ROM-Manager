@@ -65,7 +65,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Es wurden keine Aktuallisierungen gefunden. Du verwendest die aktuellste Version. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die No updates found! You are using the latest version. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_NoUpdatesFound() As String
             Get
@@ -74,7 +74,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Keine Aktuallisierung gefunden ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die No Updates found ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_NoUpdatesFound_Titel() As String
             Get
@@ -83,7 +83,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Update-Installer wird heruntergeladen ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Downloading Update Installer ... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property SimpleActions_DownloadingInstaller() As String
             Get
@@ -92,7 +92,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die Aktuallisierungspaket wird heruntergeladen ... ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Downloading Update Package ... ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property SimpleActions_DownloadingPackage() As String
             Get

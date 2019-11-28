@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MsgBox_NoUpdatesFound" xml:space="preserve">
-    <value>No updates found! You are using the latest version.</value>
+    <value>Es wurden keine Aktuallisierungen gefunden. Du verwendest die aktuellste Version.</value>
   </data>
   <data name="MsgBox_NoUpdatesFound_Titel" xml:space="preserve">
-    <value>No Updates found</value>
+    <value>Keine Aktuallisierung gefunden</value>
   </data>
   <data name="SimpleActions_DownloadingInstaller" xml:space="preserve">
-    <value>Downloading Update Installer ...</value>
+    <value>Update-Installer wird heruntergeladen ...</value>
   </data>
   <data name="SimpleActions_DownloadingPackage" xml:space="preserve">
-    <value>Downloading Update Package ...</value>
+    <value>Aktuallisierungspaket wird heruntergeladen ...</value>
   </data>
   <data name="SimpleActions_Searching" xml:space="preserve">
     <value>Nach Updates suchen ...</value>

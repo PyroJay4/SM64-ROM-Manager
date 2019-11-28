@@ -16,7 +16,7 @@ Namespace LevelEditor
         Private WithEvents GLControl1 As New GLControl
         Private WithEvents CameraPrivate As New Camera
 #If Not RelMono Then
-        Private WithEvents RenderTimer As New Timers.Timer(10)
+        Private WithEvents RenderTimer As New Timers.Timer(20)
 #End If
 
         Friend ProjMatrix As Matrix4 = Nothing

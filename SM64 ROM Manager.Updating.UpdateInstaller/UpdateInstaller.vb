@@ -30,7 +30,7 @@ Friend Class UpdateInstaller
 
     Public Sub StartHostApplication()
         If Not String.IsNullOrEmpty(Configuration.RestartHostApplication) AndAlso File.Exists(Configuration.HostApplicationProcessPath) Then
-            Process.Start(Configuration.RestartHostApplication, Configuration.HostApplicationProcessPath)
+            Process.Start(Configuration.HostApplicationProcessPath, Configuration.RestartHostApplicationArguments)
         End If
     End Sub
 
@@ -85,6 +85,13 @@ Friend Class UpdateInstaller
         Dim packagePath As String = Configuration.PackagePath
         Dim zipPath As String = Path.Combine(packagePath, ZIP_PACKAGE_FILENAME)
         dataPath = Path.Combine(packagePath, Path.GetFileNameWithoutExtension(ZIP_PACKAGE_FILENAME))
+
+        Dim dataPathDir As New DirectoryInfo(dataPath)
+        If dataPathDir.Exists Then
+            dataPathDir.Delete(True)
+            Task.Delay(100)
+        End If
+
         ZipFile.ExtractToDirectory(zipPath, dataPath)
     End Sub
 
@@ -111,7 +118,10 @@ Friend Class UpdateInstaller
 
         For Each sFile As FileInfo In sourceDir.EnumerateFiles("*", SearchOption.TopDirectoryOnly)
             Dim dFile As New FileInfo(Path.Combine(destinationDir.FullName, sFile.Name))
-            sFile.CopyTo(dFile.FullName, True)
+            Try
+                sFile.CopyTo(dFile.FullName, True)
+            Catch ex As Exception
+            End Try
         Next
 
         For Each sDir As DirectoryInfo In sourceDir.EnumerateDirectories("*", SearchOption.TopDirectoryOnly)

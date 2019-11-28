@@ -19,6 +19,7 @@ Public Class UpdateClient
     'F i e l d s
 
     Private ReadOnly dicPackagePaths As New Dictionary(Of UpdatePackageInfo, String)
+    Private curDownloadingStatus As UpdateStatus = UpdateStatus.Waiting
 
     'P r o p e r t i e s
 
@@ -45,6 +46,7 @@ Public Class UpdateClient
         Me.UpdateUrl = updateUrl
         Me.CurrentVersion = currentVersion
         Me.MinimumChannel = minimumChannel
+        AddHandler WebClient.DownloadProgressChanged, AddressOf WebClient_DownloadProgressChanged
     End Sub
 
     'E v e n t   M e t h o d s
@@ -61,7 +63,17 @@ Public Class UpdateClient
         Return e.Cancel
     End Function
 
+    'W e b C l i e n t   E v e n t s
+
+    Private Sub WebClient_DownloadProgressChanged(sender As Object, e As DownloadProgressChangedEventArgs)
+        RaiseUpdateStatusChanged(curDownloadingStatus, e.ProgressPercentage)
+    End Sub
+
     'U p d a t e   R o u t i n e s
+
+    Public Function UpdateInteractiveAsync() As Task
+        Return Task.Run(AddressOf UpdateInteractive)
+    End Function
 
     Public Sub UpdateInteractive()
         Dim latestVersion As UpdatePackageInfo = CheckForUpdate()
@@ -122,7 +134,8 @@ Public Class UpdateClient
     End Function
 
     Public Function DownloadPackage(package As UpdatePackageInfo) As Boolean
-        RaiseUpdateStatusChanged(UpdateStatus.DownloadingPackage)
+        curDownloadingStatus = UpdateStatus.DownloadingPackage
+        RaiseUpdateStatusChanged(curDownloadingStatus)
 
         Dim dirPath As String = Path.Combine(GetMyAppDataPath, package.GetHashCode)
         Dim zipPath As String = Path.Combine(dirPath, ZIP_PACKAGE_FILENAME)
@@ -148,7 +161,8 @@ Public Class UpdateClient
     End Function
 
     Private Function DownloadUpdateInstaller() As FileInfo
-        RaiseUpdateStatusChanged(UpdateStatus.DownloadingInstaller)
+        curDownloadingStatus = UpdateStatus.DownloadingInstaller
+        RaiseUpdateStatusChanged(curDownloadingStatus)
 
         'Ensure update installer path is empty
         Dim installerDirPath As New DirectoryInfo(Path.Combine(GetMyAppDataPath, "UpdateInstallerTool"))

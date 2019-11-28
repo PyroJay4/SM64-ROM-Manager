@@ -251,7 +251,7 @@ Public Class MainController
         If Await CanAccessUpdateServer() Then
             Dim gui As New UpdateClientGUI(updateClient)
             gui.UseHiddenSearch = searchHidden
-            gui.UpdateInteractive()
+            gui.UpdateInteractive(mainForm)
             Return True
         Else
             Return False

@@ -9,6 +9,7 @@ Public Class UpdateClientGUI
 
     'F i e l d s
 
+    Private parentForm As Form
     Private WithEvents UpdateClient As UpdateClient
     Private curProgressDialog As SimpleActionDialog = Nothing
 
@@ -30,8 +31,9 @@ Public Class UpdateClientGUI
 
     'F e a t u r e s
 
-    Public Sub UpdateInteractive()
-        UpdateClient.UpdateInteractive()
+    Public Sub UpdateInteractive(parentForm As Form)
+        Me.parentForm = parentForm
+        UpdateClient.UpdateInteractiveAsync()
     End Sub
 
     Private Sub EndUpdating()
@@ -49,11 +51,11 @@ Public Class UpdateClientGUI
         End If
 
         If useGui AndAlso curProgressDialog Is Nothing Then
-            Dispatcher.CurrentDispatcher.Invoke(
+            parentForm.Invoke(
                 Sub()
                     curProgressDialog = New SimpleActionDialog
                     curProgressDialog.SetCurrentState(UpdateStatus.Waiting)
-                    curProgressDialog.Show()
+                    curProgressDialog.Show(parentForm)
                 End Sub)
         End If
 
@@ -61,14 +63,20 @@ Public Class UpdateClientGUI
     End Sub
 
     Private Sub MyUpdateClient_DownloadingUpdate(pkg As UpdatePackageInfo, e As CancelEventArgs) Handles UpdateClient.DownloadingUpdate
-        Dim dialog As New UpdatesAvailableDialog(MyAppIcon,
-                                                 UpdateClient.CurrentVersion.Version.ToString, UpdateClient.CurrentVersion.Channel.ToString, UpdateClient.CurrentVersion.Build,
-                                                 pkg.Version.Version.ToString, pkg.Version.Channel.ToString, pkg.Version.Build,
-                                                 pkg.Changelog, UpdateClient.InstallAsAdmin)
 
         curProgressDialog?.Invoke(Sub() curProgressDialog.Hide())
 
-        If dialog.ShowDialog <> DialogResult.OK Then
+        Dim dres As DialogResult
+        parentForm.Invoke(
+            Sub()
+                Dim dialog As New UpdatesAvailableDialog(MyAppIcon,
+                                                         UpdateClient.CurrentVersion.Version.ToString, UpdateClient.CurrentVersion.Channel.ToString, UpdateClient.CurrentVersion.Build,
+                                                         pkg.Version.Version.ToString, pkg.Version.Channel.ToString, pkg.Version.Build,
+                                                         pkg.Changelog, UpdateClient.InstallAsAdmin)
+                dres = dialog.ShowDialog(parentForm)
+            End Sub)
+
+        If dres <> DialogResult.OK Then
             e.Cancel = True
             EndUpdating()
         Else
@@ -78,6 +86,7 @@ Public Class UpdateClientGUI
     End Sub
 
     Private Sub MyUpdateClient_InstallingUpdate(pkg As UpdatePackageInfo, e As CancelEventArgs) Handles UpdateClient.InstallingUpdate
+        e.Cancel = False
     End Sub
 
     Private Sub MyUpdateClient_FinishWork() Handles UpdateClient.UpdateInstallerStarted
@@ -86,7 +95,10 @@ Public Class UpdateClientGUI
 
     Private Sub MyUpdateClient_NoUpdatesFound() Handles UpdateClient.NoUpdatesFound
         EndUpdating()
-        MessageBoxEx.Show(UpdatingClientGuiLangRes.MsgBox_NoUpdatesFound, UpdatingClientGuiLangRes.MsgBox_NoUpdatesFound_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        If Not UseHiddenSearch Then
+            MessageBoxEx.Show(UpdatingClientGuiLangRes.MsgBox_NoUpdatesFound, UpdatingClientGuiLangRes.MsgBox_NoUpdatesFound_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
     End Sub
 
 End Class
