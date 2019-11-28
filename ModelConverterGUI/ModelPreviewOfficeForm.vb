@@ -17,8 +17,7 @@ Public Class ModelPreviewOfficeForm
         .Dock = DockStyle.Fill,
         .TopLevel = False,
         .Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top,
-        .Scaling = 500,
-        .RenderWhenWindowsIsInactive = True
+        .Scaling = 500
     }
 
     Public Sub New(obj As Object3D, scaling As Single)
@@ -26,6 +25,9 @@ Public Class ModelPreviewOfficeForm
 
         modelToRender = obj
 
+#If Not RelLinux Then
+        ModelPreview.EnableCameraControlling = True
+#End If
         ModelPreview.Scaling = scaling
         ModelPreview.Size = ModelPreview.ClientSize
         ModelPreview.Show()
@@ -33,7 +35,7 @@ Public Class ModelPreviewOfficeForm
         AddHandler Shown, AddressOf ModelPreview.HandlesOnShown
         AddHandler Activated, AddressOf ModelPreview.HandlesOnActivated
         AddHandler Deactivate, AddressOf ModelPreview.HandlesOnDeactivate
-        AddHandler ModelPreview.Paint, Sub(sender, e) e.Graphics.DrawString("Hello World", Font, New SolidBrush(Color.Green), New PointF(10.0F, 10.0F))
+        'AddHandler ModelPreview.Paint, Sub(sender, e) e.Graphics.DrawString("Hello World", Font, New SolidBrush(Color.Green), New PointF(10.0F, 10.0F))
         'AddHandler KeyUp, AddressOf ModelPreview.HandlesOnKeyUp
         'AddHandler KeyDown, AddressOf ModelPreview.HandlesOnKeyDown
 
@@ -84,7 +86,7 @@ Public Class ModelPreviewOfficeForm
         Return ofd.FileName
     End Function
 
-    Private Sub Camera_NeedSelectedObject(e As Camera.NeedSelectedObjectEventArgs)
+    Private Sub Camera_NeedSelectedObject(sender As Object, e As Camera.NeedSelectedObjectEventArgs)
         e.Points = Nothing
     End Sub
 

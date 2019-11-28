@@ -16,7 +16,7 @@ Namespace LevelEditor
         Private WithEvents GLControl1 As New GLControl
         Private WithEvents CameraPrivate As New Camera
 #If Not RelMono Then
-        Private WithEvents RenderTimer As New Timers.Timer(25)
+        Private WithEvents RenderTimer As New Timers.Timer(10)
 #End If
 
         Friend ProjMatrix As Matrix4 = Nothing
@@ -164,10 +164,6 @@ Namespace LevelEditor
         End Sub
 
         Private Sub GlControl1_Paint(sender As Object, e As PaintEventArgs) Handles GLControl1.Paint
-#If Not RelMono Then
-            MoveCameraViaWASDQE()
-#End If
-
             GL.ClearColor(If(Settings.StyleManager.AlwaysKeepBlueColors, Color.CornflowerBlue, Main.BackColor))
 
             GL.Clear(ClearBufferMask.ColorBufferBit Or ClearBufferMask.DepthBufferBit)
@@ -290,10 +286,11 @@ Namespace LevelEditor
 
 #If Not RelMono Then
         Private Sub CompositionTarget_Rendering(sender As Object, e As Timers.ElapsedEventArgs) Handles RenderTimer.Elapsed
-            If Not Main.isDeactivated Then
-                GLControl1.Invalidate()
-            End If
-            Application.DoEvents()
+            'If Not Main.isDeactivated Then
+            '    GLControl1.Invalidate()
+            'End If
+            'Application.DoEvents()
+            MoveCameraViaWASDQE()
         End Sub
 #End If
 
@@ -301,7 +298,7 @@ Namespace LevelEditor
             Dim moveSpeed As Integer = Convert.ToInt32(Math.Round(If(Main.IsShiftPressed, 60, 30) * Camera.CamSpeedMultiplier, 0))
             Dim allowCamMove As Boolean = Not (isMouseDown AndAlso Main.IsShiftPressed)
 
-            For Each k As Keys In Main.PressedKeys
+            For Each k As Keys In Main.PressedKeys.ToArray
                 If allowCamMove Then
                     'camera.resetMouseStuff()
 
@@ -451,6 +448,9 @@ Namespace LevelEditor
             obj.Meshes.Add(m)
         End Sub
 
+        Private Sub CameraPrivate_PerspectiveChanged(sender As Object, e As EventArgs) Handles CameraPrivate.PerspectiveChanged
+            GLControl1.Invoke(Sub() GLControl1.Invalidate())
+        End Sub
     End Class
 
     Public Enum ModelDrawMod

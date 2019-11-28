@@ -323,9 +323,12 @@ Namespace LevelEditor
             End If
         End Sub
 
-        Private Sub Camera_NeedSelectedObject(e As Camera.NeedSelectedObjectEventArgs)
-            If Main.SelectedObject IsNot Nothing Then
-                e.Points = Main.SelectedObjects
+        Private Sub Camera_NeedSelectedObject(sender As Object, e As Camera.NeedSelectedObjectEventArgs)
+            Dim needSelectedObject As Boolean
+            Main.Invoke(Sub() needSelectedObject = Main.SelectedObject IsNot Nothing)
+
+            If needSelectedObject Then
+                Main.Invoke(Sub() e.Points = Main.SelectedObjects)
             ElseIf Main.Camera.CamMode = CameraMode.ORBIT Then
                 Main.ogl.SetCameraMode(CameraMode.FLY)
                 _WasInOrbitMode = True
