@@ -17,8 +17,11 @@ Imports SM64Lib.Levels
 Imports System.Security.Cryptography.X509Certificates
 Imports System.Net
 Imports System.Net.Security
+Imports drsPwEnc
 
 Public Module General
+
+    Private ReadOnly crypter As New drsPwEnc.drsPwEnc
 
     Public ReadOnly Property DisplayListCommandsWithPointerList As Byte() = {&H1, &H3, &H4, &H6, &HFD}
     Public ReadOnly Property ActSelectorDefaultValues As Byte() = New Byte() {False, False, False, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False, False, False, False, True, True, True, False, False, False, False, False, False, False, False, False, False, False}
@@ -125,6 +128,13 @@ Public Module General
 
         'Load Settings
         Settings.SettingsConfigFilePath = Path.Combine(MyDataPath, "Settings.json")
+
+        'Set proxy settings
+        If Not String.IsNullOrEmpty(Settings.Network.ProxyUsername) OrElse Not String.IsNullOrEmpty(Settings.Network.ProxyPasswordEncrypted) Then
+            WebRequest.DefaultWebProxy.Credentials =
+                New NetworkCredential(Settings.Network.ProxyUsername,
+                                      If(String.IsNullOrEmpty(Settings.Network.ProxyPasswordEncrypted), String.Empty, crypter.DecryptData(Settings.Network.ProxyPasswordEncrypted)))
+        End If
 
         'Set Style
         SetVisualTheme()

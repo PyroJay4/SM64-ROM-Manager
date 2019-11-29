@@ -156,12 +156,12 @@ Public Class MainController
         AddHandler BinaryData.AnyBinaryDataDisposed, AddressOf ClearUpOpenBinaryDatasAndEnableRomWatcher
 
         Dim appVersion As New ApplicationVersion(New Version(Application.ProductVersion), DevelopmentBuild, CInt(DevelopmentStage))
-        updateClient = New UpdateClient(UPDATE_URL, appVersion, Settings.Updates.MinimumUpdateChannel) With {
+        updateClient = New UpdateClient(UPDATE_URL, appVersion, Settings.Network.MinimumUpdateChannel) With {
             .ApplicationName = Application.ProductName,
             .AutoCloseHostApplication = True,
             .AutoRestartHostApplication = True,
             .ForceClosingHostApplication = True,
-            .InstallAsAdmin = Settings.Updates.UseAdminRightsForUpdates,
+            .InstallAsAdmin = Settings.Network.UseAdminRightsForUpdates,
             .UpdateWindowBaseColor = StyleManager.MetroColorGeneratorParameters.BaseColor,
             .UpdateWindowCanvasColor = StyleManager.MetroColorGeneratorParameters.CanvasColor
         }

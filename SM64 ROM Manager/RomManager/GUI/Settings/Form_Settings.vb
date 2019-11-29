@@ -10,6 +10,7 @@ Imports Pilz.S3DFileParser
 Public Class Form_Settings
 
     Private finishedLoading As Boolean = False
+    Private ReadOnly crypter As New drsPwEnc.drsPwEnc
 
     Public Sub New()
         InitializeComponent()
@@ -50,13 +51,15 @@ Public Class Form_Settings
 
     Private Sub LoadMySettings()
         TextBoxX_EmulatorPatch.Text = Settings.General.EmulatorPath
-        SwitchButton_SearchUpdates.Value = Settings.Updates.AutoUpdates
+        SwitchButton_SearchUpdates.Value = Settings.Network.AutoUpdates
         ComboBox_DefaultValueType.SelectedIndex = Settings.General.IntegerValueMode
         ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex = Settings.AreaEditor.DefaultCameraMode
         ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = If(Settings.AreaEditor.DefaultWindowMode = FormWindowState.Maximized, 1, 0)
         TextBoxX_HexEditorCustomPath.Text = Settings.General.HexEditMode.CustomPath
         SwitchButton_UseLegacyCollisionDescriptions.Value = Settings.ModelConverter.UseLegacyCollisionDescriptions
         SwitchButton_TMForceUppercase.Value = Settings.TextManager.ForceUpperCaseForActAndLevelNames
+        TextBoxX_ProxyUsr.Text = Settings.Network.ProxyUsername
+        TextBoxX_ProxyPwd.Text = If(String.IsNullOrEmpty(Settings.Network.ProxyPasswordEncrypted), String.Empty, crypter.DecryptData(Settings.Network.ProxyPasswordEncrypted))
 
         Dim curLoaderModule As File3DLoaderModule = GetLoaderModuleFromID(Settings.FileParser.FileLoaderModule)
         For Each item As ComboItem In ComboBoxEx_LoaderModule.Items
@@ -116,7 +119,7 @@ Public Class Form_Settings
                 ComboBoxEx_NotifyOnRomChanges.SelectedIndex = 2
         End Select
 
-        Select Case Settings.Updates.MinimumUpdateChannel
+        Select Case Settings.Network.MinimumUpdateChannel
             Case Updating.Channels.Alpha
                 ComboBoxEx_UpdateLevel.SelectedIndex = 2
             Case Updating.Channels.Beta
@@ -131,13 +134,15 @@ Public Class Form_Settings
     Private Sub SaveMySettings()
         Settings.General.EmulatorPath = TextBoxX_EmulatorPatch.Text.Trim
         Settings.General.IntegerValueMode = ComboBox_DefaultValueType.SelectedIndex
-        Settings.Updates.AutoUpdates = SwitchButton_SearchUpdates.Value
+        Settings.Network.AutoUpdates = SwitchButton_SearchUpdates.Value
         Settings.AreaEditor.DefaultCameraMode = ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex
         Settings.AreaEditor.DefaultWindowMode = If(ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = 1, FormWindowState.Maximized, FormWindowState.Normal)
         Settings.FileParser.FileLoaderModule = GetLoaderIDFromModule(CType(ComboBoxEx_LoaderModule.SelectedItem, ComboItem).Tag)
         Settings.FileParser.FileExporterModule = GetExporterIDFromModule(CType(ComboBoxEx_ExporterModule.SelectedItem, ComboItem).Tag)
         Settings.ModelConverter.UseLegacyCollisionDescriptions = SwitchButton_UseLegacyCollisionDescriptions.Value
         Settings.TextManager.ForceUpperCaseForActAndLevelNames = SwitchButton_TMForceUppercase.Value
+        Settings.Network.ProxyUsername = TextBoxX_ProxyUsr.Text.Trim
+        Settings.Network.ProxyPasswordEncrypted = If(String.IsNullOrEmpty(TextBoxX_ProxyPwd.Text), String.Empty, crypter.EncryptData(TextBoxX_ProxyPwd.Text))
 
         Select Case ComboBoxEx1.SelectedIndex
             Case 0
@@ -177,11 +182,11 @@ Public Class Form_Settings
 
         Select Case ComboBoxEx_UpdateLevel.SelectedIndex
             Case 0
-                Settings.Updates.MinimumUpdateChannel = Updating.Channels.Stable
+                Settings.Network.MinimumUpdateChannel = Updating.Channels.Stable
             Case 1
-                Settings.Updates.MinimumUpdateChannel = Updating.Channels.Beta
+                Settings.Network.MinimumUpdateChannel = Updating.Channels.Beta
             Case 2
-                Settings.Updates.MinimumUpdateChannel = Updating.Channels.Alpha
+                Settings.Network.MinimumUpdateChannel = Updating.Channels.Alpha
         End Select
 
         Dim selLangItem As ComboItem = ComboBoxEx_Language.SelectedItem
@@ -235,7 +240,7 @@ Public Class Form_Settings
         End If
     End Sub
 
-    Private Sub ComboBoxEx_Language_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_Language.SelectedIndexChanged, ComboBoxEx_NotifyOnRomChanges.SelectedIndexChanged, ComboBoxEx_UpdateLevel.SelectedIndexChanged, SwitchButton_UseLegacyCollisionDescriptions.ValueChanged
+    Private Sub ComboBoxEx_Language_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_Language.SelectedIndexChanged, ComboBoxEx_NotifyOnRomChanges.SelectedIndexChanged, ComboBoxEx_UpdateLevel.SelectedIndexChanged, SwitchButton_UseLegacyCollisionDescriptions.ValueChanged, TextBoxX_ProxyUsr.TextChanged, TextBoxX_ProxyPwd.TextChanged
         EanbleRestartWarning()
     End Sub
 

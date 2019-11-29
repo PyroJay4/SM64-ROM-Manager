@@ -103,9 +103,9 @@ Public Class Settings
         End Get
     End Property
 
-    Public Shared ReadOnly Property Updates As UpdatesSettingsStruc
+    Public Shared ReadOnly Property Network As NetworkSettingsStruc
         Get
-            Return Instance.Updates
+            Return Instance.Network
         End Get
     End Property
 

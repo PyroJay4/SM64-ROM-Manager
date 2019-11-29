@@ -124,7 +124,7 @@
     <Compile Include="Settings\SubStruc\SubStruc\JobToDoType.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\JobToDoUrgency.vb" />
     <Compile Include="Settings\SubStruc\TextManagerSettingsStruc.vb" />
-    <Compile Include="Settings\SubStruc\UpdatesSettingsStruc.vb" />
+    <Compile Include="Settings\SubStruc\NetworkSettingsStruc.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
