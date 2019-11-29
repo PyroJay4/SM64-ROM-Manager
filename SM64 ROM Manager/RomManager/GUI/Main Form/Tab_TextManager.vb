@@ -4,6 +4,7 @@ Imports DevComponents.DotNetBar
 Imports DevComponents.Editors
 Imports SM64_ROM_Manager.EventArguments
 Imports SM64_ROM_Manager.My.Resources
+Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib
 
 Public Class Tab_TextManager
@@ -179,7 +180,7 @@ Public Class Tab_TextManager
 
     Private Sub SetGuiForTextTable(tableName As String)
         Dim groupInfo = TMController.GetTextGroupInfos(tableName)
-        Dim isUpperCase As Boolean = {"Acts", "Levels", "File Menu"}.Contains(groupInfo.name)
+        Dim isUpperCase As Boolean = Settings.TextManager.ForceUpperCaseForActAndLevelNames AndAlso {"Acts", "Levels", "File Menu"}.Contains(groupInfo.name)
         Dim isPreDefined As Boolean = {"Acts", "Levels", "File Menu", "Dialogs", "Ending", "Credits"}.Contains(groupInfo.name)
 
         Line_TM_Green.Visible = groupInfo.isDialogGroup
