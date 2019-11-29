@@ -1,6 +1,6 @@
 ﻿Public Class TextManagerSettingsStruc
 
-    Public Property ForceUpperCaseForActAndLevelNames
+    Public Property ForceUpperCaseForActAndLevelNames As Boolean
 
     Public Sub ResetValues()
         ForceUpperCaseForActAndLevelNames = True

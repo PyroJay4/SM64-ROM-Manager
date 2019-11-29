@@ -97,6 +97,18 @@ Public Class Settings
         End Get
     End Property
 
+    Public Shared ReadOnly Property TextManager As TextManagerSettingsStruc
+        Get
+            Return Instance.TextManager
+        End Get
+    End Property
+
+    Public Shared ReadOnly Property Updates As UpdatesSettingsStruc
+        Get
+            Return Instance.Updates
+        End Get
+    End Property
+
 #End Region
 
 End Class

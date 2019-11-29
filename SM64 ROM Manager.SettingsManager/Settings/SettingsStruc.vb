@@ -11,6 +11,7 @@ Public Class SettingsStruc
     Public Property ModelConverter As ModelConverterSettingsStruc
     Public Property JobsToDo As JobsToDoStruc
     Public Property TextManager As TextManagerSettingsStruc
+    Public Property Updates As UpdatesSettingsStruc
 
     Public Overrides Sub ResetValues()
         If AreaEditor Is Nothing Then AreaEditor = New AreaEditorSettingsStruc
@@ -29,6 +30,8 @@ Public Class SettingsStruc
         JobsToDo.Clear()
         If TextManager Is Nothing Then TextManager = New TextManagerSettingsStruc
         TextManager.ResetValues()
+        If Updates Is Nothing Then Updates = New UpdatesSettingsStruc
+        Updates.ResetValues()
     End Sub
 
 End Class
