@@ -15,7 +15,7 @@ Public Class Form_Settings
         InitializeComponent()
         UpdateAmbientColors
 
-        SuperTooltip1.SetSuperTooltip(SymbolBox1, New SuperTooltipInfo("Warning", "", "Some changes will completly affect only after a restart of the programm.", Nothing, Nothing, eTooltipColor.System, True, False, Nothing))
+        SuperTooltip1.SetSuperTooltip(PictureBox_Warning, New SuperTooltipInfo("Warning", "", "Some changes will completly affect only after a restart of the programm.", Nothing, Nothing, eTooltipColor.System, True, False, Nothing))
 
         For Each lm In GetAllLoaderModules()
             Dim item As New ComboItem With {
@@ -50,12 +50,13 @@ Public Class Form_Settings
 
     Private Sub LoadMySettings()
         TextBoxX_EmulatorPatch.Text = Settings.General.EmulatorPath
-        SwitchButton_SearchUpdates.Value = Settings.General.AutoUpdates
+        SwitchButton_SearchUpdates.Value = Settings.Updates.AutoUpdates
         ComboBox_DefaultValueType.SelectedIndex = Settings.General.IntegerValueMode
         ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex = Settings.AreaEditor.DefaultCameraMode
         ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = If(Settings.AreaEditor.DefaultWindowMode = FormWindowState.Maximized, 1, 0)
         TextBoxX_HexEditorCustomPath.Text = Settings.General.HexEditMode.CustomPath
         SwitchButton_UseLegacyCollisionDescriptions.Value = Settings.ModelConverter.UseLegacyCollisionDescriptions
+        SwitchButton_TMForceUppercase.Value = Settings.TextManager.ForceUpperCaseForActAndLevelNames
 
         Dim curLoaderModule As File3DLoaderModule = GetLoaderModuleFromID(Settings.FileParser.FileLoaderModule)
         For Each item As ComboItem In ComboBoxEx_LoaderModule.Items
@@ -115,7 +116,7 @@ Public Class Form_Settings
                 ComboBoxEx_NotifyOnRomChanges.SelectedIndex = 2
         End Select
 
-        Select Case Settings.General.MinimumUpdateChannel
+        Select Case Settings.Updates.MinimumUpdateChannel
             Case Updating.Channels.Alpha
                 ComboBoxEx_UpdateLevel.SelectedIndex = 2
             Case Updating.Channels.Beta
@@ -130,12 +131,13 @@ Public Class Form_Settings
     Private Sub SaveMySettings()
         Settings.General.EmulatorPath = TextBoxX_EmulatorPatch.Text.Trim
         Settings.General.IntegerValueMode = ComboBox_DefaultValueType.SelectedIndex
-        Settings.General.AutoUpdates = SwitchButton_SearchUpdates.Value
+        Settings.Updates.AutoUpdates = SwitchButton_SearchUpdates.Value
         Settings.AreaEditor.DefaultCameraMode = ComboBox_AreaEditor_DefaultCameraMode.SelectedIndex
         Settings.AreaEditor.DefaultWindowMode = If(ComboBox_AreaEditor_DefaultWindowMode.SelectedIndex = 1, FormWindowState.Maximized, FormWindowState.Normal)
         Settings.FileParser.FileLoaderModule = GetLoaderIDFromModule(CType(ComboBoxEx_LoaderModule.SelectedItem, ComboItem).Tag)
         Settings.FileParser.FileExporterModule = GetExporterIDFromModule(CType(ComboBoxEx_ExporterModule.SelectedItem, ComboItem).Tag)
         Settings.ModelConverter.UseLegacyCollisionDescriptions = SwitchButton_UseLegacyCollisionDescriptions.Value
+        Settings.TextManager.ForceUpperCaseForActAndLevelNames = SwitchButton_TMForceUppercase.Value
 
         Select Case ComboBoxEx1.SelectedIndex
             Case 0
@@ -175,11 +177,11 @@ Public Class Form_Settings
 
         Select Case ComboBoxEx_UpdateLevel.SelectedIndex
             Case 0
-                Settings.General.MinimumUpdateChannel = Updating.Channels.Stable
+                Settings.Updates.MinimumUpdateChannel = Updating.Channels.Stable
             Case 1
-                Settings.General.MinimumUpdateChannel = Updating.Channels.Beta
+                Settings.Updates.MinimumUpdateChannel = Updating.Channels.Beta
             Case 2
-                Settings.General.MinimumUpdateChannel = Updating.Channels.Alpha
+                Settings.Updates.MinimumUpdateChannel = Updating.Channels.Alpha
         End Select
 
         Dim selLangItem As ComboItem = ComboBoxEx_Language.SelectedItem
@@ -238,7 +240,7 @@ Public Class Form_Settings
     End Sub
 
     Private Sub EanbleRestartWarning()
-        If finishedLoading Then SymbolBox1.Visible = True
+        If finishedLoading Then PictureBox_Warning.Visible = True
     End Sub
 
     Private Sub ButtonX6_Click(sender As Object, e As EventArgs) Handles ButtonX6.Click

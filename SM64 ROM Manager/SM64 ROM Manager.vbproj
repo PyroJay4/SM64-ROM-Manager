@@ -1035,6 +1035,7 @@
     <None Include="Resources\icons8_screenshot_32px.png" />
     <None Include="Resources\icons8_fit_to_width_32px.png" />
     <None Include="Resources\btn_donateCC_LG.gif" />
+    <None Include="Resources\icons8_error_16px.png" />
     <Content Include="RomManager\Others\RomMap.txt" />
   </ItemGroup>
   <ItemGroup>
