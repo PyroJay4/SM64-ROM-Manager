@@ -1150,7 +1150,7 @@
       {
         "Value": "2",
         "Name": "Hidden Objects"
-      },
+      }
     ],
     "BP3 Name": "",
     "BP4 Name": ""
@@ -1172,7 +1172,7 @@
       {
         "Value": "2",
         "Name": "Hidden Objects"
-      },
+      }
     ],
     "BP3 Name": "",
     "BP4 Name": ""
@@ -1953,7 +1953,7 @@
       },
       {
         "Value": "5",
-        "Name": "Five Coins"
+        "Name": "Three Coins"
       },
       {
         "Value": "6",
@@ -3368,7 +3368,7 @@
       {
         "Value": "2",
         "Name": "Low"
-      },
+      }
     ],
     "BP3 Name": "",
     "BP4 Name": ""
@@ -4249,7 +4249,7 @@
     "BP2 Entries": [
       {
         "Value": "0",
-        "Name": "BitDW 1",
+        "Name": "BitDW 1"
       },
       {
         "Value": "1",
@@ -4296,7 +4296,7 @@
       {
         "Value": "1",
         "Name": "BitDW 1"
-      },
+      }
     ],
     "BP3 Name": "",
     "BP4 Name": ""
@@ -4450,7 +4450,7 @@
       {
         "Value": "1",
         "Name": "Fast"
-      },
+      }
     ],
     "BP3 Name": "",
     "BP4 Name": ""
@@ -4476,7 +4476,7 @@
       {
         "Value": "1",
         "Name": "Type 1"
-      },
+      }
     ],
     "BP3 Name": "Disable Coins",
     "BP4 Name": ""
@@ -4517,7 +4517,7 @@
       {
         "Value": "3",
         "Name": "Fast, Clockwise"
-      },
+      }
     ],
     "BP2 Name": "Collision",
     "BP2 Entries": [
@@ -4528,7 +4528,7 @@
       {
         "Value": "1",
         "Name": "RR 1"
-      },
+      }
     ],
     "BP3 Name": "",
     "BP4 Name": ""
