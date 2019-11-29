@@ -13,7 +13,7 @@ Imports nUpdate.Core
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("Pilzinsel64")>
 <Assembly: AssemblyProduct("SM64 ROM Manager")>
-<Assembly: AssemblyCopyright("Copyright © Pilzinsel64 2018 - 2019")>
+<Assembly: AssemblyCopyright("Copyright © Pilzinsel64 2017 - 2020")>
 <Assembly: AssemblyTrademark("All rights reserved.")>
 
 <Assembly: ComVisible(False)>
@@ -32,4 +32,4 @@ Imports nUpdate.Core
 ' übernehmen, indem Sie "*" eingeben:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.1.1.0")>
+<Assembly: AssemblyVersion("1.2.0.0")>
