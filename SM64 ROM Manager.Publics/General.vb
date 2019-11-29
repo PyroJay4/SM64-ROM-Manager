@@ -120,6 +120,16 @@ Public Module General
     End Function
 #End If
 
+    Public Sub SetDefaultProxyAuthentification()
+        If Not String.IsNullOrEmpty(Settings.Network.ProxyUsername) OrElse Not String.IsNullOrEmpty(Settings.Network.ProxyPasswordEncrypted) Then
+            WebRequest.DefaultWebProxy.Credentials =
+                New NetworkCredential(Settings.Network.ProxyUsername,
+                                      If(String.IsNullOrEmpty(Settings.Network.ProxyPasswordEncrypted), String.Empty, crypter.DecryptData(Settings.Network.ProxyPasswordEncrypted)))
+        Else
+            WebRequest.DefaultWebProxy.Credentials = Nothing
+        End If
+    End Sub
+
     Public Sub DoDefaultInitsAfterApplicationStartup()
 #If RelMono Then
         'Set server certification validation callback
@@ -130,11 +140,7 @@ Public Module General
         Settings.SettingsConfigFilePath = Path.Combine(MyDataPath, "Settings.json")
 
         'Set proxy settings
-        If Not String.IsNullOrEmpty(Settings.Network.ProxyUsername) OrElse Not String.IsNullOrEmpty(Settings.Network.ProxyPasswordEncrypted) Then
-            WebRequest.DefaultWebProxy.Credentials =
-                New NetworkCredential(Settings.Network.ProxyUsername,
-                                      If(String.IsNullOrEmpty(Settings.Network.ProxyPasswordEncrypted), String.Empty, crypter.DecryptData(Settings.Network.ProxyPasswordEncrypted)))
-        End If
+        SetDefaultProxyAuthentification()
 
         'Set Style
         SetVisualTheme()

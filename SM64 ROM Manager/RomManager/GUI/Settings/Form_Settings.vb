@@ -47,6 +47,7 @@ Public Class Form_Settings
 
     Private Sub Form_Settings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         SaveMySettings()
+        PostSaveSettings
     End Sub
 
     Private Sub LoadMySettings()
@@ -203,6 +204,10 @@ Public Class Form_Settings
         Next
     End Sub
 
+    Private Sub PostSaveSettings()
+        SetDefaultProxyAuthentification()
+    End Sub
+
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
         Dim frm As New LevelEditorInputManager
         frm.ShowDialog()
@@ -240,7 +245,7 @@ Public Class Form_Settings
         End If
     End Sub
 
-    Private Sub ComboBoxEx_Language_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_Language.SelectedIndexChanged, ComboBoxEx_NotifyOnRomChanges.SelectedIndexChanged, ComboBoxEx_UpdateLevel.SelectedIndexChanged, SwitchButton_UseLegacyCollisionDescriptions.ValueChanged, TextBoxX_ProxyUsr.TextChanged, TextBoxX_ProxyPwd.TextChanged
+    Private Sub ComboBoxEx_Language_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxEx_Language.SelectedIndexChanged, ComboBoxEx_NotifyOnRomChanges.SelectedIndexChanged, ComboBoxEx_UpdateLevel.SelectedIndexChanged, SwitchButton_UseLegacyCollisionDescriptions.ValueChanged
         EanbleRestartWarning()
     End Sub
 
