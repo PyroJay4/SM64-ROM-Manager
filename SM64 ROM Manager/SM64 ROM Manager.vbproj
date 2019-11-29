@@ -711,6 +711,9 @@
       <DependentUpon>TextureEditor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\Form_AddNewLevel.de.resx">
+      <DependentUpon>Form_AddNewLevel.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\ObjectBankDataEditor.resx">
       <DependentUpon>ObjectBankDataEditor.vb</DependentUpon>
     </EmbeddedResource>

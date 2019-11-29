@@ -128,7 +128,7 @@ Public Class RomManager
         'SetSegBank(&H2, &H108A40, &H114750)
         SetSegBank(&H2, &H803156, 0) 'Text Table??
 
-        'LoadRomConfig()
+        LoadRomConfig()
 
         LoadDictionaryUpdatePatches()
     End Sub
@@ -263,7 +263,7 @@ Public Class RomManager
                     PatchClass.UpdateChecksum(RomFile)
 
             'Write Rom.config
-            'SaveRomConfig()
+            SaveRomConfig()
 
             RaiseAfterRomSave()
         End If
@@ -573,11 +573,16 @@ Public Class RomManager
     ''' <param name="level">The Level where to change the Level ID.</param>
     ''' <param name="newLevelID">The new Level ID.</param>
     ''' <param name="EnableActSelector">Activate/Deactivate the Act Selector fot the Level.</param>
-    Public Sub ChangeLevelID(level As Levels.Level, newLevelID As UShort, Optional EnableActSelector As Boolean? = Nothing)
-        levelIDsToReset.Add(level.LevelID)
-        level.LevelID = newLevelID
-        If EnableActSelector IsNot Nothing Then level.ActSelector = EnableActSelector
-    End Sub
+    Public Function ChangeLevelID(level As Levels.Level, newLevelID As UShort, Optional EnableActSelector As Boolean? = Nothing) As Boolean
+        If level.LevelID <> newLevelID Then
+            levelIDsToReset.Add(level.LevelID)
+            level.LevelID = newLevelID
+            If EnableActSelector IsNot Nothing Then level.ActSelector = EnableActSelector
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
     ''' <summary>
     ''' Loads the Music from the ROM.

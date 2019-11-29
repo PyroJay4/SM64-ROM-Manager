@@ -34,6 +34,7 @@ Imports SM64Lib.EventArguments
 Imports SM64_ROM_Manager.Updating
 Imports SM64_ROM_Manager.Updating.Client.GUI
 Imports SM64_ROM_Manager.PatchScripts
+Imports SM64Lib.Configuration
 
 Public Class MainController
 
@@ -62,6 +63,7 @@ Public Class MainController
     Public Event LevelAreaAdded(e As LevelAreaEventArgs)
     Public Event LevelAreaRemoved(e As LevelAreaEventArgs)
     Public Event LevelIDChanged(e As LevelEventArgs)
+    Public Event LevelCustomNameChanged(e As LevelEventArgs)
     Public Event LevelBackgroundModeChanged(e As LevelBackgroundModeChangedEventArgs)
     Public Event LevelBackgroundImageChanged(e As LevelBackgroundImageChangedEventArgs)
     Public Event LevelAreaBackgroundModeChanged(e As LevelAreaBackgroundModeChangedEventArgs)
@@ -647,6 +649,18 @@ Public Class MainController
         End If
     End Function
 
+    Private Function OpenValueInputDialog(titel As String, input As String) As String
+        Dim inputDialog As New ValueInputDialog
+        inputDialog.InfoLabel.Text = titel
+        inputDialog.ValueTextBox.Text = input
+
+        If inputDialog.ShowDialog = DialogResult.OK Then
+            Return inputDialog.ValueTextBox.Text
+        Else
+            Return Nothing
+        End If
+    End Function
+
     'R o m   W a t c h e r
 
     Private Sub RomWatcher_Changed(sender As Object, e As FileSystemEventArgs) Handles RomWatcher.Changed
@@ -867,6 +881,39 @@ Public Class MainController
         Return RomManager.Levels.Select(Function(n) n.LevelID)
     End Function
 
+    Public Function HasLevelCustomName(levelIndex As Integer) As String
+        Dim lvl As Level = GetLevelAndArea(levelIndex).level
+        Return HasLevelCustomName(lvl.LevelID)
+    End Function
+
+    Public Function HasLevelCustomName(levelID As UShort) As String
+        Return RomManager.RomConfig.LevelConfigs.ContainsKey(levelID)
+    End Function
+
+    Public Function GetLevelCustomName(levelIndex As Integer) As String
+        Dim lvl As Level = GetLevelAndArea(levelIndex).level
+        Return GetLevelCustomName(lvl.LevelID)
+    End Function
+
+    Public Function GetLevelCustomName(levelID As UShort) As String
+        Return RomManager.RomConfig.LevelConfigs(levelID).LevelName
+    End Function
+
+    Public Sub SetLevelCustomName(levelID As UShort, newName As String)
+        If String.IsNullOrEmpty(newName) Then
+            RomManager.RomConfig.LevelConfigs.RemoveIfContainsKey(levelID)
+        ElseIf RomManager.RomConfig.LevelConfigs.ContainsKey(levelID) Then
+            RomManager.RomConfig.LevelConfigs(levelID).LevelName = newName
+        Else
+            RomManager.RomConfig.LevelConfigs.Add(levelID, New LevelConfig With {.LevelName = newName})
+        End If
+    End Sub
+
+    Public Function GetLevelName(levelIndex As Integer) As String
+        Dim lvl As Level = GetLevelAndArea(levelIndex).level
+        Return GetLevelName(lvl.LevelID)
+    End Function
+
     Public Function GetLevelName(levelID As UShort) As String
         Return RomManager.LevelInfoData.FirstOrDefault(Function(n) n.ID = levelID).Name
     End Function
@@ -876,7 +923,7 @@ Public Class MainController
     End Function
 
     Public Sub AddNewLevel()
-        Dim selLvl As LevelInfoDataTabelList.Level = OpenLevelSelectDialog()
+        Dim selLvl = OpenLevelSelectDialog()
 
         If selLvl IsNot Nothing Then
             Dim lvl As Level = RomManager.AddLevel(selLvl.ID)
@@ -1238,6 +1285,10 @@ Public Class MainController
         End If
     End Sub
 
+    Public Function GetLevelID(levelIndex As Integer)
+        Return GetLevelAndArea(levelIndex).level.LevelID
+    End Function
+
     Public Function GetLevelSettings(levelIndex As Integer) As (enableActSelector As Boolean, enableHardcodedCamera As Boolean, hasDefStartPos As Boolean, defStartPosAreaID As Byte, defStartPosYRot As Short, bgMode As Integer, bgImage As Image, bgOriginal As BackgroundIDs, areasCount As Byte)
         Dim lvl As Level = GetLevelAndArea(levelIndex).level
         Dim defPosCmd As LevelscriptCommand = lvl.GetDefaultPositionCmd
@@ -1289,11 +1340,33 @@ Public Class MainController
         Dim lvl As Level = GetLevelAndArea(levelIndex).level
 
         If lvl IsNot Nothing Then
-            Dim selLevel As LevelInfoDataTabelList.Level = OpenLevelSelectDialog()
-            If selLevel IsNot Nothing Then
-                RomManager.ChangeLevelID(lvl, selLevel.ID, selLevel.Type)
-                SetLevelscriptNeedToSave(lvl)
+            Dim selLvl = OpenLevelSelectDialog()
+            If selLvl IsNot Nothing Then
+                If RomManager.ChangeLevelID(lvl, selLvl.ID, selLvl.Type) Then
+                    SetLevelscriptNeedToSave(lvl)
+                End If
                 RaiseEvent LevelIDChanged(New LevelEventArgs(levelIndex, lvl.LevelID))
+            End If
+        End If
+    End Sub
+
+    Public Sub ChangeLevelCustomName(levelIndex As Integer)
+        Dim lvl As Level = GetLevelAndArea(levelIndex).level
+
+        If lvl IsNot Nothing Then
+            Dim curName As String
+
+            If HasLevelCustomName(lvl.LevelID) Then
+                curName = GetLevelCustomName(lvl.LevelID)
+            Else
+                curName = String.Empty
+            End If
+
+            Dim newName As String = OpenValueInputDialog("Levelname", curName)
+
+            If newName <> curName Then
+                SetLevelCustomName(lvl.LevelID, newName)
+                RaiseEvent LevelCustomNameChanged(New LevelEventArgs(levelIndex, lvl.LevelID))
             End If
         End If
     End Sub

@@ -150,7 +150,7 @@ Public Class Tab_LevelManager
         RemoveLevelFromList(e.LevelIndex)
     End Sub
 
-    Private Sub Controller_LevelIDChanged(e As LevelEventArgs) Handles Controller.LevelIDChanged
+    Private Sub Controller_LevelIDAndCustomNameChanged(e As LevelEventArgs) Handles Controller.LevelIDChanged, Controller.LevelCustomNameChanged
         UpdateLevelItemInList(e.LevelIndex, e.LevelID)
     End Sub
 
@@ -304,7 +304,7 @@ Public Class Tab_LevelManager
         'Load all Levels
         For Each lvlID As UShort In levelIDs
             Dim btn As New ButtonItem With {
-                .Text = Controller.GetLevelName(lvlID)
+                .Text = GetLevelDisplayName(lvlID)
             }
 
             'Add event to popup 'More'
@@ -318,9 +318,21 @@ Public Class Tab_LevelManager
         ListBoxAdv_LM_Levels.Refresh()
     End Sub
 
+    Private Function GetLevelDisplayName(lvlID As UShort) As String
+        Dim lvlName As String
+
+        If Controller.HasLevelCustomName(lvlID) Then
+            lvlName = Controller.GetLevelCustomName(lvlID)
+        Else
+            lvlName = Controller.GetLevelName(lvlID)
+        End If
+
+        Return lvlName
+    End Function
+
     Private Sub UpdateLevelItemInList(levelIndex As Integer, levelID As UShort)
         Dim item As ButtonItem = ListBoxAdv_LM_Levels.Items(levelIndex)
-        item.Text = Controller.GetLevelName(levelID)
+        item.Text = GetLevelDisplayName(levelID)
         ListBoxAdv_LM_Levels.Refresh()
     End Sub
 
@@ -556,6 +568,9 @@ Public Class Tab_LevelManager
                 If info.bgMode = 1 Then
                     PictureBox_BGImage.Image = info.bgImage
                 End If
+
+                'Load Level Name
+                LabelX_TargetLevel.Text = Controller.GetLevelName(levelIndex)
 
                 Button_LM_AddArea.Enabled = info.areasCount <> 8
                 Controller.StatusText = String.Empty
@@ -822,4 +837,7 @@ Public Class Tab_LevelManager
         Controller.ImportLevelArea(CurrentLevelIndex)
     End Sub
 
+    Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
+        Controller.ChangeLevelCustomName(CurrentLevelIndex)
+    End Sub
 End Class

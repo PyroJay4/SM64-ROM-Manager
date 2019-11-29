@@ -252,6 +252,9 @@
   <data name="ButtonItem20.Text" xml:space="preserve">
     <value>Change Level ID</value>
   </data>
+  <data name="ButtonItem1.Text" xml:space="preserve">
+    <value>Change Level Name</value>
+  </data>
   <data name="ButtonItem24.Text" xml:space="preserve">
     <value>Change Size of Bank 0x19</value>
   </data>
@@ -1122,7 +1125,7 @@
     <value>TabControl_LM_Area</value>
   </data>
   <data name="&gt;&gt;TabControlPanel6.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="Line2.Location" type="System.Drawing.Point, System.Drawing">
     <value>167, 4</value>
@@ -1383,7 +1386,7 @@
     <value>TabControl_LM_Area</value>
   </data>
   <data name="&gt;&gt;TabControlPanel5.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>8</value>
   </data>
   <data name="TabControl_LM_Area.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1415,14 +1418,62 @@
   <data name="TabControl_LM_Level.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="LabelX_TargetLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 4</value>
+  </data>
+  <data name="LabelX_TargetLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 20</value>
+  </data>
+  <data name="LabelX_TargetLevel.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="LabelX_TargetLevel.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;LabelX_TargetLevel.Name" xml:space="preserve">
+    <value>LabelX_TargetLevel</value>
+  </data>
+  <data name="&gt;&gt;LabelX_TargetLevel.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;LabelX_TargetLevel.Parent" xml:space="preserve">
+    <value>TabControlPanel1</value>
+  </data>
+  <data name="&gt;&gt;LabelX_TargetLevel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LabelX12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 4</value>
+  </data>
+  <data name="LabelX12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 20</value>
+  </data>
+  <data name="LabelX12.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="LabelX12.Text" xml:space="preserve">
+    <value>Target Level:</value>
+  </data>
+  <data name="&gt;&gt;LabelX12.Name" xml:space="preserve">
+    <value>LabelX12</value>
+  </data>
+  <data name="&gt;&gt;LabelX12.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;LabelX12.Parent" xml:space="preserve">
+    <value>TabControlPanel1</value>
+  </data>
+  <data name="&gt;&gt;LabelX12.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="PictureBox_BGImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="PictureBox_BGImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 109</value>
+    <value>163, 136</value>
   </data>
   <data name="PictureBox_BGImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 160</value>
+    <value>160, 133</value>
   </data>
   <data name="PictureBox_BGImage.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -1440,7 +1491,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;PictureBox_BGImage.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="ComboBoxEx_LM_BGMode.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1455,7 +1506,7 @@
     <value>No Image</value>
   </data>
   <data name="ComboBoxEx_LM_BGMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 82</value>
+    <value>163, 108</value>
   </data>
   <data name="ComboBoxEx_LM_BGMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 21</value>
@@ -1473,10 +1524,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;ComboBoxEx_LM_BGMode.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="LabelX15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 82</value>
+    <value>5, 108</value>
   </data>
   <data name="LabelX15.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 20</value>
@@ -1497,10 +1548,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX15.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="LabelX3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 4</value>
+    <value>5, 30</value>
   </data>
   <data name="LabelX3.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 20</value>
@@ -1521,10 +1572,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="SwitchButton_LM_ActSelector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 4</value>
+    <value>163, 30</value>
   </data>
   <data name="SwitchButton_LM_ActSelector.OffText" xml:space="preserve">
     <value>Off</value>
@@ -1548,10 +1599,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;SwitchButton_LM_ActSelector.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="LabelX57.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 56</value>
+    <value>5, 82</value>
   </data>
   <data name="LabelX57.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 20</value>
@@ -1572,10 +1623,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX57.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="SwitchButton_LM_HardcodedCameraSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 30</value>
+    <value>163, 56</value>
   </data>
   <data name="SwitchButton_LM_HardcodedCameraSettings.OffText" xml:space="preserve">
     <value>Off</value>
@@ -1599,10 +1650,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;SwitchButton_LM_HardcodedCameraSettings.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="LabelX4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 30</value>
+    <value>5, 56</value>
   </data>
   <data name="LabelX4.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 20</value>
@@ -1623,7 +1674,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX4.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="ComboBox_LM_LevelBG.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1662,7 +1713,7 @@
     <value>Purple Clouds</value>
   </data>
   <data name="ComboBox_LM_LevelBG.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 82</value>
+    <value>273, 108</value>
   </data>
   <data name="ComboBox_LM_LevelBG.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 21</value>
@@ -1680,10 +1731,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;ComboBox_LM_LevelBG.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="LabelX24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>335, 56</value>
+    <value>335, 82</value>
   </data>
   <data name="LabelX24.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 20</value>
@@ -1704,10 +1755,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX24.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="NUD_LM_DefaultPositionYRotation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 57</value>
+    <value>263, 83</value>
   </data>
   <data name="NUD_LM_DefaultPositionYRotation.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 20</value>
@@ -1725,10 +1776,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;NUD_LM_DefaultPositionYRotation.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="LabelX25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 56</value>
+    <value>195, 82</value>
   </data>
   <data name="LabelX25.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 20</value>
@@ -1749,10 +1800,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;LabelX25.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="NUD_LM_DefaultPositionAreaID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>384, 57</value>
+    <value>384, 83</value>
   </data>
   <data name="NUD_LM_DefaultPositionAreaID.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 20</value>
@@ -1770,10 +1821,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;NUD_LM_DefaultPositionAreaID.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="Button_LM_LoadLevelBG.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 81</value>
+    <value>273, 107</value>
   </data>
   <data name="Button_LM_LoadLevelBG.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 23</value>
@@ -1797,10 +1848,10 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;Button_LM_LoadLevelBG.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="Button_LM_SetUpStartPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 55</value>
+    <value>163, 81</value>
   </data>
   <data name="Button_LM_SetUpStartPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 23</value>
@@ -1818,7 +1869,7 @@
     <value>TabControlPanel1</value>
   </data>
   <data name="&gt;&gt;Button_LM_SetUpStartPosition.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="TabControlPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1979,6 +2030,12 @@
   <data name="&gt;&gt;ButtonItem20.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;ButtonItem1.Name" xml:space="preserve">
+    <value>ButtonItem1</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;ButtonItem24.Name" xml:space="preserve">
     <value>ButtonItem24</value>
   </data>
@@ -2025,36 +2082,6 @@
     <value>TabItem4</value>
   </data>
   <data name="&gt;&gt;TabItem4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem9.Name" xml:space="preserve">
-    <value>ButtonItem9</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem9.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem13.Name" xml:space="preserve">
-    <value>ButtonItem13</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem13.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_ExportVisualMap.Name" xml:space="preserve">
-    <value>ButtonItem_ExportVisualMap</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_ExportVisualMap.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_ExportCollisionMap.Name" xml:space="preserve">
-    <value>ButtonItem_ExportCollisionMap</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_ExportCollisionMap.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;TabItem5.Name" xml:space="preserve">
-    <value>TabItem5</value>
-  </data>
-  <data name="&gt;&gt;TabItem5.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ColumnHeaderA1.Name" xml:space="preserve">
@@ -2109,6 +2136,36 @@
     <value>TabItem6</value>
   </data>
   <data name="&gt;&gt;TabItem6.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem9.Name" xml:space="preserve">
+    <value>ButtonItem9</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem9.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem13.Name" xml:space="preserve">
+    <value>ButtonItem13</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem13.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_ExportVisualMap.Name" xml:space="preserve">
+    <value>ButtonItem_ExportVisualMap</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_ExportVisualMap.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_ExportCollisionMap.Name" xml:space="preserve">
+    <value>ButtonItem_ExportCollisionMap</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_ExportCollisionMap.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;TabItem5.Name" xml:space="preserve">
+    <value>TabItem5</value>
+  </data>
+  <data name="&gt;&gt;TabItem5.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboItem1.Name" xml:space="preserve">

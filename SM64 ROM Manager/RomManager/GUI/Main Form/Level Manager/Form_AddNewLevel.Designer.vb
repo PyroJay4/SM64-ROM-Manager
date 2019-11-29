@@ -34,57 +34,44 @@ Partial Class LevelSelectorDialog
         'Button_Cancel
         '
         Me.Button_Cancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.Button_Cancel, "Button_Cancel")
         Me.Button_Cancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Button_Cancel.FocusCuesEnabled = False
-        Me.Button_Cancel.Location = New System.Drawing.Point(80, 56)
         Me.Button_Cancel.Name = "Button_Cancel"
-        Me.Button_Cancel.Size = New System.Drawing.Size(60, 23)
         Me.Button_Cancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Button_Cancel.TabIndex = 0
-        Me.Button_Cancel.Text = "Cancel"
         '
         'LabelX10
         '
+        resources.ApplyResources(Me.LabelX10, "LabelX10")
         '
         '
         '
         Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX10.Location = New System.Drawing.Point(3, 3)
         Me.LabelX10.Name = "LabelX10"
-        Me.LabelX10.Size = New System.Drawing.Size(145, 20)
         Me.LabelX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.LabelX10.TabIndex = 98
-        Me.LabelX10.Text = "Level to overwrite:"
         '
         'Button_Add
         '
         Me.Button_Add.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.Button_Add, "Button_Add")
         Me.Button_Add.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_Add.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Button_Add.FocusCuesEnabled = False
-        Me.Button_Add.Location = New System.Drawing.Point(3, 56)
         Me.Button_Add.Name = "Button_Add"
-        Me.Button_Add.Size = New System.Drawing.Size(71, 23)
         Me.Button_Add.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Button_Add.TabIndex = 100
-        Me.Button_Add.Text = "Okay"
         '
         'ComboBox_Level
         '
+        resources.ApplyResources(Me.ComboBox_Level, "ComboBox_Level")
         Me.ComboBox_Level.DisplayMember = "Text"
         Me.ComboBox_Level.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBox_Level.DropDownHeight = 150
         Me.ComboBox_Level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_Level.ForeColor = System.Drawing.Color.Black
         Me.ComboBox_Level.FormattingEnabled = True
-        Me.ComboBox_Level.IntegralHeight = False
-        Me.ComboBox_Level.ItemHeight = 15
-        Me.ComboBox_Level.Location = New System.Drawing.Point(3, 29)
         Me.ComboBox_Level.Name = "ComboBox_Level"
-        Me.ComboBox_Level.Size = New System.Drawing.Size(137, 21)
         Me.ComboBox_Level.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ComboBox_Level.TabIndex = 103
         '
         'Panel1
         '
@@ -93,28 +80,21 @@ Partial Class LevelSelectorDialog
         Me.Panel1.Controls.Add(Me.ComboBox_Level)
         Me.Panel1.Controls.Add(Me.Button_Cancel)
         Me.Panel1.Controls.Add(Me.Button_Add)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(143, 82)
-        Me.Panel1.TabIndex = 104
         '
         'LevelSelectorDialog
         '
         Me.AcceptButton = Me.Button_Add
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Button_Cancel
-        Me.ClientSize = New System.Drawing.Size(143, 82)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "LevelSelectorDialog"
         Me.ShowIcon = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "New Level"
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         Me.Panel1.ResumeLayout(False)

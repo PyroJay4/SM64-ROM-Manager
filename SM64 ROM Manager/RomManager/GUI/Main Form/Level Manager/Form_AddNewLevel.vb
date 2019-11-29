@@ -43,4 +43,5 @@ Public Class LevelSelectorDialog
             Next
         End With
     End Sub
+
 End Class
