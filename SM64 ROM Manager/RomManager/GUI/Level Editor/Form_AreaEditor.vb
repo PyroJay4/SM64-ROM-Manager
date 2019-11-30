@@ -27,6 +27,7 @@ Imports SM64Lib.Data
 Imports System.Runtime.InteropServices
 Imports SM64Lib.SegmentedBanking
 Imports SM64Lib.N64Graphics
+Imports SM64_ROM_Manager.My.Resources
 
 Namespace LevelEditor
 
@@ -387,10 +388,10 @@ Namespace LevelEditor
 
         Friend Sub ButtonItem95_Click(sender As Object, e As EventArgs) Handles ButtonItem95.Click
             If RibbonControl1.Expanded Then
-                ButtonItem95.Symbol = "58831"
+                ButtonItem95.Image = MyIcons.icons8_expand_arrow_16px
                 RibbonControl1.Expanded = False
             Else
-                ButtonItem95.Symbol = "58830"
+                ButtonItem95.Image = MyIcons.icons8_collapse_arrow_16px
                 RibbonControl1.Expanded = True
             End If
             Settings.AreaEditor.RibbonControlExpanded = RibbonControl1.Expanded

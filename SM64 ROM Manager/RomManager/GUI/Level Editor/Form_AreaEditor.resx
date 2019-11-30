@@ -2636,7 +2636,7 @@
     <value>RibbonControl1</value>
   </data>
   <data name="&gt;&gt;RibbonPanel2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="RibbonBar23.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -6013,6 +6013,66 @@
   <data name="&gt;&gt;ButtonItem43.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;ItemContainer10.Name" xml:space="preserve">
+    <value>ItemContainer10</value>
+  </data>
+  <data name="&gt;&gt;ItemContainer10.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ItemContainer, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsEditCmd.Name" xml:space="preserve">
+    <value>ButtonX_WarpsEditCmd</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsEditCmd.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem69.Name" xml:space="preserve">
+    <value>ButtonItem69</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem69.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ItemContainer22.Name" xml:space="preserve">
+    <value>ItemContainer22</value>
+  </data>
+  <data name="&gt;&gt;ItemContainer22.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ItemContainer, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem29.Name" xml:space="preserve">
+    <value>ButtonItem29</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem29.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsRemove.Name" xml:space="preserve">
+    <value>ButtonX_WarpsRemove</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsRemove.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsAdd.Name" xml:space="preserve">
+    <value>ButtonX_WarpsAdd</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsAdd.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsAddConnectedWarp.Name" xml:space="preserve">
+    <value>ButtonX_WarpsAddConnectedWarp</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsAddConnectedWarp.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsAddPaintingWarp.Name" xml:space="preserve">
+    <value>ButtonX_WarpsAddPaintingWarp</value>
+  </data>
+  <data name="&gt;&gt;ButtonX_WarpsAddPaintingWarp.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_WarpsAddInstantWarp.Name" xml:space="preserve">
+    <value>ButtonItem_WarpsAddInstantWarp</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_WarpsAddInstantWarp.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;ItemContainer4.Name" xml:space="preserve">
     <value>ItemContainer4</value>
   </data>
@@ -6245,66 +6305,6 @@
     <value>ButtonItem86</value>
   </data>
   <data name="&gt;&gt;ButtonItem86.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ItemContainer10.Name" xml:space="preserve">
-    <value>ItemContainer10</value>
-  </data>
-  <data name="&gt;&gt;ItemContainer10.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ItemContainer, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsEditCmd.Name" xml:space="preserve">
-    <value>ButtonX_WarpsEditCmd</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsEditCmd.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem69.Name" xml:space="preserve">
-    <value>ButtonItem69</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem69.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ItemContainer22.Name" xml:space="preserve">
-    <value>ItemContainer22</value>
-  </data>
-  <data name="&gt;&gt;ItemContainer22.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ItemContainer, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem29.Name" xml:space="preserve">
-    <value>ButtonItem29</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem29.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsRemove.Name" xml:space="preserve">
-    <value>ButtonX_WarpsRemove</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsRemove.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsAdd.Name" xml:space="preserve">
-    <value>ButtonX_WarpsAdd</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsAdd.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsAddConnectedWarp.Name" xml:space="preserve">
-    <value>ButtonX_WarpsAddConnectedWarp</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsAddConnectedWarp.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsAddPaintingWarp.Name" xml:space="preserve">
-    <value>ButtonX_WarpsAddPaintingWarp</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_WarpsAddPaintingWarp.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_WarpsAddInstantWarp.Name" xml:space="preserve">
-    <value>ButtonItem_WarpsAddInstantWarp</value>
-  </data>
-  <data name="&gt;&gt;ButtonItem_WarpsAddInstantWarp.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ButtonItem36.Name" xml:space="preserve">
