@@ -10,7 +10,7 @@ Public Class UserRequestManager
             Await writer.WriteLineAsync(prop.Name)
 
             Select Case prop.Type
-                Case UserRequestPropertyType.Text
+                Case UserRequestPropertyType.Text, UserRequestPropertyType.LongText
                     Await writer.WriteLineAsync(prop.Value)
                 Case UserRequestPropertyType.Files
             End Select

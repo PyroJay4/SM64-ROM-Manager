@@ -16,7 +16,7 @@
 
     'C o n s t r u c t o r
 
-    Public Sub New(style As UserRequestPropertyStyle)
+    Public Sub New(style As UserRequestLayout)
         props.AddRange(style.Properties)
         UploadSettings = style.UploadSettings
     End Sub

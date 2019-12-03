@@ -479,4 +479,12 @@ Public Class MainForm
         Controller.OpenObjectBankDataEditor()
     End Sub
 
+    Private Sub ButtonItem_BugReport_Click(sender As Object, e As EventArgs) Handles ButtonItem_BugReport.Click
+        Controller.OpenBugReportDialog()
+    End Sub
+
+    Private Sub ButtonItem_FeatureRequest_Click(sender As Object, e As EventArgs) Handles ButtonItem_FeatureRequest.Click
+        Controller.OpenFeatureRequestDialog()
+    End Sub
+
 End Class

@@ -2,27 +2,43 @@
     "Properties":
     [
         {
-            "Name": "Category"
+            "Name": "Category",
+            "Type": "Text"
         },
         {
             "Name": "Titel",
-            "Description": "Please explain quickly what the problem is."
+            "Description": "Please explain quickly what the problem is.",
+            "Type": "Text"
         },
         {
             "Name": "Description",
-            "Description": "Please explain it very detailed, so I can easily reproduce this bug."
+            "Description": "Please explain it very detailed, so I can easily reproduce this bug.",
+            "Type": "LongText"
         },
         {
             "Name": "Version",
-            "Description": "e.g. \"Version 1.2.0.0 Beta 3\""
+            "Description": "e.g. \"Version 1.2.0.0 Beta 3\"",
+            "Type": "Text"
         },
         {
             "Name": "Error Messages",
-            "Description": "Have you got an error message?\nIf yes, copy the text of the message and past it here."
+            "Description": "Have you got an error message?\nIf yes, copy the text of the message and past it here.",
+            "Type": "LongText"
+        },
+        {
+            "Name": "Attachments",
+            "Description": "What I would need (if possible):\n- Your ROM File where this error/bug happend to (if it is deticted to your ROM)\n- Screenshots or other pictures if they are helpful",
+            "Type": "Files"
         },
         {
             "Name": "Contact",
-            "Description": "It would be good to know how you can be contacted.<br/>Write down your Discord#0000 or Skype Name or E-Mail Address."
+            "Description": "It would be good to know how you can be contacted.\nWrite down your Discord#0000 or Skype Name or E-Mail Address.",
+            "Type": "Text"
         }
-    ]
+    ],
+    "UploadSettings": {
+        "Link": "E/BWdsulKDhuPEQTjb0gpuK+HoZFLcB/FBI+ucec8BrYiwwa93KHUwPSviDO4VzB5QeZweN3vGEutvW4ZFnqmJDHoTx2dD3mU3eJ4dzJSiIQTFkwCPPsI2Sa+RK/bgXIkT5tqfAP4E4XFrPGnS6KiQ==",
+        "Username": "zu4GFfoXl32foAqn9QozSFRb3zxhc2wKxhuRtN0UNlCDh6hh+VcoCyHmMkUMwdBLekgvYlrWZ9aFUEklShvFlg==",
+        "Password": "vO9sItGM108ChmLTJZnUpsYw/EAQyHZCslyJaG8QKHccIYKTYlqmAA2b0V9IyTabOH2m4IvdkxD+Kvim6QumUg=="
+    }
 }

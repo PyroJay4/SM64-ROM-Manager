@@ -35,6 +35,8 @@ Imports SM64_ROM_Manager.Updating
 Imports SM64_ROM_Manager.Updating.Client.GUI
 Imports SM64_ROM_Manager.PatchScripts
 Imports SM64Lib.Configuration
+Imports SM64_ROM_Manager.UserRequests.GUI
+Imports SM64_ROM_Manager.UserRequests
 
 Public Class MainController
 
@@ -660,6 +662,16 @@ Public Class MainController
             Return Nothing
         End If
     End Function
+
+    Public Sub OpenFeatureRequestDialog()
+        Dim frm As New UserRequestDialog(UserRequestLayout.LoadFrom(Path.Combine(MyUserRequestsPath, "FeatureRequest.json")))
+        frm.Show()
+    End Sub
+
+    Public Sub OpenBugReportDialog()
+        Dim frm As New UserRequestDialog(UserRequestLayout.LoadFrom(Path.Combine(MyUserRequestsPath, "BugReport.json")))
+        frm.Show()
+    End Sub
 
     'R o m   W a t c h e r
 
