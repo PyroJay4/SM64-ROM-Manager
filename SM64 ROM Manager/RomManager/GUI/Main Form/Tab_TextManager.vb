@@ -180,7 +180,7 @@ Public Class Tab_TextManager
 
     Private Sub SetGuiForTextTable(tableName As String)
         Dim groupInfo = TMController.GetTextGroupInfos(tableName)
-        Dim isUpperCase As Boolean = Settings.TextManager.ForceUpperCaseForActAndLevelNames AndAlso {"Acts", "Levels", "File Menu"}.Contains(groupInfo.name)
+        Dim isUpperCase As Boolean = TMController.ForceUppercaseForActAndLevelNames AndAlso {"Acts", "Levels", "File Menu"}.Contains(groupInfo.name)
         Dim isPreDefined As Boolean = {"Acts", "Levels", "File Menu", "Dialogs", "Ending", "Credits"}.Contains(groupInfo.name)
 
         Line_TM_Green.Visible = groupInfo.isDialogGroup
@@ -188,22 +188,7 @@ Public Class Tab_TextManager
         Line_TM_Warning2.Visible = groupInfo.isDialogGroup
         GroupPanel_TM_DialogProps.Visible = groupInfo.isDialogGroup
         TextBoxX_TM_TextEditor.CharacterCasing = If(isUpperCase, CharacterCasing.Upper, CharacterCasing.Normal)
-
-        Dim elementHight As Integer = ListViewEx_TM_TableEntries.Height
-        If groupInfo.isDialogGroup Then
-            elementHight -= GroupPanel_TM_DialogProps.Height + 3
-        End If
-        TextBoxX_TM_TextEditor.Height = elementHight
-        Line_TM_Green.Height = elementHight - 1
-        Line_TM_Warning1.Height = elementHight - 1
-        Line_TM_Warning2.Height = elementHight - 1
-
         Bar_AddRemoveItems.Visible = Not isPreDefined
-        If isPreDefined OrElse Not groupInfo.isTableGroup Then
-            TabStrip_TextTable.Width = TextBoxX_TM_TextEditor.Location.X - 6
-        Else
-            TabStrip_TextTable.Width = Bar_AddRemoveItems.Location.X - 6
-        End If
 
         If IsAnyTextItemSelected() Then
             LoadTableEntries()
@@ -342,4 +327,17 @@ Public Class Tab_TextManager
         TextBoxX_TM_TextEditor.Paste(sender.Tag)
     End Sub
 
+    Private Sub TextBoxX_TM_TextEditor_SizeChanged(sender As Object, e As EventArgs) Handles TextBoxX_TM_TextEditor.SizeChanged
+        Dim top As Integer = TextBoxX_TM_TextEditor.Top
+        Dim height As Integer = TextBoxX_TM_TextEditor.Height
+
+        Line_TM_Green.Top = top
+        Line_TM_Green.Height = height
+
+        Line_TM_Warning1.Top = top
+        Line_TM_Warning1.Height = height
+
+        Line_TM_Warning2.Top = top
+        Line_TM_Warning2.Height = height
+    End Sub
 End Class

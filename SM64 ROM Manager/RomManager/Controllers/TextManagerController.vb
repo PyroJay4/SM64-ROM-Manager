@@ -33,6 +33,7 @@ Public Class TextManagerController
     'P r o p e r t i e s
 
     Public ReadOnly Property MyTextProfiles As New MyTextProfileInfoManager
+    Public Property ForceUppercaseForActAndLevelNames As Boolean = True
 
     Public ReadOnly Property RomManager As RomManager
         Get

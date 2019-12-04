@@ -67,15 +67,20 @@ Partial Class Tab_TextManager
         Me.ButtonItem18 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem19 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem20 = New DevComponents.DotNetBar.ButtonItem()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.GroupPanel_TM_DialogProps.SuspendLayout()
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Bar_AddRemoveItems, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Bar_TextOptions, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupPanel_TM_DialogProps
         '
-        resources.ApplyResources(Me.GroupPanel_TM_DialogProps, "GroupPanel_TM_DialogProps")
         Me.GroupPanel_TM_DialogProps.BackColor = System.Drawing.Color.Transparent
         Me.GroupPanel_TM_DialogProps.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel_TM_DialogProps.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
@@ -86,6 +91,7 @@ Partial Class Tab_TextManager
         Me.GroupPanel_TM_DialogProps.Controls.Add(Me.ComboBoxEx_TM_DialogPosX)
         Me.GroupPanel_TM_DialogProps.Controls.Add(Me.LabelX18)
         Me.GroupPanel_TM_DialogProps.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.GroupPanel_TM_DialogProps, "GroupPanel_TM_DialogProps")
         Me.GroupPanel_TM_DialogProps.Name = "GroupPanel_TM_DialogProps"
         '
         '
@@ -200,12 +206,12 @@ Partial Class Tab_TextManager
         '
         'TabStrip_TextTable
         '
-        resources.ApplyResources(Me.TabStrip_TextTable, "TabStrip_TextTable")
         Me.TabStrip_TextTable.AutoSelectAttachedControl = True
         Me.TabStrip_TextTable.CanReorderTabs = False
         Me.TabStrip_TextTable.CloseButtonPosition = DevComponents.DotNetBar.eTabCloseButtonPosition.Right
         Me.TabStrip_TextTable.CloseButtonVisible = True
         Me.TabStrip_TextTable.Cursor = System.Windows.Forms.Cursors.Default
+        resources.ApplyResources(Me.TabStrip_TextTable, "TabStrip_TextTable")
         Me.TabStrip_TextTable.ForeColor = System.Drawing.Color.Black
         Me.TabStrip_TextTable.Name = "TabStrip_TextTable"
         Me.TabStrip_TextTable.SelectedTab = Nothing
@@ -214,7 +220,6 @@ Partial Class Tab_TextManager
         '
         'ListViewEx_TM_TableEntries
         '
-        resources.ApplyResources(Me.ListViewEx_TM_TableEntries, "ListViewEx_TM_TableEntries")
         Me.ListViewEx_TM_TableEntries.BackColor = System.Drawing.Color.White
         '
         '
@@ -223,6 +228,7 @@ Partial Class Tab_TextManager
         Me.ListViewEx_TM_TableEntries.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ListViewEx_TM_TableEntries.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader13, Me.ColumnHeader14})
         Me.ListViewEx_TM_TableEntries.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.ListViewEx_TM_TableEntries, "ListViewEx_TM_TableEntries")
         Me.ListViewEx_TM_TableEntries.FocusCuesEnabled = False
         Me.ListViewEx_TM_TableEntries.ForeColor = System.Drawing.Color.Black
         Me.ListViewEx_TM_TableEntries.FullRowSelect = True
@@ -276,7 +282,6 @@ Partial Class Tab_TextManager
         '
         'TextBoxX_TM_TextEditor
         '
-        resources.ApplyResources(Me.TextBoxX_TM_TextEditor, "TextBoxX_TM_TextEditor")
         Me.TextBoxX_TM_TextEditor.BackColor = System.Drawing.Color.White
         '
         '
@@ -284,6 +289,7 @@ Partial Class Tab_TextManager
         Me.TextBoxX_TM_TextEditor.Border.Class = "TextBoxBorder"
         Me.TextBoxX_TM_TextEditor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TextBoxX_TM_TextEditor.DisabledBackColor = System.Drawing.Color.White
+        resources.ApplyResources(Me.TextBoxX_TM_TextEditor, "TextBoxX_TM_TextEditor")
         Me.TextBoxX_TM_TextEditor.ForeColor = System.Drawing.Color.Black
         Me.TextBoxX_TM_TextEditor.Name = "TextBoxX_TM_TextEditor"
         Me.TextBoxX_TM_TextEditor.PreventEnterBeep = True
@@ -291,13 +297,14 @@ Partial Class Tab_TextManager
         '
         'Bar_AddRemoveItems
         '
-        resources.ApplyResources(Me.Bar_AddRemoveItems, "Bar_AddRemoveItems")
         Me.Bar_AddRemoveItems.AntiAlias = True
+        resources.ApplyResources(Me.Bar_AddRemoveItems, "Bar_AddRemoveItems")
+        Me.Bar_AddRemoveItems.DockSide = DevComponents.DotNetBar.eDockSide.Top
         Me.Bar_AddRemoveItems.IsMaximized = False
         Me.Bar_AddRemoveItems.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddTextItem, Me.ButtonItem_RemoveTextItem})
         Me.Bar_AddRemoveItems.Name = "Bar_AddRemoveItems"
         Me.Bar_AddRemoveItems.Stretch = True
-        Me.Bar_AddRemoveItems.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Bar_AddRemoveItems.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
         Me.Bar_AddRemoveItems.TabStop = False
         '
         'ButtonItem_AddTextItem
@@ -316,13 +323,13 @@ Partial Class Tab_TextManager
         '
         'Bar_TextOptions
         '
-        resources.ApplyResources(Me.Bar_TextOptions, "Bar_TextOptions")
         Me.Bar_TextOptions.AntiAlias = True
+        resources.ApplyResources(Me.Bar_TextOptions, "Bar_TextOptions")
         Me.Bar_TextOptions.IsMaximized = False
         Me.Bar_TextOptions.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddButtons, Me.ButtonItem9, Me.ButtonItem10})
         Me.Bar_TextOptions.Name = "Bar_TextOptions"
         Me.Bar_TextOptions.Stretch = True
-        Me.Bar_TextOptions.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Bar_TextOptions.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
         Me.Bar_TextOptions.TabStop = False
         '
         'ButtonItem_AddButtons
@@ -426,24 +433,48 @@ Partial Class Tab_TextManager
         Me.ButtonItem20.Name = "ButtonItem20"
         resources.ApplyResources(Me.ButtonItem20, "ButtonItem20")
         '
+        'Panel1
+        '
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.Line_TM_Warning2)
+        Me.Panel1.Controls.Add(Me.Line_TM_Green)
+        Me.Panel1.Controls.Add(Me.Line_TM_Warning1)
+        Me.Panel1.Controls.Add(Me.TextBoxX_TM_TextEditor)
+        Me.Panel1.Controls.Add(Me.GroupPanel_TM_DialogProps)
+        Me.Panel1.Controls.Add(Me.Bar_TextOptions)
+        Me.Panel1.Name = "Panel1"
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
+        Me.Panel2.Controls.Add(Me.TabStrip_TextTable)
+        Me.Panel2.Controls.Add(Me.Bar_AddRemoveItems)
+        resources.ApplyResources(Me.Panel2, "Panel2")
+        Me.Panel2.Name = "Panel2"
+        '
+        'Panel3
+        '
+        resources.ApplyResources(Me.Panel3, "Panel3")
+        Me.Panel3.BackColor = System.Drawing.Color.Transparent
+        Me.Panel3.Controls.Add(Me.ListViewEx_TM_TableEntries)
+        Me.Panel3.Controls.Add(Me.Panel2)
+        Me.Panel3.Name = "Panel3"
+        '
         'Tab_TextManager
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.Bar_TextOptions)
-        Me.Controls.Add(Me.Bar_AddRemoveItems)
-        Me.Controls.Add(Me.GroupPanel_TM_DialogProps)
-        Me.Controls.Add(Me.TabStrip_TextTable)
-        Me.Controls.Add(Me.ListViewEx_TM_TableEntries)
-        Me.Controls.Add(Me.Line_TM_Green)
-        Me.Controls.Add(Me.Line_TM_Warning1)
-        Me.Controls.Add(Me.Line_TM_Warning2)
-        Me.Controls.Add(Me.TextBoxX_TM_TextEditor)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel1)
         Me.Name = "Tab_TextManager"
         Me.GroupPanel_TM_DialogProps.ResumeLayout(False)
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Bar_AddRemoveItems, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Bar_TextOptions, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -492,4 +523,7 @@ Partial Class Tab_TextManager
     Friend WithEvents ButtonItem18 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem19 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem20 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel3 As Panel
 End Class

@@ -91,7 +91,18 @@ Public Class MainController
 
     'P r o p e r t i e s
 
-    Public ReadOnly Property TextManagerController As New TextManagerController
+    Public ReadOnly Property TextManagerController As TextManagerController
+        Get
+            Static tmc As TextManagerController
+
+            If tmc Is Nothing Then
+                tmc = New TextManagerController
+                tmc.ForceUppercaseForActAndLevelNames = Settings.TextManager.ForceUpperCaseForActAndLevelNames
+            End If
+
+            Return tmc
+        End Get
+    End Property
 
     Public ReadOnly Property Romfile As String
         Get

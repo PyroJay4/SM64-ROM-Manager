@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="GroupPanel_TM_DialogProps.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LabelX22.Location" type="System.Drawing.Point, System.Drawing">
     <value>187, 32</value>
@@ -174,12 +170,6 @@
   <data name="ComboBoxEx_TM_DialogPosY.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="ComboItem10.Text" xml:space="preserve">
-    <value>Middle</value>
-  </data>
-  <data name="ComboItem8.Text" xml:space="preserve">
-    <value>Top</value>
-  </data>
   <data name="ComboBoxEx_TM_DialogPosY.Location" type="System.Drawing.Point, System.Drawing">
     <value>187, 4</value>
   </data>
@@ -224,15 +214,6 @@
   </data>
   <data name="ComboBoxEx_TM_DialogPosX.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
-  </data>
-  <data name="ComboItem5.Text" xml:space="preserve">
-    <value>Left</value>
-  </data>
-  <data name="ComboItem6.Text" xml:space="preserve">
-    <value>Centred</value>
-  </data>
-  <data name="ComboItem7.Text" xml:space="preserve">
-    <value>Right</value>
   </data>
   <data name="ComboBoxEx_TM_DialogPosX.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 4</value>
@@ -279,8 +260,12 @@
   <data name="&gt;&gt;LabelX18.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GroupPanel_TM_DialogProps.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
   <data name="GroupPanel_TM_DialogProps.Location" type="System.Drawing.Point, System.Drawing">
-    <value>425, 463</value>
+    <value>0, 460</value>
   </data>
   <data name="GroupPanel_TM_DialogProps.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 80</value>
@@ -298,22 +283,37 @@
     <value>DevComponents.DotNetBar.Controls.GroupPanel, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GroupPanel_TM_DialogProps.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel1</value>
   </data>
   <data name="&gt;&gt;GroupPanel_TM_DialogProps.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
-  <data name="TabStrip_TextTable.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="ComboItem10.Text" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="ComboItem8.Text" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="ComboItem5.Text" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="ComboItem6.Text" xml:space="preserve">
+    <value>Centred</value>
+  </data>
+  <data name="ComboItem7.Text" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="TabStrip_TextTable.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="TabStrip_TextTable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>0, 0</value>
   </data>
   <data name="TabStrip_TextTable.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
   </data>
   <data name="TabStrip_TextTable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 23</value>
+    <value>353, 26</value>
   </data>
   <data name="TabStrip_TextTable.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -325,13 +325,10 @@
     <value>DevComponents.DotNetBar.TabStrip, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TabStrip_TextTable.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel2</value>
   </data>
   <data name="&gt;&gt;TabStrip_TextTable.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ListViewEx_TM_TableEntries.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+    <value>0</value>
   </data>
   <data name="ColumnHeader1.Text" xml:space="preserve">
     <value>#</value>
@@ -351,17 +348,20 @@
   <data name="ColumnHeader14.Width" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
+  <data name="ListViewEx_TM_TableEntries.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="ListViewEx_TM_TableEntries.LabelWrap" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="ListViewEx_TM_TableEntries.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 26</value>
+    <value>0, 26</value>
   </data>
   <data name="ListViewEx_TM_TableEntries.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
   </data>
   <data name="ListViewEx_TM_TableEntries.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 517</value>
+    <value>416, 514</value>
   </data>
   <data name="ListViewEx_TM_TableEntries.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -373,19 +373,19 @@
     <value>DevComponents.DotNetBar.Controls.ListViewEx, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ListViewEx_TM_TableEntries.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel3</value>
   </data>
   <data name="&gt;&gt;ListViewEx_TM_TableEntries.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="Line_TM_Green.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
   </data>
   <data name="Line_TM_Green.Location" type="System.Drawing.Point, System.Drawing">
-    <value>425, 27</value>
+    <value>0, 25</value>
   </data>
   <data name="Line_TM_Green.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 430</value>
+    <value>1, 427</value>
   </data>
   <data name="Line_TM_Green.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -397,19 +397,19 @@
     <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Line_TM_Green.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel1</value>
   </data>
   <data name="&gt;&gt;Line_TM_Green.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="Line_TM_Warning1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
   </data>
   <data name="Line_TM_Warning1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>590, 27</value>
+    <value>165, 25</value>
   </data>
   <data name="Line_TM_Warning1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 430</value>
+    <value>1, 427</value>
   </data>
   <data name="Line_TM_Warning1.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -421,19 +421,19 @@
     <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Line_TM_Warning1.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel1</value>
   </data>
   <data name="&gt;&gt;Line_TM_Warning1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>2</value>
   </data>
   <data name="Line_TM_Warning2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
   </data>
   <data name="Line_TM_Warning2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>628, 27</value>
+    <value>203, 25</value>
   </data>
   <data name="Line_TM_Warning2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 430</value>
+    <value>1, 427</value>
   </data>
   <data name="Line_TM_Warning2.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -445,19 +445,19 @@
     <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Line_TM_Warning2.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel1</value>
   </data>
   <data name="&gt;&gt;Line_TM_Warning2.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>0</value>
   </data>
-  <data name="TextBoxX_TM_TextEditor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Right</value>
+  <data name="TextBoxX_TM_TextEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="TextBoxX_TM_TextEditor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe Print, 9.75pt</value>
   </data>
   <data name="TextBoxX_TM_TextEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>425, 26</value>
+    <value>0, 25</value>
   </data>
   <data name="TextBoxX_TM_TextEditor.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -466,7 +466,7 @@
     <value>Vertical</value>
   </data>
   <data name="TextBoxX_TM_TextEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 433</value>
+    <value>266, 435</value>
   </data>
   <data name="TextBoxX_TM_TextEditor.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -481,19 +481,19 @@
     <value>DevComponents.DotNetBar.Controls.TextBoxX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TextBoxX_TM_TextEditor.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel1</value>
   </data>
   <data name="&gt;&gt;TextBoxX_TM_TextEditor.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>3</value>
   </data>
-  <data name="Bar_AddRemoveItems.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="Bar_AddRemoveItems.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="Bar_AddRemoveItems.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="Bar_AddRemoveItems.Location" type="System.Drawing.Point, System.Drawing">
-    <value>356, 1</value>
+    <value>353, 0</value>
   </data>
   <data name="Bar_AddRemoveItems.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 25</value>
@@ -508,16 +508,49 @@
     <value>DevComponents.DotNetBar.Bar, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Bar_AddRemoveItems.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Panel2</value>
   </data>
   <data name="&gt;&gt;Bar_AddRemoveItems.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="Bar_TextOptions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="Bar_TextOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="Bar_TextOptions.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="ButtonItem_AddButtons.Text" xml:space="preserve">
+    <value>Buttons</value>
+  </data>
+  <data name="ButtonItem9.Text" xml:space="preserve">
+    <value>Arrows</value>
+  </data>
+  <data name="ButtonItem10.Text" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Bar_TextOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Bar_TextOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>266, 25</value>
+  </data>
+  <data name="Bar_TextOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="Bar_TextOptions.Text" xml:space="preserve">
+    <value>Bar1</value>
+  </data>
+  <data name="&gt;&gt;Bar_TextOptions.Name" xml:space="preserve">
+    <value>Bar_TextOptions</value>
+  </data>
+  <data name="&gt;&gt;Bar_TextOptions.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Bar, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Bar_TextOptions.Parent" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;Bar_TextOptions.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="ButtonItem4.Tag" xml:space="preserve">
     <value>[A]</value>
@@ -549,9 +582,6 @@
   <data name="ButtonItem7.Text" xml:space="preserve">
     <value>R</value>
   </data>
-  <data name="ButtonItem_AddButtons.Text" xml:space="preserve">
-    <value>Buttons</value>
-  </data>
   <data name="ButtonItem8.Tag" xml:space="preserve">
     <value>↑</value>
   </data>
@@ -572,9 +602,6 @@
   </data>
   <data name="ButtonItem13.Text" xml:space="preserve">
     <value>→</value>
-  </data>
-  <data name="ButtonItem9.Text" xml:space="preserve">
-    <value>Arrows</value>
   </data>
   <data name="ButtonItem15.Tag" xml:space="preserve">
     <value>[you]</value>
@@ -618,31 +645,76 @@
   <data name="ButtonItem20.Text" xml:space="preserve">
     <value>Stars left</value>
   </data>
-  <data name="ButtonItem10.Text" xml:space="preserve">
-    <value>Other</value>
+  <data name="Panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
   </data>
-  <data name="Bar_TextOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>425, 1</value>
+  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>425, 3</value>
   </data>
-  <data name="Bar_TextOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 25</value>
+  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>266, 540</value>
   </data>
-  <data name="Bar_TextOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
-  <data name="Bar_TextOptions.Text" xml:space="preserve">
-    <value>Bar1</value>
+  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
+    <value>Panel1</value>
   </data>
-  <data name="&gt;&gt;Bar_TextOptions.Name" xml:space="preserve">
-    <value>Bar_TextOptions</value>
+  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Bar_TextOptions.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Bar, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Bar_TextOptions.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;Bar_TextOptions.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="Panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>416, 26</value>
+  </data>
+  <data name="Panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;Panel2.Name" xml:space="preserve">
+    <value>Panel2</value>
+  </data>
+  <data name="&gt;&gt;Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel2.Parent" xml:space="preserve">
+    <value>Panel3</value>
+  </data>
+  <data name="&gt;&gt;Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Panel3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="Panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="Panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>416, 540</value>
+  </data>
+  <data name="Panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;Panel3.Name" xml:space="preserve">
+    <value>Panel3</value>
+  </data>
+  <data name="&gt;&gt;Panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Panel3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
