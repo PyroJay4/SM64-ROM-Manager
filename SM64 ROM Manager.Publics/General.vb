@@ -53,6 +53,18 @@ Public Module General
         End Get
     End Property
 
+    Public ReadOnly Property MyUserRequestsPath As String
+        Get
+            Static p As String = String.Empty
+
+            If String.IsNullOrEmpty(p) Then
+                p = Path.Combine(MyDataPath, "UserRequests")
+            End If
+
+            Return p
+        End Get
+    End Property
+
     Public ReadOnly Property IsDebugging As Boolean
         Get
             Return Debugger.IsAttached
