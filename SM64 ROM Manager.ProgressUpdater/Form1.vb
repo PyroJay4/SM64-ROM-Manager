@@ -52,6 +52,7 @@ Public Class Form1
             'Save image to memory
             Dim msImage As New MemoryStream
             PictureBox1.Image.Save(msImage, Imaging.ImageFormat.Png)
+            msImage.Position = 0
 
             'Upload image
             Try
@@ -111,7 +112,7 @@ Public Class Form1
 
     'G u i
 
-    Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
+    Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX_PasteClipboard.Click
         PasteFromClipboard()
     End Sub
 
