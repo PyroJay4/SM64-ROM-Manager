@@ -3,7 +3,8 @@
     [
         {
             "Name": "Category",
-            "Type": "Text"
+            "Type": "Text",
+            "Description": "e.g. \"Level Editor\" or \"Music Manager\""
         },
         {
             "Name": "Titel",
@@ -28,12 +29,14 @@
         {
             "Name": "Contact",
             "Description": "How can you be contacted If there are more questions open?\nWrite down your Discord#0000 or Skype Name or E-Mail Address.",
-            "Type": "Text"
+            "Type": "Text",
+            "AllowEmptyState": true
         }
     ],
     "UploadSettings": {
         "Link": "E/BWdsulKDhuPEQTjb0gpuK+HoZFLcB/FBI+ucec8BrYiwwa93KHUwPSviDO4VzB5QeZweN3vGEutvW4ZFnqmJDHoTx2dD3mU3eJ4dzJSiIQTFkwCPPsI2Sa+RK/bgXIkT5tqfAP4E4XFrPGnS6KiQ==",
         "Username": "zu4GFfoXl32uW3wB9J0SkqFQp23W9uZrVdZIa6otqGGx3vdPQMc8koisOJc01mW6ja/kKntIfAkammpL+UV70g==",
         "Password": "ITsMrAoNq3VHort3J//MIWncmqvJIpMAkTqPGMxPW3WVnUwhX+FVzfP8SEZqD5j4"
-    }
+    },
+    "Name": "Feature Request"
 }

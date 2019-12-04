@@ -117,130 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ItemPanel_Files.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="MsgBox_ErrorSendingRequest" xml:space="preserve">
+    <value>An error happend at sending your request.</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ItemPanel_Files.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="MsgBox_ErrorSendingRequest_Titel" xml:space="preserve">
+    <value>Error sending request</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ItemPanel_Files.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
+  <data name="MsgBox_IncludedBigFiles" xml:space="preserve">
+    <value>At least one files hasn't been added because it was bigger then 250 MiB.</value>
   </data>
-  <data name="ItemPanel_Files.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 407</value>
+  <data name="MsgBox_IncludedBigFiles_Titel" xml:space="preserve">
+    <value>File(s) to big</value>
   </data>
-  <data name="ItemPanel_Files.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="MsgBox_SendingRequestSuccess" xml:space="preserve">
+    <value>The request was send request successfully!</value>
   </data>
-  <data name="ItemPanel_Files.Text" xml:space="preserve">
-    <value>ItemPanel1</value>
-  </data>
-  <data name="&gt;&gt;ItemPanel_Files.Name" xml:space="preserve">
-    <value>ItemPanel_Files</value>
-  </data>
-  <data name="&gt;&gt;ItemPanel_Files.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ItemPanel, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ItemPanel_Files.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ItemPanel_Files.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ButtonX_Remove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="ButtonX_Remove.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ButtonX_Remove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 0</value>
-  </data>
-  <data name="ButtonX_Remove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
-  </data>
-  <data name="ButtonX_Remove.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ButtonX_Remove.Text" xml:space="preserve">
-    <value>Remove</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_Remove.Name" xml:space="preserve">
-    <value>ButtonX_Remove</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_Remove.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_Remove.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_Remove.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ButtonX_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ButtonX_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
-  </data>
-  <data name="ButtonX_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ButtonX_Add.Text" xml:space="preserve">
-    <value>Add files</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_Add.Name" xml:space="preserve">
-    <value>ButtonX_Add</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_Add.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_Add.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;ButtonX_Add.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 27</value>
-  </data>
-  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 434</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>UserRequestPropertyFilesEditor</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="MsgBox_SendingRequestSuccess_Titel" xml:space="preserve">
+    <value>Request sent successfull!</value>
   </data>
 </root>

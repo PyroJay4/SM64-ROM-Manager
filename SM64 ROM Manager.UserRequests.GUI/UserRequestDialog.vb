@@ -1,6 +1,7 @@
 ﻿Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 Imports DevComponents.DotNetBar.Layout
+Imports SM64_ROM_Manager.UserRequests.GUI.My.Resources
 
 Public Class UserRequestDialog
 
@@ -12,9 +13,10 @@ Public Class UserRequestDialog
 
     'C o n s t r u c t o r
 
-    Public Sub New(request As UserRequestLayout)
+    Public Sub New(requestLayout As UserRequestLayout)
         InitializeComponent()
-        Me.request = New UserRequest(request)
+        request = New UserRequest(requestLayout)
+        Text = request.RequestName
         CreateLayout()
         StyleManager.UpdateAmbientColors(Me)
     End Sub
@@ -55,7 +57,7 @@ Public Class UserRequestDialog
         LayoutControl1.ResumeLayout()
     End Sub
 
-    Private Sub AddControlToGroup(group As LayoutGroup, control As Control, Optional withType As eLayoutSizeType = eLayoutSizeType.Percent, Optional width As Integer = 100)
+    Private Sub AddControlToGroup(prop As UserRequestProperty, group As LayoutGroup, control As Control, Optional withType As eLayoutSizeType = eLayoutSizeType.Percent, Optional width As Integer = 100)
         control.Margin = New Windows.Forms.Padding(0, 0, 0, 0)
 
         Dim item As New LayoutControlItem With {
@@ -73,6 +75,14 @@ Public Class UserRequestDialog
 
         LayoutControl1.Controls.Add(control)
         group.Items.Add(item)
+
+        If TypeOf control Is TextBoxX Then
+            'item.MinSize = New Size(120, 0)
+            If Not prop.AllowEmptyState Then
+                Dim validor As New Validator.RequiredFieldValidator("Requied field!") With {.HighlightColor = Validator.eHighlightColor.Red}
+                SuperValidator1.SetValidator1(control, validor)
+            End If
+        End If
     End Sub
 
     Private Sub AddLabel(group As LayoutGroup, text As String, bold As Boolean)
@@ -82,7 +92,7 @@ Public Class UserRequestDialog
             .Size = New Size(LayoutControl1.Width - 6, 16)
         }
         control.Size = TextRenderer.MeasureText(text, New Font(control.Font, FontStyle.Bold), control.Size)
-        AddControlToGroup(group, control)
+        AddControlToGroup(Nothing, group, control)
     End Sub
 
     Private Sub AddValueText(group As LayoutGroup, prop As UserRequestProperty, multiline As Boolean)
@@ -99,11 +109,11 @@ Public Class UserRequestDialog
                 CType(sender.Tag, UserRequestProperty).Value = sender.Text.Trim
             End Sub
 
-        AddControlToGroup(group, control)
+        AddControlToGroup(prop, group, control)
     End Sub
 
     Private Sub AddValueFiles(group As LayoutGroup, prop As UserRequestProperty)
-        Dim control As New UserRequestPropertyFilesEditor With {
+        Dim control As New UserRequestPropertyFilesEditor(prop) With {
             .Tag = prop,
             .BackColor = Color.Transparent,
             .Size = New Size(120, 120)
@@ -114,14 +124,14 @@ Public Class UserRequestDialog
                 CType(sender.Tag, UserRequestProperty).Value = sender.Text.Trim
             End Sub
 
-        AddControlToGroup(group, control)
+        AddControlToGroup(prop, group, control)
     End Sub
 
     Private Sub AddSendButton(group As LayoutGroup)
-        Dim btn As New ButtonX With {
+        button_Send = New ButtonX With {
             .Text = "Send",
             .Size = New Size(90, 23),
-            .Image = My.Resources.icons8_send_16px,
+            .Image = icons8_send_16px,
             .ColorTable = eButtonColor.OrangeWithBackground,
             .Style = eDotNetBarStyle.StyleManagerControlled
         }
@@ -131,12 +141,12 @@ Public Class UserRequestDialog
             .ProgressColor = ForeColor,
             .Size = New Size(23, 23)
         }
-        circularProgress.Start()
-        AddHandler btn.Click, AddressOf Button_Send_Clicked
 
-        AddSplitter(group, 99, btn.Height + 8)
-        AddControlToGroup(group, circularProgress, eLayoutSizeType.Absolute, circularProgress.Width + 8)
-        AddControlToGroup(group, btn, eLayoutSizeType.Absolute, btn.Width + 8)
+        AddHandler button_Send.Click, AddressOf Button_Send_Clicked
+
+        AddSplitter(group, 99, button_Send.Height + 8)
+        AddControlToGroup(Nothing, group, circularProgress, eLayoutSizeType.Absolute, circularProgress.Width + 8)
+        AddControlToGroup(Nothing, group, button_Send, eLayoutSizeType.Absolute, button_Send.Width + 8)
     End Sub
 
     Private Sub AddSplitter(group As LayoutGroup, percent As Integer, height As Integer)
@@ -151,24 +161,42 @@ Public Class UserRequestDialog
 
     'F e a t u r e s
 
-    Private Sub SendRequest()
-        '...
-    End Sub
+    Private Async Function SendRequest() As Task(Of Boolean)
+        Dim mgr As New UserRequestManager
+        Return Await mgr.UploadRequest(request)
+    End Function
 
     'G u i
 
-    Private Sub Button_Send_Clicked(sender As Object, e As EventArgs)
-        button_Send.Enabled = False
-        circularProgress.Start()
+    Private Async Sub Button_Send_Clicked(sender As Object, e As EventArgs)
+        Dim success As Boolean = False
 
+        If SuperValidator1.Validate() Then
+            button_Send.Enabled = False
+            circularProgress.Start()
+
+#If Not DEBUG Then
         Try
-            SendRequest()
+#End If
+            success = Await SendRequest()
+#If Not DEBUG Then
         Catch ex As Exception
-            '...
+            MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_ErrorSendingRequest, UserRequestGuiLangRes.MsgBox_ErrorSendingRequest_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
+#End If
             circularProgress.Stop()
             button_Send.Enabled = True
+#If Not DEBUG Then
         End Try
+#End If
+
+            If success Then
+                MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_SendingRequestSuccess, UserRequestGuiLangRes.MsgBox_SendingRequestSuccess_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Close()
+            Else
+                MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_ErrorSendingRequest, UserRequestGuiLangRes.MsgBox_ErrorSendingRequest_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        End If
     End Sub
 
 End Class

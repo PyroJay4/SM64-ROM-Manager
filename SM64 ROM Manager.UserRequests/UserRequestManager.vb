@@ -23,16 +23,18 @@ Public Class UserRequestManager
 
     Private Sub CopyAttachments(request As UserRequest, destDir As DirectoryInfo)
         For Each prop As UserRequestProperty In request.Properties.Where(Function(n) n.Type = UserRequestPropertyType.Files)
-            Dim dir As DirectoryInfo = destDir.CreateSubdirectory(prop.Name)
-            For Each f As String In prop.Value.Split(",")
-                File.Copy(f, Path.Combine(dir.FullName, Path.GetFileName(f)))
-            Next
+            If Not String.IsNullOrEmpty(prop.Value) Then
+                Dim dir As DirectoryInfo = destDir.CreateSubdirectory(prop.Name)
+                For Each f As String In prop.Value.Split(",")
+                    File.Copy(f, Path.Combine(dir.FullName, Path.GetFileName(f)))
+                Next
+            End If
         Next
     End Sub
 
     Public Async Function UploadRequest(request As UserRequest) As Task(Of Boolean)
         Dim curDate As Date = Now.ToUniversalTime
-        Dim zipFileName As String = curDate.ToString("yyyy.MM.dd HH:mm:ss.fffffff") & ".zip"
+        Dim zipFileName As String = curDate.ToString("yyyy.MM.dd HH.mm.ss.fffffff") & ".zip"
         Dim files As New Dictionary(Of String, String)
         Dim zipDir As DirectoryInfo
         Dim tempDir As DirectoryInfo
@@ -55,6 +57,9 @@ Public Class UserRequestManager
         'Zip temporary folder
         Dim zipFilePath As String = Path.Combine(tempDir.FullName, zipFileName)
         ZipFile.CreateFromDirectory(zipDir.FullName, zipFilePath)
+
+        'Delete package directory
+        zipDir.Delete(True)
 
         'Upload
         Dim mgr As New UserRequestUploadManager

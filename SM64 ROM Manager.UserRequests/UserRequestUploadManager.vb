@@ -18,7 +18,8 @@ Friend Class UserRequestUploadManager
     End Function
 
     Private Function CreateClient(settings As UserRequestUploadSettings) As WebDavClient
-        Return New WebDavClient(CreateParams(settings))
+        Dim params As WebDavClientParams = CreateParams(settings)
+        Return New WebDavClient(params)
     End Function
 
     Private Async Function UploadFile(client As WebDavClient, filePath As String, uploadName As String) As Task(Of Boolean)

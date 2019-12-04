@@ -7,6 +7,8 @@ Public Class UserRequestLayout
     'F i e l d s
 
     <JsonProperty>
+    Friend Property Name As String
+    <JsonProperty>
     Friend Property Properties As UserRequestProperty()
     <JsonProperty>
     Friend Property UploadSettings As UserRequestUploadSettings

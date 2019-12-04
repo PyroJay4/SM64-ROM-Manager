@@ -63,6 +63,12 @@
     <Reference Include="DevComponents.DotNetBar2">
       <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="Pilz.Drawing">
+      <HintPath>..\Shared Libs\Pilz.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Pilz.Win32">
+      <HintPath>..\Shared Libs\Pilz.Win32.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -110,6 +116,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="UserRequestGuiLangRes.de.Designer.vb">
+      <DependentUpon>UserRequestGuiLangRes.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UserRequestGuiLangRes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserRequestGuiLangRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserRequestPropertyFilesEditor.Designer.vb">
       <DependentUpon>UserRequestPropertyFilesEditor.vb</DependentUpon>
     </Compile>
@@ -126,6 +142,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserRequestDialog.resx">
       <DependentUpon>UserRequestDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserRequestGuiLangRes.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserRequestGuiLangRes.de.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserRequestGuiLangRes.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserRequestGuiLangRes.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserRequestPropertyFilesEditor.de.resx">
+      <DependentUpon>UserRequestPropertyFilesEditor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserRequestPropertyFilesEditor.resx">
       <DependentUpon>UserRequestPropertyFilesEditor.vb</DependentUpon>
