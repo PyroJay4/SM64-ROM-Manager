@@ -685,8 +685,8 @@ Public Class MainController
     End Sub
 
     Private Sub OpenThankYouPage()
-        'Dim frm As New Form
-        'frm.ShowDialog(Me)
+        Dim frm As New ThankYouForm
+        frm.ShowDialog(Me)
     End Sub
 
     'R o m   W a t c h e r

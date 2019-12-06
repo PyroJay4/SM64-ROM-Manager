@@ -409,6 +409,12 @@
     <Compile Include="RomManager\GUI\Main Form\Text Manager\TextProfilesManagerDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RomManager\GUI\Other\ThankYouForm.Designer.vb">
+      <DependentUpon>ThankYouForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Other\ThankYouForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RomManager\GUI\Tools\CustomBankManager.Designer.vb">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
     </Compile>
@@ -728,6 +734,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\Text Manager\TextProfilesManagerDialog.resx">
       <DependentUpon>TextProfilesManagerDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Other\ThankYouForm.resx">
+      <DependentUpon>ThankYouForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\CustomBankManager.de.resx">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
