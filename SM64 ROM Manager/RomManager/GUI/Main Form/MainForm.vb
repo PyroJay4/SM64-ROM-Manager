@@ -211,7 +211,7 @@ Public Class MainForm
         RefreshAppTitel()
     End Sub
 
-    Private Async Sub Form_Main_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+    Private Sub Form_Main_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Controller.StatusText = Form_Main_Resources.Status_StartingUp
 
         Panel1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top
@@ -227,8 +227,10 @@ Public Class MainForm
         Controller.LoadPlugins()
         AddMyPluginCommands()
 
+        Controller.CheckToOpenThankYouPage()
+
         If Settings.Network.AutoUpdates Then
-            Await Controller.SearchForUpdates(True)
+            Dim t As Task = Controller.SearchForUpdates(True)
         End If
     End Sub
 

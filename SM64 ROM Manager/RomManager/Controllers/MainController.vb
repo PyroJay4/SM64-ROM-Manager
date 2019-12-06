@@ -684,6 +684,11 @@ Public Class MainController
         frm.Show()
     End Sub
 
+    Private Sub OpenThankYouPage()
+        'Dim frm As New Form
+        'frm.ShowDialog(Me)
+    End Sub
+
     'R o m   W a t c h e r
 
     Private Sub RomWatcher_Changed(sender As Object, e As FileSystemEventArgs) Handles RomWatcher.Changed
@@ -726,6 +731,14 @@ Public Class MainController
         RaiseEvent RequestIsChangingTab(e)
         Return e.Enabled
     End Function
+
+    Public Sub CheckToOpenThankYouPage()
+        Dim myVersion As New Version(Application.ProductVersion)
+        If Settings.General.LastThankYouPageSeen < myVersion Then
+            OpenThankYouPage()
+            Settings.General.LastThankYouPageSeen = myVersion
+        End If
+    End Sub
 
     'L e v e l   M a n a g e r
 

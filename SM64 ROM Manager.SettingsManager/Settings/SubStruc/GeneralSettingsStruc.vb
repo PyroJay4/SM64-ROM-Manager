@@ -1,4 +1,7 @@
-﻿Public Class GeneralSettingsStruc
+﻿Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Converters
+
+Public Class GeneralSettingsStruc
 
     Public Property IntegerValueMode As Integer
     Public Property EmulatorPath As String
@@ -7,6 +10,7 @@
     Public Property HexEditMode As HexEditModeStruc
     Public Property Language As String
     Public Property RomChangedNotification As NotificationMode
+    Public Property LastThankYouPageSeen As Version
 
     Public Sub ResetValues()
         IntegerValueMode = 0
@@ -17,6 +21,7 @@
         HexEditMode.ResetValues()
         Language = String.Empty
         RomChangedNotification = NotificationMode.Popup
+        LastThankYouPageSeen = Nothing
     End Sub
 
 End Class
