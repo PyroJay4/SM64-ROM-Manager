@@ -10,11 +10,11 @@ Namespace Patching
         Private data As BinaryData = Nothing
 
 #Region "Other"
-        Public Sub ApplyPPF(Romfile As String, PPFFile As String)
+        Public Shared Sub ApplyPPF(Romfile As String, PPFFile As String)
             RunProcess(MyFilePaths("ApplyPPF3.exe"), String.Format("a ""{0}"" ""{1}""", Romfile, PPFFile))
         End Sub
 
-        Private Function RunProcess(Filename As String, Optional Args As String = "") As Integer
+        Private Shared Function RunProcess(Filename As String, Optional Args As String = "") As Integer
             Dim p As New Process()
             With p.StartInfo
                 .CreateNoWindow = True

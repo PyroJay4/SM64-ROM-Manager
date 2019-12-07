@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<m64tweak name="Extended Boundaries" description="" version="1.0.0.0">
+  <patch name="Extend Boundaries" description="Applies Skelux' Boundaries Patch." type="1" references="">Imports Microsoft.VisualBasic
+Imports System
+Imports System.Collections.Generic
+Imports System.IO
+Imports System.Linq
+Imports System.Windows.Forms
+Imports SM64Lib
+Imports SM64Lib.Patching
+
+Module Script
+
+    Sub Main(params as IReadOnlyDictionary(Of String, Object))
+        Dim tweakDir as String = Path.GetDirectoryName(params("profilepath"))
+        Dim patchFile as String = Path.Combine(tweakDir, "apply ext bounds.ppf")
+        PatchClass.ApplyPPF(params("romfile"), patchFile)
+    End Sub
+
+End Module
+</patch>
+  <patch name="Reset Boundaries" description="Removes Skelux' boundaries patch." type="1" references="">Imports Microsoft.VisualBasic
+Imports System
+Imports System.Collections.Generic
+Imports System.IO
+Imports System.Linq
+Imports System.Windows.Forms
+Imports SM64Lib
+Imports SM64Lib.Patching
+
+Module Script
+
+    Sub Main(params as IReadOnlyDictionary(Of String, Object))
+        Dim tweakDir as String = Path.GetDirectoryName(params("profilepath"))
+        Dim patchFile as String = Path.Combine(tweakDir, "remove ext bound.ppf")
+        PatchClass.ApplyPPF(params("romfile"), patchFile)
+    End Sub
+
+End Module
+</patch>
+</m64tweak>
