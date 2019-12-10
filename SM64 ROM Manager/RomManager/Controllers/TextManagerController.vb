@@ -388,8 +388,9 @@ Public Class TextManagerController
 
         If RomManager.RomConfig.SelectedTextProfileInfo <> newName Then
             RomManager.RomConfig.SelectedTextProfileInfo = newName
-            RaiseEvent CurrentTextProfileInfoChanged()
         End If
+
+        RaiseEvent CurrentTextProfileInfoChanged()
     End Sub
 
     Private Function GetTextProfileInfoByName(name As String) As TextProfileInfo
