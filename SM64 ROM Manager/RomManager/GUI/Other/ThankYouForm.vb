@@ -1,6 +1,6 @@
 ﻿Public Class ThankYouForm
 
-    Private Const WebAddress As String = "http://pilzinsel64.com/about.html"
+    Private Const WebAddress As String = "https://pilzinsel64.com/thank-you.html"
 
     Private loaded As Boolean = False
 
