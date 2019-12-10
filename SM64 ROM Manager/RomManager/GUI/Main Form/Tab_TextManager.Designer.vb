@@ -45,6 +45,8 @@ Partial Class Tab_TextManager
         Me.Line_TM_Warning2 = New DevComponents.DotNetBar.Controls.Line()
         Me.TextBoxX_TM_TextEditor = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Bar_AddRemoveItems = New DevComponents.DotNetBar.Bar()
+        Me.ButtonItem_CurProfile = New DevComponents.DotNetBar.ButtonItem()
+        Me.ComboBoxItem_CurProfile = New DevComponents.DotNetBar.ComboBoxItem()
         Me.ButtonItem_AddTextItem = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_RemoveTextItem = New DevComponents.DotNetBar.ButtonItem()
         Me.Bar_TextOptions = New DevComponents.DotNetBar.Bar()
@@ -68,19 +70,18 @@ Partial Class Tab_TextManager
         Me.ButtonItem19 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem20 = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.GroupPanel_TM_DialogProps.SuspendLayout()
         CType(Me.IntegerInput_TM_DialogSize, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Bar_AddRemoveItems, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Bar_TextOptions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupPanel_TM_DialogProps
         '
+        resources.ApplyResources(Me.GroupPanel_TM_DialogProps, "GroupPanel_TM_DialogProps")
         Me.GroupPanel_TM_DialogProps.BackColor = System.Drawing.Color.Transparent
         Me.GroupPanel_TM_DialogProps.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel_TM_DialogProps.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
@@ -91,7 +92,6 @@ Partial Class Tab_TextManager
         Me.GroupPanel_TM_DialogProps.Controls.Add(Me.ComboBoxEx_TM_DialogPosX)
         Me.GroupPanel_TM_DialogProps.Controls.Add(Me.LabelX18)
         Me.GroupPanel_TM_DialogProps.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.GroupPanel_TM_DialogProps, "GroupPanel_TM_DialogProps")
         Me.GroupPanel_TM_DialogProps.Name = "GroupPanel_TM_DialogProps"
         '
         '
@@ -122,29 +122,29 @@ Partial Class Tab_TextManager
         '
         'LabelX22
         '
+        resources.ApplyResources(Me.LabelX22, "LabelX22")
         '
         '
         '
         Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX22, "LabelX22")
         Me.LabelX22.Name = "LabelX22"
         '
         'LabelX21
         '
+        resources.ApplyResources(Me.LabelX21, "LabelX21")
         '
         '
         '
         Me.LabelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX21, "LabelX21")
         Me.LabelX21.Name = "LabelX21"
         '
         'ComboBoxEx_TM_DialogPosY
         '
+        resources.ApplyResources(Me.ComboBoxEx_TM_DialogPosY, "ComboBoxEx_TM_DialogPosY")
         Me.ComboBoxEx_TM_DialogPosY.DisplayMember = "Text"
         Me.ComboBoxEx_TM_DialogPosY.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_TM_DialogPosY.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx_TM_DialogPosY.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBoxEx_TM_DialogPosY, "ComboBoxEx_TM_DialogPosY")
         Me.ComboBoxEx_TM_DialogPosY.Items.AddRange(New Object() {Me.ComboItem10, Me.ComboItem8})
         Me.ComboBoxEx_TM_DialogPosY.Name = "ComboBoxEx_TM_DialogPosY"
         Me.ComboBoxEx_TM_DialogPosY.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -159,13 +159,37 @@ Partial Class Tab_TextManager
         '
         'IntegerInput_TM_DialogSize
         '
+        resources.ApplyResources(Me.IntegerInput_TM_DialogSize, "IntegerInput_TM_DialogSize")
         '
         '
         '
         Me.IntegerInput_TM_DialogSize.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.IntegerInput_TM_DialogSize.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.IntegerInput_TM_DialogSize.ButtonCalculator.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCalculator.DisplayPosition"), Integer)
+        Me.IntegerInput_TM_DialogSize.ButtonCalculator.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCalculator.Image"), System.Drawing.Image)
+        Me.IntegerInput_TM_DialogSize.ButtonCalculator.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonCalculator.Text")
+        Me.IntegerInput_TM_DialogSize.ButtonCalculator.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonCalculator.Tooltip")
+        Me.IntegerInput_TM_DialogSize.ButtonClear.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonClear.DisplayPosition"), Integer)
+        Me.IntegerInput_TM_DialogSize.ButtonClear.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonClear.Image"), System.Drawing.Image)
+        Me.IntegerInput_TM_DialogSize.ButtonClear.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonClear.Text")
+        Me.IntegerInput_TM_DialogSize.ButtonClear.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonClear.Tooltip")
+        Me.IntegerInput_TM_DialogSize.ButtonCustom.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCustom.DisplayPosition"), Integer)
+        Me.IntegerInput_TM_DialogSize.ButtonCustom.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCustom.Image"), System.Drawing.Image)
+        Me.IntegerInput_TM_DialogSize.ButtonCustom.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonCustom.Text")
+        Me.IntegerInput_TM_DialogSize.ButtonCustom.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonCustom.Tooltip")
+        Me.IntegerInput_TM_DialogSize.ButtonCustom2.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCustom2.DisplayPosition"), Integer)
+        Me.IntegerInput_TM_DialogSize.ButtonCustom2.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonCustom2.Image"), System.Drawing.Image)
+        Me.IntegerInput_TM_DialogSize.ButtonCustom2.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonCustom2.Text")
+        Me.IntegerInput_TM_DialogSize.ButtonCustom2.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonCustom2.Tooltip")
+        Me.IntegerInput_TM_DialogSize.ButtonDropDown.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonDropDown.DisplayPosition"), Integer)
+        Me.IntegerInput_TM_DialogSize.ButtonDropDown.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonDropDown.Image"), System.Drawing.Image)
+        Me.IntegerInput_TM_DialogSize.ButtonDropDown.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonDropDown.Text")
+        Me.IntegerInput_TM_DialogSize.ButtonDropDown.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonDropDown.Tooltip")
+        Me.IntegerInput_TM_DialogSize.ButtonFreeText.DisplayPosition = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonFreeText.DisplayPosition"), Integer)
+        Me.IntegerInput_TM_DialogSize.ButtonFreeText.Image = CType(resources.GetObject("IntegerInput_TM_DialogSize.ButtonFreeText.Image"), System.Drawing.Image)
         Me.IntegerInput_TM_DialogSize.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        resources.ApplyResources(Me.IntegerInput_TM_DialogSize, "IntegerInput_TM_DialogSize")
+        Me.IntegerInput_TM_DialogSize.ButtonFreeText.Text = resources.GetString("IntegerInput_TM_DialogSize.ButtonFreeText.Text")
+        Me.IntegerInput_TM_DialogSize.ButtonFreeText.Tooltip = resources.GetString("IntegerInput_TM_DialogSize.ButtonFreeText.Tooltip")
         Me.IntegerInput_TM_DialogSize.MaxValue = 255
         Me.IntegerInput_TM_DialogSize.MinValue = 1
         Me.IntegerInput_TM_DialogSize.Name = "IntegerInput_TM_DialogSize"
@@ -174,11 +198,11 @@ Partial Class Tab_TextManager
         '
         'ComboBoxEx_TM_DialogPosX
         '
+        resources.ApplyResources(Me.ComboBoxEx_TM_DialogPosX, "ComboBoxEx_TM_DialogPosX")
         Me.ComboBoxEx_TM_DialogPosX.DisplayMember = "Text"
         Me.ComboBoxEx_TM_DialogPosX.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_TM_DialogPosX.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx_TM_DialogPosX.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBoxEx_TM_DialogPosX, "ComboBoxEx_TM_DialogPosX")
         Me.ComboBoxEx_TM_DialogPosX.Items.AddRange(New Object() {Me.ComboItem5, Me.ComboItem6, Me.ComboItem7})
         Me.ComboBoxEx_TM_DialogPosX.Name = "ComboBoxEx_TM_DialogPosX"
         Me.ComboBoxEx_TM_DialogPosX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -197,21 +221,21 @@ Partial Class Tab_TextManager
         '
         'LabelX18
         '
+        resources.ApplyResources(Me.LabelX18, "LabelX18")
         '
         '
         '
         Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX18, "LabelX18")
         Me.LabelX18.Name = "LabelX18"
         '
         'TabStrip_TextTable
         '
+        resources.ApplyResources(Me.TabStrip_TextTable, "TabStrip_TextTable")
         Me.TabStrip_TextTable.AutoSelectAttachedControl = True
         Me.TabStrip_TextTable.CanReorderTabs = False
         Me.TabStrip_TextTable.CloseButtonPosition = DevComponents.DotNetBar.eTabCloseButtonPosition.Right
         Me.TabStrip_TextTable.CloseButtonVisible = True
         Me.TabStrip_TextTable.Cursor = System.Windows.Forms.Cursors.Default
-        resources.ApplyResources(Me.TabStrip_TextTable, "TabStrip_TextTable")
         Me.TabStrip_TextTable.ForeColor = System.Drawing.Color.Black
         Me.TabStrip_TextTable.Name = "TabStrip_TextTable"
         Me.TabStrip_TextTable.SelectedTab = Nothing
@@ -220,6 +244,7 @@ Partial Class Tab_TextManager
         '
         'ListViewEx_TM_TableEntries
         '
+        resources.ApplyResources(Me.ListViewEx_TM_TableEntries, "ListViewEx_TM_TableEntries")
         Me.ListViewEx_TM_TableEntries.BackColor = System.Drawing.Color.White
         '
         '
@@ -228,7 +253,6 @@ Partial Class Tab_TextManager
         Me.ListViewEx_TM_TableEntries.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ListViewEx_TM_TableEntries.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader13, Me.ColumnHeader14})
         Me.ListViewEx_TM_TableEntries.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.ListViewEx_TM_TableEntries, "ListViewEx_TM_TableEntries")
         Me.ListViewEx_TM_TableEntries.FocusCuesEnabled = False
         Me.ListViewEx_TM_TableEntries.ForeColor = System.Drawing.Color.Black
         Me.ListViewEx_TM_TableEntries.FullRowSelect = True
@@ -282,14 +306,22 @@ Partial Class Tab_TextManager
         '
         'TextBoxX_TM_TextEditor
         '
+        resources.ApplyResources(Me.TextBoxX_TM_TextEditor, "TextBoxX_TM_TextEditor")
         Me.TextBoxX_TM_TextEditor.BackColor = System.Drawing.Color.White
         '
         '
         '
         Me.TextBoxX_TM_TextEditor.Border.Class = "TextBoxBorder"
         Me.TextBoxX_TM_TextEditor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TextBoxX_TM_TextEditor.ButtonCustom.DisplayPosition = CType(resources.GetObject("TextBoxX_TM_TextEditor.ButtonCustom.DisplayPosition"), Integer)
+        Me.TextBoxX_TM_TextEditor.ButtonCustom.Image = CType(resources.GetObject("TextBoxX_TM_TextEditor.ButtonCustom.Image"), System.Drawing.Image)
+        Me.TextBoxX_TM_TextEditor.ButtonCustom.Text = resources.GetString("TextBoxX_TM_TextEditor.ButtonCustom.Text")
+        Me.TextBoxX_TM_TextEditor.ButtonCustom.Tooltip = resources.GetString("TextBoxX_TM_TextEditor.ButtonCustom.Tooltip")
+        Me.TextBoxX_TM_TextEditor.ButtonCustom2.DisplayPosition = CType(resources.GetObject("TextBoxX_TM_TextEditor.ButtonCustom2.DisplayPosition"), Integer)
+        Me.TextBoxX_TM_TextEditor.ButtonCustom2.Image = CType(resources.GetObject("TextBoxX_TM_TextEditor.ButtonCustom2.Image"), System.Drawing.Image)
+        Me.TextBoxX_TM_TextEditor.ButtonCustom2.Text = resources.GetString("TextBoxX_TM_TextEditor.ButtonCustom2.Text")
+        Me.TextBoxX_TM_TextEditor.ButtonCustom2.Tooltip = resources.GetString("TextBoxX_TM_TextEditor.ButtonCustom2.Tooltip")
         Me.TextBoxX_TM_TextEditor.DisabledBackColor = System.Drawing.Color.White
-        resources.ApplyResources(Me.TextBoxX_TM_TextEditor, "TextBoxX_TM_TextEditor")
         Me.TextBoxX_TM_TextEditor.ForeColor = System.Drawing.Color.Black
         Me.TextBoxX_TM_TextEditor.Name = "TextBoxX_TM_TextEditor"
         Me.TextBoxX_TM_TextEditor.PreventEnterBeep = True
@@ -297,18 +329,33 @@ Partial Class Tab_TextManager
         '
         'Bar_AddRemoveItems
         '
-        Me.Bar_AddRemoveItems.AntiAlias = True
         resources.ApplyResources(Me.Bar_AddRemoveItems, "Bar_AddRemoveItems")
-        Me.Bar_AddRemoveItems.DockSide = DevComponents.DotNetBar.eDockSide.Top
+        Me.Bar_AddRemoveItems.AntiAlias = True
         Me.Bar_AddRemoveItems.IsMaximized = False
-        Me.Bar_AddRemoveItems.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddTextItem, Me.ButtonItem_RemoveTextItem})
+        Me.Bar_AddRemoveItems.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_CurProfile, Me.ButtonItem_AddTextItem, Me.ButtonItem_RemoveTextItem})
         Me.Bar_AddRemoveItems.Name = "Bar_AddRemoveItems"
         Me.Bar_AddRemoveItems.Stretch = True
         Me.Bar_AddRemoveItems.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
         Me.Bar_AddRemoveItems.TabStop = False
         '
+        'ButtonItem_CurProfile
+        '
+        resources.ApplyResources(Me.ButtonItem_CurProfile, "ButtonItem_CurProfile")
+        Me.ButtonItem_CurProfile.AutoExpandOnClick = True
+        Me.ButtonItem_CurProfile.Name = "ButtonItem_CurProfile"
+        Me.ButtonItem_CurProfile.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ComboBoxItem_CurProfile})
+        '
+        'ComboBoxItem_CurProfile
+        '
+        resources.ApplyResources(Me.ComboBoxItem_CurProfile, "ComboBoxItem_CurProfile")
+        Me.ComboBoxItem_CurProfile.ComboWidth = 150
+        Me.ComboBoxItem_CurProfile.DropDownHeight = 106
+        Me.ComboBoxItem_CurProfile.DropDownWidth = 150
+        Me.ComboBoxItem_CurProfile.Name = "ComboBoxItem_CurProfile"
+        '
         'ButtonItem_AddTextItem
         '
+        resources.ApplyResources(Me.ButtonItem_AddTextItem, "ButtonItem_AddTextItem")
         Me.ButtonItem_AddTextItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonItem_AddTextItem.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
         Me.ButtonItem_AddTextItem.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
@@ -316,6 +363,7 @@ Partial Class Tab_TextManager
         '
         'ButtonItem_RemoveTextItem
         '
+        resources.ApplyResources(Me.ButtonItem_RemoveTextItem, "ButtonItem_RemoveTextItem")
         Me.ButtonItem_RemoveTextItem.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ButtonItem_RemoveTextItem.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.ButtonItem_RemoveTextItem.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
@@ -323,8 +371,8 @@ Partial Class Tab_TextManager
         '
         'Bar_TextOptions
         '
-        Me.Bar_TextOptions.AntiAlias = True
         resources.ApplyResources(Me.Bar_TextOptions, "Bar_TextOptions")
+        Me.Bar_TextOptions.AntiAlias = True
         Me.Bar_TextOptions.IsMaximized = False
         Me.Bar_TextOptions.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_AddButtons, Me.ButtonItem9, Me.ButtonItem10})
         Me.Bar_TextOptions.Name = "Bar_TextOptions"
@@ -334,104 +382,104 @@ Partial Class Tab_TextManager
         '
         'ButtonItem_AddButtons
         '
+        resources.ApplyResources(Me.ButtonItem_AddButtons, "ButtonItem_AddButtons")
         Me.ButtonItem_AddButtons.AutoExpandOnClick = True
         Me.ButtonItem_AddButtons.Name = "ButtonItem_AddButtons"
         Me.ButtonItem_AddButtons.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem4, Me.ButtonItem1, Me.ButtonItem5, Me.ButtonItem6, Me.ButtonItem7})
-        resources.ApplyResources(Me.ButtonItem_AddButtons, "ButtonItem_AddButtons")
         '
         'ButtonItem4
         '
-        Me.ButtonItem4.Name = "ButtonItem4"
         resources.ApplyResources(Me.ButtonItem4, "ButtonItem4")
+        Me.ButtonItem4.Name = "ButtonItem4"
         '
         'ButtonItem1
         '
-        Me.ButtonItem1.Name = "ButtonItem1"
         resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
+        Me.ButtonItem1.Name = "ButtonItem1"
         '
         'ButtonItem5
         '
-        Me.ButtonItem5.Name = "ButtonItem5"
         resources.ApplyResources(Me.ButtonItem5, "ButtonItem5")
+        Me.ButtonItem5.Name = "ButtonItem5"
         '
         'ButtonItem6
         '
-        Me.ButtonItem6.Name = "ButtonItem6"
         resources.ApplyResources(Me.ButtonItem6, "ButtonItem6")
+        Me.ButtonItem6.Name = "ButtonItem6"
         '
         'ButtonItem7
         '
-        Me.ButtonItem7.Name = "ButtonItem7"
         resources.ApplyResources(Me.ButtonItem7, "ButtonItem7")
+        Me.ButtonItem7.Name = "ButtonItem7"
         '
         'ButtonItem9
         '
+        resources.ApplyResources(Me.ButtonItem9, "ButtonItem9")
         Me.ButtonItem9.AutoExpandOnClick = True
         Me.ButtonItem9.Name = "ButtonItem9"
         Me.ButtonItem9.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem8, Me.ButtonItem11, Me.ButtonItem12, Me.ButtonItem13})
-        resources.ApplyResources(Me.ButtonItem9, "ButtonItem9")
         '
         'ButtonItem8
         '
-        Me.ButtonItem8.Name = "ButtonItem8"
         resources.ApplyResources(Me.ButtonItem8, "ButtonItem8")
+        Me.ButtonItem8.Name = "ButtonItem8"
         '
         'ButtonItem11
         '
-        Me.ButtonItem11.Name = "ButtonItem11"
         resources.ApplyResources(Me.ButtonItem11, "ButtonItem11")
+        Me.ButtonItem11.Name = "ButtonItem11"
         '
         'ButtonItem12
         '
-        Me.ButtonItem12.Name = "ButtonItem12"
         resources.ApplyResources(Me.ButtonItem12, "ButtonItem12")
+        Me.ButtonItem12.Name = "ButtonItem12"
         '
         'ButtonItem13
         '
-        Me.ButtonItem13.Name = "ButtonItem13"
         resources.ApplyResources(Me.ButtonItem13, "ButtonItem13")
+        Me.ButtonItem13.Name = "ButtonItem13"
         '
         'ButtonItem10
         '
+        resources.ApplyResources(Me.ButtonItem10, "ButtonItem10")
         Me.ButtonItem10.AutoExpandOnClick = True
         Me.ButtonItem10.Name = "ButtonItem10"
         Me.ButtonItem10.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem15, Me.ButtonItem14, Me.ButtonItem16, Me.ButtonItem17, Me.ButtonItem18, Me.ButtonItem19, Me.ButtonItem20})
-        resources.ApplyResources(Me.ButtonItem10, "ButtonItem10")
         '
         'ButtonItem15
         '
-        Me.ButtonItem15.Name = "ButtonItem15"
         resources.ApplyResources(Me.ButtonItem15, "ButtonItem15")
+        Me.ButtonItem15.Name = "ButtonItem15"
         '
         'ButtonItem14
         '
-        Me.ButtonItem14.Name = "ButtonItem14"
         resources.ApplyResources(Me.ButtonItem14, "ButtonItem14")
+        Me.ButtonItem14.Name = "ButtonItem14"
         '
         'ButtonItem16
         '
-        Me.ButtonItem16.Name = "ButtonItem16"
         resources.ApplyResources(Me.ButtonItem16, "ButtonItem16")
+        Me.ButtonItem16.Name = "ButtonItem16"
         '
         'ButtonItem17
         '
-        Me.ButtonItem17.Name = "ButtonItem17"
         resources.ApplyResources(Me.ButtonItem17, "ButtonItem17")
+        Me.ButtonItem17.Name = "ButtonItem17"
         '
         'ButtonItem18
         '
-        Me.ButtonItem18.Name = "ButtonItem18"
         resources.ApplyResources(Me.ButtonItem18, "ButtonItem18")
+        Me.ButtonItem18.Name = "ButtonItem18"
         '
         'ButtonItem19
         '
-        Me.ButtonItem19.Name = "ButtonItem19"
         resources.ApplyResources(Me.ButtonItem19, "ButtonItem19")
+        Me.ButtonItem19.Name = "ButtonItem19"
         '
         'ButtonItem20
         '
-        Me.ButtonItem20.Name = "ButtonItem20"
         resources.ApplyResources(Me.ButtonItem20, "ButtonItem20")
+        Me.ButtonItem20.Name = "ButtonItem20"
         '
         'Panel1
         '
@@ -445,20 +493,13 @@ Partial Class Tab_TextManager
         Me.Panel1.Controls.Add(Me.Bar_TextOptions)
         Me.Panel1.Name = "Panel1"
         '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.Controls.Add(Me.TabStrip_TextTable)
-        Me.Panel2.Controls.Add(Me.Bar_AddRemoveItems)
-        resources.ApplyResources(Me.Panel2, "Panel2")
-        Me.Panel2.Name = "Panel2"
-        '
         'Panel3
         '
         resources.ApplyResources(Me.Panel3, "Panel3")
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
         Me.Panel3.Controls.Add(Me.ListViewEx_TM_TableEntries)
-        Me.Panel3.Controls.Add(Me.Panel2)
+        Me.Panel3.Controls.Add(Me.TabStrip_TextTable)
+        Me.Panel3.Controls.Add(Me.Bar_AddRemoveItems)
         Me.Panel3.Name = "Panel3"
         '
         'Tab_TextManager
@@ -473,7 +514,6 @@ Partial Class Tab_TextManager
         CType(Me.Bar_AddRemoveItems, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Bar_TextOptions, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -524,6 +564,7 @@ Partial Class Tab_TextManager
     Friend WithEvents ButtonItem19 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem20 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
+    Friend WithEvents ComboBoxItem_CurProfile As DevComponents.DotNetBar.ComboBoxItem
+    Friend WithEvents ButtonItem_CurProfile As DevComponents.DotNetBar.ButtonItem
 End Class

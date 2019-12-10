@@ -14,13 +14,13 @@ Public Class Tab_TextManager
     Public WithEvents TMController As TextManagerController
     Private TM_LoadingItem As Boolean = False
     Private TM_BytesLeft As Integer = 0
+    Private loadingTextProfileList As Boolean = False
 
     'C o n s t r u c t o r
 
     Public Sub New()
         InitializeComponent()
         BackColor = Color.White
-        Bar_AddRemoveItems.Anchor = AnchorStyles.Top Or AnchorStyles.Right
     End Sub
 
     'C o n t r o l l e r   E v e n t s
@@ -44,11 +44,43 @@ Public Class Tab_TextManager
         AddTextListViewItem(e.TableName, e.ItemIndex, {})
     End Sub
 
-    Public Sub Controller_TextItemRemoved(e As TextItemEventArgs) Handles TMController.TextItemRemoved
+    Private Sub Controller_TextItemRemoved(e As TextItemEventArgs) Handles TMController.TextItemRemoved
         RemoveTextItem(e.ItemIndex)
     End Sub
 
+    Private Sub TMController_CurrentTextProfileInfoChanged() Handles TMController.CurrentTextProfileInfoChanged
+        LoadTextProfileList()
+        LoadTabStripItems()
+    End Sub
+
     'G u i
+
+    Private Sub LoadTextProfileList()
+        Dim itemToSelect As ComboItem = Nothing
+        Dim curProfile As String = TMController.GetCurrentTextProfileName
+
+        loadingTextProfileList = True
+        ComboBoxItem_CurProfile.Items.Clear()
+
+        For Each name As String In TMController.GetAllTextProfileNames
+            Dim ci As New ComboItem With {
+                .Text = name,
+                .Tag = name
+            }
+
+            ComboBoxItem_CurProfile.Items.Add(ci)
+
+            If curProfile = name Then
+                itemToSelect = ci
+            End If
+        Next
+
+        If itemToSelect IsNot Nothing Then
+            ComboBoxItem_CurProfile.SelectedItem = itemToSelect
+        End If
+
+        loadingTextProfileList = False
+    End Sub
 
     Private Sub RemoveTextItem(tableIndex As Integer)
         ListViewEx_TM_TableEntries.Items.RemoveAt(tableIndex)
@@ -100,7 +132,8 @@ Public Class Tab_TextManager
         Dim col1 As ColumnHeader = ListViewEx_TM_TableEntries.Columns(1)
         Dim col2 As ColumnHeader = ListViewEx_TM_TableEntries.Columns(2)
 
-        If TabStrip_TextTable.Tabs.Count = 0 Then
+        If TabStrip_TextTable.Tabs.Count = 0 Then 'First Init
+            LoadTextProfileList()
             LoadTabStripItems()
         End If
         tableName = TabStrip_TextTable.SelectedTab?.Tag
@@ -188,7 +221,8 @@ Public Class Tab_TextManager
         Line_TM_Warning2.Visible = groupInfo.isDialogGroup
         GroupPanel_TM_DialogProps.Visible = groupInfo.isDialogGroup
         TextBoxX_TM_TextEditor.CharacterCasing = If(isUpperCase, CharacterCasing.Upper, CharacterCasing.Normal)
-        Bar_AddRemoveItems.Visible = Not isPreDefined
+        ButtonItem_AddTextItem.Enabled = Not isPreDefined
+        ButtonItem_RemoveTextItem.Enabled = Not isPreDefined
 
         If IsAnyTextItemSelected() Then
             LoadTableEntries()
@@ -340,4 +374,14 @@ Public Class Tab_TextManager
         Line_TM_Warning2.Top = top
         Line_TM_Warning2.Height = height
     End Sub
+
+    Private Sub ComboBoxItem_CurProfile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItem_CurProfile.SelectedIndexChanged
+        If Not loadingTextProfileList Then
+            Dim ci As ComboItem = ComboBoxItem_CurProfile.SelectedItem
+            If ci IsNot Nothing Then
+                TMController.SetCurrentTextProfileName(ci.Tag)
+            End If
+        End If
+    End Sub
+
 End Class

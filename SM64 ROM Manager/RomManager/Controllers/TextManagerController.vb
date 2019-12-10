@@ -29,6 +29,7 @@ Public Class TextManagerController
     Public Event TextItemChanged(e As TextItemEventArgs)
     Public Event TextItemAdded(e As TextItemEventArgs)
     Public Event TextItemRemoved(e As TextItemEventArgs)
+    Public Event CurrentTextProfileInfoChanged()
 
     'P r o p e r t i e s
 
@@ -39,6 +40,7 @@ Public Class TextManagerController
         Get
             Dim e As New RequestRomManagerEventArgs
             RaiseEvent RequestRomManager(e)
+            SetCurrentTextProfileToRomManager(e.RomManager)
             Return e.RomManager
         End Get
     End Property
@@ -65,6 +67,7 @@ Public Class TextManagerController
 
     Public Sub OpenTextProfileEditor()
         MyTextProfiles.LoadAllTextProfilesIfNotLoaded()
+        Dim curTextProfile As TextProfileInfo = GetCurrentTextProfile()
 
         Dim editor As New TextProfilesManagerDialog With {
             .MyTextProfiles = MyTextProfiles
@@ -73,6 +76,7 @@ Public Class TextManagerController
         editor.ShowDialog()
 
         If RomManager IsNot Nothing Then
+            SetCurrentTextProfileName(curTextProfile.Name)
             RomManager.ClearTextGroups()
             SendRequestReloadTextManagerLists()
         End If
@@ -89,6 +93,31 @@ Public Class TextManagerController
     End Sub
 
     'T e x t   M a n a g e r   F e a t u r e s
+
+    Public Sub SetCurrentTextProfileToRomManager()
+        SetCurrentTextProfileToRomManager(RomManager)
+    End Sub
+
+    Private Sub SetCurrentTextProfileToRomManager(rommgr As RomManager)
+        Dim curInfo As TextProfileInfo = GetCurrentTextProfile(rommgr)
+        If curInfo IsNot rommgr.TextInfoProfile Then
+            rommgr.TextInfoProfile = curInfo
+        End If
+    End Sub
+
+    Private Function GetCurrentTextProfile() As TextProfileInfo
+        Return GetCurrentTextProfile(RomManager)
+    End Function
+
+    Private Function GetCurrentTextProfile(rommgr As RomManager) As TextProfileInfo
+        Dim info As TextProfileInfo = GetTextProfileInfoByName(rommgr.RomConfig.SelectedTextProfileInfo)
+
+        If info Is Nothing Then
+            info = MyTextProfiles.Manager.DefaultTextProfileInfo
+        End If
+
+        Return info
+    End Function
 
     Private Function GetTextGroup(name As String) As TextGroup
         Return RomManager?.TextGroups?.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name)
@@ -338,5 +367,41 @@ Public Class TextManagerController
 
         RaiseEvent TextItemRemoved(New TextItemEventArgs(tableName, tableIndex))
     End Sub
+
+    Public Function GetAllTextProfileNames() As IEnumerable(Of String)
+        Return MyTextProfiles.Manager.GetTextProfiles.Select(Function(n) n.Name)
+    End Function
+
+    Public Function GetCurrentTextProfileName() As String
+        Return GetCurrentTextProfile()?.Name
+    End Function
+
+    Public Sub SetCurrentTextProfileName(name As String)
+        Dim selProf As TextProfileInfo = GetTextProfileInfoByName(name)
+        Dim newName As String
+
+        If selProf Is Nothing OrElse selProf Is MyTextProfiles.Manager.DefaultTextProfileInfo Then
+            newName = String.Empty
+        Else
+            newName = selProf.Name
+        End If
+
+        If RomManager.RomConfig.SelectedTextProfileInfo <> newName Then
+            RomManager.RomConfig.SelectedTextProfileInfo = newName
+            RaiseEvent CurrentTextProfileInfoChanged()
+        End If
+    End Sub
+
+    Private Function GetTextProfileInfoByName(name As String) As TextProfileInfo
+        Dim prof As TextProfileInfo = Nothing
+
+        For Each p As TextProfileInfo In MyTextProfiles.Manager.GetTextProfiles
+            If prof Is Nothing AndAlso p.Name = name Then
+                prof = p
+            End If
+        Next
+
+        Return prof
+    End Function
 
 End Class

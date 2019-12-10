@@ -123,17 +123,82 @@
   <data name="LabelX21.Text" xml:space="preserve">
     <value>Dialog-Größe:</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="IntegerInput_TM_DialogSize.ButtonCalculator.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="IntegerInput_TM_DialogSize.ButtonCalculator.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCalculator.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCalculator.Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonClear.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonClear.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonClear.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonClear.Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCustom.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCustom.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCustom.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCustom.Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCustom2.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCustom2.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCustom2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonCustom2.Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonDropDown.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonDropDown.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonDropDown.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonDropDown.Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonFreeText.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonFreeText.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonFreeText.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IntegerInput_TM_DialogSize.ButtonFreeText.Tooltip" xml:space="preserve">
+    <value />
+  </data>
   <data name="GroupPanel_TM_DialogProps.Text" xml:space="preserve">
     <value>Dialogeigenschaften</value>
-  </data>
-  <data name="TabItem_TM_ActNames.Text" xml:space="preserve">
-    <value>Sternnamen</value>
-  </data>
-  <data name="TabItem_TM_Dialogs.Text" xml:space="preserve">
-    <value>Dialoge</value>
-  </data>
-  <data name="TabItem_TM_LevelNames.Text" xml:space="preserve">
-    <value>Levelnamen</value>
   </data>
   <data name="ColumnHeader13.Text" xml:space="preserve">
     <value>Beschreibung</value>
@@ -141,7 +206,34 @@
   <data name="ColumnHeader14.Text" xml:space="preserve">
     <value>Nachricht/Text</value>
   </data>
+  <data name="TextBoxX_TM_TextEditor.ButtonCustom.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TextBoxX_TM_TextEditor.ButtonCustom.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="TextBoxX_TM_TextEditor.ButtonCustom.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBoxX_TM_TextEditor.ButtonCustom.Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBoxX_TM_TextEditor.ButtonCustom2.DisplayPosition" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TextBoxX_TM_TextEditor.ButtonCustom2.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="TextBoxX_TM_TextEditor.ButtonCustom2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBoxX_TM_TextEditor.ButtonCustom2.Tooltip" xml:space="preserve">
+    <value />
+  </data>
   <data name="TextBoxX_TM_TextEditor.WatermarkText" xml:space="preserve">
     <value>Leer! Schreibe einen Text ...</value>
+  </data>
+  <data name="ButtonItem_CurProfile.Text" xml:space="preserve">
+    <value>Profil</value>
   </data>
 </root>
