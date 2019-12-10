@@ -732,6 +732,9 @@
     <EmbeddedResource Include="RomManager\GUI\Main Form\Text Manager\TextProfileEditor.resx">
       <DependentUpon>TextProfileEditor.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Main Form\Text Manager\TextProfilesManagerDialog.de.resx">
+      <DependentUpon>TextProfilesManagerDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\Text Manager\TextProfilesManagerDialog.resx">
       <DependentUpon>TextProfilesManagerDialog.vb</DependentUpon>
     </EmbeddedResource>
