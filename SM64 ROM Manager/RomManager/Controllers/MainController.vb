@@ -684,7 +684,7 @@ Public Class MainController
         frm.Show()
     End Sub
 
-    Private Sub OpenThankYouPage()
+    Public Sub OpenThankYouPage()
         Dim frm As New ThankYouForm
         frm.ShowDialog(mainForm)
     End Sub
@@ -734,9 +734,9 @@ Public Class MainController
 
     Public Sub CheckToOpenThankYouPage()
         Dim myVersion As New Version(Application.ProductVersion)
-        If Settings.General.LastThankYouPageSeen IsNot Nothing AndAlso Settings.General.LastThankYouPageSeen < myVersion Then
-            'OpenThankYouPage()
-            'Settings.General.LastThankYouPageSeen = myVersion
+        If Settings.General.LastThankYouPageSeen Is Nothing OrElse Settings.General.LastThankYouPageSeen < myVersion Then
+            OpenThankYouPage()
+            Settings.General.LastThankYouPageSeen = myVersion
         End If
     End Sub
 

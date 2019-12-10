@@ -489,4 +489,8 @@ Public Class MainForm
         Controller.OpenFeatureRequestDialog()
     End Sub
 
+    Private Sub ButtonItem_Supporter_Click(sender As Object, e As EventArgs) Handles ButtonItem_Supporter.Click
+        Controller.OpenThankYouPage()
+    End Sub
+
 End Class
