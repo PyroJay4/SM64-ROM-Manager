@@ -379,7 +379,7 @@ Public Class MainModelConverter
         MergeRecentFiles(Settings.RecentFiles.RecentModelFiles)
         For Each f As String In Settings.RecentFiles.RecentModelFiles
             Dim sf As String = Path.GetFileName(f)
-            Dim ico As Image = IconExtractor.ExtractIcon(f, True).ToBitmap
+            Dim ico As Image = Pilz.Win32.Internals.IconExtractor.ExtractIcon(f, True).ToBitmap
 
             Dim btnItem As New ButtonItem
             btnItem.ButtonStyle = eButtonStyle.ImageAndText

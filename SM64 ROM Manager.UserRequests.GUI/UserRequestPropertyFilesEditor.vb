@@ -39,7 +39,7 @@ Public Class UserRequestPropertyFilesEditor
             Dim btn As New ButtonItem With {
                 .Text = Path.GetFileName(f),
                 .Tag = f,
-                .Image = Pilz.Win32.Internals.IconExtractor.ExtractIcon(f, True).ToBitmap,
+                .Image = Pilz.Win32.Internals.IconExtractor.ExtractIcon(f, True)?.ToBitmap,
                 .ButtonStyle = eButtonStyle.ImageAndText,
                 .ImagePosition = eImagePosition.Left
             }

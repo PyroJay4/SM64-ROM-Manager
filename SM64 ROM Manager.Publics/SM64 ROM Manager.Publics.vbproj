@@ -137,7 +137,6 @@
       <DependentUpon>FileDialogFilters.resx</DependentUpon>
     </Compile>
     <Compile Include="General.vb" />
-    <Compile Include="IconExtractor.vb" />
     <Compile Include="ItemListBox.vb">
       <SubType>Component</SubType>
     </Compile>

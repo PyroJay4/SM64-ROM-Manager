@@ -183,7 +183,7 @@ Public Class MainForm
                 Dim bi As New ButtonItem
                 bi.Text = Path.GetFileName(r)
                 bi.Tooltip = r
-                bi.Image = ExtractIcon(r, True).ToBitmap
+                bi.Image = Pilz.Win32.Internals.IconExtractor.ExtractIcon(r, True).ToBitmap
                 bi.ButtonStyle = eButtonStyle.ImageAndText
                 If cindex = 1 Then bi.BeginGroup = True
                 AddHandler bi.Click, AddressOf MenuItem_RecentROMs_Click

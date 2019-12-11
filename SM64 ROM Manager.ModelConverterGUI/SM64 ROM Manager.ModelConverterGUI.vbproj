@@ -88,6 +88,9 @@
     <Reference Include="Pilz.UI">
       <HintPath>..\Shared Libs\Pilz.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Pilz.Win32">
+      <HintPath>..\Shared Libs\Pilz.Win32.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
