@@ -118,7 +118,6 @@
     <Compile Include="Settings\SubStruc\ModelConverterSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\RecentFilesSettingsStruc.vb" />
     <Compile Include="Settings\SubStruc\StyleManagerSettingsStruc.vb" />
-    <Compile Include="Settings\SubStruc\SubStruc\GuiInputSettings.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\HexEditModeStruc.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\JobToDo.vb" />
     <Compile Include="Settings\SubStruc\SubStruc\JobToDoType.vb" />

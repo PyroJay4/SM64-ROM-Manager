@@ -29,8 +29,7 @@ Public Module PublicFunctions
             frm.ForceDisplaylist = forceDisplaylist
         End If
 
-        If frm.ShowDialog(GetObjectInputSettingsOrDefault(inputsKey)) = Windows.Forms.DialogResult.OK Then
-            StoreObjectInputSettings(inputsKey, frm.GuiInputSettings)
+        If frm.ShowDialog() = Windows.Forms.DialogResult.OK Then
             Return (frm.ResModel, frm.CheckBoxX_ConvertModel.Checked, frm.CheckBoxX_ConvertCollision.Checked)
         Else
             Return Nothing

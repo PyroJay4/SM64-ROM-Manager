@@ -19,6 +19,14 @@ Imports Pilz.Drawing.Drawing3D.OpenGLFactory.RenderingN
 
 Public Class MainModelConverter
 
+    'C o n s t a n t s
+
+    Private Const EXT_CONVERSION_PREFERENCES As String = ".conpref"
+    Private Const EXT_GRAPHICS_SETTINGS As String = ".gf"
+    Private Const EXT_COLLISION_SETTINGS As String = ".col"
+
+    'F i e l d s
+
     Private DResult As DialogResult = DialogResult.None
     Private objSettings As New ObjectInputSettings
     Private objVisualMap As Object3D = Nothing
@@ -32,31 +40,29 @@ Public Class MainModelConverter
     Private curDiffusePos As Vertex = Nothing
     Private isSliderMouseDown As Boolean = False
 
+    'P r o p e r t i e s
+
     Public Property ResModel As ObjectModel = Nothing
     Public Property ForceDisplaylist As SByte = -1
-    Public Property GuiInputSettings As New GuiInputSettings
 
+    'C o n s t r u c t o r
     Public Sub New()
         InitializeComponent()
         UpdateAmbientColors()
     End Sub
+
+    'F e a t u r e s
 
     Private Function GetColorFromShadingByte(value As Byte) As Color
         Return Color.FromArgb(&HFF, value, value, value)
     End Function
 
     Public Overloads Function ShowDialog() As DialogResult
-        Return ShowDialog(New GuiInputSettings)
-    End Function
-
-    Public Overloads Function ShowDialog(guiSettings As GuiInputSettings) As DialogResult
-        GuiInputSettings = guiSettings
-
         ComboBoxEx_UpAxis.SelectedIndex = Settings.FileParser.UpAxis
         ComboBox_FogTyp.SelectedIndex = 0
 
-        LoadRecentFiles()
         LoadGuiSettings()
+        LoadRecentFiles()
 
         Dim res As DialogResult = Nothing
         Dim ende As Boolean = False
@@ -69,44 +75,64 @@ Public Class MainModelConverter
             End Try
         Loop
 
-        SaveGuiSettings()
         Return res
     End Function
 
     Private Sub LoadGuiSettings()
-        NUD_Scaling.Value = GuiInputSettings.Scaling
-        SwitchButton_EnableReduceVertices.Value = GuiInputSettings.ReduceDupVerts
-        SwitchButton_ResizeTextures.Value = GuiInputSettings.ResizeTextures
-        SwitchButton_CenterModel.Value = GuiInputSettings.CenterModel
+        Dim guiInputSettings As GuiInputPreferences
 
-        ColorPickerButton_ShadingAmbient.SelectedColor = GuiInputSettings.Shading.AmbientColor
-        ColorPickerButton_ShadingDiffuse.SelectedColor = GuiInputSettings.Shading.DiffuseColor
-        curDiffusePos = GuiInputSettings.Shading.DiffusePosition
+        If CheckBoxX_ConvertModel.Checked AndAlso File.Exists(curModelFile) Then
+            guiInputSettings = GuiInputPreferences.Load(curModelFile & EXT_CONVERSION_PREFERENCES)
+        ElseIf CheckBoxX_ConvertCollision.Checked AndAlso File.Exists(curCollisionFile) Then
+            guiInputSettings = GuiInputPreferences.Load(curCollisionFile & EXT_CONVERSION_PREFERENCES)
+        Else
+            guiInputSettings = New GuiInputPreferences
+        End If
 
-        Dim isFogNotNothing As Boolean = GuiInputSettings.Fog IsNot Nothing
+        NUD_Scaling.Value = guiInputSettings.Scaling
+        SwitchButton_EnableReduceVertices.Value = guiInputSettings.ReduceDupVerts
+        SwitchButton_ResizeTextures.Value = guiInputSettings.ResizeTextures
+        SwitchButton_CenterModel.Value = guiInputSettings.CenterModel
+
+        ColorPickerButton_ShadingAmbient.SelectedColor = guiInputSettings.Shading.AmbientColor
+        ColorPickerButton_ShadingDiffuse.SelectedColor = guiInputSettings.Shading.DiffuseColor
+        curDiffusePos = guiInputSettings.Shading.DiffusePosition
+
+        Dim isFogNotNothing As Boolean = guiInputSettings.Fog IsNot Nothing
         SwitchButton_EnableFog.Value = isFogNotNothing
         If isFogNotNothing Then
-            ColorPickerButton_FogColor.SelectedColor = GuiInputSettings.Fog.Color
-            ComboBox_FogTyp.SelectedIndex = GuiInputSettings.Fog.Type
+            ColorPickerButton_FogColor.SelectedColor = guiInputSettings.Fog.Color
+            ComboBox_FogTyp.SelectedIndex = guiInputSettings.Fog.Type
         End If
     End Sub
 
-    Private Sub SaveGuiSettings()
-        GuiInputSettings.Scaling = NUD_Scaling.Value
-        GuiInputSettings.ReduceDupVerts = SwitchButton_EnableReduceVertices.Value
-        GuiInputSettings.ResizeTextures = SwitchButton_ResizeTextures.Value
-        GuiInputSettings.CenterModel = SwitchButton_CenterModel.Value
+    Private Sub SaveGuiSettings(importVMap As Boolean, importColMap As Boolean)
+        Dim guiInputSettings As New GuiInputPreferences
 
-        GuiInputSettings.Shading.AmbientColor = ColorPickerButton_ShadingAmbient.SelectedColor
-        GuiInputSettings.Shading.DiffuseColor = ColorPickerButton_ShadingDiffuse.SelectedColor
-        GuiInputSettings.Shading.DiffusePosition = curDiffusePos
+        guiInputSettings.Scaling = NUD_Scaling.Value
+        guiInputSettings.ReduceDupVerts = SwitchButton_EnableReduceVertices.Value
+        guiInputSettings.ResizeTextures = SwitchButton_ResizeTextures.Value
+        guiInputSettings.CenterModel = SwitchButton_CenterModel.Value
+
+        guiInputSettings.Shading.AmbientColor = ColorPickerButton_ShadingAmbient.SelectedColor
+        guiInputSettings.Shading.DiffuseColor = ColorPickerButton_ShadingDiffuse.SelectedColor
+        guiInputSettings.Shading.DiffusePosition = curDiffusePos
 
         If SwitchButton_EnableFog.Value Then
-            GuiInputSettings.Fog = New Fog With {.Color = ColorPickerButton_FogColor.SelectedColor, .Type = ComboBox_FogTyp.SelectedIndex}
+            guiInputSettings.Fog = New Fog With {.Color = ColorPickerButton_FogColor.SelectedColor, .Type = ComboBox_FogTyp.SelectedIndex}
         Else
-            GuiInputSettings.Fog = Nothing
+            guiInputSettings.Fog = Nothing
+        End If
+
+        If importVMap Then
+            guiInputSettings.Save(curModelFile & EXT_CONVERSION_PREFERENCES)
+        End If
+        If importColMap Then
+            guiInputSettings.Save(curCollisionFile & EXT_CONVERSION_PREFERENCES)
         End If
     End Sub
+
+    'G u i
 
     Private Async Sub Button_ConvertModel_Click(sender As Object, e As EventArgs) Handles Button_ConvertModel.Click
         'Set Convert Settings
@@ -208,6 +234,7 @@ Public Class MainModelConverter
             Await ResModel.FromModelAsync(objSettings, vmap, colmap, curTexFormatSettings, curColSettings)
         End If
 
+        SaveGuiSettings(vmap IsNot Nothing, colmap IsNot Nothing)
         EnableCirProgress(True)
         DialogResult = DialogResult.OK
     End Sub
@@ -263,9 +290,11 @@ Public Class MainModelConverter
         Dim p As StringCollection = Settings.RecentFiles.RecentModelFiles
         If p.Count > 0 Then ofd.InitialDirectory = Path.GetDirectoryName(p(0))
 
-        If ofd.ShowDialog <> DialogResult.OK Then Return
-        Await LoadModel(ofd.FileName)
+        If ofd.ShowDialog = DialogResult.OK Then
+            Await LoadModel(ofd.FileName)
+        End If
     End Sub
+
     Private Async Sub Button3_LM_LoadCol_Click(sender As Object, e As EventArgs) Handles Button_LoadCol.Click
         Dim ofd As New OpenFileDialog
         ofd.Filter = GetExtensionFilter(Settings.FileParser.FileLoaderModule, 0) '"All supported files|*.obj;*.dae|OBJ Files (*.obj)|*.obj|Collada Files (*.dae)|*.dae"
@@ -273,8 +302,9 @@ Public Class MainModelConverter
         Dim p As StringCollection = Settings.RecentFiles.RecentModelFiles
         If p.Count > 0 Then ofd.InitialDirectory = Path.GetDirectoryName(p(0))
 
-        If ofd.ShowDialog <> DialogResult.OK Then Return
-        Await LoadCollision(ofd.FileName)
+        If ofd.ShowDialog = DialogResult.OK Then
+            Await LoadCollision(ofd.FileName)
+        End If
     End Sub
 
     Private Async Function LoadModel(fileName As String) As Task
@@ -283,67 +313,79 @@ Public Class MainModelConverter
         Dim m As File3DLoaderModule = GetLoaderModuleFromID(Settings.FileParser.FileLoaderModule)
         Dim useascoltoo As Boolean = CheckBoxX_ConvertCollision.Checked AndAlso objCollisionMap Is Nothing OrElse objCollisionMap Is objVisualMap
 
+#If Not DEBUG Then
         Try
-            'objVisualMap = Object3D.FromFile(fileName, True, ComboBoxEx_UpAxis.SelectedIndex, Settings.FileParser.LoaderModuleHash)
-            objVisualMap = m.Invoke(fileName, New LoaderOptions(True, ComboBoxEx_UpAxis.SelectedIndex))
+#End If
 
-            curTexFormatSettings = New TextureFormatSettings
-            Await curTexFormatSettings.Load(fileName & ".gf")
+        objVisualMap = m.Invoke(fileName, New LoaderOptions(True, ComboBoxEx_UpAxis.SelectedIndex))
 
-            objVisualMap.RemoveUnusedMaterials()
+        curTexFormatSettings = New TextureFormatSettings
+        Await curTexFormatSettings.Load(fileName & EXT_GRAPHICS_SETTINGS)
 
-            AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
-            LoadRecentFiles()
-            LabelX_Modelfile.Text = Path.GetFileName(fileName)
-            curModelFile = fileName
-            centredVisualMap = False
+        objVisualMap.RemoveUnusedMaterials()
 
-            If useascoltoo Then
-                curCollisionFile = fileName
-                objCollisionMap = objVisualMap
-                LabelX_Colfile.Text = Path.GetFileName(fileName)
+        AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
+        LoadRecentFiles()
+        LabelX_Modelfile.Text = Path.GetFileName(fileName)
+        curModelFile = fileName
+        centredVisualMap = False
+        LoadGuiSettings()
 
-                curColSettings = New Collision.CollisionSettings
-                Await curColSettings.Load(fileName & ".col")
-            End If
+        If useascoltoo Then
+            curCollisionFile = fileName
+            objCollisionMap = objVisualMap
+            LabelX_Colfile.Text = Path.GetFileName(fileName)
 
-            EnableModelControls()
+            curColSettings = New Collision.CollisionSettings
+            Await curColSettings.Load(fileName & EXT_COLLISION_SETTINGS)
+        End If
 
+        EnableModelControls()
+
+#If Not DEBUG Then
         Catch ex As Exceptions.MaterialException
             MessageBoxEx.Show(String.Format(MainModelconverter_Resources.MsgBox_ErrorLoadingMaterial, ex.Message), MainModelconverter_Resources.MsgBox_ErrorLoadingMaterial_Title, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As FileNotFoundException
             ShowVCPP2017IsMissingMessage()
         End Try
+#End If
+
         EnableCirProgress(True)
     End Function
+
     Private Async Function LoadCollision(fileName As String) As Task
         EnableCirProgress()
 
         Dim m As File3DLoaderModule = GetLoaderModuleFromID(Settings.FileParser.FileLoaderModule)
 
+#If Not DEBUG Then
         Try
-            'objCollisionMap = Object3D.FromFile(fileName, True, ComboBoxEx_UpAxis.SelectedIndex, Settings.FileParser.LoaderModuleHash)
-            objCollisionMap = m.Invoke(fileName, New LoaderOptions(True, ComboBoxEx_UpAxis.SelectedIndex))
+#End If
 
-            curColSettings = New Collision.CollisionSettings
-            Await curColSettings.Load(fileName & ".col")
+        objCollisionMap = m.Invoke(fileName, New LoaderOptions(True, ComboBoxEx_UpAxis.SelectedIndex))
 
-            objCollisionMap.RemoveUnusedMaterials()
+        curColSettings = New Collision.CollisionSettings
+        Await curColSettings.Load(fileName & EXT_COLLISION_SETTINGS)
 
-            AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
-            LoadRecentFiles()
-            LabelX_Colfile.Text = Path.GetFileName(fileName)
-            curCollisionFile = fileName
-            centredCollisionMap = False
+        objCollisionMap.RemoveUnusedMaterials()
 
-            EnableModelControls()
-            EnableCirProgress(True)
+        AddRecentFile(Settings.RecentFiles.RecentModelFiles, fileName)
+        LoadRecentFiles()
+        LabelX_Colfile.Text = Path.GetFileName(fileName)
+        curCollisionFile = fileName
+        centredCollisionMap = False
+        LoadGuiSettings()
 
+        EnableModelControls()
+        EnableCirProgress(True)
+
+#If Not DEBUG Then
         Catch ex As Exceptions.MaterialException
             MessageBoxEx.Show(String.Format(MainModelconverter_Resources.MsgBox_ErrorLoadingMaterial, ex.Message), MainModelconverter_Resources.MsgBox_ErrorLoadingMaterial_Title, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As FileNotFoundException
             ShowVCPP2017IsMissingMessage()
         End Try
+#End If
     End Function
 
     Private Sub ShowVCPP2017IsMissingMessage()
@@ -419,14 +461,14 @@ Public Class MainModelConverter
         Dim frm As New CollisionEditor(objCollisionMap)
         frm.CollisionSettings = curColSettings
         frm.ShowDialog()
-        curColSettings.Save(curCollisionFile & ".col")
+        curColSettings.Save(curCollisionFile & EXT_COLLISION_SETTINGS)
     End Sub
 
     Private Sub ButtonX_GraphicsEditor_Click(sender As Object, e As EventArgs) Handles ButtonX_GraphicsEditor.Click
         Dim frm As New TextureGraphicFormatEditor(objVisualMap)
         frm.TextureFormatSettings = curTexFormatSettings
         frm.ShowDialog()
-        curTexFormatSettings.Save(curModelFile & ".gf")
+        curTexFormatSettings.Save(curModelFile & EXT_GRAPHICS_SETTINGS)
     End Sub
 
     Private Sub SwitchButton_EnableFog_ValueChanged(sender As Object, e As EventArgs) Handles SwitchButton_EnableFog.ValueChanged

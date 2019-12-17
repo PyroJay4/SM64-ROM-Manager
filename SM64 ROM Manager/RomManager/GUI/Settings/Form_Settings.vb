@@ -254,7 +254,6 @@ Public Class Form_Settings
     End Sub
 
     Private Sub ButtonX6_Click(sender As Object, e As EventArgs) Handles ButtonX6.Click
-        Settings.ModelConverter.InputSettings.Clear()
         ButtonX6.Enabled = False
     End Sub
 
