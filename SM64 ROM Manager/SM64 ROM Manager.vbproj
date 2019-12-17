@@ -226,12 +226,6 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nUpdate.Internal, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\nUpdate.ProvideTAP.3.5.0\lib\net40\nUpdate.Internal.dll</HintPath>
-    </Reference>
-    <Reference Include="nUpdate.ProvideTAP, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\nUpdate.ProvideTAP.3.5.0\lib\net40\nUpdate.ProvideTAP.dll</HintPath>
-    </Reference>
     <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
     </Reference>
@@ -684,12 +678,6 @@
     </Compile>
     <Compile Include="RomManager\Modules\General.vb" />
     <Compile Include="RomManager\Modules\ObjectComboList\ObjectComboList.vb" />
-    <Compile Include="RomManager\GUI\Update\UpdateDialog.Designer.vb">
-      <DependentUpon>UpdateDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RomManager\GUI\Update\UpdateDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyIcons.resx">
@@ -911,9 +899,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\Form_SM64TextConverter.resx">
       <DependentUpon>Form_SM64TextConverter.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Update\UpdateDialog.resx">
-      <DependentUpon>UpdateDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\Language Resources\Plugin Installer\Plugin_Installer_Resources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>

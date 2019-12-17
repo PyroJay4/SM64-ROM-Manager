@@ -1,6 +1,5 @@
 Imports System.IO
 Imports DevComponents.DotNetBar
-Imports nUpdate.Updating
 Imports SM64_ROM_Manager.My.Resources
 Imports SM64Lib
 Imports SM64_ROM_Manager.Publics

@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports nUpdate.Updating
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib
 Imports SM64_ROM_Manager.Publics
