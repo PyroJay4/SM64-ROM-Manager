@@ -35,7 +35,7 @@
 034 - Lakitu
 035 - Wooden signpost (BOB)
 036 - Wooden signpost (WF)
-037 - Koopa - lost (THI)
+037 - Penguin - lost (THI)
 038 - Unlocking star-door
 039 - Wooden signpost (BOB)
 040 - Wooden signpost (CCM)
@@ -53,11 +53,11 @@
 052 - Signpost (IC)
 053 - Wooden signpost (BOB, DDD & WDW)
 054 - Wooden signpost (CCM)
-055 - Racing pinguin - Start (CCM)
-056 - Racing pinguin - Won (CCM)
-057 - Pinguin mother - Lost baby (CCM)
-058 - Pinguin mother - Correct baby (CCM)
-059 - Pinguin mother - Lost baby (CCM)
+055 - Racing Penguin - Start (CCM)
+056 - Racing Penguin - Won (CCM)
+057 - Penguin mother - Lost baby (CCM)
+058 - Penguin mother - Correct baby (CCM)
+059 - Penguin mother - Lost baby (CCM)
 060 - Wooden signpost (JRB)
 061 - Wooden signpost (SML)
 062 - Wooden signpost (HMC)
@@ -130,7 +130,7 @@
 129 - Levelentry (Vanish cap)
 130 - Levelentry (Metal cap)
 131 - Levelentry (Wing cap)
-132 - Racing pinguin - Cheated (CCM)
+132 - Racing Penguin - Cheated (CCM)
 133 - Toad (IC)
 134 - Toad (IC)
 135 - Toad (IC)
@@ -162,7 +162,7 @@
 161 - Yoshi
 162 - Mips 2
 163 - Bowser - Defeated at 120 stars (3rd Bowser fight)
-164 - Racing pinguin - At 120 stars (CCM)
+164 - Racing Penguin - At 120 stars (CCM)
 165 - Wooden signpost (THI)
 166 - Wooden signpost (THI)
 167 - Wooden signpost (CG)
