@@ -65,7 +65,6 @@ Partial Class ScrollTexEditor
         Me.ListViewEx_LM_ScrollTexList.Location = New System.Drawing.Point(0, 0)
         Me.ListViewEx_LM_ScrollTexList.MultiSelect = False
         Me.ListViewEx_LM_ScrollTexList.Name = "ListViewEx_LM_ScrollTexList"
-        Me.ListViewEx_LM_ScrollTexList.ShowGroups = False
         Me.ListViewEx_LM_ScrollTexList.Size = New System.Drawing.Size(583, 633)
         Me.ListViewEx_LM_ScrollTexList.TabIndex = 2
         Me.ListViewEx_LM_ScrollTexList.UseCompatibleStateImageBehavior = False

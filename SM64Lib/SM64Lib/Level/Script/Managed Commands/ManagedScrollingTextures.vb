@@ -26,10 +26,11 @@ Namespace Levels.ScrolTex
         ''' </summary>
         ''' <param name="facesCount">Amount of faces to count.</param>
         ''' <param name="vertexPtr">Pointer to the Vertices.</param>
-        Public Sub New(facesCount As UInt16, vertexPtr As Integer)
+        Public Sub New(facesCount As UInt16, vertexPtr As Integer, groupID As Short)
             Me.New
             Me.FacesCount = facesCount
             Me.VertexPointer = vertexPtr
+            Me.GroupID = groupID
         End Sub
 
         ''' <summary>
@@ -40,6 +41,15 @@ Namespace Levels.ScrolTex
             Command = cmd
             LoadProperties()
         End Sub
+
+        ''' <summary>
+        ''' Indicates the group (by default deticted to the used texture).
+        ''' </summary>
+        ''' <returns></returns>
+        <DisplayName("Group ID")>
+        <Description("Indicates the group ID (by default deticted to the used texture).")>
+        <Category("Grouping")>
+        Public Property GroupID As Short = 0
 
         ''' <summary>
         ''' Indicates the cycle duration of sine wave or jumping scrolling.
@@ -149,6 +159,7 @@ Namespace Levels.ScrolTex
             ScrollingSpeed = clScrollingTexture.GetScrollSpeed(Command)
             Type = clScrollingTexture.GetScrollType(Command)
             Behavior = clScrollingTexture.GetScrollBehavior(Command)
+            GroupID = clScrollingTexture.GetGroupID(Command)
 
             Dim acts() As Boolean = Bits.ByteToBoolArray(clNormal3DObject.GetActs(Command))
             Act1 = acts(7)
@@ -170,6 +181,7 @@ Namespace Levels.ScrolTex
             clScrollingTexture.SetScrollSpeed(Command, ScrollingSpeed)
             clScrollingTexture.SetScrollType(Command, Type)
             clScrollingTexture.SetScrollBehavior(Command, Behavior)
+            clScrollingTexture.SetGroupID(Command, GroupID)
             clNormal3DObject.SetSegBehaviorAddr(Command, &H400000)
 
             Dim acts() As Boolean = {False, False, False, False, False, False, False, False}

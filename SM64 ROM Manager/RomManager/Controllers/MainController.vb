@@ -922,7 +922,7 @@ Public Class MainController
     End Function
 
     Public Function HasLevelCustomName(levelID As UShort) As String
-        Return RomManager.RomConfig.LevelConfigs.ContainsKey(levelID)
+        Return Not String.IsNullOrEmpty(RomManager.RomConfig.GetLevelConfig(levelID)?.LevelName)
     End Function
 
     Public Function GetLevelCustomName(levelIndex As Integer) As String
@@ -931,17 +931,11 @@ Public Class MainController
     End Function
 
     Public Function GetLevelCustomName(levelID As UShort) As String
-        Return RomManager.RomConfig.LevelConfigs(levelID).LevelName
+        Return RomManager.RomConfig.GetLevelConfig(levelID).LevelName
     End Function
 
     Public Sub SetLevelCustomName(levelID As UShort, newName As String)
-        If String.IsNullOrEmpty(newName) Then
-            RomManager.RomConfig.LevelConfigs.RemoveIfContainsKey(levelID)
-        ElseIf RomManager.RomConfig.LevelConfigs.ContainsKey(levelID) Then
-            RomManager.RomConfig.LevelConfigs(levelID).LevelName = newName
-        Else
-            RomManager.RomConfig.LevelConfigs.Add(levelID, New LevelConfig With {.LevelName = newName})
-        End If
+        RomManager.RomConfig.GetLevelConfig(levelID).LevelName = newName
     End Sub
 
     Public Function GetLevelName(levelIndex As Integer) As String
@@ -985,6 +979,7 @@ Public Class MainController
                 Dim tArea As New RMLevelArea(areaID)
                 tArea.AreaModel = res?.mdl
                 tArea.ScrollingTextures.AddRange(res?.mdl.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
+                RomManager.RomConfig.GetLevelConfig(curLevel.LevelID).GetLevelAreaConfig(areaID).ScrollingNames = res?.mdl.Fast3DBuffer.ConvertResult.ScrollingNames
 
                 'Add area to level
                 curLevel.Areas.Add(tArea)
@@ -1176,6 +1171,7 @@ Public Class MainController
             If res?.hasVisualMap Then
                 area.ScrollingTextures.Clear()
                 area.ScrollingTextures.AddRange(area.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
+                RomManager.RomConfig.GetLevelConfig(levelarea.level.LevelID).GetLevelAreaConfig(area.AreaID).ScrollingNames = res?.mdl.Fast3DBuffer.ConvertResult.ScrollingNames
             End If
 
             area.SetSegmentedBanks(RomManager)
@@ -1209,7 +1205,8 @@ Public Class MainController
     Public Sub OpenScrollingTextureEditor(levelIndex As Integer, areaIndex As Integer)
         If levelIndex > -1 AndAlso areaIndex > -1 Then
             Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
-            Dim editor As New ScrollTexEditor(lvl.area)
+            Dim areaConf As LevelAreaConfig = RomManager.RomConfig.GetLevelConfig(lvl.level.LevelID).GetLevelAreaConfig(lvl.area.AreaID)
+            Dim editor As New ScrollTexEditor(lvl.area, areaConf)
 
             Dim scrollTextCountChanged = Sub() RaiseEvent LevelAreaScrollingTextureCountChanged(New LevelAreaEventArgs(levelIndex, areaIndex, lvl.area.AreaID))
             Dim setNeedToSave = Sub() SetLevelscriptNeedToSave(lvl.level)

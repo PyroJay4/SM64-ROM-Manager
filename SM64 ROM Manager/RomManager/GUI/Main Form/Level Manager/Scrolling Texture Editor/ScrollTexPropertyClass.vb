@@ -11,6 +11,18 @@ Public Class ScrollTexPropertyClass
         ScrollingTexture = scrollTex
     End Sub
 
+    <DisplayName("Group ID")>
+    <Description("Indicates the group ID (by default deticted to the used texture).")>
+    <Category("Grouping")>
+    Public Property GroupID As Short
+        Get
+            Return ScrollingTexture.GroupID
+        End Get
+        Set(value As Short)
+            ScrollingTexture.GroupID = value
+        End Set
+    End Property
+
     <DisplayName("Behavior")>
     <Description("Indicates the axis and behavior.")>
     <Category("Behavior")>
