@@ -43,8 +43,14 @@ Public Class EditorWindow
         If curRibbonTab Is RibbonTabItem_UpdateInfo Then
             Dim curTab As SuperTabItem = SuperTabControl1.SelectedTab
             If curTab Is SuperTabItem_UI_General Then
+                RibbonBar_UI_Allgemein.Visible = True
+                RibbonBar_UI_PackageInfo.Visible = False
             ElseIf curTab Is SuperTabItem_UI_PackageInfo Then
-            ElseIf curTab Is SuperTabItem_UI_Changelog Then
+                RibbonBar_UI_Allgemein.Visible = False
+                RibbonBar_UI_PackageInfo.Visible = True
+            Else
+                RibbonBar_UI_Allgemein.Visible = False
+                RibbonBar_UI_PackageInfo.Visible = False
             End If
         ElseIf curRibbonTab Is RibbonTabItem_Packaging Then
             Dim curTab As SuperTabItem = SuperTabControl1.SelectedTab
@@ -73,7 +79,81 @@ Public Class EditorWindow
 
 #Region "Update-Info"
 
+    'F i e l d s
 
+    Private ReadOnly updateInfoManager As New UpdateInfoManager
+    Private curUpdateInfoPath As String = String.Empty
+
+    'F e a t u r e s
+
+    Private Sub NewUpdateInfo()
+        updateInfoManager.NewInfo()
+        curUpdateInfoPath = String.Empty
+        ShowAllUpdateInfoConfig()
+    End Sub
+
+    Private Sub OpenUpdateInfo()
+        Dim ofd_UpdateAdmin_LoadUpdateInfo As New OpenFileDialog With {
+            .Filter = FILTER_UPDATEINFO_CONFIGURATION
+        }
+        If ofd_UpdateAdmin_LoadUpdateInfo.ShowDialog = DialogResult.OK Then
+            updateInfoManager.Load(ofd_UpdateAdmin_LoadUpdateInfo.FileName)
+            curUpdateInfoPath = ofd_UpdateAdmin_LoadUpdateInfo.FileName
+            ShowAllUpdateInfoConfig()
+        End If
+    End Sub
+
+    Private Sub SaveUpdateInfo()
+        If String.IsNullOrEmpty(curUpdateInfoPath) Then
+            SaveUpdateInfoAs()
+        Else
+            updateInfoManager.Save(curUpdateInfoPath)
+        End If
+    End Sub
+
+    Private Sub SaveUpdateInfoAs()
+        Dim sfd_UpdateAdmin_SaveUpdateInfo As New SaveFileDialog With {
+            .Filter = FILTER_UPDATEINFO_CONFIGURATION
+        }
+        If sfd_UpdateAdmin_SaveUpdateInfo.ShowDialog = DialogResult.OK Then
+            updateInfoManager.Save(sfd_UpdateAdmin_SaveUpdateInfo.FileName)
+            curUpdateInfoPath = sfd_UpdateAdmin_SaveUpdateInfo.FileName
+        End If
+    End Sub
+
+    Private Sub EditUpdateInfoConfiguration()
+
+    End Sub
+
+    Private Sub ShowAllUpdateInfoConfig()
+        LoadPackageInfoList()
+    End Sub
+
+    Private Sub LoadPackageInfoList()
+
+    End Sub
+
+    'G u i
+
+    Private Sub ButtonItem_UI_NewPackage_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_NewPackage.Click
+        NewUpdateInfo()
+    End Sub
+
+    Private Sub ButtonItem_UI_Open_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_Open.Click
+        OpenUpdateInfo()
+    End Sub
+
+    Private Sub ButtonItem_UI_Save_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_Save.Click
+        SaveUpdateInfo()
+    End Sub
+
+    Private Sub ButtonItem_UI_SaveAs_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_SaveAs.Click
+        SaveUpdateInfoAs()
+    End Sub
+
+    Private Sub ButtonItem_UI_EditConfiguration_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_EditConfiguration.Click
+        EditUpdateInfoConfiguration()
+    End Sub
 
 #End Region
 

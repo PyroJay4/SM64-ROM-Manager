@@ -133,7 +133,7 @@
     <value>Your {0} is too big or your scaling is too large. Your collision map probably will have some issues after importing.</value>
   </data>
   <data name="MsgBox_MVCppMissing" xml:space="preserve">
-    <value>To use different formats then Waverfront OBJ, you need &lt;b&gt;Microsoft Visual C++ Redistributable 2017&lt;/b&gt; installed on your PC.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Download links:&lt;/b&gt;&lt;br/&gt;&lt;a href=""&gt;https://aka.ms/vs/15/release/vc_redist.x64.exe""&gt;vc_redist.x64.exe&lt;/a&gt; (for &lt;b&gt;64-bit&lt;/b&gt; systems)&lt;br/&gt;&lt;a href=""&gt;https://aka.ms/vs/15/release/vc_redist.x86.exe""&gt;vc_redist.x32.exe&lt;/a&gt; (for &lt;b&gt;32-bit&lt;/b&gt; systems)</value>
+    <value>To use Assimp loader module, you need &lt;b&gt;Microsoft Visual C++ Redistributable 2017&lt;/b&gt; installed on your PC.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Download links:&lt;/b&gt;&lt;br/&gt;&lt;a href=""&gt;https://aka.ms/vs/15/release/vc_redist.x64.exe""&gt;vc_redist.x64.exe&lt;/a&gt; (for &lt;b&gt;64-bit&lt;/b&gt; systems)&lt;br/&gt;&lt;a href=""&gt;https://aka.ms/vs/15/release/vc_redist.x86.exe""&gt;vc_redist.x32.exe&lt;/a&gt; (for &lt;b&gt;32-bit&lt;/b&gt; systems)</value>
   </data>
   <data name="MsgBox_MVCppMissing_Title" xml:space="preserve">
     <value>Microsoft Visual C++ Redistributable 2017 is missing</value>

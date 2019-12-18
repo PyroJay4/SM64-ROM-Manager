@@ -60,15 +60,15 @@ Partial Class EditorWindow
         Me.SuperTabItem_Pkg_Files = New DevComponents.DotNetBar.SuperTabItem()
         Me.RibbonControl_Main = New DevComponents.DotNetBar.RibbonControl()
         Me.RibbonPanel2 = New DevComponents.DotNetBar.RibbonPanel()
-        Me.RibbonBar4 = New DevComponents.DotNetBar.RibbonBar()
+        Me.RibbonBar_UI_PackageInfo = New DevComponents.DotNetBar.RibbonBar()
         Me.ItemContainer1 = New DevComponents.DotNetBar.ItemContainer()
         Me.ComboBoxItem1 = New DevComponents.DotNetBar.ComboBoxItem()
-        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_UI_AddPackageInfo = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_UI_DeletePackageInfo = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_UI_EditVersion = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_UI_EditDownloadlink = New DevComponents.DotNetBar.ButtonItem()
-        Me.RibbonBar5 = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonBar_UI_Allgemein = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem_UI_EditConfiguration = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar2 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem_UI_NewPackage = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_UI_Open = New DevComponents.DotNetBar.ButtonItem()
@@ -126,10 +126,10 @@ Partial Class EditorWindow
         Me.SuperTabControl1.ControlBox.MenuBox.Name = ""
         Me.SuperTabControl1.ControlBox.Name = ""
         Me.SuperTabControl1.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl1.ControlBox.MenuBox, Me.SuperTabControl1.ControlBox.CloseBox})
-        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel4)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel1)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel5)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel3)
+        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel4)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel2)
         Me.SuperTabControl1.ForeColor = System.Drawing.Color.Black
         Me.SuperTabControl1.Location = New System.Drawing.Point(1, 155)
@@ -550,6 +550,7 @@ Partial Class EditorWindow
         Me.RibbonControl_Main.KeyTipsFont = New System.Drawing.Font("Tahoma", 7.0!)
         Me.RibbonControl_Main.Location = New System.Drawing.Point(5, 1)
         Me.RibbonControl_Main.Name = "RibbonControl_Main"
+        Me.RibbonControl_Main.Padding = New System.Windows.Forms.Padding(0, 0, 0, 3)
         Me.RibbonControl_Main.Size = New System.Drawing.Size(640, 154)
         Me.RibbonControl_Main.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonControl_Main.SystemText.MaximizeRibbonText = "&Maximize the Ribbon"
@@ -573,14 +574,14 @@ Partial Class EditorWindow
         'RibbonPanel2
         '
         Me.RibbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonPanel2.Controls.Add(Me.RibbonBar4)
-        Me.RibbonPanel2.Controls.Add(Me.RibbonBar5)
+        Me.RibbonPanel2.Controls.Add(Me.RibbonBar_UI_PackageInfo)
+        Me.RibbonPanel2.Controls.Add(Me.RibbonBar_UI_Allgemein)
         Me.RibbonPanel2.Controls.Add(Me.RibbonBar2)
         Me.RibbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RibbonPanel2.Location = New System.Drawing.Point(0, 55)
+        Me.RibbonPanel2.Location = New System.Drawing.Point(0, 56)
         Me.RibbonPanel2.Name = "RibbonPanel2"
-        Me.RibbonPanel2.Padding = New System.Windows.Forms.Padding(3, 0, 3, 2)
-        Me.RibbonPanel2.Size = New System.Drawing.Size(640, 99)
+        Me.RibbonPanel2.Padding = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.RibbonPanel2.Size = New System.Drawing.Size(640, 95)
         '
         '
         '
@@ -595,36 +596,36 @@ Partial Class EditorWindow
         Me.RibbonPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonPanel2.TabIndex = 2
         '
-        'RibbonBar4
+        'RibbonBar_UI_PackageInfo
         '
-        Me.RibbonBar4.AutoOverflowEnabled = True
-        '
-        '
-        '
-        Me.RibbonBar4.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar_UI_PackageInfo.AutoOverflowEnabled = True
         '
         '
         '
-        Me.RibbonBar4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar4.ContainerControlProcessDialogKey = True
-        Me.RibbonBar4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar4.DragDropSupport = True
-        Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer1, Me.ButtonItem_UI_EditVersion, Me.ButtonItem_UI_EditDownloadlink})
-        Me.RibbonBar4.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar4.Location = New System.Drawing.Point(327, 0)
-        Me.RibbonBar4.Name = "RibbonBar4"
-        Me.RibbonBar4.Size = New System.Drawing.Size(302, 97)
-        Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonBar4.TabIndex = 1
-        Me.RibbonBar4.Text = "Paket-Info"
+        Me.RibbonBar_UI_PackageInfo.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
         '
         '
-        Me.RibbonBar4.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar_UI_PackageInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar_UI_PackageInfo.ContainerControlProcessDialogKey = True
+        Me.RibbonBar_UI_PackageInfo.Dock = System.Windows.Forms.DockStyle.Left
+        Me.RibbonBar_UI_PackageInfo.DragDropSupport = True
+        Me.RibbonBar_UI_PackageInfo.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer1, Me.ButtonItem_UI_EditVersion, Me.ButtonItem_UI_EditDownloadlink})
+        Me.RibbonBar_UI_PackageInfo.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+        Me.RibbonBar_UI_PackageInfo.Location = New System.Drawing.Point(327, 0)
+        Me.RibbonBar_UI_PackageInfo.Name = "RibbonBar_UI_PackageInfo"
+        Me.RibbonBar_UI_PackageInfo.Size = New System.Drawing.Size(302, 92)
+        Me.RibbonBar_UI_PackageInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonBar_UI_PackageInfo.TabIndex = 1
+        Me.RibbonBar_UI_PackageInfo.Text = "Paket-Info"
         '
         '
         '
-        Me.RibbonBar4.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar_UI_PackageInfo.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar_UI_PackageInfo.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
         'ItemContainer1
         '
@@ -634,7 +635,7 @@ Partial Class EditorWindow
         Me.ItemContainer1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ItemContainer1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
         Me.ItemContainer1.Name = "ItemContainer1"
-        Me.ItemContainer1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ComboBoxItem1, Me.ButtonItem1, Me.ButtonItem2})
+        Me.ItemContainer1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ComboBoxItem1, Me.ButtonItem_UI_AddPackageInfo, Me.ButtonItem_UI_DeletePackageInfo})
         '
         '
         '
@@ -651,19 +652,19 @@ Partial Class EditorWindow
         Me.ComboBoxItem1.Name = "ComboBoxItem1"
         Me.ComboBoxItem1.Text = "ComboBoxItem1"
         '
-        'ButtonItem1
+        'ButtonItem_UI_AddPackageInfo
         '
-        Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem1.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_add_16px
-        Me.ButtonItem1.Name = "ButtonItem1"
-        Me.ButtonItem1.Text = "Neue Paket-Info"
+        Me.ButtonItem_UI_AddPackageInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_UI_AddPackageInfo.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_add_16px
+        Me.ButtonItem_UI_AddPackageInfo.Name = "ButtonItem_UI_AddPackageInfo"
+        Me.ButtonItem_UI_AddPackageInfo.Text = "Neue Paket-Info"
         '
-        'ButtonItem2
+        'ButtonItem_UI_DeletePackageInfo
         '
-        Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem2.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_delete_sign_16px
-        Me.ButtonItem2.Name = "ButtonItem2"
-        Me.ButtonItem2.Text = "Paket-Info löschen"
+        Me.ButtonItem_UI_DeletePackageInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_UI_DeletePackageInfo.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_delete_sign_16px
+        Me.ButtonItem_UI_DeletePackageInfo.Name = "ButtonItem_UI_DeletePackageInfo"
+        Me.ButtonItem_UI_DeletePackageInfo.Text = "Paket-Info löschen"
         '
         'ButtonItem_UI_EditVersion
         '
@@ -681,47 +682,47 @@ Partial Class EditorWindow
         Me.ButtonItem_UI_EditDownloadlink.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.ButtonItem_UI_EditDownloadlink.Name = "ButtonItem_UI_EditDownloadlink"
         Me.ButtonItem_UI_EditDownloadlink.SubItemsExpandWidth = 14
-        Me.ButtonItem_UI_EditDownloadlink.Text = "Downloadlink bearbeiten"
+        Me.ButtonItem_UI_EditDownloadlink.Text = "Paketlink bearbeiten"
         '
-        'RibbonBar5
+        'RibbonBar_UI_Allgemein
         '
-        Me.RibbonBar5.AutoOverflowEnabled = True
-        '
-        '
-        '
-        Me.RibbonBar5.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar_UI_Allgemein.AutoOverflowEnabled = True
         '
         '
         '
-        Me.RibbonBar5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar5.ContainerControlProcessDialogKey = True
-        Me.RibbonBar5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar5.DragDropSupport = True
-        Me.RibbonBar5.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem3})
-        Me.RibbonBar5.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar5.Location = New System.Drawing.Point(233, 0)
-        Me.RibbonBar5.Name = "RibbonBar5"
-        Me.RibbonBar5.Size = New System.Drawing.Size(94, 97)
-        Me.RibbonBar5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonBar5.TabIndex = 2
-        Me.RibbonBar5.Text = "Allgemein"
+        Me.RibbonBar_UI_Allgemein.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
         '
         '
-        Me.RibbonBar5.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar_UI_Allgemein.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar_UI_Allgemein.ContainerControlProcessDialogKey = True
+        Me.RibbonBar_UI_Allgemein.Dock = System.Windows.Forms.DockStyle.Left
+        Me.RibbonBar_UI_Allgemein.DragDropSupport = True
+        Me.RibbonBar_UI_Allgemein.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_UI_EditConfiguration})
+        Me.RibbonBar_UI_Allgemein.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
+        Me.RibbonBar_UI_Allgemein.Location = New System.Drawing.Point(233, 0)
+        Me.RibbonBar_UI_Allgemein.Name = "RibbonBar_UI_Allgemein"
+        Me.RibbonBar_UI_Allgemein.Size = New System.Drawing.Size(94, 92)
+        Me.RibbonBar_UI_Allgemein.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonBar_UI_Allgemein.TabIndex = 2
+        Me.RibbonBar_UI_Allgemein.Text = "Allgemein"
         '
         '
         '
-        Me.RibbonBar5.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar_UI_Allgemein.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
-        'ButtonItem3
         '
-        Me.ButtonItem3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem3.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_edit_property_32px
-        Me.ButtonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem3.Name = "ButtonItem3"
-        Me.ButtonItem3.SubItemsExpandWidth = 14
-        Me.ButtonItem3.Text = "Konfiguration bearbeiten"
+        '
+        Me.RibbonBar_UI_Allgemein.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonItem_UI_EditConfiguration
+        '
+        Me.ButtonItem_UI_EditConfiguration.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem_UI_EditConfiguration.Image = Global.SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.Resources.icons8_edit_property_32px
+        Me.ButtonItem_UI_EditConfiguration.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem_UI_EditConfiguration.Name = "ButtonItem_UI_EditConfiguration"
+        Me.ButtonItem_UI_EditConfiguration.SubItemsExpandWidth = 14
+        Me.ButtonItem_UI_EditConfiguration.Text = "Konfiguration bearbeiten"
         '
         'RibbonBar2
         '
@@ -741,7 +742,7 @@ Partial Class EditorWindow
         Me.RibbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar2.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar2.Name = "RibbonBar2"
-        Me.RibbonBar2.Size = New System.Drawing.Size(230, 97)
+        Me.RibbonBar2.Size = New System.Drawing.Size(230, 92)
         Me.RibbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar2.TabIndex = 0
         Me.RibbonBar2.Text = "Konfiguration"
@@ -800,7 +801,7 @@ Partial Class EditorWindow
         Me.RibbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RibbonPanel1.Location = New System.Drawing.Point(0, 55)
         Me.RibbonPanel1.Name = "RibbonPanel1"
-        Me.RibbonPanel1.Padding = New System.Windows.Forms.Padding(3, 0, 3, 2)
+        Me.RibbonPanel1.Padding = New System.Windows.Forms.Padding(3, 0, 3, 3)
         Me.RibbonPanel1.Size = New System.Drawing.Size(640, 99)
         '
         '
@@ -835,7 +836,7 @@ Partial Class EditorWindow
         Me.RibbonBar_Pkg_Erweiterungen.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar_Pkg_Erweiterungen.Location = New System.Drawing.Point(463, 0)
         Me.RibbonBar_Pkg_Erweiterungen.Name = "RibbonBar_Pkg_Erweiterungen"
-        Me.RibbonBar_Pkg_Erweiterungen.Size = New System.Drawing.Size(144, 97)
+        Me.RibbonBar_Pkg_Erweiterungen.Size = New System.Drawing.Size(144, 96)
         Me.RibbonBar_Pkg_Erweiterungen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar_Pkg_Erweiterungen.TabIndex = 3
         Me.RibbonBar_Pkg_Erweiterungen.Text = "Erweiterungen"
@@ -884,7 +885,7 @@ Partial Class EditorWindow
         Me.RibbonBar_Pkg_Dateien.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar_Pkg_Dateien.Location = New System.Drawing.Point(314, 0)
         Me.RibbonBar_Pkg_Dateien.Name = "RibbonBar_Pkg_Dateien"
-        Me.RibbonBar_Pkg_Dateien.Size = New System.Drawing.Size(149, 97)
+        Me.RibbonBar_Pkg_Dateien.Size = New System.Drawing.Size(149, 96)
         Me.RibbonBar_Pkg_Dateien.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar_Pkg_Dateien.TabIndex = 2
         Me.RibbonBar_Pkg_Dateien.Text = "Dateien"
@@ -933,7 +934,7 @@ Partial Class EditorWindow
         Me.RibbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar1.Location = New System.Drawing.Point(233, 0)
         Me.RibbonBar1.Name = "RibbonBar1"
-        Me.RibbonBar1.Size = New System.Drawing.Size(81, 97)
+        Me.RibbonBar1.Size = New System.Drawing.Size(81, 96)
         Me.RibbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar1.TabIndex = 0
         Me.RibbonBar1.Text = "Paket"
@@ -973,7 +974,7 @@ Partial Class EditorWindow
         Me.RibbonBar3.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar3.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
-        Me.RibbonBar3.Size = New System.Drawing.Size(230, 97)
+        Me.RibbonBar3.Size = New System.Drawing.Size(230, 96)
         Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar3.TabIndex = 1
         Me.RibbonBar3.Text = "Vorlage"
@@ -1098,7 +1099,7 @@ Partial Class EditorWindow
     Friend WithEvents NodeConnector1 As DevComponents.AdvTree.NodeConnector
     Friend WithEvents ElementStyle1 As DevComponents.DotNetBar.ElementStyle
     Friend WithEvents LayoutControl1 As DevComponents.DotNetBar.Layout.LayoutControl
-    Friend WithEvents RibbonBar4 As DevComponents.DotNetBar.RibbonBar
+    Friend WithEvents RibbonBar_UI_PackageInfo As DevComponents.DotNetBar.RibbonBar
     Friend WithEvents ButtonItem_UI_EditVersion As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_UI_EditDownloadlink As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
@@ -1112,15 +1113,15 @@ Partial Class EditorWindow
     Friend WithEvents LayoutSpacerItem1 As DevComponents.DotNetBar.Layout.LayoutSpacerItem
     Friend WithEvents ItemContainer1 As DevComponents.DotNetBar.ItemContainer
     Friend WithEvents ComboBoxItem1 As DevComponents.DotNetBar.ComboBoxItem
-    Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem2 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_UI_AddPackageInfo As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_UI_DeletePackageInfo As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents SuperTabControlPanel1 As DevComponents.DotNetBar.SuperTabControlPanel
     Friend WithEvents SuperTabItem_UI_General As DevComponents.DotNetBar.SuperTabItem
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LayoutControlItem5 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents LayoutControl2 As DevComponents.DotNetBar.Layout.LayoutControl
-    Friend WithEvents RibbonBar5 As DevComponents.DotNetBar.RibbonBar
-    Friend WithEvents ButtonItem3 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents RibbonBar_UI_Allgemein As DevComponents.DotNetBar.RibbonBar
+    Friend WithEvents ButtonItem_UI_EditConfiguration As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LayoutControlItem6 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents RibbonBar_Pkg_Erweiterungen As DevComponents.DotNetBar.RibbonBar
