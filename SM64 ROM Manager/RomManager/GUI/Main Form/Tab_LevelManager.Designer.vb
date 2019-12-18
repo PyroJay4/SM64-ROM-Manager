@@ -117,6 +117,8 @@ Partial Class Tab_LevelManager
         Me.Button_LM_SetUpStartPosition = New DevComponents.DotNetBar.ButtonX()
         Me.TabItem1 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
+        Me.SwitchButton_UseGlobalObjectBank = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.TableLayoutPanel_ObjectBankSelectorBoxes = New System.Windows.Forms.TableLayoutPanel()
         Me.TabItem2 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.GroupBox_LM_Areas.SuspendLayout()
@@ -175,9 +177,9 @@ Partial Class Tab_LevelManager
         '
         'Button_LM_AddArea
         '
+        resources.ApplyResources(Me.Button_LM_AddArea, "Button_LM_AddArea")
         Me.Button_LM_AddArea.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LM_AddArea.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        resources.ApplyResources(Me.Button_LM_AddArea, "Button_LM_AddArea")
         Me.Button_LM_AddArea.FocusCuesEnabled = False
         Me.Button_LM_AddArea.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
         Me.Button_LM_AddArea.Name = "Button_LM_AddArea"
@@ -189,15 +191,15 @@ Partial Class Tab_LevelManager
         '
         'ButtonItem_ImportArea
         '
+        resources.ApplyResources(Me.ButtonItem_ImportArea, "ButtonItem_ImportArea")
         Me.ButtonItem_ImportArea.GlobalItem = False
         Me.ButtonItem_ImportArea.Name = "ButtonItem_ImportArea"
-        resources.ApplyResources(Me.ButtonItem_ImportArea, "ButtonItem_ImportArea")
         '
         'Button_LM_AreaEditor
         '
+        resources.ApplyResources(Me.Button_LM_AreaEditor, "Button_LM_AreaEditor")
         Me.Button_LM_AreaEditor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LM_AreaEditor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        resources.ApplyResources(Me.Button_LM_AreaEditor, "Button_LM_AreaEditor")
         Me.Button_LM_AreaEditor.FocusCuesEnabled = False
         Me.Button_LM_AreaEditor.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
         Me.Button_LM_AreaEditor.Name = "Button_LM_AreaEditor"
@@ -209,16 +211,17 @@ Partial Class Tab_LevelManager
         '
         'Button_LM_RemoveArea
         '
+        resources.ApplyResources(Me.Button_LM_RemoveArea, "Button_LM_RemoveArea")
         Me.Button_LM_RemoveArea.GlobalItem = False
         Me.Button_LM_RemoveArea.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.Button_LM_RemoveArea.Name = "Button_LM_RemoveArea"
         Me.Button_LM_RemoveArea.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Button_LM_RemoveArea.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.Button_LM_RemoveArea.SymbolSize = 12.0!
-        resources.ApplyResources(Me.Button_LM_RemoveArea, "Button_LM_RemoveArea")
         '
         'ButtonItem_EditAreaLevelScript
         '
+        resources.ApplyResources(Me.ButtonItem_EditAreaLevelScript, "ButtonItem_EditAreaLevelScript")
         Me.ButtonItem_EditAreaLevelScript.BeginGroup = True
         Me.ButtonItem_EditAreaLevelScript.GlobalItem = False
         Me.ButtonItem_EditAreaLevelScript.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
@@ -226,17 +229,16 @@ Partial Class Tab_LevelManager
         Me.ButtonItem_EditAreaLevelScript.SymbolColor = System.Drawing.Color.Goldenrod
         Me.ButtonItem_EditAreaLevelScript.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem_EditAreaLevelScript.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem_EditAreaLevelScript, "ButtonItem_EditAreaLevelScript")
         '
         'ButtonItem2_EditGeolayoutScript
         '
+        resources.ApplyResources(Me.ButtonItem2_EditGeolayoutScript, "ButtonItem2_EditGeolayoutScript")
         Me.ButtonItem2_EditGeolayoutScript.GlobalItem = False
         Me.ButtonItem2_EditGeolayoutScript.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
         Me.ButtonItem2_EditGeolayoutScript.Name = "ButtonItem2_EditGeolayoutScript"
         Me.ButtonItem2_EditGeolayoutScript.SymbolColor = System.Drawing.Color.Goldenrod
         Me.ButtonItem2_EditGeolayoutScript.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem2_EditGeolayoutScript.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem2_EditGeolayoutScript, "ButtonItem2_EditGeolayoutScript")
         '
         'ListBoxAdv_LM_Areas
         '
@@ -257,6 +259,7 @@ Partial Class Tab_LevelManager
         '
         'GroupPanel1
         '
+        resources.ApplyResources(Me.GroupPanel1, "GroupPanel1")
         Me.GroupPanel1.BackColor = System.Drawing.Color.White
         Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
@@ -264,7 +267,6 @@ Partial Class Tab_LevelManager
         Me.GroupPanel1.Controls.Add(Me.Button_LM_AddNewLevel)
         Me.GroupPanel1.Controls.Add(Me.ListBoxAdv_LM_Levels)
         Me.GroupPanel1.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.GroupPanel1, "GroupPanel1")
         Me.GroupPanel1.Name = "GroupPanel1"
         '
         '
@@ -295,10 +297,10 @@ Partial Class Tab_LevelManager
         '
         'ButtonX_LM_LevelsMore
         '
+        resources.ApplyResources(Me.ButtonX_LM_LevelsMore, "ButtonX_LM_LevelsMore")
         Me.ButtonX_LM_LevelsMore.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_LM_LevelsMore.AutoExpandOnClick = True
         Me.ButtonX_LM_LevelsMore.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        resources.ApplyResources(Me.ButtonX_LM_LevelsMore, "ButtonX_LM_LevelsMore")
         Me.ButtonX_LM_LevelsMore.FocusCuesEnabled = False
         Me.ButtonX_LM_LevelsMore.Name = "ButtonX_LM_LevelsMore"
         Me.ButtonX_LM_LevelsMore.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -308,44 +310,45 @@ Partial Class Tab_LevelManager
         '
         'ButtonItem20
         '
+        resources.ApplyResources(Me.ButtonItem20, "ButtonItem20")
         Me.ButtonItem20.GlobalItem = False
         Me.ButtonItem20.Name = "ButtonItem20"
         Me.ButtonItem20.SymbolColor = System.Drawing.Color.Goldenrod
         Me.ButtonItem20.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem20.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem20, "ButtonItem20")
         '
         'ButtonItem1
         '
+        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
         Me.ButtonItem1.GlobalItem = False
         Me.ButtonItem1.Name = "ButtonItem1"
-        resources.ApplyResources(Me.ButtonItem1, "ButtonItem1")
         '
         'ButtonItem24
         '
+        resources.ApplyResources(Me.ButtonItem24, "ButtonItem24")
         Me.ButtonItem24.GlobalItem = False
         Me.ButtonItem24.Name = "ButtonItem24"
-        resources.ApplyResources(Me.ButtonItem24, "ButtonItem24")
         '
         'ButtonItem19
         '
+        resources.ApplyResources(Me.ButtonItem19, "ButtonItem19")
         Me.ButtonItem19.GlobalItem = False
         Me.ButtonItem19.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
         Me.ButtonItem19.Name = "ButtonItem19"
         Me.ButtonItem19.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonItem19.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem19.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem19, "ButtonItem19")
         '
         'ButtonItem21
         '
+        resources.ApplyResources(Me.ButtonItem21, "ButtonItem21")
         Me.ButtonItem21.BeginGroup = True
         Me.ButtonItem21.GlobalItem = False
         Me.ButtonItem21.Name = "ButtonItem21"
-        resources.ApplyResources(Me.ButtonItem21, "ButtonItem21")
         '
         'ButtonItem15
         '
+        resources.ApplyResources(Me.ButtonItem15, "ButtonItem15")
         Me.ButtonItem15.BeginGroup = True
         Me.ButtonItem15.GlobalItem = False
         Me.ButtonItem15.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
@@ -353,15 +356,14 @@ Partial Class Tab_LevelManager
         Me.ButtonItem15.SymbolColor = System.Drawing.Color.Goldenrod
         Me.ButtonItem15.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonItem15.SymbolSize = 12.0!
-        resources.ApplyResources(Me.ButtonItem15, "ButtonItem15")
         '
         'Button_LM_AddNewLevel
         '
+        resources.ApplyResources(Me.Button_LM_AddNewLevel, "Button_LM_AddNewLevel")
         Me.Button_LM_AddNewLevel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LM_AddNewLevel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_LM_AddNewLevel.FocusCuesEnabled = False
         Me.Button_LM_AddNewLevel.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
-        resources.ApplyResources(Me.Button_LM_AddNewLevel, "Button_LM_AddNewLevel")
         Me.Button_LM_AddNewLevel.Name = "Button_LM_AddNewLevel"
         Me.Button_LM_AddNewLevel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Button_LM_AddNewLevel.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem26})
@@ -371,9 +373,9 @@ Partial Class Tab_LevelManager
         '
         'ButtonItem26
         '
+        resources.ApplyResources(Me.ButtonItem26, "ButtonItem26")
         Me.ButtonItem26.GlobalItem = False
         Me.ButtonItem26.Name = "ButtonItem26"
-        resources.ApplyResources(Me.ButtonItem26, "ButtonItem26")
         '
         'ListBoxAdv_LM_Levels
         '
@@ -412,6 +414,7 @@ Partial Class Tab_LevelManager
         '
         'TabControlPanel4
         '
+        resources.ApplyResources(Me.TabControlPanel4, "TabControlPanel4")
         Me.TabControlPanel4.Controls.Add(Me.LabelX9)
         Me.TabControlPanel4.Controls.Add(Me.ComboBoxEx_LM_AreaBG)
         Me.TabControlPanel4.Controls.Add(Me.TextBoxX_LM_ShowMsgID)
@@ -429,7 +432,6 @@ Partial Class Tab_LevelManager
         Me.TabControlPanel4.Controls.Add(Me.ComboBox_LM_CameraPreset)
         Me.TabControlPanel4.Controls.Add(Me.ColorPickerButton_LM_BackgroundColor)
         Me.TabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel4, "TabControlPanel4")
         Me.TabControlPanel4.Name = "TabControlPanel4"
         Me.TabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -442,23 +444,23 @@ Partial Class Tab_LevelManager
         '
         'LabelX9
         '
+        resources.ApplyResources(Me.LabelX9, "LabelX9")
         Me.LabelX9.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX9, "LabelX9")
         Me.LabelX9.Name = "LabelX9"
         Me.LabelX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ComboBoxEx_LM_AreaBG
         '
+        resources.ApplyResources(Me.ComboBoxEx_LM_AreaBG, "ComboBoxEx_LM_AreaBG")
         Me.ComboBoxEx_LM_AreaBG.DisplayMember = "Text"
         Me.ComboBoxEx_LM_AreaBG.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_LM_AreaBG.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEx_LM_AreaBG.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx_LM_AreaBG.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBoxEx_LM_AreaBG, "ComboBoxEx_LM_AreaBG")
         Me.ComboBoxEx_LM_AreaBG.Items.AddRange(New Object() {Me.ComboItem12, Me.ComboItem13})
         Me.ComboBoxEx_LM_AreaBG.Name = "ComboBoxEx_LM_AreaBG"
         Me.ComboBoxEx_LM_AreaBG.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -473,37 +475,45 @@ Partial Class Tab_LevelManager
         '
         'TextBoxX_LM_ShowMsgID
         '
+        resources.ApplyResources(Me.TextBoxX_LM_ShowMsgID, "TextBoxX_LM_ShowMsgID")
         Me.TextBoxX_LM_ShowMsgID.BackColor = System.Drawing.Color.White
         '
         '
         '
         Me.TextBoxX_LM_ShowMsgID.Border.Class = "TextBoxBorder"
         Me.TextBoxX_LM_ShowMsgID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TextBoxX_LM_ShowMsgID.ButtonCustom.DisplayPosition = CType(resources.GetObject("TextBoxX_LM_ShowMsgID.ButtonCustom.DisplayPosition"), Integer)
+        Me.TextBoxX_LM_ShowMsgID.ButtonCustom.Image = CType(resources.GetObject("TextBoxX_LM_ShowMsgID.ButtonCustom.Image"), System.Drawing.Image)
+        Me.TextBoxX_LM_ShowMsgID.ButtonCustom.Text = resources.GetString("TextBoxX_LM_ShowMsgID.ButtonCustom.Text")
+        Me.TextBoxX_LM_ShowMsgID.ButtonCustom.Tooltip = resources.GetString("TextBoxX_LM_ShowMsgID.ButtonCustom.Tooltip")
+        Me.TextBoxX_LM_ShowMsgID.ButtonCustom2.DisplayPosition = CType(resources.GetObject("TextBoxX_LM_ShowMsgID.ButtonCustom2.DisplayPosition"), Integer)
+        Me.TextBoxX_LM_ShowMsgID.ButtonCustom2.Image = CType(resources.GetObject("TextBoxX_LM_ShowMsgID.ButtonCustom2.Image"), System.Drawing.Image)
+        Me.TextBoxX_LM_ShowMsgID.ButtonCustom2.Text = resources.GetString("TextBoxX_LM_ShowMsgID.ButtonCustom2.Text")
+        Me.TextBoxX_LM_ShowMsgID.ButtonCustom2.Tooltip = resources.GetString("TextBoxX_LM_ShowMsgID.ButtonCustom2.Tooltip")
         Me.TextBoxX_LM_ShowMsgID.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX_LM_ShowMsgID.ForeColor = System.Drawing.Color.Black
-        resources.ApplyResources(Me.TextBoxX_LM_ShowMsgID, "TextBoxX_LM_ShowMsgID")
         Me.TextBoxX_LM_ShowMsgID.Name = "TextBoxX_LM_ShowMsgID"
         Me.TextBoxX_LM_ShowMsgID.PreventEnterBeep = True
         '
         'LabelX1
         '
+        resources.ApplyResources(Me.LabelX1, "LabelX1")
         Me.LabelX1.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX1, "LabelX1")
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'SwitchButton_LM_ShowMsgEnabled
         '
+        resources.ApplyResources(Me.SwitchButton_LM_ShowMsgEnabled, "SwitchButton_LM_ShowMsgEnabled")
         '
         '
         '
         Me.SwitchButton_LM_ShowMsgEnabled.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.SwitchButton_LM_ShowMsgEnabled.FocusCuesEnabled = False
-        resources.ApplyResources(Me.SwitchButton_LM_ShowMsgEnabled, "SwitchButton_LM_ShowMsgEnabled")
         Me.SwitchButton_LM_ShowMsgEnabled.Name = "SwitchButton_LM_ShowMsgEnabled"
         Me.SwitchButton_LM_ShowMsgEnabled.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.SwitchButton_LM_ShowMsgEnabled.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
@@ -515,23 +525,23 @@ Partial Class Tab_LevelManager
         '
         'LabelX2
         '
+        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'CheckBoxX_LM_Enable2DCamera
         '
+        resources.ApplyResources(Me.CheckBoxX_LM_Enable2DCamera, "CheckBoxX_LM_Enable2DCamera")
         '
         '
         '
         Me.CheckBoxX_LM_Enable2DCamera.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CheckBoxX_LM_Enable2DCamera.FocusCuesEnabled = False
-        resources.ApplyResources(Me.CheckBoxX_LM_Enable2DCamera, "CheckBoxX_LM_Enable2DCamera")
         Me.CheckBoxX_LM_Enable2DCamera.Name = "CheckBoxX_LM_Enable2DCamera"
         Me.CheckBoxX_LM_Enable2DCamera.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.CheckBoxX_LM_Enable2DCamera.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
@@ -543,104 +553,104 @@ Partial Class Tab_LevelManager
         '
         'LabelX6
         '
+        resources.ApplyResources(Me.LabelX6, "LabelX6")
         Me.LabelX6.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX6, "LabelX6")
         Me.LabelX6.Name = "LabelX6"
         Me.LabelX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ComboBox_LM_Music
         '
+        resources.ApplyResources(Me.ComboBox_LM_Music, "ComboBox_LM_Music")
         Me.ComboBox_LM_Music.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBox_LM_Music.DropDownHeight = 150
         Me.ComboBox_LM_Music.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_LM_Music.ForeColor = System.Drawing.Color.Black
         Me.ComboBox_LM_Music.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBox_LM_Music, "ComboBox_LM_Music")
         Me.ComboBox_LM_Music.Items.AddRange(New Object() {resources.GetString("ComboBox_LM_Music.Items"), resources.GetString("ComboBox_LM_Music.Items1")})
         Me.ComboBox_LM_Music.Name = "ComboBox_LM_Music"
         Me.ComboBox_LM_Music.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX7
         '
+        resources.ApplyResources(Me.LabelX7, "LabelX7")
         Me.LabelX7.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX7, "LabelX7")
         Me.LabelX7.Name = "LabelX7"
         Me.LabelX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ComboBox_LM_TerrainTyp
         '
+        resources.ApplyResources(Me.ComboBox_LM_TerrainTyp, "ComboBox_LM_TerrainTyp")
         Me.ComboBox_LM_TerrainTyp.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBox_LM_TerrainTyp.DropDownHeight = 150
         Me.ComboBox_LM_TerrainTyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_LM_TerrainTyp.ForeColor = System.Drawing.Color.Black
         Me.ComboBox_LM_TerrainTyp.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBox_LM_TerrainTyp, "ComboBox_LM_TerrainTyp")
         Me.ComboBox_LM_TerrainTyp.Items.AddRange(New Object() {resources.GetString("ComboBox_LM_TerrainTyp.Items"), resources.GetString("ComboBox_LM_TerrainTyp.Items1"), resources.GetString("ComboBox_LM_TerrainTyp.Items2"), resources.GetString("ComboBox_LM_TerrainTyp.Items3"), resources.GetString("ComboBox_LM_TerrainTyp.Items4"), resources.GetString("ComboBox_LM_TerrainTyp.Items5"), resources.GetString("ComboBox_LM_TerrainTyp.Items6")})
         Me.ComboBox_LM_TerrainTyp.Name = "ComboBox_LM_TerrainTyp"
         Me.ComboBox_LM_TerrainTyp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX8
         '
+        resources.ApplyResources(Me.LabelX8, "LabelX8")
         Me.LabelX8.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX8, "LabelX8")
         Me.LabelX8.Name = "LabelX8"
         Me.LabelX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ComboBox_LM_EnvironmentEffects
         '
+        resources.ApplyResources(Me.ComboBox_LM_EnvironmentEffects, "ComboBox_LM_EnvironmentEffects")
         Me.ComboBox_LM_EnvironmentEffects.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBox_LM_EnvironmentEffects.DropDownHeight = 150
         Me.ComboBox_LM_EnvironmentEffects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_LM_EnvironmentEffects.ForeColor = System.Drawing.Color.Black
         Me.ComboBox_LM_EnvironmentEffects.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBox_LM_EnvironmentEffects, "ComboBox_LM_EnvironmentEffects")
         Me.ComboBox_LM_EnvironmentEffects.Items.AddRange(New Object() {resources.GetString("ComboBox_LM_EnvironmentEffects.Items"), resources.GetString("ComboBox_LM_EnvironmentEffects.Items1"), resources.GetString("ComboBox_LM_EnvironmentEffects.Items2"), resources.GetString("ComboBox_LM_EnvironmentEffects.Items3"), resources.GetString("ComboBox_LM_EnvironmentEffects.Items4"), resources.GetString("ComboBox_LM_EnvironmentEffects.Items5"), resources.GetString("ComboBox_LM_EnvironmentEffects.Items6")})
         Me.ComboBox_LM_EnvironmentEffects.Name = "ComboBox_LM_EnvironmentEffects"
         Me.ComboBox_LM_EnvironmentEffects.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX11
         '
+        resources.ApplyResources(Me.LabelX11, "LabelX11")
         Me.LabelX11.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX11, "LabelX11")
         Me.LabelX11.Name = "LabelX11"
         Me.LabelX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ComboBox_LM_CameraPreset
         '
+        resources.ApplyResources(Me.ComboBox_LM_CameraPreset, "ComboBox_LM_CameraPreset")
         Me.ComboBox_LM_CameraPreset.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBox_LM_CameraPreset.DropDownHeight = 150
         Me.ComboBox_LM_CameraPreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_LM_CameraPreset.ForeColor = System.Drawing.Color.Black
         Me.ComboBox_LM_CameraPreset.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBox_LM_CameraPreset, "ComboBox_LM_CameraPreset")
         Me.ComboBox_LM_CameraPreset.Items.AddRange(New Object() {resources.GetString("ComboBox_LM_CameraPreset.Items"), resources.GetString("ComboBox_LM_CameraPreset.Items1"), resources.GetString("ComboBox_LM_CameraPreset.Items2"), resources.GetString("ComboBox_LM_CameraPreset.Items3"), resources.GetString("ComboBox_LM_CameraPreset.Items4"), resources.GetString("ComboBox_LM_CameraPreset.Items5"), resources.GetString("ComboBox_LM_CameraPreset.Items6"), resources.GetString("ComboBox_LM_CameraPreset.Items7"), resources.GetString("ComboBox_LM_CameraPreset.Items8"), resources.GetString("ComboBox_LM_CameraPreset.Items9"), resources.GetString("ComboBox_LM_CameraPreset.Items10"), resources.GetString("ComboBox_LM_CameraPreset.Items11"), resources.GetString("ComboBox_LM_CameraPreset.Items12"), resources.GetString("ComboBox_LM_CameraPreset.Items13"), resources.GetString("ComboBox_LM_CameraPreset.Items14"), resources.GetString("ComboBox_LM_CameraPreset.Items15")})
         Me.ComboBox_LM_CameraPreset.Name = "ComboBox_LM_CameraPreset"
         Me.ComboBox_LM_CameraPreset.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ColorPickerButton_LM_BackgroundColor
         '
+        resources.ApplyResources(Me.ColorPickerButton_LM_BackgroundColor, "ColorPickerButton_LM_BackgroundColor")
         Me.ColorPickerButton_LM_BackgroundColor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ColorPickerButton_LM_BackgroundColor.AutoExpandOnClick = True
         Me.ColorPickerButton_LM_BackgroundColor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ColorPickerButton_LM_BackgroundColor.FocusCuesEnabled = False
         Me.ColorPickerButton_LM_BackgroundColor.Image = CType(resources.GetObject("ColorPickerButton_LM_BackgroundColor.Image"), System.Drawing.Image)
-        resources.ApplyResources(Me.ColorPickerButton_LM_BackgroundColor, "ColorPickerButton_LM_BackgroundColor")
         Me.ColorPickerButton_LM_BackgroundColor.Name = "ColorPickerButton_LM_BackgroundColor"
         Me.ColorPickerButton_LM_BackgroundColor.SelectedColorImageRectangle = New System.Drawing.Rectangle(2, 2, 12, 12)
         Me.ColorPickerButton_LM_BackgroundColor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -653,12 +663,12 @@ Partial Class Tab_LevelManager
         '
         'TabControlPanel6
         '
+        resources.ApplyResources(Me.TabControlPanel6, "TabControlPanel6")
         Me.TabControlPanel6.Controls.Add(Me.Button_LM_RemoveSpecial)
         Me.TabControlPanel6.Controls.Add(Me.Button_LM_AddSpecial)
         Me.TabControlPanel6.Controls.Add(Me.Button_LM_EditSpecial)
         Me.TabControlPanel6.Controls.Add(Me.ListViewEx_LM_Specials)
         Me.TabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel6, "TabControlPanel6")
         Me.TabControlPanel6.Name = "TabControlPanel6"
         Me.TabControlPanel6.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -671,8 +681,8 @@ Partial Class Tab_LevelManager
         '
         'Button_LM_RemoveSpecial
         '
-        Me.Button_LM_RemoveSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         resources.ApplyResources(Me.Button_LM_RemoveSpecial, "Button_LM_RemoveSpecial")
+        Me.Button_LM_RemoveSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LM_RemoveSpecial.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_LM_RemoveSpecial.FocusCuesEnabled = False
         Me.Button_LM_RemoveSpecial.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_delete_sign_16px
@@ -684,11 +694,11 @@ Partial Class Tab_LevelManager
         '
         'Button_LM_AddSpecial
         '
+        resources.ApplyResources(Me.Button_LM_AddSpecial, "Button_LM_AddSpecial")
         Me.Button_LM_AddSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LM_AddSpecial.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_LM_AddSpecial.FocusCuesEnabled = False
         Me.Button_LM_AddSpecial.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_plus_math_16px
-        resources.ApplyResources(Me.Button_LM_AddSpecial, "Button_LM_AddSpecial")
         Me.Button_LM_AddSpecial.Name = "Button_LM_AddSpecial"
         Me.Button_LM_AddSpecial.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Button_LM_AddSpecial.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -697,9 +707,9 @@ Partial Class Tab_LevelManager
         '
         'Button_LM_EditSpecial
         '
+        resources.ApplyResources(Me.Button_LM_EditSpecial, "Button_LM_EditSpecial")
         Me.Button_LM_EditSpecial.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LM_EditSpecial.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        resources.ApplyResources(Me.Button_LM_EditSpecial, "Button_LM_EditSpecial")
         Me.Button_LM_EditSpecial.FocusCuesEnabled = False
         Me.Button_LM_EditSpecial.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
         Me.Button_LM_EditSpecial.Name = "Button_LM_EditSpecial"
@@ -772,6 +782,7 @@ Partial Class Tab_LevelManager
         '
         'TabControlPanel5
         '
+        resources.ApplyResources(Me.TabControlPanel5, "TabControlPanel5")
         Me.TabControlPanel5.Controls.Add(Me.Line2)
         Me.TabControlPanel5.Controls.Add(Me.LabelX_Area_CountOfCustomObjects)
         Me.TabControlPanel5.Controls.Add(Me.LabelX_Area_CountOfTexAnimations)
@@ -782,7 +793,6 @@ Partial Class Tab_LevelManager
         Me.TabControlPanel5.Controls.Add(Me.Button_ImportModel)
         Me.TabControlPanel5.Controls.Add(Me.ButtonItem_ExportModel)
         Me.TabControlPanel5.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel5, "TabControlPanel5")
         Me.TabControlPanel5.Name = "TabControlPanel5"
         Me.TabControlPanel5.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel5.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -795,115 +805,115 @@ Partial Class Tab_LevelManager
         '
         'Line2
         '
-        Me.Line2.BackColor = System.Drawing.Color.Transparent
         resources.ApplyResources(Me.Line2, "Line2")
+        Me.Line2.BackColor = System.Drawing.Color.Transparent
         Me.Line2.Name = "Line2"
         Me.Line2.VerticalLine = True
         '
         'LabelX_Area_CountOfCustomObjects
         '
+        resources.ApplyResources(Me.LabelX_Area_CountOfCustomObjects, "LabelX_Area_CountOfCustomObjects")
         Me.LabelX_Area_CountOfCustomObjects.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX_Area_CountOfCustomObjects.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX_Area_CountOfCustomObjects, "LabelX_Area_CountOfCustomObjects")
         Me.LabelX_Area_CountOfCustomObjects.Name = "LabelX_Area_CountOfCustomObjects"
         Me.LabelX_Area_CountOfCustomObjects.TextAlignment = System.Drawing.StringAlignment.Far
         '
         'LabelX_Area_CountOfTexAnimations
         '
+        resources.ApplyResources(Me.LabelX_Area_CountOfTexAnimations, "LabelX_Area_CountOfTexAnimations")
         Me.LabelX_Area_CountOfTexAnimations.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX_Area_CountOfTexAnimations.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX_Area_CountOfTexAnimations, "LabelX_Area_CountOfTexAnimations")
         Me.LabelX_Area_CountOfTexAnimations.Name = "LabelX_Area_CountOfTexAnimations"
         Me.LabelX_Area_CountOfTexAnimations.TextAlignment = System.Drawing.StringAlignment.Far
         '
         'LabelX10
         '
+        resources.ApplyResources(Me.LabelX10, "LabelX10")
         Me.LabelX10.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX10, "LabelX10")
         Me.LabelX10.Name = "LabelX10"
         '
         'LabelX5
         '
+        resources.ApplyResources(Me.LabelX5, "LabelX5")
         Me.LabelX5.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX5, "LabelX5")
         Me.LabelX5.Name = "LabelX5"
         '
         'ButtonX_CustomObjects
         '
+        resources.ApplyResources(Me.ButtonX_CustomObjects, "ButtonX_CustomObjects")
         Me.ButtonX_CustomObjects.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_CustomObjects.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        resources.ApplyResources(Me.ButtonX_CustomObjects, "ButtonX_CustomObjects")
         Me.ButtonX_CustomObjects.FocusCuesEnabled = False
         Me.ButtonX_CustomObjects.Name = "ButtonX_CustomObjects"
         Me.ButtonX_CustomObjects.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ButtonX_LM_ScrollTexEditor
         '
+        resources.ApplyResources(Me.ButtonX_LM_ScrollTexEditor, "ButtonX_LM_ScrollTexEditor")
         Me.ButtonX_LM_ScrollTexEditor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_LM_ScrollTexEditor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_LM_ScrollTexEditor.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonX_LM_ScrollTexEditor, "ButtonX_LM_ScrollTexEditor")
         Me.ButtonX_LM_ScrollTexEditor.Name = "ButtonX_LM_ScrollTexEditor"
         Me.ButtonX_LM_ScrollTexEditor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'Button_ImportModel
         '
+        resources.ApplyResources(Me.Button_ImportModel, "Button_ImportModel")
         Me.Button_ImportModel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_ImportModel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_ImportModel.FocusCuesEnabled = False
-        resources.ApplyResources(Me.Button_ImportModel, "Button_ImportModel")
         Me.Button_ImportModel.Name = "Button_ImportModel"
         Me.Button_ImportModel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Button_ImportModel.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem9, Me.ButtonItem13})
         '
         'ButtonItem9
         '
+        resources.ApplyResources(Me.ButtonItem9, "ButtonItem9")
         Me.ButtonItem9.GlobalItem = False
         Me.ButtonItem9.Name = "ButtonItem9"
-        resources.ApplyResources(Me.ButtonItem9, "ButtonItem9")
         '
         'ButtonItem13
         '
+        resources.ApplyResources(Me.ButtonItem13, "ButtonItem13")
         Me.ButtonItem13.GlobalItem = False
         Me.ButtonItem13.Name = "ButtonItem13"
-        resources.ApplyResources(Me.ButtonItem13, "ButtonItem13")
         '
         'ButtonItem_ExportModel
         '
+        resources.ApplyResources(Me.ButtonItem_ExportModel, "ButtonItem_ExportModel")
         Me.ButtonItem_ExportModel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonItem_ExportModel.AutoExpandOnClick = True
         Me.ButtonItem_ExportModel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonItem_ExportModel.FocusCuesEnabled = False
-        resources.ApplyResources(Me.ButtonItem_ExportModel, "ButtonItem_ExportModel")
         Me.ButtonItem_ExportModel.Name = "ButtonItem_ExportModel"
         Me.ButtonItem_ExportModel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonItem_ExportModel.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ExportVisualMap, Me.ButtonItem_ExportCollisionMap})
         '
         'ButtonItem_ExportVisualMap
         '
+        resources.ApplyResources(Me.ButtonItem_ExportVisualMap, "ButtonItem_ExportVisualMap")
         Me.ButtonItem_ExportVisualMap.GlobalItem = False
         Me.ButtonItem_ExportVisualMap.Name = "ButtonItem_ExportVisualMap"
-        resources.ApplyResources(Me.ButtonItem_ExportVisualMap, "ButtonItem_ExportVisualMap")
         '
         'ButtonItem_ExportCollisionMap
         '
+        resources.ApplyResources(Me.ButtonItem_ExportCollisionMap, "ButtonItem_ExportCollisionMap")
         Me.ButtonItem_ExportCollisionMap.GlobalItem = False
         Me.ButtonItem_ExportCollisionMap.Name = "ButtonItem_ExportCollisionMap"
-        resources.ApplyResources(Me.ButtonItem_ExportCollisionMap, "ButtonItem_ExportCollisionMap")
         '
         'TabItem5
         '
@@ -929,6 +939,7 @@ Partial Class Tab_LevelManager
         '
         'TabControlPanel1
         '
+        resources.ApplyResources(Me.TabControlPanel1, "TabControlPanel1")
         Me.TabControlPanel1.Controls.Add(Me.LabelX_TargetLevel)
         Me.TabControlPanel1.Controls.Add(Me.LabelX12)
         Me.TabControlPanel1.Controls.Add(Me.PictureBox_BGImage)
@@ -947,7 +958,6 @@ Partial Class Tab_LevelManager
         Me.TabControlPanel1.Controls.Add(Me.Button_LM_LoadLevelBG)
         Me.TabControlPanel1.Controls.Add(Me.Button_LM_SetUpStartPosition)
         Me.TabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel1, "TabControlPanel1")
         Me.TabControlPanel1.Name = "TabControlPanel1"
         Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -960,41 +970,41 @@ Partial Class Tab_LevelManager
         '
         'LabelX_TargetLevel
         '
+        resources.ApplyResources(Me.LabelX_TargetLevel, "LabelX_TargetLevel")
         Me.LabelX_TargetLevel.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX_TargetLevel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX_TargetLevel, "LabelX_TargetLevel")
         Me.LabelX_TargetLevel.Name = "LabelX_TargetLevel"
         Me.LabelX_TargetLevel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX12
         '
+        resources.ApplyResources(Me.LabelX12, "LabelX12")
         Me.LabelX12.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX12, "LabelX12")
         Me.LabelX12.Name = "LabelX12"
         Me.LabelX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'PictureBox_BGImage
         '
-        Me.PictureBox_BGImage.BackColor = System.Drawing.Color.Transparent
         resources.ApplyResources(Me.PictureBox_BGImage, "PictureBox_BGImage")
+        Me.PictureBox_BGImage.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox_BGImage.Name = "PictureBox_BGImage"
         Me.PictureBox_BGImage.TabStop = False
         '
         'ComboBoxEx_LM_BGMode
         '
+        resources.ApplyResources(Me.ComboBoxEx_LM_BGMode, "ComboBoxEx_LM_BGMode")
         Me.ComboBoxEx_LM_BGMode.DisplayMember = "Text"
         Me.ComboBoxEx_LM_BGMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBoxEx_LM_BGMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxEx_LM_BGMode.ForeColor = System.Drawing.Color.Black
         Me.ComboBoxEx_LM_BGMode.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBoxEx_LM_BGMode, "ComboBoxEx_LM_BGMode")
         Me.ComboBoxEx_LM_BGMode.Items.AddRange(New Object() {Me.ComboItem1, Me.ComboItem2, Me.ComboItem3})
         Me.ComboBoxEx_LM_BGMode.Name = "ComboBoxEx_LM_BGMode"
         Me.ComboBoxEx_LM_BGMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -1013,34 +1023,34 @@ Partial Class Tab_LevelManager
         '
         'LabelX15
         '
+        resources.ApplyResources(Me.LabelX15, "LabelX15")
         Me.LabelX15.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX15, "LabelX15")
         Me.LabelX15.Name = "LabelX15"
         Me.LabelX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX3
         '
+        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX3, "LabelX3")
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'SwitchButton_LM_ActSelector
         '
+        resources.ApplyResources(Me.SwitchButton_LM_ActSelector, "SwitchButton_LM_ActSelector")
         '
         '
         '
         Me.SwitchButton_LM_ActSelector.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.SwitchButton_LM_ActSelector.FocusCuesEnabled = False
-        resources.ApplyResources(Me.SwitchButton_LM_ActSelector, "SwitchButton_LM_ActSelector")
         Me.SwitchButton_LM_ActSelector.Name = "SwitchButton_LM_ActSelector"
         Me.SwitchButton_LM_ActSelector.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.SwitchButton_LM_ActSelector.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
@@ -1054,23 +1064,23 @@ Partial Class Tab_LevelManager
         '
         'LabelX57
         '
+        resources.ApplyResources(Me.LabelX57, "LabelX57")
         Me.LabelX57.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX57.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX57, "LabelX57")
         Me.LabelX57.Name = "LabelX57"
         Me.LabelX57.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'SwitchButton_LM_HardcodedCameraSettings
         '
+        resources.ApplyResources(Me.SwitchButton_LM_HardcodedCameraSettings, "SwitchButton_LM_HardcodedCameraSettings")
         '
         '
         '
         Me.SwitchButton_LM_HardcodedCameraSettings.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.SwitchButton_LM_HardcodedCameraSettings.FocusCuesEnabled = False
-        resources.ApplyResources(Me.SwitchButton_LM_HardcodedCameraSettings, "SwitchButton_LM_HardcodedCameraSettings")
         Me.SwitchButton_LM_HardcodedCameraSettings.Name = "SwitchButton_LM_HardcodedCameraSettings"
         Me.SwitchButton_LM_HardcodedCameraSettings.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.SwitchButton_LM_HardcodedCameraSettings.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
@@ -1082,35 +1092,35 @@ Partial Class Tab_LevelManager
         '
         'LabelX4
         '
+        resources.ApplyResources(Me.LabelX4, "LabelX4")
         Me.LabelX4.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX4, "LabelX4")
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ComboBox_LM_LevelBG
         '
+        resources.ApplyResources(Me.ComboBox_LM_LevelBG, "ComboBox_LM_LevelBG")
         Me.ComboBox_LM_LevelBG.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.ComboBox_LM_LevelBG.DropDownHeight = 200
         Me.ComboBox_LM_LevelBG.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_LM_LevelBG.ForeColor = System.Drawing.Color.Black
         Me.ComboBox_LM_LevelBG.FormattingEnabled = True
-        resources.ApplyResources(Me.ComboBox_LM_LevelBG, "ComboBox_LM_LevelBG")
         Me.ComboBox_LM_LevelBG.Items.AddRange(New Object() {resources.GetString("ComboBox_LM_LevelBG.Items"), resources.GetString("ComboBox_LM_LevelBG.Items1"), resources.GetString("ComboBox_LM_LevelBG.Items2"), resources.GetString("ComboBox_LM_LevelBG.Items3"), resources.GetString("ComboBox_LM_LevelBG.Items4"), resources.GetString("ComboBox_LM_LevelBG.Items5"), resources.GetString("ComboBox_LM_LevelBG.Items6"), resources.GetString("ComboBox_LM_LevelBG.Items7"), resources.GetString("ComboBox_LM_LevelBG.Items8"), resources.GetString("ComboBox_LM_LevelBG.Items9")})
         Me.ComboBox_LM_LevelBG.Name = "ComboBox_LM_LevelBG"
         Me.ComboBox_LM_LevelBG.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'LabelX24
         '
+        resources.ApplyResources(Me.LabelX24, "LabelX24")
         Me.LabelX24.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX24, "LabelX24")
         Me.LabelX24.Name = "LabelX24"
         Me.LabelX24.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
@@ -1123,12 +1133,12 @@ Partial Class Tab_LevelManager
         '
         'LabelX25
         '
+        resources.ApplyResources(Me.LabelX25, "LabelX25")
         Me.LabelX25.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX25, "LabelX25")
         Me.LabelX25.Name = "LabelX25"
         Me.LabelX25.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
@@ -1140,11 +1150,11 @@ Partial Class Tab_LevelManager
         '
         'Button_LM_LoadLevelBG
         '
+        resources.ApplyResources(Me.Button_LM_LoadLevelBG, "Button_LM_LoadLevelBG")
         Me.Button_LM_LoadLevelBG.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LM_LoadLevelBG.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_LM_LoadLevelBG.FocusCuesEnabled = False
         Me.Button_LM_LoadLevelBG.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_open_folder_16px
-        resources.ApplyResources(Me.Button_LM_LoadLevelBG, "Button_LM_LoadLevelBG")
         Me.Button_LM_LoadLevelBG.Name = "Button_LM_LoadLevelBG"
         Me.Button_LM_LoadLevelBG.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Button_LM_LoadLevelBG.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(106, Byte), Integer))
@@ -1153,11 +1163,11 @@ Partial Class Tab_LevelManager
         '
         'Button_LM_SetUpStartPosition
         '
+        resources.ApplyResources(Me.Button_LM_SetUpStartPosition, "Button_LM_SetUpStartPosition")
         Me.Button_LM_SetUpStartPosition.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Button_LM_SetUpStartPosition.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.Button_LM_SetUpStartPosition.FocusCuesEnabled = False
         Me.Button_LM_SetUpStartPosition.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_support_16px
-        resources.ApplyResources(Me.Button_LM_SetUpStartPosition, "Button_LM_SetUpStartPosition")
         Me.Button_LM_SetUpStartPosition.Name = "Button_LM_SetUpStartPosition"
         Me.Button_LM_SetUpStartPosition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Button_LM_SetUpStartPosition.SymbolColor = System.Drawing.Color.Gray
@@ -1171,9 +1181,11 @@ Partial Class Tab_LevelManager
         '
         'TabControlPanel2
         '
+        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
+        Me.TabControlPanel2.Controls.Add(Me.LabelX13)
+        Me.TabControlPanel2.Controls.Add(Me.SwitchButton_UseGlobalObjectBank)
         Me.TabControlPanel2.Controls.Add(Me.TableLayoutPanel_ObjectBankSelectorBoxes)
         Me.TabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel2, "TabControlPanel2")
         Me.TabControlPanel2.Name = "TabControlPanel2"
         Me.TabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -1184,10 +1196,38 @@ Partial Class Tab_LevelManager
         Me.TabControlPanel2.Style.GradientAngle = 90
         Me.TabControlPanel2.TabItem = Me.TabItem2
         '
+        'LabelX13
+        '
+        resources.ApplyResources(Me.LabelX13, "LabelX13")
+        Me.LabelX13.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX13.Name = "LabelX13"
+        Me.LabelX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'SwitchButton_UseGlobalObjectBank
+        '
+        resources.ApplyResources(Me.SwitchButton_UseGlobalObjectBank, "SwitchButton_UseGlobalObjectBank")
+        '
+        '
+        '
+        Me.SwitchButton_UseGlobalObjectBank.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.SwitchButton_UseGlobalObjectBank.FocusCuesEnabled = False
+        Me.SwitchButton_UseGlobalObjectBank.Name = "SwitchButton_UseGlobalObjectBank"
+        Me.SwitchButton_UseGlobalObjectBank.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SwitchButton_UseGlobalObjectBank.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.SwitchButton_UseGlobalObjectBank.SwitchWidth = 15
+        '
         'TableLayoutPanel_ObjectBankSelectorBoxes
         '
-        Me.TableLayoutPanel_ObjectBankSelectorBoxes.BackColor = System.Drawing.Color.Transparent
         resources.ApplyResources(Me.TableLayoutPanel_ObjectBankSelectorBoxes, "TableLayoutPanel_ObjectBankSelectorBoxes")
+        Me.TableLayoutPanel_ObjectBankSelectorBoxes.BackColor = System.Drawing.Color.Transparent
         Me.TableLayoutPanel_ObjectBankSelectorBoxes.Name = "TableLayoutPanel_ObjectBankSelectorBoxes"
         '
         'TabItem2
@@ -1319,4 +1359,6 @@ Partial Class Tab_LevelManager
     Friend WithEvents LabelX_TargetLevel As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
     Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents SwitchButton_UseGlobalObjectBank As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

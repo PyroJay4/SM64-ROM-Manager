@@ -840,4 +840,8 @@ Public Class Tab_LevelManager
     Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
         Controller.ChangeLevelCustomName(CurrentLevelIndex)
     End Sub
+
+    Private Sub Controls_HandleToSaveLevelSettings(sender As Object, e As EventArgs) Handles SwitchButton_LM_HardcodedCameraSettings.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged
+
+    End Sub
 End Class
