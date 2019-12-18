@@ -1082,22 +1082,22 @@ Namespace Model.Conversion.Fast3DWriting
 
             Select Case layer
                 Case 0
-                    ImpF3D("B9 00 03 1D 00 11 22 30")
+                    ImpF3D("B9 00 03 1D C8 11 22 30")
                 Case 1
-                    ImpF3D("B9 00 03 1D 00 11 20 78")
+                    ImpF3D("B9 00 03 1D C8 11 20 78")
                 Case 2
-                    ImpF3D("B9 00 03 1D 00 11 2D 58")
+                    ImpF3D("B9 00 03 1D C8 11 2D 58")
                 Case 3
-                    ImpF3D("B9 00 03 1D 00 10 4D D8")
+                    ImpF3D("B9 00 03 1D C8 10 4D D8")
                     'ImpF3D("B9 00 03 1D 00 11 24 78")
                 Case 4
-                    ImpF3D("B9 00 03 1D 00 11 30 78")
+                    ImpF3D("B9 00 03 1D C8 11 30 78")
                 Case 5
-                    ImpF3D("B9 00 03 1D 00 10 49 D8")
+                    ImpF3D("B9 00 03 1D C8 10 49 D8")
                 Case 6
-                    ImpF3D("B9 00 03 1D 00 10 4D D8")
+                    ImpF3D("B9 00 03 1D C8 10 4D D8")
                 Case 7
-                    ImpF3D("B9 00 03 1D 00 10 45 D8")
+                    ImpF3D("B9 00 03 1D C8 10 45 D8")
             End Select
 
             Select Case settings.Fog.Type
