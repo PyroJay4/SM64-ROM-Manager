@@ -191,10 +191,10 @@ Public Class UserRequestDialog
 #End If
 
             If success Then
-                MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_SendingRequestSuccess, UserRequestGuiLangRes.MsgBox_SendingRequestSuccess_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_SendingRequestSuccess, UserRequestGuiLangRes.MsgBox_SendingRequestSuccess_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Close()
             Else
-                MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_ErrorSendingRequest, UserRequestGuiLangRes.MsgBox_ErrorSendingRequest_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_ErrorSendingRequest, UserRequestGuiLangRes.MsgBox_ErrorSendingRequest_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
