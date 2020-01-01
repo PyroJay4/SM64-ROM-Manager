@@ -54,6 +54,20 @@ Partial Class Form_Settings
         Me.ComboItem3 = New DevComponents.Editors.ComboItem()
         Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
         Me.TabItem1 = New DevComponents.DotNetBar.TabItem(Me.components)
+        Me.TabControlPanel7 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.TextBoxX_ProxyPwd = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TextBoxX_ProxyUsr = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX16 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
+        Me.ComboBoxEx_UpdateLevel = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.ComboItem12 = New DevComponents.Editors.ComboItem()
+        Me.ComboItem13 = New DevComponents.Editors.ComboItem()
+        Me.ComboItem14 = New DevComponents.Editors.ComboItem()
+        Me.TabItem8 = New DevComponents.DotNetBar.TabItem(Me.components)
+        Me.TabControlPanel6 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
+        Me.SwitchButton_TMForceUppercase = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.TabItem7 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel5 = New DevComponents.DotNetBar.TabControlPanel()
         Me.ButtonX6 = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX14 = New DevComponents.DotNetBar.LabelX()
@@ -77,37 +91,23 @@ Partial Class Form_Settings
         Me.ComboBoxEx_LoaderModule = New DevComponents.DotNetBar.Controls.ComboBoxEx()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.TabItem4 = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabControlPanel7 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.TextBoxX_ProxyPwd = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TextBoxX_ProxyUsr = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX16 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
-        Me.ComboBoxEx_UpdateLevel = New DevComponents.DotNetBar.Controls.ComboBoxEx()
-        Me.ComboItem12 = New DevComponents.Editors.ComboItem()
-        Me.ComboItem13 = New DevComponents.Editors.ComboItem()
-        Me.ComboItem14 = New DevComponents.Editors.ComboItem()
-        Me.TabItem8 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel3 = New DevComponents.DotNetBar.TabControlPanel()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.TabItem3 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
         Me.TabItem2 = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabControlPanel6 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
-        Me.SwitchButton_TMForceUppercase = New DevComponents.DotNetBar.Controls.SwitchButton()
-        Me.TabItem7 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.SuperTooltip1 = New DevComponents.DotNetBar.SuperTooltip()
         Me.PictureBox_Warning = New System.Windows.Forms.PictureBox()
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl2.SuspendLayout()
         Me.TabControlPanel1.SuspendLayout()
+        Me.TabControlPanel7.SuspendLayout()
+        Me.TabControlPanel6.SuspendLayout()
         Me.TabControlPanel5.SuspendLayout()
         Me.TabControlPanel4.SuspendLayout()
         Me.TabControlPanel_LoaderModules.SuspendLayout()
-        Me.TabControlPanel7.SuspendLayout()
         Me.TabControlPanel3.SuspendLayout()
         Me.TabControlPanel2.SuspendLayout()
-        Me.TabControlPanel6.SuspendLayout()
         CType(Me.PictureBox_Warning, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -401,6 +401,154 @@ Partial Class Form_Settings
         Me.TabItem1.Name = "TabItem1"
         resources.ApplyResources(Me.TabItem1, "TabItem1")
         '
+        'TabControlPanel7
+        '
+        Me.TabControlPanel7.Controls.Add(Me.TextBoxX_ProxyPwd)
+        Me.TabControlPanel7.Controls.Add(Me.TextBoxX_ProxyUsr)
+        Me.TabControlPanel7.Controls.Add(Me.LabelX16)
+        Me.TabControlPanel7.Controls.Add(Me.LabelX13)
+        Me.TabControlPanel7.Controls.Add(Me.LabelX1)
+        Me.TabControlPanel7.Controls.Add(Me.SwitchButton_SearchUpdates)
+        Me.TabControlPanel7.Controls.Add(Me.ComboBoxEx_UpdateLevel)
+        Me.TabControlPanel7.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel7, "TabControlPanel7")
+        Me.TabControlPanel7.Name = "TabControlPanel7"
+        Me.TabControlPanel7.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel7.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel7.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.TabControlPanel7.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+        Me.TabControlPanel7.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+        Me.TabControlPanel7.Style.GradientAngle = 90
+        Me.TabControlPanel7.TabItem = Me.TabItem8
+        '
+        'TextBoxX_ProxyPwd
+        '
+        '
+        '
+        '
+        Me.TextBoxX_ProxyPwd.Border.Class = "TextBoxBorder"
+        Me.TextBoxX_ProxyPwd.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.TextBoxX_ProxyPwd, "TextBoxX_ProxyPwd")
+        Me.TextBoxX_ProxyPwd.Name = "TextBoxX_ProxyPwd"
+        Me.TextBoxX_ProxyPwd.PreventEnterBeep = True
+        Me.TextBoxX_ProxyPwd.UseSystemPasswordChar = True
+        Me.TextBoxX_ProxyPwd.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
+        '
+        'TextBoxX_ProxyUsr
+        '
+        '
+        '
+        '
+        Me.TextBoxX_ProxyUsr.Border.Class = "TextBoxBorder"
+        Me.TextBoxX_ProxyUsr.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.TextBoxX_ProxyUsr, "TextBoxX_ProxyUsr")
+        Me.TextBoxX_ProxyUsr.Name = "TextBoxX_ProxyUsr"
+        Me.TextBoxX_ProxyUsr.PreventEnterBeep = True
+        Me.TextBoxX_ProxyUsr.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
+        '
+        'LabelX16
+        '
+        Me.LabelX16.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX16, "LabelX16")
+        Me.LabelX16.Name = "LabelX16"
+        Me.LabelX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
+        '
+        'LabelX13
+        '
+        Me.LabelX13.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX13, "LabelX13")
+        Me.LabelX13.Name = "LabelX13"
+        Me.LabelX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
+        '
+        'ComboBoxEx_UpdateLevel
+        '
+        resources.ApplyResources(Me.ComboBoxEx_UpdateLevel, "ComboBoxEx_UpdateLevel")
+        Me.ComboBoxEx_UpdateLevel.DisplayMember = "Text"
+        Me.ComboBoxEx_UpdateLevel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ComboBoxEx_UpdateLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxEx_UpdateLevel.FormattingEnabled = True
+        Me.ComboBoxEx_UpdateLevel.Items.AddRange(New Object() {Me.ComboItem12, Me.ComboItem13, Me.ComboItem14})
+        Me.ComboBoxEx_UpdateLevel.Name = "ComboBoxEx_UpdateLevel"
+        Me.ComboBoxEx_UpdateLevel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        '
+        'ComboItem12
+        '
+        resources.ApplyResources(Me.ComboItem12, "ComboItem12")
+        '
+        'ComboItem13
+        '
+        resources.ApplyResources(Me.ComboItem13, "ComboItem13")
+        '
+        'ComboItem14
+        '
+        resources.ApplyResources(Me.ComboItem14, "ComboItem14")
+        '
+        'TabItem8
+        '
+        Me.TabItem8.AttachedControl = Me.TabControlPanel7
+        Me.TabItem8.Name = "TabItem8"
+        resources.ApplyResources(Me.TabItem8, "TabItem8")
+        '
+        'TabControlPanel6
+        '
+        Me.TabControlPanel6.Controls.Add(Me.LabelX15)
+        Me.TabControlPanel6.Controls.Add(Me.SwitchButton_TMForceUppercase)
+        Me.TabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty
+        resources.ApplyResources(Me.TabControlPanel6, "TabControlPanel6")
+        Me.TabControlPanel6.Name = "TabControlPanel6"
+        Me.TabControlPanel6.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel6.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.TabControlPanel6.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+        Me.TabControlPanel6.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+        Me.TabControlPanel6.Style.GradientAngle = 90
+        Me.TabControlPanel6.TabItem = Me.TabItem7
+        '
+        'LabelX15
+        '
+        Me.LabelX15.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX15, "LabelX15")
+        Me.LabelX15.Name = "LabelX15"
+        Me.LabelX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
+        '
+        'SwitchButton_TMForceUppercase
+        '
+        resources.ApplyResources(Me.SwitchButton_TMForceUppercase, "SwitchButton_TMForceUppercase")
+        '
+        '
+        '
+        Me.SwitchButton_TMForceUppercase.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.SwitchButton_TMForceUppercase.Name = "SwitchButton_TMForceUppercase"
+        Me.SwitchButton_TMForceUppercase.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.SwitchButton_TMForceUppercase.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.SwitchButton_TMForceUppercase.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.SwitchButton_TMForceUppercase.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SwitchButton_TMForceUppercase.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.SwitchButton_TMForceUppercase.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.SwitchButton_TMForceUppercase.SwitchWidth = 15
+        Me.SwitchButton_TMForceUppercase.Value = True
+        Me.SwitchButton_TMForceUppercase.ValueObject = "Y"
+        '
+        'TabItem7
+        '
+        Me.TabItem7.AttachedControl = Me.TabControlPanel6
+        Me.TabItem7.Name = "TabItem7"
+        resources.ApplyResources(Me.TabItem7, "TabItem7")
+        '
         'TabControlPanel5
         '
         Me.TabControlPanel5.Controls.Add(Me.ButtonX6)
@@ -658,103 +806,6 @@ Partial Class Form_Settings
         Me.TabItem4.Name = "TabItem4"
         resources.ApplyResources(Me.TabItem4, "TabItem4")
         '
-        'TabControlPanel7
-        '
-        Me.TabControlPanel7.Controls.Add(Me.TextBoxX_ProxyPwd)
-        Me.TabControlPanel7.Controls.Add(Me.TextBoxX_ProxyUsr)
-        Me.TabControlPanel7.Controls.Add(Me.LabelX16)
-        Me.TabControlPanel7.Controls.Add(Me.LabelX13)
-        Me.TabControlPanel7.Controls.Add(Me.LabelX1)
-        Me.TabControlPanel7.Controls.Add(Me.SwitchButton_SearchUpdates)
-        Me.TabControlPanel7.Controls.Add(Me.ComboBoxEx_UpdateLevel)
-        Me.TabControlPanel7.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel7, "TabControlPanel7")
-        Me.TabControlPanel7.Name = "TabControlPanel7"
-        Me.TabControlPanel7.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel7.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel7.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel7.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-        Me.TabControlPanel7.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-        Me.TabControlPanel7.Style.GradientAngle = 90
-        Me.TabControlPanel7.TabItem = Me.TabItem8
-        '
-        'TextBoxX_ProxyPwd
-        '
-        '
-        '
-        '
-        Me.TextBoxX_ProxyPwd.Border.Class = "TextBoxBorder"
-        Me.TextBoxX_ProxyPwd.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.TextBoxX_ProxyPwd, "TextBoxX_ProxyPwd")
-        Me.TextBoxX_ProxyPwd.Name = "TextBoxX_ProxyPwd"
-        Me.TextBoxX_ProxyPwd.PreventEnterBeep = True
-        Me.TextBoxX_ProxyPwd.UseSystemPasswordChar = True
-        Me.TextBoxX_ProxyPwd.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
-        '
-        'TextBoxX_ProxyUsr
-        '
-        '
-        '
-        '
-        Me.TextBoxX_ProxyUsr.Border.Class = "TextBoxBorder"
-        Me.TextBoxX_ProxyUsr.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.TextBoxX_ProxyUsr, "TextBoxX_ProxyUsr")
-        Me.TextBoxX_ProxyUsr.Name = "TextBoxX_ProxyUsr"
-        Me.TextBoxX_ProxyUsr.PreventEnterBeep = True
-        Me.TextBoxX_ProxyUsr.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
-        '
-        'LabelX16
-        '
-        Me.LabelX16.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX16, "LabelX16")
-        Me.LabelX16.Name = "LabelX16"
-        Me.LabelX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        '
-        'LabelX13
-        '
-        Me.LabelX13.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX13, "LabelX13")
-        Me.LabelX13.Name = "LabelX13"
-        Me.LabelX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        '
-        'ComboBoxEx_UpdateLevel
-        '
-        resources.ApplyResources(Me.ComboBoxEx_UpdateLevel, "ComboBoxEx_UpdateLevel")
-        Me.ComboBoxEx_UpdateLevel.DisplayMember = "Text"
-        Me.ComboBoxEx_UpdateLevel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.ComboBoxEx_UpdateLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxEx_UpdateLevel.FormattingEnabled = True
-        Me.ComboBoxEx_UpdateLevel.Items.AddRange(New Object() {Me.ComboItem12, Me.ComboItem13, Me.ComboItem14})
-        Me.ComboBoxEx_UpdateLevel.Name = "ComboBoxEx_UpdateLevel"
-        Me.ComboBoxEx_UpdateLevel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        '
-        'ComboItem12
-        '
-        resources.ApplyResources(Me.ComboItem12, "ComboItem12")
-        '
-        'ComboItem13
-        '
-        resources.ApplyResources(Me.ComboItem13, "ComboItem13")
-        '
-        'ComboItem14
-        '
-        resources.ApplyResources(Me.ComboItem14, "ComboItem14")
-        '
-        'TabItem8
-        '
-        Me.TabItem8.AttachedControl = Me.TabControlPanel7
-        Me.TabItem8.Name = "TabItem8"
-        resources.ApplyResources(Me.TabItem8, "TabItem8")
-        '
         'TabControlPanel3
         '
         Me.TabControlPanel3.Controls.Add(Me.ButtonX1)
@@ -810,57 +861,6 @@ Partial Class Form_Settings
         Me.TabItem2.Name = "TabItem2"
         resources.ApplyResources(Me.TabItem2, "TabItem2")
         '
-        'TabControlPanel6
-        '
-        Me.TabControlPanel6.Controls.Add(Me.LabelX15)
-        Me.TabControlPanel6.Controls.Add(Me.SwitchButton_TMForceUppercase)
-        Me.TabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty
-        resources.ApplyResources(Me.TabControlPanel6, "TabControlPanel6")
-        Me.TabControlPanel6.Name = "TabControlPanel6"
-        Me.TabControlPanel6.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel6.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel6.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-        Me.TabControlPanel6.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-        Me.TabControlPanel6.Style.GradientAngle = 90
-        Me.TabControlPanel6.TabItem = Me.TabItem7
-        '
-        'LabelX15
-        '
-        Me.LabelX15.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        resources.ApplyResources(Me.LabelX15, "LabelX15")
-        Me.LabelX15.Name = "LabelX15"
-        Me.LabelX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        '
-        'SwitchButton_TMForceUppercase
-        '
-        resources.ApplyResources(Me.SwitchButton_TMForceUppercase, "SwitchButton_TMForceUppercase")
-        '
-        '
-        '
-        Me.SwitchButton_TMForceUppercase.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.SwitchButton_TMForceUppercase.Name = "SwitchButton_TMForceUppercase"
-        Me.SwitchButton_TMForceUppercase.OffTextColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.SwitchButton_TMForceUppercase.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.SwitchButton_TMForceUppercase.OnTextColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.SwitchButton_TMForceUppercase.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SwitchButton_TMForceUppercase.SwitchBackColor = System.Drawing.Color.FromArgb(CType(CType(147, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.SwitchButton_TMForceUppercase.SwitchBorderColor = System.Drawing.Color.FromArgb(CType(CType(69, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(107, Byte), Integer))
-        Me.SwitchButton_TMForceUppercase.SwitchWidth = 15
-        Me.SwitchButton_TMForceUppercase.Value = True
-        Me.SwitchButton_TMForceUppercase.ValueObject = "Y"
-        '
-        'TabItem7
-        '
-        Me.TabItem7.AttachedControl = Me.TabControlPanel6
-        Me.TabItem7.Name = "TabItem7"
-        resources.ApplyResources(Me.TabItem7, "TabItem7")
-        '
         'SuperTooltip1
         '
         resources.ApplyResources(Me.SuperTooltip1, "SuperTooltip1")
@@ -889,13 +889,13 @@ Partial Class Form_Settings
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl2.ResumeLayout(False)
         Me.TabControlPanel1.ResumeLayout(False)
+        Me.TabControlPanel7.ResumeLayout(False)
+        Me.TabControlPanel6.ResumeLayout(False)
         Me.TabControlPanel5.ResumeLayout(False)
         Me.TabControlPanel4.ResumeLayout(False)
         Me.TabControlPanel_LoaderModules.ResumeLayout(False)
-        Me.TabControlPanel7.ResumeLayout(False)
         Me.TabControlPanel3.ResumeLayout(False)
         Me.TabControlPanel2.ResumeLayout(False)
-        Me.TabControlPanel6.ResumeLayout(False)
         CType(Me.PictureBox_Warning, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
