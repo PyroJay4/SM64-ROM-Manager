@@ -130,7 +130,7 @@
     <value>File(s) to big</value>
   </data>
   <data name="MsgBox_SendingRequestSuccess" xml:space="preserve">
-    <value>The request was send request successfully!</value>
+    <value>The request was send successfully!</value>
   </data>
   <data name="MsgBox_SendingRequestSuccess_Titel" xml:space="preserve">
     <value>Request sent successfull!</value>

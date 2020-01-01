@@ -101,7 +101,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die The request was send request successfully! ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The request was send successfully! ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_SendingRequestSuccess() As String
             Get
