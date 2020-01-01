@@ -21,6 +21,12 @@
         Me.Channel = channel
     End Sub
 
+    'F e a t u r e s
+
+    Public Overrides Function ToString() As String
+        Return $"{Version.ToString} {Channel.ToString} {Build}"
+    End Function
+
     'O p e r a t o r s
 
     Public Shared Operator >(a As ApplicationVersion, b As ApplicationVersion) As Boolean
