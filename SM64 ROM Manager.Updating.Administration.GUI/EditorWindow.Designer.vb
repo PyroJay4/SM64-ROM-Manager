@@ -24,25 +24,17 @@ Partial Class EditorWindow
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EditorWindow))
         Me.SuperTabControl1 = New DevComponents.DotNetBar.SuperTabControl()
-        Me.SuperTabControlPanel4 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.ListViewEx_Files = New DevComponents.DotNetBar.Controls.ListViewEx()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.SuperTabItem_Pkg_Extensions = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.LayoutControl2 = New DevComponents.DotNetBar.Layout.LayoutControl()
-        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX_UI_UpdateInstallerExeDownloadlink = New DevComponents.DotNetBar.LabelX()
         Me.LayoutControlItem6 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.SuperTabItem_UI_General = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel5 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.LayoutControl1 = New DevComponents.DotNetBar.Layout.LayoutControl()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
-        Me.LayoutControlItem1 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
+        Me.LabelX_UI_PackageVersion = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX_UI_PackageChannel = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX_UI_PackageBuild = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX_UI_PackageDownloadlink = New DevComponents.DotNetBar.LabelX()
         Me.LayoutControlItem2 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
@@ -51,8 +43,14 @@ Partial Class EditorWindow
         Me.SuperTabItem_UI_PackageInfo = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.TextBoxX_Pkg_Changelog = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TextBoxX_UI_PackageChangelog = New DevComponents.DotNetBar.Controls.RichTextBoxEx()
         Me.SuperTabItem_UI_Changelog = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel4 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.ListViewEx_Files = New DevComponents.DotNetBar.Controls.ListViewEx()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.SuperTabItem_Pkg_Extensions = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.AdvTree1 = New DevComponents.AdvTree.AdvTree()
         Me.NodeConnector1 = New DevComponents.AdvTree.NodeConnector()
@@ -62,7 +60,7 @@ Partial Class EditorWindow
         Me.RibbonPanel2 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar_UI_PackageInfo = New DevComponents.DotNetBar.RibbonBar()
         Me.ItemContainer1 = New DevComponents.DotNetBar.ItemContainer()
-        Me.ComboBoxItem1 = New DevComponents.DotNetBar.ComboBoxItem()
+        Me.ComboBoxItem_UI_PackageInfoList = New DevComponents.DotNetBar.ComboBoxItem()
         Me.ButtonItem_UI_AddPackageInfo = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_UI_DeletePackageInfo = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_UI_EditVersion = New DevComponents.DotNetBar.ButtonItem()
@@ -92,14 +90,14 @@ Partial Class EditorWindow
         Me.RibbonTabItem_Packaging = New DevComponents.DotNetBar.RibbonTabItem()
         CType(Me.SuperTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControl1.SuspendLayout()
-        Me.SuperTabControlPanel4.SuspendLayout()
-        Me.Panel4.SuspendLayout()
         Me.SuperTabControlPanel1.SuspendLayout()
         Me.LayoutControl2.SuspendLayout()
         Me.SuperTabControlPanel5.SuspendLayout()
         Me.LayoutControl1.SuspendLayout()
         Me.SuperTabControlPanel3.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.SuperTabControlPanel4.SuspendLayout()
+        Me.Panel4.SuspendLayout()
         Me.SuperTabControlPanel2.SuspendLayout()
         CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RibbonControl_Main.SuspendLayout()
@@ -145,6 +143,256 @@ Partial Class EditorWindow
         Me.SuperTabControl1.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem_UI_General, Me.SuperTabItem_UI_PackageInfo, Me.SuperTabItem_UI_Changelog, Me.SuperTabItem_Pkg_Files, Me.SuperTabItem_Pkg_Extensions})
         Me.SuperTabControl1.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.Office2010BackstageBlue
         Me.SuperTabControl1.Text = "SuperTabControl1"
+        '
+        'SuperTabControlPanel1
+        '
+        Me.SuperTabControlPanel1.Controls.Add(Me.LayoutControl2)
+        Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(98, 0)
+        Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(550, 394)
+        Me.SuperTabControlPanel1.TabIndex = 0
+        Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem_UI_General
+        '
+        'LayoutControl2
+        '
+        Me.LayoutControl2.BackColor = System.Drawing.Color.Transparent
+        Me.LayoutControl2.Controls.Add(Me.LabelX_UI_UpdateInstallerExeDownloadlink)
+        Me.LayoutControl2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LayoutControl2.ForeColor = System.Drawing.Color.Black
+        Me.LayoutControl2.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl2.Name = "LayoutControl2"
+        '
+        '
+        '
+        Me.LayoutControl2.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem6})
+        Me.LayoutControl2.Size = New System.Drawing.Size(550, 394)
+        Me.LayoutControl2.TabIndex = 0
+        '
+        'LabelX_UI_UpdateInstallerExeDownloadlink
+        '
+        '
+        '
+        '
+        Me.LabelX_UI_UpdateInstallerExeDownloadlink.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX_UI_UpdateInstallerExeDownloadlink.Location = New System.Drawing.Point(183, 4)
+        Me.LabelX_UI_UpdateInstallerExeDownloadlink.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelX_UI_UpdateInstallerExeDownloadlink.Name = "LabelX_UI_UpdateInstallerExeDownloadlink"
+        Me.LabelX_UI_UpdateInstallerExeDownloadlink.Size = New System.Drawing.Size(363, 23)
+        Me.LabelX_UI_UpdateInstallerExeDownloadlink.TabIndex = 0
+        Me.LabelX_UI_UpdateInstallerExeDownloadlink.Text = "-"
+        Me.LabelX_UI_UpdateInstallerExeDownloadlink.WordWrap = True
+        '
+        'LayoutControlItem6
+        '
+        Me.LayoutControlItem6.Control = Me.LabelX_UI_UpdateInstallerExeDownloadlink
+        Me.LayoutControlItem6.Height = 31
+        Me.LayoutControlItem6.MinSize = New System.Drawing.Size(64, 18)
+        Me.LayoutControlItem6.Name = "LayoutControlItem6"
+        Me.LayoutControlItem6.Text = "UpdateInstaller.exe Downloadlink:"
+        Me.LayoutControlItem6.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
+        Me.LayoutControlItem6.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
+        Me.LayoutControlItem6.Width = 100
+        Me.LayoutControlItem6.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'SuperTabItem_UI_General
+        '
+        Me.SuperTabItem_UI_General.AttachedControl = Me.SuperTabControlPanel1
+        Me.SuperTabItem_UI_General.GlobalItem = False
+        Me.SuperTabItem_UI_General.Name = "SuperTabItem_UI_General"
+        Me.SuperTabItem_UI_General.Text = "Allgemein"
+        '
+        'SuperTabControlPanel5
+        '
+        Me.SuperTabControlPanel5.Controls.Add(Me.LayoutControl1)
+        Me.SuperTabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel5.Location = New System.Drawing.Point(98, 0)
+        Me.SuperTabControlPanel5.Name = "SuperTabControlPanel5"
+        Me.SuperTabControlPanel5.Size = New System.Drawing.Size(550, 394)
+        Me.SuperTabControlPanel5.TabIndex = 0
+        Me.SuperTabControlPanel5.TabItem = Me.SuperTabItem_UI_PackageInfo
+        '
+        'LayoutControl1
+        '
+        Me.LayoutControl1.BackColor = System.Drawing.Color.Transparent
+        Me.LayoutControl1.Controls.Add(Me.LabelX_UI_PackageVersion)
+        Me.LayoutControl1.Controls.Add(Me.LabelX_UI_PackageChannel)
+        Me.LayoutControl1.Controls.Add(Me.LabelX_UI_PackageBuild)
+        Me.LayoutControl1.Controls.Add(Me.LabelX_UI_PackageDownloadlink)
+        Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LayoutControl1.ForeColor = System.Drawing.Color.Black
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Name = "LayoutControl1"
+        '
+        '
+        '
+        Me.LayoutControl1.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutSpacerItem1, Me.LayoutControlItem5})
+        Me.LayoutControl1.Size = New System.Drawing.Size(550, 394)
+        Me.LayoutControl1.TabIndex = 0
+        '
+        'LabelX_UI_PackageVersion
+        '
+        Me.LabelX_UI_PackageVersion.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX_UI_PackageVersion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX_UI_PackageVersion.Location = New System.Drawing.Point(60, 4)
+        Me.LabelX_UI_PackageVersion.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelX_UI_PackageVersion.Name = "LabelX_UI_PackageVersion"
+        Me.LabelX_UI_PackageVersion.Size = New System.Drawing.Size(486, 23)
+        Me.LabelX_UI_PackageVersion.TabIndex = 0
+        Me.LabelX_UI_PackageVersion.Text = "-"
+        '
+        'LabelX_UI_PackageChannel
+        '
+        Me.LabelX_UI_PackageChannel.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX_UI_PackageChannel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX_UI_PackageChannel.Location = New System.Drawing.Point(60, 35)
+        Me.LabelX_UI_PackageChannel.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelX_UI_PackageChannel.Name = "LabelX_UI_PackageChannel"
+        Me.LabelX_UI_PackageChannel.Size = New System.Drawing.Size(486, 23)
+        Me.LabelX_UI_PackageChannel.TabIndex = 1
+        Me.LabelX_UI_PackageChannel.Text = "-"
+        '
+        'LabelX_UI_PackageBuild
+        '
+        Me.LabelX_UI_PackageBuild.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX_UI_PackageBuild.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX_UI_PackageBuild.Location = New System.Drawing.Point(60, 66)
+        Me.LabelX_UI_PackageBuild.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelX_UI_PackageBuild.Name = "LabelX_UI_PackageBuild"
+        Me.LabelX_UI_PackageBuild.Size = New System.Drawing.Size(486, 23)
+        Me.LabelX_UI_PackageBuild.TabIndex = 2
+        Me.LabelX_UI_PackageBuild.Text = "-"
+        '
+        'LabelX_UI_PackageDownloadlink
+        '
+        Me.LabelX_UI_PackageDownloadlink.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX_UI_PackageDownloadlink.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX_UI_PackageDownloadlink.Location = New System.Drawing.Point(60, 129)
+        Me.LabelX_UI_PackageDownloadlink.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelX_UI_PackageDownloadlink.Name = "LabelX_UI_PackageDownloadlink"
+        Me.LabelX_UI_PackageDownloadlink.Size = New System.Drawing.Size(486, 23)
+        Me.LabelX_UI_PackageDownloadlink.TabIndex = 4
+        Me.LabelX_UI_PackageDownloadlink.Text = "-"
+        Me.LabelX_UI_PackageDownloadlink.WordWrap = True
+        '
+        'LayoutControlItem2
+        '
+        Me.LayoutControlItem2.Control = Me.LabelX_UI_PackageVersion
+        Me.LayoutControlItem2.Height = 31
+        Me.LayoutControlItem2.MinSize = New System.Drawing.Size(64, 18)
+        Me.LayoutControlItem2.Name = "LayoutControlItem2"
+        Me.LayoutControlItem2.Text = "Version:"
+        Me.LayoutControlItem2.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
+        Me.LayoutControlItem2.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
+        Me.LayoutControlItem2.Width = 100
+        Me.LayoutControlItem2.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.LabelX_UI_PackageChannel
+        Me.LayoutControlItem3.Height = 31
+        Me.LayoutControlItem3.MinSize = New System.Drawing.Size(64, 18)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Text = "Kanal:"
+        Me.LayoutControlItem3.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
+        Me.LayoutControlItem3.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
+        Me.LayoutControlItem3.Width = 100
+        Me.LayoutControlItem3.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.Control = Me.LabelX_UI_PackageBuild
+        Me.LayoutControlItem4.Height = 31
+        Me.LayoutControlItem4.MinSize = New System.Drawing.Size(64, 18)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        Me.LayoutControlItem4.Text = "Build:"
+        Me.LayoutControlItem4.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
+        Me.LayoutControlItem4.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
+        Me.LayoutControlItem4.Width = 100
+        Me.LayoutControlItem4.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'LayoutSpacerItem1
+        '
+        Me.LayoutSpacerItem1.Height = 32
+        Me.LayoutSpacerItem1.Name = "LayoutSpacerItem1"
+        Me.LayoutSpacerItem1.Width = 100
+        Me.LayoutSpacerItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.LabelX_UI_PackageDownloadlink
+        Me.LayoutControlItem5.Height = 31
+        Me.LayoutControlItem5.MinSize = New System.Drawing.Size(64, 18)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Text = "Paketlink:"
+        Me.LayoutControlItem5.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
+        Me.LayoutControlItem5.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
+        Me.LayoutControlItem5.Width = 100
+        Me.LayoutControlItem5.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'SuperTabItem_UI_PackageInfo
+        '
+        Me.SuperTabItem_UI_PackageInfo.AttachedControl = Me.SuperTabControlPanel5
+        Me.SuperTabItem_UI_PackageInfo.GlobalItem = False
+        Me.SuperTabItem_UI_PackageInfo.Name = "SuperTabItem_UI_PackageInfo"
+        Me.SuperTabItem_UI_PackageInfo.Text = "Paket-Info"
+        '
+        'SuperTabControlPanel3
+        '
+        Me.SuperTabControlPanel3.Controls.Add(Me.Panel3)
+        Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(98, 0)
+        Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(550, 394)
+        Me.SuperTabControlPanel3.TabIndex = 0
+        Me.SuperTabControlPanel3.TabItem = Me.SuperTabItem_UI_Changelog
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.Transparent
+        Me.Panel3.Controls.Add(Me.TextBoxX_UI_PackageChangelog)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(550, 394)
+        Me.Panel3.TabIndex = 1
+        '
+        'TextBoxX_UI_PackageChangelog
+        '
+        Me.TextBoxX_UI_PackageChangelog.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBoxX_UI_PackageChangelog.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.TextBoxX_UI_PackageChangelog.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TextBoxX_UI_PackageChangelog.ForeColor = System.Drawing.Color.Black
+        Me.TextBoxX_UI_PackageChangelog.Location = New System.Drawing.Point(0, 0)
+        Me.TextBoxX_UI_PackageChangelog.Name = "TextBoxX_UI_PackageChangelog"
+        Me.TextBoxX_UI_PackageChangelog.Rtf = "{\rtf1\ansi\ansicpg1252\deff0\deflang1031{\fonttbl{\f0\fnil\fcharset0 Microsoft S" &
+    "ans Serif;}}" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "\viewkind4\uc1\pard\f0\fs17\par" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "}" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.TextBoxX_UI_PackageChangelog.Size = New System.Drawing.Size(550, 394)
+        Me.TextBoxX_UI_PackageChangelog.TabIndex = 0
+        '
+        'SuperTabItem_UI_Changelog
+        '
+        Me.SuperTabItem_UI_Changelog.AttachedControl = Me.SuperTabControlPanel3
+        Me.SuperTabItem_UI_Changelog.GlobalItem = False
+        Me.SuperTabItem_UI_Changelog.Name = "SuperTabItem_UI_Changelog"
+        Me.SuperTabItem_UI_Changelog.Text = "Änderungsliste"
         '
         'SuperTabControlPanel4
         '
@@ -204,286 +452,6 @@ Partial Class EditorWindow
         Me.SuperTabItem_Pkg_Extensions.GlobalItem = False
         Me.SuperTabItem_Pkg_Extensions.Name = "SuperTabItem_Pkg_Extensions"
         Me.SuperTabItem_Pkg_Extensions.Text = "Erweiterungen"
-        '
-        'SuperTabControlPanel1
-        '
-        Me.SuperTabControlPanel1.Controls.Add(Me.LayoutControl2)
-        Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(98, 0)
-        Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(550, 394)
-        Me.SuperTabControlPanel1.TabIndex = 0
-        Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem_UI_General
-        '
-        'LayoutControl2
-        '
-        Me.LayoutControl2.BackColor = System.Drawing.Color.Transparent
-        Me.LayoutControl2.Controls.Add(Me.LabelX6)
-        Me.LayoutControl2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl2.ForeColor = System.Drawing.Color.Black
-        Me.LayoutControl2.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControl2.Name = "LayoutControl2"
-        '
-        '
-        '
-        Me.LayoutControl2.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem6})
-        Me.LayoutControl2.Size = New System.Drawing.Size(550, 394)
-        Me.LayoutControl2.TabIndex = 0
-        '
-        'LabelX6
-        '
-        '
-        '
-        '
-        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX6.Location = New System.Drawing.Point(183, 4)
-        Me.LabelX6.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.Size = New System.Drawing.Size(363, 23)
-        Me.LabelX6.TabIndex = 0
-        Me.LabelX6.Text = "-"
-        '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.LabelX6
-        Me.LayoutControlItem6.Height = 31
-        Me.LayoutControlItem6.MinSize = New System.Drawing.Size(64, 18)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Text = "UpdateInstaller.exe Downloadlink:"
-        Me.LayoutControlItem6.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
-        Me.LayoutControlItem6.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
-        Me.LayoutControlItem6.Width = 100
-        Me.LayoutControlItem6.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
-        '
-        'SuperTabItem_UI_General
-        '
-        Me.SuperTabItem_UI_General.AttachedControl = Me.SuperTabControlPanel1
-        Me.SuperTabItem_UI_General.GlobalItem = False
-        Me.SuperTabItem_UI_General.Name = "SuperTabItem_UI_General"
-        Me.SuperTabItem_UI_General.Text = "Allgemein"
-        '
-        'SuperTabControlPanel5
-        '
-        Me.SuperTabControlPanel5.Controls.Add(Me.LayoutControl1)
-        Me.SuperTabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel5.Location = New System.Drawing.Point(98, 0)
-        Me.SuperTabControlPanel5.Name = "SuperTabControlPanel5"
-        Me.SuperTabControlPanel5.Size = New System.Drawing.Size(550, 394)
-        Me.SuperTabControlPanel5.TabIndex = 0
-        Me.SuperTabControlPanel5.TabItem = Me.SuperTabItem_UI_PackageInfo
-        '
-        'LayoutControl1
-        '
-        Me.LayoutControl1.BackColor = System.Drawing.Color.Transparent
-        Me.LayoutControl1.Controls.Add(Me.LabelX1)
-        Me.LayoutControl1.Controls.Add(Me.LabelX2)
-        Me.LayoutControl1.Controls.Add(Me.LabelX3)
-        Me.LayoutControl1.Controls.Add(Me.LabelX4)
-        Me.LayoutControl1.Controls.Add(Me.LabelX5)
-        Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl1.ForeColor = System.Drawing.Color.Black
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControl1.Name = "LayoutControl1"
-        '
-        '
-        '
-        Me.LayoutControl1.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutSpacerItem1, Me.LayoutControlItem5})
-        Me.LayoutControl1.Size = New System.Drawing.Size(550, 394)
-        Me.LayoutControl1.TabIndex = 0
-        '
-        'LabelX1
-        '
-        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Location = New System.Drawing.Point(82, 4)
-        Me.LabelX1.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(464, 23)
-        Me.LabelX1.TabIndex = 0
-        Me.LabelX1.Text = "-"
-        '
-        'LabelX2
-        '
-        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Location = New System.Drawing.Point(82, 35)
-        Me.LabelX2.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(464, 23)
-        Me.LabelX2.TabIndex = 1
-        Me.LabelX2.Text = "-"
-        '
-        'LabelX3
-        '
-        Me.LabelX3.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Location = New System.Drawing.Point(82, 66)
-        Me.LabelX3.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.Size = New System.Drawing.Size(464, 23)
-        Me.LabelX3.TabIndex = 2
-        Me.LabelX3.Text = "-"
-        '
-        'LabelX4
-        '
-        Me.LabelX4.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX4.Location = New System.Drawing.Point(82, 97)
-        Me.LabelX4.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelX4.Name = "LabelX4"
-        Me.LabelX4.Size = New System.Drawing.Size(464, 23)
-        Me.LabelX4.TabIndex = 3
-        Me.LabelX4.Text = "-"
-        '
-        'LabelX5
-        '
-        Me.LabelX5.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX5.Location = New System.Drawing.Point(82, 160)
-        Me.LabelX5.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelX5.Name = "LabelX5"
-        Me.LabelX5.Size = New System.Drawing.Size(464, 23)
-        Me.LabelX5.TabIndex = 5
-        Me.LabelX5.Text = "-"
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.LabelX1
-        Me.LayoutControlItem1.Height = 31
-        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(64, 18)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Text = "Name:"
-        Me.LayoutControlItem1.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
-        Me.LayoutControlItem1.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
-        Me.LayoutControlItem1.Width = 100
-        Me.LayoutControlItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
-        '
-        'LayoutControlItem2
-        '
-        Me.LayoutControlItem2.Control = Me.LabelX2
-        Me.LayoutControlItem2.Height = 31
-        Me.LayoutControlItem2.MinSize = New System.Drawing.Size(64, 18)
-        Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Text = "Version:"
-        Me.LayoutControlItem2.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
-        Me.LayoutControlItem2.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
-        Me.LayoutControlItem2.Width = 100
-        Me.LayoutControlItem2.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.LabelX3
-        Me.LayoutControlItem3.Height = 31
-        Me.LayoutControlItem3.MinSize = New System.Drawing.Size(64, 18)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Text = "Kanal:"
-        Me.LayoutControlItem3.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
-        Me.LayoutControlItem3.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
-        Me.LayoutControlItem3.Width = 100
-        Me.LayoutControlItem3.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
-        '
-        'LayoutControlItem4
-        '
-        Me.LayoutControlItem4.Control = Me.LabelX4
-        Me.LayoutControlItem4.Height = 31
-        Me.LayoutControlItem4.MinSize = New System.Drawing.Size(64, 18)
-        Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Text = "Build:"
-        Me.LayoutControlItem4.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
-        Me.LayoutControlItem4.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
-        Me.LayoutControlItem4.Width = 100
-        Me.LayoutControlItem4.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
-        '
-        'LayoutSpacerItem1
-        '
-        Me.LayoutSpacerItem1.Height = 32
-        Me.LayoutSpacerItem1.Name = "LayoutSpacerItem1"
-        Me.LayoutSpacerItem1.Width = 100
-        Me.LayoutSpacerItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.Control = Me.LabelX5
-        Me.LayoutControlItem5.Height = 31
-        Me.LayoutControlItem5.MinSize = New System.Drawing.Size(64, 18)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Text = "Downloadlink:"
-        Me.LayoutControlItem5.TextLineAlignment = DevComponents.DotNetBar.Layout.eTextLineAlignment.Middle
-        Me.LayoutControlItem5.TextPadding = New System.Windows.Forms.Padding(0, 1, 0, 0)
-        Me.LayoutControlItem5.Width = 100
-        Me.LayoutControlItem5.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
-        '
-        'SuperTabItem_UI_PackageInfo
-        '
-        Me.SuperTabItem_UI_PackageInfo.AttachedControl = Me.SuperTabControlPanel5
-        Me.SuperTabItem_UI_PackageInfo.GlobalItem = False
-        Me.SuperTabItem_UI_PackageInfo.Name = "SuperTabItem_UI_PackageInfo"
-        Me.SuperTabItem_UI_PackageInfo.Text = "Paket-Info"
-        '
-        'SuperTabControlPanel3
-        '
-        Me.SuperTabControlPanel3.Controls.Add(Me.Panel3)
-        Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(98, 0)
-        Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(550, 394)
-        Me.SuperTabControlPanel3.TabIndex = 0
-        Me.SuperTabControlPanel3.TabItem = Me.SuperTabItem_UI_Changelog
-        '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.Color.Transparent
-        Me.Panel3.Controls.Add(Me.TextBoxX_Pkg_Changelog)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(0, 0)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(550, 394)
-        Me.Panel3.TabIndex = 1
-        '
-        'TextBoxX_Pkg_Changelog
-        '
-        Me.TextBoxX_Pkg_Changelog.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBoxX_Pkg_Changelog.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.TextBoxX_Pkg_Changelog.Border.Class = "TextBoxBorder"
-        Me.TextBoxX_Pkg_Changelog.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX_Pkg_Changelog.DisabledBackColor = System.Drawing.Color.White
-        Me.TextBoxX_Pkg_Changelog.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxX_Pkg_Changelog.Location = New System.Drawing.Point(0, 0)
-        Me.TextBoxX_Pkg_Changelog.Multiline = True
-        Me.TextBoxX_Pkg_Changelog.Name = "TextBoxX_Pkg_Changelog"
-        Me.TextBoxX_Pkg_Changelog.PreventEnterBeep = True
-        Me.TextBoxX_Pkg_Changelog.Size = New System.Drawing.Size(550, 394)
-        Me.TextBoxX_Pkg_Changelog.TabIndex = 0
-        Me.TextBoxX_Pkg_Changelog.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
-        Me.TextBoxX_Pkg_Changelog.WatermarkText = "Änderungen hier hinschreiben ..." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Beispiel:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- Fehler behoben" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- Neue Funktion:" &
-    " Etwas" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- Änderung des Datenbanksystems" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- Optimierung"
-        '
-        'SuperTabItem_UI_Changelog
-        '
-        Me.SuperTabItem_UI_Changelog.AttachedControl = Me.SuperTabControlPanel3
-        Me.SuperTabItem_UI_Changelog.GlobalItem = False
-        Me.SuperTabItem_UI_Changelog.Name = "SuperTabItem_UI_Changelog"
-        Me.SuperTabItem_UI_Changelog.Text = "Änderungsliste"
         '
         'SuperTabControlPanel2
         '
@@ -635,7 +603,7 @@ Partial Class EditorWindow
         Me.ItemContainer1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ItemContainer1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
         Me.ItemContainer1.Name = "ItemContainer1"
-        Me.ItemContainer1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ComboBoxItem1, Me.ButtonItem_UI_AddPackageInfo, Me.ButtonItem_UI_DeletePackageInfo})
+        Me.ItemContainer1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ComboBoxItem_UI_PackageInfoList, Me.ButtonItem_UI_AddPackageInfo, Me.ButtonItem_UI_DeletePackageInfo})
         '
         '
         '
@@ -645,12 +613,12 @@ Partial Class EditorWindow
         '
         Me.ItemContainer1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
-        'ComboBoxItem1
+        'ComboBoxItem_UI_PackageInfoList
         '
-        Me.ComboBoxItem1.ComboWidth = 150
-        Me.ComboBoxItem1.DropDownHeight = 106
-        Me.ComboBoxItem1.Name = "ComboBoxItem1"
-        Me.ComboBoxItem1.Text = "ComboBoxItem1"
+        Me.ComboBoxItem_UI_PackageInfoList.ComboWidth = 150
+        Me.ComboBoxItem_UI_PackageInfoList.DropDownHeight = 106
+        Me.ComboBoxItem_UI_PackageInfoList.Name = "ComboBoxItem_UI_PackageInfoList"
+        Me.ComboBoxItem_UI_PackageInfoList.Text = "ComboBoxItem_UI_PackageInfoList"
         '
         'ButtonItem_UI_AddPackageInfo
         '
@@ -799,10 +767,10 @@ Partial Class EditorWindow
         Me.RibbonPanel1.Controls.Add(Me.RibbonBar1)
         Me.RibbonPanel1.Controls.Add(Me.RibbonBar3)
         Me.RibbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RibbonPanel1.Location = New System.Drawing.Point(0, 55)
+        Me.RibbonPanel1.Location = New System.Drawing.Point(0, 56)
         Me.RibbonPanel1.Name = "RibbonPanel1"
         Me.RibbonPanel1.Padding = New System.Windows.Forms.Padding(3, 0, 3, 3)
-        Me.RibbonPanel1.Size = New System.Drawing.Size(640, 99)
+        Me.RibbonPanel1.Size = New System.Drawing.Size(640, 95)
         '
         '
         '
@@ -836,7 +804,7 @@ Partial Class EditorWindow
         Me.RibbonBar_Pkg_Erweiterungen.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar_Pkg_Erweiterungen.Location = New System.Drawing.Point(463, 0)
         Me.RibbonBar_Pkg_Erweiterungen.Name = "RibbonBar_Pkg_Erweiterungen"
-        Me.RibbonBar_Pkg_Erweiterungen.Size = New System.Drawing.Size(144, 96)
+        Me.RibbonBar_Pkg_Erweiterungen.Size = New System.Drawing.Size(144, 92)
         Me.RibbonBar_Pkg_Erweiterungen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar_Pkg_Erweiterungen.TabIndex = 3
         Me.RibbonBar_Pkg_Erweiterungen.Text = "Erweiterungen"
@@ -885,7 +853,7 @@ Partial Class EditorWindow
         Me.RibbonBar_Pkg_Dateien.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar_Pkg_Dateien.Location = New System.Drawing.Point(314, 0)
         Me.RibbonBar_Pkg_Dateien.Name = "RibbonBar_Pkg_Dateien"
-        Me.RibbonBar_Pkg_Dateien.Size = New System.Drawing.Size(149, 96)
+        Me.RibbonBar_Pkg_Dateien.Size = New System.Drawing.Size(149, 92)
         Me.RibbonBar_Pkg_Dateien.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar_Pkg_Dateien.TabIndex = 2
         Me.RibbonBar_Pkg_Dateien.Text = "Dateien"
@@ -934,7 +902,7 @@ Partial Class EditorWindow
         Me.RibbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar1.Location = New System.Drawing.Point(233, 0)
         Me.RibbonBar1.Name = "RibbonBar1"
-        Me.RibbonBar1.Size = New System.Drawing.Size(81, 96)
+        Me.RibbonBar1.Size = New System.Drawing.Size(81, 92)
         Me.RibbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar1.TabIndex = 0
         Me.RibbonBar1.Text = "Paket"
@@ -974,7 +942,7 @@ Partial Class EditorWindow
         Me.RibbonBar3.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar3.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
-        Me.RibbonBar3.Size = New System.Drawing.Size(230, 96)
+        Me.RibbonBar3.Size = New System.Drawing.Size(230, 92)
         Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar3.TabIndex = 1
         Me.RibbonBar3.Text = "Vorlage"
@@ -1050,14 +1018,14 @@ Partial Class EditorWindow
         Me.Text = "Update-Administration"
         CType(Me.SuperTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControl1.ResumeLayout(False)
-        Me.SuperTabControlPanel4.ResumeLayout(False)
-        Me.Panel4.ResumeLayout(False)
         Me.SuperTabControlPanel1.ResumeLayout(False)
         Me.LayoutControl2.ResumeLayout(False)
         Me.SuperTabControlPanel5.ResumeLayout(False)
         Me.LayoutControl1.ResumeLayout(False)
         Me.SuperTabControlPanel3.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
+        Me.SuperTabControlPanel4.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
         Me.SuperTabControlPanel2.ResumeLayout(False)
         CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RibbonControl_Main.ResumeLayout(False)
@@ -1093,7 +1061,7 @@ Partial Class EditorWindow
     Friend WithEvents SuperTabItem_UI_PackageInfo As DevComponents.DotNetBar.SuperTabItem
     Friend WithEvents SuperTabControlPanel2 As DevComponents.DotNetBar.SuperTabControlPanel
     Friend WithEvents SuperTabItem_Pkg_Files As DevComponents.DotNetBar.SuperTabItem
-    Friend WithEvents TextBoxX_Pkg_Changelog As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TextBoxX_UI_PackageChangelog As DevComponents.DotNetBar.Controls.RichTextBoxEx
     Friend WithEvents ListViewEx_Files As DevComponents.DotNetBar.Controls.ListViewEx
     Friend WithEvents AdvTree1 As DevComponents.AdvTree.AdvTree
     Friend WithEvents NodeConnector1 As DevComponents.AdvTree.NodeConnector
@@ -1102,27 +1070,24 @@ Partial Class EditorWindow
     Friend WithEvents RibbonBar_UI_PackageInfo As DevComponents.DotNetBar.RibbonBar
     Friend WithEvents ButtonItem_UI_EditVersion As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_UI_EditDownloadlink As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LayoutControlItem1 As DevComponents.DotNetBar.Layout.LayoutControlItem
+    Friend WithEvents LabelX_UI_PackageVersion As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX_UI_PackageChannel As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX_UI_PackageBuild As DevComponents.DotNetBar.LabelX
     Friend WithEvents LayoutControlItem2 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents LayoutControlItem3 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents LayoutControlItem4 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents LayoutSpacerItem1 As DevComponents.DotNetBar.Layout.LayoutSpacerItem
     Friend WithEvents ItemContainer1 As DevComponents.DotNetBar.ItemContainer
-    Friend WithEvents ComboBoxItem1 As DevComponents.DotNetBar.ComboBoxItem
     Friend WithEvents ButtonItem_UI_AddPackageInfo As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_UI_DeletePackageInfo As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents SuperTabControlPanel1 As DevComponents.DotNetBar.SuperTabControlPanel
     Friend WithEvents SuperTabItem_UI_General As DevComponents.DotNetBar.SuperTabItem
-    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX_UI_PackageDownloadlink As DevComponents.DotNetBar.LabelX
     Friend WithEvents LayoutControlItem5 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents LayoutControl2 As DevComponents.DotNetBar.Layout.LayoutControl
     Friend WithEvents RibbonBar_UI_Allgemein As DevComponents.DotNetBar.RibbonBar
     Friend WithEvents ButtonItem_UI_EditConfiguration As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX_UI_UpdateInstallerExeDownloadlink As DevComponents.DotNetBar.LabelX
     Friend WithEvents LayoutControlItem6 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents RibbonBar_Pkg_Erweiterungen As DevComponents.DotNetBar.RibbonBar
     Friend WithEvents RibbonBar_Pkg_Dateien As DevComponents.DotNetBar.RibbonBar
@@ -1134,4 +1099,5 @@ Partial Class EditorWindow
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents ButtonItem_Pkg_RemoveFileFolder As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ComboBoxItem_UI_PackageInfoList As DevComponents.DotNetBar.ComboBoxItem
 End Class

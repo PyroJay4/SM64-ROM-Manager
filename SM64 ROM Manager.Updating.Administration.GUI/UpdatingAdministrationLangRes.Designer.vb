@@ -117,5 +117,23 @@ Namespace My.Resources
                 Return ResourceManager.GetString("MsgBox_ErrorAddingInstallerAddOn", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Paket wurde erfolgreich exportiert! ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_PkgExportSuccess() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_PkgExportSuccess", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Paket exportiert ähnelt.
+        '''</summary>
+        Friend Shared ReadOnly Property MsgBox_PkgExportSuccess_Titel() As String
+            Get
+                Return ResourceManager.GetString("MsgBox_PkgExportSuccess_Titel", resourceCulture)
+            End Get
+        End Property
     End Class
 End Namespace

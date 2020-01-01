@@ -3,10 +3,6 @@ Imports SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.UpdatingAdmini
 
 Public Class ApplicationVersionInput
 
-    'F i e l d s
-
-    Private curVersion As Version
-
     'C o n s t r u c t o r s
 
     Public Sub New()
@@ -33,10 +29,9 @@ Public Class ApplicationVersionInput
 
     Public Property Version As Version
         Get
-            Return curVersion
+            Return New Version(TextBoxX_Version.Text.Trim)
         End Get
         Set
-            curVersion = Value
             TextBoxX_Version.Text = Value.ToString
         End Set
     End Property
