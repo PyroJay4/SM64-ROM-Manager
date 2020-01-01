@@ -78,6 +78,7 @@ Public Class ScrollTexEditor
 
         End Select
     End Sub
+
     Private Sub AdvPropertyGrid1_ConvertPropertyValueToString(sender As Object, e As ConvertValueEventArgs) Handles AdvPropertyGrid1.ConvertPropertyValueToString
         Select Case e.PropertyDescriptor.PropertyType
             Case GetType(System.Boolean)
@@ -174,7 +175,9 @@ Public Class ScrollTexEditor
             objs.Add(item.Tag)
         Next
 
+        AdvPropertyGrid1.SuspendLayout()
         AdvPropertyGrid1.SelectedObjects = objs.ToArray
+        AdvPropertyGrid1.ResumeLayout()
     End Sub
 
     Private Sub ButtonItem43_Click(sender As Object, e As EventArgs) Handles ButtonItem43.Click
