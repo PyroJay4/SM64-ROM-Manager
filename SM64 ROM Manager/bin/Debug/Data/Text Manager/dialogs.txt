@@ -103,10 +103,10 @@
 102 - Wooden signpost (CC)
 103 - Wooden signpost (SSS)
 104 - Wooden signpost (BOB & WF)
-105 - Ping Bob-Omb - cannon opened (BOB)
-106 - Ping Bob-Omb - cannon opened
+105 - Pink Bob-Omb - cannon opened (BOB)
+106 - Pink Bob-Omb - cannon opened
 107 - Killing Boo (BBH)
-108 - All Boo's killed (BBH)
+108 - All Boos killed (BBH)
 109 - Snowman - body lost (CCM)
 110 - Snowman - start rolling (CCM)
 111 - Snowman - succesfully (CCM)
