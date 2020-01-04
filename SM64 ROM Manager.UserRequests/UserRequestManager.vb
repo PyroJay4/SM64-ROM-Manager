@@ -25,7 +25,7 @@ Public Class UserRequestManager
         For Each prop As UserRequestProperty In request.Properties.Where(Function(n) n.Type = UserRequestPropertyType.Files)
             If Not String.IsNullOrEmpty(prop.Value) Then
                 Dim dir As DirectoryInfo = destDir.CreateSubdirectory(prop.Name)
-                For Each f As String In prop.Value.Split(",")
+                For Each f As String In TranslateFilesStringToArray(prop.Value)
                     File.Copy(f, Path.Combine(dir.FullName, Path.GetFileName(f)))
                 Next
             End If
@@ -67,6 +67,28 @@ Public Class UserRequestManager
 
         'Return result
         Return result
+    End Function
+
+    Public Shared Function CheckMaxAttachmentFileLength(request As UserRequest, maxAttachmentLength As Long) As Boolean
+        Dim size As Long = 0
+
+        For Each prop As UserRequestProperty In request.Properties
+            If prop.Type = UserRequestPropertyType.Files Then
+                For Each f As String In TranslateFilesStringToArray(prop.Value)
+                    size += New FileInfo(f).Length
+                Next
+            End If
+        Next
+
+        Return size <= maxAttachmentLength
+    End Function
+
+    Public Shared Function TranslateFilesStringToArray(files As String) As String()
+        Return files.Split("|".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
+    End Function
+
+    Public Shared Function TranslateFilesArrayToString(files As String()) As String
+        Return String.Join("|", files)
     End Function
 
 End Class

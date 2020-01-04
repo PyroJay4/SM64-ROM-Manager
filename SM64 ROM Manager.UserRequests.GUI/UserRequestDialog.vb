@@ -109,6 +109,8 @@ Public Class UserRequestDialog
                 CType(sender.Tag, UserRequestProperty).Value = sender.Text.Trim
             End Sub
 
+        AddHandlerGotFocus(control)
+
         AddControlToGroup(prop, group, control)
     End Sub
 
@@ -159,6 +161,16 @@ Public Class UserRequestDialog
         group.Items.Add(item)
     End Sub
 
+    Private Sub AddHandlerGotFocus(control As Control)
+        Dim ah = Sub(c As Control) AddHandler c.GotFocus, Sub(sender, e) LayoutControl1.ScrollControlIntoView(sender)
+
+        ah(control)
+
+        For Each c As Control In control.Controls
+            ah(c)
+        Next
+    End Sub
+
     'F e a t u r e s
 
     Private Async Function SendRequest() As Task(Of Boolean)
@@ -172,29 +184,33 @@ Public Class UserRequestDialog
         Dim success As Boolean = False
 
         If SuperValidator1.Validate() Then
-            button_Send.Enabled = False
-            circularProgress.Start()
+            If Not UserRequestManager.CheckMaxAttachmentFileLength(request, 250 * 1024 * 1024) Then
+                MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_IncludedBigFiles, UserRequestGuiLangRes.MsgBox_IncludedBigFiles_Titel, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                button_Send.Enabled = False
+                circularProgress.Start()
 
 #If Not DEBUG Then
         Try
 #End If
-            success = Await SendRequest()
+                success = Await SendRequest()
 #If Not DEBUG Then
         Catch ex As Exception
             MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_ErrorSendingRequest, UserRequestGuiLangRes.MsgBox_ErrorSendingRequest_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
 #End If
-            circularProgress.Stop()
-            button_Send.Enabled = True
+                circularProgress.Stop()
+                button_Send.Enabled = True
 #If Not DEBUG Then
         End Try
 #End If
 
-            If success Then
-                MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_SendingRequestSuccess, UserRequestGuiLangRes.MsgBox_SendingRequestSuccess_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Close()
-            Else
-                MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_ErrorSendingRequest, UserRequestGuiLangRes.MsgBox_ErrorSendingRequest_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                If success Then
+                    MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_SendingRequestSuccess, UserRequestGuiLangRes.MsgBox_SendingRequestSuccess_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Close()
+                Else
+                    MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_ErrorSendingRequest, UserRequestGuiLangRes.MsgBox_ErrorSendingRequest_Titel, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
             End If
         End If
     End Sub

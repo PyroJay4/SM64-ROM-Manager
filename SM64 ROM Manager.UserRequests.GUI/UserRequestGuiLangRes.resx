@@ -124,10 +124,10 @@
     <value>Error sending request</value>
   </data>
   <data name="MsgBox_IncludedBigFiles" xml:space="preserve">
-    <value>At least one files hasn't been added because it was bigger then 250 MiB.</value>
+    <value>The maximum size of all attachments together is 250 MiB for security reasons. Please reduce it e.g. packing your files to an archive.</value>
   </data>
   <data name="MsgBox_IncludedBigFiles_Titel" xml:space="preserve">
-    <value>File(s) to big</value>
+    <value>Files to big</value>
   </data>
   <data name="MsgBox_SendingRequestSuccess" xml:space="preserve">
     <value>The request was send successfully!</value>

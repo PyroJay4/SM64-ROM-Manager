@@ -124,10 +124,10 @@
     <value>Fehler beim Senden</value>
   </data>
   <data name="MsgBox_IncludedBigFiles" xml:space="preserve">
-    <value>Mindestens eine Datei wurde nicht hinzugefügt, da sie größer als 250 MiB ist.</value>
+    <value>Aus Sicherheitsgründen darf maximal 250 MiB angehängt werden. Bitte reduziere die Größe deiner Dateien bspw. durch Kompirmieren.</value>
   </data>
   <data name="MsgBox_IncludedBigFiles_Titel" xml:space="preserve">
-    <value>Datei(en) zu groß</value>
+    <value>Dateien zu groß</value>
   </data>
   <data name="MsgBox_SendingRequestSuccess" xml:space="preserve">
     <value>Der Request wurde erfolgreich gesendet!</value>
