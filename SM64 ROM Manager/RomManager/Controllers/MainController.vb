@@ -683,6 +683,11 @@ Public Class MainController
         frm.Show()
     End Sub
 
+    Public Sub OpenTranslationSubmition()
+        Dim frm As New UserRequestDialog(UserRequestLayout.LoadFrom(Path.Combine(MyUserRequestsPath, "SubmitTranslation.json")))
+        frm.Show()
+    End Sub
+
     Public Sub OpenThankYouPage()
         Dim frm As New ThankYouForm
         frm.ShowDialog(mainForm)
