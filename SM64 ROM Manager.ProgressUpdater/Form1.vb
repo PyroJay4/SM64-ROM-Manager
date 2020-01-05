@@ -69,7 +69,7 @@ Public Class Form1
     End Function
 
     Private Function GetTempDirPath() As DirectoryInfo
-        Return New DirectoryInfo(Path.Combine(Path.GetTempPath, TEMP_DIR_FOLDER_NAME))
+        Return New DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), TEMP_DIR_FOLDER_NAME))
     End Function
 
     Private Sub SaveConfig()
