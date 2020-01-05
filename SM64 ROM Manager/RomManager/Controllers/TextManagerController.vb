@@ -224,98 +224,38 @@ Public Class TextManagerController
             hPos = dialogItem.HorizontalPosition
             vPos = dialogItem.VerticalPosition
             lines = dialogItem.LinesPerSite
-        ElseIf TypeOf item Is TextTableItem Then
-        ElseIf TypeOf item Is TextArrayItem Then
+        End If
+
+        If TypeOf item Is TextTableItem Then
+        End If
+
+        If TypeOf item Is TextArrayItem Then
         End If
 
         Return (item.Text, hPos, vPos, lines)
     End Function
 
     Public Function GetTextNameList(tableName As String) As String()
-        Dim nameList() As String = {}
+        Dim group As TextGroup = GetTextGroup(tableName)
+        Dim nameList As New List(Of String)
 
-        Select Case tableName
-            Case "Dialogs"
-                nameList = CreateDialogNameList()
-            Case "Levels"
-                nameList = CreateLevelNameList()
-            Case "Acts"
-                nameList = CreateActNameList()
-        End Select
+        If TypeOf group.TextGroupInfo Is TextTableGroupInfo Then
+            Dim tg As TextTableGroupInfo = group.TextGroupInfo
 
-        Return nameList
-    End Function
+            If Not String.IsNullOrEmpty(tg.ItemDescriptions) Then
+                Dim sr As New StringReader(tg.ItemDescriptions)
+                Dim line As String = sr.ReadLine
 
-    Private Function CreateLevelNameList() As String()
-        Dim list As New List(Of String)
+                Do Until line Is Nothing
+                    nameList.Add(line)
+                    line = sr.ReadLine
+                Loop
 
-        For lvlnumber As Integer = 1 To 26
-            Dim item As String = ""
-
-            Select Case lvlnumber
-                Case Is <= 15
-                    Dim lvltxt As String = lvlnumber
-                    Dim name As String = RomManager.LevelInfoData.FirstOrDefault(Function(n) n.Number = lvltxt)?.Name
-                    item = String.Format("Level {0}{1}", lvlnumber.ToString("00"), If(name IsNot Nothing, ": " & lvltxt, ""))
-                Case 16
-                    item = String.Format("Bowser 1")
-                Case 17 : item = String.Format("Bowser 2")
-                Case 18 : item = String.Format("Bowser 3")
-                Case 19
-                    item = String.Format("Princess's Secret Slide")
-                Case 20 : item = String.Format("Metal Cap")
-                Case 21 : item = String.Format("Wing Cap")
-                Case 22 : item = String.Format("Vanish Cap")
-                Case 23 : item = String.Format("Rainbow Secret Level")
-                Case 24 : item = String.Format("Secret Aquarium")
-                Case 25
-                    item = String.Format("Unkown")
-                Case 26 : item = String.Format("Secret Stars")
-            End Select
-
-            list.Add(item)
-        Next
-
-        Return list.ToArray
-    End Function
-
-    Private Function CreateActNameList() As String()
-        Dim list As New List(Of String)
-
-        For level As Integer = 1 To 17
-            For act As Integer = 1 To 6
-                Dim item As String = ""
-
-                Select Case level
-                    Case 16
-                        item = String.Format(Form_Main_Resources.Text_SecretStar)
-                        act = 6
-                    Case 17
-                        item = String.Format(Form_Main_Resources.Text_Unknown)
-                    Case Else
-                        item = String.Format(Form_Main_Resources.Text_LevelStar, level.ToString("00"), act)
-                End Select
-
-                list.Add(item)
-            Next
-        Next
-
-        Return list.ToArray
-    End Function
-
-    Private Function CreateDialogNameList() As String()
-        Dim list() As String = {}
-
-        Dim file_dialogs As String = DialogNamesFilePath
-        If File.Exists(file_dialogs) Then
-            list = File.ReadAllLines(file_dialogs)
+                sr.Close()
+            End If
         End If
 
-        For i As Integer = 0 To list.Length - 1
-            list(i) = list(i).Substring(6)
-        Next
-
-        Return list
+        Return nameList.ToArray
     End Function
 
     Public Sub SetTextItemText(tableName As String, tableIndex As Integer, text As String)

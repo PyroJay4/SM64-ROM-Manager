@@ -1,4 +1,8 @@
-﻿Namespace Text.Profiles
+﻿Imports System.ComponentModel
+Imports System.ComponentModel.Design
+Imports System.Drawing.Design
+
+Namespace Text.Profiles
 
     Public Class TextTableGroupInfo
         Inherits TextGroupInfo
@@ -6,6 +10,8 @@
         Public Property Segmented As New TextTableSegmentedInfo
         Public Property Data As New TextTableDataInfo
         Public Property DialogData As New TextTableDialogDataInfo
+        <Editor(GetType(MultilineStringEditor), GetType(UITypeEditor))>
+        Public Property ItemDescriptions As String = String.Empty
 
         Public ReadOnly Property TableType As TextTableType
             Get
