@@ -71,6 +71,7 @@ Public Class MainController
     Public Event LevelAreaCustomObjectsCountChanged(e As LevelAreaEventArgs)
     Public Event LevelAreaScrollingTextureCountChanged(e As LevelAreaEventArgs)
     Public Event ObjectBankDataChanged()
+    Public Event ErrorBecauseNoRomLoaded()
 
     'C o n s t a n t s
 
@@ -154,6 +155,7 @@ Public Class MainController
         AddHandler TextManagerController.SettingOtherStatusInfo, Sub(text, foreColor) SetOtherStatusInfos(text, foreColor)
         AddHandler TextManagerController.SettingStatusText, Sub(text) StatusText = text
         AddHandler TextManagerController.RequestStatusText, Sub(e) e.Value = StatusText
+        AddHandler TextManagerController.ErrorBecauseNoRomLoaded, Sub() RaiseEvent ErrorBecauseNoRomLoaded()
     End Sub
 
     Public Sub New(mainForm As MainForm)
@@ -617,16 +619,18 @@ Public Class MainController
         'Set removed and changed Obds in Levels to Null
         Dim setObdsToNull =
              Sub(dic As List(Of Data.ObjectBankData), remove As Boolean)
-                 For Each lvl As Level In RomManager.Levels
-                     For Each bankID As Byte In lvl.LoadedObjectBanks.Keys.ToArray
-                         For Each obd As Data.ObjectBankData In dic
-                             Dim curObd As Data.ObjectBankData = lvl.GetObjectBankData(bankID)
-                             If curObd Is obd Then
-                                 lvl.ChangeObjectBankData(bankID, If(remove, Nothing, curObd))
-                             End If
+                 If RomManager IsNot Nothing Then
+                     For Each lvl As Level In RomManager.Levels
+                         For Each bankID As Byte In lvl.LoadedObjectBanks.Keys.ToArray
+                             For Each obd As Data.ObjectBankData In dic
+                                 Dim curObd As Data.ObjectBankData = lvl.GetObjectBankData(bankID)
+                                 If curObd Is obd Then
+                                     lvl.ChangeObjectBankData(bankID, If(remove, Nothing, curObd))
+                                 End If
+                             Next
                          Next
                      Next
-                 Next
+                 End If
              End Sub
         setObdsToNull(removedObds, True)
         setObdsToNull(changedObds, False)

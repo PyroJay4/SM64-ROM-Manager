@@ -102,6 +102,10 @@ Public Class MainForm
         e.Enabled = changingTab
     End Sub
 
+    Private Sub Controller_ErrorBecauseNoRomLoaded() Handles Controller.ErrorBecauseNoRomLoaded
+        ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+    End Sub
+
     'R o m   C h a n g e s   N o t i f i c a t i o n
 
     Private Sub NotifyRomChangesAvailable(ByRef mute As Boolean)
@@ -352,7 +356,7 @@ Public Class MainForm
 
     Private Async Sub ButtonItem29_Click(sender As Object, e As EventArgs) Handles ButtonItem29.Click
         If Not Await Controller.SearchForUpdates(False) Then
-            ShowToadnotifiaction(Me, "Cannot connect to the update server.", eToastGlowColor.Red)
+            ShowToastnotification(Me, "Cannot connect to the update server.", eToastGlowColor.Red)
         End If
     End Sub
 
@@ -362,14 +366,14 @@ Public Class MainForm
         If finishedLoading Then
             If Not Controller.HasRomManager AndAlso e.NewTab IsNot TabItem_General Then
                 e.Cancel = True
-                ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+                ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
             End If
         End If
     End Sub
 
     Private Sub ButtonItem23_Click(sender As Object, e As EventArgs) Handles ButtonItem23.Click
         If Not Controller.HasRomManager Then
-            ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+            ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
         Else
             Controller.UpdateChecksum()
         End If
@@ -381,7 +385,7 @@ Public Class MainForm
 
     Private Sub ButtonItem17_Click(sender As Object, e As EventArgs) Handles ButtonItem17.Click
         If Not Controller.HasRomManager Then
-            ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+            ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
         Else
             Controller.OpenTweakViewer()
         End If
@@ -389,7 +393,7 @@ Public Class MainForm
 
     Private Sub ButtonItem_TrajectoryEditor_Click(sender As Object, e As EventArgs) Handles ButtonItem_TrajectoryEditor.Click
         If Not Controller.HasRomManager Then
-            ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+            ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
         Else
             Controller.OpenTrajectoryEditor()
         End If
@@ -418,7 +422,7 @@ Public Class MainForm
 
     Private Sub ButtonItem15_Click(sender As Object, e As EventArgs) Handles ButtonItem15.Click
         If Not Controller.HasRomManager Then
-            ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+            ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
         Else
             Controller.OpenRgbEditor()
         End If
@@ -426,7 +430,7 @@ Public Class MainForm
 
     Private Sub ButtonItem16_Click(sender As Object, e As EventArgs) Handles ButtonItem16.Click
         If Not Controller.HasRomManager Then
-            ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+            ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
         Else
             Controller.OpenCoinsEditor()
         End If
@@ -442,7 +446,7 @@ Public Class MainForm
 
     Private Sub ButtonItem14_Click(sender As Object, e As EventArgs) Handles ButtonItem14.Click
         If Not Controller.HasRomManager Then
-            ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+            ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
         Else
             Controller.OpenItemBoxContentEditor()
         End If
@@ -450,7 +454,7 @@ Public Class MainForm
 
     Private Sub ButtonItem13_Click(sender As Object, e As EventArgs) Handles ButtonItem13.Click
         If Not Controller.HasRomManager Then
-            ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+            ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
         Else
             Controller.OpenStarPositionEditor()
         End If
@@ -466,7 +470,7 @@ Public Class MainForm
 
     Private Sub ButtonItem18_Click(sender As Object, e As EventArgs) Handles ButtonItem18.Click
         If Not Controller.HasRomManager Then
-            ShowToadnotifiaction(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
+            ShowToastnotification(Me, Form_Main_Resources.Notify_ShouldLoadRomFirst, eToastGlowColor.Red)
         Else
             Controller.OpenGlobalObjectBankManager()
         End If

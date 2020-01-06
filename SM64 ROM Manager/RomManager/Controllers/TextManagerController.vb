@@ -21,6 +21,8 @@ Public Class TextManagerController
     Public Event RequestIsChangingTab(e As RequestValueEventArgs(Of Boolean))
     <EditorBrowsable(EditorBrowsableState.Never)>
     Public Event RequestRomManager(e As RequestRomManagerEventArgs)
+    <EditorBrowsable(EditorBrowsableState.Never)>
+    Public Event ErrorBecauseNoRomLoaded()
 
     'P u b l i c   E v e n t s
 
@@ -40,7 +42,9 @@ Public Class TextManagerController
         Get
             Dim e As New RequestRomManagerEventArgs
             RaiseEvent RequestRomManager(e)
-            SetCurrentTextProfileToRomManager(e.RomManager)
+            If e.RomManager IsNot Nothing Then
+                SetCurrentTextProfileToRomManager(e.RomManager)
+            End If
             Return e.RomManager
         End Get
     End Property
@@ -66,19 +70,23 @@ Public Class TextManagerController
     'G e n e r a l   F e a t u r e s
 
     Public Sub OpenTextProfileEditor()
-        MyTextProfiles.LoadAllTextProfilesIfNotLoaded()
-        Dim curTextProfile As TextProfileInfo = GetCurrentTextProfile()
+        If RomManager Is Nothing Then
+            RaiseEvent ErrorBecauseNoRomLoaded()
+        Else
+            MyTextProfiles.LoadAllTextProfilesIfNotLoaded()
+            Dim curTextProfile As TextProfileInfo = GetCurrentTextProfile()
 
-        Dim editor As New TextProfilesManagerDialog With {
-            .MyTextProfiles = MyTextProfiles
-        }
+            Dim editor As New TextProfilesManagerDialog With {
+                .MyTextProfiles = MyTextProfiles
+            }
 
-        editor.ShowDialog()
+            editor.ShowDialog()
 
-        If RomManager IsNot Nothing Then
-            SetCurrentTextProfileName(curTextProfile.Name)
-            RomManager.ClearTextGroups()
-            SendRequestReloadTextManagerLists()
+            If RomManager IsNot Nothing Then
+                SetCurrentTextProfileName(curTextProfile.Name)
+                RomManager.ClearTextGroups()
+                SendRequestReloadTextManagerLists()
+            End If
         End If
     End Sub
 
