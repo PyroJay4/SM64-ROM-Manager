@@ -1402,6 +1402,13 @@ Namespace Model.Conversion.Fast3DWriting
             Next
         End Sub
 
+        Private Sub ResetCrystalEffectCommands(ByRef hasCrystalEffectEnabled As Boolean, ByRef needToResetCrystalEffectCommands As Boolean)
+            ImpF3D("B6 00 00 00 00 04 00 00")
+            ImpF3D("BB 00 00 01 FF FF FF FF")
+            hasCrystalEffectEnabled = False
+            needToResetCrystalEffectCommands = False
+        End Sub
+
         Private Sub ImpMaterialCmds(mat As Material, ByRef needToReShiftTMEM As Boolean, ByRef hasCrystalEffectEnabled As Boolean, ByRef needToResetCrystalEffectCommands As Boolean)
             If mat.EnableCrystalEffect AndAlso Not hasCrystalEffectEnabled Then
                 ImpF3D("B7 00 00 00 00 04 00 00")
@@ -1409,10 +1416,7 @@ Namespace Model.Conversion.Fast3DWriting
                 hasCrystalEffectEnabled = True
                 needToResetCrystalEffectCommands = True
             ElseIf needToResetCrystalEffectCommands Then
-                ImpF3D("B6 00 00 00 00 04 00 00")
-                ImpF3D("BB 00 00 01 FF FF FF FF")
-                hasCrystalEffectEnabled = False
-                needToResetCrystalEffectCommands = True
+                ResetCrystalEffectCommands(hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
             End If
 
             If mat.HasPalette Then
@@ -1656,7 +1660,7 @@ Namespace Model.Conversion.Fast3DWriting
                 'Reset some stuff
                 enabledVertexColors = False
                 hasCrystalEffectEnabled = False
-                needToResetCrystalEffectCommands = True
+                needToResetCrystalEffectCommands = False
                 ciEnabled = False
                 lastMaterial = Nothing
                 lastN64Codec = MaterialType.None
@@ -1727,7 +1731,7 @@ Namespace Model.Conversion.Fast3DWriting
                 If settings.EnableFog Then ImpFogEnd(dlProps.Layer)
                 ImpF3D("FC FF FF FF FF FE 79 3C")
                 ImpF3D("BB 00 00 00 FF FF FF FF")
-                If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
+                If needToResetCrystalEffectCommands Then ResetCrystalEffectCommands(hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
                 If ciEnabled Then ShiftTMEMBack()
                 ImpF3D("B8 00 00 00 00 00 00 00")
 

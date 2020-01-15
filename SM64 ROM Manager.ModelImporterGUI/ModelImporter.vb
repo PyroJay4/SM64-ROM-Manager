@@ -207,7 +207,7 @@ Public Class ModelImporter
         'Load Files
 
         Dim mgr As New ImporterProfileManager
-        Dim files As String() = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory, "Data\Importer Presets"), "*", SearchOption.AllDirectories)
+        Dim files As String() = Directory.GetFiles(MyImporterPresetsPath, "*", SearchOption.AllDirectories)
 
         For Each f As String In files
             If Path.GetExtension(f).ToLower = ".xml" Then
@@ -264,7 +264,7 @@ Public Class ModelImporter
     Private Sub SaveProfile(p As ImporterProfile)
         If p IsNot Nothing Then
             Dim mgr As New ImporterProfileManager
-            mgr.Save(p, Path.Combine(Directory.GetCurrentDirectory, "Data\Importer Presets"))
+            mgr.Save(p, MyImporterPresetsPath)
         End If
     End Sub
 

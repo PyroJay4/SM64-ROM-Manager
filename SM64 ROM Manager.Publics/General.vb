@@ -65,6 +65,18 @@ Public Module General
         End Get
     End Property
 
+    Public ReadOnly Property MyImporterPresetsPath As String
+        Get
+            Static p As String = String.Empty
+
+            If String.IsNullOrEmpty(p) Then
+                p = Path.Combine(MyDataPath, "Importer Presets")
+            End If
+
+            Return p
+        End Get
+    End Property
+
     Public ReadOnly Property IsDebugging As Boolean
         Get
             Return Debugger.IsAttached
