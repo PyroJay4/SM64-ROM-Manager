@@ -241,7 +241,7 @@ Public Class MainForm
         Dim lastFunc As PluginSystem.PluginFunction = Nothing
         Dim isFirst As Boolean = True
 
-        For Each func As PluginSystem.PluginFunction In PluginManager.GetFunctions("pluginmenu")
+        For Each func As PluginSystem.PluginFunction In PluginManager.GetFunctions("pluginmenu", "pluginmenur")
             Dim btn As New ButtonItem
 
             If lastFunc IsNot func Then
@@ -253,7 +253,12 @@ Public Class MainForm
 
             AddHandler btn.Click,
                 Sub(sender As ButtonItem, e As EventArgs)
-                    CType(sender.Tag, PluginSystem.PluginFunction).Invoke()
+                    Dim senderfunc As PluginSystem.PluginFunction = sender.Tag
+                    If senderfunc.FunctionCode.EndsWith("r") Then
+                        senderfunc.Invoke(Controller.GetCurrentRomManager)
+                    Else
+                        senderfunc.Invoke()
+                    End If
                 End Sub
 
             ButtonItem_Bar_Plugins.BeginGroup = isFirst
