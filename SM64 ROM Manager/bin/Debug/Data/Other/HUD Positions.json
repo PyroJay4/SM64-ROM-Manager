@@ -26,24 +26,24 @@ Type:
                                     "Name": "Counters_CoinCounter_Icon",
                                     "Type": 3,
                                     "Cords": {
-                                        "RomPosX": 0,
-                                        "RomPosY": 0
+                                        "RomPosX": 649146,
+                                        "RomPosY": 649154
                                     }
                                 },
                                 {
                                     "Name": "Counters_CoinCounter_X",
                                     "Type": 3,
                                     "Cords": {
-                                        "RomPosX": 0,
-                                        "RomPosY": 0
+                                        "RomPosX": 649166,
+                                        "RomPosY": 649174
                                     }
                                 },
                                 {
                                     "Name": "Counters_CoinCounter_Counter",
                                     "Type": 3,
                                     "Cords": {
-                                        "RomPosX": 0,
-                                        "RomPosY": 0
+                                        "RomPosX": 649194,
+                                        "RomPosY": 649202
                                     }
                                 }
                             ]
@@ -56,24 +56,24 @@ Type:
                                     "Name": "Counters_LiveCounter_Icon",
                                     "Type": 3,
                                     "Cords": {
-                                        "RomPosX": 0,
-                                        "RomPosY": 0
+                                        "RomPosX": 649046,
+                                        "RomPosY": 649054
                                     }
                                 },
                                 {
                                     "Name": "Counters_LiveCounter_X",
                                     "Type": 3,
                                     "Cords": {
-                                        "RomPosX": 0,
-                                        "RomPosY": 0
+                                        "RomPosX": 649066,
+                                        "RomPosY": 649074
                                     }
                                 },
                                 {
                                     "Name": "Counters_LiveCounter_Counter",
                                     "Type": 3,
                                     "Cords": {
-                                        "RomPosX": 0,
-                                        "RomPosY": 0
+                                        "RomPosX": 649094,
+                                        "RomPosY": 649102
                                     }
                                 }
                             ]
@@ -86,24 +86,24 @@ Type:
                                     "Name": "Counters_StarCounter_Icon",
                                     "Type": 3,
                                     "Cords": {
-                                        "RomPosX": 0,
-                                        "RomPosY": 0
+                                        "RomPosX": 649326,
+                                        "RomPosY": 649334
                                     }
                                 },
                                 {
                                     "Name": "Counters_StarCounter_X",
                                     "Type": 3,
                                     "Cords": {
-                                        "RomPosX": 0,
-                                        "RomPosY": 0
+                                        "RomPosX": 649362,
+                                        "RomPosY": 649370
                                     }
                                 },
                                 {
                                     "Name": "Counters_StarCounter_Counter",
                                     "Type": 3,
                                     "Cords": {
-                                        "RomPosX": 0,
-                                        "RomPosY": 0
+                                        "RomPosX": 649402,
+                                        "RomPosY": 649418
                                     }
                                 }
                             ]
@@ -118,22 +118,22 @@ Type:
                             "Name": "Timer_Time",
                             "Type": 3,
                             "Cords": {
-                                "RomPosX": 0,
-                                "RomPosY": 0
+                                "RomPosX": 649762,
+                                "RomPosY": 649770
                             }
                         },
                         {
                             "Name": "Timer_Counter",
                             "Type": 3,
                             "Cords": {
-                                "RomPosX": 0,
-                                "RomPosY": 0
+                                "RomPosX": 649782,
+                                "RomPosY": 649786
                             }
                         }
                     ]
                 }
             ]
-        },
+        }/*,
         {
             "Name": "ActSelector",
             "Type": 1,
@@ -203,6 +203,6 @@ Type:
                     }
                 }
             ]
-        }
+        }*/
     ]
 }
