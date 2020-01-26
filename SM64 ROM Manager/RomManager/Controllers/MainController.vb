@@ -1161,30 +1161,33 @@ Public Class MainController
 
     Public Sub ImportLevelAreaModel(levelIndex As Integer, areaIndex As Integer, importVisualMap As Boolean, importCollision As Boolean)
         Dim levelarea = GetLevelAndArea(levelIndex, areaIndex)
-        Dim area As LevelArea = levelarea.area
-        Dim res = GetModelViaModelConverter(,, importVisualMap, importCollision,, GetKeyForConvertAreaModel(RomManager.GameName, levelarea.level.LevelID, area.AreaID))
 
-        If res IsNot Nothing Then
-            If res?.hasCollision AndAlso res?.hasVisualMap Then
-                Dim OldAreaModel As ObjectModel = area.AreaModel
-                area.AreaModel = res?.mdl
-            ElseIf res?.hasCollision Then
-                Dim OldAreaModel As ObjectModel = area.AreaModel
-                area.AreaModel.Collision = res?.mdl.Collision
-            ElseIf res?.hasVisualMap Then
-                Dim OldAreaModel As ObjectModel = area.AreaModel
-                area.AreaModel = res?.mdl
-                area.AreaModel.Collision = OldAreaModel.Collision
+        If levelarea.level IsNot Nothing AndAlso levelarea.area IsNot Nothing AndAlso RomManager IsNot Nothing Then
+            Dim area As LevelArea = levelarea.area
+            Dim res = GetModelViaModelConverter(,, importVisualMap, importCollision,, GetKeyForConvertAreaModel(RomManager.GameName, levelarea.level.LevelID, area.AreaID))
+
+            If res IsNot Nothing Then
+                If res?.hasCollision AndAlso res?.hasVisualMap Then
+                    Dim OldAreaModel As ObjectModel = area.AreaModel
+                    area.AreaModel = res?.mdl
+                ElseIf res?.hasCollision Then
+                    Dim OldAreaModel As ObjectModel = area.AreaModel
+                    area.AreaModel.Collision = res?.mdl.Collision
+                ElseIf res?.hasVisualMap Then
+                    Dim OldAreaModel As ObjectModel = area.AreaModel
+                    area.AreaModel = res?.mdl
+                    area.AreaModel.Collision = OldAreaModel.Collision
+                End If
+
+                If res?.hasVisualMap Then
+                    area.ScrollingTextures.Clear()
+                    area.ScrollingTextures.AddRange(area.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
+                    RomManager.RomConfig.GetLevelConfig(levelarea.level.LevelID).GetLevelAreaConfig(area.AreaID).ScrollingNames = res?.mdl.Fast3DBuffer.ConvertResult.ScrollingNames
+                End If
+
+                area.SetSegmentedBanks(RomManager)
+                SetLevelBank0x0ENeedToSave(levelarea.level)
             End If
-
-            If res?.hasVisualMap Then
-                area.ScrollingTextures.Clear()
-                area.ScrollingTextures.AddRange(area.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
-                RomManager.RomConfig.GetLevelConfig(levelarea.level.LevelID).GetLevelAreaConfig(area.AreaID).ScrollingNames = res?.mdl.Fast3DBuffer.ConvertResult.ScrollingNames
-            End If
-
-            area.SetSegmentedBanks(RomManager)
-            SetLevelBank0x0ENeedToSave(levelarea.level)
         End If
     End Sub
 
