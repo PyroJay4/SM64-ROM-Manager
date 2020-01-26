@@ -76,7 +76,7 @@ Public Class MainController
     'C o n s t a n t s
 
     Public Const PLUGINCODE_PLUGINMENU As String = "pluginmenu"
-    Public Const UPDATE_URL As String = "https://pilzinsel64.com/Updates/SM64_ROM_Manager.json"
+    Public Const UPDATE_URL As String = "https://pilzinsel64.com/pilzcloud/index.php/s/sm64rm-allupdatepackages/download?path=%2F&files=CurrentUpdates.json" '"https://pilzinsel64.com/Updates/SM64_ROM_Manager.json"
 
     'F i e l d s
 
