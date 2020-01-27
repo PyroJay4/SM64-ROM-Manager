@@ -195,7 +195,7 @@ Namespace Music
             "No Music",
             "High Score",
             "Title Screen",
-            "Bomb-Omb Battlefield",
+            "Bob-Omb Battlefield",
             "Inside Castle",
             "Dire, Dire Docks",
             "Lethal Lava Land",

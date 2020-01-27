@@ -202,8 +202,8 @@
         "Bubba",
         "Wiggler",
         "Lakitu",
-        "Spinny Ball",
-        "Spinny"
+        "Spiny Ball",
+        "Spiny"
       ],
       "Commands": [
         {
@@ -314,7 +314,7 @@
       ]
     },
     {
-      "Name": "Caste Objects",
+      "Name": "Castle Objects",
       "Objects": [
         "Lakitu",
         "Toads",
@@ -342,7 +342,7 @@
         "Koopa",
         "Piranha Plant",
         "Whomp",
-        "Metalic Ball",
+        "Metallic Ball",
         "Chain Chomp"
       ],
       "Commands": [
@@ -363,7 +363,7 @@
         "Skeeter",
         "Bowser Bomb",
         "Fish",
-        "Chirp Chirp",
+        "Cheep Cheep",
         "Manta Ring",
         "Treasure Chest"
       ],

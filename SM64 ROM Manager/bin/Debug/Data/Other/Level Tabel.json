@@ -3,7 +3,7 @@
         {
             "Type": "Level",
             "Number": "1",
-            "Name": "Bob Omb's Battlefield",
+            "Name": "Bob-Omb Battlefield",
             "Index": 5,
             "ID": "0x9",
             "Pointer": "0x2AC0F8"
@@ -11,7 +11,7 @@
         {
             "Type": "Level",
             "Number": "2",
-            "Name": "Whomps Fortress",
+            "Name": "Whomp's Fortress",
             "Index": 20,
             "ID": "0x18",
             "Pointer": "0x2AC224"
@@ -27,7 +27,7 @@
         {
             "Type": "Level",
             "Number": "4",
-            "Name": "Cool Cool Mountain",
+            "Name": "Cool, Cool Mountain",
             "Index": 1,
             "ID": "0x5",
             "Pointer": "0x2AC0A8"
@@ -35,7 +35,7 @@
         {
             "Type": "Level",
             "Number": "5",
-            "Name": "Haunted House",
+            "Name": "Big Boo's Haunt",
             "Index": 0,
             "ID": "0x4",
             "Pointer": "0x2AC094"
@@ -67,7 +67,7 @@
         {
             "Type": "Level",
             "Number": "9",
-            "Name": "Dire Dire Docks",
+            "Name": "Dire, Dire Docks",
             "Index": 19,
             "ID": "0x17",
             "Pointer": "0x2AC210"
@@ -75,7 +75,7 @@
         {
             "Type": "Level",
             "Number": "10",
-            "Name": "Snow Mans Land",
+            "Name": "Snowman's Land",
             "Index": 6,
             "ID": "0xA",
             "Pointer": "0x2AC10C"
@@ -83,7 +83,7 @@
         {
             "Type": "Level",
             "Number": "11",
-            "Name": "Wet Dry World",
+            "Name": "Wet-Dry World",
             "Index": 7,
             "ID": "0xB",
             "Pointer": "0x2AC120"
@@ -91,7 +91,7 @@
         {
             "Type": "Level",
             "Number": "12",
-            "Name": "Tall Tall Mountain",
+            "Name": "Tall, Tall Mountain",
             "Index": 30,
             "ID": "0x24",
             "Pointer": "0x2AC2EC"
@@ -99,7 +99,7 @@
         {
             "Type": "Level",
             "Number": "13",
-            "Name": "Tiny Huge Island",
+            "Name": "Tiny-Huge Island",
             "Index": 9,
             "ID": "0xD",
             "Pointer": "0x2AC148"

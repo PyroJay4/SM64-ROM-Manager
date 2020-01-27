@@ -7,7 +7,7 @@
             "Description": "e.g. \"Level Editor\" or \"Music Manager\""
         },
         {
-            "Name": "Titel",
+            "Name": "Title",
             "Description": "Please explain quickly what the problem is.",
             "Type": "Text"
         },
