@@ -84,7 +84,7 @@ Public Class UserRequestManager
     End Function
 
     Public Shared Function TranslateFilesStringToArray(files As String) As String()
-        Return files.Split("|".ToCharArray, StringSplitOptions.RemoveEmptyEntries)
+        Return If(files?.Split("|".ToCharArray, StringSplitOptions.RemoveEmptyEntries), {})
     End Function
 
     Public Shared Function TranslateFilesArrayToString(files As String()) As String
