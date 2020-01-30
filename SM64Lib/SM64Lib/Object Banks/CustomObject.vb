@@ -4,7 +4,7 @@ Imports SM64Lib.Geolayout
 Imports SM64Lib.Levels.Script
 Imports SM64Lib.Levels.Script.Commands
 
-Namespace ObjectBanks
+Namespace Global.SM64Lib.ObjectBanks
 
     Public Class CustomObject
 

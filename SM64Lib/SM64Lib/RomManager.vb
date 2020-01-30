@@ -255,8 +255,8 @@ Public Class RomManager
             HexRoundUp2(lastpos)
 
             'Global Object Bank
-            'SaveGlobalObjectBank(lastpos)
-            'HexRoundUp2(lastpos)
+            SaveGlobalObjectBank(lastpos)
+            HexRoundUp2(lastpos)
 
             'Levels
             SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then
@@ -522,6 +522,10 @@ Public Class RomManager
         End If
 
         fs.Close()
+    End Sub
+
+    Public Sub CreateNewGlobalObjectBank()
+        GlobalObjectBank = New CustomObjectBank
     End Sub
 
     Private Sub SaveGlobalObjectBank(ByRef offset As Integer)

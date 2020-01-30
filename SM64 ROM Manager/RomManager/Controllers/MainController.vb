@@ -417,7 +417,7 @@ Public Class MainController
         RaiseEvent RomLoading()
 
         'Load Global Object Banks
-        'RomManager.LoadGlobalObjectBank()
+        RomManager.LoadGlobalObjectBank()
 
         'Load Levels
         RomManager.LoadLevels()
@@ -511,6 +511,10 @@ Public Class MainController
     End Function
 
     Public Sub OpenGlobalObjectBankManager()
+        If RomManager.GlobalObjectBank Is Nothing Then
+            RomManager.CreateNewGlobalObjectBank()
+        End If
+
         Dim mgr As New CustomBankManager(RomManager, RomManager.GlobalObjectBank)
         mgr.Show()
     End Sub
@@ -1043,7 +1047,7 @@ Public Class MainController
         lvl.NeedToSaveBanks0E = True
     End Sub
 
-    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer, enableShowMsg As Boolean, showMsgDialogID As Byte)
+    Public Sub SetLevelSettings(levelIndex As Integer, defStartPosDestAreaID As Byte, defStartPosDestRotation As Short, enableActSelector As Boolean, enableHardcodedCamera As Boolean, objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer, enableGlobalObjectBank As Boolean, enableShowMsg As Boolean, showMsgDialogID As Byte)
         Dim lvl As Level = GetLevelAndArea(levelIndex, -1).level
 
         'Default Start Position
@@ -1060,6 +1064,7 @@ Public Class MainController
         lvl.ChangeObjectBankData(&HC, ObjectBankData(CByte(&HC)).ElementAtOrDefault(objBank0x0C - 1))
         lvl.ChangeObjectBankData(&HD, ObjectBankData(CByte(&HD)).ElementAtOrDefault(objBank0x0D - 1))
         lvl.ChangeObjectBankData(&H9, ObjectBankData(CByte(&H9)).ElementAtOrDefault(objBank0x0E - 1))
+        lvl.EnableGlobalObjectBank = enableGlobalObjectBank
 
         SetLevelscriptNeedToSave(lvl)
     End Sub
@@ -1372,12 +1377,13 @@ Public Class MainController
             lvl.Areas.Count)
     End Function
 
-    Public Function GetLevelObjectBankDataSettings(levelIndex As Integer) As (objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer)
+    Public Function GetLevelObjectBankDataSettings(levelIndex As Integer) As (objBank0x0C As Integer, objBank0x0D As Integer, objBank0x0E As Integer, enableGlobalObjectBank As Boolean)
         Dim lvl As Level = GetLevelAndArea(levelIndex).level
         Return (
             ObjectBankData(CByte(&HC)).IndexOf(lvl.GetObjectBankData(&HC)) + 1,
             ObjectBankData(CByte(&HD)).IndexOf(lvl.GetObjectBankData(&HD)) + 1,
-            ObjectBankData(CByte(&H9)).IndexOf(lvl.GetObjectBankData(&H9)) + 1)
+            ObjectBankData(CByte(&H9)).IndexOf(lvl.GetObjectBankData(&H9)) + 1,
+            lvl.EnableGlobalObjectBank)
     End Function
 
     Public Sub ChangeLevelID(levelIndex As Integer)
