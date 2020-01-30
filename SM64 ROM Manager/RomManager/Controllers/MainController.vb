@@ -511,6 +511,10 @@ Public Class MainController
     End Function
 
     Public Sub OpenGlobalObjectBankManager()
+        If RomManager.GlobalObjectBank Is Nothing Then
+            RomManager.CreateNewGlobalObjectBank()
+        End If
+
         Dim mgr As New CustomBankManager(RomManager, RomManager.GlobalObjectBank)
         mgr.Show()
     End Sub

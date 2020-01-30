@@ -524,6 +524,10 @@ Public Class RomManager
         fs.Close()
     End Sub
 
+    Public Sub CreateNewGlobalObjectBank()
+        GlobalObjectBank = New CustomObjectBank
+    End Sub
+
     Private Sub SaveGlobalObjectBank(ByRef offset As Integer)
         Dim fs As New BinaryRom(Me, FileAccess.ReadWrite)
         Dim seg As SegmentedBank = GlobalObjectBank.WriteToSeg(&H7)
