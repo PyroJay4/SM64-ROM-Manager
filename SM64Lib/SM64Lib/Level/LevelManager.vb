@@ -537,7 +537,7 @@ Namespace Levels
                     lvl.Levelscript.Insert(indexoffirstx1d, newgobcmd)
                 End If
 
-                If Not lvl.Levelscript.Contains(newgobcmd) Then
+                If Not lvl.Levelscript.Contains(newgobjumpcmd) Then
                     Dim indexoffirstx1e As Integer = lvl.Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1E)
                     lvl.Levelscript.Insert(indexoffirstx1e, newgobjumpcmd)
                 End If
