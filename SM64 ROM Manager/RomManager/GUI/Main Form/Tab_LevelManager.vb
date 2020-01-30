@@ -413,6 +413,7 @@ Public Class Tab_LevelManager
                                         ObjectBankSelectorBox_C.SelectedComboIndex,
                                         ObjectBankSelectorBox_D.SelectedComboIndex,
                                         ObjectBankSelectorBox_9.SelectedComboIndex,
+                                        SwitchButton_UseGlobalObjectBank.Value,
                                         SwitchButton_LM_ShowMsgEnabled.Value,
                                         ValueFromText(TextBoxX_LM_ShowMsgID.Text))
         End If
@@ -597,6 +598,7 @@ Public Class Tab_LevelManager
             ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
             ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
             ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
+            SwitchButton_UseGlobalObjectBank.Value = info.enableGlobalObjectBank
 
             LM_LoadingLevel = wasLoadingLevel
         End If
