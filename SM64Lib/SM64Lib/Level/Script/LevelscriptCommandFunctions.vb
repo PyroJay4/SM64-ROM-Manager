@@ -575,6 +575,18 @@ Namespace Levels.Script
                 cmd.Position = 0
             End Sub
 
+            Public Shared Function GetGroupID(Command As LevelscriptCommand) As Short
+                Command.Position = 14
+                Dim id As Short = Command.ReadInt16
+                Command.Position = 0
+                Return id
+            End Function
+            Public Shared Sub SetGroupID(Command As LevelscriptCommand, id As Short)
+                Command.Position = 14
+                Command.Write(id)
+                Command.Position = 0
+            End Sub
+
         End Class
 
     End Namespace

@@ -65,6 +65,18 @@ Public Module General
         End Get
     End Property
 
+    Public ReadOnly Property MyImporterPresetsPath As String
+        Get
+            Static p As String = String.Empty
+
+            If String.IsNullOrEmpty(p) Then
+                p = Path.Combine(MyDataPath, "Importer Presets")
+            End If
+
+            Return p
+        End Get
+    End Property
+
     Public ReadOnly Property IsDebugging As Boolean
         Get
             Return Debugger.IsAttached
@@ -249,7 +261,7 @@ Public Module General
         Return True
     End Function
 
-    Public Sub ShowToadnotifiaction(Parent As Control, Text As String, Color As eToastGlowColor, Optional Timeout As Integer = 5000)
+    Public Sub ShowToastnotification(Parent As Control, Text As String, Color As eToastGlowColor, Optional Timeout As Integer = 5000)
         'ToastNotification.ToastBackColor = Drawing.Color.LightGray
         'ToastNotification.ToastForeColor = Drawing.Color.Black
         ToastNotification.Show(Parent, Text, Nothing, Timeout, Color)

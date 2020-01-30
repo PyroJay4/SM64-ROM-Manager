@@ -200,7 +200,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die To use different formats then Waverfront OBJ, you need &lt;b&gt;Microsoft Visual C++ Redistributable 2017&lt;/b&gt; installed on your PC.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Download links:&lt;/b&gt;&lt;br/&gt;&lt;a href=&quot;&quot;https://aka.ms/vs/15/release/vc_redist.x64.exe&quot;&quot;&gt;vc_redist.x64.exe&lt;/a&gt; (for &lt;b&gt;64-bit&lt;/b&gt; systems)&lt;br/&gt;&lt;a href=&quot;&quot;https://aka.ms/vs/15/release/vc_redist.x86.exe&quot;&quot;&gt;vc_redist.x32.exe&lt;/a&gt; (for &lt;b&gt;32-bit&lt;/b&gt; systems) ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die To use Assimp loader module, you need &lt;b&gt;Microsoft Visual C++ Redistributable 2017&lt;/b&gt; installed on your PC.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Download links:&lt;/b&gt;&lt;br/&gt;&lt;a href=&quot;&quot;&gt;https://aka.ms/vs/15/release/vc_redist.x64.exe&quot;&quot;&gt;vc_redist.x64.exe&lt;/a&gt; (for &lt;b&gt;64-bit&lt;/b&gt; systems)&lt;br/&gt;&lt;a href=&quot;&quot;&gt;https://aka.ms/vs/15/release/vc_redist.x86.exe&quot;&quot;&gt;vc_redist.x32.exe&lt;/a&gt; (for &lt;b&gt;32-bit&lt;/b&gt; systems) ähnelt.
         '''</summary>
         Public Shared ReadOnly Property MsgBox_MVCppMissing() As String
             Get

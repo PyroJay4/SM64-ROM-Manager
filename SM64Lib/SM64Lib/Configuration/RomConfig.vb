@@ -5,9 +5,18 @@ Namespace Configuration
 
     Public Class RomConfig
 
-        'Public ReadOnly Property CustomConfigs As New Dictionary(Of String, String)
         Public ReadOnly Property LevelConfigs As New Dictionary(Of Byte, LevelConfig)
         Public Property SelectedTextProfileInfo As String = String.Empty
+
+        Public Function GetLevelConfig(levelID As UShort) As LevelConfig
+            If LevelConfigs.ContainsKey(levelID) Then
+                Return LevelConfigs(levelID)
+            Else
+                Dim conf As New LevelConfig
+                LevelConfigs.Add(levelID, conf)
+                Return conf
+            End If
+        End Function
 
         Public Shared Function Load(filePath As String) As RomConfig
             Return JObject.Parse(File.ReadAllText(filePath)).ToObject(Of RomConfig)

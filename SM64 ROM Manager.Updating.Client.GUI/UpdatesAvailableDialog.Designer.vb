@@ -55,7 +55,6 @@ Partial Class UpdatesAvailableDialog
         '
         'LayoutControl1
         '
-        resources.ApplyResources(Me.LayoutControl1, "LayoutControl1")
         Me.LayoutControl1.BackColor = System.Drawing.Color.Transparent
         Me.LayoutControl1.Controls.Add(Me.PictureBox_AppIcon)
         Me.LayoutControl1.Controls.Add(Me.LabelX1)
@@ -68,14 +67,13 @@ Partial Class UpdatesAvailableDialog
         Me.LayoutControl1.Controls.Add(Me.RichTextBoxEx_Changelog)
         Me.LayoutControl1.Controls.Add(Me.ButtonX_Install)
         Me.LayoutControl1.Controls.Add(Me.ButtonX_Cancel)
+        resources.ApplyResources(Me.LayoutControl1, "LayoutControl1")
         Me.LayoutControl1.ForeColor = System.Drawing.Color.Black
         Me.LayoutControl1.Name = "LayoutControl1"
         '
         '
         '
         Me.LayoutControl1.RootGroup.Items.AddRange(New DevComponents.DotNetBar.Layout.LayoutItemBase() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.LayoutControlItem7, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutSpacerItem1, Me.LayoutControlItem10, Me.LayoutControlItem11})
-        Me.LayoutControl1.RootGroup.Text = resources.GetString("resource.Text")
-        Me.LayoutControl1.RootGroup.Tooltip = resources.GetString("resource.Tooltip")
         '
         'PictureBox_AppIcon
         '
@@ -85,76 +83,76 @@ Partial Class UpdatesAvailableDialog
         '
         'LabelX1
         '
-        resources.ApplyResources(Me.LabelX1, "LabelX1")
         '
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX1, "LabelX1")
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'LabelX_NewVersion
         '
-        resources.ApplyResources(Me.LabelX_NewVersion, "LabelX_NewVersion")
         '
         '
         '
         Me.LabelX_NewVersion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_NewVersion, "LabelX_NewVersion")
         Me.LabelX_NewVersion.Name = "LabelX_NewVersion"
         '
         'LabelX_NewChannel
         '
-        resources.ApplyResources(Me.LabelX_NewChannel, "LabelX_NewChannel")
         '
         '
         '
         Me.LabelX_NewChannel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_NewChannel, "LabelX_NewChannel")
         Me.LabelX_NewChannel.Name = "LabelX_NewChannel"
         '
         'LabelX_NewBuild
         '
-        resources.ApplyResources(Me.LabelX_NewBuild, "LabelX_NewBuild")
         '
         '
         '
         Me.LabelX_NewBuild.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_NewBuild, "LabelX_NewBuild")
         Me.LabelX_NewBuild.Name = "LabelX_NewBuild"
         '
         'LabelX_CurrentVersion
         '
-        resources.ApplyResources(Me.LabelX_CurrentVersion, "LabelX_CurrentVersion")
         '
         '
         '
         Me.LabelX_CurrentVersion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_CurrentVersion, "LabelX_CurrentVersion")
         Me.LabelX_CurrentVersion.Name = "LabelX_CurrentVersion"
         '
         'LabelX_CurrentChannel
         '
-        resources.ApplyResources(Me.LabelX_CurrentChannel, "LabelX_CurrentChannel")
         '
         '
         '
         Me.LabelX_CurrentChannel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_CurrentChannel, "LabelX_CurrentChannel")
         Me.LabelX_CurrentChannel.Name = "LabelX_CurrentChannel"
         '
         'LabelX_CurrentBuild
         '
-        resources.ApplyResources(Me.LabelX_CurrentBuild, "LabelX_CurrentBuild")
         '
         '
         '
         Me.LabelX_CurrentBuild.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_CurrentBuild, "LabelX_CurrentBuild")
         Me.LabelX_CurrentBuild.Name = "LabelX_CurrentBuild"
         '
         'RichTextBoxEx_Changelog
         '
-        resources.ApplyResources(Me.RichTextBoxEx_Changelog, "RichTextBoxEx_Changelog")
         '
         '
         '
         Me.RichTextBoxEx_Changelog.BackgroundStyle.Class = "RichTextBoxBorder"
         Me.RichTextBoxEx_Changelog.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.RichTextBoxEx_Changelog, "RichTextBoxEx_Changelog")
         Me.RichTextBoxEx_Changelog.Name = "RichTextBoxEx_Changelog"
         Me.RichTextBoxEx_Changelog.ReadOnly = True
         Me.RichTextBoxEx_Changelog.Rtf = "{\rtf1\ansi\ansicpg1252\deff0\deflang1031{\fonttbl{\f0\fnil\fcharset0 Microsoft S" &
@@ -162,19 +160,19 @@ Partial Class UpdatesAvailableDialog
         '
         'ButtonX_Install
         '
-        resources.ApplyResources(Me.ButtonX_Install, "ButtonX_Install")
         Me.ButtonX_Install.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_Install.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_Install.DialogResult = System.Windows.Forms.DialogResult.OK
+        resources.ApplyResources(Me.ButtonX_Install, "ButtonX_Install")
         Me.ButtonX_Install.Name = "ButtonX_Install"
         Me.ButtonX_Install.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
         'ButtonX_Cancel
         '
-        resources.ApplyResources(Me.ButtonX_Cancel, "ButtonX_Cancel")
         Me.ButtonX_Cancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_Cancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        resources.ApplyResources(Me.ButtonX_Cancel, "ButtonX_Cancel")
         Me.ButtonX_Cancel.Name = "ButtonX_Cancel"
         Me.ButtonX_Cancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         '
@@ -293,7 +291,6 @@ Partial Class UpdatesAvailableDialog
         '
         Me.LayoutSpacerItem1.Height = 31
         Me.LayoutSpacerItem1.Name = "LayoutSpacerItem1"
-        resources.ApplyResources(Me.LayoutSpacerItem1, "LayoutSpacerItem1")
         Me.LayoutSpacerItem1.Width = 99
         Me.LayoutSpacerItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
         '
@@ -303,7 +300,6 @@ Partial Class UpdatesAvailableDialog
         Me.LayoutControlItem10.Height = 31
         Me.LayoutControlItem10.MinSize = New System.Drawing.Size(32, 20)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        resources.ApplyResources(Me.LayoutControlItem10, "LayoutControlItem10")
         Me.LayoutControlItem10.Width = 100
         '
         'LayoutControlItem11
@@ -312,7 +308,6 @@ Partial Class UpdatesAvailableDialog
         Me.LayoutControlItem11.Height = 31
         Me.LayoutControlItem11.MinSize = New System.Drawing.Size(32, 20)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        resources.ApplyResources(Me.LayoutControlItem11, "LayoutControlItem11")
         Me.LayoutControlItem11.Width = 100
         '
         'UpdatesAvailableDialog

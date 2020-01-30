@@ -73,6 +73,9 @@
     <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
     </Reference>
@@ -87,6 +90,9 @@
     </Reference>
     <Reference Include="Pilz.UI">
       <HintPath>..\Shared Libs\Pilz.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Pilz.Win32">
+      <HintPath>..\Shared Libs\Pilz.Win32.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -146,6 +152,7 @@
     <Compile Include="DialogSetUpPoint.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GuiInputPreferences.vb" />
     <Compile Include="Language Resources\MainModelconverter_Resources.de.Designer.vb">
       <DependentUpon>MainModelconverter_Resources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>

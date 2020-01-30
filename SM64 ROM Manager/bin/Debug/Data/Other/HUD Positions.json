@@ -1,0 +1,208 @@
+/*
+Type:
+0 = Tab Container
+1 = Position Container
+2 = Position Group
+3 = Position
+*/
+
+{
+    "Name": "FirstContainer",
+    "Type": 0,
+    "Childs": [
+        {
+            "Name": "Main",
+            "Type": 0,
+            "Childs": [
+                {
+                    "Name": "Main_Counters",
+                    "Type": 1,
+                    "Childs": [
+                        {
+                            "Name": "Counters_CoinCounter",
+                            "Type": 2,
+                            "Childs": [
+                                {
+                                    "Name": "Counters_CoinCounter_Icon",
+                                    "Type": 3,
+                                    "Cords": {
+                                        "RomPosX": 649146,
+                                        "RomPosY": 649154
+                                    }
+                                },
+                                {
+                                    "Name": "Counters_CoinCounter_X",
+                                    "Type": 3,
+                                    "Cords": {
+                                        "RomPosX": 649166,
+                                        "RomPosY": 649174
+                                    }
+                                },
+                                {
+                                    "Name": "Counters_CoinCounter_Counter",
+                                    "Type": 3,
+                                    "Cords": {
+                                        "RomPosX": 649194,
+                                        "RomPosY": 649202
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "Name": "Counters_LiveCounter",
+                            "Type": 2,
+                            "Childs": [
+                                {
+                                    "Name": "Counters_LiveCounter_Icon",
+                                    "Type": 3,
+                                    "Cords": {
+                                        "RomPosX": 649046,
+                                        "RomPosY": 649054
+                                    }
+                                },
+                                {
+                                    "Name": "Counters_LiveCounter_X",
+                                    "Type": 3,
+                                    "Cords": {
+                                        "RomPosX": 649066,
+                                        "RomPosY": 649074
+                                    }
+                                },
+                                {
+                                    "Name": "Counters_LiveCounter_Counter",
+                                    "Type": 3,
+                                    "Cords": {
+                                        "RomPosX": 649094,
+                                        "RomPosY": 649102
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "Name": "Counters_StarCounter",
+                            "Type": 2,
+                            "Childs": [
+                                {
+                                    "Name": "Counters_StarCounter_Icon",
+                                    "Type": 3,
+                                    "Cords": {
+                                        "RomPosX": 649326,
+                                        "RomPosY": 649334
+                                    }
+                                },
+                                {
+                                    "Name": "Counters_StarCounter_X",
+                                    "Type": 3,
+                                    "Cords": {
+                                        "RomPosX": 649362,
+                                        "RomPosY": 649370
+                                    }
+                                },
+                                {
+                                    "Name": "Counters_StarCounter_Counter",
+                                    "Type": 3,
+                                    "Cords": {
+                                        "RomPosX": 649402,
+                                        "RomPosY": 649418
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Name": "Main_Timer",
+                    "Type": 1,
+                    "Childs": [
+                        {
+                            "Name": "Timer_Time",
+                            "Type": 3,
+                            "Cords": {
+                                "RomPosX": 649762,
+                                "RomPosY": 649770
+                            }
+                        },
+                        {
+                            "Name": "Timer_Counter",
+                            "Type": 3,
+                            "Cords": {
+                                "RomPosX": 649782,
+                                "RomPosY": 649786
+                            }
+                        }
+                    ]
+                }
+            ]
+        }/*,
+        {
+            "Name": "ActSelector",
+            "Type": 1,
+            "Childs": [
+                {
+                    "Name":"ActSelector_CoinCounter",
+                    "Type":3,
+                    "Cords":{
+                        "RomPosX":0,
+                        "RomPosY":0
+                    }
+                },
+                {
+                    "Name":"ActSelector_MySource",
+                    "Type":3,
+                    "Cords":{
+                        "RomPosX":0,
+                        "RomPosY":0
+                    }
+                },
+                {
+                    "Name":"ActSelector_ActStars",
+                    "Type":3,
+                    "Cords":{
+                        "RomPosX":0,
+                        "RomPosY":0
+                    }
+                },
+                {
+                    "Name":"ActSelector_Levelname",
+                    "Type":3,
+                    "Cords":{
+                        "RomPosX":0,
+                        "RomPosY":0
+                    }
+                },
+                {
+                    "Name":"ActSelector_Actname",
+                    "Type":3,
+                    "Cords":{
+                        "RomPosX":0,
+                        "RomPosY":0
+                    }
+                },
+                {
+                    "Name":"ActSelector_100CoinStar",
+                    "Type":3,
+                    "Cords":{
+                        "RomPosX":0,
+                        "RomPosY":0
+                    }
+                },
+                {
+                    "Name":"ActSelector_NumberAboutStars",
+                    "Type":3,
+                    "Cords":{
+                        "RomPosX":0,
+                        "RomPosY":0
+                    }
+                },
+                {
+                    "Name":"ActSelector_LogoWithNumber",
+                    "Type":3,
+                    "Cords":{
+                        "RomPosX":0,
+                        "RomPosY":0
+                    }
+                }
+            ]
+        }*/
+    ]
+}

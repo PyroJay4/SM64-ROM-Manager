@@ -4,6 +4,7 @@ Imports SM64Lib.TextValueConverter
 Imports System.ComponentModel
 Imports SM64Lib.Levels.ScrolTex
 Imports SM64_ROM_Manager.PropertyValueEditors
+Imports SM64Lib.Configuration
 
 Public Class ScrollTexEditor
 
@@ -11,9 +12,10 @@ Public Class ScrollTexEditor
     Public Event ScrollTexRemoved As EventHandler
     Public Event ScrollTexChanged As EventHandler
 
-    Private cArea As LevelArea
+    Private ReadOnly cArea As LevelArea
+    Private ReadOnly areaConfig As LevelAreaConfig
 
-    Public Sub New(area As LevelArea)
+    Public Sub New(area As LevelArea, areaConfig As LevelAreaConfig)
 
         ' Dieser Aufruf ist für den Designer erforderlich.
         InitializeComponent()
@@ -21,6 +23,7 @@ Public Class ScrollTexEditor
 
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
         cArea = area
+        Me.areaConfig = areaConfig
     End Sub
 
     Private Sub ScrollTexEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -75,6 +78,7 @@ Public Class ScrollTexEditor
 
         End Select
     End Sub
+
     Private Sub AdvPropertyGrid1_ConvertPropertyValueToString(sender As Object, e As ConvertValueEventArgs) Handles AdvPropertyGrid1.ConvertPropertyValueToString
         Select Case e.PropertyDescriptor.PropertyType
             Case GetType(System.Boolean)
@@ -108,6 +112,7 @@ Public Class ScrollTexEditor
             ListViewEx_LM_ScrollTexList.Items(0).Selected = True
         End If
     End Sub
+
     Private Sub AddListViewItem(scrollTex As ManagedScrollingTexture)
         Dim lvi As New ListViewItem
         lvi.Tag = New ScrollTexPropertyClass(scrollTex)
@@ -119,11 +124,14 @@ Public Class ScrollTexEditor
 
         ListViewEx_LM_ScrollTexList.Items.Add(lvi)
     End Sub
+
     Private Sub UpdateAllListViewItems()
         Dim counter As Integer = 1
 
         For Each item As ListViewItem In ListViewEx_LM_ScrollTexList.Items
             Dim scrollTex As ScrollTexPropertyClass = item.Tag
+
+            SetLvGroup(item, scrollTex.GroupID)
 
             item.SubItems(0).Text = counter
             item.SubItems(1).Text = scrollTex.Behavior.ToString
@@ -137,6 +145,29 @@ Public Class ScrollTexEditor
         Next
     End Sub
 
+    Private Sub SetLvGroup(item As ListViewItem, groupID As Short)
+        Dim lvg As ListViewGroup = Nothing
+
+        For Each lvgg As ListViewGroup In ListViewEx_LM_ScrollTexList.Groups
+            If lvg Is Nothing AndAlso lvgg.Tag = groupID Then
+                lvg = lvgg
+            End If
+        Next
+
+        If lvg Is Nothing Then
+            Dim texName As String = "Unknown Material Name"
+            areaConfig.ScrollingNames.TryGetValue(groupID, texName)
+
+            lvg = New ListViewGroup With {
+                .Tag = groupID,
+                .Header = $"Group {groupID} - {texName}"
+            }
+            ListViewEx_LM_ScrollTexList.Groups.Add(lvg)
+        End If
+
+        item.Group = lvg
+    End Sub
+
     Private Sub ListViewEx_LM_ScrollTexList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListViewEx_LM_ScrollTexList.SelectedIndexChanged
         Dim objs As New List(Of ScrollTexPropertyClass)
 
@@ -144,7 +175,9 @@ Public Class ScrollTexEditor
             objs.Add(item.Tag)
         Next
 
+        AdvPropertyGrid1.SuspendLayout()
         AdvPropertyGrid1.SelectedObjects = objs.ToArray
+        AdvPropertyGrid1.ResumeLayout()
     End Sub
 
     Private Sub ButtonItem43_Click(sender As Object, e As EventArgs) Handles ButtonItem43.Click

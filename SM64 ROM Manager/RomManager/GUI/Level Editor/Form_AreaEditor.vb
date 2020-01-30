@@ -920,7 +920,7 @@ Namespace LevelEditor
 
             Else
                 'MessageBoxEx.Show("Please select the Visual Map and try again.", "Not Visual Map selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                ShowToadnotifiaction(Panel_GLControl, "Please select the Visual Map and try again.", eToastGlowColor.Red)
+                ShowToastnotification(Panel_GLControl, "Please select the Visual Map and try again.", eToastGlowColor.Red)
             End If
         End Sub
 
@@ -1419,7 +1419,7 @@ Namespace LevelEditor
             Next
             If ReamingIDs.Count = 0 Then
                 'MessageBoxEx.Show("The maximum count of Areas per Level is 8.", "Maximum reached", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                ShowToadnotifiaction(Panel_GLControl, "The maximum amount of areas per level is 8.", eToastGlowColor.Red)
+                ShowToastnotification(Panel_GLControl, "The maximum amount of areas per level is 8.", eToastGlowColor.Red)
                 ButtonItem_AddArea.Enabled = False
                 Return
             End If
@@ -1628,7 +1628,7 @@ Namespace LevelEditor
 
             If exists Then
                 'MessageBoxEx.Show("There already exists at least one object combo with the same Model ID and the same Behavior Address.", "Duplicate Object Combos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                ShowToadnotifiaction(Panel_GLControl, "An object combo with the same Model ID and Behavior Address already exists!", eToastGlowColor.Green, 12000)
+                ShowToastnotification(Panel_GLControl, "An object combo with the same Model ID and Behavior Address already exists!", eToastGlowColor.Green, 12000)
             Else
                 Dim dialog As New StringInputDialog
                 dialog.Titel = "New Object Combo Name"
@@ -1640,7 +1640,7 @@ Namespace LevelEditor
                     ObjectCombosCustom.Add(combo)
                     SaveObjectCombos()
                     'MessageBoxEx.Show("Object Combo has been added successfully.<br/>The Object Combo will appear in the object combo list after you re-opend the Level Editor.", "Object Combo added successfully", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    ShowToadnotifiaction(Panel_GLControl, "Object Combo has been added successfully.<br/>The Object Combo will appear in the Object Combo list after you re-open the Level Editor.", eToastGlowColor.Green, 12000)
+                    ShowToastnotification(Panel_GLControl, "Object Combo has been added successfully.<br/>The Object Combo will appear in the Object Combo list after you re-open the Level Editor.", eToastGlowColor.Green, 12000)
                 End If
             End If
         End Sub
@@ -2136,7 +2136,7 @@ Namespace LevelEditor
 
         Friend Sub AddWarps(count As Integer, type As LevelscriptCommandTypes)
             If WarpTools.GetWarpsCountInLevel(CLevel) >= Byte.MaxValue Then
-                ShowToadnotifiaction(Panel_GLControl, "The maximum amount of warps per level has been reached. It is not possible to add more warps.", eToastGlowColor.Red)
+                ShowToastnotification(Panel_GLControl, "The maximum amount of warps per level has been reached. It is not possible to add more warps.", eToastGlowColor.Red)
             Else
                 Dim newWarp As LevelscriptCommand = Nothing
                 Dim newManagedWarp As IManagedLevelscriptCommand = Nothing
@@ -2255,9 +2255,9 @@ Namespace LevelEditor
                     PatchClass.Close()
                     UpdateChecksum(Rommgr.RomFile)
 
-                    ShowToadnotifiaction(Panel_GLControl, "Pause Menu Warp set successfully", eToastGlowColor.Green)
+                    ShowToastnotification(Panel_GLControl, "Pause Menu Warp set successfully", eToastGlowColor.Green)
                 Else
-                    ShowToadnotifiaction(Panel_GLControl, "An error occurred while setting the Pause Menu Warp", eToastGlowColor.Red)
+                    ShowToastnotification(Panel_GLControl, "An error occurred while setting the Pause Menu Warp", eToastGlowColor.Red)
                 End If
             End If
         End Sub

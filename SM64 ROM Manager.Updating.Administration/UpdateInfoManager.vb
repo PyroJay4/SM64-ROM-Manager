@@ -6,18 +6,18 @@ Public Class UpdateInfoManager
     Public ReadOnly Property UpdateInfo As UpdateInfo
 
     Public Sub New()
-        NewTemplate()
+        NewInfo()
     End Sub
 
-    Public Sub LoadTemplate(filePath As String)
+    Public Sub Load(filePath As String)
         _UpdateInfo = JObject.Parse(File.ReadAllText(filePath)).ToObject(Of UpdateInfo)
     End Sub
 
-    Public Sub SaveTemplate(filePath As String)
+    Public Sub Save(filePath As String)
         File.WriteAllText(filePath, JObject.FromObject(UpdateInfo).ToString)
     End Sub
 
-    Public Sub NewTemplate()
+    Public Sub NewInfo()
         _UpdateInfo = New UpdateInfo
     End Sub
 

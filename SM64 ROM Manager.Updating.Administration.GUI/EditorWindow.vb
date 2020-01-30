@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports DevComponents.AdvTree
 Imports DevComponents.DotNetBar
+Imports DevComponents.Editors
 Imports Microsoft.WindowsAPICodePack.Dialogs
 Imports SM64_ROM_Manager.Updating.Administration.GUI.My.Resources.UpdatingAdministrationLangRes
 
@@ -43,8 +44,14 @@ Public Class EditorWindow
         If curRibbonTab Is RibbonTabItem_UpdateInfo Then
             Dim curTab As SuperTabItem = SuperTabControl1.SelectedTab
             If curTab Is SuperTabItem_UI_General Then
+                RibbonBar_UI_Allgemein.Visible = True
+                RibbonBar_UI_PackageInfo.Visible = False
             ElseIf curTab Is SuperTabItem_UI_PackageInfo Then
-            ElseIf curTab Is SuperTabItem_UI_Changelog Then
+                RibbonBar_UI_Allgemein.Visible = False
+                RibbonBar_UI_PackageInfo.Visible = True
+            Else
+                RibbonBar_UI_Allgemein.Visible = False
+                RibbonBar_UI_PackageInfo.Visible = False
             End If
         ElseIf curRibbonTab Is RibbonTabItem_Packaging Then
             Dim curTab As SuperTabItem = SuperTabControl1.SelectedTab
@@ -73,7 +80,178 @@ Public Class EditorWindow
 
 #Region "Update-Info"
 
+    'F i e l d s
 
+    Private ReadOnly updateInfoManager As New UpdateInfoManager
+    Private curUpdateInfoPath As String = String.Empty
+
+    'F e a t u r e s
+
+    Private Sub NewUpdateInfo()
+        updateInfoManager.NewInfo()
+        curUpdateInfoPath = String.Empty
+        ShowAllUpdateInfoConfig()
+    End Sub
+
+    Private Sub OpenUpdateInfo()
+        Dim ofd_UpdateAdmin_LoadUpdateInfo As New OpenFileDialog With {
+            .Filter = FILTER_UPDATEINFO_CONFIGURATION
+        }
+        If ofd_UpdateAdmin_LoadUpdateInfo.ShowDialog = DialogResult.OK Then
+            updateInfoManager.Load(ofd_UpdateAdmin_LoadUpdateInfo.FileName)
+            curUpdateInfoPath = ofd_UpdateAdmin_LoadUpdateInfo.FileName
+            ShowAllUpdateInfoConfig()
+        End If
+    End Sub
+
+    Private Sub SaveUpdateInfo()
+        If String.IsNullOrEmpty(curUpdateInfoPath) Then
+            SaveUpdateInfoAs()
+        Else
+            updateInfoManager.Save(curUpdateInfoPath)
+        End If
+    End Sub
+
+    Private Sub SaveUpdateInfoAs()
+        Dim sfd_UpdateAdmin_SaveUpdateInfo As New SaveFileDialog With {
+            .Filter = FILTER_UPDATEINFO_CONFIGURATION
+        }
+        If sfd_UpdateAdmin_SaveUpdateInfo.ShowDialog = DialogResult.OK Then
+            updateInfoManager.Save(sfd_UpdateAdmin_SaveUpdateInfo.FileName)
+            curUpdateInfoPath = sfd_UpdateAdmin_SaveUpdateInfo.FileName
+        End If
+    End Sub
+
+    Private Sub ShowAllUpdateInfoConfig()
+        LoadUpdatePackagePackageInfoList()
+        ShowUpdateInfoConfiguration()
+    End Sub
+
+    Private Sub LoadUpdatePackagePackageInfoList()
+        ComboBoxItem_UI_PackageInfoList.Items.Clear()
+
+        For Each info As UpdatePackageInfo In updateInfoManager.UpdateInfo.Packages
+            Dim item As New ComboItem With {
+                .Text = If(info.Name, info.Version.ToString),
+                .Tag = info
+            }
+            ComboBoxItem_UI_PackageInfoList.Items.Add(item)
+        Next
+
+        If updateInfoManager.UpdateInfo.Packages.Any Then
+            ComboBoxItem_UI_PackageInfoList.SelectedIndex = 0
+        End If
+    End Sub
+
+    Private Sub ShowUpdateInfoConfiguration()
+        LabelX_UI_UpdateInstallerExeDownloadlink.Text = updateInfoManager.UpdateInfo.UpdateInstallerLink
+    End Sub
+
+    Private Sub ShowAllUpdateInfoPackgeInfo()
+        Dim info As UpdatePackageInfo = GetCurUpdateInfoPackageInfo()
+
+        If info Is Nothing Then
+            Const emptyChar As String = "-"
+            LabelX_UI_PackageVersion.Text = emptyChar
+            LabelX_UI_PackageChannel.Text = emptyChar
+            LabelX_UI_PackageBuild.Text = emptyChar
+            LabelX_UI_PackageDownloadlink.Text = emptyChar
+            TextBoxX_UI_PackageChangelog.Text = emptyChar
+        Else
+            LabelX_UI_PackageVersion.Text = info.Version.Version.ToString
+            LabelX_UI_PackageChannel.Text = info.Version.Channel.ToString
+            LabelX_UI_PackageBuild.Text = info.Version.Build
+            LabelX_UI_PackageDownloadlink.Text = info.Packagelink
+            TextBoxX_UI_PackageChangelog.Text = info.Changelog
+        End If
+    End Sub
+
+    Private Function GetCurUpdateInfoPackageInfo() As UpdatePackageInfo
+        Return CType(ComboBoxItem_UI_PackageInfoList.SelectedItem, ComboItem)?.Tag
+    End Function
+
+    Private Sub UpdateUpdateInfoPackageItems()
+        For Each item As ComboItem In ComboBoxItem_UI_PackageInfoList.Items
+            Dim info As UpdatePackageInfo = item.Tag
+            item.Text = info.Name
+        Next
+
+        ComboBoxItem_UI_PackageInfoList.Refresh()
+    End Sub
+
+    Private Sub SetUpdateInfoPackageChangelog(str As String)
+        Dim info As UpdatePackageInfo = GetCurUpdateInfoPackageInfo()
+
+        If info IsNot Nothing Then
+            info.Changelog = str.Trim
+        End If
+    End Sub
+
+    'G u i
+
+    Private Sub ButtonItem_UI_NewPackage_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_NewPackage.Click
+        NewUpdateInfo()
+    End Sub
+
+    Private Sub ButtonItem_UI_Open_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_Open.Click
+        OpenUpdateInfo()
+    End Sub
+
+    Private Sub ButtonItem_UI_Save_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_Save.Click
+        SaveUpdateInfo()
+    End Sub
+
+    Private Sub ButtonItem_UI_SaveAs_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_SaveAs.Click
+        SaveUpdateInfoAs()
+    End Sub
+
+    Private Sub ButtonItem_UI_EditConfiguration_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_EditConfiguration.Click
+
+    End Sub
+
+    Private Sub ButtonItem_UI_AddPackageInfo_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_AddPackageInfo.Click
+
+    End Sub
+
+    Private Sub ButtonItem_UI_DeletePackageInfo_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_DeletePackageInfo.Click
+
+    End Sub
+
+    Private Sub ButtonItem_UI_EditDownloadlink_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_EditDownloadlink.Click
+
+    End Sub
+
+    Private Sub ComboBoxItem_UI_PackageInfoList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItem_UI_PackageInfoList.SelectedIndexChanged, ComboBoxItem_UI_PackageInfoList.SelectedIndexChanged
+        ShowAllUpdateInfoPackgeInfo()
+    End Sub
+
+    Private Sub ButtonItem_UI_EditVersion_Click(sender As Object, e As EventArgs) Handles ButtonItem_UI_EditVersion.Click
+        Dim info As UpdatePackageInfo = GetCurUpdateInfoPackageInfo()
+
+        If info IsNot Nothing Then
+            Dim editor As New ApplicationVersionInput With {
+                .Version = info.Version.Version,
+                .VersionName = info.Name,
+                .Channel = info.Version.Channel,
+                .Build = info.Version.Build
+            }
+
+            If editor.ShowDialog = DialogResult.OK Then
+                info.Version.Version = editor.Version
+                info.Name = editor.VersionName
+                info.Version.Channel = editor.Channel
+                info.Version.Build = editor.Build
+
+                UpdateUpdateInfoPackageItems()
+                ShowAllUpdateInfoPackgeInfo()
+            End If
+        End If
+
+    End Sub
+
+    Private Sub TextBoxX_UI_PackageChangelog_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX_UI_PackageChangelog.TextChanged
+        SetUpdateInfoPackageChangelog(TextBoxX_UI_PackageChangelog.Text)
+    End Sub
 
 #End Region
 
@@ -198,6 +376,7 @@ Public Class EditorWindow
         }
         If sfd_UpdateAdmin_ExportPkg.ShowDialog = DialogResult.OK Then
             packageManager.ExportPackage(sfd_UpdateAdmin_ExportPkg.FileName)
+            MessageBox.Show(MsgBox_PkgExportSuccess, MsgBox_PkgExportSuccess_Titel, MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 

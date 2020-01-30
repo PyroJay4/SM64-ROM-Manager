@@ -224,10 +224,12 @@ Public Class PatchingManager
                                                     Select Case inputType
                                                         Case InputDialog.InputValueType.Byte, InputDialog.InputValueType.Sequence
                                                             barr = CByte(input.ReturnValue).ToString("X2")
-                                                        Case InputDialog.InputValueType.UInt16, InputDialog.InputValueType.LevelID, InputDialog.InputValueType.Single
-                                                            barr = CByte(input.ReturnValue).ToString("X4")
+                                                        Case InputDialog.InputValueType.UInt16, InputDialog.InputValueType.LevelID
+                                                            barr = CUShort(input.ReturnValue).ToString("X4")
+                                                        Case InputDialog.InputValueType.Single
+                                                            barr = CSng(input.ReturnValue).ToString("X4")
                                                         Case InputDialog.InputValueType.UInt32
-                                                            barr = CByte(input.ReturnValue).ToString("X8")
+                                                            barr = CUInt(input.ReturnValue).ToString("X8")
                                                     End Select
 
                                                     For i As Integer = 0 To barr.Length - 1 Step 2

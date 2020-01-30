@@ -194,28 +194,4 @@ Public Module Publics
         Next
     End Sub
 
-    Public Function GetObjectInputSettings(key As String) As GuiInputSettings
-        Dim input As GuiInputSettings = Nothing
-
-        If Not String.IsNullOrEmpty(key) Then
-            For Each kvp In Settings.ModelConverter.InputSettings
-                If input Is Nothing AndAlso kvp.Key = key Then
-                    input = kvp.Value
-                End If
-            Next
-        End If
-
-        Return input
-    End Function
-
-    Public Function GetObjectInputSettingsOrDefault(key As String) As GuiInputSettings
-        Return If(GetObjectInputSettings(key), New GuiInputSettings)
-    End Function
-
-    Public Sub StoreObjectInputSettings(key As String, inputSettings As GuiInputSettings)
-        If Not String.IsNullOrEmpty(key) AndAlso Not Settings.ModelConverter.InputSettings.ContainsKey(key) Then
-            Settings.ModelConverter.InputSettings.Add(key, inputSettings)
-        End If
-    End Sub
-
 End Module

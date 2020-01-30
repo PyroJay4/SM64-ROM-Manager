@@ -27,7 +27,7 @@ Public Class MyTextProfileInfoManager
     Public Sub SaveTextProfile(info As TextProfileInfo)
         Dim myPath As String
 
-        If info Is Manager.DefaultTextProfileInfo Then
+        If info IsNot Manager.DefaultTextProfileInfo Then
             If filePaths.ContainsKey(info) Then
                 myPath = filePaths(info)
             Else

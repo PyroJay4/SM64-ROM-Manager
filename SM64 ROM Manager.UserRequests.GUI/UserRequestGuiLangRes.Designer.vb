@@ -83,7 +83,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die At least one files hasn&apos;t been added because it was bigger then 250 MiB. ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The maximum size of all attachments together is 250 MiB for security reasons. Please reduce it e.g. packing your files to an archive. ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_IncludedBigFiles() As String
             Get
@@ -92,7 +92,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die File(s) to big ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die Files to big ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_IncludedBigFiles_Titel() As String
             Get
@@ -101,7 +101,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Zeichenfolge, die The request was send request successfully! ähnelt.
+        '''  Sucht eine lokalisierte Zeichenfolge, die The request was send successfully! ähnelt.
         '''</summary>
         Friend Shared ReadOnly Property MsgBox_SendingRequestSuccess() As String
             Get

@@ -7,7 +7,7 @@
             "Description": "e.g. \"Level Editor\" or \"Music Manager\""
         },
         {
-            "Name": "Titel",
+            "Name": "Title",
             "Description": "How would you name your feature?",
             "Type": "Text"
         },

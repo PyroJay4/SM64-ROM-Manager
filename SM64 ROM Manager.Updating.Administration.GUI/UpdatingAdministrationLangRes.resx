@@ -135,4 +135,10 @@
   <data name="MsgBox_Error_Titel" xml:space="preserve">
     <value>Fehler</value>
   </data>
+  <data name="MsgBox_PkgExportSuccess" xml:space="preserve">
+    <value>Paket wurde erfolgreich exportiert!</value>
+  </data>
+  <data name="MsgBox_PkgExportSuccess_Titel" xml:space="preserve">
+    <value>Paket exportiert</value>
+  </data>
 </root>

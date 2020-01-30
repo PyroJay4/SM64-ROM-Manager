@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports nUpdate.Updating
 Imports SM64_ROM_Manager.SettingsManager
 Imports SM64Lib
 Imports SM64_ROM_Manager.Publics
@@ -72,11 +71,12 @@ Public Class MainController
     Public Event LevelAreaCustomObjectsCountChanged(e As LevelAreaEventArgs)
     Public Event LevelAreaScrollingTextureCountChanged(e As LevelAreaEventArgs)
     Public Event ObjectBankDataChanged()
+    Public Event ErrorBecauseNoRomLoaded()
 
     'C o n s t a n t s
 
     Public Const PLUGINCODE_PLUGINMENU As String = "pluginmenu"
-    Public Const UPDATE_URL As String = "https://pilzinsel64.com/Updates/SM64_ROM_Manager.json"
+    Public Const UPDATE_URL As String = "https://pilzinsel64.com/pilzcloud/index.php/s/sm64rm-allupdatepackages/download?path=%2F&files=CurrentUpdates.json" '"https://pilzinsel64.com/Updates/SM64_ROM_Manager.json"
 
     'F i e l d s
 
@@ -155,6 +155,7 @@ Public Class MainController
         AddHandler TextManagerController.SettingOtherStatusInfo, Sub(text, foreColor) SetOtherStatusInfos(text, foreColor)
         AddHandler TextManagerController.SettingStatusText, Sub(text) StatusText = text
         AddHandler TextManagerController.RequestStatusText, Sub(e) e.Value = StatusText
+        AddHandler TextManagerController.ErrorBecauseNoRomLoaded, Sub() RaiseEvent ErrorBecauseNoRomLoaded()
     End Sub
 
     Public Sub New(mainForm As MainForm)
@@ -618,16 +619,18 @@ Public Class MainController
         'Set removed and changed Obds in Levels to Null
         Dim setObdsToNull =
              Sub(dic As List(Of Data.ObjectBankData), remove As Boolean)
-                 For Each lvl As Level In RomManager.Levels
-                     For Each bankID As Byte In lvl.LoadedObjectBanks.Keys.ToArray
-                         For Each obd As Data.ObjectBankData In dic
-                             Dim curObd As Data.ObjectBankData = lvl.GetObjectBankData(bankID)
-                             If curObd Is obd Then
-                                 lvl.ChangeObjectBankData(bankID, If(remove, Nothing, curObd))
-                             End If
+                 If RomManager IsNot Nothing Then
+                     For Each lvl As Level In RomManager.Levels
+                         For Each bankID As Byte In lvl.LoadedObjectBanks.Keys.ToArray
+                             For Each obd As Data.ObjectBankData In dic
+                                 Dim curObd As Data.ObjectBankData = lvl.GetObjectBankData(bankID)
+                                 If curObd Is obd Then
+                                     lvl.ChangeObjectBankData(bankID, If(remove, Nothing, curObd))
+                                 End If
+                             Next
                          Next
                      Next
-                 Next
+                 End If
              End Sub
         setObdsToNull(removedObds, True)
         setObdsToNull(changedObds, False)
@@ -684,9 +687,14 @@ Public Class MainController
         frm.Show()
     End Sub
 
-    Private Sub OpenThankYouPage()
-        'Dim frm As New ThankYouForm
-        'frm.ShowDialog(Me)
+    Public Sub OpenTranslationSubmition()
+        Dim frm As New UserRequestDialog(UserRequestLayout.LoadFrom(Path.Combine(MyUserRequestsPath, "SubmitTranslation.json")))
+        frm.Show()
+    End Sub
+
+    Public Sub OpenThankYouPage()
+        Dim frm As New ThankYouForm
+        frm.ShowDialog(mainForm)
     End Sub
 
     'R o m   W a t c h e r
@@ -734,7 +742,7 @@ Public Class MainController
 
     Public Sub CheckToOpenThankYouPage()
         Dim myVersion As New Version(Application.ProductVersion)
-        If Settings.General.LastThankYouPageSeen IsNot Nothing AndAlso Settings.General.LastThankYouPageSeen < myVersion Then
+        If Settings.General.LastThankYouPageSeen Is Nothing OrElse Settings.General.LastThankYouPageSeen < myVersion Then
             OpenThankYouPage()
             Settings.General.LastThankYouPageSeen = myVersion
         End If
@@ -923,7 +931,7 @@ Public Class MainController
     End Function
 
     Public Function HasLevelCustomName(levelID As UShort) As String
-        Return RomManager.RomConfig.LevelConfigs.ContainsKey(levelID)
+        Return Not String.IsNullOrEmpty(RomManager.RomConfig.GetLevelConfig(levelID)?.LevelName)
     End Function
 
     Public Function GetLevelCustomName(levelIndex As Integer) As String
@@ -932,17 +940,11 @@ Public Class MainController
     End Function
 
     Public Function GetLevelCustomName(levelID As UShort) As String
-        Return RomManager.RomConfig.LevelConfigs(levelID).LevelName
+        Return RomManager.RomConfig.GetLevelConfig(levelID).LevelName
     End Function
 
     Public Sub SetLevelCustomName(levelID As UShort, newName As String)
-        If String.IsNullOrEmpty(newName) Then
-            RomManager.RomConfig.LevelConfigs.RemoveIfContainsKey(levelID)
-        ElseIf RomManager.RomConfig.LevelConfigs.ContainsKey(levelID) Then
-            RomManager.RomConfig.LevelConfigs(levelID).LevelName = newName
-        Else
-            RomManager.RomConfig.LevelConfigs.Add(levelID, New LevelConfig With {.LevelName = newName})
-        End If
+        RomManager.RomConfig.GetLevelConfig(levelID).LevelName = newName
     End Sub
 
     Public Function GetLevelName(levelIndex As Integer) As String
@@ -986,6 +988,7 @@ Public Class MainController
                 Dim tArea As New RMLevelArea(areaID)
                 tArea.AreaModel = res?.mdl
                 tArea.ScrollingTextures.AddRange(res?.mdl.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
+                RomManager.RomConfig.GetLevelConfig(curLevel.LevelID).GetLevelAreaConfig(areaID).ScrollingNames = res?.mdl.Fast3DBuffer.ConvertResult.ScrollingNames
 
                 'Add area to level
                 curLevel.Areas.Add(tArea)
@@ -1158,29 +1161,33 @@ Public Class MainController
 
     Public Sub ImportLevelAreaModel(levelIndex As Integer, areaIndex As Integer, importVisualMap As Boolean, importCollision As Boolean)
         Dim levelarea = GetLevelAndArea(levelIndex, areaIndex)
-        Dim area As LevelArea = levelarea.area
-        Dim res = GetModelViaModelConverter(,, importVisualMap, importCollision,, GetKeyForConvertAreaModel(RomManager.GameName, levelarea.level.LevelID, area.AreaID))
 
-        If res IsNot Nothing Then
-            If res?.hasCollision AndAlso res?.hasVisualMap Then
-                Dim OldAreaModel As ObjectModel = area.AreaModel
-                area.AreaModel = res?.mdl
-            ElseIf res?.hasCollision Then
-                Dim OldAreaModel As ObjectModel = area.AreaModel
-                area.AreaModel.Collision = res?.mdl.Collision
-            ElseIf res?.hasVisualMap Then
-                Dim OldAreaModel As ObjectModel = area.AreaModel
-                area.AreaModel = res?.mdl
-                area.AreaModel.Collision = OldAreaModel.Collision
+        If levelarea.level IsNot Nothing AndAlso levelarea.area IsNot Nothing AndAlso RomManager IsNot Nothing Then
+            Dim area As LevelArea = levelarea.area
+            Dim res = GetModelViaModelConverter(,, importVisualMap, importCollision,, GetKeyForConvertAreaModel(RomManager.GameName, levelarea.level.LevelID, area.AreaID))
+
+            If res IsNot Nothing Then
+                If res?.hasCollision AndAlso res?.hasVisualMap Then
+                    Dim OldAreaModel As ObjectModel = area.AreaModel
+                    area.AreaModel = res?.mdl
+                ElseIf res?.hasCollision Then
+                    Dim OldAreaModel As ObjectModel = area.AreaModel
+                    area.AreaModel.Collision = res?.mdl.Collision
+                ElseIf res?.hasVisualMap Then
+                    Dim OldAreaModel As ObjectModel = area.AreaModel
+                    area.AreaModel = res?.mdl
+                    area.AreaModel.Collision = OldAreaModel.Collision
+                End If
+
+                If res?.hasVisualMap Then
+                    area.ScrollingTextures.Clear()
+                    area.ScrollingTextures.AddRange(area.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
+                    RomManager.RomConfig.GetLevelConfig(levelarea.level.LevelID).GetLevelAreaConfig(area.AreaID).ScrollingNames = res?.mdl.Fast3DBuffer.ConvertResult.ScrollingNames
+                End If
+
+                area.SetSegmentedBanks(RomManager)
+                SetLevelBank0x0ENeedToSave(levelarea.level)
             End If
-
-            If res?.hasVisualMap Then
-                area.ScrollingTextures.Clear()
-                area.ScrollingTextures.AddRange(area.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
-            End If
-
-            area.SetSegmentedBanks(RomManager)
-            SetLevelBank0x0ENeedToSave(levelarea.level)
         End If
     End Sub
 
@@ -1210,7 +1217,8 @@ Public Class MainController
     Public Sub OpenScrollingTextureEditor(levelIndex As Integer, areaIndex As Integer)
         If levelIndex > -1 AndAlso areaIndex > -1 Then
             Dim lvl = GetLevelAndArea(levelIndex, areaIndex)
-            Dim editor As New ScrollTexEditor(lvl.area)
+            Dim areaConf As LevelAreaConfig = RomManager.RomConfig.GetLevelConfig(lvl.level.LevelID).GetLevelAreaConfig(lvl.area.AreaID)
+            Dim editor As New ScrollTexEditor(lvl.area, areaConf)
 
             Dim scrollTextCountChanged = Sub() RaiseEvent LevelAreaScrollingTextureCountChanged(New LevelAreaEventArgs(levelIndex, areaIndex, lvl.area.AreaID))
             Dim setNeedToSave = Sub() SetLevelscriptNeedToSave(lvl.level)

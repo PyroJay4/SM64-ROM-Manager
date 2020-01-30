@@ -50,13 +50,13 @@ Public Class Form_CoinsSettings
 
     Private Sub ButtonX_ImportKaze3DCoins_Click(sender As Object, e As EventArgs) Handles ButtonX_ImportKaze3DCoins.Click
         coinMgr.ImportKazesCoins()
-        Publics.ShowToadnotifiaction(Panel1, LangResCoinsManager.Notify_3DCoinsPatchesSuccess, eToastGlowColor.Green)
+        Publics.ShowToastnotification(Panel1, LangResCoinsManager.Notify_3DCoinsPatchesSuccess, eToastGlowColor.Green)
     End Sub
 
     Private Sub ButtonX_Remove3DCoins_Click(sender As Object, e As EventArgs) Handles ButtonX_Remove3DCoins.Click
         If MessageBoxEx.Show(LangResCoinsManager.MsgBox_Experimental3DCoinsRemove, LangResCoinsManager.MsgBox_Experimental3DCoinsRemove_Titel, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             coinMgr.Remove3DCoins()
-            Publics.ShowToadnotifiaction(Panel1, LangResCoinsManager.Notify_3DCoinsRemovedSuccess, eToastGlowColor.Green)
+            Publics.ShowToastnotification(Panel1, LangResCoinsManager.Notify_3DCoinsRemovedSuccess, eToastGlowColor.Green)
         End If
     End Sub
 

@@ -117,7 +117,7 @@ Public Class ModelPreviewOfficeForm
 
         Return String.Format("Materials:{0}{1}
 Faces:{0}{0}{2}
-Vertices:{0}{3}
+Vertices:{0}{0}{3}
 Vertex Colors{0}{4}
 UVs:{0}{0}{5}",
 vbTab, matsCount, facesCount, vertsCount, vcCount, uvCount)

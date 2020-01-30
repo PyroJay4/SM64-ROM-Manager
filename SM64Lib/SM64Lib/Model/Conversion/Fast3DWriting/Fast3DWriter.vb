@@ -22,6 +22,7 @@ Namespace Model.Conversion.Fast3DWriting
             Public ReadOnly Property PtrGeometry As New List(Of Geolayout.Geopointer)
 
             Public ReadOnly Property ScrollingCommands As New List(Of ManagedScrollingTexture)
+            Public ReadOnly Property ScrollingNames As New Dictionary(Of Short, String)
 
             Public ReadOnly Property Data As New MemoryStream
 
@@ -31,6 +32,11 @@ Namespace Model.Conversion.Fast3DWriting
             End Enum
 
         End Class
+
+        Public Structure ScrollingInfo
+            Public Property TextureAddress As Integer
+            Public Property Name As String
+        End Structure
 
         Public Class ConvertSettings
             Public Property SegmentedAddress As UInteger?
@@ -248,11 +254,13 @@ Namespace Model.Conversion.Fast3DWriting
             Public Property Offset As Integer
             Public Property VertsCount As Integer
             Public Property MaterialAddress As Integer
+            Public Property MaterialName As String
 
-            Public Sub New(offset As Integer, faceCount As Byte, matAddr As Integer)
+            Public Sub New(offset As Integer, faceCount As Byte, matAddr As Integer, matName As String)
                 Me.Offset = offset
-                Me.VertsCount = faceCount
-                Me.MaterialAddress = matAddr
+                VertsCount = faceCount
+                MaterialAddress = matAddr
+                MaterialName = matName
             End Sub
 
         End Structure
@@ -1074,22 +1082,22 @@ Namespace Model.Conversion.Fast3DWriting
 
             Select Case layer
                 Case 0
-                    ImpF3D("B9 00 03 1D 00 11 22 30")
+                    ImpF3D("B9 00 03 1D C8 11 22 30")
                 Case 1
-                    ImpF3D("B9 00 03 1D 00 11 20 78")
+                    ImpF3D("B9 00 03 1D C8 11 20 78")
                 Case 2
-                    ImpF3D("B9 00 03 1D 00 11 2D 58")
+                    ImpF3D("B9 00 03 1D C8 11 2D 58")
                 Case 3
-                    ImpF3D("B9 00 03 1D 00 10 4D D8")
+                    ImpF3D("B9 00 03 1D C8 10 4D D8")
                     'ImpF3D("B9 00 03 1D 00 11 24 78")
                 Case 4
-                    ImpF3D("B9 00 03 1D 00 11 30 78")
+                    ImpF3D("B9 00 03 1D C8 11 30 78")
                 Case 5
-                    ImpF3D("B9 00 03 1D 00 10 49 D8")
+                    ImpF3D("B9 00 03 1D C8 10 49 D8")
                 Case 6
-                    ImpF3D("B9 00 03 1D 00 10 4D D8")
+                    ImpF3D("B9 00 03 1D C8 10 4D D8")
                 Case 7
-                    ImpF3D("B9 00 03 1D 00 10 45 D8")
+                    ImpF3D("B9 00 03 1D C8 10 45 D8")
             End Select
 
             Select Case settings.Fog.Type
@@ -1368,7 +1376,7 @@ Namespace Model.Conversion.Fast3DWriting
             Dim amount As Integer = grp.VertexDataCount * &H10
 
             If mat.EnableScrolling Then
-                AddScrollingTexture(grp, off, mat.Offset)
+                AddScrollingTexture(grp, off, mat.Offset, mat.Name)
             End If
 
             If grp.EnableVertexColors Then
@@ -1394,6 +1402,13 @@ Namespace Model.Conversion.Fast3DWriting
             Next
         End Sub
 
+        Private Sub ResetCrystalEffectCommands(ByRef hasCrystalEffectEnabled As Boolean, ByRef needToResetCrystalEffectCommands As Boolean)
+            ImpF3D("B6 00 00 00 00 04 00 00")
+            ImpF3D("BB 00 00 01 FF FF FF FF")
+            hasCrystalEffectEnabled = False
+            needToResetCrystalEffectCommands = False
+        End Sub
+
         Private Sub ImpMaterialCmds(mat As Material, ByRef needToReShiftTMEM As Boolean, ByRef hasCrystalEffectEnabled As Boolean, ByRef needToResetCrystalEffectCommands As Boolean)
             If mat.EnableCrystalEffect AndAlso Not hasCrystalEffectEnabled Then
                 ImpF3D("B7 00 00 00 00 04 00 00")
@@ -1401,10 +1416,7 @@ Namespace Model.Conversion.Fast3DWriting
                 hasCrystalEffectEnabled = True
                 needToResetCrystalEffectCommands = True
             ElseIf needToResetCrystalEffectCommands Then
-                ImpF3D("B6 00 00 00 00 04 00 00")
-                ImpF3D("BB 00 00 01 FF FF FF FF")
-                hasCrystalEffectEnabled = False
-                needToResetCrystalEffectCommands = True
+                ResetCrystalEffectCommands(hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
             End If
 
             If mat.HasPalette Then
@@ -1425,19 +1437,34 @@ Namespace Model.Conversion.Fast3DWriting
             End If
         End Sub
 
-        Private Sub AddScrollingTexture(grp As FvGroup, vertPtr As Integer, matAddr As Integer)
-            Dim scrollTex As New ScrollTex((CInt(curSeg) << 24) Or vertPtr, grp.VertexDataCount, matAddr)
+        Private Sub AddScrollingTexture(grp As FvGroup, vertPtr As Integer, matAddr As Integer, matName As String)
+            Dim scrollTex As New ScrollTex((CInt(curSeg) << 24) Or vertPtr, grp.VertexDataCount, matAddr, matName)
             scrollTexts.Add(scrollTex)
         End Sub
 
         Private Sub MergeScrollingTextures()
+            Dim curScrollingGroupID As Short = 0
+            Dim scrollingGroups As New Dictionary(Of Integer, Short)
             scrollTexts = New List(Of ScrollTex)(scrollTexts.OrderBy(Function(n) n.Offset))
+
+            Dim getScrollingGroup =
+                Function(curMatAddr As Integer) As Short
+                    If scrollingGroups.ContainsKey(curMatAddr) Then
+                        Return scrollingGroups(curMatAddr)
+                    Else
+                        Dim newID As Short = curScrollingGroupID
+                        scrollingGroups.Add(curMatAddr, newID)
+                        curScrollingGroupID += 1
+                        Return newID
+                    End If
+                End Function
 
             Do While scrollTexts.Count > 0
                 Dim startOff As Integer = scrollTexts(0).Offset
                 Dim endOff As Integer = startOff + scrollTexts(0).VertsCount * &H10
                 Dim count As Integer = 0
                 Dim curMatAddr As Integer = scrollTexts(0).MaterialAddress
+                Dim curMatName As String = scrollTexts(0).MaterialName
 
                 For Each st As ScrollTex In scrollTexts
                     If st.MaterialAddress = curMatAddr Then
@@ -1459,8 +1486,10 @@ Namespace Model.Conversion.Fast3DWriting
 
                 Dim vertsCount As Integer = (endOff - startOff) / &H10
                 If vertsCount > 0 Then
+                    Dim groupID As Short = getScrollingGroup(curMatAddr)
                     scrollTexts.RemoveRange(0, count)
-                    conRes.ScrollingCommands.Add(New ManagedScrollingTexture(vertsCount, startOff))
+                    conRes.ScrollingCommands.Add(New ManagedScrollingTexture(vertsCount, startOff, groupID))
+                    conRes.ScrollingNames.AddIfNotContainsKey(groupID, curMatName)
                 End If
             Loop
         End Sub
@@ -1631,7 +1660,7 @@ Namespace Model.Conversion.Fast3DWriting
                 'Reset some stuff
                 enabledVertexColors = False
                 hasCrystalEffectEnabled = False
-                needToResetCrystalEffectCommands = True
+                needToResetCrystalEffectCommands = False
                 ciEnabled = False
                 lastMaterial = Nothing
                 lastN64Codec = MaterialType.None
@@ -1702,7 +1731,7 @@ Namespace Model.Conversion.Fast3DWriting
                 If settings.EnableFog Then ImpFogEnd(dlProps.Layer)
                 ImpF3D("FC FF FF FF FF FE 79 3C")
                 ImpF3D("BB 00 00 00 FF FF FF FF")
-                If needToResetCrystalEffectCommands Then ImpF3D("B6 00 00 00 00 04 00 00")
+                If needToResetCrystalEffectCommands Then ResetCrystalEffectCommands(hasCrystalEffectEnabled, needToResetCrystalEffectCommands)
                 If ciEnabled Then ShiftTMEMBack()
                 ImpF3D("B8 00 00 00 00 00 00 00")
 

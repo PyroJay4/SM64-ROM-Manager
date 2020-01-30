@@ -21,6 +21,8 @@ Public Class TextManagerController
     Public Event RequestIsChangingTab(e As RequestValueEventArgs(Of Boolean))
     <EditorBrowsable(EditorBrowsableState.Never)>
     Public Event RequestRomManager(e As RequestRomManagerEventArgs)
+    <EditorBrowsable(EditorBrowsableState.Never)>
+    Public Event ErrorBecauseNoRomLoaded()
 
     'P u b l i c   E v e n t s
 
@@ -29,6 +31,7 @@ Public Class TextManagerController
     Public Event TextItemChanged(e As TextItemEventArgs)
     Public Event TextItemAdded(e As TextItemEventArgs)
     Public Event TextItemRemoved(e As TextItemEventArgs)
+    Public Event CurrentTextProfileInfoChanged()
 
     'P r o p e r t i e s
 
@@ -39,6 +42,9 @@ Public Class TextManagerController
         Get
             Dim e As New RequestRomManagerEventArgs
             RaiseEvent RequestRomManager(e)
+            If e.RomManager IsNot Nothing Then
+                SetCurrentTextProfileToRomManager(e.RomManager)
+            End If
             Return e.RomManager
         End Get
     End Property
@@ -64,17 +70,23 @@ Public Class TextManagerController
     'G e n e r a l   F e a t u r e s
 
     Public Sub OpenTextProfileEditor()
-        MyTextProfiles.LoadAllTextProfilesIfNotLoaded()
+        If RomManager Is Nothing Then
+            RaiseEvent ErrorBecauseNoRomLoaded()
+        Else
+            MyTextProfiles.LoadAllTextProfilesIfNotLoaded()
+            Dim curTextProfile As TextProfileInfo = GetCurrentTextProfile()
 
-        Dim editor As New TextProfilesManagerDialog With {
-            .MyTextProfiles = MyTextProfiles
-        }
+            Dim editor As New TextProfilesManagerDialog With {
+                .MyTextProfiles = MyTextProfiles
+            }
 
-        editor.ShowDialog()
+            editor.ShowDialog()
 
-        If RomManager IsNot Nothing Then
-            RomManager.ClearTextGroups()
-            SendRequestReloadTextManagerLists()
+            If RomManager IsNot Nothing Then
+                SetCurrentTextProfileName(curTextProfile.Name)
+                RomManager.ClearTextGroups()
+                SendRequestReloadTextManagerLists()
+            End If
         End If
     End Sub
 
@@ -89,6 +101,31 @@ Public Class TextManagerController
     End Sub
 
     'T e x t   M a n a g e r   F e a t u r e s
+
+    Public Sub SetCurrentTextProfileToRomManager()
+        SetCurrentTextProfileToRomManager(RomManager)
+    End Sub
+
+    Private Sub SetCurrentTextProfileToRomManager(rommgr As RomManager)
+        Dim curInfo As TextProfileInfo = GetCurrentTextProfile(rommgr)
+        If curInfo IsNot rommgr.TextInfoProfile Then
+            rommgr.TextInfoProfile = curInfo
+        End If
+    End Sub
+
+    Private Function GetCurrentTextProfile() As TextProfileInfo
+        Return GetCurrentTextProfile(RomManager)
+    End Function
+
+    Private Function GetCurrentTextProfile(rommgr As RomManager) As TextProfileInfo
+        Dim info As TextProfileInfo = GetTextProfileInfoByName(rommgr.RomConfig.SelectedTextProfileInfo)
+
+        If info Is Nothing Then
+            info = MyTextProfiles.Manager.DefaultTextProfileInfo
+        End If
+
+        Return info
+    End Function
 
     Private Function GetTextGroup(name As String) As TextGroup
         Return RomManager?.TextGroups?.FirstOrDefault(Function(n) n.TextGroupInfo.Name = name)
@@ -195,98 +232,38 @@ Public Class TextManagerController
             hPos = dialogItem.HorizontalPosition
             vPos = dialogItem.VerticalPosition
             lines = dialogItem.LinesPerSite
-        ElseIf TypeOf item Is TextTableItem Then
-        ElseIf TypeOf item Is TextArrayItem Then
+        End If
+
+        If TypeOf item Is TextTableItem Then
+        End If
+
+        If TypeOf item Is TextArrayItem Then
         End If
 
         Return (item.Text, hPos, vPos, lines)
     End Function
 
     Public Function GetTextNameList(tableName As String) As String()
-        Dim nameList() As String = {}
+        Dim group As TextGroup = GetTextGroup(tableName)
+        Dim nameList As New List(Of String)
 
-        Select Case tableName
-            Case "Dialogs"
-                nameList = CreateDialogNameList()
-            Case "Levels"
-                nameList = CreateLevelNameList()
-            Case "Acts"
-                nameList = CreateActNameList()
-        End Select
+        If TypeOf group.TextGroupInfo Is TextTableGroupInfo Then
+            Dim tg As TextTableGroupInfo = group.TextGroupInfo
 
-        Return nameList
-    End Function
+            If Not String.IsNullOrEmpty(tg.ItemDescriptions) Then
+                Dim sr As New StringReader(tg.ItemDescriptions)
+                Dim line As String = sr.ReadLine
 
-    Private Function CreateLevelNameList() As String()
-        Dim list As New List(Of String)
+                Do Until line Is Nothing
+                    nameList.Add(line)
+                    line = sr.ReadLine
+                Loop
 
-        For lvlnumber As Integer = 1 To 26
-            Dim item As String = ""
-
-            Select Case lvlnumber
-                Case Is <= 15
-                    Dim lvltxt As String = lvlnumber
-                    Dim name As String = RomManager.LevelInfoData.FirstOrDefault(Function(n) n.Number = lvltxt)?.Name
-                    item = String.Format("Level {0}{1}", lvlnumber.ToString("00"), If(name IsNot Nothing, ": " & lvltxt, ""))
-                Case 16
-                    item = String.Format("Bowser 1")
-                Case 17 : item = String.Format("Bowser 2")
-                Case 18 : item = String.Format("Bowser 3")
-                Case 19
-                    item = String.Format("Princess's Secret Slide")
-                Case 20 : item = String.Format("Metal Cap")
-                Case 21 : item = String.Format("Wing Cap")
-                Case 22 : item = String.Format("Vanish Cap")
-                Case 23 : item = String.Format("Rainbow Secret Level")
-                Case 24 : item = String.Format("Secret Aquarium")
-                Case 25
-                    item = String.Format("Unkown")
-                Case 26 : item = String.Format("Secret Stars")
-            End Select
-
-            list.Add(item)
-        Next
-
-        Return list.ToArray
-    End Function
-
-    Private Function CreateActNameList() As String()
-        Dim list As New List(Of String)
-
-        For level As Integer = 1 To 17
-            For act As Integer = 1 To 6
-                Dim item As String = ""
-
-                Select Case level
-                    Case 16
-                        item = String.Format(Form_Main_Resources.Text_SecretStar)
-                        act = 6
-                    Case 17
-                        item = String.Format(Form_Main_Resources.Text_Unknown)
-                    Case Else
-                        item = String.Format(Form_Main_Resources.Text_LevelStar, level.ToString("00"), act)
-                End Select
-
-                list.Add(item)
-            Next
-        Next
-
-        Return list.ToArray
-    End Function
-
-    Private Function CreateDialogNameList() As String()
-        Dim list() As String = {}
-
-        Dim file_dialogs As String = DialogNamesFilePath
-        If File.Exists(file_dialogs) Then
-            list = File.ReadAllLines(file_dialogs)
+                sr.Close()
+            End If
         End If
 
-        For i As Integer = 0 To list.Length - 1
-            list(i) = list(i).Substring(6)
-        Next
-
-        Return list
+        Return nameList.ToArray
     End Function
 
     Public Sub SetTextItemText(tableName As String, tableIndex As Integer, text As String)
@@ -338,5 +315,42 @@ Public Class TextManagerController
 
         RaiseEvent TextItemRemoved(New TextItemEventArgs(tableName, tableIndex))
     End Sub
+
+    Public Function GetAllTextProfileNames() As IEnumerable(Of String)
+        Return MyTextProfiles.Manager.GetTextProfiles.Select(Function(n) n.Name)
+    End Function
+
+    Public Function GetCurrentTextProfileName() As String
+        Return GetCurrentTextProfile()?.Name
+    End Function
+
+    Public Sub SetCurrentTextProfileName(name As String)
+        Dim selProf As TextProfileInfo = GetTextProfileInfoByName(name)
+        Dim newName As String
+
+        If selProf Is Nothing OrElse selProf Is MyTextProfiles.Manager.DefaultTextProfileInfo Then
+            newName = String.Empty
+        Else
+            newName = selProf.Name
+        End If
+
+        If RomManager.RomConfig.SelectedTextProfileInfo <> newName Then
+            RomManager.RomConfig.SelectedTextProfileInfo = newName
+        End If
+
+        RaiseEvent CurrentTextProfileInfoChanged()
+    End Sub
+
+    Private Function GetTextProfileInfoByName(name As String) As TextProfileInfo
+        Dim prof As TextProfileInfo = Nothing
+
+        For Each p As TextProfileInfo In MyTextProfiles.Manager.GetTextProfiles
+            If prof Is Nothing AndAlso p.Name = name Then
+                prof = p
+            End If
+        Next
+
+        Return prof
+    End Function
 
 End Class

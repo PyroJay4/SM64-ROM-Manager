@@ -82,14 +82,14 @@ Namespace LevelEditor
             AddHandler Main.CheckBoxItem_OrthoMode.CheckedChanged, AddressOf CheckBoxItem_OrthoMode_CheckedChanged
         End Sub
 
-        Private Sub saveObjectPositionToList()
+        Private Sub SaveObjectPositionToList()
             moveObj_saved.Clear()
             For Each obj As Managed3DObject In Main.SelectedObjects
                 moveObj_saved.Add(obj.Position)
             Next
         End Sub
 
-        Private Sub saveObjectRotationToList()
+        Private Sub SaveObjectRotationToList()
             moveObj_saved.Clear()
             For Each obj As Managed3DObject In Main.SelectedObjects
                 moveObj_saved.Add(obj.Rotation)
@@ -233,6 +233,7 @@ Namespace LevelEditor
         Private Sub PictureBox_ObjRotWheel_MouseDown(sender As Object, e As MouseEventArgs)
             If Main.EditObjects AndAlso Main.SelectedObject IsNot Nothing Then
                 rotObj_Yaw_lastMouseY = e.Y
+                SaveObjectRotationToList()
                 Main.StoreObjectHistoryPoint(Main.SelectedObjects, NameOf(Managed3DObject.Rotation))
                 rotObj_Yaw_mouseDown = True
             End If

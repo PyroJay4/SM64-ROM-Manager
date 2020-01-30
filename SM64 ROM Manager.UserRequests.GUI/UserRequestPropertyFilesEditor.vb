@@ -23,12 +23,12 @@ Public Class UserRequestPropertyFilesEditor
     Private Sub MapFiles()
         files.Clear()
         If Not String.IsNullOrEmpty(prop.Value) Then
-            files.AddRange(prop.Value.Split(","))
+            files.AddRange(UserRequestManager.TranslateFilesStringToArray(prop.Value))
         End If
     End Sub
 
     Private Sub WriteFiles()
-        prop.Value = String.Join(",", files)
+        prop.Value = UserRequestManager.TranslateFilesArrayToString(files.ToArray)
     End Sub
 
     Private Sub RefreshList()
@@ -39,7 +39,7 @@ Public Class UserRequestPropertyFilesEditor
             Dim btn As New ButtonItem With {
                 .Text = Path.GetFileName(f),
                 .Tag = f,
-                .Image = Pilz.Win32.Internals.IconExtractor.ExtractIcon(f, True).ToBitmap,
+                .Image = Pilz.Win32.Internals.IconExtractor.ExtractIcon(f, True)?.ToBitmap,
                 .ButtonStyle = eButtonStyle.ImageAndText,
                 .ImagePosition = eImagePosition.Left
             }
@@ -57,8 +57,6 @@ Public Class UserRequestPropertyFilesEditor
     End Sub
 
     Private Sub AddFiles()
-        Dim includeBigFiles As Boolean = False
-
         Dim ofd_AddUSerRequestFiles As New OpenFileDialog With {
             .Multiselect = True
         }
@@ -66,9 +64,7 @@ Public Class UserRequestPropertyFilesEditor
         If ofd_AddUSerRequestFiles.ShowDialog = DialogResult.OK Then
             For Each f As String In ofd_AddUSerRequestFiles.FileNames
                 Dim fi As New FileInfo(f)
-                If fi.Length > 250 * 1024 ^ 2 Then
-                    includeBigFiles = True
-                ElseIf Not files.Contains(f) Then
+                If Not files.Contains(f) Then
                     files.Add(f)
                 End If
             Next
@@ -76,10 +72,6 @@ Public Class UserRequestPropertyFilesEditor
 
         WriteFiles()
         RefreshList()
-
-        If includeBigFiles Then
-            MessageBoxEx.Show(UserRequestGuiLangRes.MsgBox_IncludedBigFiles, UserRequestGuiLangRes.MsgBox_IncludedBigFiles_Titel, MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        End If
     End Sub
 
     Private Sub RemoveFile()

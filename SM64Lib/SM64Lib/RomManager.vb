@@ -234,7 +234,9 @@ Public Class RomManager
             If Not DontPatchUpdates Then
                 'Patch update-patches
                 For Each kvp As KeyValuePair(Of String, RomVersion) In dicUpdatePatches.Where(Function(n) n.Value > ProgramVersion).OrderBy(Function(n) n.Key)
+#Disable Warning BC42025 ' Zugriff des freigegebenen Members, konstanten Members, Enumerationsmembers oder geschachtelten Typs über eine Instanz.
                     PatchClass.ApplyPPF(RomFile, Path.Combine(MyFilePaths("Update Patches Folder"), kvp.Value.Filename))
+#Enable Warning BC42025 ' Zugriff des freigegebenen Members, konstanten Members, Enumerationsmembers oder geschachtelten Typs über eine Instanz.
                     needUpdateChecksum = True
                 Next
             End If

@@ -319,6 +319,7 @@ Namespace LevelEditor
                     If res?.hasVisualMap Then
                         .ScrollingTextures.Clear()
                         .ScrollingTextures.AddRange(.AreaModel.Fast3DBuffer.ConvertResult.ScrollingCommands.ToArray)
+                        Main.Rommgr.RomConfig.GetLevelConfig(Main.CLevel.LevelID).GetLevelAreaConfig(.AreaID).ScrollingNames = res?.mdl.Fast3DBuffer.ConvertResult.ScrollingNames
                     End If
 
                     If hp IsNot Nothing AndAlso hp.Entries.Any Then

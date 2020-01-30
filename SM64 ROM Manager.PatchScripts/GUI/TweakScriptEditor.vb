@@ -287,7 +287,7 @@ End Module
         End If
 
         If sender Is CheckBoxX_TweakScript Then
-            Panel3.Visible = Not sender.Checked
+            LayoutControlItem4.Visible = Not sender.Checked
             ButtonItem_CheckForErrors.Enabled = Not sender.Checked
         End If
     End Sub
