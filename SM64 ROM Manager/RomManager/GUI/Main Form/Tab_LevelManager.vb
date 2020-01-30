@@ -631,7 +631,7 @@ Public Class Tab_LevelManager
         Controller.RemoveLevelArea(CurrentLevelIndex, CurrentAreaIndex)
     End Sub
 
-    Private Sub Controls_HandleToSaveLevelSettings() Handles ObjectBankSelectorBox_D.SelectedComboIndexChanged, ObjectBankSelectorBox_C.SelectedComboIndexChanged, ObjectBankSelectorBox_9.SelectedComboIndexChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, SwitchButton_LM_HardcodedCameraSettings.ValueChanged
+    Private Sub Controls_HandleToSaveLevelSettings() Handles ObjectBankSelectorBox_D.SelectedComboIndexChanged, ObjectBankSelectorBox_C.SelectedComboIndexChanged, ObjectBankSelectorBox_9.SelectedComboIndexChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, SwitchButton_LM_HardcodedCameraSettings.ValueChanged, SwitchButton_UseGlobalObjectBank.ValueChanged
         SaveLevelSettings()
     End Sub
 
