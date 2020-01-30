@@ -84,6 +84,8 @@ Public Class Tab_LevelManager
     Public Sub New()
         InitializeComponent()
 
+        SwitchButton_UseGlobalObjectBank.Enabled = True
+
         'Add ObjectBankSelectorBoxes
         TableLayoutPanel_ObjectBankSelectorBoxes.Controls.Add(ObjectBankSelectorBox_C, 0, 0)
         TableLayoutPanel_ObjectBankSelectorBoxes.Controls.Add(ObjectBankSelectorBox_D, 1, 0)

@@ -255,8 +255,8 @@ Public Class RomManager
             HexRoundUp2(lastpos)
 
             'Global Object Bank
-            'SaveGlobalObjectBank(lastpos)
-            'HexRoundUp2(lastpos)
+            SaveGlobalObjectBank(lastpos)
+            HexRoundUp2(lastpos)
 
             'Levels
             SaveLevels(lastpos) 'If IgnoreNeedToSave OrElse Levels.NeedToSave Then
