@@ -84,6 +84,8 @@ Public Class Tab_LevelManager
     Public Sub New()
         InitializeComponent()
 
+        SwitchButton_UseGlobalObjectBank.Enabled = True
+
         'Add ObjectBankSelectorBoxes
         TableLayoutPanel_ObjectBankSelectorBoxes.Controls.Add(ObjectBankSelectorBox_C, 0, 0)
         TableLayoutPanel_ObjectBankSelectorBoxes.Controls.Add(ObjectBankSelectorBox_D, 1, 0)
@@ -411,6 +413,7 @@ Public Class Tab_LevelManager
                                         ObjectBankSelectorBox_C.SelectedComboIndex,
                                         ObjectBankSelectorBox_D.SelectedComboIndex,
                                         ObjectBankSelectorBox_9.SelectedComboIndex,
+                                        SwitchButton_UseGlobalObjectBank.Value,
                                         SwitchButton_LM_ShowMsgEnabled.Value,
                                         ValueFromText(TextBoxX_LM_ShowMsgID.Text))
         End If
@@ -595,6 +598,7 @@ Public Class Tab_LevelManager
             ObjectBankSelectorBox_C.SelectedComboIndex = info.objBank0x0C
             ObjectBankSelectorBox_D.SelectedComboIndex = info.objBank0x0D
             ObjectBankSelectorBox_9.SelectedComboIndex = info.objBank0x0E
+            SwitchButton_UseGlobalObjectBank.Value = info.enableGlobalObjectBank
 
             LM_LoadingLevel = wasLoadingLevel
         End If
@@ -627,7 +631,7 @@ Public Class Tab_LevelManager
         Controller.RemoveLevelArea(CurrentLevelIndex, CurrentAreaIndex)
     End Sub
 
-    Private Sub Controls_HandleToSaveLevelSettings() Handles ObjectBankSelectorBox_D.SelectedComboIndexChanged, ObjectBankSelectorBox_C.SelectedComboIndexChanged, ObjectBankSelectorBox_9.SelectedComboIndexChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, SwitchButton_LM_HardcodedCameraSettings.ValueChanged
+    Private Sub Controls_HandleToSaveLevelSettings() Handles ObjectBankSelectorBox_D.SelectedComboIndexChanged, ObjectBankSelectorBox_C.SelectedComboIndexChanged, ObjectBankSelectorBox_9.SelectedComboIndexChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, SwitchButton_LM_HardcodedCameraSettings.ValueChanged, SwitchButton_UseGlobalObjectBank.ValueChanged
         SaveLevelSettings()
     End Sub
 

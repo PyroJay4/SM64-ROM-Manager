@@ -39,6 +39,7 @@ Namespace Levels
         Public Property NeedToSaveLevelscript As Boolean = False
         Public Property NeedToSaveBanks0E As Boolean = False
         Public Property OneBank0xESystemEnabled As Boolean = True
+        Public Property EnableGlobalObjectBank As Boolean = False
 
         'O t h e r   P r o p e r t i e s
 
