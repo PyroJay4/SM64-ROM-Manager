@@ -43,7 +43,7 @@ Public Class CustomBankManager
     End Sub
 
     Private Function TextForButtonItem(obj As CustomObject) As String
-        Return $"Model-ID: {TextFromValue(obj.ModelID)} - Rom: {TextFromValue(obj.ModelBankOffset)}"
+        Return $"Model-ID: {TextFromValue(obj.ModelID)} - Bank: {TextFromValue(obj.ModelBankOffset)}"
     End Function
 
     Private Function AddItemToList(obj As CustomObject) As ButtonItem
