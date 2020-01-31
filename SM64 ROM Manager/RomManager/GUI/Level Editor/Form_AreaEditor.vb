@@ -28,6 +28,7 @@ Imports System.Runtime.InteropServices
 Imports SM64Lib.SegmentedBanking
 Imports SM64Lib.N64Graphics
 Imports SM64_ROM_Manager.My.Resources
+Imports SM64Lib.ObjectBanks
 
 Namespace LevelEditor
 
@@ -452,25 +453,108 @@ Namespace LevelEditor
 
 #Region "Model"
 
-        Friend Async Function LoadObjectModels() As Task 'Friend Async Function LoadObjectModels() As Task
+        Private Async Function LoadObjectModels() As Task 'Friend Async Function LoadObjectModels() As Task
             ObjectModels.Clear()
 
+            'Parse root level script
             Dim lvlScriptMain As New Levelscript
             lvlScriptMain.Read(Rommgr, Rommgr.GetSegBank(&H15).BankAddress, LevelscriptCommandTypes.x1E)
             Await ParseLevelscriptAndLoadModels(lvlScriptMain)
 
+            'Parse level script
             Await ParseLevelscriptAndLoadModels(CLevel.Levelscript)
+
+            'Load global objects
+            If Rommgr.HasGlobalObjectBank AndAlso CLevel.EnableGlobalObjectBank Then
+                Rommgr.GenerateGlobalObjectBank()
+                Await LoadCustomObjectBankModels(Rommgr.GlobalObjectBank)
+            End If
         End Function
 
-        Friend Async Function ParseLevelscriptAndLoadModels(lvlscript As Levelscript) As Task
+        Private Async Function LoadCustomObjectBankModels(objBank As CustomObjectBank) As Task
+            For Each obj As CustomObject In objBank.Objects
+                If Not ObjectModels.ContainsKey(obj.ModelID) Then
+                    Await LoadCustomObjectBankModel(obj)
+                End If
+            Next
+        End Function
 
+        Private Async Function LoadCustomObjectBankModel(obj As CustomObject) As Task
+            Dim mdl As New Object3D
+
+            For Each gp As Geopointer In obj.Geolayout.Geopointers
+                Await LoadDisplaylist(gp, mdl)
+            Next
+
+            AddObject3DWithRendererIfNotNull(mdl, obj.ModelID)
+        End Function
+
+        Private Async Function LoadDisplaylist(pointer As Geopointer, mdl As Object3D) As Task
+            Dim dl As New DisplayList
+            Await dl.TryFromStreamAsync(pointer, Rommgr, Nothing)
+            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
+        End Function
+
+        Private Sub AddObject3DWithRendererIfNotNull(mdl As Object3D, modelID As Byte)
+            If mdl.Meshes.Count > 0 Then
+                Dim rndr As New Renderer(mdl)
+                ObjectModels.Add(modelID, rndr)
+            End If
+        End Sub
+
+        Private Async Function ParseGeolayoutAndLoadModels(glscript As Script.Geolayoutscript, modelID As Byte) As Task
+            Dim mdlScale As Numerics.Vector3 = Numerics.Vector3.One
+            Dim mdlScaleNodeIndex As Integer = -1
+            Dim nodeIndex As Integer = 0
+            Dim mdl As New Object3D
+
+            For Each gmd As Script.GeolayoutCommand In glscript
+                Select Case gmd.CommandType
+                    Case Script.GeolayoutCommandTypes.LoadDisplaylist
+                        Dim geolayer As Byte = cgLoadDisplayList.GetDrawingLayer(gmd)
+                        Dim segAddr As Integer = cgLoadDisplayList.GetSegGeopointer(gmd)
+
+                        If segAddr > 0 Then
+                            Await LoadDisplaylist(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), mdl)
+                        End If
+
+                    Case Script.GeolayoutCommandTypes.LoadDisplaylistWithOffset
+                        Dim geolayer As Byte = cgLoadDisplayListWithOffset.GetDrawingLayer(gmd)
+                        Dim segAddr As Integer = cgLoadDisplayListWithOffset.GetSegGeopointer(gmd)
+
+                        If segAddr > 0 Then
+                            Dim geop As New Geopointer(geolayer, segAddr, mdlScale, cgLoadDisplayListWithOffset.GetOffset(gmd))
+                            Await LoadDisplaylist(geop, mdl)
+                        End If
+
+                    Case Script.GeolayoutCommandTypes.Scale2
+                        gmd.Position = 4
+                        Dim scale As UInteger = gmd.ReadUInt32
+                        mdlScale = New Numerics.Vector3(scale / 65536.0!)
+                        mdlScaleNodeIndex = nodeIndex
+
+                    Case Script.GeolayoutCommandTypes.StartOfNode
+                        nodeIndex += 1
+
+                    Case Script.GeolayoutCommandTypes.EndOfNode
+                        nodeIndex -= 1
+
+                End Select
+
+                If mdlScaleNodeIndex > -1 AndAlso mdlScaleNodeIndex > nodeIndex Then
+                    mdlScaleNodeIndex = -1
+                    mdlScale = Numerics.Vector3.One
+                End If
+            Next
+
+            AddObject3DWithRendererIfNotNull(mdl, modelID)
+        End Function
+
+        Private Async Function ParseLevelscriptAndLoadModels(lvlscript As Levelscript) As Task
             For Each cmd As LevelscriptCommand In lvlscript
-                'Console.WriteLine(cmd.ToString)
-
                 Select Case cmd.CommandType
                     Case LevelscriptCommandTypes.LoadPolygonWithGeo
                         Dim modelID As Byte = clLoadPolygonWithGeo.GetModelID(cmd)
-                        Dim mdl As New Object3D
                         Dim segPointer As Integer = clLoadPolygonWithGeo.GetSegAddress(cmd)
                         Dim segID As Byte = segPointer >> 24
 
@@ -482,64 +566,8 @@ Namespace LevelEditor
 
                             Dim glscript As New Script.Geolayoutscript
                             glscript.Read(Rommgr, segPointer)
-
-                            Dim mdlScale As Numerics.Vector3 = Numerics.Vector3.One
-                            Dim mdlScaleNodeIndex As Integer = -1
-                            Dim nodeIndex As Integer = 0
-
-                            For Each gmd As Script.GeolayoutCommand In glscript
-                                Select Case gmd.CommandType
-                                    Case Script.GeolayoutCommandTypes.LoadDisplaylist
-                                        Dim geolayer As Byte = cgLoadDisplayList.GetDrawingLayer(gmd)
-                                        Dim segAddr As Integer = cgLoadDisplayList.GetSegGeopointer(gmd)
-
-                                        If segAddr > 0 Then
-                                            Dim dl As New DisplayList
-                                            'dl.FromStream(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), rommgr, Nothing)
-                                            'dl.ToObject3D(mdl, rommgr, Nothing)
-                                            Await dl.TryFromStreamAsync(New Geopointer(geolayer, segAddr, mdlScale, Numerics.Vector3.Zero), Rommgr, Nothing)
-                                            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
-                                        End If
-
-                                    Case Script.GeolayoutCommandTypes.LoadDisplaylistWithOffset
-                                        Dim geolayer As Byte = cgLoadDisplayListWithOffset.GetDrawingLayer(gmd)
-                                        Dim segAddr As Integer = cgLoadDisplayListWithOffset.GetSegGeopointer(gmd)
-
-                                        If segAddr > 0 Then
-                                            Dim dl As New DisplayList
-                                            Dim geop As New Geopointer(geolayer, segAddr, mdlScale, cgLoadDisplayListWithOffset.GetOffset(gmd))
-                                            'dl.FromStream(geop, rommgr, Nothing)
-                                            'dl.ToObject3D(mdl, rommgr, Nothing)
-                                            Await dl.TryFromStreamAsync(geop, Rommgr, Nothing)
-                                            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
-                                        End If
-
-                                    Case Script.GeolayoutCommandTypes.Scale2
-                                        gmd.Position = 4
-                                        Dim scale As UInteger = gmd.ReadUInt32
-                                        mdlScale = New Numerics.Vector3(scale / 65536.0!)
-                                        mdlScaleNodeIndex = nodeIndex
-
-                                    Case Script.GeolayoutCommandTypes.StartOfNode
-                                        nodeIndex += 1
-
-                                    Case Script.GeolayoutCommandTypes.EndOfNode
-                                        nodeIndex -= 1
-
-                                End Select
-
-                                If mdlScaleNodeIndex > -1 AndAlso mdlScaleNodeIndex > nodeIndex Then
-                                    mdlScaleNodeIndex = -1
-                                    mdlScale = Numerics.Vector3.One
-                                End If
-                            Next
-
+                            Await ParseGeolayoutAndLoadModels(glscript, modelID)
                             glscript.Close()
-                            If mdl.Meshes.Count > 0 Then
-                                Dim rndr As New Renderer(mdl)
-                                ObjectModels.Add(modelID, rndr)
-                            End If
-
                         End If
 
                     Case LevelscriptCommandTypes.LoadPolygonWithoutGeo
@@ -555,18 +583,14 @@ Namespace LevelEditor
                         If segID <> 0 AndAlso seg IsNot Nothing AndAlso Not ObjectModels.ContainsKey(modelID) Then
                             Dim mdl = New Object3D
 
-                            Dim dl As New DisplayList
-                            'dl.FromStream(New Geopointer(layer, segPointer), rommgr, Nothing)
-                            'dl.ToObject3D(mdl, rommgr, Nothing)
-                            Await dl.TryFromStreamAsync(New Geopointer(layer, segPointer), Rommgr, Nothing)
-                            Await dl.TryToObject3DAsync(mdl, Rommgr, Nothing)
+                            Await LoadDisplaylist(New Geopointer(layer, segPointer), mdl)
 
                             Dim rndr As New Renderer(mdl)
                             ObjectModels.Add(modelID, rndr)
                         End If
 
                     Case LevelscriptCommandTypes.PaintingWarp
-                    '...
+                        '...
 
                     Case LevelscriptCommandTypes.JumpToSegAddr
                         Dim bankAddr As Integer = clJumpToSegAddr.GetSegJumpAddr(cmd)
@@ -577,8 +601,6 @@ Namespace LevelEditor
                             Dim scrpt As New Levelscript
                             scrpt.Read(Rommgr, bankAddr, LevelscriptCommandTypes.JumpBack)
                             Await ParseLevelscriptAndLoadModels(scrpt)
-                        Else
-                            Console.WriteLine("Doesn't know Seg-ID: " & segID.ToString)
                         End If
 
                     Case LevelscriptCommandTypes.LoadRomToRam, LevelscriptCommandTypes.x1A, LevelscriptCommandTypes.x18
@@ -594,9 +616,7 @@ Namespace LevelEditor
                         End If
 
                 End Select
-
             Next
-
         End Function
 
         Friend Sub AddObjectCombosToMyObjectCombos(modelID As Byte)
