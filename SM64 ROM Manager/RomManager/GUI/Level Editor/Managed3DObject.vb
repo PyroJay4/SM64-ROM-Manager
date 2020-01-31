@@ -317,7 +317,7 @@ Public Class Managed3DObject
             Dim md As Pilz.S3DFileParser.ModelBoundaries = ModelRenderer.Model.GetBoundaries
             ModelRenderer.DrawModel(mode,
                                     New OpenTK.Vector3(Me.Position.X, Me.Position.Y, Me.Position.Z),
-                                    New OpenTK.Quaternion(-Me.Rotation.X, Me.Rotation.Y, -Me.Rotation.Z),
+                                    New OpenTK.Quaternion(Me.Rotation.X, Me.Rotation.Y, Me.Rotation.Z, 1.0F),
                                     OpenTK.Vector3.One)
 
             If DrawBoundingBox Then
