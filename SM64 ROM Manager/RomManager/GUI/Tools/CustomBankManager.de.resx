@@ -144,6 +144,9 @@
   <data name="ButtonItem_ShowCollision.Text" xml:space="preserve">
     <value>Kollisionsmodell anzeigen</value>
   </data>
+  <data name="ButtonItem_CopyCollisionPointer.Text" xml:space="preserve">
+    <value>Kollisionspointer kopieren</value>
+  </data>
   <data name="ButtonItem_RemoveObject.Text" xml:space="preserve">
     <value>Objekt entfernen</value>
   </data>

@@ -40,6 +40,7 @@ Namespace Global.SM64Lib.ObjectBanks
                 data.Write(obj.ModelBankOffset)
                 data.Write(obj.Model.Length)
                 data.Write(sr.CollisionPointer And &HFFFFFF)
+                obj.CollisionPointer = sr.CollisionPointer
                 HexRoundUp2(data.Position)
 
                 'Copy new Geopointer(s)
@@ -101,6 +102,8 @@ Namespace Global.SM64Lib.ObjectBanks
                             obj.ModelBankOffset = data.ReadInt32
                             Dim f3d_length As Integer = data.ReadInt32
                             Dim colOffset As Integer = data.ReadInt32
+                            Dim colPointer As Integer = colOffset Or seg.BankAddress
+                            obj.CollisionPointer = colPointer
 
                             'Load Geolayout
                             obj.Geolayout = New Geolayout.Geolayout(Geolayout.Geolayout.NewScriptCreationMode.None)
@@ -108,7 +111,7 @@ Namespace Global.SM64Lib.ObjectBanks
 
                             'Load Model
                             obj.Model = New Model.ObjectModel
-                            obj.Model.FromBinaryData(data, 0, seg.BankAddress, obj.ModelBankOffset, f3d_length, obj.Geolayout.Geopointers.ToArray, colOffset Or seg.BankAddress)
+                            obj.Model.FromBinaryData(data, 0, seg.BankAddress, obj.ModelBankOffset, f3d_length, obj.Geolayout.Geopointers.ToArray, colPointer)
 
                             'Add Object to list
                             Objects.Add(obj)

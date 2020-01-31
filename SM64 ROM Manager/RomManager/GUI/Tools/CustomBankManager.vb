@@ -202,6 +202,10 @@ Public Class CustomBankManager
         ShowModel(obj)
     End Sub
 
+    Private Sub CopyCollisionPointer(customObj As CustomObject)
+        Clipboard.SetText(TextFromValue(customObj.CollisionPointer))
+    End Sub
+
     'G U I
 
     Private Sub CustomBankManager_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -248,6 +252,10 @@ Public Class CustomBankManager
 
     Private Sub ButtonItem_RemoveCollision_Click(sender As Object, e As EventArgs) Handles ButtonItem_RemoveCollision.Click
         RemoveCollision(curObj)
+    End Sub
+
+    Private Sub ButtonItem_CopyCollisionPointer_Click(sender As Object, e As EventArgs) Handles ButtonItem_CopyCollisionPointer.Click
+        CopyCollisionPointer(curObj)
     End Sub
 
 End Class
