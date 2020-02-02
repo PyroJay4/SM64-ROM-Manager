@@ -14,6 +14,7 @@ Namespace Global.SM64Lib.ObjectBanks
 
         Private modelOffset As Integer = 0
         Private geolayoutOffset As Integer = 0
+        Private colPointer As Integer = 0
 
         Public Property ModelBankOffset As Integer
             Get
@@ -30,6 +31,15 @@ Namespace Global.SM64Lib.ObjectBanks
             End Get
             Friend Set
                 geolayoutOffset = Value
+            End Set
+        End Property
+
+        Public Property CollisionPointer As Integer
+            Get
+                Return colPointer
+            End Get
+            Friend Set(value As Integer)
+                colPointer = value
             End Set
         End Property
 

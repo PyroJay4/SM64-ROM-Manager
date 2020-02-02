@@ -336,6 +336,9 @@
   <data name="ButtonItem_ShowCollision.Text" xml:space="preserve">
     <value>Show Collision</value>
   </data>
+  <data name="ButtonItem_CopyCollisionPointer.Text" xml:space="preserve">
+    <value>Copy Collision Pointer</value>
+  </data>
   <data name="ButtonItem_RemoveObject.Text" xml:space="preserve">
     <value>Remove Object</value>
   </data>
@@ -2278,6 +2281,12 @@
     <value>ButtonItem_ShowCollision</value>
   </data>
   <data name="&gt;&gt;ButtonItem_ShowCollision.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_CopyCollisionPointer.Name" xml:space="preserve">
+    <value>ButtonItem_CopyCollisionPointer</value>
+  </data>
+  <data name="&gt;&gt;ButtonItem_CopyCollisionPointer.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ButtonItem, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ButtonItem_RemoveObject.Name" xml:space="preserve">

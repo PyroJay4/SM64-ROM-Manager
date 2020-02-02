@@ -135,6 +135,8 @@ Namespace Geolayout
             RemoveOldGeopointerCommands()
         End Sub
 
+
+
         Public Sub Write(s As Stream, StartOffset As Integer)
             NewGeoOffset = StartOffset
 

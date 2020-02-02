@@ -39,6 +39,7 @@ Partial Class CustomBankManager
         Me.ButtonItem_RemoveCollision = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_ShowVisualMap = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_ShowCollision = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_CopyCollisionPointer = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem_RemoveObject = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -153,7 +154,7 @@ Partial Class CustomBankManager
         '
         Me.CM_Object.AutoExpandOnClick = True
         Me.CM_Object.Name = "CM_Object"
-        Me.CM_Object.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ImportModell, Me.ButtonItem_ImportVisualMap, Me.ButtonItem_ImportCollision, Me.ButtonItem_RemoveCollision, Me.ButtonItem_ShowVisualMap, Me.ButtonItem_ShowCollision, Me.ButtonItem_RemoveObject})
+        Me.CM_Object.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ImportModell, Me.ButtonItem_ImportVisualMap, Me.ButtonItem_ImportCollision, Me.ButtonItem_RemoveCollision, Me.ButtonItem_ShowVisualMap, Me.ButtonItem_ShowCollision, Me.ButtonItem_CopyCollisionPointer, Me.ButtonItem_RemoveObject})
         resources.ApplyResources(Me.CM_Object, "CM_Object")
         '
         'ButtonItem_ImportModell
@@ -186,6 +187,12 @@ Partial Class CustomBankManager
         '
         Me.ButtonItem_ShowCollision.Name = "ButtonItem_ShowCollision"
         resources.ApplyResources(Me.ButtonItem_ShowCollision, "ButtonItem_ShowCollision")
+        '
+        'ButtonItem_CopyCollisionPointer
+        '
+        Me.ButtonItem_CopyCollisionPointer.BeginGroup = True
+        Me.ButtonItem_CopyCollisionPointer.Name = "ButtonItem_CopyCollisionPointer"
+        resources.ApplyResources(Me.ButtonItem_CopyCollisionPointer, "ButtonItem_CopyCollisionPointer")
         '
         'ButtonItem_RemoveObject
         '
@@ -231,4 +238,5 @@ Partial Class CustomBankManager
     Friend WithEvents ButtonItem_RemoveCollision As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_ImportVisualMap As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem_ImportCollision As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_CopyCollisionPointer As DevComponents.DotNetBar.ButtonItem
 End Class
