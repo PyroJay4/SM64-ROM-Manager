@@ -1,6 +1,6 @@
-<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>The 3rd Bowser Battle is edited to allow you to use your own Credits level.
+<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>The 3rd Bowser Battle is edited to allow you to use your own Credits level via having the Grand Star warp Mario.
 
-After applying open your ROM in Quad64 / ROM Manager and go to the 3 Bowser Battle.
+After applying open your ROM in Quad64 / ROM Manager and go to the 3rd Bowser Battle.
 Under warps you should now see a 3rd warp leading to "End Cake Picture" (or it's "Unknown")
 Simply change the warp to every level you want and the grand star will lead you there.</description><patch>21B51C: 10 2A 20
 21B520: 10 05 00

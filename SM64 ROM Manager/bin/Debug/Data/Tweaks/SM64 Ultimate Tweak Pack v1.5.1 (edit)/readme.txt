@@ -27,4 +27,4 @@ MrPr1993
 Dbp
 Zack Layton
 
-
+(Slightly edited by PyroJay4 to remove bad tweaks along with fixing some explanations.)

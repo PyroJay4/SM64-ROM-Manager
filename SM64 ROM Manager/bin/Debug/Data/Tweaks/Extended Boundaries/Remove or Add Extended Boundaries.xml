@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<m64tweak name="Extended Boundaries" description="" version="1.0.0.0">
-  <patch name="Extend Boundaries" description="Applies Skelux' Boundaries Patch." type="1" references="">Imports Microsoft.VisualBasic
+<m64tweak name="Remove or Add Extended Boundaries" description="" version="1.0.0.0">
+  <patch name="Extend Boundaries" description="Applies Skelux's Boundaries Patch." type="1" references="">Imports Microsoft.VisualBasic
 Imports System
 Imports System.Collections.Generic
 Imports System.IO

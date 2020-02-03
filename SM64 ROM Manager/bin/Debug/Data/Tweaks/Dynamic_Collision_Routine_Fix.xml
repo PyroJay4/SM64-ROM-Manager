@@ -1,4 +1,4 @@
-<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>Kaze's default asm file fucks shit up so here's a fix babe</description><patch>FE43B: 32
+<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>Kaze's default asm file messes stuff up so here's a fix babe</description><patch>FE43B: 32
 FE4B7: 3C
 FE4D7: 03
 FE4FC: 10 00 00 03 8F A2 00 04 10 00 00 01 00 00 00 00 03 E0 00 08

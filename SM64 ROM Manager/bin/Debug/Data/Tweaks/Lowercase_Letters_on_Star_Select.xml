@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<m64tweak name="Lowercase Letters on Star Select" description="Fixes the star select screen so it can properly display act names with lowercase letters. Made by anonymous_moose" version="1.0.0.0">
+<m64tweak name="Lowercase Letters on Star Select" description="Fixes the star select screen so it can properly display act names with lowercase letters. Made by anonymous_moose. There is a setting in Rom Manager to allow lowercase letter typing in the Text Manager." version="1.0.0.0">
 <patch>
 227908:0C 0B 5D F7
 227960:0C 0B 5D F7

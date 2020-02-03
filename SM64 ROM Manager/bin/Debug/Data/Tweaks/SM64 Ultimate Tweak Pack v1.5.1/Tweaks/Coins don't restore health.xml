@@ -1,1 +1,0 @@
-<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>Disables coins giving Mario health. This applies to yellow, red, and blue coins</description><patch>8B70: 00 00 00 00</patch></m64tweak>

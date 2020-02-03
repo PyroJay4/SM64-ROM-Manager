@@ -1,6 +1,0 @@
-<?xml version="1.0"?><!--Mario 64 Tweak File--><m64tweak><description>You will still have to place 8 red coins in your level, but put the extra red coins out of bounds.
-
-Example: If you put 6 red coins required, you will still need to place 8 red coins in your level.
-Place 6 red coins wherever you want and the other 2 coins 
-under the level or in a place where nobody can find them.</description><patch>ADDDF: [8, "Red coins required"]
-ADF83:  [8, "Red coins required (Bowser levels) "]</patch></m64tweak>

@@ -2,7 +2,7 @@
 
 Requires the soundbank to be repointed (by using the Change Location of Soundbank tweak)
 because Kaze put some custom ASM into the soundbank. 
-60 fps might not work very well on very hack so be warned and make a backup when applying.</description><patch>310C: 00 00 00 
+60 fps might not work very well on every hack so be warned and make a backup when applying.</description><patch>310C: 00 00 00 
 3BC5: 0B DE 49
 64E9: 0D C3 C0
 6CF7: 05 24 01 00 01 12 01 00 06 00 00 00 00 10 00 00 09 00 00 00 00 0C 09 2E A3 00 00 00 00 10 00 00 05 00 00 00 00 0C 09 2E 6E 00 00 00 00 0C 0D C0 00 00 00 00 00 8F BF 00 1C 8F B0 00 18 03 E0 00 08 27 BD 00 28 0C 09 2E 6E 00 00 00 00 8F BF 00 1C 8F B0 00 18 03 E0 00 08 27 BD 00 28 27 BD 00 28 00 00 00 01
