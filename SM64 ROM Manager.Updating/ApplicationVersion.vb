@@ -12,7 +12,7 @@
     End Sub
 
     Public Sub New(version As Version)
-        Me.New(version, 0, 0)
+        Me.New(version, 0, Channels.Stable)
     End Sub
 
     Public Sub New(version As Version, build As Integer, channel As Channels)

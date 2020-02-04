@@ -13,6 +13,8 @@ Public Class UpdateInstallerConfig
     Public Property MillisecondsToWaitForHostApplicationToClose As UInteger
     Public Property UpdateWindowBaseColor As Color
     Public Property UpdateWindowCanvasColor As Color
+    Public Property CurrentApplicationVersion As ApplicationVersion
+    Public Property NewApplicationVersion As ApplicationVersion
 
     Public Shared Function Parse(str As String) As UpdateInstallerConfig
         Return JObject.Parse(System.Text.Encoding.Default.GetString(Convert.FromBase64String(str))).ToObject(Of UpdateInstallerConfig)

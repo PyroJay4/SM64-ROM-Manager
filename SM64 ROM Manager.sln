@@ -63,6 +63,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM64 ROM Manager.Administra
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SM64 ROM Manager.ProgressUpdater", "SM64 ROM Manager.ProgressUpdater\SM64 ROM Manager.ProgressUpdater.vbproj", "{A9E501F6-5CFA-4DEA-A310-315DA9B9183D}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SM64 ROM Manager.UpdateInstallerAddOn", "SM64 ROM Manager.UpdateInstallerAddOn\SM64 ROM Manager.UpdateInstallerAddOn.vbproj", "{F2C07849-FDD9-48AB-9215-A6A750134CA7}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SM64 ROM Manager.Updating.Administration.Shared\SM64 ROM Manager.Updating.Administration.Shared.projitems*{059e523b-773a-43f5-a6c4-e2d74ef73c6c}*SharedItemsImports = 4
@@ -480,6 +482,24 @@ Global
 		{A9E501F6-5CFA-4DEA-A310-315DA9B9183D}.RelMono|x64.Build.0 = Release|Any CPU
 		{A9E501F6-5CFA-4DEA-A310-315DA9B9183D}.RelMono|x86.ActiveCfg = Release|Any CPU
 		{A9E501F6-5CFA-4DEA-A310-315DA9B9183D}.RelMono|x86.Build.0 = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Debug|x64.Build.0 = Debug|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Debug|x86.Build.0 = Debug|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Release|x64.ActiveCfg = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Release|x64.Build.0 = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Release|x86.ActiveCfg = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.Release|x86.Build.0 = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.RelMono|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.RelMono|Any CPU.Build.0 = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.RelMono|x64.ActiveCfg = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.RelMono|x64.Build.0 = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.RelMono|x86.ActiveCfg = Release|Any CPU
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7}.RelMono|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -509,6 +529,7 @@ Global
 		{8DAB41DD-00ED-4E0D-ACF4-11E0DF9169E1} = {7442F677-68AE-432D-A3C0-C7AC0610D11B}
 		{E6838D2B-2AFC-45EC-ACBC-307864B294DC} = {7442F677-68AE-432D-A3C0-C7AC0610D11B}
 		{A9E501F6-5CFA-4DEA-A310-315DA9B9183D} = {629B3BBF-ABC4-4D78-AC8E-E77EDCD1C3E3}
+		{F2C07849-FDD9-48AB-9215-A6A750134CA7} = {629B3BBF-ABC4-4D78-AC8E-E77EDCD1C3E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1DF002D8-7106-48DC-A269-0A6E318227CB}

@@ -137,10 +137,12 @@ Friend Class UpdateInstaller
 
             If t IsNot Nothing Then
                 Dim m As MethodInfo = t.GetMethod(UPDATE_INSTALLER_ADDON_METHOD, BindingFlags.Static Or BindingFlags.Public)
-                Dim dicParams As New Dictionary(Of String, Object) From {
-                    {"hostAppPath", Configuration.HostApplicationPath}
-                }
-                m.Invoke(Nothing, {dicParams})
+                'Dim dicParams As New Dictionary(Of String, Object) From {
+                '    {"hostAppPath", Configuration.HostApplicationPath},
+                '    {"curAppVersion", Configuration.CurrentApplicationVersion},
+                '    {"newAppVersion", Configuration.NewApplicationVersion}
+                '}
+                m.Invoke(Nothing, {Configuration})
             End If
         Next
     End Sub
