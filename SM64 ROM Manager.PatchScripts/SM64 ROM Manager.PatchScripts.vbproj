@@ -286,5 +286,29 @@
       <Name>SM64Lib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_plus_math_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_plus_math_32px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_edit_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_cancel_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_search_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_downloading_updates_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_triggering_16px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

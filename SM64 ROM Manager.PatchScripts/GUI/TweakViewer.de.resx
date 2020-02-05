@@ -117,20 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ButtonX_AddNew.Text" xml:space="preserve">
-    <value>Neu</value>
-  </data>
-  <data name="ButtonX8.Text" xml:space="preserve">
-    <value>Ausführen</value>
-  </data>
   <data name="LabelX2.Text" xml:space="preserve">
     <value>Beschreibung:</value>
   </data>
   <data name="LabelX1.Text" xml:space="preserve">
     <value>Skript:</value>
   </data>
+  <data name="ButtonX8.Text" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
   <data name="ButtonX7.Text" xml:space="preserve">
     <value>Suchen</value>
+  </data>
+  <data name="TextBoxX1.WatermarkText" xml:space="preserve">
+    <value>Suchen ...</value>
+  </data>
+  <data name="ButtonX_AddNew.Text" xml:space="preserve">
+    <value>Neu</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -2030,5 +2033,15 @@
         oVAoFAqFQqFQKBQKhUKhUCgUCoVCoVAoFAqFQqFQKBQKhUKhUCgUCoVCoVAoFAqFQqFQKBQKhUKhUCgU
         CoWiGwyG/w/OanoYx+RXmwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="WarningBox_TweakUpdates.OptionsText" xml:space="preserve">
+    <value>Aktuallisieren</value>
+  </data>
+  <data name="WarningBox_TweakUpdates.Text" xml:space="preserve">
+    <value>&lt;b&gt;Aktuallisierungen verfügbar!&lt;/b&gt; Klicke &lt;i&gt;Aktuallisieren &lt;/i&gt; um die lokalen Tweaks auf den neusten Stand zu brigen.</value>
   </data>
 </root>

@@ -66,6 +66,16 @@ Friend Class MyIcons
     '''<summary>
     '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
     '''</summary>
+    Friend Shared ReadOnly Property icons8_cancel_16px() As System.Drawing.Bitmap
+        Get
+            Dim obj As Object = ResourceManager.GetObject("icons8_cancel_16px", resourceCulture)
+            Return CType(obj,System.Drawing.Bitmap)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+    '''</summary>
     Friend Shared ReadOnly Property icons8_checkmark_16px() As System.Drawing.Bitmap
         Get
             Dim obj As Object = ResourceManager.GetObject("icons8_checkmark_16px", resourceCulture)
@@ -79,6 +89,26 @@ Friend Class MyIcons
     Friend Shared ReadOnly Property icons8_delete_sign_16px_1() As System.Drawing.Bitmap
         Get
             Dim obj As Object = ResourceManager.GetObject("icons8_delete_sign_16px_1", resourceCulture)
+            Return CType(obj,System.Drawing.Bitmap)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+    '''</summary>
+    Friend Shared ReadOnly Property icons8_downloading_updates_16px() As System.Drawing.Bitmap
+        Get
+            Dim obj As Object = ResourceManager.GetObject("icons8_downloading_updates_16px", resourceCulture)
+            Return CType(obj,System.Drawing.Bitmap)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+    '''</summary>
+    Friend Shared ReadOnly Property icons8_edit_16px() As System.Drawing.Bitmap
+        Get
+            Dim obj As Object = ResourceManager.GetObject("icons8_edit_16px", resourceCulture)
             Return CType(obj,System.Drawing.Bitmap)
         End Get
     End Property
@@ -106,9 +136,39 @@ Friend Class MyIcons
     '''<summary>
     '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
     '''</summary>
+    Friend Shared ReadOnly Property icons8_plus_math_16px() As System.Drawing.Bitmap
+        Get
+            Dim obj As Object = ResourceManager.GetObject("icons8_plus_math_16px", resourceCulture)
+            Return CType(obj,System.Drawing.Bitmap)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+    '''</summary>
     Friend Shared ReadOnly Property icons8_save_16px_1() As System.Drawing.Bitmap
         Get
             Dim obj As Object = ResourceManager.GetObject("icons8_save_16px_1", resourceCulture)
+            Return CType(obj,System.Drawing.Bitmap)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+    '''</summary>
+    Friend Shared ReadOnly Property icons8_search_16px() As System.Drawing.Bitmap
+        Get
+            Dim obj As Object = ResourceManager.GetObject("icons8_search_16px", resourceCulture)
+            Return CType(obj,System.Drawing.Bitmap)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+    '''</summary>
+    Friend Shared ReadOnly Property icons8_triggering_16px() As System.Drawing.Bitmap
+        Get
+            Dim obj As Object = ResourceManager.GetObject("icons8_triggering_16px", resourceCulture)
             Return CType(obj,System.Drawing.Bitmap)
         End Get
     End Property
