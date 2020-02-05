@@ -19,6 +19,7 @@ Public Class TweakViewer
 
     Private myPatchs As New List(Of PatchProfile)
     Private rommgr As SM64Lib.RomManager
+    Private syncFiles As IEnumerable(Of TweakDatabaseSyncFile) = {}
 
     'C o n s t r u c t o r
 
@@ -32,11 +33,58 @@ Public Class TweakViewer
 
     'F e a t u r e s
 
+    Private Function GetDatabaseManager() As TweakDatabaseManager
+        Static dbmgr As New TweakDatabaseManager(TweakDatabasePreferences.Load(Path.Combine(MyDataPath, "Other\Tweak Database Preferences.json")))
+        Return dbmgr
+    End Function
+
+    Private Async Sub CheckForTweakUpdates()
+        Dim dbmgr As TweakDatabaseManager = GetDatabaseManager()
+        Dim localPath As String = Path.Combine(MyTweaksPath, NameOf(TweakDatabaseCategories.Reviewed))
+        Dim hasUpdates As Boolean = False
+
+#If Not DEBUG Then
+        Try
+#End If
+        syncFiles = Await dbmgr.CheckForUpdates(localPath)
+#If Not DEBUG Then
+        Catch ex As Exception
+        End Try
+#End If
+
+        hasUpdates = syncFiles.Any
+
+        'If hasUpdates AndAlso Not syncFiles.Where(Function(n) n.SyncAction <> TweakDatabaseSyncAction.RemovedFile).Any Then
+        '    hasUpdates = False
+        'End If
+
+        If hasUpdates Then
+            WarningBox_TweakUpdates.Visible = True
+        End If
+    End Sub
+
+    Private Async Function ExecuteUpdate() As Task(Of Boolean)
+        Dim dbmgr As TweakDatabaseManager = GetDatabaseManager()
+        Dim success As Boolean = False
+
+#If Not DEBUG Then
+        Try
+#End If
+        Await dbmgr.Update(syncFiles)
+        success = True
+#If Not DEBUG Then
+        Catch ex As Exception
+        End Try
+#End If
+
+        Return success
+    End Function
+
     Private Sub LoadTweaks()
         CircularProgress1.Visible = True
         CircularProgress1.IsRunning = True
 
-        Dim pathTweaks As String = Path.Combine(MyDataPath, "Tweaks")
+        Dim pathTweaks As String = MyTweaksPath
         Dim mgr As New PatchingManager
 
         myPatchs.Clear()
@@ -231,6 +279,10 @@ Public Class TweakViewer
     'G u i
 
     Private Sub TweakViewer_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        'Check for tweak updates
+        CheckForTweakUpdates()
+
+        'Load tweaks
         LoadTweaks()
     End Sub
 
@@ -391,6 +443,17 @@ Public Class TweakViewer
     Private Sub ButtonX9_Click(sender As Object, e As EventArgs) Handles ButtonX9.Click
         TextBoxX1.Text = ""
         LoadTweakList()
+    End Sub
+
+    Private Async Sub WarningBox_TweakUpdates_OptionsClick(sender As Object, e As EventArgs) Handles WarningBox_TweakUpdates.OptionsClick
+        WarningBox_TweakUpdates.Visible = False
+
+        If Await ExecuteUpdate() Then
+            LoadTweaks()
+            MessageBoxEx.Show(Me, "Tweaks updated successfully!", "Tweak Updates", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBoxEx.Show(Me, "Tweaks not updated (completly). There happened an error!", "Tweak Updates", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 
 End Class

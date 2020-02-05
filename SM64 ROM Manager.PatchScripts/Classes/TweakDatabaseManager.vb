@@ -13,12 +13,18 @@ Public Class TweakDatabaseManager
     End Sub
 
     Private Function CreateClient(t As TweakDatabaseLoginTypes) As WebDavClient
-        Dim login As TweakDatabaseLoginPreferences = Preferences.Logins(t)
-        Dim params As New WebDavClientParams With {
-            .BaseAddress = New Uri(login.Link),
-            .Credentials = New NetworkCredential(login.Username, login.Password)
-        }
-        Return New WebDavClient(params)
+        Static dicClients As New Dictionary(Of TweakDatabaseLoginTypes, WebDavClient)
+
+        If Not dicClients.ContainsKey(t) Then
+            Dim login As TweakDatabaseLoginPreferences = Preferences.Logins(t)
+            Dim params As New WebDavClientParams With {
+                .BaseAddress = New Uri(login.Link),
+                .Credentials = New NetworkCredential(login.Username, login.Password)
+            }
+            dicClients.Add(t, New WebDavClient(params))
+        End If
+
+        Return dicClients(t)
     End Function
 
     Public Async Function CheckForUpdates(localPath As String) As Task(Of IEnumerable(Of TweakDatabaseSyncFile))
@@ -26,6 +32,7 @@ Public Class TweakDatabaseManager
         Dim syncFiles As New List(Of TweakDatabaseSyncFile)
         Dim checkOutFolder As Func(Of String, Task) = Nothing
         Dim resTopFolder As WebDavResource = Nothing
+        Dim checkedFiles As New List(Of String)
 
         checkOutFolder =
             Async Function(remotePath As String) As Task
@@ -38,14 +45,7 @@ Public Class TweakDatabaseManager
                 If response.Resources.Count > 1 Then
                     For i As Integer = 1 To response.Resources.Count - 1
                         Dim res As WebDavResource = response.Resources(i)
-                        Dim isFolder As Boolean = False
-
-                        'Check for folder
-                        For Each prop As WebDavProperty In res.Properties
-                            If prop.Name = "{DAV:}getcontenttype" AndAlso prop.Value = "<d:collection xmlns:d=""DAV:"" />" Then
-                                isFolder = True
-                            End If
-                        Next
+                        Dim isFolder As Boolean = res.Uri.EndsWith("/")
 
                         If isFolder Then
                             Await checkOutFolder(res.Uri)
@@ -55,10 +55,10 @@ Public Class TweakDatabaseManager
                             Dim remoteFile As String = String.Empty
 
                             'Get remote file path
-                            remoteFile = res.Uri.Substring(Path.GetDirectoryName(resTopFolder.Uri).Length)
+                            remoteFile = res.Uri '.Substring(Path.GetDirectoryName(resTopFolder.Uri).Length)
 
                             'Get local file path
-                            localFile = Path.Combine(localPath, res.Uri.Substring(resTopFolder.Uri.Length))
+                            localFile = Path.Combine(localPath, Uri.UnescapeDataString(res.Uri.Substring(resTopFolder.Uri.Length)).Replace("/", "\"))
 
                             'Check action
                             If File.Exists(localFile) Then
@@ -70,6 +70,7 @@ Public Class TweakDatabaseManager
                             End If
 
                             'Add to list
+                            checkedFiles.Add(localFile)
                             If syncAction IsNot Nothing Then
                                 syncFiles.Add(New TweakDatabaseSyncFile(syncAction, localFile, remoteFile))
                             End If
@@ -82,12 +83,12 @@ Public Class TweakDatabaseManager
         Await checkOutFolder(Preferences.CategoryPaths(TweakDatabaseCategories.Reviewed))
 
         'Find all old files to remove
-        Dim allLocalFiles As String() = Directory.GetFiles(localPath, String.Empty, SearchOption.AllDirectories)
+        Dim allLocalFiles As String() = Directory.GetFiles(localPath, "*", SearchOption.AllDirectories)
         For Each lf As String In allLocalFiles
             Dim isKnown As Boolean = False
 
-            For Each syncFile As TweakDatabaseSyncFile In syncFiles
-                If Not isKnown AndAlso syncFile.LocalFile = lf Then
+            For Each checkedFile As String In checkedFiles
+                If Not isKnown AndAlso checkedFile = lf Then
                     isKnown = True
                 End If
             Next
@@ -97,7 +98,6 @@ Public Class TweakDatabaseManager
             End If
         Next
 
-        client.Dispose()
         Return syncFiles
     End Function
 
@@ -122,8 +122,6 @@ Public Class TweakDatabaseManager
                 fs.Close()
             End If
         Next
-
-        client.Dispose()
     End Function
 
     Public Async Function Upload(fileName As String) As Task(Of Boolean)
@@ -132,7 +130,6 @@ Public Class TweakDatabaseManager
         Dim result As WebDavResponse = Await client.PutFile(Path.GetFileName(fileName), fs)
 
         fs.Close()
-        client.Dispose()
 
         Return result.IsSuccessful
     End Function

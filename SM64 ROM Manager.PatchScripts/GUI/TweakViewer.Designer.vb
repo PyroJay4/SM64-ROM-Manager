@@ -50,21 +50,23 @@ Partial Class TweakViewer
         Me.ButtonX7 = New DevComponents.DotNetBar.ButtonX()
         Me.CircularProgress1 = New DevComponents.DotNetBar.Controls.CircularProgress()
         Me.ButtonX9 = New DevComponents.DotNetBar.ButtonX()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.WarningBox_TweakUpdates = New DevComponents.DotNetBar.Controls.WarningBox()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'ButtonX5
         '
-        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX5.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX5, "ButtonX5")
         Me.ButtonX5.Name = "ButtonX5"
         Me.ButtonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX5, CType(resources.GetObject("ButtonX5.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX5.Symbol = "59471"
         Me.ButtonX5.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonX5.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -72,13 +74,12 @@ Partial Class TweakViewer
         '
         'ButtonX_AddNew
         '
-        resources.ApplyResources(Me.ButtonX_AddNew, "ButtonX_AddNew")
         Me.ButtonX_AddNew.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX_AddNew, "ButtonX_AddNew")
         Me.ButtonX_AddNew.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX_AddNew.FocusCuesEnabled = False
         Me.ButtonX_AddNew.Name = "ButtonX_AddNew"
         Me.ButtonX_AddNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX_AddNew, CType(resources.GetObject("ButtonX_AddNew.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX_AddNew.Symbol = "57669"
         Me.ButtonX_AddNew.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX_AddNew.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -86,13 +87,12 @@ Partial Class TweakViewer
         '
         'ButtonX8
         '
-        resources.ApplyResources(Me.ButtonX8, "ButtonX8")
         Me.ButtonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX8.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX8, "ButtonX8")
         Me.ButtonX8.Name = "ButtonX8"
         Me.ButtonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX8, CType(resources.GetObject("ButtonX8.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX8.Symbol = "58343"
         Me.ButtonX8.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX8.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -100,7 +100,6 @@ Partial Class TweakViewer
         '
         'Panel1
         '
-        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.Controls.Add(Me.LabelX2)
         Me.Panel1.Controls.Add(Me.Panel3)
@@ -110,19 +109,18 @@ Partial Class TweakViewer
         Me.Panel1.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel1.Controls.Add(Me.ComboBoxEx_Scripts)
         Me.Panel1.Controls.Add(Me.LabelX1)
+        resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
-        Me.SuperTooltip1.SetSuperTooltip(Me.Panel1, CType(resources.GetObject("Panel1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX2
         '
-        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX2, "LabelX2")
         Me.LabelX2.Name = "LabelX2"
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX2, CType(resources.GetObject("LabelX2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'Panel3
         '
@@ -130,7 +128,6 @@ Partial Class TweakViewer
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
         Me.Panel3.Controls.Add(Me.ButtonX8)
         Me.Panel3.Name = "Panel3"
-        Me.SuperTooltip1.SetSuperTooltip(Me.Panel3, CType(resources.GetObject("Panel3.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'TableLayoutPanel2
         '
@@ -140,30 +137,27 @@ Partial Class TweakViewer
         Me.TableLayoutPanel2.Controls.Add(Me.ButtonX3, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.ButtonX2, 0, 0)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.SuperTooltip1.SetSuperTooltip(Me.TableLayoutPanel2, CType(resources.GetObject("TableLayoutPanel2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ButtonX3
         '
-        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX3.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX3, "ButtonX3")
         Me.ButtonX3.Name = "ButtonX3"
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX3, CType(resources.GetObject("ButtonX3.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX3.Symbol = "57676"
         Me.ButtonX3.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX3.SymbolSize = 12.0!
         '
         'ButtonX2
         '
-        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX2, "ButtonX2")
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX2.FocusCuesEnabled = False
         Me.ButtonX2.Name = "ButtonX2"
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX2, CType(resources.GetObject("ButtonX2.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX2.Symbol = "57680"
         Me.ButtonX2.SymbolColor = System.Drawing.Color.Goldenrod
         Me.ButtonX2.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -178,20 +172,18 @@ Partial Class TweakViewer
         '
         Me.LabelX_Description.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX_Description.Name = "LabelX_Description"
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX_Description, CType(resources.GetObject("LabelX_Description.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.LabelX_Description.TextLineAlignment = System.Drawing.StringAlignment.Near
         Me.LabelX_Description.WordWrap = True
         '
         'LabelX_PatchName
         '
-        resources.ApplyResources(Me.LabelX_PatchName, "LabelX_PatchName")
         Me.LabelX_PatchName.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
         Me.LabelX_PatchName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.LabelX_PatchName, "LabelX_PatchName")
         Me.LabelX_PatchName.Name = "LabelX_PatchName"
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX_PatchName, CType(resources.GetObject("LabelX_PatchName.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'TableLayoutPanel1
         '
@@ -201,17 +193,15 @@ Partial Class TweakViewer
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonX6, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonX4, 2, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.SuperTooltip1.SetSuperTooltip(Me.TableLayoutPanel1, CType(resources.GetObject("TableLayoutPanel1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ButtonX1
         '
-        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX1.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX1, "ButtonX1")
         Me.ButtonX1.Name = "ButtonX1"
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX1, CType(resources.GetObject("ButtonX1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX1.Symbol = "57669"
         Me.ButtonX1.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX1.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -219,13 +209,12 @@ Partial Class TweakViewer
         '
         'ButtonX6
         '
-        resources.ApplyResources(Me.ButtonX6, "ButtonX6")
         Me.ButtonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX6, "ButtonX6")
         Me.ButtonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX6.FocusCuesEnabled = False
         Me.ButtonX6.Name = "ButtonX6"
         Me.ButtonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX6, CType(resources.GetObject("ButtonX6.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX6.Symbol = "57680"
         Me.ButtonX6.SymbolColor = System.Drawing.Color.Goldenrod
         Me.ButtonX6.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -233,13 +222,12 @@ Partial Class TweakViewer
         '
         'ButtonX4
         '
-        resources.ApplyResources(Me.ButtonX4, "ButtonX4")
         Me.ButtonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX4, "ButtonX4")
         Me.ButtonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX4.FocusCuesEnabled = False
         Me.ButtonX4.Name = "ButtonX4"
         Me.ButtonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX4, CType(resources.GetObject("ButtonX4.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX4.Symbol = "57676"
         Me.ButtonX4.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.ButtonX4.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
@@ -255,7 +243,6 @@ Partial Class TweakViewer
         Me.ComboBoxEx_Scripts.FormattingEnabled = True
         Me.ComboBoxEx_Scripts.Name = "ComboBoxEx_Scripts"
         Me.ComboBoxEx_Scripts.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ComboBoxEx_Scripts, CType(resources.GetObject("ComboBoxEx_Scripts.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'LabelX1
         '
@@ -266,7 +253,6 @@ Partial Class TweakViewer
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Name = "LabelX1"
-        Me.SuperTooltip1.SetSuperTooltip(Me.LabelX1, CType(resources.GetObject("LabelX1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'Flyout1
         '
@@ -290,7 +276,6 @@ Partial Class TweakViewer
         Me.ItemListBox1.Name = "ItemListBox1"
         Me.ItemListBox1.ReserveLeftSpace = False
         Me.ItemListBox1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ItemListBox1, CType(resources.GetObject("ItemListBox1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'SuperTooltip1
         '
@@ -299,67 +284,71 @@ Partial Class TweakViewer
         '
         'TextBoxX1
         '
-        resources.ApplyResources(Me.TextBoxX1, "TextBoxX1")
         Me.TextBoxX1.BackColor = System.Drawing.Color.White
         '
         '
         '
         Me.TextBoxX1.Border.Class = "TextBoxBorder"
         Me.TextBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TextBoxX1.ButtonCustom.DisplayPosition = CType(resources.GetObject("TextBoxX1.ButtonCustom.DisplayPosition"), Integer)
-        Me.TextBoxX1.ButtonCustom.Image = CType(resources.GetObject("TextBoxX1.ButtonCustom.Image"), System.Drawing.Image)
-        Me.TextBoxX1.ButtonCustom.Text = resources.GetString("TextBoxX1.ButtonCustom.Text")
-        Me.TextBoxX1.ButtonCustom.Tooltip = resources.GetString("TextBoxX1.ButtonCustom.Tooltip")
-        Me.TextBoxX1.ButtonCustom2.DisplayPosition = CType(resources.GetObject("TextBoxX1.ButtonCustom2.DisplayPosition"), Integer)
-        Me.TextBoxX1.ButtonCustom2.Image = CType(resources.GetObject("TextBoxX1.ButtonCustom2.Image"), System.Drawing.Image)
-        Me.TextBoxX1.ButtonCustom2.Text = resources.GetString("TextBoxX1.ButtonCustom2.Text")
-        Me.TextBoxX1.ButtonCustom2.Tooltip = resources.GetString("TextBoxX1.ButtonCustom2.Tooltip")
         Me.TextBoxX1.DisabledBackColor = System.Drawing.Color.White
         Me.TextBoxX1.ForeColor = System.Drawing.Color.Black
+        resources.ApplyResources(Me.TextBoxX1, "TextBoxX1")
         Me.TextBoxX1.Name = "TextBoxX1"
         Me.TextBoxX1.PreventEnterBeep = True
-        Me.SuperTooltip1.SetSuperTooltip(Me.TextBoxX1, CType(resources.GetObject("TextBoxX1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TextBoxX1.WatermarkBehavior = DevComponents.DotNetBar.eWatermarkBehavior.HideNonEmpty
         '
         'ButtonX7
         '
-        resources.ApplyResources(Me.ButtonX7, "ButtonX7")
         Me.ButtonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        resources.ApplyResources(Me.ButtonX7, "ButtonX7")
         Me.ButtonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX7.FocusCuesEnabled = False
         Me.ButtonX7.Name = "ButtonX7"
         Me.ButtonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX7, CType(resources.GetObject("ButtonX7.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX7.SymbolColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ButtonX7.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX7.SymbolSize = 12.0!
         '
         'CircularProgress1
         '
-        resources.ApplyResources(Me.CircularProgress1, "CircularProgress1")
         '
         '
         '
         Me.CircularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        resources.ApplyResources(Me.CircularProgress1, "CircularProgress1")
         Me.CircularProgress1.Name = "CircularProgress1"
         Me.CircularProgress1.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot
         Me.CircularProgress1.SetVisibleStateOnStart = True
         Me.CircularProgress1.SetVisibleStateOnStop = True
         Me.CircularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
-        Me.SuperTooltip1.SetSuperTooltip(Me.CircularProgress1, CType(resources.GetObject("CircularProgress1.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         '
         'ButtonX9
         '
-        resources.ApplyResources(Me.ButtonX9, "ButtonX9")
         Me.ButtonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.ButtonX9.FocusCuesEnabled = False
+        resources.ApplyResources(Me.ButtonX9, "ButtonX9")
         Me.ButtonX9.Name = "ButtonX9"
         Me.ButtonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.SuperTooltip1.SetSuperTooltip(Me.ButtonX9, CType(resources.GetObject("ButtonX9.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.ButtonX9.Symbol = "57676"
         Me.ButtonX9.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material
         Me.ButtonX9.SymbolSize = 12.0!
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
+        Me.Panel2.Controls.Add(Me.ItemListBox1)
+        Me.Panel2.Controls.Add(Me.WarningBox_TweakUpdates)
+        resources.ApplyResources(Me.Panel2, "Panel2")
+        Me.Panel2.Name = "Panel2"
+        '
+        'WarningBox_TweakUpdates
+        '
+        Me.WarningBox_TweakUpdates.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.WarningBox_TweakUpdates.CloseButtonVisible = False
+        resources.ApplyResources(Me.WarningBox_TweakUpdates, "WarningBox_TweakUpdates")
+        Me.WarningBox_TweakUpdates.ForeColor = System.Drawing.Color.Black
+        Me.WarningBox_TweakUpdates.Name = "WarningBox_TweakUpdates"
         '
         'TweakViewer
         '
@@ -371,9 +360,8 @@ Partial Class TweakViewer
         Me.Controls.Add(Me.TextBoxX1)
         Me.Controls.Add(Me.ButtonX_AddNew)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.ItemListBox1)
+        Me.Controls.Add(Me.Panel2)
         Me.Name = "TweakViewer"
-        Me.SuperTooltip1.SetSuperTooltip(Me, CType(resources.GetObject("$this.SuperTooltip"), DevComponents.DotNetBar.SuperTooltipInfo))
         Me.TopLeftCornerSize = 0
         Me.TopRightCornerSize = 0
         Me.Panel1.ResumeLayout(False)
@@ -381,6 +369,7 @@ Partial Class TweakViewer
         Me.Panel3.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -408,4 +397,6 @@ Partial Class TweakViewer
     Friend WithEvents TextBoxX1 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents CircularProgress1 As DevComponents.DotNetBar.Controls.CircularProgress
     Friend WithEvents ButtonX9 As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents WarningBox_TweakUpdates As DevComponents.DotNetBar.Controls.WarningBox
 End Class
