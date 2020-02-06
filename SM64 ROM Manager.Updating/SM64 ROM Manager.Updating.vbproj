@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="MyPaths.vb" />
     <Compile Include="UpdateInfo.vb" />
+    <Compile Include="UpdateInstaller\UpdateInstallerConfig.vb" />
     <Compile Include="UpdatePackageInfo.vb" />
   </ItemGroup>
   <ItemGroup>

@@ -131,8 +131,8 @@ Friend Class UpdateInstaller
     End Sub
 
     Private Sub RunAddOns()
-        For Each addOnPath As String In Directory.GetFiles(Path.Combine(dataPath, ZIP_UPDATE_INSTALLER_ADDONS_DIRECTORY))
-            Dim asm As Assembly = Assembly.Load(addOnPath)
+        For Each addOnPath As String In Directory.GetFiles(Path.Combine(MyAppPath, "AddOns")) 'Directory.GetFiles(Path.Combine(dataPath, ZIP_UPDATE_INSTALLER_ADDONS_DIRECTORY))
+            Dim asm As Assembly = Assembly.LoadFile(addOnPath)
             Dim t As Type = asm.GetType($"{UPDATE_INSTALLER_ADDON_NAMESPACE}.{UPDATE_INSTALLER_ADDON_TYPE}", False)
 
             If t IsNot Nothing Then

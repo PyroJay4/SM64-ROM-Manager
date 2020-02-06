@@ -73,7 +73,6 @@ Global
 		SM64 ROM Manager.Updating.Client.Shared\SM64 ROM Manager.Updating.UpdateInstallerConfig.projitems*{7677e380-677f-460a-9222-bd366cf4385c}*SharedItemsImports = 4
 		SM64 ROM Manager.Updating.Client.Shared\SM64 ROM Manager.Updating.UpdateInstallerConfig.projitems*{8f01bb84-a3da-4039-a9d2-0f6db31739ec}*SharedItemsImports = 4
 		SM64 ROM Manager.Updating.Administration.Shared\SM64 ROM Manager.Updating.Administration.Shared.projitems*{b9b72df8-dfcf-4720-94e4-f39b6c471fea}*SharedItemsImports = 13
-		SM64 ROM Manager.Updating.Client.Shared\SM64 ROM Manager.Updating.UpdateInstallerConfig.projitems*{f2c07849-fdd9-48ab-9215-a6a750134ca7}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

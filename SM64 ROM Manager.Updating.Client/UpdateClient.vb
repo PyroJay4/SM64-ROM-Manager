@@ -5,6 +5,7 @@ Imports System.IO.Compression
 Imports System.Net
 Imports System.Reflection
 Imports Newtonsoft.Json.Linq
+Imports SM64_ROM_Manager.Updating.UpdateInstaller
 
 Public Class UpdateClient
 
