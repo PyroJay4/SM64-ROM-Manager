@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports SM64_ROM_Manager.Updating
 
-Namespace UpdateInstaller
+Namespace Global.UpdateInstaller
 
     Public Module AddOn
 

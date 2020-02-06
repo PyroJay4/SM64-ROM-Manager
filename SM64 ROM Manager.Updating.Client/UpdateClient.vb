@@ -45,7 +45,7 @@ Public Class UpdateClient
     Public Sub New(updateUrl As String, currentVersion As ApplicationVersion, minimumChannel As Channels)
         Me.UpdateUrl = updateUrl
         Me.CurrentVersion = currentVersion
-        Me.MinimumChannel = minimumChannel
+        Me.MinimumChannel = Math.Max(minimumChannel, currentVersion.Channel)
         AddHandler WebClient.DownloadProgressChanged, AddressOf WebClient_DownloadProgressChanged
     End Sub
 
