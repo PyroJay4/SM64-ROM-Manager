@@ -21,7 +21,7 @@ Public Class HUDOptions
     Public Function GetPosition(b As HUDOptionsBlock) As Point
         GetPosition = Point.Empty
 
-        If b?.Cords IsNot Nothing AndAlso binaryData IsNot Nothing Then
+        If b?.Cords IsNot Nothing AndAlso binaryData?.CanRead Then
             binaryData.Position = b.Cords.RomPosX
             GetPosition.X = binaryData.ReadInt16
 
@@ -31,7 +31,7 @@ Public Class HUDOptions
     End Function
 
     Public Sub SetPosition(b As HUDOptionsBlock, p As Point)
-        If b?.Cords IsNot Nothing AndAlso binaryData IsNot Nothing Then
+        If b?.Cords IsNot Nothing AndAlso binaryData?.CanWrite Then
             binaryData.Position = b.Cords.RomPosX
             binaryData.Write(CShort(p.X))
 
