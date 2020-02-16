@@ -34,12 +34,6 @@ Namespace LevelEditor
 
     Public Class Form_AreaEditor
 
-#Region "Static Variables"
-
-        Friend Shared otherTextures_Categories As TextureEditor.TextureCategory() = Nothing
-
-#End Region
-
 #Region "Declerations"
 
         Friend Property CLevel As Level = Nothing
@@ -2561,7 +2555,7 @@ Namespace LevelEditor
             '...
         End Sub
 
-        Friend Sub LoadOtherTexturesCategories()
+        Friend Function LoadOtherTexturesCategories() As IEnumerable(Of TextureEditor.TextureCategory)
             'Load json for other textures
             Dim ot As JObject = JObject.Parse(File.ReadAllText(Path.Combine(MyDataPath, "Other\Other Textures.json")))
             Dim jblocks = ot("Blocks").ToObject(Of TextureBlocksJsonClass())
@@ -2679,20 +2673,18 @@ Namespace LevelEditor
                 categories.Add(catLevelTextures)
             End If
 
-            otherTextures_Categories = categories.ToArray
-        End Sub
+            Return categories
+        End Function
 
         Friend Sub OpenTextureEditor()
             'Load other textures and create categories
-            If otherTextures_Categories Is Nothing Then
-                LoadOtherTexturesCategories()
-            End If
+            Dim otherTextures_Categories As IEnumerable(Of TextureEditor.TextureCategory) = LoadOtherTexturesCategories()
 
             'Take texture snapshot
             Dim dic As Dictionary(Of Material, Image) = maps.TakeSnapshotOfCurrentModelTextures()
 
             'Open Texture Editor
-            Dim frm As New TextureEditor(Rommgr, otherTextures_Categories)
+            Dim frm As New TextureEditor(Rommgr, otherTextures_Categories.ToArray)
 
             'Update textures
             AddHandler frm.TextureReplaced,
