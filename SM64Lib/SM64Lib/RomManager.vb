@@ -533,6 +533,10 @@ Public Class RomManager
     End Sub
 
     Private Function GenerateAndGetGlobalObjectBank() As SegmentedBank
+        If GlobalObjectBank Is Nothing Then
+            CreateNewGlobalObjectBank()
+        End If
+
         Dim seg As SegmentedBank = GlobalObjectBank.WriteToSeg(&H7)
         SetSegBank(seg)
         Return seg
