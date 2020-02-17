@@ -308,11 +308,16 @@ Namespace LevelEditor
             img1.Dispose()
             fs.Close()
 
+            'Resize image to fit current one
+            If mat.Image.Size <> img.Size Then
+                img = Model.Fast3D.ResizeImage(img, mat.Image.Size)
+            End If
+
             'Convert Image to N64 Texture
             N64Graphics.N64Graphics.Convert(texdata, palette, info.TextureFormat, img)
 
             'Write Texture & Palete Data to ROM
-            Dim rom As BinaryRom = rommgr.GetBinaryRom(IO.FileAccess.ReadWrite)
+            Dim rom As BinaryRom = rommgr.GetBinaryRom(FileAccess.ReadWrite)
             rom.Position = info.TextureRomAddress
             rom.Write(texdata)
             If palette IsNot Nothing Then
