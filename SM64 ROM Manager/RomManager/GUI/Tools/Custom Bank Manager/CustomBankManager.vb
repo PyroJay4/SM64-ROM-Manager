@@ -252,6 +252,7 @@ Public Class CustomBankManager
             .AddressList = curObj.Config.CollisionPointerDestinations
         }
         editor.ShowDialog()
+        LoadCustomObject(curObj)
     End Sub
 
     Private Sub ButtonItem_RemoveObject_Click(sender As Object, e As EventArgs) Handles ButtonX_RemoveObject.Click, ButtonItem_RemoveObject.Click
