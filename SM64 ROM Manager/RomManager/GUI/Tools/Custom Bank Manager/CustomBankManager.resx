@@ -286,7 +286,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="LabelX_CollisionPointerDestinationsCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 23</value>
+    <value>50, 23</value>
   </data>
   <data name="LabelX_CollisionPointerDestinationsCount.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -307,13 +307,13 @@
     <value>8</value>
   </data>
   <data name="ButtonX_EditCollisionPointerDestinations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 92</value>
+    <value>145, 92</value>
   </data>
   <data name="ButtonX_EditCollisionPointerDestinations.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="ButtonX_EditCollisionPointerDestinations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>82, 23</value>
   </data>
   <data name="ButtonX_EditCollisionPointerDestinations.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -338,6 +338,12 @@
   </data>
   <data name="LayoutControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="LayoutControlItem2.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="LayoutControlItem1.Text" xml:space="preserve">
+    <value>Model-ID:</value>
   </data>
   <data name="LayoutControlItem5.Text" xml:space="preserve">
     <value>Collision Pointer&lt;br/&gt;Destinations:</value>
@@ -384,41 +390,8 @@
   <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="LayoutControlItem2.Text" xml:space="preserve">
-    <value>Name:</value>
-  </data>
-  <data name="LayoutControlItem1.Text" xml:space="preserve">
-    <value>Model-ID:</value>
-  </data>
   <data name="ContextMenuBar1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="CM_Object.Text" xml:space="preserve">
-    <value>CM_Object</value>
-  </data>
-  <data name="ContextMenuBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 351</value>
-  </data>
-  <data name="ContextMenuBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="ContextMenuBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="ContextMenuBar1.Text" xml:space="preserve">
-    <value>ContextMenuBar1</value>
-  </data>
-  <data name="&gt;&gt;ContextMenuBar1.Name" xml:space="preserve">
-    <value>ContextMenuBar1</value>
-  </data>
-  <data name="&gt;&gt;ContextMenuBar1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ContextMenuBar, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ContextMenuBar1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ContextMenuBar1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="ButtonItem_ImportModell.Text" xml:space="preserve">
     <value>Import Model</value>
@@ -479,6 +452,33 @@
   </data>
   <data name="ButtonItem_RemoveObject.Text" xml:space="preserve">
     <value>Remove Object</value>
+  </data>
+  <data name="CM_Object.Text" xml:space="preserve">
+    <value>CM_Object</value>
+  </data>
+  <data name="ContextMenuBar1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 351</value>
+  </data>
+  <data name="ContextMenuBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="ContextMenuBar1.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="ContextMenuBar1.Text" xml:space="preserve">
+    <value>ContextMenuBar1</value>
+  </data>
+  <data name="&gt;&gt;ContextMenuBar1.Name" xml:space="preserve">
+    <value>ContextMenuBar1</value>
+  </data>
+  <data name="&gt;&gt;ContextMenuBar1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ContextMenuBar, DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ContextMenuBar1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ContextMenuBar1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

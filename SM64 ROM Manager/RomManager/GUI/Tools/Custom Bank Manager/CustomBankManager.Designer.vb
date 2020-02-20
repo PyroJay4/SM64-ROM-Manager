@@ -176,6 +176,7 @@ Partial Class CustomBankManager
         '
         Me.ButtonX_EditCollisionPointerDestinations.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX_EditCollisionPointerDestinations.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX_EditCollisionPointerDestinations.Image = Global.SM64_ROM_Manager.My.Resources.MyIcons.icons8_edit_16px
         resources.ApplyResources(Me.ButtonX_EditCollisionPointerDestinations, "ButtonX_EditCollisionPointerDestinations")
         Me.ButtonX_EditCollisionPointerDestinations.Name = "ButtonX_EditCollisionPointerDestinations"
         Me.ButtonX_EditCollisionPointerDestinations.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -256,7 +257,7 @@ Partial Class CustomBankManager
         Me.LayoutControlItem6.Height = 31
         Me.LayoutControlItem6.MinSize = New System.Drawing.Size(32, 20)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Width = 83
+        Me.LayoutControlItem6.Width = 90
         '
         'ContextMenuBar1
         '
