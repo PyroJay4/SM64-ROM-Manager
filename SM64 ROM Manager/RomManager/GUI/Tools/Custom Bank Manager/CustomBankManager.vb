@@ -18,12 +18,23 @@ Public Class CustomBankManager
     Private ReadOnly knownVisualMaps As New Dictionary(Of Model.Fast3D.Fast3DBuffer, Object)
     Private ReadOnly knownCollisionMaps As New Dictionary(Of Model.Collision.CollisionMap, Object)
 
+    'P r i v a t e   P r o p e r t i e s
+
+    Private WriteOnly Property LayoutGroups_Enabled As Boolean
+        Set
+            TextBoxX_ModelID.Enabled = Value
+            TextBoxX_Name.Enabled = Value
+            LabelX_CollisionPointerDestinationsCount.Enabled = Value
+            ButtonX_EditCollisionPointerDestinations.Enabled = Value
+        End Set
+    End Property
+
     'C o n s t r u c t o r s
 
     Public Sub New(rommgr As RomManager, objBank As CustomObjectBank)
         InitializeComponent()
         UpdateAmbientColors
-        Panel2.Enabled = False
+        LayoutGroups_Enabled = False
         Me.rommgr = rommgr
         Me.objBank = objBank
     End Sub
@@ -43,7 +54,13 @@ Public Class CustomBankManager
     End Sub
 
     Private Function TextForButtonItem(obj As CustomObject) As String
-        Return $"Model-ID: {TextFromValue(obj.ModelID)} - Bank: {TextFromValue(obj.ModelBankOffset)}"
+        Dim txt As String = $"Model-ID: {TextFromValue(obj.ModelID,, 3)}"
+
+        If Not String.IsNullOrEmpty(obj.Config.Name) Then
+            txt &= $" - {obj.Config.Name}"
+        End If
+
+        Return txt
     End Function
 
     Private Function AddItemToList(obj As CustomObject) As ButtonItem
@@ -71,8 +88,10 @@ Public Class CustomBankManager
 
     Private Sub LoadCustomObject(obj As CustomObject)
         curObj = obj
-        Panel2.Enabled = True
-        TextBoxX1.Text = TextFromValue(obj.ModelID)
+        LayoutGroups_Enabled = True
+        TextBoxX_ModelID.Text = TextFromValue(obj.ModelID)
+        TextBoxX_Name.Text = obj.Config.Name
+        LabelX_CollisionPointerDestinationsCount.Text = obj.Config.CollisionPointerDestinations.Count
     End Sub
 
     Private Sub CreateCustomObject()
@@ -143,7 +162,7 @@ Public Class CustomBankManager
             ItemListBox1.Items.Remove(item)
         Next
 
-        Panel2.Enabled = False
+        LayoutGroups_Enabled = False
         curObj = Nothing
 
         RaiseEvent ObjectRemoved(Me, New EventArgs)
@@ -212,21 +231,36 @@ Public Class CustomBankManager
         LoadList()
     End Sub
 
-    Private Sub TextBoxX1_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX1.TextChanged
+    Private Sub TextBoxX_ModelID_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX_ModelID.TextChanged
         Try
-            curObj.ModelID = ValueFromText(TextBoxX1.Text)
+            curObj.ModelID = ValueFromText(TextBoxX_ModelID.Text)
             UpdateButtonItems()
         Catch ex As Exception
         End Try
     End Sub
 
-    Private Sub ButtonItem_RemoveObject_Click(sender As Object, e As EventArgs) Handles ButtonX2.Click, ButtonItem_RemoveObject.Click
+    Private Sub TextBoxX_Name_TextChanged(sender As Object, e As EventArgs) Handles TextBoxX_Name.TextChanged
+        Try
+            curObj.Config.Name = TextBoxX_Name.Text.Trim
+            UpdateButtonItems()
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub ButtonX_EditCollisionPointerDestinations_Click(sender As Object, e As EventArgs) Handles ButtonX_EditCollisionPointerDestinations.Click
+        Dim editor As New AddressListEditor With {
+            .AddressList = curObj.Config.CollisionPointerDestinations
+        }
+        editor.ShowDialog()
+    End Sub
+
+    Private Sub ButtonItem_RemoveObject_Click(sender As Object, e As EventArgs) Handles ButtonX_RemoveObject.Click, ButtonItem_RemoveObject.Click
         If MessageBoxEx.Show("Do you realy want to remove this custom object? You will not be able to restore it.", "Remove Custom Object", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             RemoveCurObject()
         End If
     End Sub
 
-    Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
+    Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX_CreateNewObject.Click
         CreateCustomObject()
     End Sub
 
@@ -238,7 +272,7 @@ Public Class CustomBankManager
         ShowCollision(curObj)
     End Sub
 
-    Private Sub ButtonItem_ImportModell_Click(sender As Object, e As EventArgs) Handles ButtonItem_ImportModell.Click, ButtonX3.Click
+    Private Sub ButtonItem_ImportModell_Click(sender As Object, e As EventArgs) Handles ButtonItem_ImportModell.Click, ButtonX_ImportModel.Click
         ImportNewModel(curObj)
     End Sub
 
@@ -257,5 +291,4 @@ Public Class CustomBankManager
     Private Sub ButtonItem_CopyCollisionPointer_Click(sender As Object, e As EventArgs) Handles ButtonItem_CopyCollisionPointer.Click
         CopyCollisionPointer(curObj)
     End Sub
-
 End Class

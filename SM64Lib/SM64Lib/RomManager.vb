@@ -546,6 +546,9 @@ Public Class RomManager
         Dim fs As New BinaryRom(Me, FileAccess.ReadWrite)
         Dim seg As SegmentedBank = GenerateAndGetGlobalObjectBank()
 
+        'Write collision pointers
+        GlobalObjectBank.WriteCollisionPointers(Me)
+
         'Set Segmented Bank
         seg.RomStart = offset
 

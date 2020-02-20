@@ -34,7 +34,10 @@ Namespace Global.SM64Lib.ObjectBanks
 
             'Start Custom Objects
             data.Position = lvlScriptLength
-            For Each obj As CustomObject In Objects
+
+            For i As Integer = 0 To Objects.Count - 1
+                Dim obj As CustomObject = Objects(i)
+
                 'Write Object Model
                 obj.ModelBankOffset = data.Position
                 Dim sr As Model.ObjectModel.SaveResult =
@@ -56,6 +59,9 @@ Namespace Global.SM64Lib.ObjectBanks
                 obj.GeolayoutBankOffset = data.Position
                 obj.Geolayout.Write(data.BaseStream, data.Position)
                 data.Position = HexRoundUp1(data.Position + &H30)
+
+                'Add object config to object bank config
+                Config.CustomObjectConfigs.Add(i, obj.Config)
             Next
 
             'Set length of segmented
@@ -69,24 +75,22 @@ Namespace Global.SM64Lib.ObjectBanks
             Levelscript.Add(New LevelscriptCommand("07 04 00 00"))
             Levelscript.Write(data, 0)
 
-            'Write collision pointer & re-add configs to object bank config
-            For i As Integer = 0 To Objects.Count - 1
-                Dim obj As CustomObject = Objects(i)
-
-                'Write collision pointer
-                For Each dest As Integer In obj.Config.CollisionPointerDestinations
-                    data.Position = dest
-                    data.Write(obj.CollisionPointer)
-                Next
-
-                'Add object config to object bank config
-                Config.CustomObjectConfigs.Add(i, obj.Config)
-            Next
-
             _CurSeg = seg
             _NeedToSave = False
             Return seg
         End Function
+
+        Public Sub WriteCollisionPointers(rommgr As RomManager)
+            Dim data As BinaryData = rommgr.GetBinaryRom(FileAccess.ReadWrite)
+
+            'Write collision pointer
+            For Each obj As CustomObject In Objects
+                For Each dest As Integer In obj.Config.CollisionPointerDestinations
+                    data.Position = dest
+                    data.Write(obj.CollisionPointer)
+                Next
+            Next
+        End Sub
 
         Public Sub ReadFromSeg(rommgr As RomManager, bankID As Byte, config As ObjectBankConfig)
             ReadFromSeg(rommgr, rommgr.GetSegBank(bankID), config)
@@ -114,7 +118,7 @@ Namespace Global.SM64Lib.ObjectBanks
                 Select Case cmd.CommandType
                     Case LevelscriptCommandTypes.LoadPolygonWithGeo
                         Dim obj As New CustomObject With {
-                            .Config = config.CustomObjectConfigs(i)
+                            .Config = config.GetCustomObjectConfig(i)
                         }
 
                         'Load Model ID & Geolayout Offset

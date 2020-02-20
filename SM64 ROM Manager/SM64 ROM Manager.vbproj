@@ -203,6 +203,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Layout.dll</HintPath>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar.Layout.Design">
+      <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Layout.Design.dll</HintPath>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Shared Libs\DotNetBarNew\DevComponents.DotNetBar.Schedule.dll</HintPath>
@@ -431,10 +434,16 @@
     <Compile Include="RomManager\GUI\Other\ThankYouForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RomManager\GUI\Tools\CustomBankManager.Designer.vb">
+    <Compile Include="RomManager\GUI\Tools\Custom Bank Manager\AddressListEditor.Designer.vb">
+      <DependentUpon>AddressListEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\Custom Bank Manager\AddressListEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\Custom Bank Manager\CustomBankManager.Designer.vb">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
     </Compile>
-    <Compile Include="RomManager\GUI\Tools\CustomBankManager.vb">
+    <Compile Include="RomManager\GUI\Tools\Custom Bank Manager\CustomBankManager.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RomManager\GUI\Main Form\Level Manager\ImportLevelDialog.Designer.vb">
@@ -760,10 +769,16 @@
     <EmbeddedResource Include="RomManager\GUI\Other\ThankYouForm.resx">
       <DependentUpon>ThankYouForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Tools\CustomBankManager.de.resx">
+    <EmbeddedResource Include="RomManager\GUI\Tools\Custom Bank Manager\AddressListEditor.de.resx">
+      <DependentUpon>AddressListEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\Custom Bank Manager\AddressListEditor.resx">
+      <DependentUpon>AddressListEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\Custom Bank Manager\CustomBankManager.de.resx">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RomManager\GUI\Tools\CustomBankManager.resx">
+    <EmbeddedResource Include="RomManager\GUI\Tools\Custom Bank Manager\CustomBankManager.resx">
       <DependentUpon>CustomBankManager.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Main Form\Level Manager\ImportLevelDialog.resx">
@@ -1075,6 +1090,7 @@
     <None Include="Resources\icons8_error_16px.png" />
     <None Include="Resources\icons8_collapse_arrow_16px.png" />
     <None Include="Resources\icons8_expand_arrow_16px.png" />
+    <None Include="Resources\icons8_preview_pane_16px.png" />
     <Content Include="RomManager\Others\RomMap.txt" />
   </ItemGroup>
   <ItemGroup>
