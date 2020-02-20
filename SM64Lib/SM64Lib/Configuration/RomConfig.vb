@@ -6,6 +6,7 @@ Namespace Configuration
     Public Class RomConfig
 
         Public ReadOnly Property LevelConfigs As New Dictionary(Of Byte, LevelConfig)
+        Public ReadOnly Property GlobalObjectBankConfig As New ObjectBankConfig
         Public Property SelectedTextProfileInfo As String = String.Empty
 
         Public Function GetLevelConfig(levelID As UShort) As LevelConfig

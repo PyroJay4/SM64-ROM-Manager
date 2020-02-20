@@ -1,13 +1,10 @@
-﻿Imports System.IO
-Imports SM64Lib.Data
-Imports SM64Lib.Geolayout
-Imports SM64Lib.Levels.Script
-Imports SM64Lib.Levels.Script.Commands
+﻿Imports SM64Lib.Configuration
 
 Namespace Global.SM64Lib.ObjectBanks
 
     Public Class CustomObject
 
+        Public Property Config As New CustomObjectConfig
         Public Property Geolayout As Geolayout.Geolayout = Nothing
         Public Property Model As Model.ObjectModel = Nothing
         Public Property ModelID As Byte = 0

@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Runtime.InteropServices
+Imports SM64Lib.Configuration
 Imports SM64Lib.Data
 Imports SM64Lib.Geolayout
 Imports SM64Lib.Levels.Script
@@ -10,6 +11,7 @@ Namespace Global.SM64Lib.ObjectBanks
 
     Public Class CustomObjectBank
 
+        Public ReadOnly Property Config As New ObjectBankConfig
         Public ReadOnly Property Objects As New List(Of CustomObject)
         Public ReadOnly Property CurSeg As SegmentedBank = Nothing
         Public Property NeedToSave As Boolean = False
@@ -23,6 +25,9 @@ Namespace Global.SM64Lib.ObjectBanks
 
             'Clear the old levelscript
             Levelscript.Clear()
+
+            'Clear Configuration
+            Config.CustomObjectConfigs.Clear()
 
             'Calculate space of Levelscript
             lvlScriptLength = HexRoundUp1(Objects.Count * 8 + 4)
@@ -64,16 +69,30 @@ Namespace Global.SM64Lib.ObjectBanks
             Levelscript.Add(New LevelscriptCommand("07 04 00 00"))
             Levelscript.Write(data, 0)
 
+            'Write collision pointer & re-add configs to object bank config
+            For i As Integer = 0 To Objects.Count - 1
+                Dim obj As CustomObject = Objects(i)
+
+                'Write collision pointer
+                For Each dest As Integer In obj.Config.CollisionPointerDestinations
+                    data.Position = dest
+                    data.Write(obj.CollisionPointer)
+                Next
+
+                'Add object config to object bank config
+                Config.CustomObjectConfigs.Add(i, obj.Config)
+            Next
+
             _CurSeg = seg
             _NeedToSave = False
             Return seg
         End Function
 
-        Public Sub ReadFromSeg(rommgr As RomManager, bankID As Byte)
-            ReadFromSeg(rommgr, rommgr.GetSegBank(bankID))
+        Public Sub ReadFromSeg(rommgr As RomManager, bankID As Byte, config As ObjectBankConfig)
+            ReadFromSeg(rommgr, rommgr.GetSegBank(bankID), config)
         End Sub
 
-        Public Sub ReadFromSeg(rommgr As RomManager, seg As SegmentedBank)
+        Public Sub ReadFromSeg(rommgr As RomManager, seg As SegmentedBank, config As ObjectBankConfig)
             Dim s As Stream
             Dim data As BinaryData
 
@@ -82,14 +101,21 @@ Namespace Global.SM64Lib.ObjectBanks
             s = seg.ReadDataIfNull(rommgr)
             data = New BinaryStreamData(s)
 
+            'Get configuration
+            _Config = config
+
             'Read Levelscript
             Levelscript.Read(rommgr, seg.BankAddress, LevelscriptCommandTypes.JumpBack, New Dictionary(Of Byte, SegmentedBank) From {{seg.BankID, seg}})
 
             'Parse Levelscript & Load Models
-            For Each cmd As LevelscriptCommand In Levelscript
+            For i As Integer = 0 To Levelscript.Count - 1
+                Dim cmd As LevelscriptCommand = DirectCast(Levelscript(i), LevelscriptCommand)
+
                 Select Case cmd.CommandType
                     Case LevelscriptCommandTypes.LoadPolygonWithGeo
-                        Dim obj As New CustomObject
+                        Dim obj As New CustomObject With {
+                            .Config = config.CustomObjectConfigs(i)
+                        }
 
                         'Load Model ID & Geolayout Offset
                         obj.ModelID = clLoadPolygonWithGeo.GetModelID(cmd)

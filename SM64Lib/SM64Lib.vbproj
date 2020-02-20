@@ -119,8 +119,10 @@
     <Compile Include="SM64Lib\Behavior\Script\Behaviorscript.vb" />
     <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommand.vb" />
     <Compile Include="SM64Lib\Behavior\Script\BehaviorscriptCommandCollection.vb" />
+    <Compile Include="SM64Lib\Configuration\CustomObjectConfig.vb" />
     <Compile Include="SM64Lib\Configuration\LevelAreaConfig.vb" />
     <Compile Include="SM64Lib\Configuration\LevelConfig.vb" />
+    <Compile Include="SM64Lib\Configuration\ObjectBankConfig.vb" />
     <Compile Include="SM64Lib\Configuration\RomConfig.vb" />
     <Compile Include="SM64Lib\Data\BinaryFile.vb" />
     <Compile Include="SM64Lib\Data\System\Bits.vb" />

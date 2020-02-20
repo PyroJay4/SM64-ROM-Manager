@@ -515,7 +515,7 @@ Public Class RomManager
 
             'Load Object Bank
             GlobalObjectBank = New CustomObjectBank
-            GlobalObjectBank.ReadFromSeg(Me, seg)
+            GlobalObjectBank.ReadFromSeg(Me, seg, RomConfig.GlobalObjectBankConfig)
         Else
             'Set Object Bank to Null
             GlobalObjectBank = Nothing
