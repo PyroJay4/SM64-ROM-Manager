@@ -845,7 +845,12 @@ Public Class Tab_LevelManager
         Controller.ChangeLevelCustomName(CurrentLevelIndex)
     End Sub
 
-    Private Sub Controls_HandleToSaveLevelSettings(sender As Object, e As EventArgs) Handles SwitchButton_LM_HardcodedCameraSettings.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged
+    Private Sub Controls_HandleToSaveLevelSettings(sender As Object, e As EventArgs) Handles SwitchButton_LM_HardcodedCameraSettings.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_UseGlobalObjectBank.ValueChanged
 
     End Sub
+
+    Private Sub GroupBox_LM_Areas_EnabledChanged(sender As Object, e As EventArgs) Handles GroupBox_LM_Areas.EnabledChanged
+        GroupBox_LM_Areas.InvalidateNonClient()
+    End Sub
+
 End Class
