@@ -27,8 +27,8 @@ Public Structure RomVersion
     Public Shared Operator >(left As RomVersion, right As RomVersion) As Boolean
         Dim flag As Boolean =
                 left.Version > right.Version OrElse
-                (left.Version = right.Version AndAlso (left.DevelopmentStage < right.DevelopmentStage OrElse
-                (left.DevelopmentStage = right.DevelopmentStage AndAlso left.DevelopmentBuild > right.DevelopmentBuild)))
+                (left.Version = right.Version AndAlso left.DevelopmentStage < right.DevelopmentStage) OrElse
+                (left.Version = right.Version AndAlso left.DevelopmentStage = right.DevelopmentStage AndAlso left.DevelopmentBuild > right.DevelopmentBuild)
 
         Return flag
     End Operator
