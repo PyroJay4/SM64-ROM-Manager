@@ -182,7 +182,7 @@ Namespace Levels.ScrolTex
             clScrollingTexture.SetScrollType(Command, Type)
             clScrollingTexture.SetScrollBehavior(Command, Behavior)
             clScrollingTexture.SetGroupID(Command, GroupID)
-            clNormal3DObject.SetSegBehaviorAddr(Command, &H400000)
+            clNormal3DObject.SetSegBehaviorAddr(Command, &H401700)
 
             Dim acts() As Boolean = {False, False, False, False, False, False, False, False}
             acts(7) = Act1

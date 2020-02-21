@@ -90,6 +90,8 @@ Namespace Global.SM64Lib.ObjectBanks
                     data.Write(obj.CollisionPointer)
                 Next
             Next
+
+            data.Close()
         End Sub
 
         Public Sub ReadFromSeg(rommgr As RomManager, bankID As Byte, config As ObjectBankConfig)

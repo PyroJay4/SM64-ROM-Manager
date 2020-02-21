@@ -70,7 +70,7 @@ Namespace Levels
                         tArea.TerrainType = clTerrian.GetTerrainType(c)
 
                     Case LevelscriptCommandTypes.Normal3DObject
-                        If clNormal3DObject.GetSegBehaviorAddr(c) = &H400000 Then
+                        If {&H400000, &H401700}.Contains(clNormal3DObject.GetSegBehaviorAddr(c)) Then
                             tArea.ScrollingTextures.Add(New ManagedScrollingTexture(c))
                         Else
                             tArea.Objects.Add(c)

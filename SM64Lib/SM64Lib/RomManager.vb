@@ -543,7 +543,6 @@ Public Class RomManager
     End Function
 
     Private Sub SaveGlobalObjectBank(ByRef offset As Integer)
-        Dim fs As New BinaryRom(Me, FileAccess.ReadWrite)
         Dim seg As SegmentedBank = GenerateAndGetGlobalObjectBank()
 
         'Write collision pointers
@@ -553,6 +552,7 @@ Public Class RomManager
         seg.RomStart = offset
 
         'Write Segmented Bank
+        Dim fs As New BinaryRom(Me, FileAccess.ReadWrite)
         seg.WriteData(fs.BaseStream)
         offset = fs.Position
 
