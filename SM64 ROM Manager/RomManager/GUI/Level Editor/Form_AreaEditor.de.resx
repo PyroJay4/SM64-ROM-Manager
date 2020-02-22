@@ -2410,4 +2410,10 @@
   <data name="ButtonItem3.Text" xml:space="preserve">
     <value>Level-Editor beenden</value>
   </data>
+  <data name="ButtonItem_DropToBottom.Text" xml:space="preserve">
+    <value>Absetzen zur niedrigsten Fläche</value>
+  </data>
+  <data name="ButtonX_DropToBottom.Text" xml:space="preserve">
+    <value>Absetzen niedrigste</value>
+  </data>
 </root>
