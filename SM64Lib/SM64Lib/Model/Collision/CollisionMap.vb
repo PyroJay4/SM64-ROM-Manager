@@ -313,12 +313,20 @@ Namespace Model.Collision
 
         Public Function DropToButtom(pos As Vector3) As Single
             Dim found() As Single = DropToGroud_GetFoundList(pos)
-            Return found.Min
+            If found.Any Then
+                Return found.Min
+            Else
+                Return pos.Y
+            End If
         End Function
 
         Public Function DropToTop(pos As Vector3) As Single
             Dim found() As Single = DropToGroud_GetFoundList(pos)
-            Return found.Max
+            If found.Any Then
+                Return found.Max
+            Else
+                Return pos.Y
+            End If
         End Function
 
         Public Function DropToNearesGround(pos As Vector3) As Single
