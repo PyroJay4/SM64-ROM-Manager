@@ -46,7 +46,7 @@ Namespace Global.SM64Lib.ObjectBanks
 
                 'Write Model Offset & Length & Collision Offset
                 data.Write(obj.ModelBankOffset)
-                data.Write(obj.Model.Length)
+                data.Write(CInt(obj.Model.Fast3DBuffer.Length))
                 data.Write(sr.CollisionPointer And &HFFFFFF)
                 obj.CollisionPointer = sr.CollisionPointer
                 HexRoundUp2(data.Position)
@@ -115,7 +115,7 @@ Namespace Global.SM64Lib.ObjectBanks
 
             'Parse Levelscript & Load Models
             For i As Integer = 0 To Levelscript.Count - 1
-                Dim cmd As LevelscriptCommand = DirectCast(Levelscript(i), LevelscriptCommand)
+                Dim cmd As LevelscriptCommand = Levelscript(i)
 
                 Select Case cmd.CommandType
                     Case LevelscriptCommandTypes.LoadPolygonWithGeo
