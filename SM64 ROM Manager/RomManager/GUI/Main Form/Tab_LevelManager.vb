@@ -25,9 +25,9 @@ Public Class Tab_LevelManager
 
     'C o n t r o l s
 
-    Private WithEvents ObjectBankSelectorBox_C As New ObjectBankSelectorBox With {.Dock = DockStyle.Fill}
-    Private WithEvents ObjectBankSelectorBox_D As New ObjectBankSelectorBox With {.Dock = DockStyle.Fill}
-    Private WithEvents ObjectBankSelectorBox_9 As New ObjectBankSelectorBox With {.Dock = DockStyle.Fill}
+    Private WithEvents ObjectBankSelectorBox_C As New ObjectBankSelectorBox With {.Dock = DockStyle.Fill, .ContentLabelText = "Content of Bank 0xC"}
+    Private WithEvents ObjectBankSelectorBox_D As New ObjectBankSelectorBox With {.Dock = DockStyle.Fill, .ContentLabelText = "Content of Bank 0xD"}
+    Private WithEvents ObjectBankSelectorBox_9 As New ObjectBankSelectorBox With {.Dock = DockStyle.Fill, .ContentLabelText = "Content of Bank 0x9"}
 
     'F l a g s
 

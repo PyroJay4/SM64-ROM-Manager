@@ -4,6 +4,15 @@ Public Class ObjectBankSelectorBox
 
     Public Event SelectedComboIndexChanged As EventHandler
 
+    Public Property ContentLabelText As String
+        Get
+            Return LabelX29.Text
+        End Get
+        Set(value As String)
+            LabelX29.Text = value
+        End Set
+    End Property
+
     Public Property SelectedComboIndex As Integer
         Get
             Return ComboBox_ObjectBankSelector.SelectedIndex
