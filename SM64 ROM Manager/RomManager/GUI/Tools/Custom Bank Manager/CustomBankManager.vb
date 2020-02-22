@@ -26,6 +26,8 @@ Public Class CustomBankManager
             TextBoxX_Name.Enabled = Value
             LabelX_CollisionPointerDestinationsCount.Enabled = Value
             ButtonX_EditCollisionPointerDestinations.Enabled = Value
+            ButtonX_ImportModel.Enabled = Value
+            ButtonX_RemoveObject.Enabled = Value
         End Set
     End Property
 
