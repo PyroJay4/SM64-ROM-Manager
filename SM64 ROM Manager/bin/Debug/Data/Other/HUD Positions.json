@@ -1,18 +1,16 @@
 /*
 Type:
-0 = Tab Container
-1 = Position Container
-2 = Position Group
+1 = Group
 3 = Position
 */
 
 {
     "Name": "FirstContainer",
-    "Type": 0,
+    "Type": 1,
     "Childs": [
         {
             "Name": "Main",
-            "Type": 0,
+            "Type": 1,
             "Childs": [
                 {
                     "Name": "Main_Counters",

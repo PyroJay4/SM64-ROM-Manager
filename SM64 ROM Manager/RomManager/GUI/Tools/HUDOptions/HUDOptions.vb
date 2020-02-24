@@ -41,14 +41,14 @@ Public Class HUDOptions
     End Sub
 
     Public Sub OpenRomRead()
-        If Not binaryData?.CanRead Then
+        If binaryData Is Nothing OrElse Not binaryData.CanRead Then
             CloseRom()
             binaryData = RomManager.GetBinaryRom(FileAccess.Read)
         End If
     End Sub
 
     Public Sub OpenRomWrite()
-        If Not binaryData?.CanWrite Then
+        If binaryData Is Nothing OrElse Not binaryData.CanWrite Then
             CloseRom()
             binaryData = RomManager.GetBinaryRom(FileAccess.ReadWrite)
         End If

@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 Imports SM64Lib
 Imports SM64_ROM_Manager.Publics
+Imports DevComponents.DotNetBar
+Imports DevComponents.AdvTree
 
 Public Class HUDOptionsForm
 
@@ -22,30 +24,36 @@ Public Class HUDOptionsForm
     Private Sub LoadBlocks()
         hud.LoadBlock(Path.Combine(MyDataPath, "Other\HUD Positions.json"))
 
-        For Each b As HUDOptionsBlock In hud.Block.Childs
-            LoadBlock(hud.Block, TabControlPanel_Positions)
-        Next
+        AdvTree1.BeginUpdate()
+        AdvTree1.Nodes.Clear()
+
+        LoadBlock(hud.Block, AdvTree1.Nodes)
+
+        AdvTree1.ExpandAll()
+        AdvTree1.EndUpdate()
     End Sub
 
-    Private Sub LoadBlock(b As HUDOptionsBlock, targetControl As Control)
-        Dim newControl As Control
+    Private Sub LoadBlock(b As HUDOptionsBlock, parentCollection As NodeCollection)
+        Dim n As New Node With {
+            .Text = b.Name,
+            .Tag = b
+        }
+        parentCollection.Add(n)
 
-        Select Case b.Type
-            Case 0
+        If b.Childs IsNot Nothing Then
+            For Each bb As HUDOptionsBlock In b.Childs
+                LoadBlock(bb, n.Nodes)
+            Next
+        End If
+    End Sub
 
-            Case 1
+    Private Sub LoadPosition(b As HUDOptionsBlock)
+        hud.OpenRomRead()
+        Dim pos As Point = hud.GetPosition(b)
+        hud.CloseRom()
 
-            Case 2
-
-            Case 3
-
-            Case Else
-                newControl = targetControl
-        End Select
-
-        For Each bb As HUDOptionsBlock In b.Childs
-            LoadBlock(bb, newControl)
-        Next
+        IntegerInput1.Value = pos.X
+        IntegerInput2.Value = pos.Y
     End Sub
 
     'G U I
@@ -54,8 +62,8 @@ Public Class HUDOptionsForm
         LoadBlocks()
     End Sub
 
-    Private Sub HUDOptionsForm_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-
+    Private Sub AdvTree1_AfterNodeSelect(sender As Object, e As AdvTreeNodeEventArgs) Handles AdvTree1.AfterNodeSelect
+        LoadPosition(e.Node.Tag)
     End Sub
 
 End Class

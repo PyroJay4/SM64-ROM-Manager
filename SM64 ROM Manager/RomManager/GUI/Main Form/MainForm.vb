@@ -505,4 +505,7 @@ Public Class MainForm
         Controller.OpenThankYouPage()
     End Sub
 
+    Private Sub ButtonItem_HudOptions_Click(sender As Object, e As EventArgs) Handles ButtonItem_HudOptions.Click
+        Controller.OpenHUDOptions()
+    End Sub
 End Class

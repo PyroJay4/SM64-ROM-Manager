@@ -524,6 +524,11 @@ Public Class MainController
         frm.Show()
     End Sub
 
+    Public Sub OpenHUDOptions()
+        Dim frmHUD As New HUDOptionsForm(RomManager)
+        frmHUD.ShowDialog()
+    End Sub
+
     'T o o l s
 
     Public Sub OpenTweakViewer()
