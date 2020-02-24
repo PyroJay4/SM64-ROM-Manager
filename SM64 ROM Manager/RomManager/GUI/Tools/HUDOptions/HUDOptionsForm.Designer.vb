@@ -26,8 +26,8 @@ Partial Class HUDOptionsForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HUDOptionsForm))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New DevComponents.DotNetBar.TabControl()
+        Me.TabControlPanel_Positions = New DevComponents.DotNetBar.TabControlPanel()
         Me.TabItem1 = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel1.SuspendLayout()
@@ -50,7 +50,7 @@ Partial Class HUDOptionsForm
         '
         Me.TabControl1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TabControl1.CanReorderTabs = True
-        Me.TabControl1.Controls.Add(Me.TabControlPanel1)
+        Me.TabControl1.Controls.Add(Me.TabControlPanel_Positions)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.ForeColor = System.Drawing.Color.Black
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
@@ -63,33 +63,34 @@ Partial Class HUDOptionsForm
         Me.TabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
         Me.TabControl1.Tabs.Add(Me.TabItem1)
         '
+        'TabControlPanel_Positions
+        '
+        Me.TabControlPanel_Positions.DisabledBackColor = System.Drawing.Color.Empty
+        Me.TabControlPanel_Positions.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TabControlPanel_Positions.Location = New System.Drawing.Point(0, 27)
+        Me.TabControlPanel_Positions.Name = "TabControlPanel_Positions"
+        Me.TabControlPanel_Positions.Padding = New System.Windows.Forms.Padding(1)
+        Me.TabControlPanel_Positions.Size = New System.Drawing.Size(800, 399)
+        Me.TabControlPanel_Positions.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel_Positions.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlPanel_Positions.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.TabControlPanel_Positions.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+        Me.TabControlPanel_Positions.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+        Me.TabControlPanel_Positions.Style.GradientAngle = 90
+        Me.TabControlPanel_Positions.TabIndex = 1
+        Me.TabControlPanel_Positions.TabItem = Me.TabItem1
+        '
         'TabItem1
         '
-        Me.TabItem1.AttachedControl = Me.TabControlPanel1
+        Me.TabItem1.AttachedControl = Me.TabControlPanel_Positions
         Me.TabItem1.Name = "TabItem1"
         Me.TabItem1.Text = "Positions"
         '
-        'TabControlPanel1
-        '
-        Me.TabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty
-        Me.TabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControlPanel1.Location = New System.Drawing.Point(0, 27)
-        Me.TabControlPanel1.Name = "TabControlPanel1"
-        Me.TabControlPanel1.Padding = New System.Windows.Forms.Padding(1)
-        Me.TabControlPanel1.Size = New System.Drawing.Size(800, 399)
-        Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer), CType(CType(211, Byte), Integer))
-        Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-        Me.TabControlPanel1.Style.GradientAngle = 90
-        Me.TabControlPanel1.TabIndex = 1
-        Me.TabControlPanel1.TabItem = Me.TabItem1
-        '
         'Bar1
         '
-        Me.Bar1.AccessibleDescription = "Bar1 (Bar1)"
-        Me.Bar1.AccessibleName = "Bar1"
+        Me.Bar1.AccessibleDescription = "DotNetBar Bar (Bar1)"
+        Me.Bar1.AccessibleName = "DotNetBar Bar"
         Me.Bar1.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar
         Me.Bar1.AntiAlias = True
         Me.Bar1.BarType = DevComponents.DotNetBar.eBarType.MenuBar
@@ -134,7 +135,7 @@ Partial Class HUDOptionsForm
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents TabControl1 As DevComponents.DotNetBar.TabControl
-    Friend WithEvents TabControlPanel1 As DevComponents.DotNetBar.TabControlPanel
+    Friend WithEvents TabControlPanel_Positions As DevComponents.DotNetBar.TabControlPanel
     Friend WithEvents TabItem1 As DevComponents.DotNetBar.TabItem
     Friend WithEvents Bar1 As DevComponents.DotNetBar.Bar
     Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
