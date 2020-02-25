@@ -513,6 +513,16 @@
     <Compile Include="RomManager\GUI\Tools\HUDOptions\HUDOptionsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RomManager\GUI\Tools\HUDOptions\HUDOptionsLangRes.de.Designer.vb">
+      <DependentUpon>HUDOptionsLangRes.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RomManager\GUI\Tools\HUDOptions\HUDOptionsLangRes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HUDOptionsLangRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="RomManager\GUI\Tools\ItemBoxContentEditor.Designer.vb">
       <DependentUpon>ItemBoxContentEditor.vb</DependentUpon>
     </Compile>
@@ -837,6 +847,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\HUDOptions\HUDOptionsForm.resx">
       <DependentUpon>HUDOptionsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\HUDOptions\HUDOptionsLangRes.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>HUDOptionsLangRes.de.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RomManager\GUI\Tools\HUDOptions\HUDOptionsLangRes.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>HUDOptionsLangRes.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RomManager\GUI\Tools\ItemBoxContentEditor.de.resx">
       <DependentUpon>ItemBoxContentEditor.vb</DependentUpon>

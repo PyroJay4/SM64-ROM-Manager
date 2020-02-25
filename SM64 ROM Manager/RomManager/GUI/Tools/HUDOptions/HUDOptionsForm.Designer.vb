@@ -33,18 +33,20 @@ Partial Class HUDOptionsForm
         Me.NodeConnector1 = New DevComponents.AdvTree.NodeConnector()
         Me.ElementStyle1 = New DevComponents.DotNetBar.ElementStyle()
         Me.LayoutControl1 = New DevComponents.DotNetBar.Layout.LayoutControl()
-        Me.IntegerInput2 = New DevComponents.Editors.IntegerInput()
+        Me.IntegerInput_PosX = New DevComponents.Editors.IntegerInput()
+        Me.IntegerInput_PosY = New DevComponents.Editors.IntegerInput()
         Me.ButtonX_SavePosition = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonX_RestorePosition = New DevComponents.DotNetBar.ButtonX()
+        Me.LayoutControlItem1 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.LayoutSpacerItem1 = New DevComponents.DotNetBar.Layout.LayoutSpacerItem()
+        Me.LayoutControlItem4 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
         Me.TabItem1 = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonX_RestorePosition = New DevComponents.DotNetBar.ButtonX()
-        Me.LayoutControlItem4 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
-        Me.IntegerInput1 = New DevComponents.Editors.IntegerInput()
-        Me.LayoutControlItem1 = New DevComponents.DotNetBar.Layout.LayoutControlItem()
+        Me.ButtonItem_ImportPosFromFile = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem_ExportPosToFile = New DevComponents.DotNetBar.ButtonItem()
         Me.Panel1.SuspendLayout()
         CType(Me.TabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -52,9 +54,9 @@ Partial Class HUDOptionsForm
         Me.Panel2.SuspendLayout()
         CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.IntegerInput2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IntegerInput_PosX, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IntegerInput_PosY, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.IntegerInput1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -154,8 +156,8 @@ Partial Class HUDOptionsForm
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Controls.Add(Me.IntegerInput1)
-        Me.LayoutControl1.Controls.Add(Me.IntegerInput2)
+        Me.LayoutControl1.Controls.Add(Me.IntegerInput_PosX)
+        Me.LayoutControl1.Controls.Add(Me.IntegerInput_PosY)
         Me.LayoutControl1.Controls.Add(Me.ButtonX_SavePosition)
         Me.LayoutControl1.Controls.Add(Me.ButtonX_RestorePosition)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Right
@@ -168,20 +170,35 @@ Partial Class HUDOptionsForm
         Me.LayoutControl1.Size = New System.Drawing.Size(194, 397)
         Me.LayoutControl1.TabIndex = 1
         '
-        'IntegerInput2
+        'IntegerInput_PosX
         '
         '
         '
         '
-        Me.IntegerInput2.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.IntegerInput2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.IntegerInput2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput2.Location = New System.Drawing.Point(22, 32)
-        Me.IntegerInput2.Margin = New System.Windows.Forms.Padding(0)
-        Me.IntegerInput2.Name = "IntegerInput2"
-        Me.IntegerInput2.ShowUpDown = True
-        Me.IntegerInput2.Size = New System.Drawing.Size(168, 20)
-        Me.IntegerInput2.TabIndex = 1
+        Me.IntegerInput_PosX.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.IntegerInput_PosX.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.IntegerInput_PosX.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.IntegerInput_PosX.Location = New System.Drawing.Point(22, 4)
+        Me.IntegerInput_PosX.Margin = New System.Windows.Forms.Padding(0)
+        Me.IntegerInput_PosX.Name = "IntegerInput_PosX"
+        Me.IntegerInput_PosX.ShowUpDown = True
+        Me.IntegerInput_PosX.Size = New System.Drawing.Size(168, 20)
+        Me.IntegerInput_PosX.TabIndex = 0
+        '
+        'IntegerInput_PosY
+        '
+        '
+        '
+        '
+        Me.IntegerInput_PosY.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.IntegerInput_PosY.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.IntegerInput_PosY.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.IntegerInput_PosY.Location = New System.Drawing.Point(22, 32)
+        Me.IntegerInput_PosY.Margin = New System.Windows.Forms.Padding(0)
+        Me.IntegerInput_PosY.Name = "IntegerInput_PosY"
+        Me.IntegerInput_PosY.ShowUpDown = True
+        Me.IntegerInput_PosY.Size = New System.Drawing.Size(168, 20)
+        Me.IntegerInput_PosY.TabIndex = 1
         '
         'ButtonX_SavePosition
         '
@@ -195,9 +212,31 @@ Partial Class HUDOptionsForm
         Me.ButtonX_SavePosition.TabIndex = 4
         Me.ButtonX_SavePosition.Text = "Save"
         '
+        'ButtonX_RestorePosition
+        '
+        Me.ButtonX_RestorePosition.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX_RestorePosition.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX_RestorePosition.Location = New System.Drawing.Point(32, 60)
+        Me.ButtonX_RestorePosition.Margin = New System.Windows.Forms.Padding(0)
+        Me.ButtonX_RestorePosition.Name = "ButtonX_RestorePosition"
+        Me.ButtonX_RestorePosition.Size = New System.Drawing.Size(75, 24)
+        Me.ButtonX_RestorePosition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX_RestorePosition.TabIndex = 3
+        Me.ButtonX_RestorePosition.Text = "Restore"
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.IntegerInput_PosX
+        Me.LayoutControlItem1.Height = 28
+        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(64, 18)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Text = "X:"
+        Me.LayoutControlItem1.Width = 100
+        Me.LayoutControlItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
         'LayoutControlItem2
         '
-        Me.LayoutControlItem2.Control = Me.IntegerInput2
+        Me.LayoutControlItem2.Control = Me.IntegerInput_PosY
         Me.LayoutControlItem2.Height = 28
         Me.LayoutControlItem2.MinSize = New System.Drawing.Size(64, 18)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
@@ -211,6 +250,14 @@ Partial Class HUDOptionsForm
         Me.LayoutSpacerItem1.Name = "LayoutSpacerItem1"
         Me.LayoutSpacerItem1.Width = 99
         Me.LayoutSpacerItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.Control = Me.ButtonX_RestorePosition
+        Me.LayoutControlItem4.Height = 32
+        Me.LayoutControlItem4.MinSize = New System.Drawing.Size(32, 20)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        Me.LayoutControlItem4.Width = 83
         '
         'LayoutControlItem3
         '
@@ -249,52 +296,18 @@ Partial Class HUDOptionsForm
         'ButtonItem1
         '
         Me.ButtonItem1.Name = "ButtonItem1"
-        Me.ButtonItem1.Text = "Datei"
+        Me.ButtonItem1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem_ImportPosFromFile, Me.ButtonItem_ExportPosToFile})
+        Me.ButtonItem1.Text = "Positions"
         '
-        'ButtonX_RestorePosition
+        'ButtonItem_ImportPosFromFile
         '
-        Me.ButtonX_RestorePosition.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX_RestorePosition.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX_RestorePosition.Location = New System.Drawing.Point(32, 60)
-        Me.ButtonX_RestorePosition.Margin = New System.Windows.Forms.Padding(0)
-        Me.ButtonX_RestorePosition.Name = "ButtonX_RestorePosition"
-        Me.ButtonX_RestorePosition.Size = New System.Drawing.Size(75, 24)
-        Me.ButtonX_RestorePosition.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX_RestorePosition.TabIndex = 3
-        Me.ButtonX_RestorePosition.Text = "Restore"
+        Me.ButtonItem_ImportPosFromFile.Name = "ButtonItem_ImportPosFromFile"
+        Me.ButtonItem_ImportPosFromFile.Text = "Import from file ..."
         '
-        'LayoutControlItem4
+        'ButtonItem_ExportPosToFile
         '
-        Me.LayoutControlItem4.Control = Me.ButtonX_RestorePosition
-        Me.LayoutControlItem4.Height = 32
-        Me.LayoutControlItem4.MinSize = New System.Drawing.Size(32, 20)
-        Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Width = 83
-        '
-        'IntegerInput1
-        '
-        '
-        '
-        '
-        Me.IntegerInput1.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.IntegerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.IntegerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.IntegerInput1.Location = New System.Drawing.Point(22, 4)
-        Me.IntegerInput1.Margin = New System.Windows.Forms.Padding(0)
-        Me.IntegerInput1.Name = "IntegerInput1"
-        Me.IntegerInput1.ShowUpDown = True
-        Me.IntegerInput1.Size = New System.Drawing.Size(168, 20)
-        Me.IntegerInput1.TabIndex = 0
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.IntegerInput1
-        Me.LayoutControlItem1.Height = 28
-        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(64, 18)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Text = "X:"
-        Me.LayoutControlItem1.Width = 100
-        Me.LayoutControlItem1.WidthType = DevComponents.DotNetBar.Layout.eLayoutSizeType.Percent
+        Me.ButtonItem_ExportPosToFile.Name = "ButtonItem_ExportPosToFile"
+        Me.ButtonItem_ExportPosToFile.Text = "Export to file ..."
         '
         'HUDOptionsForm
         '
@@ -316,9 +329,9 @@ Partial Class HUDOptionsForm
         Me.Panel2.ResumeLayout(False)
         CType(Me.AdvTree1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.IntegerInput2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IntegerInput_PosX, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IntegerInput_PosY, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.IntegerInput1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -335,13 +348,15 @@ Partial Class HUDOptionsForm
     Friend WithEvents NodeConnector1 As DevComponents.AdvTree.NodeConnector
     Friend WithEvents ElementStyle1 As DevComponents.DotNetBar.ElementStyle
     Friend WithEvents LayoutControl1 As DevComponents.DotNetBar.Layout.LayoutControl
-    Friend WithEvents IntegerInput2 As DevComponents.Editors.IntegerInput
+    Friend WithEvents IntegerInput_PosY As DevComponents.Editors.IntegerInput
     Friend WithEvents LayoutControlItem2 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents ButtonX_SavePosition As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LayoutSpacerItem1 As DevComponents.DotNetBar.Layout.LayoutSpacerItem
     Friend WithEvents LayoutControlItem3 As DevComponents.DotNetBar.Layout.LayoutControlItem
     Friend WithEvents ButtonX_RestorePosition As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LayoutControlItem4 As DevComponents.DotNetBar.Layout.LayoutControlItem
-    Friend WithEvents IntegerInput1 As DevComponents.Editors.IntegerInput
+    Friend WithEvents IntegerInput_PosX As DevComponents.Editors.IntegerInput
     Friend WithEvents LayoutControlItem1 As DevComponents.DotNetBar.Layout.LayoutControlItem
+    Friend WithEvents ButtonItem_ImportPosFromFile As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem_ExportPosToFile As DevComponents.DotNetBar.ButtonItem
 End Class
