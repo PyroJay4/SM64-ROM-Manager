@@ -124,7 +124,7 @@ Public Class UpdateClient
         RaiseUpdateStatusChanged(UpdateStatus.Searching)
 
         For Each pkgInfo As UpdatePackageInfo In updateInfo.Packages
-            If pkgInfo.Version.Channel >= MinimumChannel AndAlso pkgInfo.Version > latestVersion Then
+            If pkgInfo.Version.Channel <= MinimumChannel AndAlso pkgInfo.Version > latestVersion Then
                 foundPkgInfo = pkgInfo
                 latestVersion = pkgInfo.Version
             End If
