@@ -142,7 +142,9 @@ Public Class CustomBankManager
     End Sub
 
     Private Sub RemoveKnownCollisionMap(curObj As CustomObject)
-        knownCollisionMaps.RemoveIfContainsKey(curObj.Model.Collision)
+        If curObj.Model.Collision IsNot Nothing Then
+            knownCollisionMaps.RemoveIfContainsKey(curObj.Model.Collision)
+        End If
     End Sub
 
     Private Sub RemoveKnownMaps(curObj As CustomObject)

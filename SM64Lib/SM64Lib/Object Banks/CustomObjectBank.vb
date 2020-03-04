@@ -47,7 +47,7 @@ Namespace Global.SM64Lib.ObjectBanks
                 'Write Model Offset & Length & Collision Offset
                 data.Write(obj.ModelBankOffset)
                 data.Write(CInt(obj.Model.Fast3DBuffer.Length))
-                data.Write(sr.CollisionPointer And &HFFFFFF)
+                data.Write(If(sr.CollisionPointer = -1, -1, sr.CollisionPointer And &HFFFFFF))
                 obj.CollisionPointer = sr.CollisionPointer
                 HexRoundUp2(data.Position)
 
