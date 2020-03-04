@@ -463,7 +463,9 @@ Public Class MainController
     Public Sub UpdateChecksum()
         If RomManager IsNot Nothing Then
             StatusText = "Calculating checksum ..."
+            DisableRomWatcher()
             PatchClass.UpdateChecksum(RomManager.RomFile)
+            EnableRomWatcher()
             StatusText = String.Empty
         End If
     End Sub
