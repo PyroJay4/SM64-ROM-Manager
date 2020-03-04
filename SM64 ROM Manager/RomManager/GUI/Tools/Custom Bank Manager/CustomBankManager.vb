@@ -79,6 +79,7 @@ Public Class CustomBankManager
                     ButtonItem_ImportCollision.Enabled = hasCollision
                     ButtonItem_RemoveCollision.Enabled = hasCollision
                     ButtonItem_ShowCollision.Enabled = hasCollision
+                    ButtonItem_CopyCollisionPointer.Enabled = hasCollision
                     CM_Object.Popup(Cursor.Position)
                 End If
             End Sub
