@@ -121,11 +121,11 @@ Public Class CustomBankManager
                     obj.Model = resMdl?.mdl
                     RemoveKnownMaps(obj)
                 ElseIf resMdl?.hasCollision Then
-                    obj.Model.Collision = obj.Model.Collision
                     RemoveKnownCollisionMap(obj)
+                    obj.Model.Collision = resMdl?.mdl.Collision
                 ElseIf resMdl?.hasVisualMap Then
-                    obj.Model.Fast3DBuffer = obj.Model.Fast3DBuffer
                     RemoveKnownVisualMap(obj)
+                    obj.Model.Fast3DBuffer = resMdl?.mdl.Fast3DBuffer
                 End If
                 Return True
             End If
