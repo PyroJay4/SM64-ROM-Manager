@@ -96,7 +96,11 @@ Namespace Levels
                                 customBGStart = startAddr
                                 customBGEnd = endAddr - &H140
                             Case &H7 'Global Object Bank
-                                lvl.EnableGlobalObjectBank = True
+                                If startAddr = rommgr.GlobalObjectBank.CurSeg.RomStart AndAlso
+                                   endAddr = rommgr.GlobalObjectBank.CurSeg.RomEnd Then
+                                    lvl.EnableGlobalObjectBank = True
+                                    lvl.LastGobCmdSegLoad = c
+                                End If
                         End Select
 
                     Case LevelscriptCommandTypes.ShowDialog
@@ -468,7 +472,9 @@ Namespace Levels
                             Case &HA
                                 cmdBgSegLoad = c
                             Case &H7
-                                cmdGobSegLoad = c
+                                If lvl.LastGobCmdSegLoad Is c Then
+                                    cmdGobSegLoad = c
+                                End If
                         End Select
 
                     Case LevelscriptCommandTypes.ShowDialog
@@ -535,6 +541,7 @@ Namespace Levels
                 If Not lvl.Levelscript.Contains(newgobcmd) Then
                     Dim indexoffirstx1d As Integer = lvl.Levelscript.IndexOfFirst(LevelscriptCommandTypes.x1D)
                     lvl.Levelscript.Insert(indexoffirstx1d, newgobcmd)
+                    lvl.LastGobCmdSegLoad = newgobcmd
                 End If
 
                 If Not lvl.Levelscript.Contains(newgobjumpcmd) Then

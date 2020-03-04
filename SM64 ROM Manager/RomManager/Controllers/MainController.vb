@@ -1068,7 +1068,7 @@ Public Class MainController
         'Object Banks
         lvl.ChangeObjectBankData(&HC, ObjectBankData(CByte(&HC)).ElementAtOrDefault(objBank0x0C - 1))
         lvl.ChangeObjectBankData(&HD, ObjectBankData(CByte(&HD)).ElementAtOrDefault(objBank0x0D - 1))
-        lvl.ChangeObjectBankData(&H9, ObjectBankData(CByte(&H9)).ElementAtOrDefault(objBank0x0E - 1))
+        lvl.ChangeObjectBankData(&H9, ObjectBankData(CByte(&H9)).ElementAtOrDefault(If(enableGlobalObjectBank, -1, objBank0x0E - 1)))
         lvl.EnableGlobalObjectBank = enableGlobalObjectBank
 
         SetLevelscriptNeedToSave(lvl)

@@ -635,6 +635,10 @@ Public Class Tab_LevelManager
         SaveLevelSettings()
     End Sub
 
+    Private Sub SwitchButton_UseGlobalObjectBank_ValueChanged() Handles SwitchButton_UseGlobalObjectBank.ValueChanged
+        ObjectBankSelectorBox_9.Enabled = Not SwitchButton_UseGlobalObjectBank.Value
+    End Sub
+
     Private Sub LM_SaveGameBackground() Handles ComboBox_LM_LevelBG.SelectedIndexChanged
         If AllowSavingLevelSettings Then
             Controller.SetLevelBackgroundID(CurrentLevelIndex, GetBackgroundIDOfIndex(ComboBox_LM_LevelBG.SelectedIndex))
@@ -843,10 +847,6 @@ Public Class Tab_LevelManager
 
     Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
         Controller.ChangeLevelCustomName(CurrentLevelIndex)
-    End Sub
-
-    Private Sub Controls_HandleToSaveLevelSettings(sender As Object, e As EventArgs) Handles SwitchButton_LM_HardcodedCameraSettings.ValueChanged, SwitchButton_LM_ActSelector.ValueChanged, NUD_LM_DefaultPositionYRotation.ValueChanged, NUD_LM_DefaultPositionAreaID.ValueChanged, SwitchButton_UseGlobalObjectBank.ValueChanged
-
     End Sub
 
     Private Sub GroupBox_LM_Areas_EnabledChanged(sender As Object, e As EventArgs) Handles GroupBox_LM_Areas.EnabledChanged
