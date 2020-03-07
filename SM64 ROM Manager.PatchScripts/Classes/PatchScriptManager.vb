@@ -274,6 +274,29 @@ Public Class PatchingManager
                     ExecuteScript(assembly, params)
                 End If
 
+            Case ScriptType.Armips
+                Dim createText As String =
+$"SAG_FILEPATH equ ""{romfile}""
+SAG_FILEPOS equ 0x0
+SAG_IMPORTPATH equ ""{romfile}""
+.Open SAG_IMPORTPATH
+{script.Script}
+.Close"
+
+                Dim tmpAsmFile As String = Path.GetTempFileName
+                File.WriteAllText(tmpAsmFile, createText)
+
+                Dim p As New Process
+                p.StartInfo.FileName = Path.Combine(Publics.MyToolsPath, "armips.exe")
+                p.StartInfo.Arguments = $"""{tmpAsmFile}"" ""{romfile}"""
+                p.StartInfo.UseShellExecute = False
+                p.Start()
+
+                Do Until p.HasExited
+                Loop
+
+                File.Delete(tmpAsmFile)
+
         End Select
 
         PatchClass.UpdateChecksum(romfile)

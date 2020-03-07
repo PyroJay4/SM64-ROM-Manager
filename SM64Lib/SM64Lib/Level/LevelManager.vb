@@ -286,9 +286,7 @@ Namespace Levels
 
                 'Write Object Bank
                 a.CustomObjectsStartOffset = curOff - a.Bank0x0EOffset
-                For Each customObj As CustomObject In a.CustomObjects.Objects
-                    '...
-                Next
+                'a.CustomObjects.WriteToSeg(output, a.CustomObjectsStartOffset, &HE)
 
                 a.Bank0xELength = curOff - a.Bank0x0EOffset
             Next
