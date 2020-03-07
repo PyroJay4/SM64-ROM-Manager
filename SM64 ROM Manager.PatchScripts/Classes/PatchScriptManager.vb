@@ -279,7 +279,7 @@ Public Class PatchingManager
 $"SAG_FILEPATH equ ""{romfile}""
 SAG_FILEPOS equ 0x0
 SAG_IMPORTPATH equ ""{romfile}""
-.Open SAG_IMPORTPATH
+.Open SAG_IMPORTPATH, SAG_FILEPOS
 {script.Script}
 .Close"
 
@@ -288,7 +288,7 @@ SAG_IMPORTPATH equ ""{romfile}""
 
                 Dim p As New Process
                 p.StartInfo.FileName = Path.Combine(Publics.MyToolsPath, "armips.exe")
-                p.StartInfo.Arguments = $"""{tmpAsmFile}"" ""{romfile}"""
+                p.StartInfo.Arguments = $"""{tmpAsmFile}"" -root ""{Path.GetDirectoryName(params("profilepath"))}"""
                 p.StartInfo.UseShellExecute = False
                 p.Start()
 
