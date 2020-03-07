@@ -251,7 +251,7 @@ Public Class RomManager
 
             'Music
             Dim lastpos As Integer
-            MusicList.Write(RomFile, lastpos)
+            MusicList.Write(Me, lastpos)
             HexRoundUp2(lastpos)
 
             'Global Object Bank
@@ -442,7 +442,7 @@ Public Class RomManager
                     Case Else 'Original Level
                         lvl = Nothing
                         'Dim mgr As New OriginalLevelManager
-                        'lvl = New Level
+                        'lvl = New OriginalLevel
                         'mgr.LoadLevel(lvl, Me, ldi.ID, offset)
 
                 End Select
@@ -610,7 +610,7 @@ Public Class RomManager
     ''' Loads the Music from the ROM.
     ''' </summary>
     Public Sub LoadMusic()
-        MusicList.Read(RomFile)
+        MusicList.Read(Me)
     End Sub
 
     ''' <summary>
@@ -678,12 +678,12 @@ Public Class RomManager
         fs.Close()
 
         'Repaire patched music
-        MusicList.Read(RomFile)
+        MusicList.Read(Me)
         MusicList.NeedToSaveSequences = True
         MusicList.NeedToSaveSequenceNames = True
         MusicList.NeedToSaveNInsts = True
         MusicList.NeedToSaveMusicHackSettings = True
-        MusicList.Write(RomFile, 0)
+        MusicList.Write(Me, 0)
 
         'Update Checksum
         PatchClass.UpdateChecksum(RomFile)
