@@ -35,6 +35,7 @@ Namespace LevelEditor
             LoadObjectCombosIfEmpty()
             LoadBehaviorInfosIfEmpty()
             SetUI()
+            TextBoxX_Search.Select()
             UpdateAmbientColors
         End Sub
 
