@@ -445,9 +445,14 @@ Public Class TweakViewer
 
     Private Async Sub WarningBox_TweakUpdates_OptionsClick(sender As Object, e As EventArgs) Handles WarningBox_TweakUpdates.OptionsClick
         WarningBox_TweakUpdates.Visible = False
+
+        Enabled = False
         CircularProgress1.Start()
+
         Dim res As Boolean = Await ExecuteUpdate()
+
         CircularProgress1.Stop()
+        Enabled = True
 
         If res Then
             LoadTweaks()
