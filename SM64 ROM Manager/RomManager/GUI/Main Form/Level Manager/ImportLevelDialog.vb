@@ -71,7 +71,7 @@ Public Class ImportLevelDialog
                 Sub(a As LevelArea, newArea As LevelArea)
                     newArea.Background.Type = a.Background.Type
                     newArea.Background.Color = a.Background.Color
-                    newArea.BGMusic = a.BGMusic
+                    'newArea.BGMusic = a.BGMusic
                     newArea.TerrainType = a.TerrainType
                     newArea.Objects.AddRange(a.Objects.ToArray)
                     newArea.Warps.AddRange(a.Warps.ToArray)

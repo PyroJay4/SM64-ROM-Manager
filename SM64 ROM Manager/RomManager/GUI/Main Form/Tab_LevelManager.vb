@@ -496,7 +496,7 @@ Public Class Tab_LevelManager
 
             'Load Area Settings
             ComboBox_LM_TerrainTyp.SelectedIndex = infos.terrainType
-            ComboBox_LM_Music.SelectedIndex = infos.bgMusic
+            ComboBox_LM_Music.SelectedIndex = Math.Min(ComboBox_LM_Music.Items.Count - 1, infos.bgMusic)
             ComboBox_LM_CameraPreset.SelectedIndex = GetCameraPresetIndexOfType(infos.camPreset)
             ComboBox_LM_EnvironmentEffects.SelectedIndex = GetEnvironmentIndexOfType(infos.envEffect)
 
