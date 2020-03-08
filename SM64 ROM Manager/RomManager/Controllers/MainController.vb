@@ -1468,23 +1468,21 @@ Public Class MainController
                     lvlmgr = addedFuncs(cb.SelectedIndex - 1).InvokeGet
             End Select
 
-            Dim frm As New ImportLevelDialog(RomManager, destLevel)
-            If frm.LoadROM(cofd.FileName, lvlmgr) Then
-                If frm.ShowDialog = DialogResult.OK Then
-                    If Not addAreasOnly Then
-                        destLevel = frm.LevelCopy
-                    End If
+            Dim frm As New ImportLevelDialog(RomManager, destLevel, cofd.FileName, lvlmgr)
+            If frm.ShowDialog = DialogResult.OK Then
+                If Not addAreasOnly Then
+                    destLevel = frm.LevelCopy
+                End If
 
-                    SetLevelscriptNeedToSave(destLevel)
-                    SetLevelBank0x0ENeedToSave(destLevel)
+                SetLevelscriptNeedToSave(destLevel)
+                SetLevelBank0x0ENeedToSave(destLevel)
 
-                    If addAreasOnly Then
-                        For Each area As LevelArea In frm.AreasCopy
-                            RaiseEvent LevelAreaAdded(New LevelAreaEventArgs(RomManager.Levels.IndexOf(destLevel), destLevel.Areas.IndexOf(area), area.AreaID))
-                        Next
-                    Else
-                        RaiseEvent LevelAdded(New LevelEventArgs(RomManager.Levels.IndexOf(destLevel), destLevel.LevelID))
-                    End If
+                If addAreasOnly Then
+                    For Each area As LevelArea In frm.AreasCopy
+                        RaiseEvent LevelAreaAdded(New LevelAreaEventArgs(RomManager.Levels.IndexOf(destLevel), destLevel.Areas.IndexOf(area), area.AreaID))
+                    Next
+                Else
+                    RaiseEvent LevelAdded(New LevelEventArgs(RomManager.Levels.IndexOf(destLevel), destLevel.LevelID))
                 End If
             End If
         End If
