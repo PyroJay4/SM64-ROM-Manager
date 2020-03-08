@@ -29,9 +29,11 @@ Public Class ImportLevelDialog
         If mgr.CheckROM() Then
             openrom = mgr
             LabelX_Romfile.Text = IO.Path.GetFileName(mgr.RomFile)
+            Enabled = False
             CircularProgress1.Start()
             Await Task.Run(Sub() mgr.LoadLevels())
             CircularProgress1.Stop()
+            Enabled = True
             LoadLevels()
             Return True
         Else
