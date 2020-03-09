@@ -13,7 +13,7 @@
         },
         {
             "Name": "Description",
-            "Description": "Please explain it very detailed, so I can easily reproduce this bug.",
+            "Description": "Please explain it in detail, so I can easily reproduce this bug.",
             "Type": "LongText"
         },
         {
@@ -29,12 +29,12 @@
         },
         {
             "Name": "Attachments",
-            "Description": "What I would need (if possible):\n- Your ROM File where this error/bug happend to (if it is deticted to your ROM)\n- Screenshots or other pictures if they are helpful",
+            "Description": "What I would need (if possible):\n- Your ROM File where this error/bug happened (if it is related to your ROM)\n- Screenshots or other pictures if they are helpful",
             "Type": "Files"
         },
         {
             "Name": "Contact",
-            "Description": "It would be good to know how you can be contacted.\nWrite down your Discord#0000 or Skype Name or E-Mail Address.",
+            "Description": "It would be good to know how you can be contacted.\nWrite down your Discord#0000, Skype Name, or E-Mail Address.",
             "Type": "Text",
             "AllowEmptyState": true
         }
