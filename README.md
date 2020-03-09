@@ -1,8 +1,8 @@
 # SM64 ROM Manager
-A brand new all-in-one SM64 Hacking tool that allows you to import and modify custom levels, edit texts, music and many more!
+A brand new all-in-one SM64 Hacking tool that allows you to import and modify custom levels, edit text, change music, and much more!
 
 ## Download & Compile
-Let me explain how to compile the source code.
+Here's how to compile the source code.
  1. Download the source code
  2. Download the latest version of SM64 ROM Manager.
  3. Go inside the "Shared Libs" folder in the repo folder: "SM64 ROM Manager\Shared Libs\DotNetBarNew"
