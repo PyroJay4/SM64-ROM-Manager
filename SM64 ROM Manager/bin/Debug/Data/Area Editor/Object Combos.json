@@ -197,7 +197,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Big Bully and 3 small",
+      "Name": "Big Bully + 3 small bullies",
       "ModelID": 87,
       "ModelAddress": 201326880,
       "Behavior": 318781076,
@@ -393,7 +393,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Blue Coins Switch",
+      "Name": "Blue Coin Switch",
       "ModelID": 140,
       "ModelAddress": 251658240,
       "Behavior": 318776680,
@@ -407,7 +407,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Blue Coins Switch",
+      "Name": "Blue Coin Switch",
       "ModelID": 140,
       "ModelAddress": 251658240,
       "Behavior": 318776680,
@@ -505,7 +505,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Bomb",
+      "Name": "Bowser Bomb",
       "ModelID": 179,
       "ModelAddress": 218106812,
       "Behavior": 318781420,
@@ -1751,7 +1751,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Evil Lakitu",
+      "Name": "Enemy Lakitu",
       "ModelID": 84,
       "ModelAddress": 201327036,
       "Behavior": 318785816,
@@ -2101,7 +2101,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Four rotating Platforms",
+      "Name": "Four Rotating Platforms",
       "ModelID": 61,
       "ModelAddress": 234882624,
       "Behavior": 318786372,
@@ -2115,7 +2115,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Four Rotating Platforms",
+      "Name": "Four Rotating Platforms 2",
       "ModelID": 57,
       "ModelAddress": 234882416,
       "Behavior": 318786372,
@@ -2451,7 +2451,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Jumping Box",
+      "Name": "Crazy Box",
       "ModelID": 129,
       "ModelAddress": 251659728,
       "Behavior": 318772816,
@@ -2479,7 +2479,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Kickable Wooden Board",
+      "Name": "Kickable Wooden Board (WF)",
       "ModelID": 56,
       "ModelAddress": 234884008,
       "Behavior": 318768748,
@@ -2801,7 +2801,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Mad Piano",
+      "Name": "Killer Piano",
       "ModelID": 87,
       "ModelAddress": 201327028,
       "Behavior": 318787620,
@@ -2829,7 +2829,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Manta",
+      "Name": "Manta Ray",
       "ModelID": 84,
       "ModelAddress": 83922196,
       "Behavior": 318784368,
@@ -4005,7 +4005,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Pryamid Top",
+      "Name": "Pyramid Top",
       "ModelID": 58,
       "ModelAddress": 234882584,
       "Behavior": 318782388,
@@ -4677,7 +4677,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Scutlebug",
+      "Name": "Scuttlebug",
       "ModelID": 101,
       "ModelAddress": 218104724,
       "Behavior": 318778204,
@@ -4837,7 +4837,7 @@
       "Behavior": 318780196,
       "BP1_NAME": null,
       "BP1_DESCRIPTION": null,
-      "BP2_NAME": "Message ID",
+      "BP2_NAME": null,
       "BP2_DESCRIPTION": null,
       "BP3_NAME": null,
       "BP3_DESCRIPTION": null,
@@ -5923,7 +5923,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Twhomp",
+      "Name": "Thwomp",
       "ModelID": 88,
       "ModelAddress": 201327176,
       "Behavior": 318770120,
@@ -5937,7 +5937,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Twhomp 2",
+      "Name": "Thwomp 2",
       "ModelID": 88,
       "ModelAddress": 201327176,
       "Behavior": 318770060,
@@ -6819,7 +6819,7 @@
       "BP4_DESCRIPTION": null
     },
     {
-      "Name": "Beta Blarrg [MOP1]",
+      "Name": "Beta Blargg [MOP1]",
       "ModelID": 84,
       "ModelAddress": 201327140,
       "Behavior": 318776272,
