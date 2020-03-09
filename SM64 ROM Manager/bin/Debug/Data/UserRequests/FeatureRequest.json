@@ -8,12 +8,12 @@
         },
         {
             "Name": "Title",
-            "Description": "How would you name your feature?",
+            "Description": "What would you call your feature?",
             "Type": "Text"
         },
         {
             "Name": "Description",
-            "Description": "Please describe your feature detailed.",
+            "Description": "Please describe your feature in detail.",
             "Type": "LongText"
         },
         {
@@ -28,7 +28,7 @@
         },
         {
             "Name": "Contact",
-            "Description": "How can you be contacted If there are more questions open?\nWrite down your Discord#0000 or Skype Name or E-Mail Address.",
+            "Description": "How can you be contacted If there are more questions open?\nWrite down your Discord#0000, Skype Name, or E-Mail Address.",
             "Type": "Text",
             "AllowEmptyState": true
         }
