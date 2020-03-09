@@ -228,7 +228,7 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Rotating platform (param1 = speed, param2 = collision",
+    "Name": "Rotating platform",
     "Behavior": 318768564,
     "BP1 Name": "Speed",
     "BP2 Name": "Collision",
@@ -2935,7 +2935,7 @@
     "Name": "Sign On Wall",
     "Behavior": 318780196,
     "BP1 Name": "",
-    "BP2 Name": "",
+    "BP2 Name": "Message ID",
     "BP3 Name": "",
     "BP4 Name": ""
   },
@@ -3134,7 +3134,7 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Explosion (from spikey bombs) pt.1",
+    "Name": "Explosion (from spiky bombs) pt.1",
     "Behavior": 318781468,
     "BP1 Name": "",
     "BP2 Name": "",
@@ -3142,7 +3142,7 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Explosion (from spikey bombs) pt.2",
+    "Name": "Explosion (from spiky bombs) pt.2",
     "Behavior": 318781504,
     "BP1 Name": "",
     "BP2 Name": "",
@@ -4490,7 +4490,7 @@
     "BP4 Name": ""
   },
   {
-    "Name": "Sliding back and forth (param1 = collision pointer, param2 = movement length)",
+    "Name": "Sliding back and forth",
     "Behavior": 318787148,
     "BP1 Name": "Collision Pointer",
     "BP2 Name": "Movement Length",
